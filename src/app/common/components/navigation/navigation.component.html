@@ -1,1 +1,13 @@
-Navigation component.
+<nav class="nav-bar" data-media="mobile">
+    <ul>
+        <li>
+            <img src="" alt="logo to navigate home">
+        </li>
+        <li *ngFor="let route of routes">
+            <span 
+                routerLink="{{ route.path }}"
+                routerLinkActive="active-route"
+            >{{ route.data?.['title'] }}</span>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,5 @@
+@use '../../../stylesheets/colors' as sass;
+
+h1 {
+    color: sass.$color-warning-red;
+}
