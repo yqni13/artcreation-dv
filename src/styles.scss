@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'stylesheets/colors' as c;
+
+@import 'stylesheets/defines.scss';
+@import 'stylesheets/icons.scss';
+@import 'stylesheets/media.scss';
+
+html {
+    cursor: context-menu;
+    scrollbar-width: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+body {
+    background: var(--theme-body-bg);
+    color: var(--theme-body-text);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
