@@ -21,26 +21,26 @@ export const routes: Routes = [
     // {
     //     path: 'contact',
     //     component: demo,
-    //     title: 'Contact'
+    //     data: { title: 'Contact', showInNavbar: true, showInFooter: false }
     // },
     // {
     //     path: 'faq',
     //     component: demo,
-    //     title: 'FAQ'
+    //     data: { title: 'Imprint', showInNavbar: false, showInFooter: true }
     // },
     // {
     //     path: 'gallery',
     //     component: demo,
-    //     title: 'Gallery'
+    //     data: { title: 'Gallery', showInNavbar: true, showInFooter: false }
     // },
     // {
     //     path: 'imprint',
     //     component: demo,
-    //     title: 'Imprint'
+    //     data: { title: 'Imprint', showInNavbar: false, showInFooter: true }
     // },
     // {
     //     path: 'privacy',
     //     component: demo,
-    //     title: 'Privacy'
+    //     data: { title: 'Imprint', showInNavbar: false, showInFooter: true }
     // },
 ];

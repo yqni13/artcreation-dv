@@ -1,27 +1,31 @@
-@use 'colors' as sass;
+@use 'utilities' as sass;
 
 
 /* NAVIGATION MODE STYLING DEFINITIONS */
 [data-nav='navMobileExpanded'] {
-    --nav-width: 100%;
+    --view-nav-width: 100%;
 }
 
 [data-nav='navMobileCollapsed'] {
-    --nav-width: 50px;
+    --view-nav-width: 50px;
 }
 
 [data-nav='navDesktop'] {
-    --nav-width: 150px;
+    --view-nav-width: 150px;
 }
 
 
 /* THEME OPTION DEFINITIONS */
 [data-theme='light'] {
-    --theme-body-bg: #{sass.$color-gold-yellow};
+    --theme-body-bg: #{sass.$color-ice-white};
     --theme-body-text: #{sass.$color-rich-black};
+    --theme-nav-bg: #{sass.$color-light-grey};
+    --theme-nav-border: #{sass.$color-gold-yellow};
 }
 
 [data-theme='dark'] {
     --theme-body-bg: #{sass.$color-deep-blue};
     --theme-body-text: #{sass.$color-ice-white};
+    --theme-nav-bg: #{sass.$color-dark-grey};
+    --theme-nav-border: #{sass.$color-light-grey};
 }
