@@ -1,0 +1,89 @@
+@use '../../../../stylesheets/utilities' as sass;
+
+.agal-nav-bar {
+    display: block;
+    flex-wrap: nowrap;
+    width: var(--view-nav-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    border-right: 2px solid var(--theme-nav-border);
+    background: var(--theme-nav-bg);
+    
+    ul {
+        scrollbar-width: none;
+        overflow: auto;
+        margin-block: 0;
+        padding-inline: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 0;
+        list-style: none;
+
+        li {
+            text-decoration: none;
+            display: block;
+            padding: 12.5px 0;
+            place-content: center;
+            
+            span {
+                font-size: sass.$font-text-size;
+                font-weight: bold;
+                cursor: pointer;
+                color: var(--theme-body-text);
+            }
+            
+            .agal-nav-routes {
+                position: relative;
+    
+                &:after {
+                    content: '';
+                    left: 0;
+                    bottom: -2.5px;
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    background-color: var(--theme-body-text);
+                    transform: scaleX(0);
+                    transition: transform 0.25s;
+                    transform-origin: center;
+                }
+    
+                &:hover::after {
+                    transform: scaleX(1);
+                }
+                
+                &:hover {
+                    opacity: 0.75;
+                }
+            }
+        }
+    }
+}
+
+.agal-nav-logo {
+    width: calc(var(--view-nav-width) / 2.5);
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+}
+
+.lightMode {
+    color: sass.$color-gold-yellow!important;
+}
+
+.darkMode {
+    color: sass.$color-light-grey!important;
+}
+
+.agal-active-route {
+    color: sass.$color-active-route!important;
+    &:hover {
+        opacity: 1!important;
+    }
+    &:hover::after,
+    &:after {
+        transform: none!important;
+        width: 0%!important;
+    }
+}

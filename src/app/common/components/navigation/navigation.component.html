@@ -1,13 +1,44 @@
-<nav class="nav-bar" data-media="mobile">
+<nav class="agal-nav-bar" data-media="mobile">
     <ul>
+        <li class="agal-nav-folding">
+            <i 
+                aria-disabled="true"
+                class="icon-BurgerMenu agal-nav-mobile" 
+                (click)="expandNavMobile()" 
+                (keydown.enter)="expandNavMobile()"
+            ></i>
+        </li>
         <li>
-            <img src="" alt="logo to navigate home">
+            <img
+                aria-disabled="true"
+                class="agal-nav-logo"
+                src="assets/art-logo.png" 
+                alt="logo to navigate home"
+                routerLink="home"
+                (click)="expandNavMobile(true)"
+                (keydown.enter)="expandNavMobile(true)"
+            >
         </li>
         <li *ngFor="let route of routes">
-            <span 
+            <span
+                class="agal-nav-routes"
+                aria-disabled="true"
                 routerLink="{{ route.path }}"
-                routerLinkActive="active-route"
+                routerLinkActive="agal-active-route"
+                (click)="expandNavMobile(true)"
+                (keydown.enter)="expandNavMobile(true)"
             >{{ route.data?.['title'] }}</span>
         </li>
+        <li>
+            <span
+                aria-disabled="true"
+                ngClass="{{selectedTheme}}"
+                (click)="setTheme()"
+                (keydown.enter)="setTheme()"
+                #themeModeIcon
+            ><i class="icon-ThemeOptions agal-nav-theme-ico"></i>
+            </span>
+        </li>
+        <!-- Hello World: {{chosenTheme}} -->
     </ul>
-</nav>
+</nav> 
