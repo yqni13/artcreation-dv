@@ -1,0 +1,43 @@
+<nav class="agal-nav-bar" data-media="mobile">
+    <ul>
+        <li class="agal-nav-folding">
+            <i 
+                [attr.aria-disabled]="true"
+                class="icon-BurgerMenu agal-nav-mobile" 
+                (click)="expandNavMobile()" 
+                (keydown.enter)="expandNavMobile()"
+            ></i>
+        </li>
+        <li>
+            <img
+                [attr.aria-disabled]="true"
+                class="agal-nav-logo"
+                src="assets/art-logo.png" 
+                alt="logo to navigate home"
+                routerLink="home"
+                (click)="expandNavMobile(true)"
+                (keydown.enter)="expandNavMobile(true)"
+            >
+        </li>
+        <li *ngFor="let route of routes">
+            <span
+                class="agal-nav-routes"
+                [attr.aria-disabled]="true"
+                routerLink="{{ route.path }}"
+                routerLinkActive="agal-active-route"
+                (click)="expandNavMobile(true)"
+                (keydown.enter)="expandNavMobile(true)"
+            >{{ route.data?.['title'] }}</span>
+        </li>
+        <li>
+            <span
+                [attr.aria-disabled]="true"
+                [ngClass]="selectedTheme"
+                (click)="setTheme()"
+                (keydown.enter)="setTheme()"
+                #themeModeIcon
+            ><i class="icon-ThemeOptions agal-nav-theme-ico"></i>
+            </span>
+        </li>
+    </ul>
+</nav> 
