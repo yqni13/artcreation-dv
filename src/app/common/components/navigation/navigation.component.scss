@@ -1,7 +1,7 @@
 @use '../../../../stylesheets/utilities' as sass;
 
 .agal-nav-bar {
-    display: block;
+    display: flex;
     flex-wrap: nowrap;
     width: var(--view-nav-width);
     height: 100vh;
@@ -9,6 +9,7 @@
     top: 0;
     border-right: 2px solid var(--theme-nav-border);
     background: var(--theme-nav-bg);
+    justify-content: center;
     
     ul {
         scrollbar-width: none;
@@ -25,7 +26,6 @@
             text-decoration: none;
             display: block;
             padding: 12.5px 0;
-            place-content: center;
             
             span {
                 font-size: sass.$font-text-size;

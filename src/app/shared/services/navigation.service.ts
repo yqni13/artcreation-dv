@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Route, Router } from "@angular/router";
 
 
@@ -8,7 +8,7 @@ import { Route, Router } from "@angular/router";
 })
 export class NavigationService {
 
-    private router = inject(Router);
+    constructor (private router: Router) {}
 
     getNavigationRoutes(): Route[] {
         return this.router.config

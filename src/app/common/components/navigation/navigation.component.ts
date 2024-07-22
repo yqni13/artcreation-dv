@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
 import { NavigationStart, Route, Router, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -25,7 +25,6 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     private collapseNavbarWidth: number;
     private isLocalStorageAvailable: any;
 
-    @Input() chosenTheme = '';
 
     constructor (
         private navigation: NavigationService,
@@ -111,6 +110,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
                 return;
             }
         }
+        // TODO(yqni13): implement handling if localstorage is not available (block change of theme or save later)
     }
 
     private applyThemeClass() {

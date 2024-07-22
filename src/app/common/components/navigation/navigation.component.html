@@ -2,7 +2,7 @@
     <ul>
         <li class="agal-nav-folding">
             <i 
-                aria-disabled="true"
+                [attr.aria-disabled]="true"
                 class="icon-BurgerMenu agal-nav-mobile" 
                 (click)="expandNavMobile()" 
                 (keydown.enter)="expandNavMobile()"
@@ -10,7 +10,7 @@
         </li>
         <li>
             <img
-                aria-disabled="true"
+                [attr.aria-disabled]="true"
                 class="agal-nav-logo"
                 src="assets/art-logo.png" 
                 alt="logo to navigate home"
@@ -22,7 +22,7 @@
         <li *ngFor="let route of routes">
             <span
                 class="agal-nav-routes"
-                aria-disabled="true"
+                [attr.aria-disabled]="true"
                 routerLink="{{ route.path }}"
                 routerLinkActive="agal-active-route"
                 (click)="expandNavMobile(true)"
@@ -31,14 +31,13 @@
         </li>
         <li>
             <span
-                aria-disabled="true"
-                ngClass="{{selectedTheme}}"
+                [attr.aria-disabled]="true"
+                [ngClass]="selectedTheme"
                 (click)="setTheme()"
                 (keydown.enter)="setTheme()"
                 #themeModeIcon
             ><i class="icon-ThemeOptions agal-nav-theme-ico"></i>
             </span>
         </li>
-        <!-- Hello World: {{chosenTheme}} -->
     </ul>
 </nav> 
