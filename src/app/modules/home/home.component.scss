@@ -1,5 +1,70 @@
 @use '../../../stylesheets/utilities' as sass;
 
+
+.agal-top-header {
+    background-color: var(--theme-body-bg);
+}
+
 h1 {
-    color: sass.$color-warning-red;
+    color: var(--theme-home-header);
+    
+    text-shadow: 5px 5px 10px var(--theme-home-header);
+    margin: 50px 0;
+}
+
+.agal-home-top-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: sass.$comp-padding-medium 0;
+    background-color: var(--theme-home-highlight);
+
+    img {
+        width: calc(100% - (sass.$comp-padding-medium * 2));
+        aspect-ratio: 16 / 9;
+    }
+}
+
+.agal-home-news-carousel {
+    width: 100%;
+    height: 100%;
+
+}
+
+.agal-home-news-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: sass.$comp-padding-small 0;
+}
+
+.agal-home-news-img {
+    width: calc(50% + sass.$comp-padding-medium);
+    display: flex;
+    justify-content: center;
+
+    img {
+        width: calc(100% - sass.$comp-padding-medium);
+        aspect-ratio: 1 / 1;
+    }
+}
+
+.agal-home-news-text-wrapper {
+    width: calc(50% - sass.$comp-padding-medium);
+    padding: 0 sass.$comp-padding-medium;
+    text-align: justify;
+}
+
+.agal-home-news-text-header {
+    h3 {
+        font-size: sass.$home-news-header-size;
+    }
+}
+
+.agal-home-news-text-content {
+    p {
+        font-size: sass.$home-news-content-size;
+    }
 }
