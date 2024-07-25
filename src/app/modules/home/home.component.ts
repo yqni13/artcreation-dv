@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NewsUpdateStorageItem } from "../../shared/interfaces/NewsUpdateStorage";
 import { default as newsUpdateData } from "../../shared/data/news-updates.json";
 import { ErrorService } from "../../shared/services/error.service";
+import { FilterNewsService } from "../../shared/services/filter-news.service";
 
 @Component({
     selector: 'app-home',
@@ -10,26 +11,26 @@ import { ErrorService } from "../../shared/services/error.service";
     standalone: true,
     imports: []
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-    private newsUpdates: NewsUpdateStorageItem;
-    protected filteredNewsUpdates: NewsUpdateStorageItem; 
+    protected newsUpdates: NewsUpdateStorageItem;
 
     constructor(
-        private errorService: ErrorService
+        private errorService: ErrorService,
+        private filterNewsService: FilterNewsService
     ) {
-        const dateAsString = '2024-07-24T00:00:00';
-        const dateFromString = new Date(dateAsString);
-        console.log("new date: ", dateFromString);
-
-        this.filteredNewsUpdates = {};
-
         try {
             this.newsUpdates = newsUpdateData;
         } catch(err: unknown) {
             this.errorService.handle(err);
             this.newsUpdates = {};
         }
+    }
+    
+    ngOnInit() {
+        this.filterNewsService.setSource(this.newsUpdates);
+        this.filterNewsService.setCount(3);
+        this.newsUpdates = this.filterNewsService.filterByTimestamp();
     }
 
 }
