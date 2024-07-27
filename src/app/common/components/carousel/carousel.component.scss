@@ -1,0 +1,84 @@
+@use '../../../../stylesheets/utilities' as sass;
+
+$home-arrow-size: 30px;
+
+
+.agal-carousel-wrapper {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    padding: sass.$comp-padding-small 0;
+    position: relative;
+}
+
+.agal-carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.agal-carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.agal-carousel-default-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.agal-carousel-default-img {
+    width: calc(50% + sass.$comp-padding-medium);
+    display: flex;
+    justify-content: center;
+    
+    img {
+        width: calc(100% - sass.$comp-padding-medium);
+        aspect-ratio: 1 / 1;
+    }
+}
+
+.agal-carousel-default-text-wrapper {
+    width: calc(50% - sass.$comp-padding-medium);
+    padding: 0 sass.$comp-padding-medium;
+    text-align: justify;
+    // position: relative;
+    padding-bottom: 50px;
+}
+
+.agal-carousel-default-text-header {
+    h3 {
+        font-size: sass.$home-news-header-size;
+    }
+}
+
+.agal-carousel-default-text-content {
+    p {
+        font-size: sass.$home-news-content-size;
+    }
+}
+
+.agal-carousel-arrows {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 50px;
+    bottom: sass.$comp-padding-small;
+    
+    .icon-Arrow {
+        cursor: pointer;
+        height: $home-arrow-size;
+        width: $home-arrow-size;
+        padding: 0 2.5px;
+    }
+
+    .agal-arrow-left {
+        transform: rotate(-90deg);
+    }
+
+    .agal-arrow-right {
+        transform: rotate(90deg);
+    }
+}

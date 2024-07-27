@@ -5,23 +5,16 @@
     <div class="agal-home-top-img">
         <img src="assets/studio.png" alt="404-picture-not-found">
     </div>
-    <div class="agal-home-news-carousel">
-        <!-- holding section to rotate in carousel -->
-        <div class="agal-home-news-wrapper">
-            <div class="agal-home-news-img">
-                <img src="assets/placeholder-portrait.png" alt="404-picture-not-found">
-            </div>
-            <div class="agal-home-news-text-wrapper">
-                <div class="agal-home-news-text-header">
-                    <h3>obj.title</h3>
-                </div>
-                <div class="agal-home-news-text-content">
-                    <p>
-                        obj.text
-                    </p>
-                </div>
-            </div>
+
+    <app-carousel [slides]="slides"></app-carousel>
+
+    <!-- TODO(yqni13): keep until implementation of customTemplate in gallery -->
+    <!-- <app-carousel [slides]="slides2" [slideTemplate]="customTemplate"></app-carousel>
+    <ng-template #customTemplate let-slide>
+        <div class="custom-slide">
+            <img [src]="slide.image" *ngIf="slide.image" alt="404-picture-not-found">
+            <p *ngIf="slide.text">{{ slide.text }}</p>
         </div>
-        TODO(yqni13): carousel missing!
-    </div>
+    </ng-template> -->
+
 </section>
