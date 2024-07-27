@@ -10,7 +10,6 @@ import { Component, Input, TemplateRef } from '@angular/core';
     imports: [CommonModule]
 })
 export class CarouselComponent {
-    // @Input() slides: any;
     @Input() slides: { image?: string, title?: string, text?: string }[];
     @Input() slideTemplate?: TemplateRef<any>;
 

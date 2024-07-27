@@ -24,7 +24,7 @@ export class FilterNewsService {
         this.source = data;
     }    
 
-    filterByTimestamp(filterKey: NewsKeys): NewsUpdateStorageItem {
+    filterByKeyValue(filterKey: NewsKeys): NewsUpdateStorageItem {
         // get all keys sorted by selected key
         const dict: any[] = [];
         switch(filterKey) {

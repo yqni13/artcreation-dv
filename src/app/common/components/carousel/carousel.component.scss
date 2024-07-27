@@ -1,7 +1,5 @@
 @use '../../../../stylesheets/utilities' as sass;
 
-$home-arrow-size: 30px;
-
 
 .agal-carousel-wrapper {
     width: 100%;
@@ -44,7 +42,6 @@ $home-arrow-size: 30px;
     width: calc(50% - sass.$comp-padding-medium);
     padding: 0 sass.$comp-padding-medium;
     text-align: justify;
-    // position: relative;
     padding-bottom: 50px;
 }
 
@@ -69,8 +66,8 @@ $home-arrow-size: 30px;
     
     .icon-Arrow {
         cursor: pointer;
-        height: $home-arrow-size;
-        width: $home-arrow-size;
+        height: sass.$home-arrow-size;
+        width: sass.$home-arrow-size;
         padding: 0 2.5px;
     }
 

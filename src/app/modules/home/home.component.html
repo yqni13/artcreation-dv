@@ -12,8 +12,7 @@
     <!-- <app-carousel [slides]="slides2" [slideTemplate]="customTemplate"></app-carousel>
     <ng-template #customTemplate let-slide>
         <div class="custom-slide">
-            <img [src]="slide.image" *ngIf="slide.image" alt="404-picture-not-found">
-            <p *ngIf="slide.text">{{ slide.text }}</p>
+            <img src="{{ slide.image }}" *ngIf="slide.image" alt="404-picture-not-found">
         </div>
     </ng-template> -->
 

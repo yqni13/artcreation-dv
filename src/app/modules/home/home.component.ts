@@ -20,7 +20,7 @@ import { CommonModule } from "@angular/common";
 export class HomeComponent implements OnInit {
 
     protected newsUpdates: NewsUpdateStorageItem;
-    protected slides: {image: string, title: string, text: string}[] = [];
+    protected slides: {image: string, title: string, text: string}[];
 
     constructor(
         private errorService: ErrorService,
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.filterNewsService.setSource(this.newsUpdates);
         this.filterNewsService.setCount(3);
-        this.newsUpdates = this.filterNewsService.filterByTimestamp(NewsKeys.date);
+        this.newsUpdates = this.filterNewsService.filterByKeyValue(NewsKeys.date);
 
         this.slides = Object.values(this.newsUpdates).map(entry => ({
             image: entry.image,
