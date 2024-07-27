@@ -1,0 +1,42 @@
+<div class="agal-carousel-wrapper">
+    <div class="agal-carousel-slides" [style.transform]="getTransform()">
+        <div class="agal-carousel-slide" *ngFor="let slide of slides">
+            <ng-container *ngIf="slideTemplate; else defaultTemplate">
+                <ng-container *ngTemplateOutlet="slideTemplate; context: { $implicit: slide }"></ng-container>
+            </ng-container>
+            <ng-template #defaultTemplate>
+                <div class="agal-carousel-default-wrapper">
+                    <div class="agal-carousel-default-img">
+                        <img
+                            *ngIf="slide.image" 
+                            src="{{ slide.image }}" 
+                            alt="404-picture-not-found"
+                        >
+                    </div>
+                    <div class="agal-carousel-default-text-wrapper">
+                        <div class="agal-carousel-default-text-header">
+                            <h3 *ngIf="slide.title">{{ slide.title }}</h3>
+                        </div>
+                        <div class="agal-carousel-default-text-content">
+                            <p *ngIf="slide.text">{{ slide.text }}</p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <div class="agal-carousel-arrows">
+        <i 
+            [attr.aria-disabled]="true"
+            class="icon-Arrow agal-arrow-left"
+            (click)="prev()"
+            (keydown.enter)="prev()"
+        ></i>
+        <i 
+            [attr.aria-disabled]="true"
+            class="icon-Arrow agal-arrow-right"
+            (click)="next()"
+            (keydown.enter)="next()"
+        ></i>
+    </div>
+</div>

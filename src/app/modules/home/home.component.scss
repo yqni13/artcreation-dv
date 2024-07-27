@@ -1,5 +1,28 @@
 @use '../../../stylesheets/utilities' as sass;
 
+$home-arrow-size: 30px;
+
+
+.agal-top-header {
+    background-color: var(--theme-body-bg);
+}
+
 h1 {
-    color: sass.$color-warning-red;
+    color: var(--theme-home-header);
+    
+    text-shadow: 5px 5px 10px var(--theme-home-header);
+    margin: 50px 0;
+}
+
+.agal-home-top-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: sass.$comp-padding-medium 0;
+    background-color: var(--theme-home-highlight);
+
+    img {
+        width: calc(100% - (sass.$comp-padding-medium * 2));
+        aspect-ratio: 16 / 9;
+    }
 }

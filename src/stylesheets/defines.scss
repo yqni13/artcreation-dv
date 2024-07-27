@@ -11,7 +11,7 @@
 }
 
 [data-nav='navDesktop'] {
-    --view-nav-width: 150px;
+    --view-nav-width: 125px;
 }
 
 
@@ -21,6 +21,8 @@
     --theme-body-text: #{sass.$color-rich-black};
     --theme-nav-bg: #{sass.$color-light-grey};
     --theme-nav-border: #{sass.$color-gold-yellow};
+    --theme-home-header: #{sass.$color-smalt-blue};
+    --theme-home-highlight: #{sass.$color-dark-grey};
 }
 
 [data-theme='dark'] {
@@ -28,4 +30,6 @@
     --theme-body-text: #{sass.$color-ice-white};
     --theme-nav-bg: #{sass.$color-dark-grey};
     --theme-nav-border: #{sass.$color-light-grey};
+    --theme-home-header: #{sass.$color-ice-white};
+    --theme-home-highlight: #{sass.$color-smalt-blue};
 }
