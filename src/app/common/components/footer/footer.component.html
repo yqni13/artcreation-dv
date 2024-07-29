@@ -7,16 +7,32 @@
         <div class="agal-footer-links-connection">
             <h4>Connection</h4>
             <ul>
-                <li>Contact</li>
-                <li>Instagram</li>
+                <li *ngFor="let route of infoRoutes">
+                    <span
+                        class="agal-footer-routes"
+                        [attr.aria-disabled]="true"
+                        routerLink="{{ route.path }}"
+                    >{{ route.data?.['title'] }}</span>
+                </li>
+                <li>
+                    <a
+                        class="agal-footer-routes"
+                        href="{{ socialmediaURL }}"
+                        target="_blank"
+                    >Instagram</a>
+                </li>
             </ul>
         </div>
         <div class="agal-footer-links-information">
             <h4>Information</h4>
             <ul>
-                <li>Imprint</li>
-                <li>Privacy Policy</li>
-                <li>Archive</li>
+                <li *ngFor="let route of connectRoutes">
+                    <span
+                        class="agal-footer-routes"
+                        [attr.aria-disabled]="true"
+                        routerLink="{{ route.path }}"
+                    >{{ route.data?.['title'] }}</span>
+                </li>
             </ul>
         </div>
     </div>

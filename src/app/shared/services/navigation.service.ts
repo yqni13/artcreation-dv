@@ -15,4 +15,16 @@ export class NavigationService {
             .flatMap((route: any) => [route, ...(route.children || [])])
             .filter((route: any) => route.data?.["showInNavbar"]);
     }
+
+    getFooterConnectRoutes(): Route[] {
+        return this.router.config
+            .flatMap((route: any) => [route, ...(route.children || [])])
+            .filter((route: any) => route.data?.["showInFooterConnect"]);
+    }
+
+    getFooterInfoRoutes(): Route[] {
+        return this.router.config
+            .flatMap((route: any) => [route, ...(route.children || [])])
+            .filter((route: any) => route.data?.["showInFooterInfo"]);
+    }
 }
