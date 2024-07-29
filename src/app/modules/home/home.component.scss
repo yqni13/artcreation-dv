@@ -19,7 +19,7 @@ h1 {
     display: flex;
     justify-content: center;
     padding: sass.$comp-padding-medium 0;
-    background-color: var(--theme-home-highlight);
+    background-color: var(--theme-highlight-body);
 
     img {
         width: calc(100% - (sass.$comp-padding-medium * 2));

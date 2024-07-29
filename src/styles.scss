@@ -26,6 +26,7 @@ body {
 
 section {
     margin: 0 0 0 var(--view-nav-width);
+    width: calc(100% - var(--view-nav-width));
 }
 
 .agal-top-header {

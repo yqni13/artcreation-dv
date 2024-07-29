@@ -22,7 +22,8 @@
     --theme-nav-bg: #{sass.$color-light-grey};
     --theme-nav-border: #{sass.$color-gold-yellow};
     --theme-home-header: #{sass.$color-smalt-blue};
-    --theme-home-highlight: #{sass.$color-dark-grey};
+    --theme-highlight-body: #{sass.$color-dark-grey};
+    --theme-highlight-text: #{sass.$color-ice-white};
 }
 
 [data-theme='dark'] {
@@ -31,5 +32,6 @@
     --theme-nav-bg: #{sass.$color-dark-grey};
     --theme-nav-border: #{sass.$color-light-grey};
     --theme-home-header: #{sass.$color-ice-white};
-    --theme-home-highlight: #{sass.$color-smalt-blue};
+    --theme-highlight-body: #{sass.$color-smalt-blue};
+    --theme-highlight-text: #{sass.$color-rich-black};
 }
