@@ -1,0 +1,5 @@
+@use '../../../stylesheets/utilities' as sass;
+
+section {
+    height: calc(100% - 300px);
+}

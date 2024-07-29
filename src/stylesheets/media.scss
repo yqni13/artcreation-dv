@@ -1,0 +1,10 @@
+@use '../stylesheets/utilities' as sass;
+
+@media screen and (width >= sass.$device-desktop-xk) {
+    .agal-home {
+        .agal-home-news-wrapper {
+            width: calc(100% - (calc((sass.$comp-padding-medium / 2) + 5vw) * 2))!important;
+            padding: 25px calc((sass.$comp-padding-medium / 2) + 5vw)!important;
+        }
+    }
+}

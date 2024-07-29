@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Resources
+public/assets/placeholder-landscape.png
+public/assets/placeholder-portrait.png
+public/assets/placeholder-portrait_quadratic.png
+public/assets/studio.png

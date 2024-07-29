@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'stylesheets/utilities' as sass;
+
+@import 'stylesheets/defines.scss';
+@import 'stylesheets/icons.scss';
+@import 'stylesheets/media.scss';
+
+html {
+    cursor: context-menu;
+    scrollbar-width: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+body {
+    background: var(--theme-body-bg);
+    color: var(--theme-body-text);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    top:0;
+    font-family: sass.$font-text-family;
+}
+
+section {
+    margin: 0 0 0 var(--view-nav-width);
+    width: calc(100% - var(--view-nav-width));
+}
+
+.agal-top-header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 50px;
+    font-weight: normal;
+}
