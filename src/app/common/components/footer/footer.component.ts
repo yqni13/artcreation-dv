@@ -35,8 +35,8 @@ export class FooterComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.infoRoutes = this.getInfoRoutes();
         this.connectRoutes = this.getConnectRoutes();
+        this.infoRoutes = this.getInfoRoutes();
     }
 
     private getInfoRoutes(): Route[] {
