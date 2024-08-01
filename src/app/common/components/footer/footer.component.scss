@@ -55,6 +55,11 @@ section {
             a {
                 color: var(--theme-highlight-text);
                 text-decoration: none;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 0.5;
+                }
             }
         }
         
