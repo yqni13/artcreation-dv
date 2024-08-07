@@ -2,6 +2,9 @@ import { CommonModule } from "@angular/common";
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
+import { MailService } from "../../shared/services/mail.service";
+import { ErrorService } from "../../shared/services/error.service";
+// import { ContactMailItem } from "../../shared/interfaces/ContactMailItems";
 
 @Component({
     selector: 'app-contact',
@@ -22,7 +25,10 @@ export class ContactComponent implements OnInit {
     protected hasReferenceNr: boolean;
     protected subjectOptions = Object.values(SubjectOptions);
 
-    constructor() {
+    constructor(
+        private mailService: MailService,
+        private errorService: ErrorService
+    ) {
         this.contactForm = new FormGroup({});
         this.hasReferenceNr = false;
     }
@@ -33,6 +39,9 @@ export class ContactComponent implements OnInit {
     }
     
     private initForm() {
+
+        // TODO(yqni13): add validators
+
         this.contactForm = new FormGroup({
             subject: new FormControl(null),
             referenceNr: new FormControl(null),
@@ -63,9 +72,15 @@ export class ContactComponent implements OnInit {
         }
     }
 
-    onSubmit() {
-        this.contactForm.getRawValue();
-        console.log(this.contactForm);
+    onSubmit() {        
+        // try {
+        //     this.mailService.setMailData(this.contactForm.getRawValue());
+        //     this.mailService.sendMail();
+        // } catch(err) {
+            //     this.errorService.handle(err);
+            // }
+        this.mailService.setMailData(this.contactForm.getRawValue());
+        this.mailService.sendMail().subscribe();
     }
 
 }
