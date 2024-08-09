@@ -20,7 +20,7 @@ import { ValidationMessageComponent } from "../../common/components/validation-m
 })
 export class ContactComponent implements OnInit {
 
-    @Input() selectedReference!: string;
+    @Input() selectedReference: string;
 
     protected contactForm: FormGroup;
     protected hasReferenceNr: boolean;
@@ -31,6 +31,7 @@ export class ContactComponent implements OnInit {
         private errorService: ErrorService,
         private fb: FormBuilder
     ) {
+        this.selectedReference = '';
         this.contactForm = new FormGroup({});
         this.hasReferenceNr = false;
     }

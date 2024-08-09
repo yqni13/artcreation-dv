@@ -22,10 +22,11 @@ import { VarDirective } from "../../directives/ng-var.directive";
 })
 export class ValidationMessageComponent {
 
-    @Input() agalControl!: FormControl;
+    @Input() agalControl: FormControl;
     @Input() fieldName: string;
 
     constructor() { 
+        this.agalControl = new FormControl();
         this.fieldName = '';
     }
 }
