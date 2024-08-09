@@ -1,3 +1,46 @@
 <section>
-    Hello CONTACT component.
+    <div class="agal-contact-header">
+        <h1>Contact me</h1>
+        <p>
+            Most common questions are listed and answered in the 
+            <span
+                class="agal-nav-routes"
+                [attr.aria-disabled]="true"
+                routerLink="../../faq"
+            >FAQ</span>.
+        </p>
+    </div>
+    <div class="agal-contact-content-wrapper">
+        <div class="agal-contact-content">
+
+            <form [formGroup]="contactForm">
+                <div class="agal-contact-form-item">
+                    <select formControlName="subject" >
+                        <option value="" disabled>select subject*</option>
+                        <option *ngFor="let option of subjectOptions" value="{{option}}">
+                            {{option}}
+                        </option>
+                    </select>
+                    <input placeholder="ReferenceNr" type="text" formControlName="referenceNr">
+                </div>
+                <div class="agal-contact-form-item">
+                    <input placeholder="Email*" type="email" formControlName="email">
+                </div>                
+                <div class="agal-contact-form-item">
+                    <input placeholder="Firstname*" type="text" formControlName="firstName">
+                    <input placeholder="Lastname*" type="text" formControlName="lastName">
+                </div>
+                <div class="agal-contact-form-item">
+                    <textarea placeholder="Message*" formControlName="message"></textarea>
+                </div>
+            </form>
+            <div class="agal-contact-button-wrapper">
+                <button 
+                    type="submit"
+                    class="agal-button-submit"                    
+                    (click)="onSubmit()"
+                >SEND</button>
+            </div>
+        </div>
+    </div>
 </section>
