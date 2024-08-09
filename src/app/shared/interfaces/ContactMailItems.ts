@@ -1,5 +1,3 @@
-import { SubjectOptions } from "../enums/contact-subject.enum";
-
 export declare interface ContactMailItem {
     subject: string,
     referenceNr?: number,

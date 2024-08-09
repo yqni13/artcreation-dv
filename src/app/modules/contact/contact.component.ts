@@ -1,10 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input, OnInit } from "@angular/core";
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailService } from "../../shared/services/mail.service";
 import { ErrorService } from "../../shared/services/error.service";
-// import { ContactMailItem } from "../../shared/interfaces/ContactMailItems";
+import { ValidationMessageComponent } from "../../common/components/validation-message/validation-message.component";
 
 @Component({
     selector: 'app-contact',
@@ -15,6 +15,7 @@ import { ErrorService } from "../../shared/services/error.service";
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        ValidationMessageComponent
     ]
 })
 export class ContactComponent implements OnInit {
@@ -27,7 +28,8 @@ export class ContactComponent implements OnInit {
 
     constructor(
         private mailService: MailService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
+        private fb: FormBuilder
     ) {
         this.contactForm = new FormGroup({});
         this.hasReferenceNr = false;
@@ -40,15 +42,15 @@ export class ContactComponent implements OnInit {
     
     private initForm() {
 
-        // TODO(yqni13): add validators
+        // TODO(yqni13): add validators + custom text/textarea/selector components
 
-        this.contactForm = new FormGroup({
-            subject: new FormControl(null),
-            referenceNr: new FormControl(null),
-            email: new FormControl(null),
-            firstName: new FormControl(null),
-            lastName: new FormControl(null),
-            message: new FormControl(null)
+        this.contactForm = this.fb.group({
+            subject: new FormControl('', Validators.required),
+            referenceNr: new FormControl(''),
+            email: new FormControl('', [Validators.required, Validators.email]),
+            firstName: new FormControl('', Validators.required),
+            lastName: new FormControl('', Validators.required),
+            message: new FormControl('', Validators.required)
         })
     }
 
@@ -70,15 +72,16 @@ export class ContactComponent implements OnInit {
         } else {
             this.hasReferenceNr = false;
         }
-    }
+    }    
 
-    onSubmit() {        
-        // try {
-        //     this.mailService.setMailData(this.contactForm.getRawValue());
-        //     this.mailService.sendMail();
-        // } catch(err) {
-            //     this.errorService.handle(err);
-            // }
+    onSubmit() {
+        this.contactForm.markAllAsTouched();
+        
+        if(this.contactForm.invalid) {
+            console.log('form invalid');
+            return;
+        }
+
         this.mailService.setMailData(this.contactForm.getRawValue());
         this.mailService.sendMail().subscribe();
     }

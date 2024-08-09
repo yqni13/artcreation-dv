@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const sender = 'lukas.varga@gmx.at'
+const receiver = 'artcreation.dv@gmx.at'
 
 const app = express();
 const port = 3000;
@@ -13,7 +14,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post('/send-email', (req, res) => {
-    // console.log('request body: ', req.body);
     const subject = req.body.subject
     const email = req.body.email;
     const message = req.body.message;
@@ -33,12 +33,12 @@ app.post('/send-email', (req, res) => {
         }
     });
 
-    // TODO(yqni13): add correct address to handle emails
+    // TODO(yqni13): add correct from-address to handle emails and adjust details
 
     const mailOptions = {
-        from: sender, //temp-email sender address
-        replyTo: email, //customer-address
-        to: email, //art-address
+        from: sender,
+        replyTo: email,
+        to: receiver,
         subject: subject,
         text: message
     };
