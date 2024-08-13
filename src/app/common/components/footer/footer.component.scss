@@ -37,7 +37,7 @@ section {
     border-left: solid 2px sass.$color-tradewind-blue;
 
     h4 {
-        color: var(--theme-highlight-text);
+        color: var(--theme-body-text);
         text-transform: uppercase;
         font-weight: bold;
     }
@@ -53,8 +53,13 @@ section {
             
             span,
             a {
-                color: var(--theme-highlight-text);
+                color: var(--theme-body-text);
                 text-decoration: none;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 0.5;
+                }
             }
         }
         

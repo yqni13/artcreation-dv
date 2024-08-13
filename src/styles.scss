@@ -40,3 +40,19 @@ h1 {
     font-size: 50px;
     font-weight: normal;
 }
+
+.agal-button-submit {
+    padding: 5px 15px;
+    width:fit-content;
+}
+
+input,
+select,
+textarea {
+    -ms-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    -webkit-box-sizing:content-box; 
+    box-sizing:content-box;
+
+    font-family: sass.$font-text-family;
+}

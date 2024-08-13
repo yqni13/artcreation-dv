@@ -29,17 +29,19 @@ $color-chiffon-white: #e5fcc2;
 
 
 /* custom definitions */
-$font-text-size: clamp(18px, 1.6vw, 30px);
+$font-text-size: clamp(18px, 1.4vw, 25px);
 $font-text-family: "Monaco", monospace;
-
 
 $home-news-header-size: clamp(20px, 2.3vw, 38px);
 $home-news-content-size: clamp(12px, 1.6vw, 24px);
 $home-arrow-size: 30px;
 
+$contact-input-margin: 5px;
+$contact-form-width: 400px;
 
 $comp-padding-small: 25px;
 $comp-padding-medium: 50px;
 $comp-padding-big: 100px;
 
-
+/* use padding variables to highlight relation to used padding values in divs */
+$faq-box-height: calc($comp-padding-small * 2);
