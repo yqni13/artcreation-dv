@@ -42,3 +42,6 @@ $contact-form-width: 400px;
 $comp-padding-small: 25px;
 $comp-padding-medium: 50px;
 $comp-padding-big: 100px;
+
+/* use padding variables to highlight relation to used padding values in divs */
+$faq-box-height: calc($comp-padding-small * 2);
