@@ -1,3 +1,29 @@
 <section>
-    Hello FAQ component.
+    <div class="agal-faq-header">
+        <h1>FAQ</h1>
+        <p>
+            Got a question? I'm here to answer the most frequently one's.<br>If you don't see your question here, contact me via the 
+            <a
+                class="agal-faq-link"
+                [attr.aria-disabled]="true"
+                href="/contact"
+            >contact page</a>.
+        </p>
+    </div>
+    <div class="agal-faq-content">
+        <div class="agal-faq-wrapper">
+            <header class="agal-faq-coll-box">
+                <label for="agal-faq-header-close">menu</label>
+            </header>
+            <div class="agal-faq-coll" *ngFor="let element of data | keyvalue; index as i">
+                <input type="radio" name="collapsable" id="agal-faq-coll-{{i}}">
+                <div class="agal-faq-coll-box">
+                    <label class="agal-faq-coll-title" for="agal-faq-coll-{{i}}">{{element.key}}</label>
+                    <label class="agal-faq-coll-close" for="agal-faq-header-close"></label>
+                    <div class="agal-faq-coll-content">{{element.value}}</div>
+                </div>
+            </div>
+            <input type="radio" name="collapsable" id="agal-faq-header-close">
+        </div>
+    </div>
 </section>

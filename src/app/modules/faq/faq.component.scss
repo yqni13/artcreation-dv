@@ -1,5 +1,145 @@
 @use '../../../stylesheets/utilities' as sass;
 
 section {
-    height: calc(100% - 300px);
+    min-height: calc(100% - 300px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
+
+.agal-faq-header {
+    text-align: center;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+    text-align: -o-center;
+
+    h1 {
+        width: 100%;
+    }
+    p {
+        width: 100%;
+    }
+}
+
+.agal-faq-content {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+
+    .agal-faq-wrapper {
+        width: 50%;
+
+        input {
+            display: none;
+        }
+
+        .agal-faq-coll-box {
+            position: relative;
+            background: sass.$color-light-grey;
+            transition: all .15s ease-in-out;
+
+            &:before {
+                content: '';
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+            }
+        }
+        
+        header.agal-faq-coll-box {
+            background: var(--theme-highlight-body);
+            padding: sass.$comp-padding-small sass.$comp-padding-medium;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            z-index: 100;
+            cursor: initial;
+
+            label {
+                color: sass.$color-ice-white;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+        }
+        
+        .agal-faq-coll {
+            width: 100%;
+        }
+
+        .agal-faq-coll-title {
+            width: calc(100% - (sass.$comp-padding-small * 2));
+            height: sass.$faq-box-height;
+            line-height: sass.$faq-box-height;
+            display: inline-block;
+            border-bottom: solid 1px grey;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        // TODO(yqni13): check if this works in other browsers (modern browser concept)
+        .agal-faq-coll:nth-last-child(1 of .agal-faq-coll) {
+            .agal-faq-coll-title {
+                border-bottom: none;
+            }
+            .agal-faq-coll-box {
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+        }
+
+        .agal-faq-coll-content {
+            width: calc(100% - (sass.$comp-padding-small * 2));
+            padding: 40px sass.$comp-padding-small;
+            display: none;
+            text-align: justify;
+        }
+
+        .agal-faq-coll-close {
+            position: absolute;
+            height: sass.$faq-box-height;
+            width: 100%;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            display: none;
+        }
+
+        input:checked + .agal-faq-coll-box {
+            height: auto;
+            margin: 16px 0;
+        }
+
+        input:checked + .agal-faq-coll-box .agal-faq-coll-title {
+            border-bottom: solid 1px black;
+        }
+
+        input:checked + .agal-faq-coll-box .agal-faq-coll-content,
+        input:checked + .agal-faq-coll-box .agal-faq-coll-close {
+            display: inline-block;
+        }
+
+        div .agal-faq-coll-title {
+            padding-left: calc(sass.$comp-padding-small * 2);
+            width: calc(100% - sass.$faq-box-height);
+
+            &:before {
+                position: absolute;
+                display: block;
+                content: '\203a';
+                left: 20px;
+                top: -2px;
+                transition: transform .15s ease-in-out;
+            }
+        }
+
+        input:checked + div.agal-faq-coll-box .agal-faq-coll-title:before {
+            transform: rotate(90deg);
+        }
+    }
+}
+
