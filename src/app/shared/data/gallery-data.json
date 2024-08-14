@@ -1,0 +1,112 @@
+{
+    "image1": {
+        "title": null,
+        "referenceNr": "21ABCD",
+        "tags": [
+            "sun", "water", "sea", "peace"
+        ],
+        "price": null,
+        "type": "original",
+        "comment": null,
+        "path": ""
+    },
+    "image2": {
+        "title": "where the spirits sleep",
+        "referenceNr": "FFE135",
+        "tags": [
+            "sun", "green", "forest", "animals", "nature"
+        ],
+        "price": 999.99,
+        "type": "print",
+        "comment": null,
+        "path": ""
+    },
+    "image3": {
+        "title": "last laugh counts most",
+        "referenceNr": "A1CAF1",
+        "tags": [
+            "aggressive", "force", "fear"
+        ],
+        "price": 1500.00,
+        "type": "both",
+        "comment": "I painted this after my last enemey died by my own hands.",
+        "path": ""
+    },
+    "image4": {
+        "title": null,
+        "referenceNr": "F4C2C2",
+        "tags": [
+            "baby", "live", "hope", "future"
+        ],
+        "price": null,
+        "type": "original",
+        "comment": null,
+        "path": ""
+    },
+    "image5": {
+        "title": "taste the color",
+        "referenceNr": "FE6F5E",
+        "tags": [
+            null
+        ],
+        "price": null,
+        "type": "print",
+        "comment": null,
+        "path": ""
+    },
+    "image6": {
+        "title": "salty lust",
+        "referenceNr": "0D98BA",
+        "tags": [
+            "water", "heal", "salt", "lemons", "tequila"
+        ],
+        "price": 778.00,
+        "type": "original",
+        "comment": "heaven tastes different every time",
+        "path": ""
+    },
+    "image7": {
+        "title": "momma is hungry",
+        "referenceNr": "C32148",
+        "tags": [
+            "food", "burger", "meat", "cheese", "africa"
+        ],
+        "price": null,
+        "type": "both",
+        "comment": null,
+        "path": ""
+    },
+    "image8": {
+        "title": null,
+        "referenceNr": "004225",
+        "tags": [
+            "lion", "africa", "nature", "yellow", "sun"
+        ],
+        "price": null,
+        "type": "print",
+        "comment": null,
+        "path": ""
+    }    ,
+    "image9": {
+        "title": "city life",
+        "referenceNr": "91A3B0",
+        "tags": [
+            "city", "skyscraper", "grey"
+        ],
+        "price": 2700.00,
+        "type": "original",
+        "comment": "inspired by the series 'suits'",
+        "path": ""
+    },
+    "image10": {
+        "title": null,
+        "referenceNr": "ED872D",
+        "tags": [
+            null
+        ],
+        "price": null,
+        "type": "both",
+        "comment": null,
+        "path": ""
+    }    
+}
