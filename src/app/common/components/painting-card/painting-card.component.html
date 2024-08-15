@@ -1,0 +1,85 @@
+<div class="agal-paintingcard-wrapper">
+    <div class="agal-paintingcard-image">
+        <img src="{{card.path}}" alt="404-picture-not-found">
+    </div>
+    <div class="agal-paintingcard-content">
+        <div class="agal-paintingcard-property" id="card-title">
+            <div class="agal-paintingcard-key">
+                <label for="card-title">title:</label>
+            </div>
+            <div class="agal-paintingcard-value">
+                <span>{{card.title === null ? '--' : card.title}}</span>
+            </div>
+        </div>
+        <div class="agal-paintingcard-property" id="card-referenceNr">
+            <div class="agal-paintingcard-key">
+                <label for="card-referenceNr">Reference:</label>
+            </div>
+            <div class="agal-paintingcard-value">
+                <span>{{card.referenceNr}}</span>
+            </div>
+        </div>
+        <div class="agal-paintingcard-property" id="card-tags">
+            <div class="agal-paintingcard-key">
+            </div>
+            <div class="agal-paintingcard-value">
+            </div>
+        </div>
+        <div class="agal-paintingcard-property" id="card-price">
+            <div class="agal-paintingcard-key">
+                <label for="card-price">Price:</label>
+            </div>
+            <div class="agal-paintingcard-value" *ngIf="card.price !== null">
+                <span>{{card.price}}</span>
+            </div>
+            <div class="agal-paintingcard-value" *ngIf="card.price === null">
+                <a 
+                    [routerLink]="'/contact'"
+                    [queryParams]="{referenceNr: card.referenceNr}"
+                >request price</a>
+            </div>
+        </div>
+        <div class="agal-paintingcard-property" id="card-type">
+            <div class="agal-paintingcard-key">
+            </div>
+            <div class="agal-paintingcard-value">
+            </div>
+        </div>
+        <div class="agal-paintingcard-property" id="card-technique">
+            <div class="agal-paintingcard-key">
+                <label for="card-technique">Technique:</label>
+            </div>
+            <div class="agal-paintingcard-value">
+                <span>{{card.technique === null ? '--' : card.technique}}</span>
+            </div>
+        </div>
+        <div class="agal-paintingcard-property" id="card-measurements">
+            <div class="agal-paintingcard-key">
+                <label for="card-measurements">Dimensions:</label>
+            </div>
+            <div class="agal-paintingcard-value">
+                <span>{{card.measurementsWxH === null ? '--' : card.measurementsWxH}}</span>
+            </div>
+        </div>
+        <div class="agal-paintingcard-property" id="card-year">
+            <div class="agal-paintingcard-key">
+                <label for="card-date">Date:</label>
+            </div>
+            <div class="agal-paintingcard-value">
+                <span>{{card.date === null ? '--' : card.date}}</span>
+            </div>
+        </div>
+        <div 
+            class="agal-paintingcard-property" 
+            id="card-comment" 
+            [ngClass]="card.comment === null ? 'agal-hidden' : 'agal-visible'"
+            >
+            <div class="agal-paintingcard-key">
+                <label for="card-comment">Comment:</label>
+            </div>
+            <div class="agal-paintingcard-value">
+                <span>"{{card.comment}}"</span>
+            </div>
+        </div>
+    </div>
+</div>
