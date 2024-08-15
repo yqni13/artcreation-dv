@@ -42,9 +42,48 @@ h1 {
     font-weight: normal;
 }
 
-.agal-button-submit {
-    padding: 5px 15px;
-    width:fit-content;
+.agal-button-submit {    
+    background-color: sass.$color-ice-white;
+    background-image: none;
+    border: 1px solid sass.$color-light-grey;
+    border-radius: 4px;
+    box-shadow: sass.$color-light-grey 4px 4px 0 0,#000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: sass.$color-smalt-blue;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 0 5px 10px 0;
+    overflow: visible;
+    padding: 8px 30px;
+    text-align: center;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+
+
+    &:focus {
+    text-decoration: none;
+    }
+
+    &:hover {
+    text-decoration: none;
+    }
+
+    &:active {
+    box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+    outline: 0;
+    }
+
+    &:not([disabled]):active {
+    box-shadow: sass.$color-light-grey 2px 2px 0 0, #000 2px 2px 0 1px;
+    transform: translate(2px, 2px);
+    }
+
 }
 
 input,
@@ -67,6 +106,12 @@ textarea {
 }
 
 .agal-anchor {
+    cursor: pointer;
     font-weight: bold;
-    color: sass.$color-nature-green;
+    color: var(--theme-contrast-anchor);
+}
+
+.agal-query-value {
+    color: sass.$color-query-red;
+    font-weight: bold;
 }

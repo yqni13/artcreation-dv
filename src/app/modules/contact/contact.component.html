@@ -21,7 +21,14 @@
                             {{option}}
                         </option>
                     </select>
-                    <input placeholder="ReferenceNr" type="text" formControlName="referenceNr" [textContent]="hasReferenceNr ? selectedReference : null">
+                    <input 
+                        placeholder="ReferenceNr" 
+                        type="text" 
+                        formControlName="referenceNr" 
+                        [textContent]="hasReferenceNr ? selectedReference : null"
+                        [ngClass]="hasReferenceFromParams ? 'agal-query-value' : ''"
+                        [readonly]="readonly"
+                    >
                 </div>
                 <div class="agal-contact-form-item">
                     <input placeholder="Email*" type="email" formControlName="email">

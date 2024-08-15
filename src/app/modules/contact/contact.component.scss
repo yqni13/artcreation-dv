@@ -30,9 +30,10 @@ section {
     
 .agal-contact-content {
     width: 100%;
-    border: solid 1px green;
+    border: solid 1px var(--theme-body-text);
 
     margin: 25px 0;
+    padding: calc(sass.$comp-padding-small / 2);
     width: sass.$contact-form-width;
     
     form {
@@ -77,6 +78,7 @@ section {
 }
 
 .agal-contact-button-wrapper {
+    margin-top: calc(sass.$comp-padding-small / 2);
     width: 100%;
     display: flex;
     justify-content: center;

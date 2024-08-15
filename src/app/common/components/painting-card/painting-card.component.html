@@ -33,7 +33,8 @@
                 <span>{{card.price}}</span>
             </div>
             <div class="agal-paintingcard-value" *ngIf="card.price === null">
-                <a 
+                <a
+                    class="agal-anchor"
                     [routerLink]="'/contact'"
                     [queryParams]="{referenceNr: card.referenceNr}"
                 >request price</a>

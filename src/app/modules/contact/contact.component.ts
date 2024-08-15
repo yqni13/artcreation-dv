@@ -24,6 +24,8 @@ export class ContactComponent implements OnInit {
 
     protected contactForm: FormGroup;
     protected hasReferenceNr: boolean;
+    protected hasReferenceFromParams: boolean;
+    protected readonly: boolean;
     protected selectedReference: string | null;
     protected subjectOptions = Object.values(SubjectOptions);
 
@@ -35,10 +37,16 @@ export class ContactComponent implements OnInit {
     ) {
         this.contactForm = new FormGroup({});
         this.hasReferenceNr = false;
+        this.hasReferenceFromParams = false;
+        this.readonly = false;
         this.selectedReference = null;
 
         this.router.queryParamMap.subscribe(params => {
             this.selectedReference = params.get('referenceNr');
+            if(this.selectedReference !== null) {
+                this.hasReferenceFromParams = true;
+                this.readonly = true;
+            }
         })
 
     }
