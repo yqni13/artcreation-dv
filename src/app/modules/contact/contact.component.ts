@@ -1,10 +1,11 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailService } from "../../shared/services/mail.service";
 import { ErrorService } from "../../shared/services/error.service";
 import { ValidationMessageComponent } from "../../common/components/validation-message/validation-message.component";
+import { ActivatedRoute, RouterModule } from "@angular/router";
 
 @Component({
     selector: 'app-contact',
@@ -15,27 +16,33 @@ import { ValidationMessageComponent } from "../../common/components/validation-m
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
         ValidationMessageComponent
     ]
 })
 export class ContactComponent implements OnInit {
 
-    @Input() selectedReference: string;
-
     protected contactForm: FormGroup;
     protected hasReferenceNr: boolean;
+    protected selectedReference: string | null;
     protected subjectOptions = Object.values(SubjectOptions);
 
     constructor(
         private mailService: MailService,
         private errorService: ErrorService,
+        private router: ActivatedRoute,
         private fb: FormBuilder
     ) {
-        this.selectedReference = '';
         this.contactForm = new FormGroup({});
         this.hasReferenceNr = false;
-    }
+        this.selectedReference = null;
 
+        this.router.queryParamMap.subscribe(params => {
+            this.selectedReference = params.get('referenceNr');
+        })
+
+    }
+    
     ngOnInit() {
         this.checkForReferenceNr();
         this.initEdit();
@@ -58,7 +65,7 @@ export class ContactComponent implements OnInit {
     private initEdit() {
         this.initForm();
         this.contactForm.patchValue({
-            subject: '',
+            subject: this.hasReferenceNr ? SubjectOptions.artOrder : '',
             referenceNr: this.hasReferenceNr ? this.selectedReference : '', 
             email: '',
             firstName: '',
@@ -68,7 +75,7 @@ export class ContactComponent implements OnInit {
     }
 
     private checkForReferenceNr() {
-        if(this.selectedReference && this.selectedReference.length > 0) {
+        if(this.selectedReference !== null) {
             this.hasReferenceNr = true;
         } else {
             this.hasReferenceNr = false;
@@ -79,7 +86,7 @@ export class ContactComponent implements OnInit {
         this.contactForm.markAllAsTouched();
         
         if(this.contactForm.invalid) {
-            console.log('form invalid');
+            console.log('form invalid', this.contactForm);
             return;
         }
 

@@ -22,7 +22,7 @@ body {
     margin: 0;
     top:0;
     font-family: sass.$font-text-family;
-    cursor: url('/assets/brush64.png'), auto;
+    // cursor: url('/assets/brush64.png'), auto;
 }
 
 section {
@@ -56,4 +56,17 @@ textarea {
     box-sizing:content-box;
 
     font-family: sass.$font-text-family;
+}
+
+.agal-visible {
+    visibility: visible;
+}
+
+.agal-hidden {
+    visibility: hidden;
+}
+
+.agal-anchor {
+    font-weight: bold;
+    color: sass.$color-nature-green;
 }

@@ -3,11 +3,11 @@
         <h1>Contact me</h1>
         <p>
             Most common questions are listed and answered in the 
-            <span
-                class="agal-nav-routes"
+            <a
+                class="agal-nav-routes agal-anchor"
                 [attr.aria-disabled]="true"
-                routerLink="../../faq"
-            >FAQ</span>.
+                routerLink="/faq"
+            >FAQ</a>.
         </p>
     </div>
     <div class="agal-contact-content-wrapper">
@@ -21,7 +21,7 @@
                             {{option}}
                         </option>
                     </select>
-                    <input placeholder="ReferenceNr" type="text" formControlName="referenceNr">
+                    <input placeholder="ReferenceNr" type="text" formControlName="referenceNr" [textContent]="hasReferenceNr ? selectedReference : null">
                 </div>
                 <div class="agal-contact-form-item">
                     <input placeholder="Email*" type="email" formControlName="email">
