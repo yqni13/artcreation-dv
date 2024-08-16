@@ -17,9 +17,13 @@
 
 /* THEME OPTION DEFINITIONS */
 [data-theme='light'] {
+    --theme-active-route: #{sass.$color-route-light};
     --theme-body-bg: #{sass.$color-ice-white};
     --theme-body-text: #{sass.$color-rich-black};
-    --theme-contrast-anchor: #{sass.$color-accept-green};
+    --theme-contrast-anchor: #{sass.$color-route-light};
+    --theme-contrast-text: #{sass.$color-route-light};
+    --theme-faq-collapsable: #{sass.$color-light-grey};
+    --theme-faq-activeborder: #{sass.$color-dark-grey};
     --theme-nav-bg: #{sass.$color-light-grey};
     --theme-nav-border: #{sass.$color-gold-yellow};
     --theme-home-header: #{sass.$color-smalt-blue};
@@ -28,12 +32,16 @@
 }
 
 [data-theme='dark'] {
-    --theme-body-bg: #{sass.$color-deep-blue};
+    --theme-active-route: #{sass.$color-route-dark};
+    --theme-body-bg: #{sass.$color-forest-green};
     --theme-body-text: #{sass.$color-ice-white};
-    --theme-contrast-anchor: #{sass.$color-nature-green};
+    --theme-contrast-anchor: #{sass.$color-route-dark};
+    --theme-contrast-text: #{sass.$color-route-dark};
+    --theme-faq-collapsable: #{sass.$color-midnight-green};
+    --theme-faq-activeborder: #{sass.$color-eggshell-white};
     --theme-nav-bg: #{sass.$color-dark-grey};
     --theme-nav-border: #{sass.$color-light-grey};
     --theme-home-header: #{sass.$color-ice-white};
-    --theme-highlight-body: #{sass.$color-smalt-blue};
+    --theme-highlight-body: #{sass.$color-eggshell-white};
     --theme-highlight-text: #{sass.$color-rich-black};
 }

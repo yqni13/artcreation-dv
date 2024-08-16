@@ -16,12 +16,12 @@ section {
     h3,
     p {
         padding-left: sass.$comp-padding-big;
-        color: sass.$color-active-route;
+        color: var(--theme-active-route);
     }
 
     .icon-Copyright {
-        /* TODO(yqni13): needs to be adapted to font-size via clamp*/
-        /* clamp size and for width +1, height +2 or similar */
+        // TODO(yqni13): needs to be adapted to font-size via clamp
+        // clamp size and for width +1, height +2 or similar
         width: 15px;
         height: 15px;
     }
@@ -34,10 +34,10 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-left: solid 2px sass.$color-tradewind-blue;
+    border-left: solid 1px var(--theme-nav-border);
 
     h4 {
-        color: var(--theme-body-text);
+        color: var(--theme-contrast-text);
         text-transform: uppercase;
         font-weight: bold;
     }
@@ -53,12 +53,12 @@ section {
             
             span,
             a {
-                color: var(--theme-body-text);
+                color: var(--theme-contrast-anchor);
                 text-decoration: none;
                 cursor: pointer;
 
                 &:hover {
-                    opacity: 0.5;
+                    opacity: 0.3;
                 }
             }
         }
