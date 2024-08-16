@@ -27,9 +27,13 @@ body {
 section {
     margin: 0 0 0 var(--view-nav-width);
     width: calc(100% - var(--view-nav-width));
+    min-height: calc(100% - 300px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.agal-top-header {
+.agal-header {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -39,6 +43,16 @@ h1 {
     text-transform: uppercase;
     font-size: 50px;
     font-weight: normal;
+    margin: sass.$comp-padding-medium 0;
+}
+
+.agal-head-message {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+    text-align: -o-center;
 }
 
 .agal-button-submit {    

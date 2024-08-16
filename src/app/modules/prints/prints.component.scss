@@ -1,13 +1,3 @@
+// TODO(yqni13): remove if not used
 @use '../../../stylesheets/utilities' as sass;
 
-
-.agal-prints-content {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-
-    .agal-prints-message {
-        width: 50%;
-        margin: sass.$comp-padding-medium 0;
-    }
-}

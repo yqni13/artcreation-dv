@@ -1,16 +1,6 @@
+// TODO(yqni13): remove if not used after styling
 @use '../../../stylesheets/utilities' as sass;
 
-section {
-    min-height: calc(100% - 300px);
-    height: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.agal-gallery-header {
-    display: flex;
-    justify-content: center;
-}
 
 .agal-gallery-content {
     display: flex;

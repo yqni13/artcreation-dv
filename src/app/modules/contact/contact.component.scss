@@ -1,11 +1,6 @@
 @use '../../../stylesheets/utilities' as sass;
 
-section {
-    min-height: calc(100% - 300px);
-    height: auto;
-}
 
-.agal-contact-header,
 .agal-contact-content-wrapper {
     display: flex;
     align-items: center;

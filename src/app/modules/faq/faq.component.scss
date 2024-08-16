@@ -1,25 +1,5 @@
 @use '../../../stylesheets/utilities' as sass;
 
-section {
-    min-height: calc(100% - 300px);
-    height: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.agal-faq-header {
-    text-align: center;
-    text-align: -webkit-center;
-    text-align: -moz-center;
-    text-align: -o-center;
-
-    h1 {
-        width: 100%;
-    }
-    p {
-        width: 100%;
-    }
-}
 
 .agal-faq-content {
     display: flex;

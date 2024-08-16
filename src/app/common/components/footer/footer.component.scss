@@ -1,6 +1,8 @@
 @use '../../../../stylesheets/utilities' as sass;
 
-section {
+footer {
+    margin: 0 0 0 var(--view-nav-width);
+    width: calc(100% - var(--view-nav-width));
     height: 300px;
     display: flex;
     flex-direction: row;

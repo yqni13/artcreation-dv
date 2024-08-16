@@ -1,11 +1,5 @@
 @use '../../../stylesheets/utilities' as sass;
 
-$home-arrow-size: 30px;
-
-
-.agal-top-header {
-    background-color: var(--theme-body-bg);
-}
 
 h1 {
     color: var(--theme-home-header);
