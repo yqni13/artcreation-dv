@@ -5,7 +5,7 @@
     <div class="agal-paintingcard-content">
         <div class="agal-paintingcard-property" id="card-title">
             <div class="agal-paintingcard-key">
-                <label for="card-title">title:</label>
+                <label for="card-title">Title:</label>
             </div>
             <div class="agal-paintingcard-value">
                 <span>{{card.title === null ? '--' : card.title}}</span>
@@ -21,8 +21,18 @@
         </div>
         <div class="agal-paintingcard-property" id="card-tags">
             <div class="agal-paintingcard-key">
+                <label for="card-tags">Tags:</label>
             </div>
             <div class="agal-paintingcard-value">
+                <span>NOT IMPLEMENTED CURRENTLY</span>
+            </div>
+        </div>
+        <div class="agal-paintingcard-property" id="card-type">
+            <div class="agal-paintingcard-key">
+                <label for="card-type">Type:</label>
+            </div>
+            <div class="agal-paintingcard-value">
+                <span>{{card.type}}</span>
             </div>
         </div>
         <div class="agal-paintingcard-property" id="card-price">
@@ -38,12 +48,6 @@
                     [routerLink]="'/contact'"
                     [queryParams]="{referenceNr: card.referenceNr}"
                 >request price</a>
-            </div>
-        </div>
-        <div class="agal-paintingcard-property" id="card-type">
-            <div class="agal-paintingcard-key">
-            </div>
-            <div class="agal-paintingcard-value">
             </div>
         </div>
         <div class="agal-paintingcard-property" id="card-technique">

@@ -10,5 +10,3 @@ export declare interface GalleryItem {
     date: number | null,
     path: string
 }
-
-export type GalleryItemCollection = Record<string, GalleryItem>;

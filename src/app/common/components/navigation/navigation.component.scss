@@ -75,14 +75,3 @@
     color: sass.$color-light-grey!important;
 }
 
-.agal-active-route {
-    color: var(--theme-active-route)!important;
-    &:hover {
-        opacity: 1!important;
-    }
-    &:hover::after,
-    &:after {
-        transform: none!important;
-        width: 0%!important;
-    }
-}

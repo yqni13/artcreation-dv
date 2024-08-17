@@ -33,6 +33,18 @@ section {
     flex-direction: column;
 }
 
+.agal-active-route {
+    color: var(--theme-active-route)!important;
+    &:hover {
+        opacity: 1!important;
+    }
+    &:hover::after,
+    &:after {
+        transform: none!important;
+        width: 0%!important;
+    }
+}
+
 .agal-header {
     display: flex;
     width: 100%;
@@ -43,7 +55,7 @@ h1 {
     text-transform: uppercase;
     font-size: 50px;
     font-weight: normal;
-    margin: sass.$comp-padding-medium 0;
+    margin: sass.$comp-margin-h1 0;
 }
 
 .agal-head-message {

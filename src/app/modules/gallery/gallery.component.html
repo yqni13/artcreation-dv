@@ -2,8 +2,25 @@
     <div class="agal-header">
         <h1>my passion</h1>
     </div>
+    <nav class="agal-gallery-nav">
+        <a
+            class="agal-gallery-nav-type"
+            [attr.aria-disabled]="true"
+            (click)="selectGenre('all')"
+            (keydown.enter)="selectGenre('all')"
+            [ngClass]="activeGenre === 'all' ? 'agal-active-route' : ''"
+            >ALL</a>
+            <a
+            *ngFor="let nav of paintingGenres"
+            class="agal-gallery-nav-type"
+            [attr.aria-disabled]="true"
+            (click)="selectGenre(nav)"
+            (keydown.enter)="selectGenre(nav)"
+            [ngClass]="activeGenre === nav ? 'agal-active-route' : ''"
+        >{{nav}}</a>
+    </nav>
     <div class="agal-gallery-content">
-        <div class="agal-gallery-cards" *ngFor="let card of paintingsFiltered">
+        <div class="agal-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
             <agal-paintingcard [card]="card"></agal-paintingcard>
         </div>
     </div>

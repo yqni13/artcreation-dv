@@ -1,6 +1,23 @@
-// TODO(yqni13): remove if not used after styling
 @use '../../../stylesheets/utilities' as sass;
 
+
+.agal-gallery-nav {
+    display: flex;
+    justify-content: center;
+
+    a {
+        text-transform: uppercase;
+        margin: calc(sass.$comp-padding-small / 2);
+        padding: 10px 15px;
+        cursor: pointer;
+        border: solid 1px var(--theme-submenu-route);
+        border-radius: 5px;
+    }
+
+    .agal-active-route {
+        border-color: var(--theme-active-route);
+    }
+}
 
 .agal-gallery-content {
     display: flex;

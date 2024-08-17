@@ -70,6 +70,10 @@
         height: sass.$home-arrow-size;
         width: sass.$home-arrow-size;
         padding: 0 2.5px;
+
+        &:hover {
+            background-color: var(--theme-contrast-anchor);
+        }
     }
 
     .agal-arrow-left {

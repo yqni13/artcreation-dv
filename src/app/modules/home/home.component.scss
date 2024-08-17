@@ -1,13 +1,6 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-h1 {
-    color: var(--theme-home-header);
-    
-    text-shadow: 5px 5px 10px var(--theme-home-header);
-    margin: 50px 0;
-}
-
 .agal-home-top-img {
     width: 100%;
     display: flex;
