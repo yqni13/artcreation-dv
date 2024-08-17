@@ -13,7 +13,7 @@
     display: flex;
     
     input {
-        width: 100%;
+        // width: 100%;
         height: 25px;
     }
     
@@ -22,7 +22,93 @@
         height:75px;
     }
 }
-    
+
+.agal-form-multiple {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+
+    .agal-form-left {
+        margin-right: sass.$form-divider-margin;
+    }
+
+    .agal-form-right {
+        margin-left: sass.$form-divider-margin;
+    }
+}
+
+input.form-width35 {
+    width: calc(35% - sass.$form-divider-margin);
+}
+select.form-width35 {
+    width: calc(35% - (sass.$form-divider-margin + sass.$select-elipsis-padding));
+}
+
+input.form-width40 {
+    width: calc(40% - sass.$form-divider-margin);
+}
+select.form-width40 {
+    width: calc(40% - (sass.$form-divider-margin + sass.$select-elipsis-padding));
+}
+
+input.form-width50 {
+    width: calc(50% - sass.$form-divider-margin);
+}
+select.form-width50 {
+    width: calc(50% - (sass.$form-divider-margin + sass.$select-elipsis-padding));
+}
+
+input.form-width60 {
+    width: calc(60% - sass.$form-divider-margin);
+}
+select.form-width60 {
+    width: calc(60% - (sass.$form-divider-margin + sass.$select-elipsis-padding));
+}
+
+input.form-width65 {
+    width: calc(65% - sass.$form-divider-margin);
+}
+select.form-width65 {
+    width: calc(65% - (sass.$form-divider-margin + sass.$select-elipsis-padding));
+}
+
+input.form-width100 {
+    width: 100%;
+    margin: 0!important;
+}
+select.form-width100 {
+    margin: 0!important;
+    width: calc(100% - sass.$select-elipsis-padding)
+}
+
+select {
+    text-overflow: ellipsis;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: sass.$select-elipsis-padding;
+}
+
+.form-select {
+    background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, #9b9b9b, #9b9b9b);
+    background-position:
+        calc(100% - 10px) 11px,
+        calc(100% - 5px) 11px,
+        calc(100% - 20px) 0;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 30px;
+    background-repeat: no-repeat;
+}
+
+.icon-TriangleArrowDown {
+    position: relative;
+}
+
 .agal-contact-content {
     width: 100%;
     border: solid 1px var(--theme-body-text);
@@ -33,42 +119,6 @@
     
     form {
         width: sass.$contact-form-width;
-
-        div:nth-child(1) {
-            display: flex;
-            flex-wrap: nowrap;
-            flex-direction: row;
-
-            select {
-                margin-right: calc(sass.$contact-input-margin / 2);
-                overflow: hidden;
-                text-overflow: ellipsis;
-
-                $select-missing-width: 6px;
-                width: calc(50% - (sass.$contact-input-margin / 2) + $select-missing-width);
-            }
-            input {
-                margin-left: calc(sass.$contact-input-margin / 2);
-                width: calc(50% - (sass.$contact-input-margin / 2));
-            }
-        }
-        
-        div:nth-child(3) {
-            display: flex;
-            flex-wrap: nowrap;
-            flex-direction: row;
-            input:nth-child(1) {
-                margin-right: calc(sass.$contact-input-margin / 2);
-            }
-            
-            input:nth-child(2) {
-                margin-left: calc(sass.$contact-input-margin / 2);
-            }
-
-            input {
-                width: calc(50% - (sass.$contact-input-margin / 2));
-            }
-        }
     }
 }
 

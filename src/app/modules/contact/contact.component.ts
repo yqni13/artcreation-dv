@@ -6,6 +6,7 @@ import { MailService } from "../../shared/services/mail.service";
 import { ErrorService } from "../../shared/services/error.service";
 import { ValidationMessageComponent } from "../../common/components/validation-message/validation-message.component";
 import { ActivatedRoute, RouterModule } from "@angular/router";
+import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
 
 @Component({
     selector: 'app-contact',
@@ -23,11 +24,13 @@ import { ActivatedRoute, RouterModule } from "@angular/router";
 export class ContactComponent implements OnInit {
 
     protected contactForm: FormGroup;
-    protected hasReferenceNr: boolean;
+    protected hasReferenceNr: boolean; 
+    protected hasValidReferenceNr: boolean; // TODO(yqni13): add method to check input value length=6
     protected hasReferenceFromParams: boolean;
     protected readonly: boolean;
     protected selectedReference: string | null;
     protected subjectOptions = Object.values(SubjectOptions);
+    protected artworkOptions = Object.values(ArtworkOptions);
 
     constructor(
         private mailService: MailService,
@@ -37,6 +40,7 @@ export class ContactComponent implements OnInit {
     ) {
         this.contactForm = new FormGroup({});
         this.hasReferenceNr = false;
+        this.hasValidReferenceNr = false;
         this.hasReferenceFromParams = false;
         this.readonly = false;
         this.selectedReference = null;
@@ -58,12 +62,15 @@ export class ContactComponent implements OnInit {
     
     private initForm() {
 
-        // TODO(yqni13): add validators + custom text/textarea/selector components
+        // TODO(yqni13): add validators
 
         this.contactForm = this.fb.group({
             subject: new FormControl('', Validators.required),
-            referenceNr: new FormControl(''),
+            referenceNr: new FormControl(''), // TODO(yqni13): custom validator to check for 6 char or valid referenceNr
+            type: new FormControl(''),
             email: new FormControl('', [Validators.required, Validators.email]),
+            honorifics: new FormControl('', Validators.required),
+            title: new FormControl(''),
             firstName: new FormControl('', Validators.required),
             lastName: new FormControl('', Validators.required),
             message: new FormControl('', Validators.required)
@@ -74,8 +81,11 @@ export class ContactComponent implements OnInit {
         this.initForm();
         this.contactForm.patchValue({
             subject: this.hasReferenceNr ? SubjectOptions.artOrder : '',
-            referenceNr: this.hasReferenceNr ? this.selectedReference : '', 
+            referenceNr: this.hasReferenceNr ? this.selectedReference : '',
+            type: '',
             email: '',
+            honorifics: '',
+            title: '',
             firstName: '',
             lastName: '',
             message: ''

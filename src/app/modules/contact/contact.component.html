@@ -16,14 +16,13 @@
         <div class="agal-contact-content">
 
             <form [formGroup]="contactForm">
-                <div class="agal-contact-form-item">
-                    <select formControlName="subject" >
+                <div class="agal-contact-form-item agal-form-multiple">
+                    <select class="agal-form-left form-width50 form-select" formControlName="subject" >
                         <option value="" disabled>select subject*</option>
-                        <option *ngFor="let option of subjectOptions" value="{{option}}">
-                            {{option}}
-                        </option>
+                        <option *ngFor="let option of subjectOptions" value="{{option}}">{{option}}</option>
                     </select>
                     <input 
+                    class="agal-form-right form-width50"
                         placeholder="ReferenceNr" 
                         type="text" 
                         formControlName="referenceNr" 
@@ -32,12 +31,36 @@
                         [readonly]="readonly"
                     >
                 </div>
-                <div class="agal-contact-form-item">
-                    <input placeholder="Email*" type="email" formControlName="email">
-                </div>                
-                <div class="agal-contact-form-item">
-                    <input placeholder="Firstname*" type="text" formControlName="firstName">
-                    <input placeholder="Lastname*" type="text" formControlName="lastName">
+                <div class="agal-contact-form-item agal-form-multiple">
+                    <select 
+                        class="agal-form-left form-select" 
+                        *ngIf="hasValidReferenceNr"
+                        [ngClass]="!hasValidReferenceNr ? '' : 'form-width40'" 
+                        formControlName="type"
+                        
+                    >
+                        <option value="" disabled>select type</option>
+                        <option *ngFor="let option of artworkOptions" value="{{option}}">{{option}}</option>
+                    </select>
+                    <input 
+                        class="agal-form-right" 
+                        [ngClass]="hasValidReferenceNr ? 'form-width60' : 'form-width100'"
+                        placeholder="Email*" 
+                        type="email" 
+                        formControlName="email"
+                    >
+                </div>
+                <div class="agal-contact-form-item agal-form-multiple">
+                    <select class="agal-form-left form-width40 form-select" formControlName="honorifics">
+                        <option value="" disabled>select honorifics*</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Ms">Ms</option>
+                    </select>
+                    <input class="agal-form-right form-width60" placeholder="Academic title" type="text" formControlName="title">
+                </div>          
+                <div class="agal-contact-form-item agal-form-multiple">
+                    <input class="agal-form-left form-width50" placeholder="Firstname*" type="text" formControlName="firstName">
+                    <input class="agal-form-right form-width50" placeholder="Lastname*" type="text" formControlName="lastName">
                 </div>
                 <div class="agal-contact-form-item">
                     <textarea placeholder="Message*" formControlName="message"></textarea>

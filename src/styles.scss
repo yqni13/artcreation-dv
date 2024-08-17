@@ -74,7 +74,7 @@ h1 {
     border-radius: 4px;
     box-shadow: sass.$color-light-grey 4px 4px 0 0,#000 4px 4px 0 1px;
     box-sizing: border-box;
-    color: sass.$color-smalt-blue;
+    color: var(--theme-contrast-text);
     cursor: pointer;
     display: inline-block;
     font-weight: bold;
@@ -108,18 +108,20 @@ h1 {
     box-shadow: sass.$color-light-grey 2px 2px 0 0, #000 2px 2px 0 1px;
     transform: translate(2px, 2px);
     }
-
 }
 
 input,
 select,
 textarea {
+    border: solid 1px black;
+    padding: 0 5px;
     -ms-box-sizing:content-box;
     -moz-box-sizing:content-box;
     -webkit-box-sizing:content-box; 
     box-sizing:content-box;
-
+    background-color: sass.$color-ice-white;
     font-family: sass.$font-text-family;
+    text-overflow: ellipsis;
 }
 
 .agal-visible {
