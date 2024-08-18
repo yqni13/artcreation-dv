@@ -1,3 +1,4 @@
+import { DataShareService } from './../../../shared/services/data-share.service';
 import { Component, Input } from "@angular/core";
 import { GalleryItem } from "../../../shared/interfaces/GalleryItems";
 import { ArtworkOptions } from "../../../shared/enums/artwork-option.enum";
@@ -20,7 +21,7 @@ export class PaintingCardComponent {
 
     protected artworkOption = ArtworkOptions;
 
-    constructor() {
+    constructor(private dataShareService: DataShareService) {
         this.card = {
             title: null,
             referenceNr: '',
@@ -33,5 +34,13 @@ export class PaintingCardComponent {
             date: null,
             path: ''
         };
+    }
+
+    routeWithData() {
+        const data = [
+            this.card.referenceNr, 
+            this.card.type
+        ];
+        this.dataShareService.setSharedData(data);
     }
 }

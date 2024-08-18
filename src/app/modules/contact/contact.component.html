@@ -1,4 +1,4 @@
-<section>
+<section *agalVar="(artworkData$ | async) as artworkDataArray">
     <div class="agal-header">
         <h1>Contact me</h1>
     </div>
@@ -26,8 +26,7 @@
                         placeholder="ReferenceNr" 
                         type="text" 
                         formControlName="referenceNr" 
-                        [textContent]="hasReferenceNr ? selectedReference : null"
-                        [ngClass]="hasReferenceFromParams ? 'agal-query-value' : ''"
+                        [ngClass]="hasReferenceFromParams ? 'agal-query-value agal-readonly' : ''"
                         [readonly]="readonly"
                     >
                 </div>

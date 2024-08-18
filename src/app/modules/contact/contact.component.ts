@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailService } from "../../shared/services/mail.service";
@@ -7,6 +7,9 @@ import { ErrorService } from "../../shared/services/error.service";
 import { ValidationMessageComponent } from "../../common/components/validation-message/validation-message.component";
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
+import { DataShareService } from "../../shared/services/data-share.service";
+import { filter, Observable, of, Subscription, tap } from "rxjs";
+import { VarDirective } from "../../common/directives/ng-var.directive";
 
 @Component({
     selector: 'app-contact',
@@ -18,45 +21,48 @@ import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
-        ValidationMessageComponent
+        ValidationMessageComponent,
+        VarDirective
     ]
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
 
     protected contactForm: FormGroup;
-    protected hasReferenceNr: boolean; 
+    protected hasSelectedParameters: boolean; 
     protected hasValidReferenceNr: boolean; // TODO(yqni13): add method to check input value length=6
     protected hasReferenceFromParams: boolean;
     protected readonly: boolean;
-    protected selectedReference: string | null;
+    protected selectedParams: string[];
     protected subjectOptions = Object.values(SubjectOptions);
     protected artworkOptions = Object.values(ArtworkOptions);
+    protected artworkData$: Observable<string[]>;
+
+    private subscription$ = new Subscription();
 
     constructor(
-        private mailService: MailService,
+        private dataShareService: DataShareService,
         private errorService: ErrorService,
+        private mailService: MailService,
         private router: ActivatedRoute,
         private fb: FormBuilder
     ) {
         this.contactForm = new FormGroup({});
-        this.hasReferenceNr = false;
+        this.hasSelectedParameters = false;
         this.hasValidReferenceNr = false;
         this.hasReferenceFromParams = false;
         this.readonly = false;
-        this.selectedReference = null;
-
-        this.router.queryParamMap.subscribe(params => {
-            this.selectedReference = params.get('referenceNr');
-            if(this.selectedReference !== null) {
-                this.hasReferenceFromParams = true;
-                this.readonly = true;
-            }
-        })
-
+        this.selectedParams = [];
+        this.artworkData$ = new Observable<string[]>();
     }
     
     ngOnInit() {
-        this.checkForReferenceNr();
+        this.subscription$ = this.dataShareService.sharedData$.pipe(
+            filter((x) => !!x), // double exclamation mark (!!) => boolean check !!"" === false
+            tap((data) => {
+            this.artworkData$ = of(data);
+            this.checkParameters(data);           
+        })).subscribe();
+
         this.initEdit();
     }
     
@@ -80,9 +86,9 @@ export class ContactComponent implements OnInit {
     private initEdit() {
         this.initForm();
         this.contactForm.patchValue({
-            subject: this.hasReferenceNr ? SubjectOptions.artOrder : '',
-            referenceNr: this.hasReferenceNr ? this.selectedReference : '',
-            type: '',
+            subject: this.hasSelectedParameters ? SubjectOptions.artOrder : '',
+            referenceNr: this.hasSelectedParameters ? this.selectedParams[0] : '',
+            type: this.hasSelectedParameters ? this.selectedParams[1] : '',
             email: '',
             honorifics: '',
             title: '',
@@ -92,11 +98,19 @@ export class ContactComponent implements OnInit {
         })
     }
 
-    private checkForReferenceNr() {
-        if(this.selectedReference !== null) {
-            this.hasReferenceNr = true;
+    private checkParameters(data: string[]) {
+        if(data !== null || data !== undefined) {
+            this.hasSelectedParameters = true;
+            this.hasReferenceFromParams = true;
+            this.hasValidReferenceNr = true;
+            this.readonly = true;
+            this.selectedParams = data;
         } else {
-            this.hasReferenceNr = false;
+            this.hasSelectedParameters = false;
+            this.hasReferenceFromParams = false;
+            this.hasValidReferenceNr = false;
+            this.readonly = false;
+            this.selectedParams = [];
         }
     }    
 
@@ -112,4 +126,7 @@ export class ContactComponent implements OnInit {
         this.mailService.sendMail().subscribe();
     }
 
+    ngOnDestroy() {
+        this.subscription$.unsubscribe();
+    }
 }

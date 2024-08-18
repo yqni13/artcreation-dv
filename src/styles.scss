@@ -142,3 +142,8 @@ textarea {
     color: sass.$color-query-red;
     font-weight: bold;
 }
+
+.agal-readonly {
+    cursor: default;
+    pointer-events: none;
+}

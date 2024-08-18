@@ -46,7 +46,9 @@
                 <a
                     class="agal-anchor"
                     [routerLink]="'/contact'"
-                    [queryParams]="{referenceNr: card.referenceNr}"
+                    [attr.aria-disabled]="true"
+                    (click)="routeWithData()"
+                    (keydown.enter)="routeWithData()"
                 >request price</a>
             </div>
         </div>
