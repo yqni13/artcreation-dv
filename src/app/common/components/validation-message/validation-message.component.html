@@ -1,11 +1,13 @@
-<ng-container *agalVar="agalControl as control">
+<ng-container *agalVar="ngControl as control">
     <div class="agal-validation-errors" *ngIf="control.invalid && (control.dirty || control.touched)">
         <div *ngIf="control.hasError('required')">
             {{fieldName}} is required.
-
         </div>
         <div *ngIf="control.hasError('email')">
-            {{fieldName}} is invalid.
+            {{fieldName}} has invalid format.
+        </div>
+        <div *ngIf="control.hasError('invalidReferenceNr')">
+            {{fieldName}} must be 6 characters.
         </div>
     </div>
 </ng-container>

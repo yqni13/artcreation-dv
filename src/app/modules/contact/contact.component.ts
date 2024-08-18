@@ -4,12 +4,13 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailService } from "../../shared/services/mail.service";
 import { ErrorService } from "../../shared/services/error.service";
-import { ValidationMessageComponent } from "../../common/components/validation-message/validation-message.component";
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
 import { DataShareService } from "../../shared/services/data-share.service";
 import { filter, Observable, of, Subscription, tap } from "rxjs";
 import { VarDirective } from "../../common/directives/ng-var.directive";
+import { TextInputComponent } from "../../common/components/form-components/text-input/text-input.component";
+import { ControlCastPipe } from "../../common/pipes/control-cast.pipe";
 
 @Component({
     selector: 'app-contact',
@@ -18,10 +19,11 @@ import { VarDirective } from "../../common/directives/ng-var.directive";
     standalone: true,
     imports: [
         CommonModule,
+        ControlCastPipe,
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
-        ValidationMessageComponent,
+        TextInputComponent,
         VarDirective
     ]
 })
@@ -112,7 +114,7 @@ export class ContactComponent implements OnInit, OnDestroy {
             this.readonly = false;
             this.selectedParams = [];
         }
-    }    
+    }
 
     onSubmit() {
         this.contactForm.markAllAsTouched();

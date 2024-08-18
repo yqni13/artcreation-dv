@@ -2,7 +2,7 @@
     {
         "title": null,
         "referenceNr": "21ABCD",
-        "genre": "buddha",
+        "genre": "buddhism",
         "tags": [
             "sun", "water", "sea", "peace"
         ],
@@ -17,7 +17,7 @@
     {
         "title": "where the spirits sleep",
         "referenceNr": "FFE135",
-        "genre": "animal",
+        "genre": "pouring",
         "tags": [
             "sun", "green", "forest", "animals", "nature"
         ],
@@ -32,7 +32,7 @@
     {
         "title": "last laugh counts most",
         "referenceNr": "A1CAF1",
-        "genre": "nature",
+        "genre": "buddhism",
         "tags": [
             "aggressive", "force", "fear"
         ],
@@ -47,7 +47,7 @@
     {
         "title": null,
         "referenceNr": "F4C2C2",
-        "genre": "nature",
+        "genre": "abstract",
         "tags": [
             "baby", "live", "hope", "future"
         ],
@@ -62,7 +62,7 @@
     {
         "title": "taste the color",
         "referenceNr": "FE6F5E",
-        "genre": "buddha",
+        "genre": "creative",
         "tags": null,
         "price": null,
         "type": "print",
@@ -75,7 +75,7 @@
     {
         "title": "salty lust",
         "referenceNr": "0D98BA",
-        "genre": "nature",
+        "genre": "people",
         "tags": [
             "water", "heal", "salt", "lemons", "tequila"
         ],
@@ -90,7 +90,7 @@
     {
         "title": "momma is hungry",
         "referenceNr": "C32148",
-        "genre": "nature",
+        "genre": "people",
         "tags": [
             "food", "burger", "meat", "cheese", "africa"
         ],
@@ -105,7 +105,7 @@
     {
         "title": null,
         "referenceNr": "004225",
-        "genre": "winter",
+        "genre": "nature",
         "tags": [
             "lion", "africa", "nature", "yellow", "sun"
         ],
@@ -120,7 +120,7 @@
     {
         "title": "city life",
         "referenceNr": "91A3B0",
-        "genre": "stature",
+        "genre": "nature",
         "tags": [
             "city", "skyscraper", "grey"
         ],
@@ -135,7 +135,7 @@
     {
         "title": "demonstration",
         "referenceNr": "ED872D",
-        "genre": "stature",
+        "genre": "nature",
         "tags": [
             "demo", "lookalike"
         ],

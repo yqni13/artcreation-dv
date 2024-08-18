@@ -36,18 +36,18 @@
                         *ngIf="hasValidReferenceNr"
                         [ngClass]="!hasValidReferenceNr ? '' : 'form-width40'" 
                         formControlName="type"
-                        
                     >
                         <option value="" disabled>select type</option>
                         <option *ngFor="let option of artworkOptions" value="{{option}}">{{option}}</option>
                     </select>
-                    <input 
-                        class="agal-form-right" 
+                    <agal-textinput
+                        [className]="'agal-form-right'"
+                        [inputType]="'email'"
+                        [placeholder]="'Email*'"
                         [ngClass]="hasValidReferenceNr ? 'form-width60' : 'form-width100'"
-                        placeholder="Email*" 
-                        type="email" 
-                        formControlName="email"
-                    >
+                        [formControl]="contactForm.get('email') | controlCast"
+                        [readonly]="readonly"
+                    ></agal-textinput>
                 </div>
                 <div class="agal-contact-form-item agal-form-multiple">
                     <select class="agal-form-left form-width40 form-select" formControlName="honorifics">
@@ -55,11 +55,26 @@
                         <option value="Mr">Mr</option>
                         <option value="Ms">Ms</option>
                     </select>
-                    <input class="agal-form-right form-width60" placeholder="Academic title" type="text" formControlName="title">
+                    <input 
+                        class="agal-form-right form-width60" 
+                        placeholder="Academic title" 
+                        type="text" 
+                        formControlName="title"
+                    >
                 </div>          
                 <div class="agal-contact-form-item agal-form-multiple">
-                    <input class="agal-form-left form-width50" placeholder="Firstname*" type="text" formControlName="firstName">
-                    <input class="agal-form-right form-width50" placeholder="Lastname*" type="text" formControlName="lastName">
+                    <input 
+                        class="agal-form-left form-width50" 
+                        placeholder="Firstname*" 
+                        type="text" 
+                        formControlName="firstName"
+                    >
+                    <input 
+                        class="agal-form-right form-width50" 
+                        placeholder="Lastname*" 
+                        type="text" 
+                        formControlName="lastName"
+                    >
                 </div>
                 <div class="agal-contact-form-item">
                     <textarea placeholder="Message*" formControlName="message"></textarea>

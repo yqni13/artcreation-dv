@@ -1,0 +1,14 @@
+<div class="{{className}}" ngClass="{{ngClass}}">
+    <div>
+        <input 
+            type="{{inputType}}"
+            placeholder="{{placeholder}}"
+            [readonly]="readonly"
+            [formControl]="formControl"
+        >
+    </div>
+    <agal-validation
+        [ngControl]="formControl"
+        [fieldName]="fieldName"
+    ></agal-validation>
+</div>
