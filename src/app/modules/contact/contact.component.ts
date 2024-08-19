@@ -10,7 +10,9 @@ import { DataShareService } from "../../shared/services/data-share.service";
 import { filter, Observable, of, Subscription, tap } from "rxjs";
 import { VarDirective } from "../../common/directives/ng-var.directive";
 import { TextInputComponent } from "../../common/components/form-components/text-input/text-input.component";
-import { ControlCastPipe } from "../../common/pipes/control-cast.pipe";
+import { CastAbstractToFormControlPipe } from "../../common/pipes/cast-abstracttoform-control.pipe";
+import { SelectInputComponent } from "../../common/components/form-components/select-input/select-input.component";
+import { TextareaInputComponent } from "../../common/components/form-components/textarea-input/textarea-input.component";
 
 @Component({
     selector: 'app-contact',
@@ -19,11 +21,13 @@ import { ControlCastPipe } from "../../common/pipes/control-cast.pipe";
     standalone: true,
     imports: [
         CommonModule,
-        ControlCastPipe,
+        CastAbstractToFormControlPipe,
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
+        SelectInputComponent,
         TextInputComponent,
+        TextareaInputComponent,
         VarDirective
     ]
 })

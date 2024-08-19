@@ -1,0 +1,16 @@
+@use '../../../../../stylesheets/utilities' as sass;
+
+
+// $select-right-padding: calc(sass.$comp-form-padding - sass.$select-symbol-balance);
+$select-left-padding: calc(sass.$comp-form-padding - sass.$select-intern-leftpadding);
+
+.agal-select-wrapper {
+    // use ngStyle for width to style lvl above => <agal-selectinput>
+    display: grid;
+    margin-right: -1px; // to adapt calculating width as last-right form element
+    
+    select {
+        width: calc(100% - sass.$select-intern-leftpadding);
+        padding: 7.5px 0 7.5px $select-left-padding;
+    }
+}

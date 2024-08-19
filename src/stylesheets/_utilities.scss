@@ -30,6 +30,13 @@ $color-eggshell-white: #fae3b9de;
 
 
 /* custom definitions */
+
+
+/* IMPORTANT! <select> uses padding-left: 4px intern (don't know yet to change that) */
+$select-intern-leftpadding: 4px;
+/* DO NOT CHANGE! this is used to balance! */
+
+
 $font-text-size: clamp(16px, 1.2vw, 25px);
 $font-text-family: "Montserrat", sans-serif;
 
@@ -43,10 +50,11 @@ $contact-form-width: 400px;
 $comp-padding-small: 25px;
 $comp-padding-medium: 50px;
 $comp-padding-big: 100px;
+$comp-form-padding: 5px;
 $comp-margin-h1: 40px;
 
 $form-divider-margin: 2.5px;
-$select-elipsis-padding: 20px;
+$select-symbol-balance: 1px;
 
 /* use padding variables to highlight relation to used padding values in divs */
 $faq-box-height: calc($comp-padding-small * 2);

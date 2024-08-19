@@ -1,0 +1,10 @@
+<div class="agal-select-wrapper {{className}}" ngClass="{{ngClass}}">
+    <select [formControl]="formControl">
+        <option value="" disabled>{{placeholder}}</option>
+        <option *ngFor="let option of options" value="{{option}}">{{option}}</option>
+    </select>
+    <agal-validation
+        [ngControl]="formControl"
+        [fieldName]="fieldName"
+    ></agal-validation>
+</div>

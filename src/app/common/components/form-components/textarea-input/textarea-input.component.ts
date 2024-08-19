@@ -6,9 +6,9 @@ import { CastAbstractToFormControlPipe } from "../../../pipes/cast-abstracttofor
 import { AbstractInputComponent } from "../abstract-input.component";
 
 @Component({
-    selector: 'agal-textinput',
-    templateUrl: './text-input.component.html',
-    styleUrl: './text-input.component.scss',
+    selector: 'agal-textareainput',
+    templateUrl: './textarea-input.component.html',
+    styleUrl: './textarea-input.component.scss',
     standalone: true,
     imports: [
         CommonModule,
@@ -19,30 +19,28 @@ import { AbstractInputComponent } from "../abstract-input.component";
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => TextInputComponent),
+            useExisting: forwardRef(() => TextareaInputComponent),
             multi: true,
         }
     ]
 })
-export class TextInputComponent extends AbstractInputComponent {
+export class TextareaInputComponent extends AbstractInputComponent {
 
     @Input() fieldName: string;
     @Input() formControl: FormControl;
-    @Input() readonly: boolean;
     @Input() placeholder: string;
-    @Input() inputType: string;
-    @Input() className: string;
     @Input() ngClass: string;
+    @Input() className: string;
+    @Input() rows: number;
 
     constructor() {
         super();
 
         this.fieldName = '';
         this.formControl = new FormControl();
-        this.readonly = false;
         this.placeholder = '';
-        this.inputType = '';
-        this.className = '';
         this.ngClass = '';
+        this.className = '';
+        this.rows = 0;
     }
 }
