@@ -4,6 +4,7 @@
 @import 'stylesheets/defines.scss';
 @import 'stylesheets/icons.scss';
 @import 'stylesheets/media.scss';
+@import 'stylesheets/forms.scss';
 
 html {
     cursor: context-menu;
@@ -139,8 +140,14 @@ textarea {
 }
 
 .agal-query-value {
-    color: sass.$color-query-red;
-    font-weight: bold;
+    textarea,
+    select,
+    input,
+    span,
+    a {
+        color: var(--theme-nav-bg);
+        font-weight: bold;
+    }
 }
 
 .agal-readonly {

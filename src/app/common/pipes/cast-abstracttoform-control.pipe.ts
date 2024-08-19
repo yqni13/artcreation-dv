@@ -5,7 +5,7 @@ import { AbstractControl, FormControl } from "@angular/forms";
     standalone: true,
     name: 'controlCast'
 })
-export class ControlCastPipe implements PipeTransform {
+export class CastAbstractToFormControlPipe implements PipeTransform {
     transform(value: AbstractControl | null): FormControl {
         return value as FormControl;
     }
