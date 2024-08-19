@@ -12,20 +12,30 @@ footer {
 .agal-footer-credits {
     width: 55%;
     height: 100%;
-    display: block;
-    align-content: center;
-    
-    h3,
-    p {
-        padding-left: sass.$comp-padding-big;
-        color: var(--theme-active-route);
-    }
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    color: var(--theme-active-route);
 
+    h3 {
+        font-size: 33px;
+        margin: 10px 0;
+        font-weight: normal;
+        padding-left: sass.$comp-padding-big;
+    }
+    
+    a {
+        padding-left: calc(sass.$comp-padding-big + 3.5px);
+    }
+    
     .icon-Copyright {
         // TODO(yqni13): needs to be adapted to font-size via clamp
         // clamp size and for width +1, height +2 or similar
-        width: 15px;
-        height: 15px;
+        width: 18px;
+        height: 18px;
+        position: relative;
+        left: 100px;
+        top: 4px;
     }
 }
 
