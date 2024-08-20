@@ -13,6 +13,7 @@ import { TextInputComponent } from "../../common/components/form-components/text
 import { CastAbstractToFormControlPipe } from "../../common/pipes/cast-abstracttoform-control.pipe";
 import { SelectInputComponent } from "../../common/components/form-components/select-input/select-input.component";
 import { TextareaInputComponent } from "../../common/components/form-components/textarea-input/textarea-input.component";
+import { ReferenceCheckService } from "../../shared/services/reference-check.service";
 
 @Component({
     selector: 'app-contact',
@@ -35,17 +36,18 @@ export class ContactComponent implements OnInit, OnDestroy {
 
     protected contactForm: FormGroup;
     protected hasSelectedParameters: boolean; 
-    protected hasValidReferenceNr: boolean; // TODO(yqni13): add method to check input value length=6
+    protected hasValidReferenceNr: boolean;
     protected hasReferenceFromParams: boolean;
     protected readonly: boolean;
     protected selectedParams: string[];
-    protected subjectOptions = Object.values(SubjectOptions);
-    protected artworkOptions = Object.values(ArtworkOptions);
+    protected subjectOptions = SubjectOptions;
+    protected artworkOptions = ArtworkOptions;
     protected artworkData$: Observable<string[]>;
 
-    private subscription$ = new Subscription();
+    private subscription$: Subscription;
 
     constructor(
+        private refCheckService: ReferenceCheckService,
         private dataShareService: DataShareService,
         private errorService: ErrorService,
         private mailService: MailService,
@@ -56,9 +58,10 @@ export class ContactComponent implements OnInit, OnDestroy {
         this.hasSelectedParameters = false;
         this.hasValidReferenceNr = false;
         this.hasReferenceFromParams = false;
-        this.readonly = false;
+        this.readonly = true;
         this.selectedParams = [];
         this.artworkData$ = new Observable<string[]>();
+        this.subscription$ = new Subscription();
     }
     
     ngOnInit() {
@@ -73,9 +76,6 @@ export class ContactComponent implements OnInit, OnDestroy {
     }
     
     private initForm() {
-
-        // TODO(yqni13): add validators
-
         this.contactForm = this.fb.group({
             subject: new FormControl('', Validators.required),
             referenceNr: new FormControl(''), // TODO(yqni13): custom validator to check for 6 char or valid referenceNr
@@ -120,10 +120,44 @@ export class ContactComponent implements OnInit, OnDestroy {
         }
     }
 
+    configReferenceNrValidators() {
+        const subject = this.contactForm.get('subject')?.value;        
+        if(subject === SubjectOptions.artOrder || subject === SubjectOptions.specificInformation) {
+            this.contactForm.get('referenceNr')?.markAsUntouched();
+            this.contactForm.get('referenceNr')?.setValidators(Validators.required);
+            this.contactForm.get('referenceNr')?.markAsPristine();
+            this.contactForm.get('referenceNr')?.setValue('');
+            this.readonly = false;
+        } else {
+            this.contactForm.get('referenceNr')?.clearValidators();
+            this.contactForm.get('referenceNr')?.setValue('');
+            this.configTypeValidators();
+            this.hasReferenceFromParams = false;
+            this.readonly = false;
+            this.selectedParams = [];
+            this.hasSelectedParameters = false;
+        }
+    }
+
+    configTypeValidators() {
+        const refNr = this.contactForm.get('referenceNr')?.value;
+
+        if(refNr === null || refNr.length !== 6) {
+            this.hasValidReferenceNr = false;
+            return;
+        }
+
+        if(this.refCheckService.checkReferenceValidity(refNr)) {
+            this.hasValidReferenceNr = true;
+            this.contactForm.get('type')?.setValue(this.refCheckService.checkTypeByReference(refNr));
+        }        
+    }
+
     onSubmit() {
         this.contactForm.markAllAsTouched();
         
         if(this.contactForm.invalid) {
+            // TODO(yqni13): remove console.log when toasty msg is implemented
             console.log('form invalid', this.contactForm);
             return;
         }

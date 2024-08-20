@@ -1,9 +1,11 @@
-import { Component, forwardRef, Input } from "@angular/core";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output } from "@angular/core";
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
 import { CastAbstractToFormControlPipe } from "../../../pipes/cast-abstracttoform-control.pipe";
 import { AbstractInputComponent } from "../abstract-input.component";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: 'agal-textinput',
@@ -24,7 +26,7 @@ import { AbstractInputComponent } from "../abstract-input.component";
         }
     ]
 })
-export class TextInputComponent extends AbstractInputComponent {
+export class TextInputComponent extends AbstractInputComponent implements OnInit, OnDestroy {
 
     @Input() fieldName: string;
     @Input() formControl: FormControl;
@@ -33,6 +35,10 @@ export class TextInputComponent extends AbstractInputComponent {
     @Input() inputType: string;
     @Input() className: string;
     @Input() ngClass: string;
+
+    @Output() byChange: EventEmitter<any>;
+
+    private subscription$: Subscription;
 
     constructor() {
         super();
@@ -44,5 +50,17 @@ export class TextInputComponent extends AbstractInputComponent {
         this.inputType = '';
         this.className = '';
         this.ngClass = '';
+        this.byChange = new EventEmitter<any>();
+        this.subscription$ = new Subscription();
+    }
+    
+    ngOnInit() {
+        this.subscription$ = this.formControl.valueChanges.subscribe(change => {
+            this.byChange.emit(change);
+        })
+    }
+
+    ngOnDestroy() {
+        this.subscription$.unsubscribe();
     }
 }

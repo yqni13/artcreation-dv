@@ -24,16 +24,21 @@
                         [formControl]="contactForm.get('subject') | controlCast"
                         [options]="subjectOptions"
                         [fieldName]="'Subject'"
+                        (byChange)="configReferenceNrValidators()"
                     ></agal-selectinput>
                     <agal-textinput
                         [className]="'agal-form-right'"
-                        [placeholder]="'ReferenceNr'"
+                        [placeholder]="(contactForm.get('subject')?.value === subjectOptions.generalRequest || 
+                                        contactForm.get('subject')?.value === '') 
+                                        ? 'ReferenceNr' 
+                                        : 'ReferenceNr*'"
                         [inputType]="'text'"
                         [ngStyle]="{'width': '50%'}"
                         [readonly]="readonly"
                         [ngClass]="hasReferenceFromParams ? 'agal-query-value agal-readonly' : ''"
                         [formControl]="contactForm.get('referenceNr') | controlCast"
                         [fieldName]="'ReferenceNr'"
+                        (byChange)="configTypeValidators()"
                     ></agal-textinput>
                 </div>
                 <div class="agal-form-item agal-form-multiple">
@@ -42,9 +47,12 @@
                         [className]="'agal-form-left-select'"
                         [ngStyle]="!hasValidReferenceNr ? {} : {'width': '40%'}"
                         [formControl]="contactForm.get('type') | controlCast"
-                        [placeholder]="'select type'"
+                        [placeholder]="'select type*'"
                         [options]="artworkOptions"
                         [fieldName]="'Type'"
+                        [ngClass]="contactForm.get('subject')?.value === subjectOptions.artOrder 
+                                    ? 'agal-query-value agal-readonly' 
+                                    : ''"
                     ></agal-selectinput>
                     <agal-textinput
                         [className]="hasValidReferenceNr ? 'agal-form-right' : ''"

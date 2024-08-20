@@ -1,4 +1,5 @@
-import { Component, forwardRef, Input } from "@angular/core";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, EventEmitter, forwardRef, Input, Output } from "@angular/core";
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
@@ -31,7 +32,9 @@ export class SelectInputComponent extends AbstractInputComponent {
     @Input() placeholder: string;
     @Input() ngClass: string;
     @Input() className: string;
-    @Input() options: string[];
+    @Input() options: any;
+
+    @Output() byChange: EventEmitter<any>;
 
     constructor() {
         super();
@@ -42,5 +45,10 @@ export class SelectInputComponent extends AbstractInputComponent {
         this.ngClass = '';
         this.className = '';
         this.options = [];
+        this.byChange = new EventEmitter<any>();
+    }
+
+    selectOption(option: Event) {
+        this.byChange.emit(option);
     }
 }
