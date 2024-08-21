@@ -14,6 +14,7 @@ import { CastAbstractToFormControlPipe } from "../../common/pipes/cast-abstractt
 import { SelectInputComponent } from "../../common/components/form-components/select-input/select-input.component";
 import { TextareaInputComponent } from "../../common/components/form-components/textarea-input/textarea-input.component";
 import { ReferenceCheckService } from "../../shared/services/reference-check.service";
+import  * as CustomValidators  from "../../common/helper/custom-validators";
 
 @Component({
     selector: 'app-contact',
@@ -29,7 +30,7 @@ import { ReferenceCheckService } from "../../shared/services/reference-check.ser
         SelectInputComponent,
         TextInputComponent,
         TextareaInputComponent,
-        VarDirective
+        VarDirective,
     ]
 })
 export class ContactComponent implements OnInit, OnDestroy {
@@ -78,7 +79,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     private initForm() {
         this.contactForm = this.fb.group({
             subject: new FormControl('', Validators.required),
-            referenceNr: new FormControl(''), // TODO(yqni13): custom validator to check for 6 char or valid referenceNr
+            referenceNr: new FormControl(''),
             type: new FormControl(''),
             email: new FormControl('', [Validators.required, Validators.email]),
             honorifics: new FormControl('', Validators.required),
@@ -120,18 +121,19 @@ export class ContactComponent implements OnInit, OnDestroy {
         }
     }
 
-    configReferenceNrValidators() {
+    configRefNrByType() {
         const subject = this.contactForm.get('subject')?.value;        
         if(subject === SubjectOptions.artOrder || subject === SubjectOptions.specificInformation) {
             this.contactForm.get('referenceNr')?.markAsUntouched();
-            this.contactForm.get('referenceNr')?.setValidators(Validators.required);
-            this.contactForm.get('referenceNr')?.markAsPristine();
+            this.contactForm.get('referenceNr')?.setValidators([Validators.required, CustomValidators.invalidRefNrValidator(this.refCheckService)]);
+            this.contactForm.get('referenceNr')?.markAsPristine();            
             this.contactForm.get('referenceNr')?.setValue('');
             this.readonly = false;
         } else {
             this.contactForm.get('referenceNr')?.clearValidators();
+            this.contactForm.get('referenceNr')?.setValidators(CustomValidators.invalidRefNrValidator(this.refCheckService));
             this.contactForm.get('referenceNr')?.setValue('');
-            this.configTypeValidators();
+            this.configRefNrByChanges();
             this.hasReferenceFromParams = false;
             this.readonly = false;
             this.selectedParams = [];
@@ -139,9 +141,8 @@ export class ContactComponent implements OnInit, OnDestroy {
         }
     }
 
-    configTypeValidators() {
+    configRefNrByChanges() {
         const refNr = this.contactForm.get('referenceNr')?.value;
-
         if(refNr === null || refNr.length !== 6) {
             this.hasValidReferenceNr = false;
             return;
@@ -153,7 +154,16 @@ export class ContactComponent implements OnInit, OnDestroy {
         }        
     }
 
+    configRefNrOnSubmit() {
+        // add this validator only on submit to avoid permanent validation in length check
+        this.contactForm.get('referenceNr')?.addValidators(CustomValidators.invalidRefNrLengthValidator());
+        const activateValidator = this.contactForm.get('referenceNr')?.value;
+        this.contactForm.get('referenceNr')?.setValue('');
+        this.contactForm.get('referenceNr')?.setValue(activateValidator);
+    }
+
     onSubmit() {
+        this.configRefNrOnSubmit();
         this.contactForm.markAllAsTouched();
         
         if(this.contactForm.invalid) {

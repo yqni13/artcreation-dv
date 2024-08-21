@@ -6,7 +6,10 @@
         <div *ngIf="control.hasError('email')">
             Field '{{fieldName}}' has invalid format.
         </div>
-        <div *ngIf="control.hasError('invalidReferenceNr')">
+        <div *ngIf="control.hasError('invalidRefNr')">
+            {{fieldName}} '{{control.value}}' does not exist.
+        </div>
+        <div *ngIf="control.hasError('invalidRefNrLength')">
             Field '{{fieldName}}' must be 6 characters.
         </div>
     </div>

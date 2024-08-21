@@ -24,21 +24,27 @@
                         [formControl]="contactForm.get('subject') | controlCast"
                         [options]="subjectOptions"
                         [fieldName]="'Subject'"
-                        (byChange)="configReferenceNrValidators()"
+                        (byChange)="configRefNrByType()"
                     ></agal-selectinput>
                     <agal-textinput
                         [className]="'agal-form-right'"
                         [placeholder]="(contactForm.get('subject')?.value === subjectOptions.generalRequest || 
                                         contactForm.get('subject')?.value === '') 
-                                        ? 'ReferenceNr' 
+                                        ? '--' 
                                         : 'ReferenceNr*'"
                         [inputType]="'text'"
                         [ngStyle]="{'width': '50%'}"
                         [readonly]="readonly"
-                        [ngClass]="hasReferenceFromParams ? 'agal-query-value agal-readonly' : ''"
+                        [ngClass]="hasReferenceFromParams 
+                        ? 'agal-query-value agal-readonly' 
+                        : (contactForm.get('subject')?.value === subjectOptions.generalRequest ||
+                        contactForm.get('subject')?.value === '')
+                        ? 'agal-readonly'
+                        : ''"
                         [formControl]="contactForm.get('referenceNr') | controlCast"
                         [fieldName]="'ReferenceNr'"
-                        (byChange)="configTypeValidators()"
+                        (byChange)="configRefNrByChanges()"
+
                     ></agal-textinput>
                 </div>
                 <div class="agal-form-item agal-form-multiple">
