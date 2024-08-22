@@ -39,7 +39,7 @@ export class MailService {
         this.mailData.message = `
             This email was sent by: ${this.mailData.honorifics} ${this.mailData.title !== '' ? `${this.mailData.title} ` : ''}${this.mailData.firstName} ${this.mailData.lastName}\n
             Reference-Number: ${this.mailData.referenceNr.length > 0 
-                ? this.mailData.referenceNr + ` Type: ${msgPartType}`
+                ? this.mailData.referenceNr.toUpperCase() + ` Type: ${msgPartType}`
                 : '--'}\n\n
             Message: ${this.mailData.message}
         `

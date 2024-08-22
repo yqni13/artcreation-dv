@@ -11,6 +11,8 @@ $color-ice-white: #f0f8ff;
 $color-rich-black: #020d19;
 $color-deep-blue: #011222;
 $color-contrast-dark: #071c2fd3;
+$color-snackbar-bg: #323232;
+
 
 $color-validation-red: #ea2222;
 $color-accept-green: #209720;
@@ -22,7 +24,7 @@ $color-light-grey: #7e7e7e;
 $color-dark-grey: #333;
 
 $color-route-dark: #ab5f28e6;
-$color-route-light: #E69900;
+$color-route-light: #e69900;
 
 $color-forest-green: #002B33;
 $color-midnight-green: #01353f;
@@ -58,3 +60,17 @@ $select-symbol-balance: 1px;
 
 /* use padding variables to highlight relation to used padding values in divs */
 $faq-box-height: calc($comp-padding-small * 2);
+
+
+/* snackbar color definitions */
+$color-lightmode-error: #b01515;
+$color-darkmode-error: #d62323;
+
+$color-lightmode-info: #384bfbe6;
+$color-darkmode-info: #235cb1;
+
+$color-lightmode-success: #5ecb5e;
+$color-darkmode-success: #116600;
+
+$color-lightmode-warning: #e69900;
+$color-darkmode-warning: #ab5f28e6;

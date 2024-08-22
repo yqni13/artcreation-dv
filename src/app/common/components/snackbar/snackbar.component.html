@@ -1,0 +1,28 @@
+<div 
+    class="agal-snackbar-container"
+    [ngClass]="snackbarMsg.type === snackbarOptions.error
+    ? 'snackbar-error'
+    : snackbarMsg.type === snackbarOptions.info
+    ? 'snackbar-info'
+    : snackbarMsg.type === snackbarOptions.success
+    ? 'snackbar-success'
+    : 'snackbar-warning'"
+>
+    <div class="agal-snackbar-content" [ngClass]="!!snackbarMsg.text ? '' : 'agal-singleline'">
+        <div class="agal-snackbar-title">
+            <span>{{snackbarMsg.type}}: </span>
+            <h4>{{snackbarMsg.title}}</h4>
+        </div>
+        <div class="agal-snackbar-text" *ngIf="!!snackbarMsg.text">
+            {{snackbarMsg.text}}
+        </div>
+    </div>
+    <div class="agal-snackbar-btn" *ngIf="!snackbarMsg.autoClose">
+        <i 
+            class="icon-CloseX" 
+            (click)="close()" 
+            (keydown.enter)="close()"
+            [attr.aria-disabled]="true"
+        ></i>
+    </div>
+</div>

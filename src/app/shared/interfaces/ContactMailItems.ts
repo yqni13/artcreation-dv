@@ -1,6 +1,6 @@
 export declare interface ContactMailItem {
     subject: string,
-    referenceNr?: number,
+    referenceNr?: string,
     email: string,
     firstName: string,
     lastName: string,

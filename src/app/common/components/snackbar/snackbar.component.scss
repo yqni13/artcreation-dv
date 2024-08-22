@@ -1,0 +1,77 @@
+@use '../../../../stylesheets/utilities' as sass;
+
+
+.agal-snackbar-container {
+    width: fit-content;
+    max-width: 400px;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--theme-nav-bg);
+    margin: 25px;
+}
+
+.snackbar-error {
+    span,
+    i {
+        color: var(--theme-snackbar-error);
+    }
+}
+.snackbar-info {
+    span,
+    i {
+        color: var(--theme-snackbar-info);
+    }
+}
+.snackbar-success {
+    span,
+    i {
+        color: var(--theme-snackbar-success);
+    }
+}
+.snackbar-warning {
+    span,
+    i {
+        color: var(--theme-snackbar-warning);
+    }
+}
+
+.agal-snackbar-content {
+    display: flex;
+    flex-direction: column;
+    
+    .agal-snackbar-title {
+        display: flex;
+        flex-direction: row;
+        padding: 15px 0 5px 0;
+
+        span {
+            padding-left: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        h4 {
+            padding: 0 15px;
+            margin-block: 0;
+            margin-inline: 0;
+        }
+    }
+    .agal-snackbar-text {        
+        padding: 0 15px 15px 15px;
+        margin-block: 0;
+        margin-inline: 0;
+        font-size: 12px;
+    }
+}
+
+.agal-singleline {
+    align-self: center;
+    div {
+        padding: 0!important;
+    }
+}
+
+.agal-snackbar-btn {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}

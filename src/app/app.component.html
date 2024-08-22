@@ -3,4 +3,8 @@
 
 <router-outlet><router-outlet/>
 
+<div class="agal-component-snackbar">
+    <agal-snackbar *ngFor="let snackbar of snackbarService.snackbarCollection" [snackbarMsg]="snackbar"></agal-snackbar>
+</div>
+
 <app-footer></app-footer>
