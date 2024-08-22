@@ -4,6 +4,7 @@
         (change)="selectOption($event)"
     >
         <option value="" disabled>{{placeholder}}</option>
+        <hr>
         <option 
             *ngFor="let option of options | keyvalue" 
             value="{{option.value}}"

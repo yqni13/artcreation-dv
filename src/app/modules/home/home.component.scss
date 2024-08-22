@@ -1,6 +1,24 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
+$col: var(--theme-body-text);
+
+.agal-header {
+    padding: 250px 0;
+
+    background-image: url("/assets/color-bg3.png");
+    background-position-x: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position-y: -5px;
+}
+
+h1 {
+    -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(131, 131, 131, 0.208));
+    padding: 0 25px;
+    border-bottom: 1px solid var(--theme-body-text);
+}
+
 .agal-home-top-img {
     width: 100%;
     display: flex;

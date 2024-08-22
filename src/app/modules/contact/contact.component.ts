@@ -165,10 +165,8 @@ export class ContactComponent implements OnInit, OnDestroy {
     onSubmit() {
         this.configRefNrOnSubmit();
         this.contactForm.markAllAsTouched();
-        
+
         if(this.contactForm.invalid) {
-            // TODO(yqni13): remove console.log when toasty msg is implemented
-            console.log('form invalid', this.contactForm);
             return;
         }
 
