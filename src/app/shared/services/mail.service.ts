@@ -47,6 +47,6 @@ export class MailService {
 
     sendMail() {
         this.configMailData();
-        return this.http.post(this.url, this.mailData, {responseType: 'text'});        
+        return this.http.post(this.url, this.mailData, { observe: 'response' });        
     }
 }

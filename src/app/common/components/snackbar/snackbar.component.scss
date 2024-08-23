@@ -42,12 +42,13 @@
     .agal-snackbar-title {
         display: flex;
         flex-direction: row;
-        padding: 15px 0 5px 0;
+        padding: 0 0 5px 0;
 
         span {
             padding-left: 15px;
             text-transform: uppercase;
             font-weight: bold;
+            align-content: center;
         }
         h4 {
             padding: 0 15px;
@@ -56,7 +57,7 @@
         }
     }
     .agal-snackbar-text {        
-        padding: 0 15px 15px 15px;
+        padding: 0 15px;
         margin-block: 0;
         margin-inline: 0;
         font-size: 12px;
@@ -65,9 +66,15 @@
 
 .agal-singleline {
     align-self: center;
+    padding: 25px 0;
+
     div {
         padding: 0!important;
     }
+}
+
+.agal-multiline {
+    padding: 15px 0;
 }
 
 .agal-snackbar-btn {

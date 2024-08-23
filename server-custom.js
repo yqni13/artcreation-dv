@@ -45,11 +45,14 @@ app.post('/send-email', (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log(error);
-            res.status(500).send('Error sending email');
+            if(error.responseCode === 535) {
+                res.status(535).json({'title': 'Auth Error sending email.', 'text': 'Please contact developer at http://yqni13.github.io/portfolio.'})
+            } else {
+                res.status(500).json({'title': 'Server Error sending email.', 'text': 'Please try again later.'});
+            }
         } else {
             console.log('Email sent:', info.response);
-            res.status(200).send('Email sent successfully');
+            res.status(200).json({'title': 'Email sent successfully', 'text': `Email sent from user: ${email}`});
         }
     });
 });
