@@ -1,25 +1,5 @@
 @use '../../../stylesheets/utilities' as sass;
 
-section {
-    min-height: calc(100% - 300px);
-    height: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.agal-faq-header {
-    text-align: center;
-    text-align: -webkit-center;
-    text-align: -moz-center;
-    text-align: -o-center;
-
-    h1 {
-        width: 100%;
-    }
-    p {
-        width: 100%;
-    }
-}
 
 .agal-faq-content {
     display: flex;
@@ -35,7 +15,7 @@ section {
 
         .agal-faq-coll-box {
             position: relative;
-            background: sass.$color-light-grey;
+            background: var(--theme-faq-collapsable);
             transition: all .15s ease-in-out;
 
             &:before {
@@ -57,7 +37,7 @@ section {
             cursor: initial;
 
             label {
-                color: sass.$color-ice-white;
+                color: var(--theme-contrast-text);
                 font-weight: bold;
                 text-transform: uppercase;
                 letter-spacing: 2px;
@@ -73,7 +53,7 @@ section {
             height: sass.$faq-box-height;
             line-height: sass.$faq-box-height;
             display: inline-block;
-            border-bottom: solid 1px grey;
+            border-bottom: solid 1.5px var(--theme-body-bg);
             cursor: pointer;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -115,7 +95,7 @@ section {
         }
 
         input:checked + .agal-faq-coll-box .agal-faq-coll-title {
-            border-bottom: solid 1px black;
+            border-bottom: solid 1px var(--theme-faq-activeborder);
         }
 
         input:checked + .agal-faq-coll-box .agal-faq-coll-content,

@@ -3,8 +3,14 @@ import { PreloadAllModules, provideRouter, withPreloading } from '@angular/route
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { appHttpInterceptor } from './app.http.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes, withPreloading(PreloadAllModules)), provideClientHydration(), provideHttpClient(withFetch())]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideRouter(routes, withPreloading(PreloadAllModules)), 
+    provideClientHydration(), 
+    provideHttpClient(withFetch(), withInterceptors([appHttpInterceptor]))
+  ]
 };

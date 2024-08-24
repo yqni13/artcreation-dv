@@ -1,37 +1,119 @@
 <section>
-    <div class="agal-contact-header">
+    <header>
         <h1>Contact me</h1>
+    </header>
+    <div class="agal-head-message">
         <p>
             Most common questions are listed and answered in the 
-            <span
-                class="agal-nav-routes"
+            <a
+                class="agal-nav-routes agal-anchor"
                 [attr.aria-disabled]="true"
-                routerLink="../../faq"
-            >FAQ</span>.
+                routerLink="/faq"
+            >FAQ</a>.
         </p>
     </div>
     <div class="agal-contact-content-wrapper">
         <div class="agal-contact-content">
 
             <form [formGroup]="contactForm">
-                <div class="agal-contact-form-item">
-                    <select formControlName="subject" >
-                        <option value="" disabled>select subject*</option>
-                        <option *ngFor="let option of subjectOptions" value="{{option}}">
-                            {{option}}
-                        </option>
-                    </select>
-                    <input placeholder="ReferenceNr" type="text" formControlName="referenceNr">
+                <div class="agal-form-item agal-form-multiple">
+                    <agal-selectinput
+                        [ngStyle]="{'width': '50%'}"
+                        [className]="'agal-form-left-select'"
+                        [placeholder]="'select subject*'"
+                        [formControl]="contactForm.get('subject') | controlCast"
+                        [options]="subjectOptions"
+                        [fieldName]="'Subject'"
+                        (byChange)="configRefNrByType()"
+                    ></agal-selectinput>
+                    <agal-textinput
+                        [className]="'agal-form-right'"
+                        [placeholder]="(contactForm.get('subject')?.value === subjectOptions.generalRequest || 
+                                        contactForm.get('subject')?.value === '') 
+                                        ? '--' 
+                                        : 'ReferenceNr*'"
+                        [inputType]="'text'"
+                        [ngStyle]="{'width': '50%'}"
+                        [readonly]="readonly"
+                        [ngClass]="hasReferenceFromParams 
+                        ? 'agal-query-value agal-readonly' 
+                        : (contactForm.get('subject')?.value === subjectOptions.generalRequest ||
+                        contactForm.get('subject')?.value === '')
+                        ? 'agal-readonly'
+                        : ''"
+                        [formControl]="contactForm.get('referenceNr') | controlCast"
+                        [fieldName]="'ReferenceNr'"
+                        (byChange)="configRefNrByChanges()"
+
+                    ></agal-textinput>
                 </div>
-                <div class="agal-contact-form-item">
-                    <input placeholder="Email*" type="email" formControlName="email">
-                </div>                
-                <div class="agal-contact-form-item">
-                    <input placeholder="Firstname*" type="text" formControlName="firstName">
-                    <input placeholder="Lastname*" type="text" formControlName="lastName">
+                <div class="agal-form-item agal-form-multiple">
+                    <agal-selectinput
+                        *ngIf="hasValidReferenceNr"
+                        [className]="'agal-form-left-select'"
+                        [ngStyle]="!hasValidReferenceNr ? {} : {'width': '40%'}"
+                        [formControl]="contactForm.get('type') | controlCast"
+                        [placeholder]="'select type*'"
+                        [options]="artworkOptions"
+                        [fieldName]="'Type'"
+                        [ngClass]="contactForm.get('subject')?.value === subjectOptions.artOrder 
+                                    ? 'agal-query-value agal-readonly' 
+                                    : ''"
+                    ></agal-selectinput>
+                    <agal-textinput
+                        [className]="hasValidReferenceNr ? 'agal-form-right' : ''"
+                        [ngStyle]="hasValidReferenceNr ? {'width': '60%'} : {'width': '100%'}"
+                        [inputType]="'email'"
+                        [placeholder]="'Email*'"
+                        [formControl]="contactForm.get('email') | controlCast"
+                        [readonly]="false"
+                        [fieldName]="'Email'"
+                    ></agal-textinput>
                 </div>
-                <div class="agal-contact-form-item">
-                    <textarea placeholder="Message*" formControlName="message"></textarea>
+                <div class="agal-form-item agal-form-multiple">
+                    <agal-selectinput
+                        [className]="'agal-form-left-select'"
+                        [ngStyle]="{'width': '40%'}"
+                        [formControl]="contactForm.get('honorifics') | controlCast"
+                        [placeholder]="'select honorifics*'"
+                        [options]="['Mr', 'Ms']"
+                        [fieldName]="'Honorifics'"
+                    ></agal-selectinput>
+                    <agal-textinput
+                        [className]="'agal-form-right'"
+                        [ngStyle]="{'width': '60%'}"
+                        [placeholder]="'Academic title'"
+                        [inputType]="'text'"
+                        [formControl]="contactForm.get('title') | controlCast"
+                        [fieldName]="'Title'"
+                    ></agal-textinput>
+                </div>          
+                <div class="agal-form-item agal-form-multiple">
+                    <agal-textinput
+                        [ngStyle]="{'width': '50%'}"
+                        [className]="'agal-form-left'"
+                        [inputType]="'text'"
+                        [placeholder]="'Firstname*'"
+                        [formControl]="contactForm.get('firstName') | controlCast"
+                        [fieldName]="'Firstname'"
+                        ></agal-textinput>
+                        <agal-textinput
+                        [ngStyle]="{'width': '50%'}"
+                        [className]="'agal-form-right'"
+                        [inputType]="'text'"
+                        [placeholder]="'Lastname*'"
+                        [formControl]="contactForm.get('lastName') | controlCast"
+                        [fieldName]="'Lastname'"
+                    ></agal-textinput>
+                </div>
+                <div class="agal-form-item">
+                    <agal-textareainput
+                        [ngStyle]="{'width': '100%'}"
+                        [placeholder]="'Message*'"
+                        [formControl]="contactForm.get('message') | controlCast"
+                        [fieldName]="'Message'"
+                        [rows]="6"
+                    ></agal-textareainput>
                 </div>
             </form>
             <div class="agal-contact-button-wrapper">

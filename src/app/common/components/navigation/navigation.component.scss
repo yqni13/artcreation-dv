@@ -29,7 +29,6 @@
             
             span {
                 font-size: sass.$font-text-size;
-                font-weight: bold;
                 cursor: pointer;
                 color: var(--theme-body-text);
             }
@@ -76,14 +75,3 @@
     color: sass.$color-light-grey!important;
 }
 
-.agal-active-route {
-    color: sass.$color-active-route!important;
-    &:hover {
-        opacity: 1!important;
-    }
-    &:hover::after,
-    &:after {
-        transform: none!important;
-        width: 0%!important;
-    }
-}

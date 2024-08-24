@@ -17,21 +17,41 @@
 
 /* THEME OPTION DEFINITIONS */
 [data-theme='light'] {
+    --theme-active-route: #{sass.$color-route-light};
+    --theme-submenu-route: #{sass.$color-dark-grey};
     --theme-body-bg: #{sass.$color-ice-white};
     --theme-body-text: #{sass.$color-rich-black};
+    --theme-contrast-anchor: #{sass.$color-route-light};
+    --theme-contrast-text: #{sass.$color-route-light};
+    --theme-faq-collapsable: #{sass.$color-light-grey};
+    --theme-faq-activeborder: #{sass.$color-dark-grey};
     --theme-nav-bg: #{sass.$color-light-grey};
-    --theme-nav-border: #{sass.$color-gold-yellow};
+    --theme-nav-border: #{sass.$color-route-light};
     --theme-home-header: #{sass.$color-smalt-blue};
     --theme-highlight-body: #{sass.$color-dark-grey};
     --theme-highlight-text: #{sass.$color-ice-white};
+    --theme-snackbar-error: #{sass.$color-lightmode-error};
+    --theme-snackbar-info: #{sass.$color-lightmode-info};
+    --theme-snackbar-success: #{sass.$color-lightmode-success};
+    --theme-snackbar-warning: #{sass.$color-lightmode-warning};
 }
 
 [data-theme='dark'] {
-    --theme-body-bg: #{sass.$color-deep-blue};
+    --theme-active-route: #{sass.$color-route-dark};
+    --theme-submenu-route: #{sass.$color-light-grey};
+    --theme-body-bg: #{sass.$color-forest-green};
     --theme-body-text: #{sass.$color-ice-white};
+    --theme-contrast-anchor: #{sass.$color-route-dark};
+    --theme-contrast-text: #{sass.$color-route-dark};
+    --theme-faq-collapsable: #{sass.$color-midnight-green};
+    --theme-faq-activeborder: #{sass.$color-eggshell-white};
     --theme-nav-bg: #{sass.$color-dark-grey};
     --theme-nav-border: #{sass.$color-light-grey};
     --theme-home-header: #{sass.$color-ice-white};
-    --theme-highlight-body: #{sass.$color-smalt-blue};
+    --theme-highlight-body: #{sass.$color-eggshell-white};
     --theme-highlight-text: #{sass.$color-rich-black};
+    --theme-snackbar-error: #{sass.$color-darkmode-error};
+    --theme-snackbar-info: #{sass.$color-darkmode-info};
+    --theme-snackbar-success: #{sass.$color-darkmode-success};
+    --theme-snackbar-warning: #{sass.$color-darkmode-warning};
 }

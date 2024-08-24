@@ -1,11 +1,6 @@
 @use '../../../stylesheets/utilities' as sass;
 
-section {
-    min-height: calc(100% - 300px);
-    height: auto;
-}
 
-.agal-contact-header,
 .agal-contact-content-wrapper {
     display: flex;
     align-items: center;
@@ -13,70 +8,21 @@ section {
     justify-content: center;
 }
 
-.agal-contact-form-item {
-    margin: sass.$contact-input-margin 0;
-    display: flex;
-    
-    input {
-        width: 100%;
-        height: 25px;
-    }
-    
-    textarea {
-        width: 100%;
-        height:75px;
-    }
-}
-    
 .agal-contact-content {
     width: 100%;
-    border: solid 1px green;
+    border: solid 1px var(--theme-body-text);
 
     margin: 25px 0;
+    padding: calc(sass.$comp-padding-small / 2);
     width: sass.$contact-form-width;
     
     form {
         width: sass.$contact-form-width;
-
-        div:nth-child(1) {
-            display: flex;
-            flex-wrap: nowrap;
-            flex-direction: row;
-
-            select {
-                margin-right: calc(sass.$contact-input-margin / 2);
-                overflow: hidden;
-                text-overflow: ellipsis;
-
-                $select-missing-width: 6px;
-                width: calc(50% - (sass.$contact-input-margin / 2) + $select-missing-width);
-            }
-            input {
-                margin-left: calc(sass.$contact-input-margin / 2);
-                width: calc(50% - (sass.$contact-input-margin / 2));
-            }
-        }
-        
-        div:nth-child(3) {
-            display: flex;
-            flex-wrap: nowrap;
-            flex-direction: row;
-            input:nth-child(1) {
-                margin-right: calc(sass.$contact-input-margin / 2);
-            }
-            
-            input:nth-child(2) {
-                margin-left: calc(sass.$contact-input-margin / 2);
-            }
-
-            input {
-                width: calc(50% - (sass.$contact-input-margin / 2));
-            }
-        }
     }
 }
 
 .agal-contact-button-wrapper {
+    margin-top: calc(sass.$comp-padding-small / 2);
     width: 100%;
     display: flex;
     justify-content: center;

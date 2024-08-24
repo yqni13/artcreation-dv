@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { Component, forwardRef, Input } from "@angular/core";
-import { FormControl, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { Component, Input } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import { VarDirective } from "../../directives/ng-var.directive";
 
 @Component({
@@ -8,13 +8,6 @@ import { VarDirective } from "../../directives/ng-var.directive";
     templateUrl: './validation-message.component.html',
     styleUrl: './validation-message.component.scss',
     standalone: true,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => ValidationMessageComponent),
-            multi: true,
-        }
-    ],
     imports: [
         CommonModule,
         VarDirective
@@ -22,11 +15,11 @@ import { VarDirective } from "../../directives/ng-var.directive";
 })
 export class ValidationMessageComponent {
 
-    @Input() agalControl: FormControl;
+    @Input() ngControl: FormControl;
     @Input() fieldName: string;
 
     constructor() { 
-        this.agalControl = new FormControl();
+        this.ngControl = new FormControl();
         this.fieldName = '';
     }
 }

@@ -18,6 +18,7 @@ export class FooterComponent implements OnInit {
     protected infoRoutes: Route[];
     protected connectRoutes: Route[];
     protected socialmediaURL: string;
+    protected creatorURL: string;
 
     constructor(
         private navigation: NavigationService,
@@ -31,7 +32,8 @@ export class FooterComponent implements OnInit {
 
         this.infoRoutes = [];
         this.connectRoutes = [];
-        this.socialmediaURL = 'https://instagram.com/vargarella_'
+        this.socialmediaURL = 'https://instagram.com/vargarella_';
+        this.creatorURL = 'https://yqni13.github.io/portfolio';
     }
 
     ngOnInit() {

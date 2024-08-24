@@ -1,6 +1,8 @@
 @use '../../../../stylesheets/utilities' as sass;
 
-section {
+footer {
+    margin: 0 0 0 var(--view-nav-width);
+    width: calc(100% - var(--view-nav-width));
     height: 300px;
     display: flex;
     flex-direction: row;
@@ -10,20 +12,30 @@ section {
 .agal-footer-credits {
     width: 55%;
     height: 100%;
-    display: block;
-    align-content: center;
-    
-    h3,
-    p {
-        padding-left: sass.$comp-padding-big;
-        color: sass.$color-active-route;
-    }
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    color: var(--theme-active-route);
 
+    h3 {
+        font-size: 33px;
+        margin: 10px 0;
+        font-weight: normal;
+        padding-left: sass.$comp-padding-big;
+    }
+    
+    a {
+        padding-left: calc(sass.$comp-padding-big + 3.5px);
+    }
+    
     .icon-Copyright {
-        /* TODO(yqni13): needs to be adapted to font-size via clamp*/
-        /* clamp size and for width +1, height +2 or similar */
-        width: 15px;
-        height: 15px;
+        // TODO(yqni13): needs to be adapted to font-size via clamp
+        // clamp size and for width +1, height +2 or similar
+        width: 18px;
+        height: 18px;
+        position: relative;
+        left: 100px;
+        top: 4px;
     }
 }
 
@@ -34,10 +46,9 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-left: solid 2px sass.$color-tradewind-blue;
 
     h4 {
-        color: var(--theme-body-text);
+        color: var(--theme-contrast-text);
         text-transform: uppercase;
         font-weight: bold;
     }
@@ -53,12 +64,12 @@ section {
             
             span,
             a {
-                color: var(--theme-body-text);
+                color: var(--theme-contrast-anchor);
                 text-decoration: none;
                 cursor: pointer;
 
                 &:hover {
-                    opacity: 0.5;
+                    opacity: 0.3;
                 }
             }
         }
