@@ -21,6 +21,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     
     protected routes: Route[];
     protected selectedTheme: ThemeOption;
+    protected isMobileMode: boolean;
     private mobileNavExpanded: boolean;
     private collapseNavbarWidth: number;
     private isLocalStorageAvailable: any;
@@ -43,6 +44,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         this.routes = [];
         this.mobileNavExpanded = false;
         this.collapseNavbarWidth = 768;
+        this.isMobileMode = false; // TODO(yqni13): implement responsive design
     }
 
     ngOnInit() {

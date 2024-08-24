@@ -1,6 +1,6 @@
 <nav class="agal-nav-bar" data-media="mobile">
     <ul>
-        <li class="agal-nav-folding">
+        <li class="agal-nav-folding" *ngIf="isMobileMode">
             <i 
                 [attr.aria-disabled]="true"
                 class="icon-BurgerMenu agal-nav-mobile" 

@@ -48,6 +48,7 @@
 .agal-carousel-default-text-header {
     h3 {
         font-size: sass.$home-news-header-size;
+        color: var(--theme-contrast-anchor);
     }
 }
 
@@ -69,6 +70,10 @@
         height: sass.$home-arrow-size;
         width: sass.$home-arrow-size;
         padding: 0 2.5px;
+
+        &:hover {
+            background-color: var(--theme-contrast-anchor);
+        }
     }
 
     .agal-arrow-left {

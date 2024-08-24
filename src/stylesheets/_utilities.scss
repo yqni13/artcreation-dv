@@ -10,27 +10,37 @@ $device-small-any: 350px;
 $color-ice-white: #f0f8ff;
 $color-rich-black: #020d19;
 $color-deep-blue: #011222;
+$color-contrast-dark: #071c2fd3;
+$color-snackbar-bg: #323232;
 
-$color-warning-red: #ca2b2b;
-$color-accept-green: #127412;
+
+$color-validation-red: #ea2222;
+$color-accept-green: #209720;
 $color-gold-yellow: #ffd500;
 $color-ocean-blue: #0000cc;
 $color-nature-green: #116600;
+$color-smalt-blue: #1a383e;
 $color-light-grey: #7e7e7e;
 $color-dark-grey: #333;
-$color-active-route: #92572ce6;
 
-/* color palette #1 */
-$color-emperor-grey: #594f4f;
-$color-smalt-blue: #1a383e;
-$color-tradewind-blue: #45ada8;
-$color-celadon-green: #9de0ad;
-$color-chiffon-white: #e5fcc2;
+$color-route-dark: #ab5f28e6;
+$color-route-light: #e69900;
+
+$color-forest-green: #002B33;
+$color-midnight-green: #01353f;
+$color-eggshell-white: #fae3b9de;
 
 
 /* custom definitions */
-$font-text-size: clamp(18px, 1.4vw, 25px);
-$font-text-family: "Monaco", monospace;
+
+
+/* IMPORTANT! <select> uses padding-left: 4px intern (don't know yet to change that) */
+$select-intern-leftpadding: 4px;
+/* DO NOT CHANGE! this is used to balance! */
+
+
+$font-text-size: clamp(16px, 1.2vw, 25px);
+$font-text-family: "Montserrat", sans-serif;
 
 $home-news-header-size: clamp(20px, 2.3vw, 38px);
 $home-news-content-size: clamp(12px, 1.6vw, 24px);
@@ -42,6 +52,25 @@ $contact-form-width: 400px;
 $comp-padding-small: 25px;
 $comp-padding-medium: 50px;
 $comp-padding-big: 100px;
+$comp-form-padding: 5px;
+$comp-margin-h1: 40px;
+
+$form-divider-margin: 2.5px;
+$select-symbol-balance: 1px;
 
 /* use padding variables to highlight relation to used padding values in divs */
 $faq-box-height: calc($comp-padding-small * 2);
+
+
+/* snackbar color definitions */
+$color-lightmode-error: #b01515;
+$color-darkmode-error: #d62323;
+
+$color-lightmode-info: #384bfbe6;
+$color-darkmode-info: #235cb1;
+
+$color-lightmode-success: #5ecb5e;
+$color-darkmode-success: #116600;
+
+$color-lightmode-warning: #e69900;
+$color-darkmode-warning: #ab5f28e6;

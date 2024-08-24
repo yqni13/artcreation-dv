@@ -1,5 +1,34 @@
 @use '../../../stylesheets/utilities' as sass;
 
-section {
-    height: calc(100% - 300px);
+
+.agal-gallery-nav {
+    display: flex;
+    justify-content: center;
+
+    a {
+        text-transform: uppercase;
+        margin: calc(sass.$comp-padding-small / 2);
+        padding: 10px 15px;
+        cursor: pointer;
+        border: solid 1px var(--theme-submenu-route);
+        border-radius: 5px;
+    }
+
+    .agal-active-route {
+        border-color: var(--theme-active-route);
+    }
+}
+
+.agal-gallery-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.agal-gallery-nodata {
+    margin: sass.$comp-padding-big 0;
+    color: sass.$color-light-grey;
+    font-size: 30px;
+    font-style: italic;
 }

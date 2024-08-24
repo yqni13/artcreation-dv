@@ -1,20 +1,6 @@
 // TODO(yqni13): remove if not used
 @use '../../../stylesheets/utilities' as sass;
 
-section {
-    min-height: calc(100% - 300px);
-    height: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.agal-about-header {
-    width: 100%;
-    text-align: center;
-    text-align: -webkit-center;
-    text-align: -moz-center;
-    text-align: -o-center;
-}
 
 .agal-about-content {
     display: flex;

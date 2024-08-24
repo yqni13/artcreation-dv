@@ -1,0 +1,12 @@
+@use '../../../../../stylesheets/utilities' as sass;
+
+
+.agal-text-wrapper {
+    // use ngStyle for width to style lvl above => <agal-textinput>
+    display: grid;
+    
+    input {
+        width: calc(100% - 12px);
+        padding: 8.5px sass.$comp-form-padding;
+    }
+}

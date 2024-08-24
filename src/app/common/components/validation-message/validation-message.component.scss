@@ -1,3 +1,9 @@
+@use '../../../../stylesheets/utilities' as sass;
+
+
 .agal-validation-errors {
-    color: red;
+    color: sass.$color-validation-red;
+    font-size: 8px;
+    font-weight: bold;
+    padding: 2px 7px;
 }

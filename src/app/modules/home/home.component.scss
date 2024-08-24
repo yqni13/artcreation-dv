@@ -1,17 +1,22 @@
 @use '../../../stylesheets/utilities' as sass;
 
-$home-arrow-size: 30px;
 
+$col: var(--theme-body-text);
 
-.agal-top-header {
-    background-color: var(--theme-body-bg);
+header {
+    padding: 250px 0;
+
+    background-image: url("/assets/color-bg3.png");
+    background-position-x: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position-y: -5px;
 }
 
 h1 {
-    color: var(--theme-home-header);
-    
-    text-shadow: 5px 5px 10px var(--theme-home-header);
-    margin: 50px 0;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(131, 131, 131, 0.208));
+    padding: 0 25px;
+    border-bottom: 1px solid var(--theme-body-text);
 }
 
 .agal-home-top-img {

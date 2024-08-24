@@ -1,0 +1,19 @@
+<div class="agal-snackbar-container" [ngClass]="'snackbar-' + snackbarClass">
+    <div class="agal-snackbar-content" [ngClass]="!!snackbarMsg.text ? 'agal-multiline' : 'agal-singleline'">
+        <div class="agal-snackbar-title">
+            <span>{{snackbarMsg.type}}: </span>
+            <h4>{{snackbarMsg.title}}</h4>
+        </div>
+        <div class="agal-snackbar-text" *ngIf="!!snackbarMsg.text">
+            {{snackbarMsg.text}}
+        </div>
+    </div>
+    <div class="agal-snackbar-btn" *ngIf="!snackbarMsg.autoClose">
+        <i 
+            class="icon-CloseX" 
+            (click)="close()" 
+            (keydown.enter)="close()"
+            [attr.aria-disabled]="true"
+        ></i>
+    </div>
+</div>
