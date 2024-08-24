@@ -7,8 +7,7 @@ import { ErrorService } from "../../shared/services/error.service";
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
 import { DataShareService } from "../../shared/services/data-share.service";
-import { filter, Observable, of, Subscription, tap } from "rxjs";
-import { VarDirective } from "../../common/directives/ng-var.directive";
+import { filter, Subscription, tap } from "rxjs";
 import { TextInputComponent } from "../../common/components/form-components/text-input/text-input.component";
 import { CastAbstractToFormControlPipe } from "../../common/pipes/cast-abstracttoform-control.pipe";
 import { SelectInputComponent } from "../../common/components/form-components/select-input/select-input.component";
@@ -30,7 +29,6 @@ import  * as CustomValidators  from "../../common/helper/custom-validators";
         SelectInputComponent,
         TextInputComponent,
         TextareaInputComponent,
-        VarDirective,
     ]
 })
 export class ContactComponent implements OnInit, OnDestroy {
@@ -40,10 +38,9 @@ export class ContactComponent implements OnInit, OnDestroy {
     protected hasValidReferenceNr: boolean;
     protected hasReferenceFromParams: boolean;
     protected readonly: boolean;
-    protected selectedParams: string[];
+    protected selectedParams: Record<string, string>;
     protected subjectOptions = SubjectOptions;
     protected artworkOptions = ArtworkOptions;
-    protected artworkData$: Observable<string[]>;
 
     private subscription$: Subscription;
 
@@ -60,8 +57,7 @@ export class ContactComponent implements OnInit, OnDestroy {
         this.hasValidReferenceNr = false;
         this.hasReferenceFromParams = false;
         this.readonly = true;
-        this.selectedParams = [];
-        this.artworkData$ = new Observable<string[]>();
+        this.selectedParams = {}
         this.subscription$ = new Subscription();
     }
     
@@ -69,7 +65,6 @@ export class ContactComponent implements OnInit, OnDestroy {
         this.subscription$ = this.dataShareService.sharedData$.pipe(
             filter((x) => !!x), // double exclamation mark (!!) => boolean check !!"" === false
             tap((data) => {
-            this.artworkData$ = of(data);
             this.checkParameters(data);           
         })).subscribe();
 
@@ -94,8 +89,8 @@ export class ContactComponent implements OnInit, OnDestroy {
         this.initForm();
         this.contactForm.patchValue({
             subject: this.hasSelectedParameters ? SubjectOptions.artOrder : '',
-            referenceNr: this.hasSelectedParameters ? this.selectedParams[0] : '',
-            type: this.hasSelectedParameters ? this.selectedParams[1] : '',
+            referenceNr: this.hasSelectedParameters ? this.selectedParams['referenceNr'] : '',
+            type: this.hasSelectedParameters ? this.selectedParams['type'] : '',
             email: '',
             honorifics: '',
             title: '',
@@ -105,8 +100,8 @@ export class ContactComponent implements OnInit, OnDestroy {
         })
     }
 
-    private checkParameters(data: string[]) {
-        if(data !== null || data !== undefined) {
+    private checkParameters(data: Record<string, string>) {
+        if(data !== null || data !== undefined || (data['referenceNr'] !== '' && data['type'] !== '')) {
             this.hasSelectedParameters = true;
             this.hasReferenceFromParams = true;
             this.hasValidReferenceNr = true;
@@ -117,7 +112,7 @@ export class ContactComponent implements OnInit, OnDestroy {
             this.hasReferenceFromParams = false;
             this.hasValidReferenceNr = false;
             this.readonly = false;
-            this.selectedParams = [];
+            this.selectedParams = {};
         }
     }
 
@@ -136,7 +131,7 @@ export class ContactComponent implements OnInit, OnDestroy {
             this.configRefNrByChanges();
             this.hasReferenceFromParams = false;
             this.readonly = false;
-            this.selectedParams = [];
+            this.selectedParams = {};
             this.hasSelectedParameters = false;
         }
     }

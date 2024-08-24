@@ -51,16 +51,16 @@ export class ReferenceCheckService {
         })
     }
 
-    checkReferenceValidity(data: string): boolean {
-        return Object.keys(this.referenceCollection).includes(data.toUpperCase());
+    checkReferenceValidity(reference: string): boolean {
+        return Object.keys(this.referenceCollection).includes(reference.toUpperCase());
     }
 
-    checkTypeByReference(data: string): ArtworkOptions | null {
-        data = data.toUpperCase();
-        if(!Object.keys(this.referenceCollection).includes(data)) {
+    checkTypeByReference(reference: string): ArtworkOptions | null {
+        reference = reference.toUpperCase();
+        if(!Object.keys(this.referenceCollection).includes(reference)) {
             return null;
         }
 
-        return this.referenceCollection[data];
+        return this.referenceCollection[reference];
     } 
 }

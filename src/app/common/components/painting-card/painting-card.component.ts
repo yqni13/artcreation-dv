@@ -37,10 +37,11 @@ export class PaintingCardComponent {
     }
 
     routeWithData() {
-        const data = [
-            this.card.referenceNr, 
-            this.card.type
-        ];
+        const data = {
+            'referenceNr': this.card.referenceNr, 
+            'type': this.card.type
+        };
+        
         this.dataShareService.setSharedData(data);
     }
 }

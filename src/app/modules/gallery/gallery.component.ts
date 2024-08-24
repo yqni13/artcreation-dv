@@ -22,7 +22,7 @@ export class GalleryComponent implements OnInit {
     protected artworkOptions = ArtworkOptions;
     protected paintingsRaw: GalleryItem[];
     protected paintingsFiltered: Map<string, GalleryItem[]>;
-    protected paintingsDisplayedByGenre: GalleryItem[] | undefined;
+    protected paintingsDisplayedByGenre: GalleryItem[];
     protected paintingGenres: string[];
     protected activeGenre: string;
 
@@ -49,12 +49,12 @@ export class GalleryComponent implements OnInit {
         this.selectGenre(this.activeGenre);
     }
 
-    selectGenre(data: string) {
-        this.activeGenre = data;
-        if(data === 'all') {
-            this.paintingsDisplayedByGenre = this.paintingsRaw;
+    selectGenre(genre: string) {
+        this.activeGenre = genre;
+        if(genre === 'all') {
+            this.paintingsDisplayedByGenre = this.paintingsRaw || [];
         } else {
-            this.paintingsDisplayedByGenre = this.paintingsFiltered.get(this.activeGenre);
+            this.paintingsDisplayedByGenre = this.paintingsFiltered.get(this.activeGenre) || [];
         }
     }
 }

@@ -1,7 +1,7 @@
 <section>
-    <div class="agal-header">
+    <header>
         <h1>my passion</h1>
-    </div>
+    </header>
     <nav class="agal-gallery-nav">
         <a
             class="agal-gallery-nav-type"
@@ -9,8 +9,8 @@
             (click)="selectGenre('all')"
             (keydown.enter)="selectGenre('all')"
             [ngClass]="activeGenre === 'all' ? 'agal-active-route' : ''"
-            >ALL</a>
-            <a
+        >ALL</a>
+        <a
             *ngFor="let nav of paintingGenres"
             class="agal-gallery-nav-type"
             [attr.aria-disabled]="true"
@@ -22,6 +22,9 @@
     <div class="agal-gallery-content">
         <div class="agal-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
             <agal-paintingcard [card]="card"></agal-paintingcard>
+        </div>
+        <div class="agal-gallery-nodata" *ngIf="paintingsDisplayedByGenre.length === 0">
+            No paintings found for this genre.
         </div>
     </div>
 </section>

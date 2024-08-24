@@ -46,7 +46,7 @@ section {
     }
 }
 
-.agal-header {
+header {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -93,21 +93,21 @@ h1 {
 
 
     &:focus {
-    text-decoration: none;
+        text-decoration: none;
     }
 
     &:hover {
-    text-decoration: none;
+        text-decoration: none;
     }
 
     &:active {
-    box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
-    outline: 0;
+        box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+        outline: 0;
     }
 
     &:not([disabled]):active {
-    box-shadow: sass.$color-light-grey 2px 2px 0 0, #000 2px 2px 0 1px;
-    transform: translate(2px, 2px);
+        box-shadow: sass.$color-light-grey 2px 2px 0 0, #000 2px 2px 0 1px;
+        transform: translate(2px, 2px);
     }
 }
 

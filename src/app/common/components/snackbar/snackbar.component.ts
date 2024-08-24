@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { SnackbarMessage } from "../../../shared/interfaces/SnackbarMessage";
 import { SnackbarMessageService } from "../../../shared/services/snackbar.service";
 import { CommonModule } from "@angular/common";
@@ -13,10 +13,11 @@ import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
         CommonModule
     ]
 })
-export class SnackbarComponent {
+export class SnackbarComponent implements OnInit {
 
     @Input() snackbarMsg: SnackbarMessage;
     protected snackbarOptions = SnackbarOption;
+    protected snackbarClass: string;
 
     constructor(private snackbarService: SnackbarMessageService) {
         this.snackbarMsg = {
@@ -24,6 +25,11 @@ export class SnackbarComponent {
             text: '',
             type: '',
         }
+        this.snackbarClass = '';
+    }
+
+    ngOnInit() {
+        this.snackbarClass = this.snackbarMsg.type || SnackbarOption.info;
     }
 
     close() {

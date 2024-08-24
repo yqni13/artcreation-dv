@@ -38,6 +38,7 @@
         <div class="agal-paintingcard-property" id="card-price">
             <div class="agal-paintingcard-key">
                 <label for="card-price">Price:</label>
+                <!-- TODO(yqni13): adapt price format to either keep values after decimal point or use €799,-- -->
             </div>
             <div class="agal-paintingcard-value" *ngIf="card.price !== null">
                 <span>{{card.price}}</span>
@@ -76,6 +77,7 @@
                 <span>{{card.date === null ? '--' : card.date}}</span>
             </div>
         </div>
+        <!-- TODO(yqni13): either hide all inputs without value or use '--' for all inputs without value -->
         <div 
             class="agal-paintingcard-property" 
             id="card-comment" 

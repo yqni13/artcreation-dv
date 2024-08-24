@@ -1,7 +1,6 @@
 @use '../../../../../stylesheets/utilities' as sass;
 
 
-// $select-right-padding: calc(sass.$comp-form-padding - sass.$select-symbol-balance);
 $select-left-padding: calc(sass.$comp-form-padding - sass.$select-intern-leftpadding);
 
 .agal-select-wrapper {

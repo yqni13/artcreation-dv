@@ -1,13 +1,4 @@
-<div 
-    class="agal-snackbar-container"
-    [ngClass]="snackbarMsg.type === snackbarOptions.error
-    ? 'snackbar-error'
-    : snackbarMsg.type === snackbarOptions.info
-    ? 'snackbar-info'
-    : snackbarMsg.type === snackbarOptions.success
-    ? 'snackbar-success'
-    : 'snackbar-warning'"
->
+<div class="agal-snackbar-container" [ngClass]="'snackbar-' + snackbarClass">
     <div class="agal-snackbar-content" [ngClass]="!!snackbarMsg.text ? 'agal-multiline' : 'agal-singleline'">
         <div class="agal-snackbar-title">
             <span>{{snackbarMsg.type}}: </span>
