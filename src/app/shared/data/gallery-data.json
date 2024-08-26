@@ -167,5 +167,56 @@
         ],
         "date": 2022,
         "path": "/assets/paintings/F7FFCC.jpg"
+    },
+    {
+        "title": "breath of salt and peace",
+        "referenceNr": "2F2C30",
+        "genre": "nature",
+        "tags": [
+            "sunrise", "holiday", "sea", "salt"
+        ],
+        "price": 0,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            40, 70
+        ],
+        "date": 2024,
+        "path": "/assets/paintings/2F2C30.png"
+    },
+    {
+        "title": "African beauty",
+        "referenceNr": "DBDDD7",
+        "genre": "people",
+        "tags": [
+            "africa", "faceless", "mysterious"
+        ],
+        "price": 599.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            50, 90
+        ],
+        "date": 2024,
+        "path": "/assets/paintings/DBDDD7.jpg"
+    },
+    {
+        "title": "Tutanchamun",
+        "referenceNr": "7B5328",
+        "genre": "people",
+        "tags": [
+            "egyptian", "history"
+        ],
+        "price": null,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60, 60
+        ],
+        "date": 2024,
+        "path": "/assets/paintings/7B5328.jpg"
     }
 ]

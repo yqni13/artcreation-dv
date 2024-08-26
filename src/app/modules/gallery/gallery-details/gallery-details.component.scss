@@ -47,12 +47,12 @@ $img-padding: 5px;
 .agal-gallerydetails-tools {
     position: absolute;
     top: 25px;
-    left: calc(125px + 15px);
+    right: 25px;
     width: 60px;
 
     .agal-detail-tools {
         width: 100%;
-        max-height: 25px;
+        max-height: 40px;
         border: solid 1px var(--theme-submenu-route);
         border-radius: 2.5px;
         cursor: pointer;
@@ -64,8 +64,8 @@ $img-padding: 5px;
     }
 
     .back {
-        height: 25px;
-        line-height: 25px;
+        height: 40px;
+        line-height: 40px;
         margin-bottom: 5px;
 
         .agal-back-arrow {
@@ -81,7 +81,7 @@ $img-padding: 5px;
     }
 
     .zoom {
-        height: 25px;
+        height: 40px;
         margin-top: 5px;
 
         i {
@@ -144,11 +144,24 @@ $img-padding: 5px;
             padding: 0 15px;
         }
     }
+
+    #card-referenceNr span {
+        font-size: 14px;
+    }
+
+    #card-tags span {
+        padding: 2.5px 5px;
+        border: solid 1px var(--theme-body-text);
+        border-radius: 3px;
+        margin-right: 7.5px;
+        font-size: 12px;
+    }
 }
 
 .agal-gallerydetails-sold {
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 14px;
     color: sass.$color-light-grey;
     padding: 2px 8px;
     border: solid 1px sass.$color-light-grey;

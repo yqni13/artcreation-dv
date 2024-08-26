@@ -55,7 +55,7 @@
                 <label for="card-tags">Tags:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>NOT IMPLEMENTED CURRENTLY</span>
+                <span *ngFor="let tag of card?.tags">{{tag}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-type">

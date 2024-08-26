@@ -20,7 +20,7 @@ import { CommonModule } from "@angular/common";
 export class HomeComponent implements OnInit {
 
     protected newsUpdates: NewsUpdateStorageItem;
-    protected slides: {image: string, title: string, text: string}[];
+    protected slides: {image: string, referenceNr: string, title: string, date: string, text: string}[];
 
     constructor(
         private errorService: ErrorService,
@@ -43,7 +43,9 @@ export class HomeComponent implements OnInit {
 
         this.slides = Object.values(this.newsUpdates).map(entry => ({
             image: entry.image,
+            referenceNr: entry.referenceNr,
             title: entry.title,
+            date: entry.date,
             text: entry.text
         }));
     }

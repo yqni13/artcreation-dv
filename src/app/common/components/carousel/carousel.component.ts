@@ -1,23 +1,41 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { Component, Input, TemplateRef } from '@angular/core';
+import { DateFormatPipe } from '../../pipes/date-format.pipe';
+import { Router, RouterModule } from '@angular/router';
+import { FilterGalleryService } from '../../../shared/services/filter-gallery.service';
 
 @Component({
     selector: 'app-carousel',
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss'],
     standalone: true,
-    imports: [CommonModule]
+    imports: [
+        CommonModule,
+        DateFormatPipe,
+        RouterModule
+    ]
 })
 export class CarouselComponent {
-    @Input() slides: { image?: string, title?: string, text?: string }[];
+    @Input() slides: { image?: string, referenceNr: string, title?: string, date: string, text?: string }[];
     @Input() slideTemplate?: TemplateRef<any>;
+
+    private id: string;
 
     currentIndex: number;
 
-    constructor() {
+    constructor(
+        private router: Router,
+        private filterGalleryService: FilterGalleryService
+    ) {
         this.slides = [];
         this.currentIndex = 0;
+        this.id = '';
+    }
+
+    navigateToDetails(id: string) {
+        const genre = this.filterGalleryService.filterByRefNrForGenre(id);
+        this.router.navigate(['gallery/detail', id], { state: { genre: genre}});
     }
 
     getTransform() {

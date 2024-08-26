@@ -75,4 +75,21 @@ export class FilterGalleryService {
 
         return result;
     }
+
+    filterByRefNrForGenre(refNr: string): string {
+        let result = '';
+        if(refNr === '') {
+            return '';
+        }
+
+        Object.values(this.source).forEach((entries) => {
+            Object.entries(entries).forEach(([key, val]) => {
+                if(key === 'referenceNr' && val === refNr) {
+                    result = entries['genre'];
+                }
+            })
+        })
+
+        return result;
+    }
 }

@@ -41,6 +41,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
         this.card = {
             title: null,
             referenceNr: '',
+            genre: 'gallery',
             tags: null,
             price: null,
             type: ArtworkOptions.originalANDprint,
