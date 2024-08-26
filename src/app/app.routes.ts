@@ -9,6 +9,7 @@ import { PrivacyComponent } from './modules/privacy/privacy.component';
 import { ArchiveComponent } from './modules/archive/archive.component';
 import { ShippingComponent } from './modules/shipping/shipping.component';
 import { PrintsComponent } from './modules/prints/prints.component';
+import { GalleryDetailsComponent } from './modules/gallery/gallery-details/gallery-details.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,11 @@ export const routes: Routes = [
         component: GalleryComponent,
         data: { title: 'Gallery', showInNavbar: true, showInFooterConnect: false, showInFooterInfo: false }
     },
+    {
+        path: 'gallery/detail/:id',
+        component: GalleryDetailsComponent,
+        data: { title: 'Details', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+    },    
     {
         path: 'prints',
         component: PrintsComponent,

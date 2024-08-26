@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from "@angular/core";
 import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
 import { default as galleryData } from "../../shared/data/gallery-data.json";
 import { GalleryItem } from "../../shared/interfaces/GalleryItems";
 import { ErrorService } from "../../shared/services/error.service";
-import { PaintingCardComponent } from "../../common/components/painting-card/painting-card.component";
 import { CommonModule } from "@angular/common";
 import { FilterGalleryService } from "../../shared/services/filter-gallery.service";
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 
 @Component({
     selector: 'app-gallery',
@@ -14,7 +15,7 @@ import { FilterGalleryService } from "../../shared/services/filter-gallery.servi
     standalone: true,
     imports: [
         CommonModule,
-        PaintingCardComponent
+        RouterModule,
     ]
 })
 export class GalleryComponent implements OnInit {
@@ -27,6 +28,8 @@ export class GalleryComponent implements OnInit {
     protected activeGenre: string;
 
     constructor(
+        private router: Router,
+        private route: ActivatedRoute,
         private errorService: ErrorService,
         private filterGalleryService: FilterGalleryService
     ) {
@@ -37,21 +40,32 @@ export class GalleryComponent implements OnInit {
             this.paintingsRaw = [];
         }        
         
-        this.activeGenre = 'all';
+        this.activeGenre = 'gallery';
         this.paintingGenres = [];
         this.paintingsDisplayedByGenre = []
-        this.paintingsFiltered = new Map<string, GalleryItem[]>();        
+        this.paintingsFiltered = new Map<string, GalleryItem[]>(); 
+
+        const currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;        
+        if(currentNavigation !== undefined && currentNavigation !== null) {
+            Object.values(currentNavigation as {genre: string}).map((val) => {
+                this.activeGenre = val || 'gallery';
+            });
+        }
     }
     
     ngOnInit() {
-        this.paintingGenres = this.filterGalleryService.getGenres(this.paintingsRaw);
-        this.paintingsFiltered = this.filterGalleryService.filterByGenre(this.paintingsRaw);
-        this.selectGenre(this.activeGenre);
+        this.paintingGenres = this.filterGalleryService.getGenres();
+        this.paintingsFiltered = this.filterGalleryService.filterByGenre();
+        this.selectGenre(this.activeGenre);        
+    }
+
+    navigateToDetail(id: string) {
+        this.router.navigate(['gallery/detail', id], { state: {genre: this.activeGenre}});
     }
 
     selectGenre(genre: string) {
         this.activeGenre = genre;
-        if(genre === 'all') {
+        if(genre === 'gallery') {
             this.paintingsDisplayedByGenre = this.paintingsRaw || [];
         } else {
             this.paintingsDisplayedByGenre = this.paintingsFiltered.get(this.activeGenre) || [];
