@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h1>my passion</h1>
+        <h1>my art</h1>
     </header>
     <nav class="agal-gallery-nav">
         <a
@@ -21,9 +21,7 @@
     </nav>
     <div class="agal-gallery-content">
         <div class="agal-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
-            <!-- <agal-paintingcard [card]="card"></agal-paintingcard> -->
-            <div class="agal-gallery-cards-wrapper">
-                <!-- [routerLink]="['detail', card.referenceNr, { genre: activeGenre }]" -->
+            @defer(on viewport) {<div class="agal-gallery-cards-wrapper">
                 <img 
                     src="{{card.path}}" 
                     alt="404-picture-not-found"
@@ -31,7 +29,10 @@
                     (keydown.enter)="navigateToDetail(card.referenceNr)"
                     [attr.aria-disabled]="true"
                 >
-            </div>
+            </div>} 
+            @placeholder {
+                <img class="agal-loading" src="/assets/loading.gif" alt="loading...">
+            }
         </div>
         <div class="agal-gallery-nodata" *ngIf="paintingsDisplayedByGenre.length === 0">
             No paintings found for this genre.

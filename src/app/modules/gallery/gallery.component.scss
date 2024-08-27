@@ -67,6 +67,18 @@
     font-style: italic;
 }
 
+.agal-loading {
+    width: 100px;
+    height: 100px;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 
 @keyframes brighten-up {
     from {filter: brightness(1)}

@@ -218,5 +218,22 @@
         ],
         "date": 2024,
         "path": "/assets/paintings/7B5328.jpg"
+    },
+    {
+        "title": "Gemini",
+        "referenceNr": "59B6CE",
+        "genre": "nature",
+        "tags": [
+            "birds", "nature", "animals"
+        ],
+        "price": 0,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            50, 70
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/59B6CE.jpg"
     }
 ]

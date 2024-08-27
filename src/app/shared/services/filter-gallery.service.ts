@@ -1,6 +1,7 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { GalleryItem } from "../interfaces/GalleryItems";
 import { default as galleryData } from "../data/gallery-data.json";
+import { ErrorService } from "./error.service";
 
 
 @Injectable({
@@ -10,15 +11,17 @@ export class FilterGalleryService {
 
     private source: GalleryItem[];
     private genres: string[];
+    private errorService: ErrorService;
 
     constructor() {
+        this.errorService = inject(ErrorService);
         this.source = [];
         this.genres = [];
 
         try {
             this.setSource(galleryData);
         } catch(err) {
-            console.log('Filter Service failed to initialize necessary data.', err);
+            this.errorService.handle(err);
         }
     }
 
