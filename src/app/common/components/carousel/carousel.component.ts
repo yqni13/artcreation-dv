@@ -4,6 +4,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { FilterGalleryService } from '../../../shared/services/filter-gallery.service';
+import { NewsUpdateStorage } from '../../../shared/interfaces/NewsUpdateStorage';
 
 @Component({
     selector: 'app-carousel',
@@ -17,7 +18,7 @@ import { FilterGalleryService } from '../../../shared/services/filter-gallery.se
     ]
 })
 export class CarouselComponent {
-    @Input() slides: { image?: string, referenceNr: string, title?: string, date: string, text?: string }[];
+    @Input() slides: NewsUpdateStorage[];
     @Input() slideTemplate?: TemplateRef<any>;
 
     private id: string;

@@ -5,5 +5,3 @@ export declare interface NewsUpdateStorage {
     text: string,
     image: string
 }
-
-export type NewsUpdateStorageItem = Record<string, NewsUpdateStorage>;

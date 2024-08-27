@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NewsUpdateStorageItem } from "../../shared/interfaces/NewsUpdateStorage";
-import { default as newsUpdateData } from "../../shared/data/news-updates.json";
+import { NewsUpdateStorage } from "../../shared/interfaces/NewsUpdateStorage";
 import { ErrorService } from "../../shared/services/error.service";
 import { FilterNewsService } from "../../shared/services/filter-news.service";
 import { NewsKeys } from "../../shared/enums/news-keys.enum";
@@ -19,35 +18,17 @@ import { CommonModule } from "@angular/common";
 })
 export class HomeComponent implements OnInit {
 
-    protected newsUpdates: NewsUpdateStorageItem;
-    protected slides: {image: string, referenceNr: string, title: string, date: string, text: string}[];
+    protected slides: NewsUpdateStorage[];
 
     constructor(
         private errorService: ErrorService,
         private filterNewsService: FilterNewsService
     ) {
-        try {
-            this.newsUpdates = newsUpdateData;
-        } catch(err: unknown) {
-            this.errorService.handle(err);
-            this.newsUpdates = {};
-        }
-
         this.slides = [];
     }
     
     ngOnInit() {
-        this.filterNewsService.setSource(this.newsUpdates);
-        this.filterNewsService.setCount(3);
-        this.newsUpdates = this.filterNewsService.filterByKeyValue(NewsKeys.date);
-
-        this.slides = Object.values(this.newsUpdates).map(entry => ({
-            image: entry.image,
-            referenceNr: entry.referenceNr,
-            title: entry.title,
-            date: entry.date,
-            text: entry.text
-        }));
+        this.slides = this.filterNewsService.filterByCount(3, NewsKeys.dateAscending);
     }
 
 }
