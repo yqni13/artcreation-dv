@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { NewsUpdateStorage } from "../../shared/interfaces/NewsUpdateStorage";
-import { ErrorService } from "../../shared/services/error.service";
 import { FilterNewsService } from "../../shared/services/filter-news.service";
 import { NewsKeys } from "../../shared/enums/news-keys.enum";
 import { CarouselComponent } from "../../common/components/carousel/carousel.component";
 import { CommonModule } from "@angular/common";
+
 
 @Component({
     selector: 'app-home',
@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
     protected slides: NewsUpdateStorage[];
 
     constructor(
-        private errorService: ErrorService,
         private filterNewsService: FilterNewsService
     ) {
         this.slides = [];
