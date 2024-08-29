@@ -1,19 +1,36 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { GalleryItem } from "../interfaces/GalleryItems";
+import { default as galleryData } from "../data/gallery-data.json";
+import { ErrorService } from "./error.service";
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class FilterGalleryService {
 
+    private source: GalleryItem[];
     private genres: string[];
+    private errorService: ErrorService;
 
     constructor() {
+        this.errorService = inject(ErrorService);
+        this.source = [];
         this.genres = [];
+
+        try {
+            this.setSource(galleryData);
+        } catch(err) {
+            this.errorService.handle(err);
+        }
     }
 
-    getGenres(data: GalleryItem[]): string[] {
-        Object.values(data).forEach((entries) => {
+    private setSource(data: GalleryItem[]) {
+        this.source = data;
+    }
+
+    getGenres(): string[] {
+        Object.values(this.source).forEach((entries) => {
             Object.entries(entries).forEach(([key, val]) => {
                 if(key === 'genre' && !this.genres.includes(val)) {
                     this.genres.push(val);
@@ -24,13 +41,13 @@ export class FilterGalleryService {
         return this.genres;
     }
 
-    filterByGenre(data: GalleryItem[]): Map<string, GalleryItem[]> {
+    filterByGenre(): Map<string, GalleryItem[]> {
         const results = new Map<string, GalleryItem[]>()
         if(this.genres.length === 0) {
             return results;
         }
 
-        Object.values(data).forEach((entries) => {
+        Object.values(this.source).forEach((entries) => {
             Object.entries(entries).forEach(([key, val]) => {
                 if(key === 'genre' && this.genres.includes(val)){
                     if(results.get(val) === undefined) {
@@ -43,5 +60,39 @@ export class FilterGalleryService {
         })
         
         return results;
+    }
+
+    filterByRefNr(refNr: string | null): GalleryItem | null {
+        let result: GalleryItem | null = null;
+        if(refNr !== null && refNr.length !== 6) {
+            return null;
+        }
+
+        Object.values(this.source).forEach((entries) => {
+            Object.entries(entries).forEach(([key, val]) => {
+                if(key === 'referenceNr' && val === refNr) {
+                    result = entries;
+                }
+            })
+        })
+
+        return result;
+    }
+
+    filterByRefNrForGenre(refNr: string): string {
+        let result = '';
+        if(refNr === '') {
+            return '';
+        }
+
+        Object.values(this.source).forEach((entries) => {
+            Object.entries(entries).forEach(([key, val]) => {
+                if(key === 'referenceNr' && val === refNr) {
+                    result = entries['genre'];
+                }
+            })
+        })
+
+        return result;
     }
 }

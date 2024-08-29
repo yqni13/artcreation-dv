@@ -24,6 +24,40 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: sass.$comp-padding-medium 0;
+    pointer-events: none;
+
+    .agal-gallery-cards {
+        margin: 12px;
+        pointer-events:all; /* block hover brightness when hovering inbetween */
+
+        .agal-gallery-cards-wrapper {
+
+            img {
+                width: 300px;
+                height: 300px;
+                object-fit: cover;
+                padding: 2px;
+                border: solid 2px var(--theme-submenu-route);
+        
+                &:hover {
+                    cursor: pointer;
+                    animation-name: brighten-up;
+                    animation-duration: 1s;
+                    animation-timing-function: ease-out;
+                    animation-fill-mode: forwards;
+                }
+            }         
+        }
+    }
+
+    &:hover .agal-gallery-cards:not(:hover) {
+        filter: brightness(45%);
+    }
+
+    .agal-gallery-cards:hover {
+        filter: drop-shadow(0px 0px 15px var(--theme-contrast-anchor));
+    }
 }
 
 .agal-gallery-nodata {
@@ -31,4 +65,22 @@
     color: sass.$color-light-grey;
     font-size: 30px;
     font-style: italic;
+}
+
+.agal-loading {
+    width: 100px;
+    height: 100px;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+@keyframes brighten-up {
+    from {filter: brightness(1)}
+    to {filter: brightness(1.4)}
 }

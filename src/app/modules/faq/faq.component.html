@@ -14,9 +14,9 @@
     </div>
     <div class="agal-faq-content">
         <div class="agal-faq-wrapper">
-            <header class="agal-faq-coll-box">
+            <div class="agal-faq-coll-box faq-header">
                 <label for="agal-faq-header-close">menu</label>
-            </header>
+            </div>
             <div class="agal-faq-coll" *ngFor="let element of data | keyvalue; index as i">
                 <input type="radio" name="collapsable" id="agal-faq-coll-{{i}}">
                 <div class="agal-faq-coll-box">

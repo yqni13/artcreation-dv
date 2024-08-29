@@ -1,20 +1,30 @@
-{
-    "20240722_0": {
-        "date": "2024-07-22T17:01:00",
-        "title": "newest update 22",
-        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-        "image": "/assets/placeholder-portrait_quadratic.png"
+[
+    {
+        "date": "2024-07-20T17:01:00",
+        "referenceNr": "2F2C30",
+        "title": "official start homepage built",
+        "text": "Today started the built of my personal art based homepage. Despite being the first version or also called lite-version, I'm looking forward to the results! On the occasion of the developing, I created this acryl painting in memory of these beautiful sunrises I experienced last holiday.",
+        "image": "/assets/paintings/2F2C30.png"
     },
-    "20240624_0": {
-        "date": "2024-06-24T21:52:00",
-        "title": "newest update 24",
-        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-        "image": "/assets/placeholder-portrait_quadratic.png"
+    {
+        "date": "2024-08-24T21:52:00",
+        "referenceNr": "7B5328",
+        "title": "new artwork - Tutanchamun",
+        "text": "Creating detailed faces was always a challenge for me, but it feels a bit easier when I can do masks. Especially the gold/red theme kept me fascinating which was the reason I finally did my first egyptian drawing.",
+        "image": "/assets/paintings/7B5328.jpg"
     },
-    "20240725_0": {
+    {
         "date": "2024-07-25T07:31:00",
-        "title": "newest update 25",
-        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-        "image": "/assets/placeholder-portrait_quadratic.png"
+        "referenceNr": "DBDDD7",
+        "title": "faceless african beauty",
+        "text": "A few weeks ago I saw this white dress in the window display and immediately wanted to draw it, but I couldn't come up with a good context. Looking for some inspiration, I found myself on pinterest and I felt overwhelmed ever since. Let me tell you, pinterest is now one of my most frequent used apps and I came up with this painting.",
+        "image": "/assets/paintings/DBDDD7.jpg"
+    },
+    {
+        "date": "2024-08-27T11:20:00",
+        "referenceNr": "59B6CE",
+        "title": "Gemini birds, happy birthday",
+        "text": "For my mothers birthday last year, she wished for this tropical birds painting. I was sitting on this for many hours, but the result was very joyful.",
+        "image": "/assets/paintings/59B6CE.jpg"
     }
-}
+]

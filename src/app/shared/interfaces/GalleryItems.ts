@@ -1,6 +1,7 @@
 export declare interface GalleryItem {
     title: string | null,
     referenceNr: string,
+    genre: string,
     tags: string[] | null,
     price: number | null,
     type: string,

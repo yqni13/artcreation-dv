@@ -11,11 +11,15 @@
                             *ngIf="slide.image" 
                             src="{{ slide.image }}" 
                             alt="404-picture-not-found"
+                            [attr.aria-disabled]="true"
+                            (click)="navigateToDetails(slide.referenceNr)"
+                            (keydown.enter)="navigateToDetails(slide.referenceNr)"
                         >
                     </div>
                     <div class="agal-carousel-default-text-wrapper">
                         <div class="agal-carousel-default-text-header">
                             <h3 *ngIf="slide.title">{{ slide.title }}</h3>
+                            <span>{{slide.date | dateFormat:'dd.mm.yyyy'}}</span>
                         </div>
                         <div class="agal-carousel-default-text-content">
                             <p *ngIf="slide.text">{{ slide.text }}</p>

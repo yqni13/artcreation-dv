@@ -5,7 +5,7 @@
     width: 100%;
     margin: auto;
     overflow: hidden;
-    padding: sass.$comp-padding-small 0;
+    padding: sass.$comp-padding-medium 0;
     position: relative;
 }
 
@@ -33,8 +33,12 @@
     justify-content: center;
     
     img {
-        width: calc(100% - sass.$comp-padding-medium);
-        aspect-ratio: 1 / 1;
+        cursor: pointer;
+        object-fit: cover;
+        width: 25vw;
+        height: 25vw;
+        padding: 3px;
+        filter: drop-shadow(0px 0px 20px var(--theme-submenu-route));
     }
 }
 
@@ -49,12 +53,19 @@
     h3 {
         font-size: sass.$home-news-header-size;
         color: var(--theme-contrast-anchor);
+        margin-bottom: 0;
+    }
+    span {
+        color: var(--theme-body-text);
+        margin-left: 2.5px;
+        font-size: 12px;
     }
 }
 
 .agal-carousel-default-text-content {
     p {
         font-size: sass.$home-news-content-size;
+        margin: 35px 0;
     }
 }
 
