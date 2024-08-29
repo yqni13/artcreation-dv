@@ -5,38 +5,53 @@
 .agal-about-content {
     display: flex;
     flex-direction: row;
+    margin: 0 100px;
+}
 
-    .agal-about-image {
-        display: flex;
-        justify-content: center;
+.agal-about-image {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+#img1 img {
+    max-width: 300px;
+    height: auto;
+    margin: 25px 100px;
+    object-fit: cover;
+}
+
+#img2 img {
+    max-width: 400px;
+    height: auto;
+    margin: 25px 100px;
+    object-fit: cover;
+}
+
+.agal-about-text1 {
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+    // width: 50%;
+
+    p {
         margin: 100px 0;
-        img {
-            width: calc(100% - 400px);
-
-        }
+        width: calc(100% - 200px);
+        align-content: center;
     }
-    
-    .agal-about-text {
-        display: flex;
-        justify-content: center;
-        text-align: justify;
-        width: 50%;
+}
 
-        p {
-            margin: 100px 0;
-            width: calc(100% - 200px);
-            align-content: center;
-        }
-    }
+.agal-about-text2 {
+    align-self: center;
 }
 
 .agal-about-additional {
     display: flex;
     justify-content: center;
     text-align: justify;
-    margin-bottom: 100px;
+    margin: 0 100px 100px 100px;
 
     p {
-        width: calc(100% - 400px);
+        // width: calc(100% - 400px);
     }
 }

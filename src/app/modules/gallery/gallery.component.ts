@@ -53,7 +53,7 @@ export class GalleryComponent implements OnInit {
     }
     
     ngOnInit() {
-        this.paintingGenres = this.filterGalleryService.getGenres();
+        this.paintingGenres = this.filterGalleryService.getGenres('ascending');
         this.paintingsFiltered = this.filterGalleryService.filterByGenre();
         this.selectGenre(this.activeGenre);        
     }

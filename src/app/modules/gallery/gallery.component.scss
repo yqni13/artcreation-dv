@@ -4,6 +4,13 @@
 .agal-gallery-nav {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+
+    .agal-gallery-nav-row {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 
     a {
         text-transform: uppercase;

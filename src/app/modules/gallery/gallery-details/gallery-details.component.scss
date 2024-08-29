@@ -101,15 +101,21 @@
     text-align: -moz-center;
     text-align: -o-center;
     height: 90vh;
-    margin: sass.$comp-padding-small 0;
+    margin-bottom: sass.$comp-padding-small;
+
 }
 .agal-gallerydetails-img-wrapper {
-    $img-max-width: calc(100vw - var(--view-nav-width) - 6px - 200px);
-    width: calc(100% - 6px);
+    width: 100%;
+    background-image: url(/assets/art-wall.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -150px;
+    height: 95vh;
     
     img {
-        max-height: 85vh;
-        max-width: $img-max-width;
+        padding-top: calc(sass.$comp-padding-big + 25px);
+        max-height: 50vh;
+        max-width: 50vw;
         object-fit: contain;
     }
 }
@@ -142,13 +148,20 @@
         font-size: 14px;
     }
 
-    #card-tags span {
+    #card-tags .agal-tags {
         padding: 2.5px 5px;
         border: solid 1px var(--theme-body-text);
         border-radius: 3px;
         margin-right: 7.5px;
         font-size: 12px;
     }
+}
+
+.agal-gallerydetails-divider {
+    width: 50%;
+    border-top: solid 1px var(--theme-faq-activeborder);
+    align-self: center;
+    margin: 15px 0;
 }
 
 .agal-gallerydetails-sold {

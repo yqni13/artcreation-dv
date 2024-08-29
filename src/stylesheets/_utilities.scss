@@ -32,7 +32,7 @@ $color-eggshell-white: #fae3b9de;
 
 
 /* custom definitions */
-
+$color-signature-white: invert(100%) sepia(59%) saturate(5190%) hue-rotate(179deg) brightness(107%) contrast(107%);
 
 /* IMPORTANT! <select> uses padding-left: 4px intern (don't know yet to change that) */
 $select-intern-leftpadding: 4px;

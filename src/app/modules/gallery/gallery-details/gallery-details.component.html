@@ -50,22 +50,7 @@
                 <span>{{card?.referenceNr}}</span>
             </div>
         </div>
-        <div class="agal-gallerydetails-property" id="card-tags">
-            <div class="agal-gallerydetails-key">
-                <label for="card-tags">Tags:</label>
-            </div>
-            <div class="agal-gallerydetails-value">
-                <span *ngFor="let tag of card?.tags">{{tag}}</span>
-            </div>
-        </div>
-        <div class="agal-gallerydetails-property" id="card-type">
-            <div class="agal-gallerydetails-key">
-                <label for="card-type">Type:</label>
-            </div>
-            <div class="agal-gallerydetails-value">
-                <span>{{card?.type}}</span>
-            </div>
-        </div>
+                
         <div class="agal-gallerydetails-property" id="card-price">
             <div class="agal-gallerydetails-key">
                 <label for="card-price">Price:</label>
@@ -86,12 +71,12 @@
                 >request price</a>
             </div>
         </div>
-        <div class="agal-gallerydetails-property" id="card-technique">
+        <div class="agal-gallerydetails-property" id="card-type">
             <div class="agal-gallerydetails-key">
-                <label for="card-technique">Technique:</label>
+                <label for="card-type">Type:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.technique === null ? '--' : card?.technique}}</span>
+                <span>{{card?.type}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-measurements">
@@ -102,12 +87,14 @@
                 <span>{{card?.measurementsWxH === null ? '--' : card?.measurementsWxH | dimensionFormat}}</span>
             </div>
         </div>
-        <div class="agal-gallerydetails-property" id="card-year">
+        <div class="agal-gallerydetails-divider"></div>
+        <div class="agal-gallerydetails-property" id="card-tags">
             <div class="agal-gallerydetails-key">
-                <label for="card-date">Date:</label>
+                <label for="card-tags">Tags:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.date === null ? '--' : card?.date}}</span>
+                <span class="agal-tags" *ngFor="let tag of card?.tags">{{tag}}</span>
+                <span *ngIf="card?.tags === null">--</span>
             </div>
         </div>
         <div 
@@ -120,6 +107,22 @@
             </div>
             <div class="agal-gallerydetails-value">
                 <span>{{card?.comment === null ? '--' : '"' + card?.comment + '"'}}</span>
+            </div>
+        </div>
+        <div class="agal-gallerydetails-property" id="card-technique">
+            <div class="agal-gallerydetails-key">
+                <label for="card-technique">Technique:</label>
+            </div>
+            <div class="agal-gallerydetails-value">
+                <span>{{card?.technique === null ? '--' : card?.technique}}</span>
+            </div>
+        </div>
+        <div class="agal-gallerydetails-property" id="card-year">
+            <div class="agal-gallerydetails-key">
+                <label for="card-date">Date:</label>
+            </div>
+            <div class="agal-gallerydetails-value">
+                <span>{{card?.date === null ? '--' : card?.date}}</span>
             </div>
         </div>
     </div>
