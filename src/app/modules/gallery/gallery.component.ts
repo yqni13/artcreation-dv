@@ -6,7 +6,7 @@ import { GalleryItem } from "../../shared/interfaces/GalleryItems";
 import { ErrorService } from "../../shared/services/error.service";
 import { CommonModule } from "@angular/common";
 import { FilterGalleryService } from "../../shared/services/filter-gallery.service";
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 
 @Component({
     selector: 'app-gallery',
@@ -29,7 +29,6 @@ export class GalleryComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private route: ActivatedRoute,
         private errorService: ErrorService,
         private filterGalleryService: FilterGalleryService
     ) {

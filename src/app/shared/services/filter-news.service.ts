@@ -30,25 +30,26 @@ export class FilterNewsService {
     }    
 
     filterByKeyValue(filterKey: NewsKeys | null): NewsUpdateStorage[] {
+        const data = [...this.source];
         switch(filterKey) {
             case NewsKeys.dateAscending: {
-                return this.source.sort((old, young) => {
+                return data.sort((old, young) => {
                     return new Date(young.date).getTime() - new Date(old.date).getTime();
                 })
             }
             case NewsKeys.dateDescending: {
-                return this.source.sort((old, young) => {
+                return data.sort((old, young) => {
                     return new Date(old.date).getTime() - new Date(young.date).getTime();
                 })
             }
             default: {
-                return this.source;
+                return data;
             }
         }
     }
 
     filterByCount(count: number, filterKey?: NewsKeys): NewsUpdateStorage[] {
-        const data = this.filterByKeyValue(filterKey || null)
+        const data = [...this.filterByKeyValue(filterKey || null)]
         if(count < data.length) {
             data.splice(count, data.length-1);
         }

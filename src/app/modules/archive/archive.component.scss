@@ -1,9 +1,6 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-$news-wrapper-margin: 20px;
-$news-text-padding: 20px;
-
 .agal-head-message {
 
     iframe {
@@ -60,10 +57,10 @@ $news-text-padding: 20px;
     color: sass.$color-ice-white;
     opacity: 0;
     position: absolute;
-    width: calc(100% - ($news-text-padding * 2));
-    height: calc(100% - ($news-text-padding * 2));
+    width: calc(100% - (sass.$archive-text-padding * 2));
+    height: calc(100% - (sass.$archive-text-padding * 2));
     align-content: center;
-    padding: $news-text-padding;
+    padding: sass.$archive-text-padding;
     backdrop-filter: blur(2px) brightness(0.5);
     -webkit-backdrop-filter: blur(2px) brightness(0.5);
     -moz-backdrop-filter: blur(2px) brightness(0.5);

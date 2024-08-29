@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class DimensionsFormatPipe implements PipeTransform {
     transform(value: number[] | null | undefined): string {
-        value = value || [0];
+        value = value || [];
         switch(value.length) {
             case(1):
                 return `${value[0]} cm`;
@@ -15,7 +15,7 @@ export class DimensionsFormatPipe implements PipeTransform {
             case(3):
                 return `${value[0]} x ${value[1]} x ${value[2]} cm (w/h/d)`;
             default:
-                return '';
+                return 'wrong measurements';
         }
     }
 }
