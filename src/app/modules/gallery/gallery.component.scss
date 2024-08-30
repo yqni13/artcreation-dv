@@ -53,6 +53,7 @@
                     animation-duration: 1s;
                     animation-timing-function: ease-out;
                     animation-fill-mode: forwards;
+                    border: solid 2px var(--theme-contrast-anchor);
                 }
             }         
         }
@@ -89,5 +90,5 @@
 
 @keyframes brighten-up {
     from {filter: brightness(1)}
-    to {filter: brightness(1.4)}
+    to {filter: brightness(1.3)}
 }

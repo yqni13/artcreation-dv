@@ -12,25 +12,24 @@
 <section>
     <div class="agal-gallerydetails-tools">
         <div class="agal-detail-tools back">
-            <a 
-                class="agal-back-arrow"
+            <i 
+                class="icon-GoBack agal-back-arrow"
                 [attr.aria-disabled]="true"
                 (click)="navigateToGallery()"
                 (keydown.enter)="navigateToGallery()"
-            >back</a>
-        </div>
-        <div class="agal-detail-tools zoom">
-            <i 
-                class="icon-Zoom" 
-                [attr.aria-disabled]="true"
-                (click)="navigateFullscale(true)"
-                (keydown.enter)="navigateFullscale(true)"
-            ></i>
+            >back</i>
         </div>
     </div>
     <div class="agal-gallerydetails-img">
         <div class="agal-gallerydetails-img-wrapper">
-            <img src="{{card?.path}}" alt="404-picture-not-found">
+            <img 
+                src="{{card?.path}}" 
+                alt="404-picture-not-found"
+                [attr.aria-disabled]="true"
+                (click)="navigateFullscale(true)"
+                (keydown.enter)="navigateFullscale(true)"
+            >
+            <i class="icon-Zoom"></i>
         </div>
     </div>
     <div class="agal-gallerydetails-content">

@@ -4,6 +4,9 @@
 $col: var(--theme-body-text);
 
 header {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
     padding: 200px 0;
 
     background-image: url("/assets/color-bg3.png");
@@ -12,9 +15,14 @@ header {
     background-repeat: no-repeat;
     background-position-y: -5px;
 
+    h1 {
+        font-size: 90px;
+        margin-bottom: -10px;
+    }
+
     img {
-        filter: var(--theme-signature-filiter);
-        width: 35vw;
+        filter: var(--theme-signature-filter);
+        width: 25vw;
         transform: rotate(-2.5deg);
     }
 }

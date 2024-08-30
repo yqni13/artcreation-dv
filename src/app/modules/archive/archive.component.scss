@@ -1,16 +1,6 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-.agal-head-message {
-
-    iframe {
-        pointer-events: none;
-        margin-left: 25px;
-        width: 50px;
-        height: 50px;
-    }
-}
-
 .agal-archive-content {
     height: 100%;
     margin: sass.$comp-padding-medium;
@@ -43,14 +33,22 @@
         height: 400px;
         object-fit: cover;
         padding: 5px;
+        
+        &:hover {
+            filter: blur(2px);
+        }
     }
 
     &:hover {
         .agal-archive-wrapper {
             opacity: 1;
-            animation: dimension 0.5s ease-in-out;
         }
     }
+}
+
+.agal-archive-wrapper,
+img {
+    transition: .5s all;
 }
 
 .agal-archive-wrapper {
@@ -98,8 +96,4 @@
     align-items: center;
     font-size: 20px;
     font-weight: bold;
-}
-
-@keyframes dimension {
-    from { transform: rotateX(-90deg); }
 }

@@ -45,7 +45,7 @@
 .agal-gallerydetails-tools {
     position: absolute;
     top: 25px;
-    right: 25px;
+    left: calc(var(--view-nav-width) + 25px);
     width: 60px;
 
     .agal-detail-tools {
@@ -54,7 +54,6 @@
         border: solid 1px var(--theme-submenu-route);
         border-radius: 2.5px;
         cursor: pointer;
-        color: var(--theme-submenu-route);
 
         display: flex;
         justify-content: center;
@@ -67,26 +66,13 @@
         margin-bottom: 5px;
 
         .agal-back-arrow {
+            color: var(--theme-submenu-route);
             text-transform: uppercase;
             text-decoration: none;
             font-size: 12px;
             height: 100%;
         }
 
-        &:hover {
-            opacity: 0.4;
-        }
-    }
-
-    .zoom {
-        height: 40px;
-        margin-top: 5px;
-
-        i {
-            height: 18px;
-            color: var(--theme-submenu-route);
-        }
-    
         &:hover {
             opacity: 0.4;
         }
@@ -100,7 +86,7 @@
     text-align: -webkit-center;
     text-align: -moz-center;
     text-align: -o-center;
-    height: 90vh;
+    height: 95vh;
     margin-bottom: sass.$comp-padding-small;
 
 }
@@ -109,14 +95,36 @@
     background-image: url(/assets/art-wall.png);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position-y: -150px;
+    background-position-y: -160px;
     height: 95vh;
     
     img {
-        padding-top: calc(sass.$comp-padding-big + 25px);
+        margin-top: calc(sass.$comp-padding-big + 20px);
         max-height: 50vh;
         max-width: 50vw;
         object-fit: contain;
+        cursor: pointer;
+
+        &:hover {
+            filter: blur(1px);
+        }
+
+        &:hover + i {
+            opacity: 1;
+            transition: .5s all;
+        }
+    }
+}
+
+.icon-Zoom {
+    position: relative;
+    right: 45px;
+    bottom: 15px;
+    opacity: 0;
+    color: sass.$color-ice-white;
+    &:hover {
+        opacity: 1;
+        cursor: pointer;
     }
 }
 
