@@ -1,15 +1,15 @@
 <section>
     <header>
-        <h1>my passion</h1>
+        <h1>my art</h1>
     </header>
     <nav class="agal-gallery-nav">
         <a
             class="agal-gallery-nav-type"
             [attr.aria-disabled]="true"
-            (click)="selectGenre('all')"
-            (keydown.enter)="selectGenre('all')"
-            [ngClass]="activeGenre === 'all' ? 'agal-active-route' : ''"
-        >ALL</a>
+            (click)="selectGenre('gallery')"
+            (keydown.enter)="selectGenre('gallery')"
+            [ngClass]="activeGenre === 'gallery' ? 'agal-active-route' : ''"
+        >GALLERY</a>
         <a
             *ngFor="let nav of paintingGenres"
             class="agal-gallery-nav-type"
@@ -21,7 +21,18 @@
     </nav>
     <div class="agal-gallery-content">
         <div class="agal-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
-            <agal-paintingcard [card]="card"></agal-paintingcard>
+            @defer(on viewport) {<div class="agal-gallery-cards-wrapper">
+                <img 
+                    src="{{card.path}}" 
+                    alt="404-picture-not-found"
+                    (click)="navigateToDetail(card.referenceNr)"
+                    (keydown.enter)="navigateToDetail(card.referenceNr)"
+                    [attr.aria-disabled]="true"
+                >
+            </div>} 
+            @placeholder {
+                <img class="agal-loading" src="/assets/loading.gif" alt="loading...">
+            }
         </div>
         <div class="agal-gallery-nodata" *ngIf="paintingsDisplayedByGenre.length === 0">
             No paintings found for this genre.

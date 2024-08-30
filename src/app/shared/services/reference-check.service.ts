@@ -19,7 +19,7 @@ export class ReferenceCheckService {
             this.setSource(galleryData);
             this.setReferenceCollection();
         } catch(err) {
-            console.log("Reference Service failed initialize necessary data.", err);
+            console.log('Reference Service failed to initialize necessary data.', err);
         }        
     }
 

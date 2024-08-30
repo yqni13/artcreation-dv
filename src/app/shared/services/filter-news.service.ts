@@ -1,54 +1,59 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { inject } from '@angular/core';
 import { Injectable } from "@angular/core";
-import { NewsUpdateStorageItem } from "../interfaces/NewsUpdateStorage";
+import { NewsUpdateStorage } from "../interfaces/NewsUpdateStorage";
 import { NewsKeys } from "../enums/news-keys.enum";
+import { default as newsData } from "../data/news-updates.json";
+import { ErrorService } from "./error.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class FilterNewsService {
 
-    private count: number;
-    private source: NewsUpdateStorageItem;
+    private source: NewsUpdateStorage[];
+    private errorService: any
 
     constructor() {
-        this.count = 0;
-        this.source = {};
+        this.errorService = inject(ErrorService);
+        this.source = [];
+        
+        try {
+            this.setSource(newsData);
+        } catch(err) {
+            this.errorService.handle(err);
+        }
     }
 
-    setCount(entry: number) {
-        this.count = entry;
-    }
-
-    setSource(data: NewsUpdateStorageItem) {
+    private setSource(data: NewsUpdateStorage[]) {
         this.source = data;
     }    
 
-    filterByKeyValue(filterKey: NewsKeys): NewsUpdateStorageItem {
-        // get all keys sorted by selected key
-        const dict: any[] = [];
+    filterByKeyValue(filterKey: NewsKeys | null): NewsUpdateStorage[] {
+        const data = [...this.source];
         switch(filterKey) {
-            case NewsKeys.date: {
-                Object.entries(this.source).forEach(([key, value]) => {
-                    dict.push({ key: key, date: Date.parse(value.date) });
+            case NewsKeys.dateAscending: {
+                return data.sort((old, young) => {
+                    return new Date(young.date).getTime() - new Date(old.date).getTime();
                 })
-                dict.sort((old, young) => { return young.date - old.date});
-                break;
+            }
+            case NewsKeys.dateDescending: {
+                return data.sort((old, young) => {
+                    return new Date(old.date).getTime() - new Date(young.date).getTime();
+                })
             }
             default: {
-                return this.source;
+                return data;
             }
         }
-        
-        // sort out number of displayed news
-        const result: NewsUpdateStorageItem = {};
-        if(this.count < dict.length) {
-            dict.splice(this.count,dict.length-1);
-        }
-        for(const entry of Object.values(dict)) {
-            Object.assign(result, {[entry.key]: (this.source[entry.key])});
+    }
+
+    filterByCount(count: number, filterKey?: NewsKeys): NewsUpdateStorage[] {
+        const data = [...this.filterByKeyValue(filterKey || null)]
+        if(count < data.length) {
+            data.splice(count, data.length-1);
         }
 
-        return result;
+        return data;
     }
 }
