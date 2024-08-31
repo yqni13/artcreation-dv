@@ -64,9 +64,15 @@ img {
     -moz-backdrop-filter: blur(2px) brightness(0.5);
     -o-backdrop-filter: blur(2px) brightness(0.5);
 
+    .agal-archive-text {
+        display: flex;
+        flex-direction: column;
+    }
+
     i {
-        width: 20px;
-        height: 20px;
+        align-self: center;
+        width: 25px;
+        height: 25px;
         margin-top: 10px;
         cursor: pointer;
     }

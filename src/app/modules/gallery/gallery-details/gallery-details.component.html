@@ -1,14 +1,4 @@
-<div class="agal-gallerydetails-fullscale" *ngIf="isFullscale">
-    <img src="{{card?.path}}" alt="404-picture-not-found">
-    <div class="agal-gallerydetails-fullscale-exit">
-        <i
-            class="icon-CloseX"
-            [attr.aria-disabled]="true"
-            (click)="navigateFullscale(false)"
-            (keydown.enter)="navigateFullscale(false)"
-        ></i>
-    </div>
-</div>
+<agal-imgfullscale [imgPath]="card?.path || ''" [isActive]="isFullscale"></agal-imgfullscale>
 <section>
     <div class="agal-gallerydetails-tools">
         <div class="agal-detail-tools back">

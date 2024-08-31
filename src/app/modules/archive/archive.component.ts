@@ -4,6 +4,7 @@ import { DateFormatPipe } from "../../common/pipes/date-format.pipe";
 import { NewsUpdateStorage } from "../../shared/interfaces/NewsUpdateStorage";
 import { FilterNewsService } from "../../shared/services/filter-news.service";
 import { NewsKeys } from "../../shared/enums/news-keys.enum";
+import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img-fullscale.component";
 
 
 @Component({
@@ -13,19 +14,30 @@ import { NewsKeys } from "../../shared/enums/news-keys.enum";
     standalone: true,
     imports: [
         CommonModule,
-        DateFormatPipe
+        DateFormatPipe,
+        ImgFullscaleComponent
     ]
 })
 export class ArchiveComponent implements OnInit {
 
     protected newsCollection: NewsUpdateStorage[]
+    protected isFullscale: boolean;
+    protected currentPath: string;
 
     constructor(private filterNewsService: FilterNewsService) {
         this.newsCollection = [];
+        this.isFullscale = false;
+        this.currentPath = '';
     }
 
     ngOnInit() {
         this.newsCollection = this.filterNewsService.filterByKeyValue(NewsKeys.dateAscending);
     }
 
+    navigateFullscale(flag: boolean, path?: string) {
+        this.isFullscale = flag;
+        if(path) {
+            this.currentPath = path;
+        }
+    }
 }

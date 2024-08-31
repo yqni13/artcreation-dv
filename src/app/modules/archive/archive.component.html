@@ -1,3 +1,8 @@
+<agal-imgfullscale 
+    [imgPath]="currentPath" 
+    [isActive]="isFullscale"
+    (fullscaleChanged)="navigateFullscale($event)"
+></agal-imgfullscale>
 <section>
     <header>
         <h1>News archive</h1>
@@ -15,9 +20,12 @@
                     <h3 *ngIf="news.title">{{ news.title }}</h3>
                     <span>{{news.date | dateFormat:'dd.mm.yyyy'}}</span>
                     <p *ngIf="news.text">{{ news.text }}</p>
-                    <i class="icon-Zoom"></i>
+                    <i class="icon-Zoom"
+                        [attr.aria-disabled]="true"
+                        (click)="navigateFullscale(true, news.image)"
+                        (keydown.enter)="navigateFullscale(true, news.image)"
+                    ></i>
                 </div>
-                <!-- TODO(yqni13): add fullscale img view on click -->
             </div>} 
             @placeholder {
                 <img class="agal-loading" src="/assets/loading.gif" alt="loading...">

@@ -8,6 +8,7 @@ import { Subscription } from "rxjs";
 import { CommonModule } from "@angular/common";
 import { DimensionsFormatPipe } from "../../../common/pipes/dimensions-format.pipe";
 import { FloatPrecisionPipe } from "../../../common/pipes/float-precision.pipe";
+import { ImgFullscaleComponent } from "../../../common/components/img-fullscale/img-fullscale.component";
 
 @Component({
     selector: 'app-gallery-details',
@@ -18,6 +19,7 @@ import { FloatPrecisionPipe } from "../../../common/pipes/float-precision.pipe";
         CommonModule,
         DimensionsFormatPipe,
         FloatPrecisionPipe,
+        ImgFullscaleComponent,
         RouterModule
     ]
 })
