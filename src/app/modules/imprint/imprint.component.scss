@@ -1,3 +1,35 @@
-// TODO(yqni13): remove if not used
 @use '../../../stylesheets/utilities' as sass;
 
+
+.agal-head-message {
+    font-style: italic;
+    color: var(--theme-submenu-route);
+    width: 50%;
+    align-self: center;
+}
+
+.agal-imprint-content {
+    margin: calc(sass.$comp-padding-medium + sass.$comp-padding-small) sass.$comp-padding-big sass.$comp-padding-big sass.$comp-padding-big;
+
+    h2 {
+        margin-top: calc(sass.$comp-padding-medium + sass.$comp-padding-small);
+    }
+
+    h3 {
+        margin-top: sass.$comp-padding-medium;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--theme-contrast-anchor);
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    p {
+        text-align: justify;
+        line-height: 26px;
+    }
+}
