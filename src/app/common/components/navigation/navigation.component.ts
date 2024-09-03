@@ -22,6 +22,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     protected routes: Route[];
     protected selectedTheme: ThemeOption;
     protected isMobileMode: boolean;
+
     private mobileNavExpanded: boolean;
     private collapseNavbarWidth: number;
     private isLocalStorageAvailable: any;

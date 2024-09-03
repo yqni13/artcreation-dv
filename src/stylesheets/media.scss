@@ -1,5 +1,13 @@
 @use '../stylesheets/utilities' as sass;
 
+
+/* prevent printing webpage */
+@media print {
+    html, body {
+        display: none;
+    }
+}
+
 @media screen and (width >= sass.$device-desktop-xk) {
     .agal-home {
         .agal-home-news-wrapper {

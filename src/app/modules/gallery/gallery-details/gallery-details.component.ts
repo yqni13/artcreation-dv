@@ -9,6 +9,7 @@ import { CommonModule } from "@angular/common";
 import { DimensionsFormatPipe } from "../../../common/pipes/dimensions-format.pipe";
 import { FloatPrecisionPipe } from "../../../common/pipes/float-precision.pipe";
 import { ImgFullscaleComponent } from "../../../common/components/img-fullscale/img-fullscale.component";
+import { SubjectOptions } from "../../../shared/enums/contact-subject.enum";
 
 @Component({
     selector: 'app-gallery-details',
@@ -28,6 +29,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
     protected card: GalleryItem | null;
 
     protected artworkOption = ArtworkOptions;
+    protected subject = SubjectOptions;
     protected galleryGenre: string;
     protected isFullscale: boolean;
 
@@ -46,7 +48,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
             genre: 'gallery',
             tags: null,
             price: null,
-            type: ArtworkOptions.originalANDprint,
+            type: ArtworkOptions.originalORprint,
             comment: null,
             technique: null,
             measurementsWxH: null,
@@ -73,19 +75,20 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
             this.card = this.filterGalleryService.filterByRefNr(this.id);
         })        
     }
-
-    navigateFullscale(val: boolean) {
-        this.isFullscale = val;
+    
+    navigateFullscale(flag: boolean) {
+        this.isFullscale = flag;
     }
 
     navigateToGallery() {
         this.router.navigate(['gallery'], { state: { genre: this.galleryGenre }});
     }
 
-    navigateToContactWithData() {
+    navigateToContactWithData(subject: SubjectOptions) {
         const data = {
             'referenceNr': this.card?.referenceNr, 
-            'type': this.card?.type
+            'type': this.card?.type,
+            'subject': subject
         };
         
         this.dataShareService.setSharedData(data);

@@ -12,17 +12,23 @@ using express ```npm install express```
 using nodemailer ```npm install nodemailer```
 using i18next ```npm install i18next```
 
-# Features
+## Features
 
-angular v18 standalone with routing + nested routes on id
-lazy-loading on viewport/scroll for image resources
-custom form components (text-, textarea- & select-input)
-custom carousel component
-custom faq component
-custom color theme (dark/light mode)
-mail service with node.js & nodemailer for Backend
-custom validation + service & pipes
-http interception + custom snackbar modal
+<dl>
+      <dd>angular v18 standalone with routing + nested routes on id</dd>
+      <dd>lazy-loading on viewport/scroll for image resources</dd>
+      <dd>custom form components (text-, textarea- & select-input)</dd>
+      <dd>custom carousel component</dd>
+      <dd>custom faq component</dd>
+      <dd>custom color theme (dark/light mode)</dd>
+      <dd>mail service with node.js & nodemailer for Backend</dd>
+      <dd>custom validation + service & pipes</dd>
+      <dd>http interception + custom snackbar modal</dd>
+      <dd>different protection layers for certain images (disabling right click; watermarks)</dd>
+      <dd></dd>
+</dl>
+
+
 
 
 <br><br>
