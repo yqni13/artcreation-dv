@@ -7,10 +7,15 @@ Javascript:  2.6%
       SCSS: 25.4%
       HTML: 24.0%
 
-using Angular & NodeJS
-using express ```npm install express```
-using nodemailer ```npm install nodemailer```
-using i18next ```npm install i18next```
+## Install
+
+<dl>
+      <dd>using Angular & NodeJS</dd>
+      <dd>using express ```npm install express```</dd>
+      <dd>using nodemailer ```npm install nodemailer```</dd>
+      <dd>using i18next ```npm install i18next```</dd>
+      <dd>using underscore ```npm install underscore``` & ```npm install --save-dev @types/underscore```</dd>
+</dl>
 
 ## Features
 

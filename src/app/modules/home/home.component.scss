@@ -1,8 +1,6 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-$col: var(--theme-body-text);
-
 header {
     flex-direction: column;
     text-align: center;
@@ -11,18 +9,22 @@ header {
 
     background-image: url("/assets/color-bg3.png");
     background-position-x: center;
-    background-size: 50%;
+    background-size: 110%;
     background-repeat: no-repeat;
-    background-position-y: -5px;
-
+    
     h1 {
         font-size: 90px;
-        margin-bottom: -10px;
+        margin-bottom: 0;
+    }
+
+    span {
+        font-family: 'Custom-RonySiswadi', Fallback, sans-serif;
+        font-size: 80px;
     }
 
     img {
         filter: var(--theme-signature-filter);
-        width: 25vw;
+        width: 100px;
         transform: rotate(-2.5deg);
     }
 }
