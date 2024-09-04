@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
 import { NavigationStart, Route, Router, RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
+import { CommonModule, DOCUMENT } from "@angular/common";
 import { ThemeOption } from "../../../shared/enums/theme-option.enum";
+import _ from 'underscore';
 
 @Component({
     selector: 'app-navigation',
@@ -23,18 +24,20 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     protected selectedTheme: ThemeOption;
     protected isMobileMode: boolean;
 
-    private mobileNavExpanded: boolean;
-    private collapseNavbarWidth: number;
+    private maxMobileWidth: number;
+    private window: any;
     private isLocalStorageAvailable: any;
 
-
     constructor (
+        @Inject(DOCUMENT) private document: Document,
         private navigation: NavigationService,
-        private router: Router,
+        private router: Router
     ) {
         this.isLocalStorageAvailable = typeof localStorage !== 'undefined';
         this.selectedTheme = this.checkLocalStorageTheme();
         this.setLocalStorageTheme(false, String(this.selectedTheme))
+        this.window = this.document.defaultView;
+        this.maxMobileWidth = 1024;
 
         router.events.subscribe(e => {
             if(e instanceof NavigationStart && typeof window !== 'undefined') {
@@ -43,15 +46,30 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         })
 
         this.routes = [];
-        this.mobileNavExpanded = false;
-        this.collapseNavbarWidth = 768;
-        this.isMobileMode = false; // TODO(yqni13): implement responsive design
+        this.isMobileMode = false;
     }
 
     ngOnInit() {
         this.routes = this.getRoutes();
-    }
 
+        if(this.window.screen !== undefined) {
+            this.setNavWidthDynamically(this.window.screen.width);
+            this.setNavWidthDynamically(this.document.body.clientWidth);        
+        }
+
+        // adapt to device screen resolution
+        const screenWidthRequestSlowedDown = _.debounce( () => {
+            this.setNavWidthDynamically(this.window.screen.width);
+        }, 250)
+        this.window.addEventListener("resize", screenWidthRequestSlowedDown, false);
+        
+        // adapt to zoom level
+        const clientWidthRequestSlowedDown = _.debounce( () => {
+            this.setNavWidthDynamically(this.document.body.clientWidth);
+        }, 250)
+        this.window.addEventListener("resize", clientWidthRequestSlowedDown, false);
+    }
+    
     ngAfterViewInit() {
         // necessary to clean and newly add classes
         // in case of lightmode it would overwrite with both modes
@@ -62,9 +80,14 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         return this.navigation.getNavigationRoutes();
     }
 
-    protected expandNavMobile(closeAfterNavigation = false) {
-        if(closeAfterNavigation) {
-            // TODO(yqni13): implement device detection
+    private setNavWidthDynamically(width: number): void {
+        // sets data attribute for body and in media.scss style settings are applied
+        if(width > this.maxMobileWidth) {
+            this.document.body.setAttribute("data-nav", 'navDesktop');
+            this.isMobileMode = false;
+        } else {
+            this.document.body.setAttribute("data-nav", 'mobileMode');
+            this.isMobileMode = true;
         }
     }
 

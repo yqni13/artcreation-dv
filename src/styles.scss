@@ -26,8 +26,6 @@ body {
 }
 
 section {
-    margin: 0 0 0 var(--view-nav-width);
-    width: calc(100% - var(--view-nav-width));
     min-height: calc(100% - 300px);
     height: auto;
     display: flex;
@@ -98,6 +96,7 @@ h1 {
 
     &:hover {
         text-decoration: none;
+        color: sass.$color-gold-yellow;
     }
 
     &:active {
@@ -154,3 +153,4 @@ textarea {
     cursor: default;
     pointer-events: none;
 }
+

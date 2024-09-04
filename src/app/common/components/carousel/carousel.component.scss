@@ -5,7 +5,6 @@
     width: 100%;
     margin: auto;
     overflow: hidden;
-    padding: sass.$comp-padding-medium 0;
     position: relative;
 }
 
@@ -44,8 +43,6 @@
 .agal-carousel-default-text-wrapper {
     width: calc(50% - sass.$comp-padding-medium);
     padding: 0 sass.$comp-padding-medium;
-    text-align: justify;
-    padding-bottom: 50px;
 }
 
 .agal-carousel-default-text-header {
@@ -63,6 +60,7 @@
 
 .agal-carousel-default-text-content {
     p {
+        text-align: justify;
         font-size: sass.$home-news-content-size;
         margin: 35px 0;
     }

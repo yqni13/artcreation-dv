@@ -2,12 +2,8 @@
 
 
 /* NAVIGATION MODE STYLING DEFINITIONS */
-[data-nav='navMobileExpanded'] {
-    --view-nav-width: 100%;
-}
-
-[data-nav='navMobileCollapsed'] {
-    --view-nav-width: 50px;
+[data-nav='mobileMode'] {
+    --view-nav-width: 60px;
 }
 
 [data-nav='navDesktop'] {

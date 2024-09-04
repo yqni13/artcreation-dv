@@ -5,26 +5,24 @@ header {
     flex-direction: column;
     text-align: center;
     align-items: center;
-    padding: 200px 0;
 
     background-image: url("/assets/color-bg3.png");
-    background-position-x: center;
-    background-size: 110%;
+    background-position: center;
     background-repeat: no-repeat;
     
     h1 {
-        font-size: 90px;
+        font-size: clamp(25px, 5vw, 90px);
         margin-bottom: 0;
     }
 
     span {
         font-family: 'Custom-RonySiswadi', Fallback, sans-serif;
-        font-size: 80px;
+        font-size: clamp(22px, 4.5vw, 80px);
     }
 
     img {
         filter: var(--theme-signature-filter);
-        width: 100px;
+        width: clamp(30px, 4.2vw, 100px);
         transform: rotate(-2.5deg);
     }
 }
