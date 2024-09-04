@@ -23,6 +23,48 @@
         }
     }
 
+    .agal-about {
+        .agal-about-content {
+            margin: sass.$comp-padding-big sass.$comp-padding-big 0 sass.$comp-padding-big;
+        }
+        #img1 img {
+            width: 100%;
+            max-height: 700px;
+            object-position: center top;
+        }
+        .agal-about-text1 {
+            p {
+                margin: 0 0 0 sass.$comp-padding-medium;
+                font-size: clamp(16px, 2.5vw, 20px);
+            }
+        }
+        .agal-about-additional {
+            flex-direction: row;
+            margin: sass.$comp-padding-big;
+
+            .agal-about-text2 {
+                width: 60%;
+                p {
+                    font-size: clamp(16px, 2.5vw, 20px);
+                    margin-right: calc(sass.$comp-padding-small / 2);
+                }
+            }
+        }
+        #img2 {
+            width: 40%;
+            img {
+                max-height: 700px;
+            }
+        }
+    }
+
+    .agal-faq {
+        .agal-faq-wrapper {
+            width: 60%;
+            max-width: 700px;
+        }
+    }
+
     app-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-big 0;
@@ -50,7 +92,6 @@
         width: calc(100% - var(--view-nav-width));
 
         .agal-footer-credits {
-            width: 55%;
 
             h3 {
                 margin: 10px 0;
@@ -69,7 +110,6 @@
         }
 
         .agal-footer-links {
-            width: 45%!important;
 
             h4,
             a,
@@ -92,6 +132,48 @@
             min-height: 500px;
             max-height: 700px;
             height: 80vh;
+        }
+    }
+
+    .agal-about {
+        .agal-about-content {
+            margin: sass.$comp-padding-medium sass.$comp-padding-medium 0 sass.$comp-padding-medium;
+        }
+        #img1 img {
+            width: 100%;
+            max-height: 700px;
+            object-position: center top;
+        }
+        .agal-about-text1 {
+            p {
+                margin: 0 0 0 sass.$comp-padding-medium;
+                font-size: clamp(16px, 2.5vw, 20px);
+            }
+        }
+        .agal-about-additional {
+            flex-direction: row;
+            margin: sass.$comp-padding-medium;
+
+            .agal-about-text2 {
+                width: 60%;
+                p {
+                    font-size: clamp(16px, 2.5vw, 20px);
+                    margin-right: calc(sass.$comp-padding-small / 2);
+                }
+            }
+        }
+        #img2 {
+            width: 40%;
+            img {
+                max-height: 700px;
+            }
+        }
+    }
+
+    .agal-faq {
+        .agal-faq-wrapper {
+            width: 60vw;
+            max-width: 700px;
         }
     }
 
@@ -162,6 +244,52 @@
                 width: 60vw!important;
                 margin-right: sass.$comp-padding-small!important;
             }
+        }
+    }
+
+    .agal-about {
+        .agal-about-content {
+            margin: sass.$comp-padding-small;
+        }
+        #img1 img {
+            width: 100%;
+            max-height: 600px;
+            object-position: center top;
+        }
+        .agal-about-text1 {
+            p {
+                margin: 0 0 0 calc(sass.$comp-padding-small / 2);
+                font-size: clamp(16px, 2.5vw, 20px);
+            }
+        }
+        .agal-about-additional {
+            flex-direction: row;
+            margin: 0 sass.$comp-padding-small sass.$comp-padding-small sass.$comp-padding-small;
+
+            .agal-about-text2 {
+                width: 60%;
+                p {
+                    font-size: clamp(16px, 2.5vw, 20px);
+                    margin-right: calc(sass.$comp-padding-small / 2);
+                }
+            }
+        }
+        #img2 {
+            width: 40%;
+            justify-content: end!important;
+            img {
+                max-height: 600px;
+            }
+        }
+    }
+
+    .agal-faq {
+        .agal-faq-wrapper {
+            width: calc(100% - (sass.$comp-padding-big * 2));
+        }
+        .agal-faq-coll-title,
+        .agal-faq-coll-content {
+            font-size: clamp(14px, 1.8vw, 17px);
         }
     }
 
@@ -238,6 +366,48 @@
             }
         }
     }
+
+    .agal-about {
+        .agal-about-content {
+            margin: sass.$comp-padding-small;
+        }
+        #img1 img {
+            width: 100%!important;
+        }
+        .agal-about-text1 {
+            margin-left: calc(sass.$comp-padding-small / 2);
+            p {
+                font-size: clamp(14px, 2.5vw, 20px);
+            }
+        }
+        .agal-about-additional {
+            flex-direction: column;
+            margin: sass.$comp-padding-small;
+
+            .agal-about-text2 {
+                width: 100%;                
+                p {
+                    font-size: clamp(14px, 2.5vw, 20px);
+                    margin: 0;
+                }
+            }
+        }
+        #img2 {
+            width: 100%;
+            justify-content: center!important;
+        }
+    }
+
+    .agal-faq {
+        .agal-faq-wrapper {
+            width: calc(100% - (sass.$comp-padding-medium * 2));
+        }
+        .agal-faq-coll-title,
+        .agal-faq-coll-content {
+            font-size: clamp(14px, 1.8vw, 17px);
+        }
+    }
+
     app-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-medium 0;
@@ -269,6 +439,46 @@
             img {
                 width: 85vw!important;
                 margin-right: 0!important;
+            }
+        }
+    }
+
+    .agal-about {
+        .agal-about-content {
+            flex-direction: column-reverse!important;
+
+        }
+        #img1 {
+            width: 100%;
+            margin-top: 0!important;
+            img {
+                margin: 0 calc(sass.$comp-padding-small / 2);
+                width: 70vw!important;
+                max-height: 400px;
+                object-position: center top;
+            }
+        }
+        .agal-about-text1 {
+            width: 100%!important;
+            margin: calc(sass.$comp-padding-small / 2) 0!important;
+            p {
+                margin: 0;
+                font-size: clamp(14px, 2.5vw, 20px);
+                width: 100%!important;
+            }
+        }
+        .agal-about-additional {
+            flex-direction: column;
+            margin: sass.$comp-padding-small;
+            p {
+                font-size: clamp(14px, 2.5vw, 20px);
+            }
+        }
+        #img2 {
+            width: 100%;
+            img {
+                max-width: 300px!important;
+                margin: sass.$comp-padding-small auto!important;
             }
         }
     }
