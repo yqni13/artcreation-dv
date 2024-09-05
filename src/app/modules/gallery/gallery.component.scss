@@ -10,6 +10,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     a {
@@ -31,11 +32,11 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: sass.$comp-padding-medium 0;
+    margin: sass.$comp-padding-medium sass.$comp-padding-small;
     pointer-events: none;
 
     .agal-gallery-cards {
-        margin: 12px;
+        margin: 0 6px 6px 6px;
         pointer-events:all; /* block hover brightness when hovering inbetween */
 
         .agal-gallery-cards-wrapper {

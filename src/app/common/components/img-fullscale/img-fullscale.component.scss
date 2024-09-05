@@ -1,21 +1,28 @@
-
+@use '../../../../stylesheets/utilities' as sass;
 
 
 .agal-imgfullscale-wrapper {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: var(--theme-body-bg);
     position: fixed;
-    z-index: 999;
+    z-index: 1001;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: zoom-out;
 
     img {
-        max-height: 95%;
-        max-width: calc(100% - 200px);
-        padding: 5px;
-        border: solid 5px var(--theme-submenu-route);
+        $border-img: 5px;
+        $padding-img: 5px;
+        $puffer-space: 3px;
+        $gap-sum: calc(($border-img * 2) + ($padding-img * 2) + $puffer-space);
+
+        max-width: calc(100vw - $gap-sum);
+        max-height: calc(100vh - $gap-sum);
+        object-fit:contain;
+        padding: $padding-img;
+        border: solid $border-img var(--theme-submenu-route);
         border-radius: 3px;
     }
 

@@ -1,19 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
     selector: 'agal-imgfullscale',
     template: `
-        <div class="agal-imgfullscale-wrapper" *ngIf="isActive">
+        <div 
+            *ngIf="isActive"
+            class="agal-imgfullscale-wrapper" 
+            [attr.aria-disabled]="true"
+            (click)="closeFullscale(false)"
+            (keydown.enter)="closeFullscale(false)" 
+        >
             <img src="{{imgPath}}" alt="404-picture-not-found">
-            <div class="agal-imgfullscale-exit">
-                <i
-                    class="icon-CloseX"
-                    [attr.aria-disabled]="true"
-                    (click)="closeFullscale(false)"
-                    (keydown.enter)="closeFullscale(false)"
-                ></i>
-            </div>
         </div>
     `,
     styleUrl: "./img-fullscale.component.scss",
