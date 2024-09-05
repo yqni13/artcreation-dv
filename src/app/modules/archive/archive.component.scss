@@ -3,7 +3,6 @@
 
 .agal-archive-content {
     height: 100%;
-    margin: sass.$comp-padding-medium;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -14,7 +13,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 25px;
     border: solid 2px var(--theme-submenu-route);
     overflow: hidden;
 
@@ -29,8 +27,6 @@
     }
 
     img {
-        width: 400px;
-        height: 400px;
         object-fit: cover;
         padding: 5px;
         

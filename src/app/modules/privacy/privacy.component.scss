@@ -9,10 +9,8 @@
 }
 
 .agal-privacy-content {
-    margin: 0 sass.$comp-padding-big sass.$comp-padding-big sass.$comp-padding-big;
 
     .agal-privacy-tableofcontents {
-        margin-bottom: sass.$comp-padding-medium;
         
         li {
             padding: 5px 0;
@@ -20,7 +18,9 @@
     }
     
     h2 {
-        margin-top: calc(sass.$comp-padding-medium + sass.$comp-padding-small);
+        padding-top: calc(sass.$comp-padding-medium + sass.$comp-padding-small);
+        margin: 0;
+        margin-block: 0;
     }
 
     a {
