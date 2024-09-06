@@ -1,23 +1,27 @@
-<section>
+<section class="agal-gallery">
     <header>
         <h1>my art</h1>
     </header>
     <nav class="agal-gallery-nav">
-        <a
-            class="agal-gallery-nav-type"
-            [attr.aria-disabled]="true"
-            (click)="selectGenre('gallery')"
-            (keydown.enter)="selectGenre('gallery')"
-            [ngClass]="activeGenre === 'gallery' ? 'agal-active-route' : ''"
-        >GALLERY</a>
-        <a
-            *ngFor="let nav of paintingGenres"
-            class="agal-gallery-nav-type"
-            [attr.aria-disabled]="true"
-            (click)="selectGenre(nav)"
-            (keydown.enter)="selectGenre(nav)"
-            [ngClass]="activeGenre === nav ? 'agal-active-route' : ''"
-        >{{nav}}</a>
+        <div class="agal-gallery-nav-row">
+            <a
+                class="agal-gallery-nav-type"
+                [attr.aria-disabled]="true"
+                (click)="selectGenre('gallery')"
+                (keydown.enter)="selectGenre('gallery')"
+                [ngClass]="activeGenre === 'gallery' ? 'agal-active-route' : ''"
+            >GALLERY</a>
+        </div>
+        <div class="agal-gallery-nav-row">
+            <a
+                *ngFor="let nav of paintingGenres"
+                class="agal-gallery-nav-type"
+                [attr.aria-disabled]="true"
+                (click)="selectGenre(nav)"
+                (keydown.enter)="selectGenre(nav)"
+                [ngClass]="activeGenre === nav ? 'agal-active-route' : ''"
+            >{{nav}}</a>
+        </div>
     </nav>
     <div class="agal-gallery-content">
         <div class="agal-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">

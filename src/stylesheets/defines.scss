@@ -2,12 +2,8 @@
 
 
 /* NAVIGATION MODE STYLING DEFINITIONS */
-[data-nav='navMobileExpanded'] {
-    --view-nav-width: 100%;
-}
-
-[data-nav='navMobileCollapsed'] {
-    --view-nav-width: 50px;
+[data-nav='mobileMode'] {
+    --view-nav-width: 60px;
 }
 
 [data-nav='navDesktop'] {
@@ -34,6 +30,7 @@
     --theme-snackbar-info: #{sass.$color-lightmode-info};
     --theme-snackbar-success: #{sass.$color-lightmode-success};
     --theme-snackbar-warning: #{sass.$color-lightmode-warning};
+    --theme-signature-filter: none;
 }
 
 [data-theme='dark'] {
@@ -54,4 +51,5 @@
     --theme-snackbar-info: #{sass.$color-darkmode-info};
     --theme-snackbar-success: #{sass.$color-darkmode-success};
     --theme-snackbar-warning: #{sass.$color-darkmode-warning};
+    --theme-signature-filter: #{sass.$color-signature-white};
 }

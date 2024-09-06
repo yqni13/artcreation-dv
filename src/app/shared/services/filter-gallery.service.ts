@@ -29,7 +29,7 @@ export class FilterGalleryService {
         this.source = data;
     }
 
-    getGenres(): string[] {
+    getGenres(sorting: string): string[] {
         Object.values(this.source).forEach((entries) => {
             Object.entries(entries).forEach(([key, val]) => {
                 if(key === 'genre' && !this.genres.includes(val)) {
@@ -37,8 +37,37 @@ export class FilterGalleryService {
                 }
             })
         })
+
+        return this.sortGenres(sorting);
+    }
     
-        return this.genres;
+    sortGenres(sorting: string): string[] {
+        if(this.genres.length === 0) {
+            return [];
+        }
+
+        const data = [...this.genres];
+        switch(sorting) {
+            case('ascending'): {
+                data.sort(function(a, b) {
+                    const genreA = a.toUpperCase();
+                    const genreB = b.toUpperCase();
+                    return (genreA < genreB) ? -1 : (genreA > genreB) ? 1 : 0;
+                })
+                break;
+            }
+            case('descending'): {
+                data.sort(function(a, b) {
+                    const genreA = a.toUpperCase();
+                    const genreB = b.toUpperCase();
+                    return (genreA > genreB) ? -1 : (genreA < genreB) ? 1 : 0;
+                })
+                break;
+            }
+            default:
+                return this.genres;
+        }
+        return data;
     }
 
     filterByGenre(): Map<string, GalleryItem[]> {

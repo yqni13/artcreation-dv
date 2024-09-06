@@ -34,9 +34,11 @@ export class CarouselComponent {
         this.id = '';
     }
 
-    navigateToDetails(id: string) {
-        const genre = this.filterGalleryService.filterByRefNrForGenre(id);
-        this.router.navigate(['gallery/detail', id], { state: { genre: genre}});
+    navigateToDetails(id: string | null) {
+        if(id) {
+            const genre = this.filterGalleryService.filterByRefNrForGenre(id);
+            this.router.navigate(['gallery/detail', id], { state: { genre: genre}});
+        }
     }
 
     getTransform() {

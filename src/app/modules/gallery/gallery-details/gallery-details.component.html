@@ -1,36 +1,28 @@
-<div class="agal-gallerydetails-fullscale" *ngIf="isFullscale">
-    <img src="{{card?.path}}" alt="404-picture-not-found">
-    <div class="agal-gallerydetails-fullscale-exit">
-        <i
-            class="icon-CloseX"
-            [attr.aria-disabled]="true"
-            (click)="navigateFullscale(false)"
-            (keydown.enter)="navigateFullscale(false)"
-        ></i>
-    </div>
-</div>
-<section>
+<agal-imgfullscale 
+    [imgPath]="card?.path || ''" 
+    [isActive]="isFullscale"
+    (fullscaleChanged)="navigateFullscale($event)"
+></agal-imgfullscale>
+<section class="agal-gallerydetails">
     <div class="agal-gallerydetails-tools">
         <div class="agal-detail-tools back">
-            <a 
-                class="agal-back-arrow"
+            <i 
+                class="icon-GoBack agal-back-arrow"
                 [attr.aria-disabled]="true"
                 (click)="navigateToGallery()"
                 (keydown.enter)="navigateToGallery()"
-            >back</a>
-        </div>
-        <div class="agal-detail-tools zoom">
-            <i 
-                class="icon-Zoom" 
-                [attr.aria-disabled]="true"
-                (click)="navigateFullscale(true)"
-                (keydown.enter)="navigateFullscale(true)"
-            ></i>
+            >back</i>
         </div>
     </div>
     <div class="agal-gallerydetails-img">
         <div class="agal-gallerydetails-img-wrapper">
-            <img src="{{card?.path}}" alt="404-picture-not-found">
+            <img 
+                src="{{card?.path}}" 
+                alt="404-picture-not-found"
+                [attr.aria-disabled]="true"
+                (click)="navigateFullscale(true)"
+                (keydown.enter)="navigateFullscale(true)"
+            >
         </div>
     </div>
     <div class="agal-gallerydetails-content">
@@ -50,12 +42,26 @@
                 <span>{{card?.referenceNr}}</span>
             </div>
         </div>
-        <div class="agal-gallerydetails-property" id="card-tags">
+                
+        <div class="agal-gallerydetails-property" id="card-price">
             <div class="agal-gallerydetails-key">
-                <label for="card-tags">Tags:</label>
+                <label for="card-price">Price:</label>
             </div>
-            <div class="agal-gallerydetails-value">
-                <span *ngFor="let tag of card?.tags">{{tag}}</span>
+            <div class="agal-gallerydetails-value" *ngIf="card?.price && card?.price !== 0">
+                <span>€ {{card?.price | floatPrecision: 2}}</span>
+                
+            </div>
+            <div class="agal-gallerydetails-value" *ngIf="card?.price === null">
+                <span class="agal-gallerydetails-sold">not available</span>
+            </div>
+            <div class="agal-gallerydetails-value" *ngIf="card?.price === 0">
+                <a
+                    class="agal-anchor"
+                    [routerLink]="'/contact'"
+                    [attr.aria-disabled]="true"
+                    (click)="navigateToContactWithData(subject.specificInformation)"
+                    (keydown.enter)="navigateToContactWithData(subject.specificInformation)"
+                >request price</a>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-type">
@@ -63,35 +69,7 @@
                 <label for="card-type">Type:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.type}}</span>
-            </div>
-        </div>
-        <div class="agal-gallerydetails-property" id="card-price">
-            <div class="agal-gallerydetails-key">
-                <label for="card-price">Price:</label>
-            </div>
-            <div class="agal-gallerydetails-value" *ngIf="card?.price && card?.price !== 0">
-                <span>€ {{card?.price | floatPrecision: 2}}</span>
-            </div>
-            <div class="agal-gallerydetails-value" *ngIf="card?.price === 0">
-                <span class="agal-gallerydetails-sold">sold</span>
-            </div>
-            <div class="agal-gallerydetails-value" *ngIf="card?.price === null">
-                <a
-                    class="agal-anchor"
-                    [routerLink]="'/contact'"
-                    [attr.aria-disabled]="true"
-                    (click)="navigateToContactWithData()"
-                    (keydown.enter)="navigateToContactWithData()"
-                >request price</a>
-            </div>
-        </div>
-        <div class="agal-gallerydetails-property" id="card-technique">
-            <div class="agal-gallerydetails-key">
-                <label for="card-technique">Technique:</label>
-            </div>
-            <div class="agal-gallerydetails-value">
-                <span>{{card?.technique === null ? '--' : card?.technique}}</span>
+                <span>{{card?.price === null ? '--' : card?.type}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-measurements">
@@ -102,12 +80,14 @@
                 <span>{{card?.measurementsWxH === null ? '--' : card?.measurementsWxH | dimensionFormat}}</span>
             </div>
         </div>
-        <div class="agal-gallerydetails-property" id="card-year">
+        <div class="agal-gallerydetails-divider"></div>
+        <div class="agal-gallerydetails-property" id="card-tags">
             <div class="agal-gallerydetails-key">
-                <label for="card-date">Date:</label>
+                <label for="card-tags">Tags:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.date === null ? '--' : card?.date}}</span>
+                <span class="agal-tags" *ngFor="let tag of card?.tags">{{tag}}</span>
+                <span *ngIf="card?.tags === null">--</span>
             </div>
         </div>
         <div 
@@ -121,6 +101,31 @@
             <div class="agal-gallerydetails-value">
                 <span>{{card?.comment === null ? '--' : '"' + card?.comment + '"'}}</span>
             </div>
+        </div>
+        <div class="agal-gallerydetails-property" id="card-technique">
+            <div class="agal-gallerydetails-key">
+                <label for="card-technique">Technique:</label>
+            </div>
+            <div class="agal-gallerydetails-value">
+                <span>{{card?.technique === null ? '--' : card?.technique}}</span>
+            </div>
+        </div>
+        <div class="agal-gallerydetails-property" id="card-year">
+            <div class="agal-gallerydetails-key">
+                <label for="card-date">Date:</label>
+            </div>
+            <div class="agal-gallerydetails-value">
+                <span>{{card?.date === null ? '--' : card?.date}}</span>
+            </div>
+        </div>
+        <div class="agal-gallerydetails-order" *ngIf="card?.price && card?.price !== 0">
+            <button
+                class="agal-button-submit"
+                [routerLink]="'/contact'"
+                [attr.aria-disabled]="true"
+                (click)="navigateToContactWithData(subject.artOrder)"
+                (keydown.enter)="navigateToContactWithData(subject.artOrder)"
+            >Order</button>
         </div>
     </div>
 </section>

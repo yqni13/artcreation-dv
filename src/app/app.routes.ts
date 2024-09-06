@@ -20,17 +20,17 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-        data: { title: 'Home', showInNavbar: true, showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'Home', showInNavbar: true, icon:'icon-Home', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'about',
         component: AboutComponent,
-        data: { title: 'About', showInNavbar: true, showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'About', showInNavbar: true, icon: 'icon-About', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'gallery',
         component: GalleryComponent,
-        data: { title: 'Gallery', showInNavbar: true, showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'Gallery', showInNavbar: true, icon: 'icon-Gallery', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'gallery/detail/:id',
@@ -40,12 +40,12 @@ export const routes: Routes = [
     {
         path: 'prints',
         component: PrintsComponent,
-        data: { title: 'Prints', showInNavbar: true, showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'Prints', showInNavbar: true, icon:'icon-Prints', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'faq',
         component: FAQComponent,
-        data: { title: 'FAQ', showInNavbar: true, showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'FAQ', showInNavbar: true, icon: 'icon-FAQ', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'contact',
@@ -70,6 +70,6 @@ export const routes: Routes = [
     {
         path: 'shipping',
         component: ShippingComponent,
-        data: { title: 'Shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
+        data: { title: 'Shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
     }
 ];

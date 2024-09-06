@@ -4,10 +4,9 @@
 .agal-faq-content {
     display: flex;
     justify-content: center;
-    margin: 50px 0;
+    margin: sass.$comp-padding-medium 0 sass.$comp-padding-big 0;
 
     .agal-faq-wrapper {
-        width: 50%;
 
         input {
             display: none;
@@ -49,9 +48,9 @@
         }
 
         .agal-faq-coll-title {
+            text-overflow: ellipsis;
             width: calc(100% - (sass.$comp-padding-small * 2));
-            height: sass.$faq-box-height;
-            line-height: sass.$faq-box-height;
+            padding: 15px 0;
             display: inline-block;
             border-bottom: solid 1.5px var(--theme-body-bg);
             cursor: pointer;
@@ -112,7 +111,7 @@
                 display: block;
                 content: '\203a';
                 left: 20px;
-                top: -2px;
+                top: 14px;
                 transition: transform .15s ease-in-out;
             }
         }

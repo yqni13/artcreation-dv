@@ -1,22 +1,12 @@
-<nav class="agal-nav-bar" data-media="mobile">
-    <ul>
-        <li class="agal-nav-folding" *ngIf="isMobileMode">
-            <i 
-                [attr.aria-disabled]="true"
-                class="icon-BurgerMenu agal-nav-mobile" 
-                (click)="expandNavMobile()" 
-                (keydown.enter)="expandNavMobile()"
-            ></i>
-        </li>
-        <li>
+<nav class="agal-nav-bar">
+    <ul>        
+        <li *ngIf="!isMobileMode">
             <img
                 [attr.aria-disabled]="true"
                 class="agal-nav-logo"
-                src="assets/art-logo.png" 
+                src="logo_bold.png" 
                 alt="logo to navigate home"
                 routerLink="home"
-                (click)="expandNavMobile(true)"
-                (keydown.enter)="expandNavMobile(true)"
             >
         </li>
         <li *ngFor="let route of routes">
@@ -25,9 +15,7 @@
                 [attr.aria-disabled]="true"
                 routerLink="{{ route.path }}"
                 routerLinkActive="agal-active-route"
-                (click)="expandNavMobile(true)"
-                (keydown.enter)="expandNavMobile(true)"
-            >{{ route.data?.['title'] }}</span>
+            >{{!isMobileMode ? route.data?.['title'] : ''}} <i *ngIf="isMobileMode" class="{{route.data?.['icon']}}"></i></span>
         </li>
         <li>
             <span

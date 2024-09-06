@@ -5,7 +5,6 @@ import { NewsKeys } from "../../shared/enums/news-keys.enum";
 import { CarouselComponent } from "../../common/components/carousel/carousel.component";
 import { CommonModule } from "@angular/common";
 
-
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',

@@ -1,42 +1,51 @@
-// TODO(yqni13): remove if not used
 @use '../../../stylesheets/utilities' as sass;
 
 
 .agal-about-content {
     display: flex;
     flex-direction: row;
+}
 
-    .agal-about-image {
-        display: flex;
-        justify-content: center;
-        margin: 100px 0;
-        img {
-            width: calc(100% - 400px);
+.agal-about-image {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
 
-        }
+#img1 {
+    img {
+        width: 100%;
+        object-fit: contain;
     }
-    
-    .agal-about-text {
-        display: flex;
-        justify-content: center;
-        text-align: justify;
-        width: 50%;
+}
 
-        p {
-            margin: 100px 0;
-            width: calc(100% - 200px);
-            align-content: center;
-        }
+#img2 {
+    justify-content: center;
+    img {
+        max-width: 100%;
+        object-fit: cover;
+        margin: sass.$comp-padding-small 0;
     }
+} 
+
+.agal-about-text1 {
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+    width: 50%;
+
+    p {
+        width: 100%;
+        align-content: center;
+    }
+}
+
+.agal-about-text2 {
+    align-self: center;
 }
 
 .agal-about-additional {
     display: flex;
     justify-content: center;
     text-align: justify;
-    margin-bottom: 100px;
-
-    p {
-        width: calc(100% - 400px);
-    }
 }
