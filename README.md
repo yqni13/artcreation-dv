@@ -47,10 +47,7 @@ $\texttt{\color{teal}{v1.0.0-alpha.8}}$
 
 ### Aimed objectives for next $\textsf{\color{purple}beta}$ update:
 <dl>
-      <dd>- responsive design regarding different heights (currently width based)</dd>
-      <dd>- visible vertical scrollbar for text based components</dd>
       <dd>- disable/enable sending button of contact form until response intercepted</dd>
-      <dd>- refactor common components to use "agal-" pre-set instead of default "app-"</dd>
       <dd>- improve LocalStorage handling</dd>
       <dd>- refactor typescript best practice variable initialization</dd>
 </dl>

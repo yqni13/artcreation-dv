@@ -30,7 +30,7 @@ header {
     $studio-margin-right: sass.$comp-padding-medium;
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     padding: sass.$comp-padding-medium 0;
     background-color: var(--theme-body-bg);
     border-top: solid 3px var(--theme-highlight-body);
@@ -40,7 +40,6 @@ header {
         width: calc(100% - (sass.$comp-padding-big * 4));
         aspect-ratio: 16 / 9;
         padding: 5px;
-        margin-right: $studio-margin-right;
         border: solid 3px var(--theme-contrast-anchor);
     }
 }

@@ -6,7 +6,7 @@ import { SnackbarMessageService } from "../../../shared/services/snackbar.servic
 import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
 
 @Component({
-    selector: 'app-footer',
+    selector: 'agal-footer',
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.scss',
     standalone: true,

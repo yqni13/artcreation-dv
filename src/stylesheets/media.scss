@@ -110,7 +110,7 @@
         }
     }
 
-    app-carousel {
+    agal-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-big 0;
         }
@@ -177,6 +177,11 @@
             min-height: 500px;
             max-height: 700px;
             height: 80vh;
+        }
+        .agal-home-top-img {
+            img {
+                width: calc(100% - (sass.$comp-padding-big * 2))!important;
+            }
         }
     }
 
@@ -275,7 +280,7 @@
         }
     }
 
-    app-carousel {
+    agal-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-medium 0;
         }
@@ -339,8 +344,7 @@
 
         .agal-home-top-img {
             img {
-                width: 60vw!important;
-                margin-right: sass.$comp-padding-small!important;
+                width: 75vw!important;
             }
         }
     }
@@ -451,7 +455,7 @@
         }
     }
 
-    app-carousel {
+    agal-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-small 0;
         }
@@ -654,7 +658,7 @@
         }
     }
 
-    app-carousel {
+    agal-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-medium 0;
         }
@@ -789,7 +793,8 @@
         .agal-archive-entry {
             margin: calc(sass.$comp-padding-small / 2) 0;
             img {
-                aspect-ratio: 1 / 1;
+                width: 70vw!important;
+                height: 70vw!important;
             }
         }
     }
@@ -814,7 +819,7 @@
         }
     }
 
-    app-carousel {
+    agal-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-small 0 0 0;
         }
