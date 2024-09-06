@@ -31,6 +31,14 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
                     type: SnackbarOption.error,
                     displayTime: 10000
                 })
+            } else if(response.statusText === 'Unknown Error') {
+                snackbarService.notify({
+                    title: 'Email not sent',
+                    text: 'Service not reachable. Please try again later.',
+                    autoClose: true,
+                    type: SnackbarOption.error,
+                    displayTime: 10000
+                })
             }
             return of(response);
         })

@@ -4,6 +4,14 @@
 .agal-gallery-nav {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+
+    .agal-gallery-nav-row {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
     a {
         text-transform: uppercase;
@@ -24,11 +32,11 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: sass.$comp-padding-medium 0;
+    margin: sass.$comp-padding-medium sass.$comp-padding-small;
     pointer-events: none;
 
     .agal-gallery-cards {
-        margin: 12px;
+        margin: 0 6px 6px 6px;
         pointer-events:all; /* block hover brightness when hovering inbetween */
 
         .agal-gallery-cards-wrapper {
@@ -46,6 +54,7 @@
                     animation-duration: 1s;
                     animation-timing-function: ease-out;
                     animation-fill-mode: forwards;
+                    border: solid 2px var(--theme-contrast-anchor);
                 }
             }         
         }
@@ -82,5 +91,5 @@
 
 @keyframes brighten-up {
     from {filter: brightness(1)}
-    to {filter: brightness(1.4)}
+    to {filter: brightness(1.3)}
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
 import { NavigationStart, Route, Router, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
+import { SnackbarMessageService } from "../../../shared/services/snackbar.service";
+import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
 
 @Component({
     selector: 'app-footer',
@@ -21,6 +23,7 @@ export class FooterComponent implements OnInit {
     protected creatorURL: string;
 
     constructor(
+        private snackbarService: SnackbarMessageService,
         private navigation: NavigationService,
         private router: Router
     ) {
@@ -49,4 +52,11 @@ export class FooterComponent implements OnInit {
         return this.navigation.getFooterConnectRoutes();
     }
 
+    alertAvailability() {
+        this.snackbarService.notify({
+            title: 'Shipping not available.',
+            autoClose: true,
+            type: SnackbarOption.error
+        })
+    }
 }

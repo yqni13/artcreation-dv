@@ -1,19 +1,12 @@
-<section>
+<section class="agal-home">
     <header>
-        <h1>Daniela Varga</h1>
+        <h1>Kunst & Kreatives</h1>
+        <span>Daniela Varga</span>
+        <img src="logo_bold.png" alt="404-picture-not-found">
     </header>
     <div class="agal-home-top-img">
-        <img src="assets/studio.png" alt="404-picture-not-found">
+        <img src="assets/studio-dv.jpg" alt="404-picture-not-found">
     </div>
 
     <app-carousel [slides]="slides"></app-carousel>
-
-    <!-- TODO(yqni13): keep until implementation of customTemplate in gallery -->
-    <!-- <app-carousel [slides]="slides2" [slideTemplate]="customTemplate"></app-carousel>
-    <ng-template #customTemplate let-slide>
-        <div class="custom-slide">
-            <img src="{{ slide.image }}" *ngIf="slide.image" alt="404-picture-not-found">
-        </div>
-    </ng-template> -->
-
 </section>

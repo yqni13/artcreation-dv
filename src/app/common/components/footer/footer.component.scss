@@ -1,9 +1,8 @@
 @use '../../../../stylesheets/utilities' as sass;
 
+
 footer {
-    margin: 0 0 0 var(--view-nav-width);
-    width: calc(100% - var(--view-nav-width));
-    height: 300px;
+    height: 400px;
     display: flex;
     flex-direction: row;
     background-color: var(--theme-highlight-body);
@@ -18,24 +17,11 @@ footer {
     color: var(--theme-active-route);
 
     h3 {
-        font-size: 33px;
-        margin: 10px 0;
         font-weight: normal;
-        padding-left: sass.$comp-padding-big;
-    }
-    
-    a {
-        padding-left: calc(sass.$comp-padding-big + 3.5px);
     }
     
     .icon-Copyright {
-        // TODO(yqni13): needs to be adapted to font-size via clamp
-        // clamp size and for width +1, height +2 or similar
-        width: 18px;
-        height: 18px;
         position: relative;
-        left: 100px;
-        top: 4px;
     }
 }
 

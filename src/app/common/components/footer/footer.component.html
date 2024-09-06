@@ -37,6 +37,15 @@
                         routerLink="{{ route.path }}"
                     >{{ route.data?.['title'] }}</span>
                 </li>
+                <!-- TODO(yqni13): implement shipping comp and reset app.routes.ts and loop -->
+                <li>
+                    <span
+                        class="agal-footer-routes"
+                        [attr.aria-disabled]="true"
+                        (click)="alertAvailability()"
+                        (keydown.enter)="alertAvailability()"
+                    >Shipping</span>
+                </li>
             </ul>
         </div>
     </div>

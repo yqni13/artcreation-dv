@@ -88,7 +88,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     private initEdit() {
         this.initForm();
         this.contactForm.patchValue({
-            subject: this.hasSelectedParameters ? SubjectOptions.artOrder : '',
+            subject: this.hasSelectedParameters ? this.selectedParams['subject'] : '',
             referenceNr: this.hasSelectedParameters ? this.selectedParams['referenceNr'] : '',
             type: this.hasSelectedParameters ? this.selectedParams['type'] : '',
             email: '',
@@ -101,7 +101,8 @@ export class ContactComponent implements OnInit, OnDestroy {
     }
 
     private checkParameters(data: Record<string, string>) {
-        if(data !== null || data !== undefined || (data['referenceNr'] !== '' && data['type'] !== '')) {
+        if(data !== null || data !== undefined || 
+            (data['referenceNr'] !== '' && data['type'] !== '' && data['subject'] !== '')) {
             this.hasSelectedParameters = true;
             this.hasReferenceFromParams = true;
             this.hasValidReferenceNr = true;

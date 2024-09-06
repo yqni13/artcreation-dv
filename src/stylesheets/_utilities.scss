@@ -3,7 +3,7 @@ $device-desktop-xk: 1440px;
 $device-tablet-landscape: 1024px;
 $device-phone-landscape: 768px;
 $device-phone-portrait: 500px;
-$device-small-any: 350px;
+$device-small-any: 400px;
 
 
 /* custom colors */
@@ -32,7 +32,7 @@ $color-eggshell-white: #fae3b9de;
 
 
 /* custom definitions */
-
+$color-signature-white: invert(100%) sepia(59%) saturate(5190%) hue-rotate(179deg) brightness(107%) contrast(107%);
 
 /* IMPORTANT! <select> uses padding-left: 4px intern (don't know yet to change that) */
 $select-intern-leftpadding: 4px;
@@ -56,7 +56,7 @@ $comp-padding-small: 25px;
 $comp-padding-medium: 50px;
 $comp-padding-big: 100px;
 $comp-form-padding: 5px;
-$comp-margin-h1: 40px;
+$comp-margin-h1: 50px;
 
 $form-divider-margin: 2.5px;
 $select-symbol-balance: 1px;
@@ -77,3 +77,9 @@ $color-darkmode-success: #116600;
 
 $color-lightmode-warning: #e69900;
 $color-darkmode-warning: #ab5f28e6;
+
+
+@font-face {
+    font-family: 'Custom-RonySiswadi';
+    src: url('/fonts/ronysiswadi/RonysiswadiArchitect6-X3V9G.ttf') format('truetype');
+}

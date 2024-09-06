@@ -32,7 +32,7 @@ export class MailService {
         ? `${this.mailData.subject}: ${this.mailData.referenceNr}`
         : this.mailData.subject;
 
-        const msgPartType = this.mailData.type === ArtworkOptions.originalANDprint
+        const msgPartType = this.mailData.type === ArtworkOptions.originalORprint
             ? `${ArtworkOptions.original} & ${ArtworkOptions.print}`
             : this.mailData.type;
 

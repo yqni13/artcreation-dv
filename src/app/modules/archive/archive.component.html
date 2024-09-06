@@ -1,4 +1,9 @@
-<section>
+<agal-imgfullscale 
+    [imgPath]="currentPath" 
+    [isActive]="isFullscale"
+    (fullscaleChanged)="navigateFullscale($event)"
+></agal-imgfullscale>
+<section class="agal-archive">
     <header>
         <h1>News archive</h1>
     </header>
@@ -6,7 +11,6 @@
         <p>
             Hover your mouse over the image to read more on the article.
         </p>
-        <iframe src="https://giphy.com/embed/l4FGCv4dauH4nzmBq" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
     </div>
     <div class="agal-archive-content">
         <div class="agal-archive-entry" *ngFor="let news of newsCollection">
@@ -16,9 +20,12 @@
                     <h3 *ngIf="news.title">{{ news.title }}</h3>
                     <span>{{news.date | dateFormat:'dd.mm.yyyy'}}</span>
                     <p *ngIf="news.text">{{ news.text }}</p>
-                    <i class="icon-Zoom"></i>
+                    <i class="icon-Zoom"
+                        [attr.aria-disabled]="true"
+                        (click)="navigateFullscale(true, news.image)"
+                        (keydown.enter)="navigateFullscale(true, news.image)"
+                    ></i>
                 </div>
-                <!-- TODO(yqni13): add fullscale img view on click -->
             </div>} 
             @placeholder {
                 <img class="agal-loading" src="/assets/loading.gif" alt="loading...">
