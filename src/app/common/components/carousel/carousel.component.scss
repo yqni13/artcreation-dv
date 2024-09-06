@@ -62,7 +62,7 @@
     p {
         text-align: justify;
         font-size: sass.$home-news-content-size;
-        margin: 25px 0 50px 0;
+        margin: sass.$comp-padding-small 0 sass.$comp-padding-medium 0;
     }
 }
 

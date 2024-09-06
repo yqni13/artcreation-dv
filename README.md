@@ -31,7 +31,7 @@ $\texttt{\color{teal}{v1.0.0-alpha.8}}$
       <dd>custom validation + service & pipes</dd>
       <dd>http interception + custom snackbar modal</dd>
       <dd>different protection layers for certain images (disabling right click; watermarks)</dd>
-      <dd></dd>
+      <dd>responsive design</dd>
 </dl>
 
 <br><br>
@@ -50,6 +50,9 @@ $\texttt{\color{teal}{v1.0.0-alpha.8}}$
       <dd>- responsive design regarding different heights (currently width based)</dd>
       <dd>- visible vertical scrollbar for text based components</dd>
       <dd>- disable/enable sending button of contact form until response intercepted</dd>
+      <dd>- refactor common components to use "agal-" pre-set instead of default "app-"</dd>
+      <dd>- improve LocalStorage handling</dd>
+      <dd>- refactor typescript best practice variable initialization</dd>
 </dl>
 <br>
 
@@ -59,6 +62,9 @@ $\texttt{\color{teal}{v1.0.0-alpha.8}}$
       <dd>- real text content</dd>
       <dd>- correct email accounts to recieve and send in BE</dd>
       <dd>- key listeners</dd>
+      <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
+      <dd>- img resizing</dd>
+      <dd>- text search in archive component</dd>
 </dl>
 <br>
 
@@ -66,7 +72,6 @@ $\texttt{\color{teal}{v1.0.0-alpha.8}}$
 <dl>
       <dd>- translation option de/en</dd>
       <dd>- print component content + changes in logic for gallery details & contact</dd>
-      <dd>- img resizing</dd>
       <dd>- direct pay option</dd>
 </dl>
 <br>

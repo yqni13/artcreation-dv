@@ -67,8 +67,8 @@ img {
 
     i {
         align-self: center;
-        width: 25px;
-        height: 25px;
+        width: sass.$comp-padding-small;
+        height: sass.$comp-padding-small;
         margin-top: 10px;
         cursor: pointer;
     }
@@ -89,8 +89,8 @@ img {
 }
 
 .agal-loading {
-    width: 100px!important;
-    height: 100px!important;
+    width: sass.$comp-padding-big!important;
+    height: sass.$comp-padding-big!important;
     padding: 150px!important;
     display: flex;
     justify-content: center;

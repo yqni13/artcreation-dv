@@ -66,15 +66,15 @@
         .agal-gallerydetails-img {
             height: 100vh!important;
             background-position-x: center!important;
-            background-position-y: 0!important;
+            background-position-y: 80%!important;
 
             .agal-gallerydetails-img-wrapper {
-                margin-top: 8vw!important;
+                margin: 0 0 calc((1000px - 100vh) * 0.5) 0!important;
             }
 
             img {
-                max-width: 850px!important;
-                max-height: 330px!important;
+                max-width: 800px!important;
+                max-height: calc(250px + ((100vw - 1440px) * 0.3))!important;
             }
         }
         .agal-gallerydetails-divider {
@@ -124,10 +124,10 @@
         
         ul {
             flex-direction: column;
-            padding: 25px 0;
+            padding: sass.$comp-padding-small 0;
 
             li {
-                padding: 12.5px 0;
+                padding: calc(sass.$comp-padding-small / 2) 0;
             }
         }
     }
@@ -222,7 +222,7 @@
         .agal-gallerydetails-img {
             height: 100vh!important;
             background-position-x: center!important;
-            background-position-y: 0!important;
+            background-position-y: 80%!important;
 
             $img-widthborder-wrapper: 10px;
             $img-widthborder-img: 2px;
@@ -234,12 +234,12 @@
             + (clamp(175px, 18vw, 300px) * 2));
 
             .agal-gallerydetails-img-wrapper {
-                margin-top: sass.$comp-padding-big!important;
+                margin: 0 0 calc((1000px - 100vh) * 0.5) 0!important;
             }
 
             img {
                 max-width: calc(100vw - $gap-sum)!important;
-                max-height: 35vh!important;
+                max-height: 33vh!important;
             }
         }
         .agal-gallerydetails-divider {
@@ -289,10 +289,10 @@
 
         ul {
             flex-direction: column;
-            padding: 25px 0;
+            padding: sass.$comp-padding-small 0;
 
             li {
-                padding: 12.5px 0;
+                padding: calc(sass.$comp-padding-small / 2) 0;
             }
         }
     }
@@ -384,7 +384,7 @@
     .agal-gallerydetails {
         .agal-gallerydetails-tools {
             top: calc(var(--view-nav-width) + 15px)!important;
-            left: 25px!important;
+            left: sass.$comp-padding-small!important;
         }
         .agal-gallerydetails-content {
             margin: 0 0 sass.$comp-padding-medium 0!important;
@@ -401,10 +401,10 @@
             $gap-sum: calc(($img-widthpadding-img * 2) 
             + ($img-widthborder-img * 2) 
             + ($img-widthborder-wrapper * 2) 
-            + (10vw * 2));
+            + (12vw * 2));
 
             .agal-gallerydetails-img-wrapper {
-                margin-top: calc(sass.$comp-padding-small / 2)!important;
+                margin: 0 0 calc((1000px - 100vh) * 0.5) 0!important;
             }
 
             img {
@@ -485,7 +485,7 @@
             padding: 0;
 
             li {
-                padding: 12.5px 4vw;
+                padding: calc(sass.$comp-padding-small / 2) 4vw;
             }
         }
     }
@@ -587,6 +587,10 @@
 
     .agal-gallerydetails {
         .agal-gallerydetails-img {
+            height: 100vh!important;
+            background-position-x: center!important;
+            background-position-y: -50px!important;
+
             $img-widthborder-wrapper: 10px;
             $img-widthborder-img: 2px;
             $img-widthpadding-img: 25px;
@@ -595,6 +599,10 @@
             + ($img-widthborder-img * 2) 
             + ($img-widthborder-wrapper * 2) 
             + (sass.$comp-padding-medium * 2));
+
+            .agal-gallerydetails-img-wrapper {
+                margin: 0 0 150px 0!important;
+            }
 
             img {
                 max-width: calc(100vw - $gap-sum)!important;
@@ -737,6 +745,10 @@
 
     .agal-gallerydetails {
         .agal-gallerydetails-img {
+            height: 100vh!important;
+            background-position-x: center!important;
+            background-position-y: -50px!important;
+
             $img-widthborder-wrapper: 10px;
             $img-widthborder-img: 2px;
             $img-widthpadding-img: 25px;
@@ -745,6 +757,10 @@
             + ($img-widthborder-img * 2) 
             + ($img-widthborder-wrapper * 2) 
             + (sass.$comp-padding-small * 2));
+
+            .agal-gallerydetails-img-wrapper {
+                margin: 0 0 150px 0!important;
+            }
 
             img {
                 max-width: calc(100vw - $gap-sum)!important;
@@ -869,7 +885,6 @@
     .agal-component-snackbar {
         top: var(--view-nav-width)!important;
         left: 0!important;
-        // right: 50%!important;
         .agal-snackbar-container {
             margin: 15px auto!important;
         }

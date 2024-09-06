@@ -23,12 +23,11 @@ header {
     img {
         filter: var(--theme-signature-filter);
         width: clamp(30px, 4.2vw, 100px);
-        transform: rotate(-2.5deg);
     }
 }
 
 .agal-home-top-img {
-    $studio-margin-right: 50px;
+    $studio-margin-right: sass.$comp-padding-medium;
     width: 100%;
     display: flex;
     justify-content: end;

@@ -25,26 +25,4 @@
         border: solid $border-img var(--theme-submenu-route);
         border-radius: 3px;
     }
-
-    .agal-imgfullscale-exit {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        border: solid 1px var(--theme-contrast-anchor);
-        cursor: pointer;
-
-        i {
-            font-weight: bold;
-            color: var(--theme-contrast-anchor);
-        }
-
-        &:hover {
-            opacity: 0.4;
-        }
-    }
 }

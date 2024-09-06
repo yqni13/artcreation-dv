@@ -36,8 +36,6 @@ export class ArchiveComponent implements OnInit {
 
     navigateFullscale(flag: boolean, path?: string) {
         this.isFullscale = flag;
-        if(path) {
-            this.currentPath = path;
-        }
+        this.currentPath = path ?? this.currentPath;
     }
 }

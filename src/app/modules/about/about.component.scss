@@ -4,7 +4,6 @@
 .agal-about-content {
     display: flex;
     flex-direction: row;
-    
 }
 
 .agal-about-image {
@@ -24,7 +23,6 @@
     justify-content: center;
     img {
         max-width: 100%;
-        height: auto;
         object-fit: cover;
         margin: sass.$comp-padding-small 0;
     }
@@ -50,5 +48,4 @@
     display: flex;
     justify-content: center;
     text-align: justify;
-    
 }

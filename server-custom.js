@@ -33,12 +33,11 @@ app.post('/send-email', (req, res) => {
         }
     });
 
-    // TODO(yqni13): add correct from-address to handle emails and adjust details
-
+    // TODO(yqni13): add correct from-address starting with beta version
     const mailOptions = {
         from: sender,
         replyTo: email,
-        to: receiver,
+        to: email,
         subject: subject,
         text: message
     };

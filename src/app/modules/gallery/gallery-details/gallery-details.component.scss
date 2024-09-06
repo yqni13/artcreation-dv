@@ -55,6 +55,7 @@
             width: 50%;
             text-align: end;
         }
+
         .agal-gallerydetails-value {
             width: 50%;
             text-align: start;
@@ -70,23 +71,22 @@
         padding: 2.5px 5px;
         border: solid 1px var(--theme-body-text);
         border-radius: 3px;
-        // margin-right: 7.5px;
         font-size: 12px;
         
     }
+
     #card-tags .agal-gallerydetails-key {
         display: flex;
         justify-content: end;
         align-items: center;
     }
+
     #card-tags .agal-gallerydetails-value {
         display: flex;
         flex-wrap: wrap;
         span {
             margin: 7.5px;
         }
-        
-
     }
 }
 
