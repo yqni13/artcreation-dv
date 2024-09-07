@@ -7,7 +7,7 @@ import { ThemeOption } from "../../../shared/enums/theme-option.enum";
 import _ from 'underscore';
 
 @Component({
-    selector: 'app-navigation',
+    selector: 'agal-navigation',
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss',
     standalone: true,
