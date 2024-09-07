@@ -69,6 +69,7 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
 
 ### Aimed objectives for next $\textsf{\color{green}minor}$ update:
 <dl>
+      <dd>- rename project</dd>
       <dd>- change host to deploy working backend</dd>
       <dd>- improve LocalStorage handling</dd>
       <dd>- disable/enable sending button of contact form until response intercepted</dd>

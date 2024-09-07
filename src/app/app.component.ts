@@ -20,7 +20,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
   ]
 })
 export class AppComponent implements AfterViewInit, OnDestroy{
-  title = 'art-gallery-FE-only';
+  title = 'artcreation-dv';
 
   private listenerDefault!: () => void;
 
