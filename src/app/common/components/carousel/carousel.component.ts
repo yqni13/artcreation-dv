@@ -7,7 +7,7 @@ import { FilterGalleryService } from '../../../shared/services/filter-gallery.se
 import { NewsUpdateStorage } from '../../../shared/interfaces/NewsUpdateStorage';
 
 @Component({
-    selector: 'app-carousel',
+    selector: 'agal-carousel',
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss'],
     standalone: true,
@@ -21,8 +21,6 @@ export class CarouselComponent {
     @Input() slides: NewsUpdateStorage[];
     @Input() slideTemplate?: TemplateRef<any>;
 
-    private id: string;
-
     currentIndex: number;
 
     constructor(
@@ -31,7 +29,6 @@ export class CarouselComponent {
     ) {
         this.slides = [];
         this.currentIndex = 0;
-        this.id = '';
     }
 
     navigateToDetails(id: string | null) {
