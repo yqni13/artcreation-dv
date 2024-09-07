@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "docs/art-gallery-fe-only",
+            "outputPath": "dist/art-gallery-fe-only",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
