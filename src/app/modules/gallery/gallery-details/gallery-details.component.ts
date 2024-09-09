@@ -53,7 +53,8 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
             technique: null,
             measurementsWxH: null,
             date: null,
-            path: ''
+            path: '',
+            pathResized: ''
         };
         this.galleryGenre = 'gallery';
         this.isFullscale = false;

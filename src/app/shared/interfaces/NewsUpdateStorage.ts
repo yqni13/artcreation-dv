@@ -3,5 +3,6 @@ export declare interface NewsUpdateStorage {
     referenceNr: string | null,
     title: string,
     text: string,
-    image: string
+    image: string,
+    imageResized: string
 }

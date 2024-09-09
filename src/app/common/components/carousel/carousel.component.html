@@ -9,8 +9,8 @@
                     <div class="agal-carousel-default-img">
                         <img
                             [ngClass]="slide.referenceNr !== null ? 'agal-anchor' : ''"
-                            *ngIf="slide.image" 
-                            src="{{ slide.image }}" 
+                            *ngIf="slide.imageResized" 
+                            src="{{ slide.imageResized }}" 
                             alt="404-picture-not-found"
                             [attr.aria-disabled]="true"
                             (click)="navigateToDetails(slide.referenceNr)"
