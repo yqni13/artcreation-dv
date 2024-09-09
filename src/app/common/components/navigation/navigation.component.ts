@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
-import { NavigationStart, Route, Router, RouterModule } from "@angular/router";
+import { Route, RouterModule } from "@angular/router";
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { ThemeOption } from "../../../shared/enums/theme-option.enum";
 import _ from 'underscore';
@@ -31,19 +31,12 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     constructor (
         @Inject(DOCUMENT) private document: Document,
         private navigation: NavigationService,
-        private router: Router
     ) {
         this.isLocalStorageAvailable = typeof localStorage !== 'undefined';
         this.selectedTheme = this.checkLocalStorageTheme();
         this.setLocalStorageTheme(false, String(this.selectedTheme))
         this.window = this.document.defaultView;
         this.maxMobileWidth = 1024;
-
-        router.events.subscribe(e => {
-            if(e instanceof NavigationStart && typeof window !== 'undefined') {
-                window.scrollTo(0,0);
-            }
-        })
 
         this.routes = [];
         this.isMobileMode = false;
