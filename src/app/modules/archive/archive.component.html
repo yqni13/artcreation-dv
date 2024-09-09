@@ -14,7 +14,7 @@
     </div>
     <div class="agal-archive-content">
         <div class="agal-archive-entry" *ngFor="let news of newsCollection">
-            @defer(on viewport) {<img src="{{ news.image }}" alt="404-picture-not-found">
+            @defer(on viewport) { <img src="{{ news.imageResized }}" alt="404-picture-not-found">
             <div class="agal-archive-wrapper">                
                 <div class="agal-archive-text">
                     <h3 *ngIf="news.title">{{ news.title }}</h3>
@@ -26,7 +26,7 @@
                         (keydown.enter)="navigateFullscale(true, news.image)"
                     ></i>
                 </div>
-            </div>} 
+            </div> } 
             @placeholder {
                 <img class="agal-loading" src="/assets/loading.gif" alt="loading...">
             }
