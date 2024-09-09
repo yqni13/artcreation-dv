@@ -1,10 +1,11 @@
-
-<agal-navigation></agal-navigation>
-
-<router-outlet><router-outlet/>
-
-<div class="agal-component-snackbar">
-    <agal-snackbar *ngFor="let snackbar of snackbarService.snackbarCollection" [snackbarMsg]="snackbar"></agal-snackbar>
+<div class="agal-scroll-anchor" [ngClass]="scrollbarActive ? 'agal-scroll-wrapper' : ''">
+    <agal-navigation></agal-navigation>
+    
+    <router-outlet></router-outlet>
+    
+    <div class="agal-component-snackbar">
+        <agal-snackbar *ngFor="let snackbar of snackbarService.snackbarCollection" [snackbarMsg]="snackbar"></agal-snackbar>
+    </div>
+    
+    <agal-footer></agal-footer>
 </div>
-
-<agal-footer></agal-footer>

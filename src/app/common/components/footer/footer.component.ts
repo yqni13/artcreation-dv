@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
-import { NavigationStart, Route, Router, RouterModule } from "@angular/router";
+import { Route, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { SnackbarMessageService } from "../../../shared/services/snackbar.service";
 import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
@@ -25,13 +25,7 @@ export class FooterComponent implements OnInit {
     constructor(
         private snackbarService: SnackbarMessageService,
         private navigation: NavigationService,
-        private router: Router
     ) {
-        router.events.subscribe(e => {
-            if(e instanceof NavigationStart && typeof window !== 'undefined') {
-                window.scrollTo(0,0);
-            }
-        })
 
         this.infoRoutes = [];
         this.connectRoutes = [];
