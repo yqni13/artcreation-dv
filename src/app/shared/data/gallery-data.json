@@ -14,7 +14,8 @@
             80, 80
         ],
         "date": 2017,
-        "path": "/assets/paintings/AE6177.jpg"
+        "path": "/assets/paintings/AE6177.jpg",
+        "pathResized": "/assets/paintings_resized/AE6177.jpg"
     },
     {
         "title": null,
@@ -29,7 +30,8 @@
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": null,
         "date": null,
-        "path": "/assets/paintings/21ABCD.jpg"
+        "path": "/assets/paintings/21ABCD.jpg",
+        "pathResized": "/assets/paintings_resized/21ABCD.jpg"
     },
     {
         "title": "perspective of the moment",
@@ -46,7 +48,8 @@
             90, 90
         ],
         "date": 2024,
-        "path": "/assets/paintings/E8B162.jpg"
+        "path": "/assets/paintings/E8B162.jpg",
+        "pathResized": "/assets/paintings_resized/E8B162.jpg"
     },
     {
         "title": "big L tribute",
@@ -63,7 +66,8 @@
             120, 70
         ],
         "date": 2022,
-        "path": "/assets/paintings/0B2ECA.jpg"
+        "path": "/assets/paintings/0B2ECA.jpg",
+        "pathResized": "/assets/paintings_resized/0B2ECA.jpg"
     },
     {
         "title": "water brings peace",
@@ -78,7 +82,8 @@
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": null,
         "date": null,
-        "path": "/assets/paintings/A1CAF1.jpg"
+        "path": "/assets/paintings/A1CAF1.jpg",
+        "pathResized": "/assets/paintings_resized/A1CAF1.jpg"
     },
     {
         "title": null,
@@ -93,7 +98,8 @@
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": null,
         "date": null,
-        "path": "/assets/paintings/F4C2C2.jpg"
+        "path": "/assets/paintings/F4C2C2.jpg",
+        "pathResized": "/assets/paintings_resized/F4C2C2.jpg"
     },
     {
         "title": "women on marble",
@@ -106,7 +112,8 @@
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": null,
         "date": null,
-        "path": "/assets/paintings/FE6F5E.jpg"
+        "path": "/assets/paintings/FE6F5E.jpg",
+        "pathResized": "/assets/paintings_resized/FE6F5E.jpg"
     },
     {
         "title": "poppy field",
@@ -121,7 +128,8 @@
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": null,
         "date": null,
-        "path": "/assets/paintings/0D98BA.jpg"
+        "path": "/assets/paintings/0D98BA.jpg",
+        "pathResized": "/assets/paintings_resized/0D98BA.jpg"
     },
     {
         "title": "inner peace",
@@ -138,7 +146,8 @@
             100, 60
         ],
         "date": null,
-        "path": "/assets/paintings/C32148.jpg"
+        "path": "/assets/paintings/C32148.jpg",
+        "pathResized": "/assets/paintings_resized/C32148.jpg"
     },
     {
         "title": null,
@@ -153,7 +162,8 @@
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": null,
         "date": null,
-        "path": "/assets/paintings/004225.jpg"
+        "path": "/assets/paintings/004225.jpg",
+        "pathResized": "/assets/paintings_resized/004225.jpg"
     }    ,
     {
         "title": "city life",
@@ -168,7 +178,8 @@
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": null,
         "date": null,
-        "path": "/assets/paintings/91A3B0.jpg"
+        "path": "/assets/paintings/91A3B0.jpg",
+        "pathResized": "/assets/paintings_resized/91A3B0.jpg"
     },
     {
         "title": "dreaming",
@@ -185,7 +196,8 @@
             50, 80, 5
         ],
         "date": 2023,
-        "path": "/assets/paintings/ED872D.jpg"
+        "path": "/assets/paintings/ED872D.jpg",
+        "pathResized": "/assets/paintings_resized/ED872D.jpg"
     }, 
     {
         "title": "taste of the beach",
@@ -202,7 +214,8 @@
             60
         ],
         "date": 2022,
-        "path": "/assets/paintings/F7FFCC.jpg"
+        "path": "/assets/paintings/F7FFCC.jpg",
+        "pathResized": "/assets/paintings_resized/F7FFCC.jpg"
     },
     {
         "title": "breath of salt and peace",
@@ -219,7 +232,8 @@
             40, 70
         ],
         "date": 2024,
-        "path": "/assets/paintings/2F2C30.png"
+        "path": "/assets/paintings/2F2C30.png",
+        "pathResized": "/assets/paintings_resized/2F2C30.png"
     },
     {
         "title": "African beauty",
@@ -236,7 +250,8 @@
             50, 90
         ],
         "date": 2024,
-        "path": "/assets/paintings/DBDDD7.jpg"
+        "path": "/assets/paintings/DBDDD7.jpg",
+        "pathResized": "/assets/paintings_resized/DBDDD7.jpg"
     },
     {
         "title": "Tutanchamun",
@@ -253,7 +268,8 @@
             60, 60
         ],
         "date": 2024,
-        "path": "/assets/paintings/7B5328.jpg"
+        "path": "/assets/paintings/7B5328.jpg",
+        "pathResized": "/assets/paintings_resized/7B5328.jpg"
     },
     {
         "title": "path of the right choice",
@@ -270,7 +286,8 @@
             80, 60
         ],
         "date": 2020,
-        "path": "/assets/paintings/508722.jpg"
+        "path": "/assets/paintings/508722.jpg",
+        "pathResized": "/assets/paintings_resized/508722.jpg"
     },
     {
         "title": "Gemini",
@@ -287,7 +304,8 @@
             50, 70
         ],
         "date": 2023,
-        "path": "/assets/paintings/59B6CE.jpg"
+        "path": "/assets/paintings/59B6CE.jpg",
+        "pathResized": "/assets/paintings_resized/59B6CE.jpg"
     },
     {
         "title": "fire and water clashes",
@@ -304,7 +322,8 @@
             120, 70
         ],
         "date": 2020,
-        "path": "/assets/paintings/863A1E.jpg"
+        "path": "/assets/paintings/863A1E.jpg",
+        "pathResized": "/assets/paintings_resized/863A1E.jpg"
     },
     {
         "title": "seducing swamp",
@@ -321,7 +340,8 @@
             70, 130
         ],
         "date": 2022,
-        "path": "/assets/paintings/111818.jpg"
+        "path": "/assets/paintings/111818.jpg",
+        "pathResized": "/assets/paintings_resized/111818.jpg"
     },
     {
         "title": "darkness winning",
@@ -338,7 +358,8 @@
             150, 40
         ],
         "date": 2019,
-        "path": "/assets/paintings/0A0B06.jpg"
+        "path": "/assets/paintings/0A0B06.jpg",
+        "pathResized": "/assets/paintings_resized/0A0B06.jpg"
     },
     {
         "title": "frozen star",
@@ -355,7 +376,8 @@
             50
         ],
         "date": 2017,
-        "path": "/assets/paintings/104771.jpg"
+        "path": "/assets/paintings/104771.jpg",
+        "pathResized": "/assets/paintings_resized/104771.jpg"
     },
     {
         "title": "Washing off the evil spirits",
@@ -372,7 +394,8 @@
             120, 70
         ],
         "date": 2021,
-        "path": "/assets/paintings/4D1815.jpg"
+        "path": "/assets/paintings/4D1815.jpg",
+        "pathResized": "/assets/paintings_resized/4D1815.jpg"
     },
     {
         "title": "hidden treasure in the sea",
@@ -389,7 +412,8 @@
             140, 90
         ],
         "date": 2017,
-        "path": "/assets/paintings/7A3213.jpg"
+        "path": "/assets/paintings/7A3213.jpg",
+        "pathResized": "/assets/paintings_resized/7A3213.jpg"
     },
     {
         "title": "4 flowers of paradise",
@@ -406,7 +430,8 @@
             50
         ],
         "date": 2022,
-        "path": "/assets/paintings/400E12.jpg"
+        "path": "/assets/paintings/400E12.jpg",
+        "pathResized": "/assets/paintings_resized/400E12.jpg"
     },
     {
         "title": "omnious power",
@@ -423,7 +448,8 @@
             50, 50
         ],
         "date": 2020,
-        "path": "/assets/paintings/00866E.png"
+        "path": "/assets/paintings/00866E.png",
+        "pathResized": "/assets/paintings_resized/00866E.png"
     },
     {
         "title": "simple joy",
@@ -440,7 +466,8 @@
             80, 80
         ],
         "date": 2024,
-        "path": "/assets/paintings/45613B.jpg"
+        "path": "/assets/paintings/45613B.jpg",
+        "pathResized": "/assets/paintings_resized/45613B.jpg"
     },
     {
         "title": null,
@@ -457,7 +484,8 @@
             40, 140
         ],
         "date": 2024,
-        "path": "/assets/paintings/007E7E.jpg"
+        "path": "/assets/paintings/007E7E.jpg",
+        "pathResized": "/assets/paintings_resized/007E7E.jpg"
     },
     {
         "title": "I dreamt of colours",
@@ -474,7 +502,8 @@
             70, 90
         ],
         "date": 2024,
-        "path": "/assets/paintings/FA4363.jpg"
+        "path": "/assets/paintings/FA4363.jpg",
+        "pathResized": "/assets/paintings_resized/FA4363.jpg"
     },
     {
         "title": "Will I ever get back there?",
@@ -491,7 +520,8 @@
             90, 60
         ],
         "date": 2021,
-        "path": "/assets/paintings/AEAFA1.jpg"
+        "path": "/assets/paintings/AEAFA1.jpg",
+        "pathResized": "/assets/paintings_resized/AEAFA1.jpg"
     },
     {
         "title": "loving companion",
@@ -508,7 +538,8 @@
             50, 70
         ],
         "date": 2020,
-        "path": "/assets/paintings/BEA47F.jpg"
+        "path": "/assets/paintings/BEA47F.jpg",
+        "pathResized": "/assets/paintings_resized/BEA47F.jpg"
     },
     {
         "title": "you don't see my true self unless I'm willing to take off the mask",
@@ -525,7 +556,8 @@
             50, 90
         ],
         "date": 2021,
-        "path": "/assets/paintings/327D9E.jpg"
+        "path": "/assets/paintings/327D9E.jpg",
+        "pathResized": "/assets/paintings_resized/327D9E.jpg"
     },
     {
         "title": "in my mind I keep dancing",
@@ -542,7 +574,8 @@
             50, 90
         ],
         "date": 2019,
-        "path": "/assets/paintings/BAB3AB.jpg"
+        "path": "/assets/paintings/BAB3AB.jpg",
+        "pathResized": "/assets/paintings_resized/BAB3AB.jpg"
     },
     {
         "title": "Persephone",
@@ -559,7 +592,8 @@
             50, 120
         ],
         "date": 2020,
-        "path": "/assets/paintings/292D2B.png"
+        "path": "/assets/paintings/292D2B.png",
+        "pathResized": "/assets/paintings_resized/292D2B.png"
     },
     {
         "title": "Salsa night",
@@ -576,7 +610,8 @@
             50, 120
         ],
         "date": 2019,
-        "path": "/assets/paintings/741510.jpg"
+        "path": "/assets/paintings/741510.jpg",
+        "pathResized": "/assets/paintings_resized/741510.jpg"
     },
     {
         "title": "ohm",
@@ -593,7 +628,8 @@
             50, 80
         ],
         "date": 2018,
-        "path": "/assets/paintings/424D55.jpg"
+        "path": "/assets/paintings/424D55.jpg",
+        "pathResized": "/assets/paintings_resized/424D55.jpg"
     },
     {
         "title": "perfection does not equal perfection",
@@ -610,7 +646,8 @@
             60, 100
         ],
         "date": 2023,
-        "path": "/assets/paintings/21110B.jpg"
+        "path": "/assets/paintings/21110B.jpg",
+        "pathResized": "/assets/paintings_resized/21110B.jpg"
     },
     {
         "title": "golden time",
@@ -627,7 +664,8 @@
             60, 60
         ],
         "date": 2020,
-        "path": "/assets/paintings/6C5824.jpg"
+        "path": "/assets/paintings/6C5824.jpg",
+        "pathResized": "/assets/paintings_resized/6C5824.jpg"
     },
     {
         "title": "playful lotus",
@@ -644,7 +682,8 @@
             50, 80
         ],
         "date": 2023,
-        "path": "/assets/paintings/7B0714.jpg"
+        "path": "/assets/paintings/7B0714.jpg",
+        "pathResized": "/assets/paintings_resized/7B0714.jpg"
     },
     {
         "title": "balance",
@@ -661,7 +700,8 @@
             50, 80
         ],
         "date": 2021,
-        "path": "/assets/paintings/656866.jpg"
+        "path": "/assets/paintings/656866.jpg",
+        "pathResized": "/assets/paintings_resized/656866.jpg"
     },
     {
         "title": "grace in simplicity",
@@ -678,7 +718,8 @@
             50, 90
         ],
         "date": 2020,
-        "path": "/assets/paintings/527883.jpg"
+        "path": "/assets/paintings/527883.jpg",
+        "pathResized": "/assets/paintings_resized/527883.jpg"
     },
     {
         "title": null,
@@ -695,7 +736,8 @@
             50, 90
         ],
         "date": 2024,
-        "path": "/assets/paintings/39080B.jpg"
+        "path": "/assets/paintings/39080B.jpg",
+        "pathResized": "/assets/paintings_resized/39080B.jpg"
     },
     {
         "title": null,
@@ -712,7 +754,8 @@
             50, 90
         ],
         "date": 2018,
-        "path": "/assets/paintings/083258.jpg"
+        "path": "/assets/paintings/083258.jpg",
+        "pathResized": "/assets/paintings_resized/083258.jpg"
     },
     {
         "title": "grand priest",
@@ -729,7 +772,8 @@
             120, 70
         ],
         "date": 2022,
-        "path": "/assets/paintings/777370.png"
+        "path": "/assets/paintings/777370.png",
+        "pathResized": "/assets/paintings_resized/777370.png"
     },
     {
         "title": "sureal forest",
@@ -746,7 +790,8 @@
             80, 50
         ],
         "date": 2023,
-        "path": "/assets/paintings/000002.jpg"
+        "path": "/assets/paintings/000002.jpg",
+        "pathResized": "/assets/paintings_resized/000002.jpg"
     },
     {
         "title": "flow of life",
@@ -763,7 +808,8 @@
             80, 50
         ],
         "date": 2023,
-        "path": "/assets/paintings/7F7BB4.jpg"
+        "path": "/assets/paintings/7F7BB4.jpg",
+        "pathResized": "/assets/paintings_resized/7F7BB4.jpg"
     },
     {
         "title": "summer day at the wine garden",
@@ -780,7 +826,8 @@
             60, 60
         ],
         "date": 2023,
-        "path": "/assets/paintings/872E1C.jpg"
+        "path": "/assets/paintings/872E1C.jpg",
+        "pathResized": "/assets/paintings_resized/872E1C.jpg"
     },
     {
         "title": null,
@@ -795,7 +842,8 @@
             80, 50
         ],
         "date": 2023,
-        "path": "/assets/paintings/434041.jpg"
+        "path": "/assets/paintings/434041.jpg",
+        "pathResized": "/assets/paintings_resized/434041.jpg"
     },
     {
         "title": "hellish fire",
@@ -812,7 +860,8 @@
             60, 90
         ],
         "date": 2022,
-        "path": "/assets/paintings/9A0E11.jpg"
+        "path": "/assets/paintings/9A0E11.jpg",
+        "pathResized": "/assets/paintings_resized/9A0E11.jpg"
     },
     {
         "title": "break through",
@@ -829,7 +878,8 @@
             50, 50
         ],
         "date": 2020,
-        "path": "/assets/paintings/906461.jpg"
+        "path": "/assets/paintings/906461.jpg",
+        "pathResized": "/assets/paintings_resized/906461.jpg"
     },
     {
         "title": null,
@@ -846,7 +896,8 @@
             120, 40
         ],
         "date": 2018,
-        "path": "/assets/paintings/302323.png"
+        "path": "/assets/paintings/302323.png",
+        "pathResized": "/assets/paintings_resized/302323.png"
     },
     {
         "title": "color rush",
@@ -863,7 +914,8 @@
             50, 90
         ],
         "date": 2019,
-        "path": "/assets/paintings/D9CB0B.jpg"
+        "path": "/assets/paintings/D9CB0B.jpg",
+        "pathResized": "/assets/paintings_resized/D9CB0B.jpg"
     },
     {
         "title": "tangible love",
@@ -880,7 +932,8 @@
             40, 70
         ],
         "date": 2024,
-        "path": "/assets/paintings/790000.jpg"
+        "path": "/assets/paintings/790000.jpg",
+        "pathResized": "/assets/paintings_resized/790000.jpg"
     },
     {
         "title": null,
@@ -897,7 +950,8 @@
             90, 50
         ],
         "date": 2024,
-        "path": "/assets/paintings/9F8971.jpg"
+        "path": "/assets/paintings/9F8971.jpg",
+        "pathResized": "/assets/paintings_resized/9F8971.jpg"
     },
     {
         "title": "where the spirits sleep",
@@ -912,6 +966,7 @@
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": null,
         "date": null,
-        "path": "/assets/paintings/FFE135.jpg"
+        "path": "/assets/paintings/FFE135.jpg",
+        "pathResized": "/assets/paintings_resized/FFE135.jpg"
     }
 ]
