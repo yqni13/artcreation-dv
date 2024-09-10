@@ -110,6 +110,14 @@
         }
     }
 
+    .agal-privacy {
+        .agal-privacy-content {
+            h2 {
+                padding-top: sass.$comp-padding-small;
+            }
+        }
+    }
+
     agal-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-big 0;
@@ -294,6 +302,14 @@
         }
     }
 
+    .agal-privacy {
+        .agal-privacy-content {
+            h2 {
+                padding-top: sass.$comp-padding-medium;
+            }
+        }
+    }
+
     agal-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-medium 0;
@@ -358,10 +374,18 @@
 
 // 768px > width < 1024px
 @media screen and (width <= sass.$device-tablet-landscape) {
-    
+    .agal-scroll-wrapper {
+        position: relative;
+        top: calc(var(--view-nav-width) + 3px);
+        section {
+            margin: 0!important;
+        }
+    }
+
     section {
         width: 100vw;
         margin: var(--view-nav-width) 0 0 0;
+        min-height: calc(100% - (400px + var(--view-nav-width)))!important;
     }
 
     .agal-home {
@@ -486,6 +510,14 @@
         }
     }
 
+    .agal-privacy {
+        .agal-privacy-content {
+            h2 {
+                padding-top: calc(sass.$comp-padding-medium + sass.$comp-padding-small);
+            }
+        }
+    }
+
     agal-carousel {
         .agal-carousel-wrapper {
             padding: sass.$comp-padding-small 0;
@@ -499,9 +531,7 @@
         $puffer-space: 3px;
         $gap-sum: calc(($border-img * 2) + ($padding-img * 2) + $puffer-space);
 
-        .agal-imgfullscale-wrapper {
-            margin-top: -60px!important;
-            
+        .agal-imgfullscale-wrapper {            
             img {
                 max-width: calc(100vw - $gap-sum)!important;
                 max-height: calc(100vh - $gap-sum)!important;
@@ -748,6 +778,10 @@
 
 // 400px > width < 500px
 @media screen and (width <= sass.$device-phone-portrait) {
+
+    section {
+        min-height: calc(100% - (300px + var(--view-nav-width)))!important;
+    }
 
     .agal-home {
         header {

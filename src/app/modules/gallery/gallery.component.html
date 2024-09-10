@@ -27,6 +27,7 @@
         <div class="agal-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
             @defer(on viewport) {<div class="agal-gallery-cards-wrapper">
                 <img 
+                    rel="preload"
                     src="{{card.pathResized}}" 
                     alt="404-picture-not-found"
                     (click)="navigateToDetail(card.referenceNr)"

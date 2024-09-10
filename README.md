@@ -1,6 +1,6 @@
 
 # yqni13 artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.1}}$
+$\texttt{\color{teal}{v1.0.0-beta.2}}$
 
 
 <br><br>
@@ -59,12 +59,11 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
 ## Updates
 
 [list of all updates](update_protocol.md)
-### $\textsf{last\ update\ 1.0.0-beta.alpha\ >>\ {\color{pink}1.0.0-beta.1}}$
+### $\textsf{last\ update\ 1.0.0-beta.1\ >>\ {\color{pink}1.0.0-beta.2}}$
 
-- $\textsf{\color{green}Change:}$ Resized images to display smaller versions on previews / smaller displays (gallery detail / archive) and increase loading speed.
-- $\textsf{\color{green}Change:}$ Return-to-gallery button in gallery details fixed in position to stay while scrolling.
-- $\textsf{\color{red}Bugfix:}$ Responsive design of gallery details supports device resolutions for width (400px > x < 1800px) and height (400px > y < 1400px). [Before: Gallery details didn't support resolutions under 700px of height and scaled wrong.]
-- $\textsf{\color{red}Bugfix:}$ Navigating to other page in menu resets scroll point to top position while maintaining scrollbar where its supposed to be visible (refresh gets back to current scroll position). [Before: Scroll position was reused for next page so that it didn't start at top and scrollbar worked or the other way around (both did not work simultaneously).]
+- $\textsf{\color{green}Change:}$ Scrollbar set to include only scrollable content (excluding navbar in mobile mode).
+- $\textsf{\color{green}Change:}$ Added scroll-to-top button on right bottom corner.
+- $\textsf{\color{red}Bugfix:}$ Wrapped nav elements keep center alignment. [Before: Navigation elements that are wrapped didn't have center alignment and were displayed aligned to the left side.]
 
 <br>
 
@@ -79,7 +78,7 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
       <dd>- correct email accounts to recieve and send in BE</dd>
       <dd>- key listeners</dd>
       <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
-      <dd>- img resizing</dd>
+      <dd>- preload img fullscale in gallery details component</dd>
       <dd>- text search in archive component</dd>
 </dl>
 <br>

@@ -76,7 +76,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     private setNavWidthDynamically(width: number): void {
         // sets data attribute for body and in media.scss style settings are applied
         if(width > this.maxMobileWidth) {
-            this.document.body.setAttribute("data-nav", 'navDesktop');
+            this.document.body.setAttribute("data-nav", 'desktopMode');
             this.isMobileMode = false;
         } else {
             this.document.body.setAttribute("data-nav", 'mobileMode');
