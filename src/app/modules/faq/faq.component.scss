@@ -104,7 +104,8 @@
 
         div .agal-faq-coll-title {
             padding-left: calc(sass.$comp-padding-small * 2);
-            width: calc(100% - sass.$faq-box-height);
+            padding-right: 15px;
+            width: calc(100% - sass.$faq-box-height - 15px);
 
             &:before {
                 position: absolute;

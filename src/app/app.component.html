@@ -1,5 +1,6 @@
+<!-- keep navigation outside wrapper to improve scrollbar-position control in mobile mode -->
+<agal-navigation></agal-navigation>
 <div class="agal-scroll-anchor" [ngClass]="scrollbarActive ? 'agal-scroll-wrapper' : ''">
-    <agal-navigation></agal-navigation>
     
     <router-outlet></router-outlet>
     
@@ -8,4 +9,13 @@
     </div>
     
     <agal-footer></agal-footer>
+    <div 
+        class="agal-scroll-top"
+        [attr.aria-disabled]="true"
+        (click)="navigateToTop()"
+        (keydown.enter)="navigateToTop()"
+        [ngStyle]="scrollbarActive ? {'right': '16px'} : {'right': '10px'}"
+    >
+        <i class="icon-Top"></i>
+    </div>
 </div>

@@ -26,6 +26,7 @@ export class AppComponent implements AfterViewInit, OnDestroy{
 
   private scrollbarRoutes: string[];
   private listenerDefault!: () => void;
+  private scrollAnchor: HTMLElement;
 
   constructor(
     protected snackbarService: SnackbarMessageService,
@@ -39,20 +40,28 @@ export class AppComponent implements AfterViewInit, OnDestroy{
       '/imprint',
       '/privacy',
       '/gallery'
-    ];
+    ];    
+    this.scrollAnchor = this.elRef.nativeElement.querySelector(".agal-scroll-anchor");
     
-    const scrollAnchor = this.elRef.nativeElement.querySelector(".agal-scroll-anchor");
     router.events.subscribe(e => {
-      if(e instanceof NavigationStart && scrollAnchor) {
-          scrollAnchor.scrollTo(0,0);
+      if(e instanceof NavigationStart && this.scrollAnchor) {
+        this.navigateToTop();
 
-          if(this.scrollbarRoutes.includes(e.url)) {
-            this.scrollbarActive = true;
-          } else {
-            this.scrollbarActive = false;
-          }
+        if(this.scrollbarRoutes.includes(e.url)) {
+          this.scrollbarActive = true;
+        } else {
+          this.scrollbarActive = false;
+        }
       }
-  })
+    })
+  }
+
+  navigateToTop() {
+    this.scrollAnchor.scrollTo(0,0);
+    if(this.document.scrollingElement !== null) {
+      // need to kill the y-offset caused by navbar in mobile mode
+      this.document.scrollingElement.scrollTop = 0;
+    }
   }
 
   ngAfterViewInit() {
