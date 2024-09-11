@@ -9,5 +9,6 @@ export declare interface GalleryItem {
     technique: string | null,
     measurementsWxH: number[] | null,
     date: number | null,
-    path: string
+    path: string,
+    pathResized: string
 }

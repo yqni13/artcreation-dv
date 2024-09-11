@@ -2,7 +2,7 @@
 
 
 .agal-gallerydetails-tools {
-    position: absolute;
+    position: fixed;
     top: 25px;
     left: calc(var(--view-nav-width) + 25px);
     width: 60px;
@@ -33,7 +33,7 @@
         }
 
         &:hover {
-            opacity: 0.4;
+            opacity: 0.3;
         }
     }
 }

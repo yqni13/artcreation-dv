@@ -1,10 +1,21 @@
-
+<!-- keep navigation outside wrapper to improve scrollbar-position control in mobile mode -->
 <agal-navigation></agal-navigation>
-
-<router-outlet><router-outlet/>
-
-<div class="agal-component-snackbar">
-    <agal-snackbar *ngFor="let snackbar of snackbarService.snackbarCollection" [snackbarMsg]="snackbar"></agal-snackbar>
+<div class="agal-scroll-anchor" [ngClass]="scrollbarActive ? 'agal-scroll-wrapper' : ''">
+    
+    <router-outlet></router-outlet>
+    
+    <div class="agal-component-snackbar">
+        <agal-snackbar *ngFor="let snackbar of snackbarService.snackbarCollection" [snackbarMsg]="snackbar"></agal-snackbar>
+    </div>
+    
+    <agal-footer></agal-footer>
+    <div 
+        class="agal-scroll-top"
+        [attr.aria-disabled]="true"
+        (click)="scrollToTop()"
+        (keydown.enter)="scrollToTop()"
+        [ngStyle]="scrollbarActive ? {'right': '16px'} : {'right': '10px'}"
+    >
+        <i class="icon-Top"></i>
+    </div>
 </div>
-
-<agal-footer></agal-footer>

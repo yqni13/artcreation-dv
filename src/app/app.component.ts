@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, Inject, OnDestroy, Renderer2 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, Renderer2 } from '@angular/core';
+import { NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './common/components/navigation/navigation.component';
 import { FooterComponent } from './common/components/footer/footer.component';
 import { SnackbarComponent } from './common/components/snackbar/snackbar.component';
@@ -20,16 +20,48 @@ import { CommonModule, DOCUMENT } from '@angular/common';
   ]
 })
 export class AppComponent implements AfterViewInit, OnDestroy{
-  title = 'artcreation-dv';
 
+  protected title = 'artcreation-dv';
+  protected scrollbarActive: boolean;
+
+  private scrollbarRoutes: string[];
   private listenerDefault!: () => void;
+  private scrollAnchor: HTMLElement;
 
   constructor(
     protected snackbarService: SnackbarMessageService,
+    @Inject(DOCUMENT) private document: Document,
+    private elRef: ElementRef,
     private renderer2: Renderer2,
-    @Inject(DOCUMENT) private document: Document
+    private router: Router
   ) {
-    //
+    this.scrollbarActive = false;
+    this.scrollbarRoutes = [
+      '/imprint',
+      '/privacy',
+      '/gallery'
+    ];    
+    this.scrollAnchor = this.elRef.nativeElement.querySelector(".agal-scroll-anchor");
+    
+    router.events.subscribe(e => {
+      if(e instanceof NavigationStart) {
+        this.scrollToTop();
+
+        if(this.scrollbarRoutes.includes(e.url)) {
+          this.scrollbarActive = true;
+        } else {
+          this.scrollbarActive = false;
+        }
+      }
+    })
+  }
+
+  scrollToTop() {
+    if(this.scrollAnchor && this.document.scrollingElement !== null) {
+      this.scrollAnchor.scrollTo(0,0);
+      // need to kill the y-offset caused by navbar in mobile mode
+      this.document.scrollingElement.scrollTop = 0;
+    }
   }
 
   ngAfterViewInit() {

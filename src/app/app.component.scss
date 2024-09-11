@@ -1,6 +1,30 @@
+@use '../stylesheets/utilities' as sass;
+
+
 .agal-component-snackbar {
     position: fixed;
     top: 0;
     right: 0;
     z-index: 1001;
+}
+
+$scroll-btn-color: sass.$color-light-grey;
+
+.agal-scroll-top {
+    position: fixed;
+    bottom: 10px;
+    padding: 5px 5px 2px 5px;
+    border: 1px solid $scroll-btn-color;
+    border-radius: 5px;
+    cursor: pointer;
+
+    i {
+        width: sass.$top-reset-size;
+        height: sass.$top-reset-size;
+        color: $scroll-btn-color;
+    }
+
+    &:hover {
+        opacity: 0.3;
+    }
 }

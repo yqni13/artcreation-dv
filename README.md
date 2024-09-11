@@ -1,6 +1,6 @@
 
 # yqni13 artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.alpha}}$
+$\texttt{\color{teal}{v1.0.0-beta.2}}$
 
 
 <br><br>
@@ -59,11 +59,11 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
 ## Updates
 
 [list of all updates](update_protocol.md)
-### $\textsf{last\ update\ 1.0.0-alpha.8\ >>\ {\color{pink}1.0.0-beta.alpha}}$
+### $\textsf{last\ update\ 1.0.0-beta.1\ >>\ {\color{pink}1.0.0-beta.2}}$
 
-- $\textsf{\color{teal}Addition:}$ New content added to gallery.
-- $\textsf{\color{teal}Addition:}$ Basic structure of README.md added.
-- $\textsf{\color{green}Change:}$ Run deployment via https//app.netlify.com host.
+- $\textsf{\color{green}Change:}$ Scrollbar set to include only scrollable content (excluding navbar in mobile mode).
+- $\textsf{\color{green}Change:}$ Added scroll-to-top button on right bottom corner.
+- $\textsf{\color{red}Bugfix:}$ Wrapped nav elements keep center alignment. [Before: Navigation elements that are wrapped didn't have center alignment and were displayed aligned to the left side.]
 
 <br>
 
@@ -77,16 +77,20 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
       <dd>- real text content</dd>
       <dd>- correct email accounts to recieve and send in BE</dd>
       <dd>- key listeners</dd>
-      <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
-      <dd>- img resizing</dd>
+      <dd>- preload img fullscale in gallery details component</dd>
       <dd>- text search in archive component</dd>
+      <dd>- provide security standards: input sanitizations, content security policies & HttpOnly cookies</dd>
+      <dd>- compress resources and use .webp image formats to increase loading speed</dd>
+      <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
+      <dd>- translation option de/en</dd>
+      <dd>- custom 404 error page</dd>
+      <dd>- print component content + changes in logic for gallery details & contact</dd>
 </dl>
 <br>
 
 ### Aimed objectives for next $\textsf{\color{cyan}major}$ update:
 <dl>
-      <dd>- translation option de/en</dd>
-      <dd>- print component content + changes in logic for gallery details & contact</dd>
       <dd>- direct pay option</dd>
+      <dd>- admin interaction logic</dd>
 </dl>
 <br>
