@@ -77,16 +77,20 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
       <dd>- real text content</dd>
       <dd>- correct email accounts to recieve and send in BE</dd>
       <dd>- key listeners</dd>
-      <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
       <dd>- preload img fullscale in gallery details component</dd>
       <dd>- text search in archive component</dd>
+      <dd>- provide security standards: input sanitizations, content security policies & HttpOnly cookies</dd>
+      <dd>- compress resources and use .webp image formats to increase loading speed</dd>
+      <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
+      <dd>- translation option de/en</dd>
+      <dd>- custom 404 error page</dd>
+      <dd>- print component content + changes in logic for gallery details & contact</dd>
 </dl>
 <br>
 
 ### Aimed objectives for next $\textsf{\color{cyan}major}$ update:
 <dl>
-      <dd>- translation option de/en</dd>
-      <dd>- print component content + changes in logic for gallery details & contact</dd>
       <dd>- direct pay option</dd>
+      <dd>- admin interaction logic</dd>
 </dl>
 <br>

@@ -12,8 +12,8 @@
     <div 
         class="agal-scroll-top"
         [attr.aria-disabled]="true"
-        (click)="navigateToTop()"
-        (keydown.enter)="navigateToTop()"
+        (click)="scrollToTop()"
+        (keydown.enter)="scrollToTop()"
         [ngStyle]="scrollbarActive ? {'right': '16px'} : {'right': '10px'}"
     >
         <i class="icon-Top"></i>

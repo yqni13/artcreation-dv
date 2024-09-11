@@ -44,8 +44,8 @@ export class AppComponent implements AfterViewInit, OnDestroy{
     this.scrollAnchor = this.elRef.nativeElement.querySelector(".agal-scroll-anchor");
     
     router.events.subscribe(e => {
-      if(e instanceof NavigationStart && this.scrollAnchor) {
-        this.navigateToTop();
+      if(e instanceof NavigationStart) {
+        this.scrollToTop();
 
         if(this.scrollbarRoutes.includes(e.url)) {
           this.scrollbarActive = true;
@@ -56,9 +56,9 @@ export class AppComponent implements AfterViewInit, OnDestroy{
     })
   }
 
-  navigateToTop() {
-    this.scrollAnchor.scrollTo(0,0);
-    if(this.document.scrollingElement !== null) {
+  scrollToTop() {
+    if(this.scrollAnchor && this.document.scrollingElement !== null) {
+      this.scrollAnchor.scrollTo(0,0);
       // need to kill the y-offset caused by navbar in mobile mode
       this.document.scrollingElement.scrollTop = 0;
     }

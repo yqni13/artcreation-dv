@@ -19,8 +19,8 @@ $scroll-btn-color: sass.$color-light-grey;
     cursor: pointer;
 
     i {
-        width: 20px;
-        height: 20px;
+        width: sass.$top-reset-size;
+        height: sass.$top-reset-size;
         color: $scroll-btn-color;
     }
 
