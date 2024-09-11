@@ -13,6 +13,7 @@ html {
     -webkit-user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -26,7 +27,7 @@ body {
 }
 
 section {
-    min-height: calc(100vh - 300px);
+    min-height: calc(100% - 400px);
     height: auto;
     display: flex;
     flex-direction: column;
@@ -169,6 +170,7 @@ textarea {
 */
 .agal-scroll-anchor {
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 100%; // scrollbar-thumb doesn't work on height: auto
 }
 

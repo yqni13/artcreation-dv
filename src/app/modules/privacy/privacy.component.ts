@@ -1,5 +1,5 @@
-import { ViewportScroller } from "@angular/common";
-import { Component } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
+import { Component, Inject } from "@angular/core";
 
 @Component({
     selector: 'app-privacy',
@@ -10,12 +10,14 @@ import { Component } from "@angular/core";
 })
 export class PrivacyComponent {
 
-    constructor(private viewportScroller: ViewportScroller) {
+    constructor(
+        @Inject(DOCUMENT) private document: Document
+    ) {
         //
     }
 
-    navigateToHeader(path: string) {
-        this.viewportScroller.scrollToAnchor(path);
+    navigateToHeader(id: string) {
+        this.document.getElementById(id)?.scrollIntoView();
     }
 
 }

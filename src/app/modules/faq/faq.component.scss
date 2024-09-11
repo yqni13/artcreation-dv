@@ -103,8 +103,10 @@
         }
 
         div .agal-faq-coll-title {
+            $text-wrap-padding: 15px;
             padding-left: calc(sass.$comp-padding-small * 2);
-            width: calc(100% - sass.$faq-box-height);
+            padding-right: $text-wrap-padding;
+            width: calc(100% - sass.$faq-box-height - $text-wrap-padding);
 
             &:before {
                 position: absolute;

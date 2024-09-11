@@ -4,6 +4,12 @@
 
 <br>
 
+### 2024/09/10 - $\textsf{update\ 1.0.0-beta.1\ >>\ {\color{pink}1.0.0-beta.2}}$
+
+- $\textsf{\color{green}Change:}$ Scrollbar set to include only scrollable content (excluding navbar in mobile mode).
+- $\textsf{\color{green}Change:}$ Added scroll-to-top button on right bottom corner.
+- $\textsf{\color{red}Bugfix:}$ Wrapped nav elements keep center alignment. [Before: Navigation elements that are wrapped didn't have center alignment and were displayed aligned to the left side.]
+
 ### 2024/09/09 - $\textsf{update\ 1.0.0-beta.alpha\ >>\ {\color{pink}1.0.0-beta.1}}$
 
 - $\textsf{\color{green}Change:}$ Resized images to display smaller versions on previews / smaller displays (gallery detail / archive) and increase loading speed.

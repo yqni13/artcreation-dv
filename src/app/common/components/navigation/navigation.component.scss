@@ -10,7 +10,6 @@
     justify-content: center;
     
     ul {
-        scrollbar-width: none;
         overflow: auto;
         margin-block: 0;
         padding-inline: 0;
@@ -21,6 +20,8 @@
         li {
             text-decoration: none;
             display: block;
+            text-wrap: wrap;
+            text-align: center;
             
             span {
                 font-size: sass.$font-text-size;
