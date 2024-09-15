@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
 import { default as galleryData } from "../../shared/data/gallery-data.json";
 import { GalleryItem } from "../../shared/interfaces/GalleryItems";
@@ -7,6 +7,8 @@ import { ErrorService } from "../../shared/services/error.service";
 import { CommonModule } from "@angular/common";
 import { FilterGalleryService } from "../../shared/services/filter-gallery.service";
 import { Router, RouterModule } from "@angular/router";
+import { ImgPreloadComponent } from "../../common/components/img-preload/img-preload.component";
+
 
 @Component({
     selector: 'app-gallery',
@@ -15,10 +17,13 @@ import { Router, RouterModule } from "@angular/router";
     standalone: true,
     imports: [
         CommonModule,
+        ImgPreloadComponent,
         RouterModule,
     ]
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit, AfterViewInit {
+
+    @ViewChild('gallerySection') gallerySection!: ElementRef;
 
     protected artworkOptions = ArtworkOptions;
     protected paintingsRaw: GalleryItem[];
@@ -55,7 +60,18 @@ export class GalleryComponent implements OnInit {
     ngOnInit() {
         this.paintingGenres = this.filterGalleryService.getGenres('ascending');
         this.paintingsFiltered = this.filterGalleryService.filterByGenre();
-        this.selectGenre(this.activeGenre);        
+        this.selectGenre(this.activeGenre);
+    }
+
+    ngAfterViewInit() {
+        // disable scrolling via mousewheel-(middle)click to prevent errors on img lazy/pre loads
+        this.gallerySection.nativeElement.onmousedown = (e: any) => {
+            if(e && (e.button === 1 || e.button === 4)) {
+                e.preventDefault();
+            }
+        }
+
+        // TODO(yqni13): scrolling via custom scrollbar inside gallery component does not work on lazy/pre loads
     }
 
     navigateToDetail(id: string) {

@@ -1,4 +1,4 @@
-<section class="agal-gallery agal-scroll">
+<section class="agal-gallery agal-scroll" #gallerySection>
     <header>
         <h1>my art</h1>
     </header>
@@ -25,19 +25,10 @@
     </nav>
     <div class="agal-gallery-content">
         <div class="agal-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
-            @defer(on viewport) {<div class="agal-gallery-cards-wrapper">
-                <img 
-                    rel="preload"
-                    src="{{card.pathResized}}" 
-                    alt="404-picture-not-found"
-                    (click)="navigateToDetail(card.referenceNr)"
-                    (keydown.enter)="navigateToDetail(card.referenceNr)"
-                    [attr.aria-disabled]="true"
-                >
-            </div>} 
-            @placeholder {
-                <img class="agal-loading" src="/assets/loading.gif" alt="loading...">
-            }
+            <agal-imgpreload
+                [card]="card"
+                [activeGenre]="activeGenre"
+            ></agal-imgpreload>
         </div>
         <div class="agal-gallery-nodata" *ngIf="paintingsDisplayedByGenre.length === 0">
             No paintings found for this genre.
