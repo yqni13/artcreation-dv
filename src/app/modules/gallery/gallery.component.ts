@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
 import { default as galleryData } from "../../shared/data/gallery-data.json";
 import { GalleryItem } from "../../shared/interfaces/GalleryItems";
@@ -31,9 +31,11 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     protected paintingsDisplayedByGenre: GalleryItem[];
     protected paintingGenres: string[];
     protected activeGenre: string;
+    protected reloadFlag: boolean;
 
     constructor(
         private router: Router,
+        private cdRef: ChangeDetectorRef,
         private errorService: ErrorService,
         private filterGalleryService: FilterGalleryService
     ) {
@@ -48,6 +50,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
         this.paintingGenres = [];
         this.paintingsDisplayedByGenre = []
         this.paintingsFiltered = new Map<string, GalleryItem[]>(); 
+        this.reloadFlag = true;
 
         const currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;        
         if(currentNavigation !== undefined && currentNavigation !== null) {
@@ -60,16 +63,18 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.paintingGenres = this.filterGalleryService.getGenres('ascending');
         this.paintingsFiltered = this.filterGalleryService.filterByGenre();
-        this.selectGenre(this.activeGenre);
     }
-
+    
     ngAfterViewInit() {
         // disable scrolling via mousewheel-(middle)click to prevent errors on img lazy/pre loads
         this.gallerySection.nativeElement.onmousedown = (e: any) => {
             if(e && (e.button === 1 || e.button === 4)) {
                 e.preventDefault();
             }
-        }
+        };
+
+        this.selectGenre(this.activeGenre);
+        this.cdRef.detectChanges();
 
         // TODO(yqni13): scrolling via custom scrollbar inside gallery component does not work on lazy/pre loads
     }
@@ -79,11 +84,18 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     }
 
     selectGenre(genre: string) {
-        this.activeGenre = genre;
-        if(genre === 'gallery') {
-            this.paintingsDisplayedByGenre = this.paintingsRaw || [];
-        } else {
-            this.paintingsDisplayedByGenre = this.paintingsFiltered.get(this.activeGenre) || [];
-        }
+        this.activeGenre = '';
+        this.reloadFlag = false;
+
+        setTimeout(() => {
+            this.activeGenre = genre;        
+            if (genre === 'gallery') {
+                this.paintingsDisplayedByGenre = this.paintingsRaw || [];
+            } else {
+                this.paintingsDisplayedByGenre = this.paintingsFiltered.get(this.activeGenre) || [];
+            }           
+            // necessary to destroy and rebuild img-preload comp, otherwise error of picture preload
+            this.reloadFlag = true;
+        }, 0);
     }
 }

@@ -26,6 +26,7 @@
     <div class="agal-gallery-content">
         <div class="agal-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
             <agal-imgpreload
+                *ngIf="reloadFlag"
                 [card]="card"
                 [activeGenre]="activeGenre"
             ></agal-imgpreload>
