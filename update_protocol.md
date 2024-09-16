@@ -4,6 +4,12 @@
 
 <br>
 
+### 2024/09/16 - $\textsf{update\ 1.0.0-beta.2\ >>\ {\color{pink}1.0.0-beta.3}}$
+
+- $\textsf{\color{green}Change:}$ Added customized preload/lazy loading to gallery.
+- $\textsf{\color{green}Change:}$ Resized images to improve loading efficiency.
+- $\textsf{\color{teal}Addition:}$ New content (features) added to README.
+
 ### 2024/09/10 - $\textsf{update\ 1.0.0-beta.1\ >>\ {\color{pink}1.0.0-beta.2}}$
 
 - $\textsf{\color{green}Change:}$ Scrollbar set to include only scrollable content (excluding navbar in mobile mode).

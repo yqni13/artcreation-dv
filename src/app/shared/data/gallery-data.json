@@ -79,7 +79,7 @@
         "price": 1500.00,
         "type": "original / print",
         "comment": "I painted this after my last enemy died by my own hands.",
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "Acryl-Pouring auf Keilrahmen", 
         "measurementsWxH": null,
         "date": null,
         "path": "/assets/paintings/A1CAF1.jpg",
@@ -232,8 +232,8 @@
             40, 70
         ],
         "date": 2024,
-        "path": "/assets/paintings/2F2C30.png",
-        "pathResized": "/assets/paintings_resized/2F2C30.png"
+        "path": "/assets/paintings/2F2C30.jpg",
+        "pathResized": "/assets/paintings_resized/2F2C30.webp"
     },
     {
         "title": "African beauty",
@@ -448,8 +448,8 @@
             50, 50
         ],
         "date": 2020,
-        "path": "/assets/paintings/00866E.png",
-        "pathResized": "/assets/paintings_resized/00866E.png"
+        "path": "/assets/paintings/00866E.jpg",
+        "pathResized": "/assets/paintings_resized/00866E.webp"
     },
     {
         "title": "simple joy",
@@ -592,8 +592,8 @@
             50, 120
         ],
         "date": 2020,
-        "path": "/assets/paintings/292D2B.png",
-        "pathResized": "/assets/paintings_resized/292D2B.png"
+        "path": "/assets/paintings/292D2B.jpg",
+        "pathResized": "/assets/paintings_resized/292D2B.webp"
     },
     {
         "title": "Salsa night",
@@ -772,8 +772,8 @@
             120, 70
         ],
         "date": 2022,
-        "path": "/assets/paintings/777370.png",
-        "pathResized": "/assets/paintings_resized/777370.png"
+        "path": "/assets/paintings/777370.jpg",
+        "pathResized": "/assets/paintings_resized/777370.webp"
     },
     {
         "title": "sureal forest",
@@ -896,8 +896,8 @@
             120, 40
         ],
         "date": 2018,
-        "path": "/assets/paintings/302323.png",
-        "pathResized": "/assets/paintings_resized/302323.png"
+        "path": "/assets/paintings/302323.jpg",
+        "pathResized": "/assets/paintings_resized/302323.webp"
     },
     {
         "title": "color rush",
