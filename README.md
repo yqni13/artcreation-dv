@@ -1,6 +1,6 @@
 
 # yqni13 artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.2}}$
+$\texttt{\color{teal}{v1.0.0-beta.3}}$
 
 
 <br><br>
@@ -36,14 +36,14 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
 
 <br><br>
 
+## Overview
 
-## Features
+### $\textsf{\color{teal}Features}$
 
 <dl>
       <dd>:diamond_shape_with_a_dot_inside: Angular v18 standalone with routing + nested routes on id</dd>
-      <dd>:turtle: Lazy-loading on viewport/scroll for image resources</dd>
+      <dd>:turtle: Custom preload/lazy loading on viewport/scroll for gallery previews</dd>
       <dd>:clipboard: Custom form components (text-, textarea- & select-input)</dd>
-      <dd>:question: Custom faq component</dd>
       <dd>:newspaper: Custom carousel component</dd>
       <dd>:new_moon_with_face:/:sun_with_face: Custom color theme (dark/light mode)</dd>
       <dd>:wrench: Custom validation + service & pipes</dd>
@@ -53,17 +53,74 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
       <dd>:iphone: Responsive design 400px > width < 1800px via flexbox & media queries</dd>
 </dl>
 
+<br>
+
+### $\textsf{\color{teal}Customized form}$
+
+For contacting the artist regarding ordering a product or other requests, there is a form to fill in which works currently not in live version due to missing backend hosting. The combination of customized form components, validation structure and logic (frontend/backend service, nodemailer & Node.js) sends an email via predefined no-reply account to the artist. Custom validation checks for required input, correct format of necessary reference number and valid selection (see figure 2; message "ReferenceNr '561H65' does not exist").
+
+<div align="center">
+      <img src="public/assets/readme/responsive_form.jpg" alt="&nbsp;no picture found">
+      Figure 2
+</div>
+
+<br>
+
+### $\textsf{\color{teal}Customized snackbar / interceptor}$
+
+In case of unexpected responses or to visually confirm actions, a customized snackbar will appear on the right upper side (or centered for mobile < 500px width). The snackbar can easily be constructed by 2 required inputs (title + type) or more advanced up to 5 input options. For better visual contrast, 4 types (error, info, success, warning) differ additionally in colors. Figure 3 shows an error message, that the email could not be sent (red highlighted) which is triggered by the response caught in the http-interceptor (case of no active backend).
+
+<div align="center">
+      <img src="public/assets/readme/responsive_snackbar.jpg" alt="&nbsp;no picture found">
+      Figure 3
+</div>
+
+<br>
+
+### $\textsf{\color{teal}Customized lazy loading / preload}$
+
+Instead of using the predefined @defer blocks of Angular to provide lazy loading, this webpage uses a customized preload/lazy loading via HostListeners. Opening the "Gallery" component, all pictures inside the viewport will be rendered. Additionally, a certain number of images that are below the viewport get loaded in the same instance to provide a buffer of already rendered images when scrolling. HostListeners also keep preloading images when scrolling to optimize the user experience. Figure 4 shows the loading of the displaying 6 images inside the viewport + the next 3 rows of pre-rendered images in the network tab of DevTools.
+
+<div align="center">
+      <img src="public/assets/readme/custom-preload.gif" alt="&nbsp;no picture found">
+      Figure 4
+</div>
+
+<br>
+
+### $\textsf{\color{teal}Theme settings}$
+
+The webpage offeres two theme settings: $\textsf{\color{gray}{dark mode}}$ & $\textsf{\color{goldenrod}{light mode}}$. The information on the active setting is stored in the localstorage with dark mode as default setting at the beginning.
+
+<div align="center">
+      <img src="public/assets/readme/responsive_darkmode.jpg">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img src="public/assets/readme/responsive_lightmode.jpg">
+      Figure 5
+</div>
+
+<br>
+
+### $\textsf{\color{teal}Reactive images}$
+
+Most of the images are linked with logic to either displaying more details or scaling up. In the archive, regarding news, text is displayed and click on the magnifier shows the image in max display resolution. The previews in the gallery open up the museums-view and all the details regarding the artwork. Another click on the picture also displays in max display resolution (see figure 6).
+
+<div align="center">
+      <img src="public/assets/readme/image_reactive.gif" alt="&nbsp;no picture found">
+      Figure 6
+</div>
+
 <br><br>
 
 
 ## Updates
 
 [list of all updates](update_protocol.md)
-### $\textsf{last\ update\ 1.0.0-beta.1\ >>\ {\color{pink}1.0.0-beta.2}}$
+### $\textsf{last\ update\ 1.0.0-beta.2\ >>\ {\color{pink}1.0.0-beta.3}}$
 
-- $\textsf{\color{green}Change:}$ Scrollbar set to include only scrollable content (excluding navbar in mobile mode).
-- $\textsf{\color{green}Change:}$ Added scroll-to-top button on right bottom corner.
-- $\textsf{\color{red}Bugfix:}$ Wrapped nav elements keep center alignment. [Before: Navigation elements that are wrapped didn't have center alignment and were displayed aligned to the left side.]
+- $\textsf{\color{green}Change:}$ Added customized preload/lazy loading to gallery.
+- $\textsf{\color{green}Change:}$ Resized images to improve loading efficiency.
+- $\textsf{\color{teal}Addition:}$ New content (features) added to README.
 
 <br>
 
@@ -77,10 +134,8 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
       <dd>- real text content</dd>
       <dd>- correct email accounts to recieve and send in BE</dd>
       <dd>- key listeners</dd>
-      <dd>- preload img fullscale in gallery details component</dd>
       <dd>- text search in archive component</dd>
       <dd>- provide security standards: input sanitizations, content security policies & HttpOnly cookies</dd>
-      <dd>- compress resources and use .webp image formats to increase loading speed</dd>
       <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
       <dd>- translation option de/en</dd>
       <dd>- custom 404 error page</dd>
