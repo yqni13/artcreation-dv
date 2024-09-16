@@ -12,9 +12,11 @@ export class GalleryScrollDirective implements OnInit {
     private bufferY: number;
     private loaded: boolean;
 
-    constructor(private elRef: ElementRef) {
+    constructor(
+        private elRef: ElementRef,
+    ) {
         this.preload = new EventEmitter<boolean>(false);
-        this.bufferY = 1000;
+        this.bufferY = 700;
         this.loaded = false;
     }
     
@@ -24,9 +26,8 @@ export class GalleryScrollDirective implements OnInit {
     
     @HostListener('window:load', [])
     isLoading() {
-        // using offsetTop because getBoundingClientRect() not working in constructor
+        // using offsetTop because getBoundingClientRect() not working on first rendering
         const offsetTop = this.elRef.nativeElement.offsetTop;
-
         const clientHeight = this.elRef.nativeElement.ownerDocument.scrollingElement.clientHeight;
         if(!this.loaded && offsetTop <= (clientHeight + this.bufferY)) {
             this.preload.emit(true);
@@ -52,9 +53,8 @@ export class GalleryScrollDirective implements OnInit {
 
     @HostListener('window:click', ['$event'])
     isRoutingGenre($event: any) {
-        // console.log("event: ", $event);
         if($event.target.className === 'agal-gallery-nav-type' && !this.loaded) {
-            this.isLoading();
+            this.preloadOnScroll();
         }
     }
 

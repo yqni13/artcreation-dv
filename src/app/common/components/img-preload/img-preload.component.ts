@@ -16,7 +16,6 @@ import { CommonModule } from "@angular/common";
             <img 
                 *ngIf="loaded"
                 class="agal-img-preview"
-                id="agal-img-{{card.referenceNr}}"                 
                 src="{{card.pathResized}}" 
                 alt="404-picture-not-found"
                 (click)="navigateToDetail(card.referenceNr)"
