@@ -5,6 +5,7 @@ import { FooterComponent } from './common/components/footer/footer.component';
 import { SnackbarComponent } from './common/components/snackbar/snackbar.component';
 import { SnackbarMessageService } from './shared/services/snackbar.service';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { CommonModule, DOCUMENT } from '@angular/common';
     RouterOutlet, 
     NavigationComponent,
     SnackbarComponent,
-    FooterComponent
+    FooterComponent,
+    TranslateModule
   ]
 })
 export class AppComponent implements AfterViewInit, OnDestroy{
@@ -31,10 +33,13 @@ export class AppComponent implements AfterViewInit, OnDestroy{
   constructor(
     protected snackbarService: SnackbarMessageService,
     @Inject(DOCUMENT) private document: Document,
-    private elRef: ElementRef,
+    private translate: TranslateService,
     private renderer2: Renderer2,
+    private elRef: ElementRef,
     private router: Router
   ) {
+    this.translate.setDefaultLang('de');
+
     this.scrollbarActive = false;
     this.scrollbarRoutes = [
       '/imprint',

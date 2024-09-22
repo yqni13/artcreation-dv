@@ -20,17 +20,17 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-        data: { title: 'Home', showInNavbar: true, icon:'icon-Home', showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'home', showInNavbar: true, icon:'icon-Home', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'about',
         component: AboutComponent,
-        data: { title: 'About', showInNavbar: true, icon: 'icon-About', showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'about', showInNavbar: true, icon: 'icon-About', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'gallery',
         component: GalleryComponent,
-        data: { title: 'Gallery', showInNavbar: true, icon: 'icon-Gallery', showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'gallery', showInNavbar: true, icon: 'icon-Gallery', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'gallery/detail/:id',
@@ -40,36 +40,36 @@ export const routes: Routes = [
     {
         path: 'prints',
         component: PrintsComponent,
-        data: { title: 'Prints', showInNavbar: true, icon:'icon-Prints', showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'prints', showInNavbar: true, icon:'icon-Prints', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'faq',
         component: FAQComponent,
-        data: { title: 'FAQ', showInNavbar: true, icon: 'icon-FAQ', showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'faq', showInNavbar: true, icon: 'icon-FAQ', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'contact',
         component: ContactComponent,
-        data: { title: 'Contact', showInNavbar: false, showInFooterConnect: true, showInFooterInfo: false }
+        data: { title: 'contact', showInNavbar: false, showInFooterConnect: true, showInFooterInfo: false }
     },
     {
         path: 'archive',
         component: ArchiveComponent,
-        data: { title: 'Archive', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
+        data: { title: 'archive', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
         path: 'imprint',
         component: ImprintComponent,
-        data: { title: 'Imprint', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
+        data: { title: 'imprint', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
         path: 'privacy',
         component: PrivacyComponent,
-        data: { title: 'Privacy Policy', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
+        data: { title: 'privacy', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
         path: 'shipping',
         component: ShippingComponent,
-        data: { title: 'Shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
     }
 ];
