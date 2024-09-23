@@ -1,0 +1,120 @@
+{
+    "common": {
+        "footer": {
+            "content": {
+                "archive": "Archive",
+                "contact": "Contact",
+                "copyright": "All rights reserved.",
+                "imprint": "Imprint",
+                "privacy": "Privacy Policy",
+                "shipping": "Shipping"
+            },
+            "titles": {
+                "connection": "connection",
+                "information": "information"
+            }
+        },
+        "navigation": {
+            "about": "About",
+            "faq": "FAQ",
+            "gallery": "Gallery",
+            "home": "Home",
+            "prints": "Prints"
+        }
+    },
+    "modules": {
+        "about": {
+            "title": "the artist"
+        },
+        "archive": {
+            "message": "Hover your mouse over the image to read more on the article.",
+            "title": "News Archive"
+        },
+        "contact": {
+            "form": {
+                "button": "Send",
+                "fieldNames": {
+                    "email": "Email",
+                    "firstName": "First name",
+                    "honorifics": "Gender",
+                    "lastName": "Last name",
+                    "message": "Message",
+                    "referenceNr": "Reference number",
+                    "subject": "Subject",
+                    "title": "Academic title",
+                    "type": "Type"
+                },
+                "placeholders": {
+                    "email": "Email",
+                    "firstName": "First name",
+                    "honorifics": "Select honorifics",
+                    "lastName": "Last name",
+                    "message": "Message",
+                    "referenceNr": "Reference number",
+                    "subject": "Select subject",
+                    "title": "Academic title",
+                    "type": "Select type"
+                }
+            },
+            "message": "Most common questions are listed and answered in the ",
+            "title": "contact me"
+        },
+        "faq": {
+            "message": "Got a question? I'm here to answer the most frequently one's. If you don't see your question here, contact me via: ",
+            "title": "FAQ"
+        },
+        "gallery": {
+            "details": {
+                "button": "Order",
+                "content": {
+                    "not-available": "not available",
+                    "request-price": "request price"
+                },
+                "header": {
+                    "comment": "Comment",
+                    "date": "Publication",
+                    "dimensions": "Dimensions",
+                    "price": "Price",
+                    "reference": "Reference",
+                    "tags": "Keywords",
+                    "technique": "Technique",
+                    "title": "Title",
+                    "type": "Type"
+                }
+            }
+        },
+        "home": {
+            "title": "art & creative"
+        },
+        "imprint": {
+            "message": "The textual content is currently only in german language available. We will provide the translations as soon as possible.",
+            "title": "Imprint"
+        },
+        "prints": {
+            "message1": "Option to sell prints is not available for the moment. More information will be posted in the news section and in the ",
+            "message2": " as soon as possible.",
+            "title": "prints"
+        },
+        "privacy": {
+            "message": "The textual content is currently only in german language available. We will provide the translations as soon as possible.",
+            "title": "Privacy Policy"
+        }
+    },
+    "shared": {
+        "artwork-option": {
+            "handcraft": "handcraft",
+            "original": "original",
+            "originalORprint": "original / print",
+            "print": "print"
+        },
+        "contact-subject": {
+            "artOrder": "art order",
+            "generalRequest": "general request",
+            "specificInformation": "specific request"
+        },
+        "honorifics-option": {
+            "0": "Mr",
+            "1": "Ms"
+        }
+    }
+}

@@ -77,7 +77,7 @@
             "peace", "water", "flow", "nature", "bigsize"
         ],
         "price": 1500.00,
-        "type": "original / print",
+        "type": "originalORprint",
         "comment": "I painted this after my last enemy died by my own hands.",
         "technique": "Acryl-Pouring auf Keilrahmen", 
         "measurementsWxH": null,
@@ -139,7 +139,7 @@
             "buddha", "red", "blue", "gold", "meditation"
         ],
         "price": null,
-        "type": "original / print",
+        "type": "originalORprint",
         "comment": null,
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": [
@@ -189,7 +189,7 @@
             "art", "creative", "dreamful"
         ],
         "price": 255.99,
-        "type": "original / print",
+        "type": "originalORprint",
         "comment": "The real work comes at the end.",
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": [
@@ -369,7 +369,7 @@
             "blue", "lost star", "frozen"
         ],
         "price": 330.99,
-        "type": "original / print",
+        "type": "originalORprint",
         "comment": null,
         "technique": "Pouring",
         "measurementsWxH": [
@@ -513,7 +513,7 @@
             "winter", "wonderland"
         ],
         "price": 299,
-        "type": "original / print",
+        "type": "originalORprint",
         "comment": "I keep dreaming of this beautiful place I have once been before in my life...",
         "technique": null,
         "measurementsWxH": [
@@ -549,7 +549,7 @@
             "mask", "blue", "venezia"
         ],
         "price": 359,
-        "type": "original / print",
+        "type": "originalORprint",
         "comment": null,
         "technique": null,
         "measurementsWxH": [
@@ -657,7 +657,7 @@
             "buddha", "gold"
         ],
         "price": 440,
-        "type": "original / print",
+        "type": "originalORprint",
         "comment": null,
         "technique": null,
         "measurementsWxH": [
@@ -675,7 +675,7 @@
             "mandala", "red", "gold", "lotus"
         ],
         "price": 600,
-        "type": "original / print",
+        "type": "originalORprint",
         "comment": null,
         "technique": null,
         "measurementsWxH": [
@@ -783,7 +783,7 @@
             "abstract", "surreal", "forest"
         ],
         "price": 449.99,
-        "type": "original / print",
+        "type": "originalORprint",
         "comment": null,
         "technique": null,
         "measurementsWxH": [

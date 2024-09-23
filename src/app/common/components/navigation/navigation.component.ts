@@ -5,6 +5,7 @@ import { Route, RouterModule } from "@angular/router";
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { ThemeOption } from "../../../shared/enums/theme-option.enum";
 import _ from 'underscore';
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'agal-navigation',
@@ -13,7 +14,8 @@ import _ from 'underscore';
     standalone: true,
     imports: [
         CommonModule, 
-        RouterModule
+        RouterModule,
+        TranslateModule
     ]
 })
 export class NavigationComponent implements OnInit, AfterViewInit {
@@ -30,6 +32,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
     constructor (
         @Inject(DOCUMENT) private document: Document,
+        private translate: TranslateService,
         private navigation: NavigationService,
     ) {
         this.isLocalStorageAvailable = typeof localStorage !== 'undefined';

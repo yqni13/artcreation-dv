@@ -15,7 +15,7 @@
                 [attr.aria-disabled]="true"
                 routerLink="{{ route.path }}"
                 routerLinkActive="agal-active-route"
-            >{{!isMobileMode ? route.data?.['title'] : ''}} <i *ngIf="isMobileMode" class="{{route.data?.['icon']}}"></i></span>
+            >{{!isMobileMode ? ('common.navigation.' + route.data?.['title'] | translate) : ''}} <i *ngIf="isMobileMode" class="{{route.data?.['icon']}}"></i></span>
         </li>
         <li>
             <span

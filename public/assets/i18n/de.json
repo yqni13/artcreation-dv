@@ -1,0 +1,120 @@
+{
+    "common": {
+        "footer": {
+            "content": {
+                "archive": "Archiv",
+                "contact": "Kontakt",
+                "copyright": "Alle Rechte vorbehalten.",
+                "imprint": "Impressum",
+                "privacy": "Datenschutz",
+                "shipping": "Versand"
+            },
+            "titles": {
+                "connection": "Kommunikation",
+                "information": "Informationen"
+            }
+        },
+        "navigation": {
+            "about": "Bio",
+            "faq": "FAQ",
+            "gallery": "Gallerie",
+            "home": "Start",
+            "prints": "Kopien"
+        }
+    },
+    "modules": {
+        "about": {
+            "title": "die Künstlerin"
+        },
+        "archive": {
+            "message": "Zum Lesen des Textes, den Mauszeiger über den jeweiligen Artikel halten.",
+            "title": "News Archiv"
+        },
+        "contact": {
+            "form": {
+                "button": "Senden",
+                "fieldNames": {
+                    "email": "E-Mail",
+                    "firstName": "Vorname",
+                    "honorifics": "Geschlecht",
+                    "lastName": "Nachname",
+                    "message": "Nachricht",
+                    "referenceNr": "Referenz-Nummer",
+                    "subject": "Betreff",
+                    "title": "Akademischer Titel",
+                    "type": "Form"
+                },
+                "placeholders": {
+                    "email": "E-Mail Adresse",
+                    "firstName": "Vorname",
+                    "honorifics": "Geschlecht auswählen",
+                    "lastName": "Nachname",
+                    "message": "Nachricht",
+                    "referenceNr": "Referenz-Nummer",
+                    "subject": "Betreff auswählen",
+                    "title": "Akademische(r) Titel",
+                    "type": "Form auswählen"
+                }
+            },
+            "message": "Antworten zu den gängisten Fragen finden Sie hier: ",
+            "title": "Kontakt"
+        },
+        "faq": {
+            "message": "Haben Sie Fragen? Anworten auf häufig gestellte Fragen finden Sie hier. Wenn Sie Ihre Frage hier nicht beantwortet finden, können Sie mich auch gerne direkt kontaktieren: ",
+            "title": "FAQ"
+        },
+        "gallery": {
+            "details": {
+                "button": "Bestellen",
+                "content": {
+                    "not-available": "nicht verfügbar",
+                    "request-price": "Preis anfragen"
+                },
+                "header": {
+                    "comment": "Kommentar",
+                    "date": "Erscheinungsjahr",
+                    "dimensions": "Abmessungen",
+                    "price": "Preis",
+                    "reference": "Referenz",
+                    "tags": "Schlüsselwörter",
+                    "technique": "Technik",
+                    "title": "Titel",
+                    "type": "Form"
+                }
+            }
+        },
+        "home": {
+            "title": "Kunst & Kreatives"
+        },
+        "imprint": {
+            "message": "null",
+            "title": "Impressum"
+        },
+        "prints": {
+            "message1": "Aktuell sind Kunstdrucke nicht verfügbar. Weitere Informationen werden in der News-Sektion und im ",
+            "message2": " sobald wie möglich zur Verfügung stehen.",
+            "title": "Kunstdruck"
+        },
+        "privacy": {
+            "message": "null",
+            "title": "Datenschutz"
+        }
+    },
+    "shared": {
+        "artwork-option": {
+            "handcraft": "Handwerk",
+            "original": "Original",
+            "originalORprint": "Original / Kunstdruck",
+            "print": "Kunstdruck"
+        },
+        "contact-subject": {
+            "artOrder": "Bestellung",
+            "generalRequest": "Generelle Anfrage",
+            "specificInformation": "Spezifische Anfrage"
+        },
+        "honorifics-option": {
+            "0": "Herr",
+            "1": "Frau"
+        }
+    }
+}

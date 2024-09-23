@@ -4,6 +4,7 @@ import { Route, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { SnackbarMessageService } from "../../../shared/services/snackbar.service";
 import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'agal-footer',
@@ -12,7 +13,8 @@ import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
     standalone: true,
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        TranslateModule
     ]
 })
 export class FooterComponent implements OnInit {
@@ -25,6 +27,7 @@ export class FooterComponent implements OnInit {
     constructor(
         private snackbarService: SnackbarMessageService,
         private navigation: NavigationService,
+        private translate: TranslateService
     ) {
 
         this.infoRoutes = [];
