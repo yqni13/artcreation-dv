@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, HostListener, Inject, OnInit } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
 import { Route, RouterModule } from "@angular/router";
 import { CommonModule, DOCUMENT } from "@angular/common";
@@ -21,8 +21,16 @@ import { LanguageOption } from "../../../shared/enums/language-option.enum";
 })
 export class FooterComponent implements OnInit {
 
+    @HostListener('window:click', ['$event'])
+    clickOutside($event: any) {
+        if(!$event.target.className.includes('agal-language-element')) {
+                this.showLanguageList = false;
+            }
+    }
+
     protected language = LanguageOption;
     protected selectedLanguage: LanguageOption;
+    protected showLanguageList: boolean;
     protected infoRoutes: Route[];
     protected connectRoutes: Route[];
     protected socialmediaURL: string;
@@ -40,6 +48,7 @@ export class FooterComponent implements OnInit {
         this.selectedLanguage = this.checkLanguageData();
         this.setLanguageData(this.selectedLanguage);
 
+        this.showLanguageList = false;
         this.infoRoutes = [];
         this.connectRoutes = [];
         this.socialmediaURL = 'https://instagram.com/vargarella_';
@@ -88,7 +97,7 @@ export class FooterComponent implements OnInit {
         return LanguageOption.de;
     }
 
-    private setLanguageData(language: LanguageOption) {
+    protected setLanguageData(language: LanguageOption) {
         if(this.isLocalStorageAvailable) {
             if(language) {
                 localStorage.setItem("agal-language", language);
@@ -100,11 +109,13 @@ export class FooterComponent implements OnInit {
         this.switchLanguage(LanguageOption.de);
     }
 
-    protected switchLanguage(language: LanguageOption) {
+    private switchLanguage(language: LanguageOption) {
         this.translate.use(language);
+        this.selectedLanguage = language;
+        this.showLanguageList = false;
     }
 
     protected openLanguageList() {
-        console.log();
+        this.showLanguageList = true;
     }
 }

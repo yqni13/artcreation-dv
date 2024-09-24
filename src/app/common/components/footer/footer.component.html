@@ -23,13 +23,28 @@
                         target="_blank"
                     >Instagram</a>
                 </li>
-                <li class="agal-footer-language">
-                    <span
-                        [attr.aria-disabled]="true"
-                        (click)="openLanguageList()"
-                        (keydown.enter)="openLanguageList()"
-                    >{{'shared.enum.language.' + this.selectedLanguage | translate}}</span>
-                    <i class="icon-Language"></i>
+                <li class="agal-footer-language agal-language-element">
+                    <div class="agal-footer-language-select agal-language-element">
+                        <span
+                            class="agal-language-element"
+                            [attr.aria-disabled]="true"
+                            (click)="openLanguageList()"
+                            (keydown.enter)="openLanguageList()"
+                        >{{'shared.enum.language.' + this.selectedLanguage | translate}}</span>
+                        <i class="icon-Language agal-language-element"></i>
+                    </div>
+                    <div *ngIf="showLanguageList" class="agal-footer-language-list agal-language-element">
+                        <span 
+                            class="agal-language-option-select agal-language-element"
+                        >{{'common.footer.content.language' | translate}}</span>
+                        <span
+                            *ngFor="let option of language | keyvalue"
+                            class="agal-language-options"
+                            [attr.aria-disabled]="true"
+                            (click)="setLanguageData(language[option.value])"
+                            (keydown.enter)="setLanguageData(language[option.value])"
+                        >{{'shared.enum.language.' + option.key | translate}}</span>
+                    </div>
                 </li>
             </ul>
         </div>

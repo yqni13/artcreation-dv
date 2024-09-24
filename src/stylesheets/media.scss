@@ -171,7 +171,6 @@
             }
 
             i {
-                bottom: calc(6px - 0.25vw);
                 width: clamp(19px, 1.3vw, 23px);
             }
         }
@@ -361,7 +360,6 @@
 
         .agal-footer-links {
             i {
-                bottom: 4px;
                 width: 17px;
             }
         }
@@ -603,7 +601,6 @@
             }
 
             i {
-                bottom: calc(4px - 0.15vw);
                 width: 2.2vw;
             }
         }
@@ -1014,10 +1011,6 @@
                 li {
                     padding: 2px 0!important;
                 }
-            }
-
-            i {
-                bottom: calc(10px - 0.5vw);
             }
         }
     }

@@ -60,23 +60,64 @@ footer {
             }
 
             i {
-                position: relative;
                 margin-left: 7px;
                 color: var(--theme-contrast-anchor);
                 aspect-ratio: 1 / 1;
             }
         }
         
+        $icon-size-difference: 2px;
         .agal-footer-language {
+            position: relative;
             display: inline-flex;
             cursor: pointer;
-            &:hover {
+            padding-top: $icon-size-difference;
+
+            .agal-footer-language-select {
+                display: flex;
+                align-items: center;
+            }
+
+            .agal-footer-language-select:hover {
                 opacity: 0.3;
+                .agal-footer-language-list:not(:hover) {
+                    opacity: 1;
+                }
             }
 
             span:hover {
                 // disable basic hover effect of li>span
                 opacity: 1;
+            }
+
+            .agal-footer-language-list {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                bottom: -5px;
+                left: -5px;
+                border: solid 2px var(--theme-nav-border);
+                border-radius: 5px;
+                padding: 15px 0;
+                background-color: transparent;
+                box-shadow: 0 4px 30px rbga(0, 0, 0, 0.1);
+                backdrop-filter: blur(6.7px);
+                -webkit-backdrop-filter: blur(6.7px);
+                text-wrap: nowrap;
+
+                .agal-language-option-select {
+                    padding: 10px 15px 30px 15px;
+                    cursor: default;
+                }
+
+                .agal-language-options {
+                    padding: 5px 0 5px 15px;
+
+
+                    &:hover {
+                        opacity: 0.3;
+                    }
+                }
             }
         }
     }
