@@ -21,8 +21,8 @@
             <span
                 [attr.aria-disabled]="true"
                 [ngClass]="selectedTheme"
-                (click)="setTheme()"
-                (keydown.enter)="setTheme()"
+                (click)="switchTheme()"
+                (keydown.enter)="switchTheme()"
                 #themeModeIcon
             ><i class="icon-ThemeOptions agal-nav-theme-ico"></i>
             </span>

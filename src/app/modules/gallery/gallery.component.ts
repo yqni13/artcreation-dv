@@ -8,6 +8,7 @@ import { CommonModule } from "@angular/common";
 import { FilterGalleryService } from "../../shared/services/filter-gallery.service";
 import { Router, RouterModule } from "@angular/router";
 import { ImgPreloadComponent } from "../../common/components/img-preload/img-preload.component";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 
 @Component({
@@ -19,6 +20,7 @@ import { ImgPreloadComponent } from "../../common/components/img-preload/img-pre
         CommonModule,
         ImgPreloadComponent,
         RouterModule,
+        TranslateModule
     ]
 })
 export class GalleryComponent implements OnInit, AfterViewInit {
@@ -37,6 +39,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
         private router: Router,
         private cdRef: ChangeDetectorRef,
         private errorService: ErrorService,
+        private translate: TranslateService,
         private filterGalleryService: FilterGalleryService
     ) {
         try {

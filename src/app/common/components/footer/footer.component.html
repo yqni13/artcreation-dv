@@ -13,17 +13,23 @@
             <ul>
                 <li *ngFor="let route of connectRoutes">
                     <span
-                        class="agal-footer-routes"
                         [attr.aria-disabled]="true"
                         routerLink="{{ route.path }}"
                     >{{ 'common.footer.content.' + route.data?.['title'] | translate}}</span>
                 </li>
                 <li>
                     <a
-                        class="agal-footer-routes"
                         href="{{ socialmediaURL }}"
                         target="_blank"
                     >Instagram</a>
+                </li>
+                <li class="agal-footer-language">
+                    <span
+                        [attr.aria-disabled]="true"
+                        (click)="openLanguageList()"
+                        (keydown.enter)="openLanguageList()"
+                    >{{'shared.enum.language.' + this.selectedLanguage | translate}}</span>
+                    <i class="icon-Language"></i>
                 </li>
             </ul>
         </div>
@@ -32,7 +38,6 @@
             <ul>
                 <li *ngFor="let route of infoRoutes">
                     <span
-                        class="agal-footer-routes"
                         [attr.aria-disabled]="true"
                         routerLink="{{ route.path }}"
                     >{{ 'common.footer.content.' + route.data?.['title'] | translate }}</span>
@@ -40,7 +45,6 @@
                 <!-- TODO(yqni13): implement shipping comp and reset app.routes.ts and loop -->
                 <li>
                     <span
-                        class="agal-footer-routes"
                         [attr.aria-disabled]="true"
                         (click)="alertAvailability()"
                         (keydown.enter)="alertAvailability()"

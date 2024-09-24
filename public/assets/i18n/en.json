@@ -81,6 +81,10 @@
                     "title": "Title",
                     "type": "Type"
                 }
+            },
+            "preview": {
+                "gallery": "Gallery",
+                "title": "My Art"
             }
         },
         "home": {
@@ -101,20 +105,26 @@
         }
     },
     "shared": {
-        "artwork-option": {
-            "handcraft": "handcraft",
-            "original": "original",
-            "originalORprint": "original / print",
-            "print": "print"
-        },
-        "contact-subject": {
-            "artOrder": "art order",
-            "generalRequest": "general request",
-            "specificInformation": "specific request"
-        },
-        "honorifics-option": {
-            "0": "Mr",
-            "1": "Ms"
+        "enum": {
+            "artwork-option": {
+                "handcraft": "handcraft",
+                "original": "original",
+                "originalORprint": "original / print",
+                "print": "print"
+            },
+            "contact-subject": {
+                "artOrder": "art order",
+                "generalRequest": "general request",
+                "specificInformation": "specific request"
+            },
+            "honorifics-option": {
+                "0": "Mr",
+                "1": "Ms"
+            },
+            "language": {
+                "de": "German",
+                "en": "English"
+            }
         }
     }
 }

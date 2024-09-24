@@ -23,7 +23,7 @@
                         [placeholder]="('modules.contact.form.placeholders.subject' | translate) + '*'"
                         [formControl]="contactForm.get('subject') | controlCast"
                         [options]="subjectOptions"
-                        [optionsTranslateRoot]="'shared.contact-subject.'"
+                        [optionsTranslateRoot]="'shared.enum.contact-subject.'"
                         [fieldName]="'modules.contact.form.fieldNames.subject' | translate"
                         (byChange)="configRefNrByType()"
                     ></agal-selectinput>
@@ -56,7 +56,7 @@
                         [formControl]="contactForm.get('type') | controlCast"
                         [placeholder]="('modules.contact.form.placeholders.type' | translate) + '*'"
                         [options]="artworkOptions"
-                        [optionsTranslateRoot]="'shared.artwork-option.'"
+                        [optionsTranslateRoot]="'shared.enum.artwork-option.'"
                         [fieldName]="'modules.contact.form.fieldNames.type' | translate"
                         [ngClass]="contactForm.get('subject')?.value === subjectOptions.artOrder 
                                     ? 'agal-query-value agal-readonly' 
@@ -79,7 +79,7 @@
                         [formControl]="contactForm.get('honorifics') | controlCast"
                         [placeholder]="('modules.contact.form.placeholders.honorifics' | translate) + '*'"
                         [options]="['Mr', 'Ms']"
-                        [optionsTranslateRoot]="'shared.honorifics-option.'"
+                        [optionsTranslateRoot]="'shared.enum.honorifics-option.'"
                         [fieldName]="'modules.contact.form.fieldNames.honorifics' | translate"
                     ></agal-selectinput>
                     <agal-textinput

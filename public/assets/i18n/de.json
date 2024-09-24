@@ -81,6 +81,10 @@
                     "title": "Titel",
                     "type": "Form"
                 }
+            },
+            "preview": {
+                "gallery": "Gallerie",
+                "title": "Meine Kunst"
             }
         },
         "home": {
@@ -101,20 +105,26 @@
         }
     },
     "shared": {
-        "artwork-option": {
-            "handcraft": "Handwerk",
-            "original": "Original",
-            "originalORprint": "Original / Kunstdruck",
-            "print": "Kunstdruck"
-        },
-        "contact-subject": {
-            "artOrder": "Bestellung",
-            "generalRequest": "Generelle Anfrage",
-            "specificInformation": "Spezifische Anfrage"
-        },
-        "honorifics-option": {
-            "0": "Herr",
-            "1": "Frau"
+        "enum": {
+            "artwork-option": {
+                "handcraft": "Handwerk",
+                "original": "Original",
+                "originalORprint": "Original / Kunstdruck",
+                "print": "Kunstdruck"
+            },
+            "contact-subject": {
+                "artOrder": "Bestellung",
+                "generalRequest": "Generelle Anfrage",
+                "specificInformation": "Spezifische Anfrage"
+            },
+            "honorifics-option": {
+                "0": "Herr",
+                "1": "Frau"
+            },
+            "language": {
+                "de": "Deutsch",
+                "en": "Englisch"
+            }
         }
     }
 }

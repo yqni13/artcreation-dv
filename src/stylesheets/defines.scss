@@ -12,7 +12,7 @@
 
 
 /* THEME OPTION DEFINITIONS */
-[data-theme='light'] {
+[data-theme='lightMode'] {
     --theme-active-route: #{sass.$color-route-light};
     --theme-submenu-route: #{sass.$color-dark-grey};
     --theme-body-bg: #{sass.$color-ice-white};
@@ -33,7 +33,7 @@
     --theme-signature-filter: none;
 }
 
-[data-theme='dark'] {
+[data-theme='darkMode'] {
     --theme-active-route: #{sass.$color-route-dark};
     --theme-submenu-route: #{sass.$color-light-grey};
     --theme-body-bg: #{sass.$color-forest-green};

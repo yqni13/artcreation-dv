@@ -58,8 +58,27 @@ footer {
                     opacity: 0.3;
                 }
             }
+
+            i {
+                position: relative;
+                margin-left: 7px;
+                color: var(--theme-contrast-anchor);
+                aspect-ratio: 1 / 1;
+            }
         }
         
+        .agal-footer-language {
+            display: inline-flex;
+            cursor: pointer;
+            &:hover {
+                opacity: 0.3;
+            }
+
+            span:hover {
+                // disable basic hover effect of li>span
+                opacity: 1;
+            }
+        }
     }
 
     .agal-footer-links-connection,

@@ -1,6 +1,6 @@
 <section class="agal-gallery agal-scroll" #gallerySection>
     <header>
-        <h1>my art</h1>
+        <h1>{{'modules.gallery.preview.title' | translate}}</h1>
     </header>
     <nav class="agal-gallery-nav">
         <div class="agal-gallery-nav-row">
@@ -10,7 +10,7 @@
                 (click)="selectGenre('gallery')"
                 (keydown.enter)="selectGenre('gallery')"
                 [ngClass]="activeGenre === 'gallery' ? 'agal-active-route' : ''"
-            >GALLERY</a>
+            >{{'modules.gallery.preview.gallery' | translate}}</a>
         </div>
         <div class="agal-gallery-nav-row">
             <a
