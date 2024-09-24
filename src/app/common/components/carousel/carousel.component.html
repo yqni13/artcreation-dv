@@ -8,7 +8,7 @@
                 <div class="agal-carousel-default-wrapper">
                     <div class="agal-carousel-default-img">
                         <img
-                            [ngClass]="slide.referenceNr !== null ? 'agal-anchor' : ''"
+                            [ngClass]="(slide.referenceNr !== null && !slide.referenceNr.includes('-')) ? 'agal-anchor' : ''"
                             *ngIf="slide.imageResized" 
                             src="{{ slide.imageResized }}" 
                             alt="404-picture-not-found"
@@ -19,11 +19,11 @@
                     </div>
                     <div class="agal-carousel-default-text-wrapper">
                         <div class="agal-carousel-default-text-header">
-                            <h3 *ngIf="slide.title">{{ slide.title }}</h3>
+                            <h3 *ngIf="slide.title">{{ 'archive-content.' + slide.referenceNr + '.title' | translate }}</h3>
                             <span>{{slide.date | dateFormat:'dd.mm.yyyy'}}</span>
                         </div>
                         <div class="agal-carousel-default-text-content">
-                            <p *ngIf="slide.text">{{ slide.text }}</p>
+                            <p *ngIf="slide.text">{{ 'archive-content.' + slide.referenceNr + '.text' | translate }}</p>
                         </div>
                     </div>
                 </div>

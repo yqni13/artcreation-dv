@@ -11,6 +11,7 @@ import { FloatPrecisionPipe } from "../../../common/pipes/float-precision.pipe";
 import { ImgFullscaleComponent } from "../../../common/components/img-fullscale/img-fullscale.component";
 import { SubjectOptions } from "../../../shared/enums/contact-subject.enum";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { VarDirective } from "../../../common/directives/ng-var.directive";
 
 @Component({
     selector: 'app-gallery-details',
@@ -23,7 +24,8 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
         FloatPrecisionPipe,
         ImgFullscaleComponent,
         RouterModule,
-        TranslateModule
+        TranslateModule,
+        VarDirective
     ]
 })
 export class GalleryDetailsComponent implements OnInit, OnDestroy {

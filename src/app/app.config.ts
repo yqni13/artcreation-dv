@@ -7,10 +7,10 @@ import { HttpClient, provideHttpClient, withFetch, withInterceptors } from '@ang
 import { appHttpInterceptor } from './app.http.interceptor';
 import { provideNetlifyLoader } from '@angular/common';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CustomTranslateLoader } from '../../public/assets/i18n/custom-translate-loader';
 
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new CustomTranslateLoader(http, './assets/i18n/', '.json');
 }
 
 export const appConfig: ApplicationConfig = {

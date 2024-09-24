@@ -3,6 +3,7 @@ import { default as faqData } from "../../shared/data/faq-data.json";
 import { ErrorService } from "../../shared/services/error.service";
 import { CommonModule } from "@angular/common";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { FAQItems } from "../../shared/interfaces/FAQItems";
 
 @Component({
     selector: 'app-faq',
@@ -16,7 +17,7 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 })
 export class FAQComponent {
 
-    protected data: Record<string, string>;
+    protected data: FAQItems[];
     protected hasData: boolean;
 
     constructor(
@@ -28,7 +29,7 @@ export class FAQComponent {
             this.hasData = true;
         } catch(err) {
             this.errorService.handle(err);
-            this.data = {};
+            this.data = [];
             this.hasData = false;
         }
     }

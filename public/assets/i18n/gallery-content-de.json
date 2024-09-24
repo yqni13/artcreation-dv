@@ -1,0 +1,550 @@
+{
+    "gallery-content": {
+        "AE6177": {
+            "title": "Lotus",
+            "referenceNr": "AE6177",
+            "genre": "natur",
+            "tags": [
+                "Lotus", "Friede", "Wasser"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "21ABCD": {
+            "title": null,
+            "referenceNr": "21ABCD",
+            "genre": "natur",
+            "tags": [
+                "gehen", "Frische", "Outdoor", "Wald"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "E8B162": {
+            "title": "Perspektive jedes Moments",
+            "referenceNr": "E8B162",
+            "genre": "natur",
+            "tags": [
+                "Morgen", "Chance", "Sonnenlicht"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "0B2ECA": {
+            "title": "Tribut dem L",
+            "referenceNr": "0B2ECA",
+            "genre": "natur",
+            "tags": [
+                "Traum", "See", "Feuer"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "A1CAF1": {
+            "title": "Wasser bringt Frieden",
+            "referenceNr": "A1CAF1",
+            "genre": "natur",
+            "tags": [
+                "Frieden", "Wasser", "Fluss", "Natur", "Übergröße"
+            ],
+            "comment": "Der perfekte Ort um ein gutes Buch zu lesen und die Ruhe zu genießen.",
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "F4C2C2": {
+            "title": null,
+            "referenceNr": "F4C2C2",
+            "genre": "natur",
+            "tags": [
+                "Blumen", "Leben", "Hoffnung", "Zukunft"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "FE6F5E": {
+            "title": "Frau auf Marmor",
+            "referenceNr": "FE6F5E",
+            "genre": "personen",
+            "tags": null,
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "0D98BA": {
+            "title": "Mohnblumen-Feld",
+            "referenceNr": "0D98BA",
+            "genre": "natur",
+            "tags": [
+                "Blumen", "Mohnblume", "Rot"
+            ],
+            "comment": "der Himmel schmeckt jedes Mal unterschiedlich",
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "C32148": {
+            "title": "innerer Frieden",
+            "referenceNr": "C32148",
+            "genre": "spirituell",
+            "tags": [
+                "Buddha", "Rot", "Blau", "Gold", "Meditation"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "004225": {
+            "title": null,
+            "referenceNr": "004225",
+            "genre": "personen",
+            "tags": [
+                "Hut", "Frau", "Profil", "Grün", "Sommer"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        }    ,
+        "91A3B0": {
+            "title": "Stadtleben",
+            "referenceNr": "91A3B0",
+            "genre": "personen",
+            "tags": [
+                "Violett", "Hut", "Frau", "Ausdruck"
+            ],
+            "comment": "inspiriert durch die stilsichere Dame am Orangen-Stand",
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "ED872D": {
+            "title": "träumend",
+            "referenceNr": "ED872D",
+            "genre": "abstrakt",
+            "tags": [
+                "Kunst", "Kreatives", "träumerisch"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        }, 
+        "F7FFCC": {
+            "title": "der Geschmack von Strand",
+            "referenceNr": "F7FFCC",
+            "genre": "kreatives",
+            "tags": [
+                "Strand", "Kreatives", "Sand"
+            ],
+            "comment": "Die wahre Arbeit kommt am Ende.",
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "2F2C30": {
+            "title": "friedliche Salzbrise",
+            "referenceNr": "2F2C30",
+            "genre": "natur",
+            "tags": [
+                "Sonnenaufgang", "Urlaub", "Meer", "Salz"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "DBDDD7": {
+            "title": "afrikanische Schönheit",
+            "referenceNr": "DBDDD7",
+            "genre": "personen",
+            "tags": [
+                "Afrika", "gesichtslos", "mysteriös"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "7B5328": {
+            "title": "Tutanchamun",
+            "referenceNr": "7B5328",
+            "genre": "personen",
+            "tags": [
+                "Ägyptisch", "Geschichte"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "508722": {
+            "title": "Pfad der richtigen Entscheidung",
+            "referenceNr": "508722",
+            "genre": "natur",
+            "tags": [
+                "Natur", "Wald", "Pfad"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "59B6CE": {
+            "title": "Zwilling",
+            "referenceNr": "59B6CE",
+            "genre": "natur",
+            "tags": [
+                "Vögel", "Natur", "Tiere"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "863A1E": {
+            "title": "Feuer trifft auf Wasser",
+            "referenceNr": "863A1E",
+            "genre": "pouring",
+            "tags": [
+                "Orange", "Teal", "Höllenfeuer"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "111818": {
+            "title": "verführerischer Sumpf",
+            "referenceNr": "111818",
+            "genre": "pouring",
+            "tags": [
+                "Schwarz", "Lachs", "Sumpf"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "0A0B06": {
+            "title": "die Dunkelheit gewinnt",
+            "referenceNr": "0A0B06",
+            "genre": "pouring",
+            "tags": [
+                "Dunkelheit", "vergiftete Gedanken"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "104771": {
+            "title": "gefrorener Stern",
+            "referenceNr": "104771",
+            "genre": "pouring",
+            "tags": [
+                "Blau", "Stern", "gefroren"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "4D1815": {
+            "title": "das Verwischen der bösen Geister",
+            "referenceNr": "4D1815",
+            "genre": "pouring",
+            "tags": [
+                "Rot", "Schwarz", "Böse", "Geister"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "7A3213": {
+            "title": "versteckter Schatz der See",
+            "referenceNr": "7A3213",
+            "genre": "pouring",
+            "tags": [
+                "Blau", "Gold", "Schatz"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "400E12": {
+            "title": "die vier Blumen des Paradies",
+            "referenceNr": "400E12",
+            "genre": "pouring",
+            "tags": [
+                "Rot", "Gelb", "Grün", "Blumen"
+            ],
+            "comment": "nur im ganzen Set erhältlich (Maße gelten pro Stück)",
+            "technique": "Pouring"
+        },
+        "00866E": {
+            "title": "eigenartige Macht",
+            "referenceNr": "00866E",
+            "genre": "pouring",
+            "tags": [
+                "Türkis", "Mystisch", "Gefahr"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "45613B": {
+            "title": "einfaches Vergnügen",
+            "referenceNr": "45613B",
+            "genre": "nature",
+            "tags": [
+                "Freude", "Blumenstrauß", "Natur"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "007E7E": {
+            "title": null,
+            "referenceNr": "007E7E",
+            "genre": "natur",
+            "tags": [
+                "Italien", "Rom"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "FA4363": {
+            "title": "ich träume von Farben",
+            "referenceNr": "FA4363",
+            "genre": "natur",
+            "tags": [
+                "Blumenstrauß", "Regenbogen"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "AEAFA1": {
+            "title": "Werde ich jemals hierher zurückfinden?",
+            "referenceNr": "AEAFA1",
+            "genre": "natur",
+            "tags": [
+                "Winter", "Wunderland"
+            ],
+            "comment": "Ich träume von dem wunderschönen Ort an dem ich einst mal war...",
+            "technique": null
+        },
+        "BEA47F": {
+            "title": "lieber Begleiter",
+            "referenceNr": "BEA47F",
+            "genre": "natur",
+            "tags": [
+                "Hund", "Liebe", "Leonberger"
+            ],
+            "comment": "ruhe in Frieden mein Lieber",
+            "technique": null
+        },
+        "327D9E": {
+            "title": "keine Wahrheit bis die Maske fällt",
+            "referenceNr": "327D9E",
+            "genre": "personen",
+            "tags": [
+                "Maske", "Blau", "Venedig"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "BAB3AB": {
+            "title": "im Gedanke tanze ich immer weiter",
+            "referenceNr": "BAB3AB",
+            "genre": "personen",
+            "tags": [
+                "Tanz", "Leidenschaft", "Kindheit"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "292D2B": {
+            "title": "Persephone",
+            "referenceNr": "292D2B",
+            "genre": "personen",
+            "tags": [
+                "Rot", "Schwarz", "Kleid"
+            ],
+            "comment": "Griechische Mythologie - Frau des Hades, Götting der Hölle",
+            "technique": null
+        },
+        "741510": {
+            "title": "Nacht des Tanzes",
+            "referenceNr": "741510",
+            "genre": "personen",
+            "tags": [
+                "Rot", "Salsa", "Kleid", "Tanz"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "424D55": {
+            "title": "Ohm",
+            "referenceNr": "424D55",
+            "genre": "spirituell",
+            "tags": [
+                "Buddha", "Asche", "Grau"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "21110B": {
+            "title": "Perfektion ist ungleich Perfektion",
+            "referenceNr": "21110B",
+            "genre": "spirituell",
+            "tags": [
+                "Regenbogen", "Buddha"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "6C5824": {
+            "title": "Zeit ist Gold",
+            "referenceNr": "6C5824",
+            "genre": "spirituell",
+            "tags": [
+                "Buddha", "Gold"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "7B0714": {
+            "title": "verspielter Lotus",
+            "referenceNr": "7B0714",
+            "genre": "spiritual",
+            "tags": [
+                "Mandala", "Rot", "Gold", "Lotus"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "656866": {
+            "title": "Gleichgewicht",
+            "referenceNr": "656866",
+            "genre": "spirituell",
+            "tags": [
+                "Gleichgewicht", "Fokus", "Entspannung"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "527883": {
+            "title": "Anmut in Schlichtheit",
+            "referenceNr": "527883",
+            "genre": "spiritual",
+            "tags": [
+                "Meditation", "Gold", "Blau", "Buddha", "Schlichtheit"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "39080B": {
+            "title": null,
+            "referenceNr": "39080B",
+            "genre": "spirituell",
+            "tags": [
+                "Rot", "Meditation", "Fokus"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "083258": {
+            "title": null,
+            "referenceNr": "083258",
+            "genre": "spirituell",
+            "tags": [
+                "Meditation", "Regenbogen", "Buddha"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "777370": {
+            "title": "Großpriester",
+            "referenceNr": "777370",
+            "genre": "spirituell",
+            "tags": [
+                "Grau", "Meditation"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "000002": {
+            "title": "surrealistischer Wald",
+            "referenceNr": "000002",
+            "genre": "abstrakt",
+            "tags": [
+                "Abstrakt", "Surrealität", "Wald"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "7F7BB4": {
+            "title": "Fluss des Lebens",
+            "referenceNr": "7F7BB4",
+            "genre": "abstrakt",
+            "tags": [
+                "Abstrakt", "Wasser", "Fluss", "Blau", "Violett"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "872E1C": {
+            "title": "Sommertag im Weingarten",
+            "referenceNr": "872E1C",
+            "genre": "abstrakt",
+            "tags": [
+                "Abstrakt", "Wein"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "434041": {
+            "title": null,
+            "referenceNr": "434041",
+            "genre": "abstrakt",
+            "tags": null,
+            "comment": null,
+            "technique": null
+        },
+        "9A0E11": {
+            "title": "Höllenfeuer",
+            "referenceNr": "9A0E11",
+            "genre": "abstrakt",
+            "tags": [
+                "Abstrakt", "Feuer", "Hölle", "Atem"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "906461": {
+            "title": "Durchbruch",
+            "referenceNr": "906461",
+            "genre": "abstrakt",
+            "tags": [
+                "Abstrakt", "Biss", "Flucht"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "302323": {
+            "title": null,
+            "referenceNr": "302323",
+            "genre": "abstrakt",
+            "tags": [
+                "Abstrakt"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "D9CB0B": {
+            "title": "Sturm der Farben",
+            "referenceNr": "D9CB0B",
+            "genre": "abstrakt",
+            "tags": [
+                "Abstrakt", "Regenbogen", "Eile"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "790000": {
+            "title": "spürbare Liebe",
+            "referenceNr": "790000",
+            "genre": "kreatives",
+            "tags": [
+                "Kreatives", "Rose", "Blumenstrauß", "Blumen", "Rot"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "9F8971": {
+            "title": null,
+            "referenceNr": "9F8971",
+            "genre": "kreatives",
+            "tags": [
+                "Kreatives", "Holz", "Schwarz"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "FFE135": {
+            "title": "wo die Geister ruhen",
+            "referenceNr": "FFE135",
+            "genre": "pouring",
+            "tags": [
+                "Sonne", "Grün", "Wald", "Tiere", "Natur"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        }
+    }
+}

@@ -31,7 +31,8 @@
                 <label for="card-title">{{'modules.gallery.details.header.title' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.title === null ? '--' : card?.title}}</span>
+                <span>{{card?.title === null ? '--' : 
+                ('gallery-content.' + card?.referenceNr + '.title' | translate)}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-referenceNr">
@@ -85,8 +86,10 @@
             <div class="agal-gallerydetails-key">
                 <label for="card-tags">{{'modules.gallery.details.header.tags' | translate}}:</label>
             </div>
-            <div class="agal-gallerydetails-value">
-                <span class="agal-tags" *ngFor="let tag of card?.tags">{{tag}}</span>
+            <div class="agal-gallerydetails-value" *agalVar="('gallery-content.' + card?.referenceNr + '.tags' | translate) as tagsTranslated">
+                <span class="agal-tags" *ngFor="let tag of tagsTranslated">
+                    {{tag}}
+                </span>
                 <span *ngIf="card?.tags === null">--</span>
             </div>
         </div>
@@ -99,7 +102,7 @@
                 <label for="card-comment">{{'modules.gallery.details.header.comment' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.comment === null ? '--' : '"' + card?.comment + '"'}}</span>
+                <span>{{card?.comment === null ? '--' : '"' + ('gallery-content.' + card?.referenceNr + '.comment' | translate) + '"'}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-technique">
@@ -107,7 +110,7 @@
                 <label for="card-technique">{{'modules.gallery.details.header.technique' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.technique === null ? '--' : card?.technique}}</span>
+                <span>{{card?.technique === null ? '--' : ('gallery-content.' + card?.referenceNr + '.technique' | translate)}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-year">

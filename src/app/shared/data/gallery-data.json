@@ -190,7 +190,7 @@
         ],
         "price": 255.99,
         "type": "originalORprint",
-        "comment": "The real work comes at the end.",
+        "comment": null,
         "technique": "Acryl-Pouring auf Keilrahmen",
         "measurementsWxH": [
             50, 80, 5
@@ -586,7 +586,7 @@
         ],
         "price": null,
         "type": "original",
-        "comment": "greek mythology - wife of hades, god of hell",
+        "comment": "greek mythology - wife of hades, goddess of hell",
         "technique": null,
         "measurementsWxH": [
             50, 120
@@ -889,7 +889,7 @@
             "abstract"
         ],
         "price": null,
-        "type": " original",
+        "type": "original",
         "comment": null,
         "technique": null,
         "measurementsWxH": [

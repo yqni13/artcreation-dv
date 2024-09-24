@@ -17,9 +17,9 @@
             @defer(on viewport) { <img src="{{ news.imageResized }}" alt="404-picture-not-found">
             <div class="agal-archive-wrapper">                
                 <div class="agal-archive-text">
-                    <h3 *ngIf="news.title">{{ news.title }}</h3>
+                    <h3 *ngIf="news.title">{{ 'archive-content.' + news.referenceNr + '.title' | translate }}</h3>
                     <span>{{news.date | dateFormat:'dd.mm.yyyy'}}</span>
-                    <p *ngIf="news.text">{{ news.text }}</p>
+                    <p *ngIf="news.text">{{ 'archive-content.' + news.referenceNr + '.text' | translate }}</p>
                     <i class="icon-Zoom"
                         [attr.aria-disabled]="true"
                         (click)="navigateFullscale(true, news.image)"
