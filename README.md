@@ -1,6 +1,6 @@
 
 # yqni13 artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.3}}$
+$\texttt{\color{teal}{v1.0.0-beta.4}}$
 
 
 <br><br>
@@ -49,6 +49,7 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
       <dd>:wrench: Custom validation + service & pipes</dd>
       <dd>:e-mail: Mail service with node.js & nodemailer for Backend</dd>
       <dd>:signal_strength: Http interception + custom snackbar modal</dd>
+      <dd>:globe_with_meridians: i18n (internationalization) - translate to german or english</dd>
       <dd>:closed_lock_with_key: Different protection layers for certain images (disabling right click; watermarks)</dd>
       <dd>:iphone: Responsive design 400px > width < 1800px via flexbox & media queries</dd>
 </dl>
@@ -66,24 +67,35 @@ For contacting the artist regarding ordering a product or other requests, there 
 
 <br>
 
+### $\textsf{\color{teal}Internationalization}$
+
+Due to the interest of artist and art fans around the globe, the webpage was developed primarily in english. Additionally, internationalization was implemented (via ngx-translate/core & /http-loader) and at this point 2 languages are available to select (see Figure 3). Dynamic and static texts can be displayed in english or german by choosing the regarding option in the footer. The value gets saved in the localstorage (same as the colour theme) and will stay translated in the selected language. To improve maintanence, the TranslateHttpLoader was customized to join multiple .json files for the same language translation rather than the usual way with only 1 file per language (see custom-translate-loader.ts). 
+
+<div align="center">
+      <img src="public/assets/readme/i18n.gif" alt="&nbsp;no picture found">
+      Figure 3
+</div>
+
+<br>
+
 ### $\textsf{\color{teal}Customized snackbar / interceptor}$
 
-In case of unexpected responses or to visually confirm actions, a customized snackbar will appear on the right upper side (or centered for mobile < 500px width). The snackbar can easily be constructed by 2 required inputs (title + type) or more advanced up to 5 input options. For better visual contrast, 4 types (error, info, success, warning) differ additionally in colors. Figure 3 shows an error message, that the email could not be sent (red highlighted) which is triggered by the response caught in the http-interceptor (case of no active backend).
+In case of unexpected responses or to visually confirm actions, a customized snackbar will appear on the right upper side (or centered for mobile < 500px width). The snackbar can easily be constructed by 2 required inputs (title + type) or more advanced up to 5 input options. For better visual contrast, 4 types (error, info, success, warning) differ additionally in colors. Figure 4 shows an error message, that the email could not be sent (red highlighted) which is triggered by the response caught in the http-interceptor (case of no active backend).
 
 <div align="center">
       <img src="public/assets/readme/responsive_snackbar.jpg" alt="&nbsp;no picture found">
-      Figure 3
+      Figure 4
 </div>
 
 <br>
 
 ### $\textsf{\color{teal}Customized lazy loading / preload}$
 
-Instead of using the predefined @defer blocks of Angular to provide lazy loading, this webpage uses a customized preload/lazy loading via HostListeners. Opening the "Gallery" component, all pictures inside the viewport will be rendered. Additionally, a certain number of images that are below the viewport get loaded in the same instance to provide a buffer of already rendered images when scrolling. HostListeners also keep preloading images when scrolling to optimize the user experience. Figure 4 shows the loading of the displaying 6 images inside the viewport + the next 3 rows of pre-rendered images in the network tab of DevTools.
+Instead of using the predefined @defer blocks of Angular to provide lazy loading, this webpage uses a customized preload/lazy loading via HostListeners. Opening the "Gallery" component, all pictures inside the viewport will be rendered. Additionally, a certain number of images that are below the viewport get loaded in the same instance to provide a buffer of already rendered images when scrolling. HostListeners also keep preloading images when scrolling to optimize the user experience. Figure 5 shows the loading of the displaying 6 images inside the viewport + the next 3 rows of pre-rendered images in the network tab of DevTools.
 
 <div align="center">
       <img src="public/assets/readme/custom-preload.gif" alt="&nbsp;no picture found">
-      Figure 4
+      Figure 5
 </div>
 
 <br>
@@ -96,18 +108,18 @@ The webpage offeres two theme settings: $\textsf{\color{gray}{dark mode}}$ & $\t
       <img src="public/assets/readme/responsive_darkmode.jpg">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <img src="public/assets/readme/responsive_lightmode.jpg">
-      Figure 5
+      Figure 6
 </div>
 
 <br>
 
 ### $\textsf{\color{teal}Reactive images}$
 
-Most of the images are linked with logic to either displaying more details or scaling up. In the archive, regarding news, text is displayed and click on the magnifier shows the image in max display resolution. The previews in the gallery open up the museums-view and all the details regarding the artwork. Another click on the picture also displays in max display resolution (see figure 6).
+Most of the images are linked with logic to either displaying more details or scaling up. In the archive, regarding news, text is displayed and click on the magnifier shows the image in max display resolution. The previews in the gallery open up the museums-view and all the details regarding the artwork. Another click on the picture also displays in max display resolution (see figure 7).
 
 <div align="center">
       <img src="public/assets/readme/image_reactive.gif" alt="&nbsp;no picture found">
-      Figure 6
+      Figure 7
 </div>
 
 <br><br>
@@ -116,10 +128,10 @@ Most of the images are linked with logic to either displaying more details or sc
 ## Updates
 
 [list of all updates](update_protocol.md)
-### $\textsf{last\ update\ 1.0.0-beta.2\ >>\ {\color{pink}1.0.0-beta.3}}$
+### $\textsf{last\ update\ 1.0.0-beta.3\ >>\ {\color{pink}1.0.0-beta.4}}$
 
-- $\textsf{\color{green}Change:}$ Added customized preload/lazy loading to gallery.
-- $\textsf{\color{green}Change:}$ Resized images to improve loading efficiency.
+- $\textsf{\color{green}Change:}$ Added internationalization (i18n) to translate to english or german language.
+- $\textsf{\color{green}Change:}$ Improved localstorage handling.
 - $\textsf{\color{teal}Addition:}$ New content (features) added to README.
 
 <br>
@@ -128,8 +140,7 @@ Most of the images are linked with logic to either displaying more details or sc
 <dl>
       <dd>- rename project</dd>
       <dd>- change host to deploy working backend</dd>
-      <dd>- improve LocalStorage handling</dd>
-      <dd>- disable/enable sending button of contact form until response intercepted</dd>
+      <dd>- dis/enable sending-button of contact form until response intercepted</dd>
       <dd>- selection of numbers of articles to order via contact form</dd>
       <dd>- real text content</dd>
       <dd>- correct email accounts to recieve and send in BE</dd>
@@ -137,9 +148,8 @@ Most of the images are linked with logic to either displaying more details or sc
       <dd>- text search in archive component</dd>
       <dd>- provide security standards: input sanitizations, content security policies & HttpOnly cookies</dd>
       <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
-      <dd>- translation option de/en</dd>
       <dd>- custom 404 error page</dd>
-      <dd>- print component content + changes in logic for gallery details & contact</dd>
+      <dd>- 'print' component content + changes in logic for gallery details & contact</dd>
 </dl>
 <br>
 

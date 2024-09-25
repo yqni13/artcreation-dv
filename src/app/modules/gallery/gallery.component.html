@@ -14,13 +14,13 @@
         </div>
         <div class="agal-gallery-nav-row">
             <a
-                *ngFor="let nav of paintingGenres"
+                *ngFor="let nav of paintingGenres | keyvalue"
                 class="agal-gallery-nav-type"
                 [attr.aria-disabled]="true"
-                (click)="selectGenre(nav)"
-                (keydown.enter)="selectGenre(nav)"
-                [ngClass]="activeGenre === nav ? 'agal-active-route' : ''"
-            >{{nav}}</a>
+                (click)="selectGenre(nav.value)"
+                (keydown.enter)="selectGenre(nav.value)"
+                [ngClass]="activeGenre === nav.key ? 'agal-active-route' : ''"
+            >{{'shared.enum.painting-genre.' + nav.key | translate}}</a>
         </div>
     </nav>
     <div class="agal-gallery-content">

@@ -125,6 +125,14 @@
             "language": {
                 "de": "German",
                 "en": "English"
+            },
+            "painting-genre": {
+                "abstract": "abstract",
+                "creative": "creative",
+                "nature": "nature",
+                "people": "people",
+                "pouring": "pouring",
+                "spiritual": "spiritual"
             }
         }
     }
