@@ -6,6 +6,7 @@
 @import 'stylesheets/media.scss';
 @import 'stylesheets/forms.scss';
 
+
 html {
     cursor: context-menu;
     scrollbar-width: none;
@@ -89,7 +90,7 @@ h1 {
     line-height: 20px;
     margin: 0 5px 10px 0;
     overflow: visible;
-    padding: 8px 30px;
+    padding: 8px 20px;
     text-align: center;
     text-transform: none;
     touch-action: manipulation;
@@ -97,7 +98,7 @@ h1 {
     -webkit-user-select: none;
     vertical-align: middle;
     white-space: nowrap;
-
+    text-transform: uppercase;
 
     &:focus {
         text-decoration: none;

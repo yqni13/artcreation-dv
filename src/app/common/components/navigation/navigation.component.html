@@ -15,14 +15,14 @@
                 [attr.aria-disabled]="true"
                 routerLink="{{ route.path }}"
                 routerLinkActive="agal-active-route"
-            >{{!isMobileMode ? route.data?.['title'] : ''}} <i *ngIf="isMobileMode" class="{{route.data?.['icon']}}"></i></span>
+            >{{!isMobileMode ? ('common.navigation.' + route.data?.['title'] | translate) : ''}} <i *ngIf="isMobileMode" class="{{route.data?.['icon']}}"></i></span>
         </li>
         <li>
             <span
                 [attr.aria-disabled]="true"
                 [ngClass]="selectedTheme"
-                (click)="setTheme()"
-                (keydown.enter)="setTheme()"
+                (click)="switchTheme()"
+                (keydown.enter)="switchTheme()"
                 #themeModeIcon
             ><i class="icon-ThemeOptions agal-nav-theme-ico"></i>
             </span>

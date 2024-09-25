@@ -31,8 +31,8 @@ export class AppComponent implements AfterViewInit, OnDestroy{
   constructor(
     protected snackbarService: SnackbarMessageService,
     @Inject(DOCUMENT) private document: Document,
-    private elRef: ElementRef,
     private renderer2: Renderer2,
+    private elRef: ElementRef,
     private router: Router
   ) {
     this.scrollbarActive = false;

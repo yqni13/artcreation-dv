@@ -1,15 +1,15 @@
 <section class="agal-faq">
     <header>
-        <h1>FAQ</h1>
+        <h1>{{'modules.faq.title' | translate}}</h1>
     </header>
     <div class="agal-head-message">
         <p>
-            Got a question? I'm here to answer the most frequently one's. If you don't see your question here, contact me via 
+            {{'modules.faq.message' | translate}} 
             <a
                 class="agal-faq-link agal-anchor"
                 [attr.aria-disabled]="true"
                 href="/contact"
-            >CONTACT</a>.
+            >{{'common.footer.content.contact' | translate}}</a>
         </p>
     </div>
     <div class="agal-faq-content">
@@ -17,12 +17,15 @@
             <div class="agal-faq-coll-box faq-header">
                 <label for="agal-faq-header-close">menu</label>
             </div>
-            <div class="agal-faq-coll" *ngFor="let element of data | keyvalue; index as i">
+            <div class="agal-faq-coll" *ngFor="let element of data; index as i">
                 <input type="radio" name="collapsable" id="agal-faq-coll-{{i}}">
                 <div class="agal-faq-coll-box">
-                    <label class="agal-faq-coll-title" for="agal-faq-coll-{{i}}">{{element.key}}</label>
+                    <label 
+                        class="agal-faq-coll-title" 
+                        for="agal-faq-coll-{{i}}"
+                    >{{'faq-content.' + element.ref + '.question' | translate}}</label>
                     <label class="agal-faq-coll-close" for="agal-faq-header-close"></label>
-                    <div class="agal-faq-coll-content">{{element.value}}</div>
+                    <div class="agal-faq-coll-content">{{'faq-content.' + element.ref + '.answer' | translate}}</div>
                 </div>
             </div>
             <input type="radio" name="collapsable" id="agal-faq-header-close">

@@ -8,6 +8,8 @@ import { CommonModule } from "@angular/common";
 import { FilterGalleryService } from "../../shared/services/filter-gallery.service";
 import { Router, RouterModule } from "@angular/router";
 import { ImgPreloadComponent } from "../../common/components/img-preload/img-preload.component";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { PaintingGenre } from "../../shared/enums/painting-genre.enum";
 
 
 @Component({
@@ -19,6 +21,7 @@ import { ImgPreloadComponent } from "../../common/components/img-preload/img-pre
         CommonModule,
         ImgPreloadComponent,
         RouterModule,
+        TranslateModule
     ]
 })
 export class GalleryComponent implements OnInit, AfterViewInit {
@@ -29,7 +32,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     protected paintingsRaw: GalleryItem[];
     protected paintingsFiltered: Map<string, GalleryItem[]>;
     protected paintingsDisplayedByGenre: GalleryItem[];
-    protected paintingGenres: string[];
+    protected paintingGenres = PaintingGenre;
     protected activeGenre: string;
     protected reloadFlag: boolean;
 
@@ -37,6 +40,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
         private router: Router,
         private cdRef: ChangeDetectorRef,
         private errorService: ErrorService,
+        private translate: TranslateService,
         private filterGalleryService: FilterGalleryService
     ) {
         try {
@@ -47,7 +51,6 @@ export class GalleryComponent implements OnInit, AfterViewInit {
         }        
         
         this.activeGenre = 'gallery';
-        this.paintingGenres = [];
         this.paintingsDisplayedByGenre = []
         this.paintingsFiltered = new Map<string, GalleryItem[]>(); 
         this.reloadFlag = true;
@@ -61,7 +64,6 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     }
     
     ngOnInit() {
-        this.paintingGenres = this.filterGalleryService.getGenres('ascending');
         this.paintingsFiltered = this.filterGalleryService.filterByGenre();
     }
     

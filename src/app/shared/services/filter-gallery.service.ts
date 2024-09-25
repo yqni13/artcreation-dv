@@ -2,6 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { GalleryItem } from "../interfaces/GalleryItems";
 import { default as galleryData } from "../data/gallery-data.json";
 import { ErrorService } from "./error.service";
+import { PaintingGenre } from "../enums/painting-genre.enum";
 
 
 @Injectable({
@@ -16,7 +17,8 @@ export class FilterGalleryService {
     constructor() {
         this.errorService = inject(ErrorService);
         this.source = [];
-        this.genres = [];
+        this.genres = Object.values(PaintingGenre);
+        this.genres = this.sortGenres('ascending');
 
         try {
             this.setSource(galleryData);
@@ -27,18 +29,6 @@ export class FilterGalleryService {
 
     private setSource(data: GalleryItem[]) {
         this.source = data;
-    }
-
-    getGenres(sorting: string): string[] {
-        Object.values(this.source).forEach((entries) => {
-            Object.entries(entries).forEach(([key, val]) => {
-                if(key === 'genre' && !this.genres.includes(val)) {
-                    this.genres.push(val);
-                }
-            })
-        })
-
-        return this.sortGenres(sorting);
     }
     
     sortGenres(sorting: string): string[] {

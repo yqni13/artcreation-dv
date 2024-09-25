@@ -1,15 +1,15 @@
 <section class="agal-contact">
     <header>
-        <h1>Contact me</h1>
+        <h1>{{'modules.contact.title' | translate}}</h1>
     </header>
     <div class="agal-head-message">
         <p>
-            Most common questions are listed and answered in the 
+            {{'modules.contact.message' | translate}}
             <a
                 class="agal-nav-routes agal-anchor"
                 [attr.aria-disabled]="true"
                 routerLink="/faq"
-            >FAQ</a>.
+            >{{'common.navigation.faq' | translate}}</a>.
         </p>
     </div>
     <div class="agal-contact-content-wrapper">
@@ -20,10 +20,11 @@
                     <agal-selectinput
                         [ngStyle]="{'width': '50%'}"
                         [className]="'agal-form-left-select'"
-                        [placeholder]="'select subject*'"
+                        [placeholder]="('modules.contact.form.placeholders.subject' | translate) + '*'"
                         [formControl]="contactForm.get('subject') | controlCast"
                         [options]="subjectOptions"
-                        [fieldName]="'Subject'"
+                        [optionsTranslateRoot]="'shared.enum.contact-subject.'"
+                        [fieldName]="'modules.contact.form.fieldNames.subject' | translate"
                         (byChange)="configRefNrByType()"
                     ></agal-selectinput>
                     <agal-textinput
@@ -31,7 +32,7 @@
                         [placeholder]="(contactForm.get('subject')?.value === subjectOptions.generalRequest || 
                                         contactForm.get('subject')?.value === '') 
                                         ? '--' 
-                                        : 'ReferenceNr*'"
+                                        : ('modules.contact.form.placeholders.referenceNr' | translate) + '*'"
                         [inputType]="'text'"
                         [ngStyle]="{'width': '50%'}"
                         [readonly]="readonly"
@@ -42,7 +43,7 @@
                         ? 'agal-readonly'
                         : ''"
                         [formControl]="contactForm.get('referenceNr') | controlCast"
-                        [fieldName]="'ReferenceNr'"
+                        [fieldName]="'modules.contact.form.fieldNames.referenceNr' | translate"
                         (byChange)="configRefNrByChanges()"
 
                     ></agal-textinput>
@@ -53,9 +54,10 @@
                         [className]="'agal-form-left-select'"
                         [ngStyle]="!hasValidReferenceNr ? {} : {'width': '40%'}"
                         [formControl]="contactForm.get('type') | controlCast"
-                        [placeholder]="'select type*'"
+                        [placeholder]="('modules.contact.form.placeholders.type' | translate) + '*'"
                         [options]="artworkOptions"
-                        [fieldName]="'Type'"
+                        [optionsTranslateRoot]="'shared.enum.artwork-option.'"
+                        [fieldName]="'modules.contact.form.fieldNames.type' | translate"
                         [ngClass]="contactForm.get('subject')?.value === subjectOptions.artOrder 
                                     ? 'agal-query-value agal-readonly' 
                                     : ''"
@@ -64,10 +66,10 @@
                         [className]="hasValidReferenceNr ? 'agal-form-right' : ''"
                         [ngStyle]="hasValidReferenceNr ? {'width': '60%'} : {'width': '100%'}"
                         [inputType]="'email'"
-                        [placeholder]="'Email*'"
+                        [placeholder]="('modules.contact.form.placeholders.email' | translate) + '*'"
                         [formControl]="contactForm.get('email') | controlCast"
                         [readonly]="false"
-                        [fieldName]="'Email'"
+                        [fieldName]="'modules.contact.form.fieldNames.email' | translate"
                     ></agal-textinput>
                 </div>
                 <div class="agal-form-item agal-form-multiple">
@@ -75,17 +77,18 @@
                         [className]="'agal-form-left-select'"
                         [ngStyle]="{'width': '40%'}"
                         [formControl]="contactForm.get('honorifics') | controlCast"
-                        [placeholder]="'select honorifics*'"
+                        [placeholder]="('modules.contact.form.placeholders.honorifics' | translate) + '*'"
                         [options]="['Mr', 'Ms']"
-                        [fieldName]="'Honorifics'"
+                        [optionsTranslateRoot]="'shared.enum.honorifics-option.'"
+                        [fieldName]="'modules.contact.form.fieldNames.honorifics' | translate"
                     ></agal-selectinput>
                     <agal-textinput
                         [className]="'agal-form-right'"
                         [ngStyle]="{'width': '60%'}"
-                        [placeholder]="'Academic title'"
+                        [placeholder]="'modules.contact.form.placeholders.title' | translate"
                         [inputType]="'text'"
                         [formControl]="contactForm.get('title') | controlCast"
-                        [fieldName]="'Title'"
+                        [fieldName]="'modules.contact.form.fieldNames.title' | translate"
                     ></agal-textinput>
                 </div>          
                 <div class="agal-form-item agal-form-multiple">
@@ -93,25 +96,25 @@
                         [ngStyle]="{'width': '50%'}"
                         [className]="'agal-form-left'"
                         [inputType]="'text'"
-                        [placeholder]="'Firstname*'"
+                        [placeholder]="('modules.contact.form.placeholders.firstName' | translate) + '*'"
                         [formControl]="contactForm.get('firstName') | controlCast"
-                        [fieldName]="'Firstname'"
+                        [fieldName]="'modules.contact.form.fieldNames.firstName' | translate"
                         ></agal-textinput>
                         <agal-textinput
                         [ngStyle]="{'width': '50%'}"
                         [className]="'agal-form-right'"
                         [inputType]="'text'"
-                        [placeholder]="'Lastname*'"
+                        [placeholder]="('modules.contact.form.placeholders.lastName' | translate) + '*'"
                         [formControl]="contactForm.get('lastName') | controlCast"
-                        [fieldName]="'Lastname'"
+                        [fieldName]="'modules.contact.form.fieldNames.lastName' | translate"
                     ></agal-textinput>
                 </div>
                 <div class="agal-form-item">
                     <agal-textareainput
                         [ngStyle]="{'width': '100%'}"
-                        [placeholder]="'Message*'"
+                        [placeholder]="('modules.contact.form.placeholders.message' | translate) + '*'"
                         [formControl]="contactForm.get('message') | controlCast"
-                        [fieldName]="'Message'"
+                        [fieldName]="'modules.contact.form.fieldNames.message' | translate"
                         [rows]="6"
                     ></agal-textareainput>
                 </div>
@@ -121,7 +124,7 @@
                     type="submit"
                     class="agal-button-submit"                    
                     (click)="onSubmit()"
-                >SEND</button>
+                >{{'modules.contact.form.button' | translate}}</button>
             </div>
         </div>
     </div>
