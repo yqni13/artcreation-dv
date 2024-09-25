@@ -5,6 +5,7 @@ import { Route, RouterModule } from "@angular/router";
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { ThemeOption } from "../../../shared/enums/theme-option.enum";
 import _ from 'underscore';
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'agal-navigation',
@@ -13,7 +14,8 @@ import _ from 'underscore';
     standalone: true,
     imports: [
         CommonModule, 
-        RouterModule
+        RouterModule,
+        TranslateModule
     ]
 })
 export class NavigationComponent implements OnInit, AfterViewInit {
@@ -31,13 +33,14 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     constructor (
         @Inject(DOCUMENT) private document: Document,
         private navigation: NavigationService,
+        private translate: TranslateService,
     ) {
         this.isLocalStorageAvailable = typeof localStorage !== 'undefined';
-        this.selectedTheme = this.checkLocalStorageTheme();
-        this.setLocalStorageTheme(false, String(this.selectedTheme))
+        this.selectedTheme = this.checkThemeData();
+        this.setThemeData(this.selectedTheme);
+
         this.window = this.document.defaultView;
         this.maxMobileWidth = 1024;
-
         this.routes = [];
         this.isMobileMode = false;
     }
@@ -55,7 +58,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
             this.setNavWidthDynamically(this.window.screen.width);
         }, 250)
         this.window.addEventListener("resize", screenWidthRequestSlowedDown, false);
-        
+
         // adapt to zoom level
         const clientWidthRequestSlowedDown = _.debounce( () => {
             this.setNavWidthDynamically(this.document.body.clientWidth);
@@ -84,7 +87,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         }
     }
 
-    protected setTheme() {
+    protected switchTheme() {
         if(this.isLocalStorageAvailable) {
             if (this.selectedTheme === ThemeOption.darkMode) {
                 this.selectedTheme = ThemeOption.lightMode;
@@ -92,44 +95,37 @@ export class NavigationComponent implements OnInit, AfterViewInit {
                 this.selectedTheme = ThemeOption.darkMode
             }
 
-            this.setLocalStorageTheme(false, String(this.selectedTheme));
+            this.setThemeData(this.selectedTheme);
             return;
         }
 
         this.selectedTheme = ThemeOption.darkMode;
+        this.setThemeData(this.selectedTheme);
     }
 
-    private checkLocalStorageTheme(): ThemeOption {
+    private checkThemeData(): ThemeOption {
         if(this.isLocalStorageAvailable) {
             const theme = localStorage.getItem('agal-theme');
-
             if(!theme) {
-                this.setLocalStorageTheme(true);
                 return ThemeOption.darkMode;
             }
 
-            return String(theme) === 'light' ? ThemeOption.lightMode : ThemeOption.darkMode;
+            return String(theme) === 'lightMode' ? ThemeOption.lightMode : ThemeOption.darkMode;
         }
-        
-        this.setLocalStorageTheme(true);
+
         return ThemeOption.darkMode;
     }
 
-    private setLocalStorageTheme(forceSelection: boolean, theme?: string) {
+    private setThemeData(theme: ThemeOption) {
         if(this.isLocalStorageAvailable) {
-            if(forceSelection || theme === ThemeOption.darkMode) {
-                localStorage.setItem("agal-theme", 'dark');
-                document.body.setAttribute("data-theme", 'dark');
-                return;
-            }
-
-            if(theme === ThemeOption.lightMode) {
-                localStorage.setItem("agal-theme", 'light');
-                document.body.setAttribute("data-theme", 'light');
+            if(theme) {
+                localStorage.setItem("agal-theme", theme);
+                this.document.body.setAttribute("data-theme", theme);
                 return;
             }
         }
-        // TODO(yqni13): implement handling if localstorage is not available (block change of theme or save later)
+
+        this.document.body.setAttribute("data-theme", 'darkMode');
     }
 
     private applyThemeClass() {

@@ -5,6 +5,7 @@ import { ValidationMessageComponent } from "../../validation-message/validation-
 import { CommonModule } from "@angular/common";
 import { CastAbstractToFormControlPipe } from "../../../pipes/cast-abstracttoform-control.pipe";
 import { AbstractInputComponent } from "../abstract-input.component";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'agal-selectinput',
@@ -15,6 +16,7 @@ import { AbstractInputComponent } from "../abstract-input.component";
         CommonModule,
         CastAbstractToFormControlPipe,
         ReactiveFormsModule,
+        TranslateModule,
         ValidationMessageComponent
     ],
     providers: [
@@ -33,10 +35,11 @@ export class SelectInputComponent extends AbstractInputComponent {
     @Input() ngClass: string;
     @Input() className: string;
     @Input() options: any;
+    @Input() optionsTranslateRoot: string;
 
     @Output() byChange: EventEmitter<any>;
 
-    constructor() {
+    constructor(private translate: TranslateService) {
         super();
 
         this.fieldName = '';
@@ -45,6 +48,7 @@ export class SelectInputComponent extends AbstractInputComponent {
         this.ngClass = '';
         this.className = '';
         this.options = [];
+        this.optionsTranslateRoot = '';
         this.byChange = new EventEmitter<any>();
     }
 

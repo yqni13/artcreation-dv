@@ -4,47 +4,66 @@
         <div class="agal-copyright-wrapper">
             <i class="icon-Copyright"></i>
             <a class="agal-anchor" href="{{creatorURL}}" target="_blank">yqni13</a>
-            <span>. All rights reserved.</span>
+            <span>. {{'common.footer.content.copyright' | translate}}</span>
         </div>
     </div>
     <div class="agal-footer-links">
         <div class="agal-footer-links-connection">
-            <h4>Connection</h4>
+            <h4>{{'common.footer.titles.connection' | translate}}</h4>
             <ul>
                 <li *ngFor="let route of connectRoutes">
                     <span
-                        class="agal-footer-routes"
                         [attr.aria-disabled]="true"
                         routerLink="{{ route.path }}"
-                    >{{ route.data?.['title'] }}</span>
+                    >{{ 'common.footer.content.' + route.data?.['title'] | translate}}</span>
                 </li>
                 <li>
                     <a
-                        class="agal-footer-routes"
                         href="{{ socialmediaURL }}"
                         target="_blank"
                     >Instagram</a>
                 </li>
+                <li class="agal-footer-language agal-language-element">
+                    <div class="agal-footer-language-select agal-language-element">
+                        <span
+                            class="agal-language-element"
+                            [attr.aria-disabled]="true"
+                            (click)="openLanguageList()"
+                            (keydown.enter)="openLanguageList()"
+                        >{{'shared.enum.language.' + this.selectedLanguage | translate}}</span>
+                        <i class="icon-Language agal-language-element"></i>
+                    </div>
+                    <div *ngIf="showLanguageList" class="agal-footer-language-list agal-language-element">
+                        <span 
+                            class="agal-language-option-select agal-language-element"
+                        >{{'common.footer.content.language' | translate}}</span>
+                        <span
+                            *ngFor="let option of language | keyvalue"
+                            class="agal-language-options"
+                            [attr.aria-disabled]="true"
+                            (click)="setLanguageData(language[option.value])"
+                            (keydown.enter)="setLanguageData(language[option.value])"
+                        >{{'shared.enum.language.' + option.key | translate}}</span>
+                    </div>
+                </li>
             </ul>
         </div>
         <div class="agal-footer-links-information">
-            <h4>Information</h4>
+            <h4>{{'common.footer.titles.information' | translate}}</h4>
             <ul>
                 <li *ngFor="let route of infoRoutes">
                     <span
-                        class="agal-footer-routes"
                         [attr.aria-disabled]="true"
                         routerLink="{{ route.path }}"
-                    >{{ route.data?.['title'] }}</span>
+                    >{{ 'common.footer.content.' + route.data?.['title'] | translate }}</span>
                 </li>
                 <!-- TODO(yqni13): implement shipping comp and reset app.routes.ts and loop -->
                 <li>
                     <span
-                        class="agal-footer-routes"
                         [attr.aria-disabled]="true"
                         (click)="alertAvailability()"
                         (keydown.enter)="alertAvailability()"
-                    >Shipping</span>
+                    >{{'common.footer.content.shipping' | translate}}</span>
                 </li>
             </ul>
         </div>

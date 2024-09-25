@@ -5,6 +5,7 @@ import { NewsUpdateStorage } from "../../shared/interfaces/NewsUpdateStorage";
 import { FilterNewsService } from "../../shared/services/filter-news.service";
 import { NewsKeys } from "../../shared/enums/news-keys.enum";
 import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img-fullscale.component";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 
 @Component({
@@ -15,7 +16,8 @@ import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img
     imports: [
         CommonModule,
         DateFormatPipe,
-        ImgFullscaleComponent
+        ImgFullscaleComponent,
+        TranslateModule
     ]
 })
 export class ArchiveComponent implements OnInit {
@@ -24,7 +26,10 @@ export class ArchiveComponent implements OnInit {
     protected isFullscale: boolean;
     protected currentPath: string;
 
-    constructor(private filterNewsService: FilterNewsService) {
+    constructor(
+        private filterNewsService: FilterNewsService,
+        private translate: TranslateService
+    ) {
         this.newsCollection = [];
         this.isFullscale = false;
         this.currentPath = '';

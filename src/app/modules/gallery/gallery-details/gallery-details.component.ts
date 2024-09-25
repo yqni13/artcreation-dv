@@ -10,6 +10,8 @@ import { DimensionsFormatPipe } from "../../../common/pipes/dimensions-format.pi
 import { FloatPrecisionPipe } from "../../../common/pipes/float-precision.pipe";
 import { ImgFullscaleComponent } from "../../../common/components/img-fullscale/img-fullscale.component";
 import { SubjectOptions } from "../../../shared/enums/contact-subject.enum";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { VarDirective } from "../../../common/directives/ng-var.directive";
 
 @Component({
     selector: 'app-gallery-details',
@@ -21,7 +23,9 @@ import { SubjectOptions } from "../../../shared/enums/contact-subject.enum";
         DimensionsFormatPipe,
         FloatPrecisionPipe,
         ImgFullscaleComponent,
-        RouterModule
+        RouterModule,
+        TranslateModule,
+        VarDirective
     ]
 })
 export class GalleryDetailsComponent implements OnInit, OnDestroy {
@@ -39,6 +43,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
     constructor(
         private filterGalleryService: FilterGalleryService,
         private dataShareService: DataShareService,
+        private translate: TranslateService,
         private route: ActivatedRoute,
         private router: Router
     ) {

@@ -3,8 +3,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailService } from "../../shared/services/mail.service";
-import { ErrorService } from "../../shared/services/error.service";
-import { ActivatedRoute, RouterModule } from "@angular/router";
+import { RouterModule } from "@angular/router";
 import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
 import { DataShareService } from "../../shared/services/data-share.service";
 import { filter, Subscription, tap } from "rxjs";
@@ -14,6 +13,7 @@ import { SelectInputComponent } from "../../common/components/form-components/se
 import { TextareaInputComponent } from "../../common/components/form-components/textarea-input/textarea-input.component";
 import { ReferenceCheckService } from "../../shared/services/reference-check.service";
 import  * as CustomValidators  from "../../common/helper/custom-validators";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'app-contact',
@@ -29,6 +29,7 @@ import  * as CustomValidators  from "../../common/helper/custom-validators";
         SelectInputComponent,
         TextInputComponent,
         TextareaInputComponent,
+        TranslateModule
     ]
 })
 export class ContactComponent implements OnInit, OnDestroy {
@@ -46,10 +47,9 @@ export class ContactComponent implements OnInit, OnDestroy {
 
     constructor(
         private refCheckService: ReferenceCheckService,
+        private translate: TranslateService,
         private dataShareService: DataShareService,
-        private errorService: ErrorService,
         private mailService: MailService,
-        private router: ActivatedRoute,
         private fb: FormBuilder
     ) {
         this.contactForm = new FormGroup({});

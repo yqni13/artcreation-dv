@@ -4,6 +4,7 @@ import { FilterNewsService } from "../../shared/services/filter-news.service";
 import { NewsKeys } from "../../shared/enums/news-keys.enum";
 import { CarouselComponent } from "../../common/components/carousel/carousel.component";
 import { CommonModule } from "@angular/common";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'app-home',
@@ -12,7 +13,8 @@ import { CommonModule } from "@angular/common";
     standalone: true,
     imports: [
         CommonModule,
-        CarouselComponent
+        CarouselComponent,
+        TranslateModule
     ]
 })
 export class HomeComponent implements OnInit {
@@ -20,7 +22,8 @@ export class HomeComponent implements OnInit {
     protected slides: NewsUpdateStorage[];
 
     constructor(
-        private filterNewsService: FilterNewsService
+        private filterNewsService: FilterNewsService,
+        private translate: TranslateService
     ) {
         this.slides = [];
     }

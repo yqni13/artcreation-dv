@@ -8,7 +8,7 @@
         <option 
             *ngFor="let option of options | keyvalue" 
             value="{{option.value}}"
-        >{{option.value}}</option>
+        >{{optionsTranslateRoot + option.key | translate}}</option>
     </select>
     <agal-validation
         [ngControl]="formControl"

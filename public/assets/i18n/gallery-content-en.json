@@ -1,0 +1,550 @@
+{
+    "gallery-content": {
+        "AE6177": {
+            "title": "lotus",
+            "referenceNr": "AE6177",
+            "genre": "nature",
+            "tags": [
+                "lotus", "peace", "water"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "21ABCD": {
+            "title": null,
+            "referenceNr": "21ABCD",
+            "genre": "nature",
+            "tags": [
+                "walk", "fresh", "outdoor", "forest"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "E8B162": {
+            "title": "perspective of the moment",
+            "referenceNr": "E8B162",
+            "genre": "nature",
+            "tags": [
+                "morning", "chance", "sunlight"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "0B2ECA": {
+            "title": "big L tribute",
+            "referenceNr": "0B2ECA",
+            "genre": "nature",
+            "tags": [
+                "dream", "sea", "fire"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "A1CAF1": {
+            "title": "water brings peace",
+            "referenceNr": "A1CAF1",
+            "genre": "nature",
+            "tags": [
+                "peace", "water", "flow", "nature", "bigsize"
+            ],
+            "comment": "The perfect place to read a book and enjoy the absolute peace.",
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "F4C2C2": {
+            "title": null,
+            "referenceNr": "F4C2C2",
+            "genre": "nature",
+            "tags": [
+                "flowers", "live", "hope", "future"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "FE6F5E": {
+            "title": "women on marble",
+            "referenceNr": "FE6F5E",
+            "genre": "people",
+            "tags": null,
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "0D98BA": {
+            "title": "poppy field",
+            "referenceNr": "0D98BA",
+            "genre": "nature",
+            "tags": [
+                "flowers", "poppies", "red"
+            ],
+            "comment": "heaven tastes different every time",
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "C32148": {
+            "title": "inner peace",
+            "referenceNr": "C32148",
+            "genre": "spiritual",
+            "tags": [
+                "buddha", "red", "blue", "gold", "meditation"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "004225": {
+            "title": null,
+            "referenceNr": "004225",
+            "genre": "people",
+            "tags": [
+                "hat", "women", "profile", "green", "summer"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        }    ,
+        "91A3B0": {
+            "title": "city life",
+            "referenceNr": "91A3B0",
+            "genre": "people",
+            "tags": [
+                "purple", "hat", "women", "impression"
+            ],
+            "comment": "inspired by this stylish lady I saw buying some oranges",
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "ED872D": {
+            "title": "dreaming",
+            "referenceNr": "ED872D",
+            "genre": "abstract",
+            "tags": [
+                "art", "creative", "dreamful"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        }, 
+        "F7FFCC": {
+            "title": "taste of the beach",
+            "referenceNr": "F7FFCC",
+            "genre": "creative",
+            "tags": [
+                "beach", "creative", "sand"
+            ],
+            "comment": "The real work comes at the end.",
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "2F2C30": {
+            "title": "breath of salt and peace",
+            "referenceNr": "2F2C30",
+            "genre": "nature",
+            "tags": [
+                "sunrise", "holiday", "sea", "salt"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "DBDDD7": {
+            "title": "African beauty",
+            "referenceNr": "DBDDD7",
+            "genre": "people",
+            "tags": [
+                "africa", "faceless", "mysterious"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "7B5328": {
+            "title": "Tutanchamun",
+            "referenceNr": "7B5328",
+            "genre": "people",
+            "tags": [
+                "egyptian", "history"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "508722": {
+            "title": "path of the right choice",
+            "referenceNr": "508722",
+            "genre": "nature",
+            "tags": [
+                "nature", "forest", "path"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "59B6CE": {
+            "title": "Gemini",
+            "referenceNr": "59B6CE",
+            "genre": "nature",
+            "tags": [
+                "birds", "nature", "animals"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "863A1E": {
+            "title": "fire and water clashes",
+            "referenceNr": "863A1E",
+            "genre": "pouring",
+            "tags": [
+                "orange", "teal", "hellfire"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "111818": {
+            "title": "seducing swamp",
+            "referenceNr": "111818",
+            "genre": "pouring",
+            "tags": [
+                "black", "salmon", "swamp"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "0A0B06": {
+            "title": "darkness winning",
+            "referenceNr": "0A0B06",
+            "genre": "pouring",
+            "tags": [
+                "darkness", "poisoned thougts"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "104771": {
+            "title": "frozen star",
+            "referenceNr": "104771",
+            "genre": "pouring",
+            "tags": [
+                "blue", "lost star", "frozen"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "4D1815": {
+            "title": "Washing off the evil spirits",
+            "referenceNr": "4D1815",
+            "genre": "pouring",
+            "tags": [
+                "red", "black", "evil", "spirits"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "7A3213": {
+            "title": "hidden treasure in the sea",
+            "referenceNr": "7A3213",
+            "genre": "pouring",
+            "tags": [
+                "blue", "gold", "treasure"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "400E12": {
+            "title": "4 flowers of paradise",
+            "referenceNr": "400E12",
+            "genre": "pouring",
+            "tags": [
+                "red", "yellow", "green", "flowers"
+            ],
+            "comment": "only available as complete set (measurements each peace)",
+            "technique": "Pouring"
+        },
+        "00866E": {
+            "title": "omnious power",
+            "referenceNr": "00866E",
+            "genre": "pouring",
+            "tags": [
+                "turquoise", "mystical", "dangerous"
+            ],
+            "comment": null,
+            "technique": "Pouring"
+        },
+        "45613B": {
+            "title": "simple joy",
+            "referenceNr": "45613B",
+            "genre": "nature",
+            "tags": [
+                "happiness", "bouquet", "nature"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "007E7E": {
+            "title": null,
+            "referenceNr": "007E7E",
+            "genre": "nature",
+            "tags": [
+                "italy", "roma"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "FA4363": {
+            "title": "I dreamt of colours",
+            "referenceNr": "FA4363",
+            "genre": "nature",
+            "tags": [
+                "bouquet", "rainbow"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "AEAFA1": {
+            "title": "Will I ever get back there?",
+            "referenceNr": "AEAFA1",
+            "genre": "nature",
+            "tags": [
+                "winter", "wonderland"
+            ],
+            "comment": "I keep dreaming of this beautiful place I have once been before in my life...",
+            "technique": null
+        },
+        "BEA47F": {
+            "title": "loving companion",
+            "referenceNr": "BEA47F",
+            "genre": "nature",
+            "tags": [
+                "dog", "love", "leonberger"
+            ],
+            "comment": "rest in peace, love",
+            "technique": null
+        },
+        "327D9E": {
+            "title": "you don't see my true self unless I'm willing to take off the mask",
+            "referenceNr": "327D9E",
+            "genre": "people",
+            "tags": [
+                "mask", "blue", "venezia"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "BAB3AB": {
+            "title": "in my mind I keep dancing",
+            "referenceNr": "BAB3AB",
+            "genre": "people",
+            "tags": [
+                "dance", "passion", "childhood"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "292D2B": {
+            "title": "Persephone",
+            "referenceNr": "292D2B",
+            "genre": "people",
+            "tags": [
+                "red", "black", "dress"
+            ],
+            "comment": "greek mythology - wife of hades, goddess of hell",
+            "technique": null
+        },
+        "741510": {
+            "title": "Salsa night",
+            "referenceNr": "741510",
+            "genre": "people",
+            "tags": [
+                "red", "salsa", "dress", "dance"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "424D55": {
+            "title": "ohm",
+            "referenceNr": "424D55",
+            "genre": "spiritual",
+            "tags": [
+                "buddha", "ash", "grey"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "21110B": {
+            "title": "perfection does not equal perfection",
+            "referenceNr": "21110B",
+            "genre": "spiritual",
+            "tags": [
+                "rainbow", "buddha"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "6C5824": {
+            "title": "golden time",
+            "referenceNr": "6C5824",
+            "genre": "spiritual",
+            "tags": [
+                "buddha", "gold"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "7B0714": {
+            "title": "playful lotus",
+            "referenceNr": "7B0714",
+            "genre": "spiritual",
+            "tags": [
+                "mandala", "red", "gold", "lotus"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "656866": {
+            "title": "balance",
+            "referenceNr": "656866",
+            "genre": "spiritual",
+            "tags": [
+                "balance", "focus", "relaxation"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "527883": {
+            "title": "grace in simplicity",
+            "referenceNr": "527883",
+            "genre": "spiritual",
+            "tags": [
+                "meditation", "gold", "blue", "buddha", "simple"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "39080B": {
+            "title": null,
+            "referenceNr": "39080B",
+            "genre": "spiritual",
+            "tags": [
+                "red", "meditation", "focus"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "083258": {
+            "title": null,
+            "referenceNr": "083258",
+            "genre": "spiritual",
+            "tags": [
+                "meditation", "rainbow", "buddha"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "777370": {
+            "title": "grand priest",
+            "referenceNr": "777370",
+            "genre": "spiritual",
+            "tags": [
+                "grey", "meditation"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "000002": {
+            "title": "sureal forest",
+            "referenceNr": "000002",
+            "genre": "abstract",
+            "tags": [
+                "abstract", "surreal", "forest"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "7F7BB4": {
+            "title": "flow of life",
+            "referenceNr": "7F7BB4",
+            "genre": "abstract",
+            "tags": [
+                "abstract", "water", "flow", "blue", "purple"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "872E1C": {
+            "title": "summer day at the wine garden",
+            "referenceNr": "872E1C",
+            "genre": "abstract",
+            "tags": [
+                "abstract", "wine"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "434041": {
+            "title": null,
+            "referenceNr": "434041",
+            "genre": "abstract",
+            "tags": null,
+            "comment": null,
+            "technique": null
+        },
+        "9A0E11": {
+            "title": "hellish fire",
+            "referenceNr": "9A0E11",
+            "genre": "abstract",
+            "tags": [
+                "abstract", "fire", "hell", "breathing"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "906461": {
+            "title": "break through",
+            "referenceNr": "906461",
+            "genre": "abstract",
+            "tags": [
+                "abstract", "bite", "escape"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "302323": {
+            "title": null,
+            "referenceNr": "302323",
+            "genre": "abstract",
+            "tags": [
+                "abstract"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "D9CB0B": {
+            "title": "color rush",
+            "referenceNr": "D9CB0B",
+            "genre": "abstract",
+            "tags": [
+                "abstract", "rainbow", "rush"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "790000": {
+            "title": "tangible love",
+            "referenceNr": "790000",
+            "genre": "creative",
+            "tags": [
+                "creative", "rose", "bouquet", "flowers", "red"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "9F8971": {
+            "title": null,
+            "referenceNr": "9F8971",
+            "genre": "creative",
+            "tags": [
+                "creative", "wood", "black"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "FFE135": {
+            "title": "where the spirits sleep",
+            "referenceNr": "FFE135",
+            "genre": "pouring",
+            "tags": [
+                "sun", "green", "forest", "animals", "nature"
+            ],
+            "comment": null,
+            "technique": "Acryl-Pouring auf Keilrahmen"
+        }
+    }
+}

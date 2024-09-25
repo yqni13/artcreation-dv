@@ -28,15 +28,16 @@
     <div class="agal-gallerydetails-content">
         <div class="agal-gallerydetails-property" id="card-title">
             <div class="agal-gallerydetails-key">
-                <label for="card-title">Title:</label>
+                <label for="card-title">{{'modules.gallery.details.header.title' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.title === null ? '--' : card?.title}}</span>
+                <span>{{card?.title === null ? '--' : 
+                ('gallery-content.' + card?.referenceNr + '.title' | translate)}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-referenceNr">
             <div class="agal-gallerydetails-key">
-                <label for="card-referenceNr">Reference:</label>
+                <label for="card-referenceNr">{{'modules.gallery.details.header.reference' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
                 <span>{{card?.referenceNr}}</span>
@@ -45,14 +46,14 @@
                 
         <div class="agal-gallerydetails-property" id="card-price">
             <div class="agal-gallerydetails-key">
-                <label for="card-price">Price:</label>
+                <label for="card-price">{{'modules.gallery.details.header.price' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value" *ngIf="card?.price && card?.price !== 0">
                 <span>€ {{card?.price | floatPrecision: 2}}</span>
                 
             </div>
             <div class="agal-gallerydetails-value" *ngIf="card?.price === null">
-                <span class="agal-gallerydetails-sold">not available</span>
+                <span class="agal-gallerydetails-sold">{{'modules.gallery.details.content.not-available' | translate}}</span>
             </div>
             <div class="agal-gallerydetails-value" *ngIf="card?.price === 0">
                 <a
@@ -61,20 +62,20 @@
                     [attr.aria-disabled]="true"
                     (click)="navigateToContactWithData(subject.specificInformation)"
                     (keydown.enter)="navigateToContactWithData(subject.specificInformation)"
-                >request price</a>
+                >{{'modules.gallery.details.content.request-price' | translate}}</a>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-type">
             <div class="agal-gallerydetails-key">
-                <label for="card-type">Type:</label>
+                <label for="card-type">{{'modules.gallery.details.header.type' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.price === null ? '--' : card?.type}}</span>
+                <span>{{card?.price === null ? '--' : ('shared.enum.artwork-option.' + card?.type | translate)}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-measurements">
             <div class="agal-gallerydetails-key">
-                <label for="card-measurements">Dimensions:</label>
+                <label for="card-measurements">{{'modules.gallery.details.header.dimensions' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
                 <span>{{card?.measurementsWxH === null ? '--' : card?.measurementsWxH | dimensionFormat}}</span>
@@ -83,10 +84,12 @@
         <div class="agal-gallerydetails-divider"></div>
         <div class="agal-gallerydetails-property" id="card-tags">
             <div class="agal-gallerydetails-key">
-                <label for="card-tags">Tags:</label>
+                <label for="card-tags">{{'modules.gallery.details.header.tags' | translate}}:</label>
             </div>
-            <div class="agal-gallerydetails-value">
-                <span class="agal-tags" *ngFor="let tag of card?.tags">{{tag}}</span>
+            <div class="agal-gallerydetails-value" *agalVar="('gallery-content.' + card?.referenceNr + '.tags' | translate) as tagsTranslated">
+                <span class="agal-tags" *ngFor="let tag of tagsTranslated">
+                    {{tag}}
+                </span>
                 <span *ngIf="card?.tags === null">--</span>
             </div>
         </div>
@@ -96,23 +99,23 @@
             [ngClass]="card?.comment === null ? '' : 'agal-visible'"
         >
             <div class="agal-gallerydetails-key">
-                <label for="card-comment">Comment:</label>
+                <label for="card-comment">{{'modules.gallery.details.header.comment' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.comment === null ? '--' : '"' + card?.comment + '"'}}</span>
+                <span>{{card?.comment === null ? '--' : '"' + ('gallery-content.' + card?.referenceNr + '.comment' | translate) + '"'}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-technique">
             <div class="agal-gallerydetails-key">
-                <label for="card-technique">Technique:</label>
+                <label for="card-technique">{{'modules.gallery.details.header.technique' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.technique === null ? '--' : card?.technique}}</span>
+                <span>{{card?.technique === null ? '--' : ('gallery-content.' + card?.referenceNr + '.technique' | translate)}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-year">
             <div class="agal-gallerydetails-key">
-                <label for="card-date">Date:</label>
+                <label for="card-date">{{'modules.gallery.details.header.date' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
                 <span>{{card?.date === null ? '--' : card?.date}}</span>
@@ -125,7 +128,7 @@
                 [attr.aria-disabled]="true"
                 (click)="navigateToContactWithData(subject.artOrder)"
                 (keydown.enter)="navigateToContactWithData(subject.artOrder)"
-            >Order</button>
+            >{{'modules.gallery.details.button' | translate}}</button>
         </div>
     </div>
 </section>

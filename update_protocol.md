@@ -4,6 +4,12 @@
 
 <br>
 
+### 2024/09/25 - $\textsf{update\ 1.0.0-beta.3\ >>\ {\color{pink}1.0.0-beta.4}}$
+
+- $\textsf{\color{green}Change:}$ Added internationalization (i18n) to translate to english or german language.
+- $\textsf{\color{green}Change:}$ Improved localstorage handling.
+- $\textsf{\color{teal}Addition:}$ New content (features) added to README.
+
 ### 2024/09/16 - $\textsf{update\ 1.0.0-beta.2\ >>\ {\color{pink}1.0.0-beta.3}}$
 
 - $\textsf{\color{green}Change:}$ Added customized preload/lazy loading to gallery.

@@ -11,13 +11,16 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     return next(req).pipe(
         tap((httpEvent) => {
             if((httpEvent as HttpResponse<any>).status === HttpStatusCode.Ok) {
-                snackbarService.notify({
-                    title: (httpEvent as HttpResponse<any>).body.title,
-                    text: (httpEvent as HttpResponse<any>).body.text,
-                    autoClose: true,
-                    type: SnackbarOption.success,
-                    displayTime: 10000
-                });
+                const httpbody = (httpEvent as HttpResponse<any>);
+                if(httpbody.body.title && httpbody.body.text) {
+                    snackbarService.notify({
+                        title: (httpEvent as HttpResponse<any>).body.title,
+                        text: (httpEvent as HttpResponse<any>).body.text,
+                        autoClose: true,
+                        type: SnackbarOption.success,
+                        displayTime: 10000
+                    });
+                }
             }
         })
         ,
