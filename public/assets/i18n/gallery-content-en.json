@@ -545,6 +545,136 @@
             ],
             "comment": null,
             "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "9C1C2A": {
+            "title": null,
+            "referenceNr": "9C1C2A",
+            "genre": "creative",
+            "tags": [
+                "red", "nature", "acryl"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "9FA7B5": {
+            "title": "madame in the wind",
+            "referenceNr": "9FA7B5",
+            "genre": "people",
+            "tags": [
+                "people", "wind", "moment", "green"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "765C29": {
+            "title": "golden shower",
+            "referenceNr": "765C29",
+            "genre": "nature",
+            "tags": [
+                "gold", "flowers", "nature"
+            ],
+            "comment": "inspired by wild flowers blooming in our garden, seen in the morning sun",
+            "technique": "acryl"
+        },
+        "906A46": {
+            "title": "prideful lion",
+            "referenceNr": "906A46",
+            "genre": "nature",
+            "tags": [
+                "lion", "pride"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "004467": {
+            "title": null,
+            "referenceNr": "004467",
+            "genre": "nature",
+            "tags": [
+                "night", "moon"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "26163D": {
+            "title": "purple dream",
+            "referenceNr": "26163D",
+            "genre": "nature",
+            "tags": [
+                "purple", "landscape"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "656937": {
+            "title": null,
+            "referenceNr": "656937",
+            "genre": "nature",
+            "tags": [
+                "italy"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "890207": {
+            "title": "relaxed tea-time",
+            "referenceNr": "890207",
+            "genre": "creative",
+            "tags": [
+                "tea", "creative"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "A9A7A8": {
+            "title": null,
+            "referenceNr": "A9A7A8",
+            "genre": "nature",
+            "tags": [
+                "winter", "snow", "cold"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "ABB577": {
+            "title": "colorful stairway to heaven",
+            "referenceNr": "ABB577",
+            "genre": "nature",
+            "tags": [
+                "colorful", "stairway", "nature"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "B8B2A4": {
+            "title": null,
+            "referenceNr": "B8B2A4",
+            "genre": "pouring",
+            "tags": [
+                "yellow", "xxxx", "xxxx", "xxxx", "xxxx"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "C1BEB6": {
+            "title": "white elegance",
+            "referenceNr": "C1BEB6",
+            "genre": "nature",
+            "tags": [
+                "white", "elegance"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "D1D1D3": {
+            "title": null,
+            "referenceNr": "D1D1D3",
+            "genre": "creative",
+            "tags": [
+                "chaos"
+            ],
+            "comment": null,
+            "technique": null
         }
     }
 }
