@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, HostListener, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router, RouterModule } from "@angular/router";
 import { GalleryItem } from "../../../shared/interfaces/GalleryItems";
 import { ArtworkOptions } from "../../../shared/enums/artwork-option.enum";
@@ -29,6 +29,13 @@ import { VarDirective } from "../../../common/directives/ng-var.directive";
     ]
 })
 export class GalleryDetailsComponent implements OnInit, OnDestroy {
+
+    @HostListener('window:keydown', ['$event'])
+    closeOnEscape(event: KeyboardEvent) {
+        if(event.key === 'Escape' && !this.isFullscale) {
+            this.navigateToGallery();
+        }
+    }
 
     protected card: GalleryItem | null;
 

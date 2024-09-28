@@ -449,6 +449,16 @@
         }
     }
 
+    .agal-gallery {
+        .agal-gallery-content {
+            margin: 50px 5px!important;
+
+            .agal-gallery-cards {
+                margin: 0 3px 1.5px 3px!important;
+            }
+        }
+    }
+
     .agal-gallerydetails {
         .agal-gallerydetails-tools {
             top: calc(var(--view-nav-width) + 15px)!important;
@@ -545,6 +555,18 @@
             img {
                 max-width: calc(100vw - $gap-sum)!important;
                 max-height: calc(100vh - $gap-sum)!important;
+            }
+        }
+    }
+
+    agal-imgpreload {
+        .agal-gallery-cards-wrapper {
+            img {
+                $gallery-cards-margin: 6px;
+                $img-preload-padding: 4px;
+                $img-preload-border: 4px;
+                $gap: calc($gallery-cards-margin + $img-preload-padding + $img-preload-border);
+                width: calc(((100vw - 10px) / 3) - $gap)!important;
             }
         }
     }
@@ -677,18 +699,6 @@
         #img2 {
             width: 100%;
             justify-content: center!important;
-        }
-    }
-
-    .agal-gallery {
-        .agal-gallery-content {
-            .agal-gallery-cards {
-                margin: 0 3px 3px 3px!important;
-                img {
-                    width: 200px!important;
-                    height: 200px!important;
-                }
-            }
         }
     }
 
@@ -865,12 +875,9 @@
 
     .agal-gallery {
         .agal-gallery-content {
+
             .agal-gallery-cards {
-                margin: 0 6px 6px 6px!important;
-                img {
-                    width: 70vw!important;
-                    height: 70vw!important;
-                }
+                margin: 0 2px!important;
             }
         }
     }
@@ -975,6 +982,18 @@
         }
     }
 
+    agal-imgpreload {
+        .agal-gallery-cards-wrapper {
+            img {
+                $gallery-cards-margin: 4px;
+                $img-preload-padding: 4px;
+                $img-preload-border: 4px;
+                $gap: calc($gallery-cards-margin + $img-preload-padding + $img-preload-border);
+                width: calc(((100vw - 10px) / 3) - $gap)!important;
+            }
+        }
+    }
+
     .agal-nav-bar {
 
         ul {
@@ -1010,6 +1029,10 @@
             ul {
                 li {
                     padding: 2px 0!important;
+
+                    .agal-footer-language-select {
+                        max-height: 25px;
+                    }
                 }
             }
         }
