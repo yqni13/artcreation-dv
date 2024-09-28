@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, HostListener, Input, TemplateRef } from '@angular/core';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { FilterGalleryService } from '../../../shared/services/filter-gallery.service';
@@ -20,6 +20,16 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     ]
 })
 export class CarouselComponent {
+
+    @HostListener('window:keydown', ['$event'])
+    isNavigatingCarousel(event: KeyboardEvent) {
+        if(event.key === 'ArrowRight') {
+            this.next();
+        } else if(event.key === 'ArrowLeft') {
+            this.prev();
+        }
+    }
+
     @Input() slides: NewsUpdateStorage[];
     @Input() slideTemplate?: TemplateRef<any>;
 

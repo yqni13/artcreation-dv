@@ -46,6 +46,13 @@ export class GalleryScrollDirective implements OnInit {
         this.preloadOnScroll();
     }
 
+    @HostListener('window:keydown', ['$event'])
+    isScrollingKeyEvent(event: KeyboardEvent) {
+        if(event.key === 'PageUp' || event.key === 'PageDown' || event.key === 'Tab') {
+            this.preloadOnScroll();
+        }
+    }
+
     @HostListener('window:touchmove', [])
     isScrollingTouchMove() {
         this.preloadOnScroll();
@@ -66,5 +73,4 @@ export class GalleryScrollDirective implements OnInit {
             this.loaded = true;
         }
     }
-
 }

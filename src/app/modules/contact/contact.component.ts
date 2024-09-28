@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailService } from "../../shared/services/mail.service";
-import { RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
 import { DataShareService } from "../../shared/services/data-share.service";
 import { filter, Subscription, tap } from "rxjs";
@@ -14,6 +15,7 @@ import { TextareaInputComponent } from "../../common/components/form-components/
 import { ReferenceCheckService } from "../../shared/services/reference-check.service";
 import  * as CustomValidators  from "../../common/helper/custom-validators";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { NavigationService } from "../../shared/services/navigation.service";
 
 @Component({
     selector: 'app-contact',
@@ -47,10 +49,12 @@ export class ContactComponent implements OnInit, OnDestroy {
 
     constructor(
         private refCheckService: ReferenceCheckService,
-        private translate: TranslateService,
         private dataShareService: DataShareService,
+        private navigate: NavigationService,
+        private translate: TranslateService,
         private mailService: MailService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private router: Router
     ) {
         this.contactForm = new FormGroup({});
         this.hasSelectedParameters = false;
@@ -58,14 +62,18 @@ export class ContactComponent implements OnInit, OnDestroy {
         this.hasReferenceFromParams = false;
         this.readonly = true;
         this.selectedParams = {}
-        this.subscription$ = new Subscription();
+        this.subscription$ = new Subscription(); 
     }
     
     ngOnInit() {
         this.subscription$ = this.dataShareService.sharedData$.pipe(
             filter((x) => !!x), // double exclamation mark (!!) => boolean check !!"" === false
             tap((data) => {
-            this.checkParameters(data);           
+                if(this.navigate.getPreviousUrl().includes(data['referenceNr'])) {
+                    this.checkParameters(data);
+                } else {
+                    this.checkParameters(null);
+                }
         })).subscribe();
 
         this.initEdit();
@@ -100,8 +108,8 @@ export class ContactComponent implements OnInit, OnDestroy {
         })
     }
 
-    private checkParameters(data: Record<string, string>) {
-        if(data !== null || data !== undefined || 
+    private checkParameters(data: Record<string, string> | null) {
+        if(data !== null && data !== undefined &&
             (data['referenceNr'] !== '' && data['type'] !== '' && data['subject'] !== '')) {
             this.hasSelectedParameters = true;
             this.hasReferenceFromParams = true;
