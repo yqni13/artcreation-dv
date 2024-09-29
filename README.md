@@ -3,6 +3,7 @@
 $\texttt{\color{teal}{v1.0.0-beta.6}}$
 
 
+
 <br><br>
 
 <div>
@@ -134,6 +135,7 @@ Most of the images are linked with logic to either displaying more details or sc
 - $\textsf{\color{green}Change:}$ Added dynamic setting of 'lang' attribute in index.html to avoid unwanted google translation.
 - $\textsf{\color{teal}Addition:}$ New content (features) added to 'gallery' component.
 - $\textsf{\color{red}Bugfix:}$ Ordering an artwork, available as original or print can be selected separetely in contact form. [Before: Ordering artwork available as orginal or print would fail the dropdown selection of 'type'.]
+
 
 <br>
 
