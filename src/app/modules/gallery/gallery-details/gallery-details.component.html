@@ -32,7 +32,7 @@
             </div>
             <div class="agal-gallerydetails-value">
                 <span>{{card?.title === null ? '--' : 
-                ('gallery-content.' + card?.referenceNr + '.title' | translate)}}</span>
+                '" ' + ('gallery-content.' + card?.referenceNr + '.title' | translate) + ' "'}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-referenceNr">
@@ -102,7 +102,7 @@
                 <label for="card-comment">{{'modules.gallery.details.header.comment' | translate}}:</label>
             </div>
             <div class="agal-gallerydetails-value">
-                <span>{{card?.comment === null ? '--' : '"' + ('gallery-content.' + card?.referenceNr + '.comment' | translate) + '"'}}</span>
+                <span>{{card?.comment === null ? '--' : '" ' + ('gallery-content.' + card?.referenceNr + '.comment' | translate) + ' "'}}</span>
             </div>
         </div>
         <div class="agal-gallerydetails-property" id="card-technique">

@@ -1,6 +1,6 @@
 
 # yqni13 artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.5}}$
+$\texttt{\color{teal}{v1.0.0-beta.6}}$
 
 
 <br><br>
@@ -128,13 +128,12 @@ Most of the images are linked with logic to either displaying more details or sc
 ## Updates
 
 [list of all updates](update_protocol.md)
-### $\textsf{last\ update\ 1.0.0-beta.4\ >>\ {\color{pink}1.0.0-beta.5}}$
+### $\textsf{last\ update\ 1.0.0-beta.5\ >>\ {\color{pink}1.0.0-beta.6}}$
 
-- $\textsf{\color{green}Change:}$ Added navigation subscription to always get current and previous route from navigation service.
-- $\textsf{\color{green}Change:}$ Added keylisteners to control carousel in 'home' component and scrolling/return inside the gallery.
-- $\textsf{\color{green}Change:}$ In mobile version, gallery preview images are now always 3 images each row, adapting in size to fit row.
+- $\textsf{\color{green}Change:}$ Adapted some translations.
+- $\textsf{\color{green}Change:}$ Added dynamic setting of 'lang' attribute in index.html to avoid unwanted google translation.
 - $\textsf{\color{teal}Addition:}$ New content (features) added to 'gallery' component.
-- $\textsf{\color{red}Bugfix:}$ All data get removed from contact form after navigating to other components. [Before: Reference number, used by 'request price' in 'gallery-details' component, stayed in contact form even after navigating to other components.]
+- $\textsf{\color{red}Bugfix:}$ Ordering an artwork, available as original or print can be selected separetely in contact form. [Before: Ordering artwork available as orginal or print would fail the dropdown selection of 'type'.]
 
 <br>
 

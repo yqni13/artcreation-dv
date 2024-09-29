@@ -16,9 +16,9 @@
             }
         },
         "navigation": {
-            "about": "Bio",
-            "faq": "FAQ",
-            "gallery": "Gallerie",
+            "about": "Profil",
+            "faq": "Fragen",
+            "gallery": "Galerie",
             "home": "Start",
             "prints": "Kopien"
         }
@@ -84,7 +84,7 @@
                 }
             },
             "preview": {
-                "gallery": "Gallerie",
+                "gallery": "Galerie",
                 "title": "Meine Kunst"
             }
         },
