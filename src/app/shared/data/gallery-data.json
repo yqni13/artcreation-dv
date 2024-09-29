@@ -1202,5 +1202,365 @@
         "date": 2023,
         "path": "/assets/paintings/D1D1D3.jpg",
         "pathResized": "/assets/paintings_resized/D1D1D3.jpg"
+    },
+    {
+        "title": "golden view",
+        "referenceNr": "C7B881",
+        "genre": "abstract",
+        "tags": [
+            "gold", "mountains", "landscape"
+        ],
+        "price": 699.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            70
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/C7B881.jpg",
+        "pathResized": "/assets/paintings_resized/C7B881.jpg"
+    },
+    {
+        "title": "aesthetic peacock",
+        "referenceNr": "101F38",
+        "genre": "nature",
+        "tags": [
+            "blue", "nature", "animals"
+        ],
+        "price": 500,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            40, 120
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/101F38.jpg",
+        "pathResized": "/assets/paintings_resized/101F38.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "58154A",
+        "genre": "abstract",
+        "tags": [
+            "blue", "purple", "cristalls"
+        ],
+        "price": 0,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60, 80
+        ],
+        "date": 2020,
+        "path": "/assets/paintings/58154A.jpg",
+        "pathResized": "/assets/paintings_resized/58154A.jpg"
+    },
+    {
+        "title": "divine and humanity",
+        "referenceNr": "A38876",
+        "genre": "people",
+        "tags": [
+            "god", "human"
+        ],
+        "price": null,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            120, 50
+        ],
+        "date": 2018,
+        "path": "/assets/paintings/A38876.jpg",
+        "pathResized": "/assets/paintings_resized/A38876.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "077689",
+        "genre": "abstract",
+        "tags": [
+            "rust", "sea"
+        ],
+        "price": 349.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60, 80
+        ],
+        "date": 2019,
+        "path": "/assets/paintings/077689.jpg",
+        "pathResized": "/assets/paintings_resized/077689.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "B18D53",
+        "genre": "pouring",
+        "tags": [
+            "chaos"
+        ],
+        "price": 0,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60, 80
+        ],
+        "date": 2021,
+        "path": "/assets/paintings/B18D53.jpg",
+        "pathResized": "/assets/paintings_resized/B18D53.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "6E2723",
+        "genre": "abstract",
+        "tags": [
+            "red", "abstract"
+        ],
+        "price": 0,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 70
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/6E2723.jpg",
+        "pathResized": "/assets/paintings_resized/6E2723.jpg"
+    },
+    {
+        "title": "walking home",
+        "referenceNr": "B2A15B",
+        "genre": "creative",
+        "tags": [
+            "living", "houses", "village"
+        ],
+        "price": 399.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 70
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/B2A15B.jpg",
+        "pathResized": "/assets/paintings_resized/B2A15B.jpg"
+    },
+    {
+        "title": "last of its kind",
+        "referenceNr": "7C2C32",
+        "genre": "nature",
+        "tags": [
+            "butterfly", "nature", "beautiful"
+        ],
+        "price": 799.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            80, 100
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/7C2C32.jpg",
+        "pathResized": "/assets/paintings_resized/7C2C32.jpg"
+    },
+    {
+        "title": "peaceful walk",
+        "referenceNr": "707044",
+        "genre": "nature",
+        "tags": [
+            "sea", "beach", "peaceful"
+        ],
+        "price": 400,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            120, 50
+        ],
+        "date": 2019,
+        "path": "/assets/paintings/707044.jpg",
+        "pathResized": "/assets/paintings_resized/707044.jpg"
+    },
+    {
+        "title": "blood forest",
+        "referenceNr": "A91822",
+        "genre": "nature",
+        "tags": [
+            "red", "forbidden", "forest"
+        ],
+        "price": 499.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60, 80
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/A91822.jpg",
+        "pathResized": "/assets/paintings_resized/A91822.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "502E34",
+        "genre": "spiritual",
+        "tags": [
+            "meditation", "mandala"
+        ],
+        "price": 0,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60
+        ],
+        "date": 2021,
+        "path": "/assets/paintings/502E34.jpg",
+        "pathResized": "/assets/paintings_resized/502E34.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "D8DAD7",
+        "genre": "spiritual",
+        "tags": [
+            "meditation", "buddha"
+        ],
+        "price": 0,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/D8DAD7.jpg",
+        "pathResized": "/assets/paintings_resized/D8DAD7.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "BFBAAE",
+        "genre": "spiritual",
+        "tags": [
+            "meditation", "buddha"
+        ],
+        "price": 0,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            100, 60
+        ],
+        "date": 2020,
+        "path": "/assets/paintings/BFBAAE.jpg",
+        "pathResized": "/assets/paintings_resized/BFBAAE.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "2F5AB6",
+        "genre": "spiritual",
+        "tags": [
+            "meditation", "mandala"
+        ],
+        "price": 0,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/2F5AB6.jpg",
+        "pathResized": "/assets/paintings_resized/2F5AB6.jpg"
+    },
+    {
+        "title": "tree of time",
+        "referenceNr": "67090F",
+        "genre": "creative",
+        "tags": [
+            "clock", "creative", "red", "tree"
+        ],
+        "price": 299.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60
+        ],
+        "date": 2024,
+        "path": "/assets/paintings/67090F.webp",
+        "pathResized": "/assets/paintings_resized/67090F.webp"
+    },
+    {
+        "title": null,
+        "referenceNr": "8E82F0",
+        "genre": "abstract",
+        "tags": [
+            "cristalls"
+        ],
+        "price": 375.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 70
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/8E82F0.jpg",
+        "pathResized": "/assets/paintings_resized/8E82F0.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "698168",
+        "genre": "abstract",
+        "tags": [
+            "colorful"
+        ],
+        "price": 0,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 70
+        ],
+        "date": 2021,
+        "path": "/assets/paintings/698168.jpg",
+        "pathResized": "/assets/paintings_resized/698168.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "292E38",
+        "genre": "pouring",
+        "tags": [
+            "chaos"
+        ],
+        "price": 500,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            70
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/292E38.jpg",
+        "pathResized": "/assets/paintings_resized/292E38.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "D4A766",
+        "genre": "pouring",
+        "tags": [
+            "chaos"
+        ],
+        "price": 799.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 70
+        ],
+        "date": 2024,
+        "path": "/assets/paintings/D4A766.jpg",
+        "pathResized": "/assets/paintings_resized/D4A766.jpg"
     }
 ]

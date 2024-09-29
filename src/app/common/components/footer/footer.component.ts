@@ -102,10 +102,13 @@ export class FooterComponent implements OnInit {
             if(language) {
                 localStorage.setItem("agal-language", language);
                 this.switchLanguage(language);
+                // change lang in index.html to prevent unwanted google translation
+                this.document.querySelector('html')?.setAttribute('lang', language);
                 return;
             }
         }
-
+        
+        this.document.querySelector('html')?.setAttribute('lang', 'de');
         this.switchLanguage(LanguageOption.de);
     }
 
