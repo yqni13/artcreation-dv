@@ -381,7 +381,7 @@
         "7B0714": {
             "title": "verspielter Lotus",
             "referenceNr": "7B0714",
-            "genre": "spiritual",
+            "genre": "spirituell",
             "tags": [
                 "Mandala", "Rot", "Gold", "Lotus"
             ],
@@ -401,7 +401,7 @@
         "527883": {
             "title": "Anmut in Schlichtheit",
             "referenceNr": "527883",
-            "genre": "spiritual",
+            "genre": "spirituell",
             "tags": [
                 "Meditation", "Gold", "Blau", "Buddha", "Schlichtheit"
             ],
@@ -672,6 +672,206 @@
             "genre": "kreatives",
             "tags": [
                 "chaos"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "C7B881": {
+            "title": "goldener Ausblick",
+            "referenceNr": "C7B881",
+            "genre": "abstrakt",
+            "tags": [
+                "Gold", "Berge", "Landschaft"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "101F38": {
+            "title": "ästhetischer Pfau",
+            "referenceNr": "101F38",
+            "genre": "natur",
+            "tags": [
+                "Blau", "Natur", "Tiere"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "58154A": {
+            "title": null,
+            "referenceNr": "58154A",
+            "genre": "abstrakt",
+            "tags": [
+                "Blau", "Violett", "Kristalle"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "A38876": {
+            "title": "Göttlich und menschlich",
+            "referenceNr": "A38876",
+            "genre": "personen",
+            "tags": [
+                "Gott", "Mensch"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "077689": {
+            "title": null,
+            "referenceNr": "077689",
+            "genre": "personen",
+            "tags": [
+                "Rost", "Meer"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "B18D53": {
+            "title": null,
+            "referenceNr": "B18D53",
+            "genre": "pouring",
+            "tags": [
+                "Chaos"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "6E2723": {
+            "title": null,
+            "referenceNr": "6E2723",
+            "genre": "abstrakt",
+            "tags": [
+                "Rot", "Abstrakt"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "B2A15B": {
+            "title": "Heimweg",
+            "referenceNr": "B2A15B",
+            "genre": "kreatives",
+            "tags": [
+                "leben", "Häuser", "Dorf"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "7C2C32": {
+            "title": "der Letzte seiner Art",
+            "referenceNr": "7C2C32",
+            "genre": "natur",
+            "tags": [
+                "Schmetterling", "Natur", "wunderschön"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "707044": {
+            "title": "friedvoller Spaziergang",
+            "referenceNr": "707044",
+            "genre": "natur",
+            "tags": [
+                "Meer", "Strand", "friedvoll"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "A91822": {
+            "title": "Blut-Wald",
+            "referenceNr": "A91822",
+            "genre": "natur",
+            "tags": [
+                "Rot", "verboten", "Wald"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "502E34": {
+            "title": null,
+            "referenceNr": "502E34",
+            "genre": "spirituell",
+            "tags": [
+                "Meditation", "Mandala"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "D8DAD7": {
+            "title": null,
+            "referenceNr": "D8DAD7",
+            "genre": "spirituell",
+            "tags": [
+                "Meditation", "Buddha"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "BFBAAE": {
+            "title": null,
+            "referenceNr": "BFBAAE",
+            "genre": "spirituell",
+            "tags": [
+                "Meditation", "Buddha"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "2F5AB6": {
+            "title": null,
+            "referenceNr": "2F5AB6",
+            "genre": "spirituell",
+            "tags": [
+                "Meditation", "Mandala"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "67090F": {
+            "title": "Baum der Zeit",
+            "referenceNr": "67090F",
+            "genre": "kreatives",
+            "tags": [
+                "Uhr", "Kreativ", "Rot", "Baum"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "8E82F0": {
+            "title": null,
+            "referenceNr": "8E82F0",
+            "genre": "abstrakt",
+            "tags": [
+                "Kristalle"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "698168": {
+            "title": null,
+            "referenceNr": "698168",
+            "genre": "abstrakt",
+            "tags": [
+                "farbenfroh"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "292E38": {
+            "title": null,
+            "referenceNr": "292E38",
+            "genre": "pouring",
+            "tags": [
+                "Chaos"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "D4A766": {
+            "title": null,
+            "referenceNr": "D4A766",
+            "genre": "pouring",
+            "tags": [
+                "Chaos"
             ],
             "comment": null,
             "technique": null
