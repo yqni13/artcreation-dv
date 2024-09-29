@@ -4,6 +4,13 @@
 
 <br>
 
+### 2024/09/29 - $\textsf{update\ 1.0.0-beta.5\ >>\ {\color{pink}1.0.0-beta.6}}$
+
+- $\textsf{\color{green}Change:}$ Adapted some translations.
+- $\textsf{\color{green}Change:}$ Added dynamic setting of 'lang' attribute in index.html to avoid unwanted google translation.
+- $\textsf{\color{teal}Addition:}$ New content (features) added to 'gallery' component.
+- $\textsf{\color{red}Bugfix:}$ Ordering an artwork, available as original or print can be selected separetely in contact form. [Before: Ordering artwork available as orginal or print would fail the dropdown selection of 'type'.]
+
 ### 2024/09/28 - $\textsf{update\ 1.0.0-beta.4\ >>\ {\color{pink}1.0.0-beta.5}}$
 
 - $\textsf{\color{green}Change:}$ Added navigation subscription to always get current and previous route from navigation service.
