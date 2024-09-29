@@ -261,7 +261,7 @@
         "45613B": {
             "title": "einfaches Vergnügen",
             "referenceNr": "45613B",
-            "genre": "nature",
+            "genre": "natur",
             "tags": [
                 "Freude", "Blumenstrauß", "Natur"
             ],
@@ -545,6 +545,136 @@
             ],
             "comment": null,
             "technique": "Acryl-Pouring auf Keilrahmen"
+        },
+        "9C1C2A": {
+            "title": null,
+            "referenceNr": "9C1C2A",
+            "genre": "kreatives",
+            "tags": [
+                "Rot", "Natur", "Acryl"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "9FA7B5": {
+            "title": "die Dame im Wind",
+            "referenceNr": "9FA7B5",
+            "genre": "personen",
+            "tags": [
+                "Personen", "Wind", "Moment", "Grün"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "765C29": {
+            "title": "vergoldeter Regen",
+            "referenceNr": "765C29",
+            "genre": "natur",
+            "tags": [
+                "Gold", "Pflanzen", "Natur"
+            ],
+            "comment": "inspiriert bei Wildblumen, entdeckt in unserem Garten im Morgenschein",
+            "technique": "Acryl"
+        },
+        "906A46": {
+            "title": "stolzer Löwe",
+            "referenceNr": "906A46",
+            "genre": "natur",
+            "tags": [
+                "Löwe", "Stolz"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "004467": {
+            "title": null,
+            "referenceNr": "004467",
+            "genre": "natur",
+            "tags": [
+                "Nacht", "Mond"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "26163D": {
+            "title": "violetter Traum",
+            "referenceNr": "26163D",
+            "genre": "natur",
+            "tags": [
+                "Violett", "Landschaft"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "656937": {
+            "title": null,
+            "referenceNr": "656937",
+            "genre": "natur",
+            "tags": [
+                "Italien"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "890207": {
+            "title": "entspanntes Tee-Kränzchen",
+            "referenceNr": "890207",
+            "genre": "kreatives",
+            "tags": [
+                "Tee", "Kreativ"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "A9A7A8": {
+            "title": null,
+            "referenceNr": "A9A7A8",
+            "genre": "natur",
+            "tags": [
+                "Winter", "Schnee", "Kälte"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "ABB577": {
+            "title": "farbenfroher Weg zur letzten Pforte",
+            "referenceNr": "ABB577",
+            "genre": "natur",
+            "tags": [
+                "farbenfroh", "Treppenweg", "Natur"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "B8B2A4": {
+            "title": null,
+            "referenceNr": "B8B2A4",
+            "genre": "pouring",
+            "tags": [
+                "Gelb"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "C1BEB6": {
+            "title": "weiße Eleganz",
+            "referenceNr": "C1BEB6",
+            "genre": "natur",
+            "tags": [
+                "Weiß", "Eleganz"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "D1D1D3": {
+            "title": null,
+            "referenceNr": "D1D1D3",
+            "genre": "kreatives",
+            "tags": [
+                "chaos"
+            ],
+            "comment": null,
+            "technique": null
         }
     }
 }

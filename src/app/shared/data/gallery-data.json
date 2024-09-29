@@ -351,7 +351,7 @@
             "darkness", "poisoned thougts"
         ],
         "price": null,
-        "type": "origin",
+        "type": "original",
         "comment": null,
         "technique": "Pouring",
         "measurementsWxH": [
@@ -968,5 +968,239 @@
         "date": null,
         "path": "/assets/paintings/FFE135.jpg",
         "pathResized": "/assets/paintings_resized/FFE135.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "9C1C2A",
+        "genre": "creative",
+        "tags": [
+            "red", "nature", "acryl"
+        ],
+        "price": 199.95,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 70
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/9C1C2A.jpg",
+        "pathResized": "/assets/paintings_resized/9C1C2A.jpg"
+    },
+    {
+        "title": "madame in the wind",
+        "referenceNr": "9FA7B5",
+        "genre": "people",
+        "tags": [
+            "people", "wind", "moment", "green"
+        ],
+        "price": 399.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            50, 90
+        ],
+        "date": 2019,
+        "path": "/assets/paintings/9FA7B5.jpg",
+        "pathResized": "/assets/paintings_resized/9FA7B5.jpg"
+    },
+    {
+        "title": "golden shower",
+        "referenceNr": "765C29",
+        "genre": "nature",
+        "tags": [
+            "gold", "flowers", "nature"
+        ],
+        "price": 400,
+        "type": "original",
+        "comment": "inspired by wild flowers blooming in our garden, seen in the morning sun",
+        "technique": "acryl",
+        "measurementsWxH": [
+            40, 70
+        ],
+        "date": 2021,
+        "path": "/assets/paintings/765C29.jpg",
+        "pathResized": "/assets/paintings_resized/765C29.jpg"
+    },
+    {
+        "title": "prideful lion",
+        "referenceNr": "906A46",
+        "genre": "nature",
+        "tags": [
+            "lion", "pride"
+        ],
+        "price": 0,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            40, 70
+        ],
+        "date": 2020,
+        "path": "/assets/paintings/906A46.jpg",
+        "pathResized": "/assets/paintings_resized/906A46.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "004467",
+        "genre": "nature",
+        "tags": [
+            "night", "moon"
+        ],
+        "price": 799.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60, 90
+        ],
+        "date": 2024,
+        "path": "/assets/paintings/004467.jpg",
+        "pathResized": "/assets/paintings_resized/004467.jpg"
+    },
+    {
+        "title": "purple dream",
+        "referenceNr": "26163D",
+        "genre": "nature",
+        "tags": [
+            "purple", "landscape"
+        ],
+        "price": null,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            80, 60
+        ],
+        "date": 2020,
+        "path": "/assets/paintings/26163D.jpg",
+        "pathResized": "/assets/paintings_resized/26163D.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "656937",
+        "genre": "nature",
+        "tags": [
+            "italy"
+        ],
+        "price": 299.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            70, 50
+        ],
+        "date": 2018,
+        "path": "/assets/paintings/656937.jpg",
+        "pathResized": "/assets/paintings_resized/656937.jpg"
+    },
+    {
+        "title": "relaxed tea-time",
+        "referenceNr": "890207",
+        "genre": "creative",
+        "tags": [
+            "tea", "creative"
+        ],
+        "price": 0,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            50, 80
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/890207.jpg",
+        "pathResized": "/assets/paintings_resized/890207.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "A9A7A8",
+        "genre": "nature",
+        "tags": [
+            "winter", "snow", "cold"
+        ],
+        "price": null,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            80, 80
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/A9A7A8.jpg",
+        "pathResized": "/assets/paintings_resized/A9A7A8.jpg"
+    },
+    {
+        "title": "colorful stairway to heaven",
+        "referenceNr": "ABB577",
+        "genre": "nature",
+        "tags": [
+            "colorful", "stairway", "nature"
+        ],
+        "price": null,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            80, 60
+        ],
+        "date": 2021,
+        "path": "/assets/paintings/ABB577.jpg",
+        "pathResized": "/assets/paintings_resized/ABB577.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "B8B2A4",
+        "genre": "pouring",
+        "tags": [
+            "yellow"
+        ],
+        "price": 279.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 70
+        ],
+        "date": 2020,
+        "path": "/assets/paintings/B8B2A4.jpg",
+        "pathResized": "/assets/paintings_resized/B8B2A4.jpg"
+    },
+    {
+        "title": "white elegance",
+        "referenceNr": "C1BEB6",
+        "genre": "nature",
+        "tags": [
+            "white", "elegance"
+        ],
+        "price": 0,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            50, 80
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/C1BEB6.jpg",
+        "pathResized": "/assets/paintings_resized/C1BEB6.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "D1D1D3",
+        "genre": "creative",
+        "tags": [
+            "chaos"
+        ],
+        "price": 0,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 70
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/D1D1D3.jpg",
+        "pathResized": "/assets/paintings_resized/D1D1D3.jpg"
     }
 ]

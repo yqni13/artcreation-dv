@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, HostListener, Input, Output } from "@angular/core";
 
 @Component({
     selector: 'agal-imgfullscale',
@@ -21,6 +21,12 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
     ]
 })
 export class ImgFullscaleComponent {
+    @HostListener('window:keydown', ['$event'])
+    closeOnEscape(event: KeyboardEvent) {
+        if(event.key === 'Escape') {
+            this.closeFullscale(false);
+        }
+    }
 
     @Input() imgPath: string;
     @Input() isActive: boolean;
