@@ -73,7 +73,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     
     ngOnInit() {
         this.subscriptionDataShare$ = this.dataShareService.sharedData$.pipe(
-            filter((x) => !!x), // double exclamation mark (!!) => boolean check !!"" === false
+            filter((x) => !!x), // double exclamation mark (!!) sets null/empty value to boolean (false) !!"" === false
             tap((data) => {
                 if(this.navigate.getPreviousUrl().includes(data['referenceNr'])) {
                     this.checkParameters(data);
@@ -89,8 +89,8 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         this.subscriptionHttpObservation$ = this.httpObservationService.emailStatus$.pipe(
-            filter((x) => !!x),
-            tap((isStatusOK) => {
+            filter((x) => x || !x),
+            tap((isStatusOK: boolean) => {
                 if(isStatusOK) {
                     this.checkParameters(null)
                     this.initForm();

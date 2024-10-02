@@ -21,6 +21,14 @@
             "gallery": "Gallery",
             "home": "Home",
             "prints": "Prints"
+        },
+        "validation": {
+            "field": "Field",
+            "invalid": "has invalid format.",
+            "notexist": "does not exist.",
+            "refnr": "Reference number",
+            "refnr-length": "must be 6 characters.",
+            "required": "is required."
         }
     },
     "modules": {

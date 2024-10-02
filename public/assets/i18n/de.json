@@ -21,6 +21,14 @@
             "gallery": "Galerie",
             "home": "Start",
             "prints": "Kopien"
+        },
+        "validation": {
+            "field": "Das Feld",
+            "invalid": "hat das falsche Format.",
+            "notexist": "existiert nicht.",
+            "refnr": "Die Referenz-Nummer",
+            "refnr-length": "muss 6 Zeichen lang sein.",
+            "required": "ist erforderlich."
         }
     },
     "modules": {

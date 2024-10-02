@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { VarDirective } from "../../directives/ng-var.directive";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'agal-validation',
@@ -10,6 +11,7 @@ import { VarDirective } from "../../directives/ng-var.directive";
     standalone: true,
     imports: [
         CommonModule,
+        TranslateModule,
         VarDirective
     ]
 })
@@ -18,7 +20,7 @@ export class ValidationMessageComponent {
     @Input() ngControl: FormControl;
     @Input() fieldName: string;
 
-    constructor() { 
+    constructor(private translate: TranslateService) { 
         this.ngControl = new FormControl();
         this.fieldName = '';
     }
