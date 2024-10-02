@@ -26,6 +26,10 @@
                         [optionsTranslateRoot]="'shared.enum.contact-subject.'"
                         [fieldName]="'modules.contact.form.fieldNames.subject' | translate"
                         (byChange)="configRefNrByType()"
+                        [ngClass]="selectedParams['subject'] === subjectOptions.artOrder ||
+                        selectedParams['subject'] === subjectOptions.specificInformation 
+                        ? 'agal-query-value agal-readonly' 
+                        : ''"
                     ></agal-selectinput>
                     <agal-textinput
                         [className]="'agal-form-right'"
@@ -124,6 +128,7 @@
                     type="submit"
                     class="agal-button-submit"                    
                     (click)="onSubmit()"
+                    #submitButton
                 >{{'modules.contact.form.button' | translate}}</button>
             </div>
         </div>

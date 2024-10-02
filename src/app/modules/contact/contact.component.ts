@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailService } from "../../shared/services/mail.service";
@@ -16,6 +16,7 @@ import { ReferenceCheckService } from "../../shared/services/reference-check.ser
 import  * as CustomValidators  from "../../common/helper/custom-validators";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { NavigationService } from "../../shared/services/navigation.service";
+import { HttpObservationService } from "../../shared/services/http-observation.service";
 
 @Component({
     selector: 'app-contact',
@@ -34,7 +35,9 @@ import { NavigationService } from "../../shared/services/navigation.service";
         TranslateModule
     ]
 })
-export class ContactComponent implements OnInit, OnDestroy {
+export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
+
+    @ViewChild('submitButton') submitButton!: ElementRef;
 
     protected contactForm: FormGroup;
     protected hasSelectedParameters: boolean; 
@@ -45,9 +48,11 @@ export class ContactComponent implements OnInit, OnDestroy {
     protected subjectOptions = SubjectOptions;
     protected artworkOptions = ArtworkOptions;
 
-    private subscription$: Subscription;
+    private subscriptionDataShare$: Subscription;
+    private subscriptionHttpObservation$: Subscription;
 
     constructor(
+        private httpObservationService: HttpObservationService,
         private refCheckService: ReferenceCheckService,
         private dataShareService: DataShareService,
         private navigate: NavigationService,
@@ -62,11 +67,12 @@ export class ContactComponent implements OnInit, OnDestroy {
         this.hasReferenceFromParams = false;
         this.readonly = true;
         this.selectedParams = {}
-        this.subscription$ = new Subscription(); 
+        this.subscriptionDataShare$ = new Subscription(); 
+        this.subscriptionHttpObservation$ = new Subscription(); 
     }
     
     ngOnInit() {
-        this.subscription$ = this.dataShareService.sharedData$.pipe(
+        this.subscriptionDataShare$ = this.dataShareService.sharedData$.pipe(
             filter((x) => !!x), // double exclamation mark (!!) => boolean check !!"" === false
             tap((data) => {
                 if(this.navigate.getPreviousUrl().includes(data['referenceNr'])) {
@@ -76,7 +82,23 @@ export class ContactComponent implements OnInit, OnDestroy {
                 }
         })).subscribe();
 
+        
+
         this.initEdit();
+    }
+
+    ngAfterViewInit() {
+        this.subscriptionHttpObservation$ = this.httpObservationService.emailStatus$.pipe(
+            filter((x) => !!x),
+            tap((isStatusOK) => {
+                if(isStatusOK) {
+                    this.checkParameters(null)
+                    this.initForm();
+                }
+
+                this.setButtonStatus(true);
+            })
+        ).subscribe();
     }
     
     private initForm() {
@@ -174,11 +196,21 @@ export class ContactComponent implements OnInit, OnDestroy {
             return;
         }
 
+        this.setButtonStatus(false);
         this.mailService.setMailData(this.contactForm.getRawValue());
         this.mailService.sendMail().subscribe();
     }
 
+    setButtonStatus(enabled: boolean) {
+        if(enabled) {
+            this.submitButton.nativeElement.classList.remove('agal-readonly');
+        } else {
+            this.submitButton.nativeElement.classList.add('agal-readonly');
+        }
+    }
+
     ngOnDestroy() {
-        this.subscription$.unsubscribe();
+        this.subscriptionDataShare$.unsubscribe();
+        this.subscriptionHttpObservation$.unsubscribe();
     }
 }
