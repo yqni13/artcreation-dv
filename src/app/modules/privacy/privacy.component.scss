@@ -1,16 +1,16 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-.agal-head-message {
+.artdv-head-message {
     font-style: italic;
     color: var(--theme-submenu-route);
     width: 50%;
     align-self: center;
 }
 
-.agal-privacy-content {
+.artdv-privacy-content {
 
-    .agal-privacy-tableofcontents {
+    .artdv-privacy-tableofcontents {
         
         li {
             padding: 5px 0;
@@ -44,7 +44,7 @@
         margin-top: sass.$comp-padding-small;
     }
 
-    .agal-privacy-cookies-grafic-wrapper {
+    .artdv-privacy-cookies-grafic-wrapper {
         display: flex;
         justify-content: center;
         padding: sass.$comp-padding-small 0;

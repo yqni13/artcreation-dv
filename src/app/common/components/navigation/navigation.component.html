@@ -1,9 +1,9 @@
-<nav class="agal-nav-bar">
+<nav class="artdv-nav-bar">
     <ul>        
         <li *ngIf="!isMobileMode">
             <img
                 [attr.aria-disabled]="true"
-                class="agal-nav-logo"
+                class="artdv-nav-logo"
                 src="logo_bold.png" 
                 alt="logo to navigate home"
                 routerLink="home"
@@ -11,10 +11,10 @@
         </li>
         <li *ngFor="let route of routes">
             <span
-                class="agal-nav-routes"
+                class="artdv-nav-routes"
                 [attr.aria-disabled]="true"
                 routerLink="{{ route.path }}"
-                routerLinkActive="agal-active-route"
+                routerLinkActive="artdv-active-route"
             >{{!isMobileMode ? ('common.navigation.' + route.data?.['title'] | translate) : ''}} <i *ngIf="isMobileMode" class="{{route.data?.['icon']}}"></i></span>
         </li>
         <li>
@@ -24,7 +24,7 @@
                 (click)="switchTheme()"
                 (keydown.enter)="switchTheme()"
                 #themeModeIcon
-            ><i class="icon-ThemeOptions agal-nav-theme-ico"></i>
+            ><i class="icon-ThemeOptions artdv-nav-theme-ico"></i>
             </span>
         </li>
     </ul>

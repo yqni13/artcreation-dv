@@ -1,14 +1,14 @@
-<div class="agal-carousel-wrapper">
-    <div class="agal-carousel-slides" [style.transform]="getTransform()">
-        <div class="agal-carousel-slide" *ngFor="let slide of slides">
+<div class="artdv-carousel-wrapper">
+    <div class="artdv-carousel-slides" [style.transform]="getTransform()">
+        <div class="artdv-carousel-slide" *ngFor="let slide of slides">
             <ng-container *ngIf="slideTemplate; else defaultTemplate">
                 <ng-container *ngTemplateOutlet="slideTemplate; context: { $implicit: slide }"></ng-container>
             </ng-container>
             <ng-template #defaultTemplate>
-                <div class="agal-carousel-default-wrapper">
-                    <div class="agal-carousel-default-img">
+                <div class="artdv-carousel-default-wrapper">
+                    <div class="artdv-carousel-default-img">
                         <img
-                            [ngClass]="(slide.referenceNr !== null && !slide.referenceNr.includes('-')) ? 'agal-anchor' : ''"
+                            [ngClass]="(slide.referenceNr !== null && !slide.referenceNr.includes('-')) ? 'artdv-anchor' : ''"
                             *ngIf="slide.imageResized" 
                             src="{{ slide.imageResized }}" 
                             alt="404-picture-not-found"
@@ -17,12 +17,12 @@
                             (keydown.enter)="navigateToDetails(slide.referenceNr)"
                         >
                     </div>
-                    <div class="agal-carousel-default-text-wrapper">
-                        <div class="agal-carousel-default-text-header">
+                    <div class="artdv-carousel-default-text-wrapper">
+                        <div class="artdv-carousel-default-text-header">
                             <h3 *ngIf="slide.title">{{ 'archive-content.' + slide.referenceNr + '.title' | translate }}</h3>
                             <span>{{slide.date | dateFormat:'dd.mm.yyyy'}}</span>
                         </div>
-                        <div class="agal-carousel-default-text-content">
+                        <div class="artdv-carousel-default-text-content">
                             <p *ngIf="slide.text">{{ 'archive-content.' + slide.referenceNr + '.text' | translate }}</p>
                         </div>
                     </div>
@@ -30,16 +30,16 @@
             </ng-template>
         </div>
     </div>
-    <div class="agal-carousel-arrows">
+    <div class="artdv-carousel-arrows">
         <i 
             [attr.aria-disabled]="true"
-            class="icon-Arrow agal-arrow-left"
+            class="icon-Arrow artdv-arrow-left"
             (click)="prev()"
             (keydown.enter)="prev()"
         ></i>
         <i 
             [attr.aria-disabled]="true"
-            class="icon-Arrow agal-arrow-right"
+            class="icon-Arrow artdv-arrow-right"
             (click)="next()"
             (keydown.enter)="next()"
         ></i>

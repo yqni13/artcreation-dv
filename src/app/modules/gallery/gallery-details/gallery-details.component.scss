@@ -1,13 +1,13 @@
 @use "../../../../stylesheets/utilities" as sass;
 
 
-.agal-gallerydetails-tools {
+.artdv-gallerydetails-tools {
     position: fixed;
     top: 25px;
     left: calc(var(--view-nav-width) + 25px);
     width: 60px;
 
-    .agal-detail-tools {
+    .artdv-detail-tools {
         width: 100%;
         max-height: 40px;
         border: solid 1px var(--theme-submenu-route);
@@ -24,7 +24,7 @@
         line-height: 40px;
         margin-bottom: 5px;
 
-        .agal-back-arrow {
+        .artdv-back-arrow {
             color: var(--theme-submenu-route);
             text-transform: uppercase;
             text-decoration: none;
@@ -38,7 +38,7 @@
     }
 }
 
-.agal-gallerydetails-content {
+.artdv-gallerydetails-content {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -46,17 +46,17 @@
     height: auto;
     margin: sass.$comp-padding-small 0;
 
-    .agal-gallerydetails-property {
+    .artdv-gallerydetails-property {
         display: flex;
         flex-direction: row;
         margin: 10px 0;
 
-        .agal-gallerydetails-key {
+        .artdv-gallerydetails-key {
             width: 50%;
             text-align: end;
         }
 
-        .agal-gallerydetails-value {
+        .artdv-gallerydetails-value {
             width: 50%;
             text-align: start;
             padding: 0 15px;
@@ -67,7 +67,7 @@
         font-size: 14px;
     }
 
-    #card-tags .agal-tags {
+    #card-tags .artdv-tags {
         padding: 2.5px 5px;
         border: solid 1px var(--theme-body-text);
         border-radius: 3px;
@@ -75,13 +75,13 @@
         
     }
 
-    #card-tags .agal-gallerydetails-key {
+    #card-tags .artdv-gallerydetails-key {
         display: flex;
         justify-content: end;
         align-items: center;
     }
 
-    #card-tags .agal-gallerydetails-value {
+    #card-tags .artdv-gallerydetails-value {
         display: flex;
         flex-wrap: wrap;
         span {
@@ -90,13 +90,13 @@
     }
 }
 
-.agal-gallerydetails-divider {
+.artdv-gallerydetails-divider {
     border-top: solid 1px var(--theme-faq-activeborder);
     align-self: center;
     margin: 15px 0;
 }
 
-.agal-gallerydetails-sold {
+.artdv-gallerydetails-sold {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 14px;
@@ -106,13 +106,13 @@
     border-radius: 4px;
 }
 
-.agal-gallerydetails-order {
+.artdv-gallerydetails-order {
     align-self: center;
     margin: sass.$comp-padding-small 0 0 0;
 }
 
 /* basic structure for new frames */
-.agal-gallerydetails-img {
+.artdv-gallerydetails-img {
     display: flex;
     justify-content: center;
     background-image: url(/assets/art-wall.jpg);
@@ -126,7 +126,7 @@ $img-widthborder-wrapper: 10px;
 $img-widthborder-img: 2px;
 $img-widthpadding-img: 25px;
 
-.agal-gallerydetails-img-wrapper {
+.artdv-gallerydetails-img-wrapper {
     overflow: hidden;
     position:relative;
     padding: 0;

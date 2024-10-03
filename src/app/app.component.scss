@@ -1,7 +1,7 @@
 @use '../stylesheets/utilities' as sass;
 
 
-.agal-component-snackbar {
+.artdv-component-snackbar {
     position: fixed;
     top: 0;
     right: 0;
@@ -10,7 +10,7 @@
 
 $scroll-btn-color: sass.$color-light-grey;
 
-.agal-scroll-top {
+.artdv-scroll-top {
     position: fixed;
     bottom: 10px;
     padding: 5px 5px 2px 5px;

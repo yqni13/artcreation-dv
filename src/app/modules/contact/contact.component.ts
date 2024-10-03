@@ -203,9 +203,9 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
     setButtonStatus(enabled: boolean) {
         if(enabled) {
-            this.submitButton.nativeElement.classList.remove('agal-readonly');
+            this.submitButton.nativeElement.classList.remove('artdv-readonly');
         } else {
-            this.submitButton.nativeElement.classList.add('agal-readonly');
+            this.submitButton.nativeElement.classList.add('artdv-readonly');
         }
     }
 

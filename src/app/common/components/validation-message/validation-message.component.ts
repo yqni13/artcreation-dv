@@ -5,7 +5,7 @@ import { VarDirective } from "../../directives/ng-var.directive";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
-    selector: 'agal-validation',
+    selector: 'artdv-validation',
     templateUrl: './validation-message.component.html',
     styleUrl: './validation-message.component.scss',
     standalone: true,

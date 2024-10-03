@@ -1,25 +1,25 @@
-<section class="agal-contact">
+<section class="artdv-contact">
     <header>
         <h1>{{'modules.contact.title' | translate}}</h1>
     </header>
-    <div class="agal-head-message">
+    <div class="artdv-head-message">
         <p>
             {{'modules.contact.message' | translate}}
             <a
-                class="agal-nav-routes agal-anchor"
+                class="artdv-nav-routes artdv-anchor"
                 [attr.aria-disabled]="true"
                 routerLink="/faq"
             >{{'common.navigation.faq' | translate}}</a>.
         </p>
     </div>
-    <div class="agal-contact-content-wrapper">
-        <div class="agal-contact-content">
+    <div class="artdv-contact-content-wrapper">
+        <div class="artdv-contact-content">
 
             <form [formGroup]="contactForm">
-                <div class="agal-form-item agal-form-multiple">
-                    <agal-selectinput
+                <div class="artdv-form-item artdv-form-multiple">
+                    <artdv-selectinput
                         [ngStyle]="{'width': '50%'}"
-                        [className]="'agal-form-left-select'"
+                        [className]="'artdv-form-left-select'"
                         [placeholder]="('modules.contact.form.placeholders.subject' | translate) + '*'"
                         [formControl]="contactForm.get('subject') | controlCast"
                         [options]="subjectOptions"
@@ -28,11 +28,11 @@
                         (byChange)="configRefNrByType()"
                         [ngClass]="selectedParams['subject'] === subjectOptions.artOrder ||
                         selectedParams['subject'] === subjectOptions.specificInformation 
-                        ? 'agal-query-value agal-readonly' 
+                        ? 'artdv-query-value artdv-readonly' 
                         : ''"
-                    ></agal-selectinput>
-                    <agal-textinput
-                        [className]="'agal-form-right'"
+                    ></artdv-selectinput>
+                    <artdv-textinput
+                        [className]="'artdv-form-right'"
                         [placeholder]="(contactForm.get('subject')?.value === subjectOptions.generalRequest || 
                                         contactForm.get('subject')?.value === '') 
                                         ? '--' 
@@ -41,21 +41,21 @@
                         [ngStyle]="{'width': '50%'}"
                         [readonly]="readonly"
                         [ngClass]="hasReferenceFromParams 
-                        ? 'agal-query-value agal-readonly' 
+                        ? 'artdv-query-value artdv-readonly' 
                         : (contactForm.get('subject')?.value === subjectOptions.generalRequest ||
                         contactForm.get('subject')?.value === '')
-                        ? 'agal-readonly'
+                        ? 'artdv-readonly'
                         : ''"
                         [formControl]="contactForm.get('referenceNr') | controlCast"
                         [fieldName]="'modules.contact.form.fieldNames.referenceNr' | translate"
                         (byChange)="configRefNrByChanges()"
 
-                    ></agal-textinput>
+                    ></artdv-textinput>
                 </div>
-                <div class="agal-form-item agal-form-multiple">
-                    <agal-selectinput
+                <div class="artdv-form-item artdv-form-multiple">
+                    <artdv-selectinput
                         *ngIf="hasValidReferenceNr"
-                        [className]="'agal-form-left-select'"
+                        [className]="'artdv-form-left-select'"
                         [ngStyle]="!hasValidReferenceNr ? {} : {'width': '40%'}"
                         [formControl]="contactForm.get('type') | controlCast"
                         [placeholder]="('modules.contact.form.placeholders.type' | translate) + '*'"
@@ -63,70 +63,70 @@
                         [optionsTranslateRoot]="'shared.enum.artwork-option.'"
                         [fieldName]="'modules.contact.form.fieldNames.type' | translate"
                         [ngClass]="contactForm.get('subject')?.value === subjectOptions.artOrder 
-                                    ? 'agal-query-value agal-readonly' 
+                                    ? 'artdv-query-value artdv-readonly' 
                                     : ''"
-                    ></agal-selectinput>
-                    <agal-textinput
-                        [className]="hasValidReferenceNr ? 'agal-form-right' : ''"
+                    ></artdv-selectinput>
+                    <artdv-textinput
+                        [className]="hasValidReferenceNr ? 'artdv-form-right' : ''"
                         [ngStyle]="hasValidReferenceNr ? {'width': '60%'} : {'width': '100%'}"
                         [inputType]="'email'"
                         [placeholder]="('modules.contact.form.placeholders.email' | translate) + '*'"
                         [formControl]="contactForm.get('email') | controlCast"
                         [readonly]="false"
                         [fieldName]="'modules.contact.form.fieldNames.email' | translate"
-                    ></agal-textinput>
+                    ></artdv-textinput>
                 </div>
-                <div class="agal-form-item agal-form-multiple">
-                    <agal-selectinput
-                        [className]="'agal-form-left-select'"
+                <div class="artdv-form-item artdv-form-multiple">
+                    <artdv-selectinput
+                        [className]="'artdv-form-left-select'"
                         [ngStyle]="{'width': '40%'}"
                         [formControl]="contactForm.get('honorifics') | controlCast"
                         [placeholder]="('modules.contact.form.placeholders.honorifics' | translate) + '*'"
                         [options]="['Mr', 'Ms']"
                         [optionsTranslateRoot]="'shared.enum.honorifics-option.'"
                         [fieldName]="'modules.contact.form.fieldNames.honorifics' | translate"
-                    ></agal-selectinput>
-                    <agal-textinput
-                        [className]="'agal-form-right'"
+                    ></artdv-selectinput>
+                    <artdv-textinput
+                        [className]="'artdv-form-right'"
                         [ngStyle]="{'width': '60%'}"
                         [placeholder]="'modules.contact.form.placeholders.title' | translate"
                         [inputType]="'text'"
                         [formControl]="contactForm.get('title') | controlCast"
                         [fieldName]="'modules.contact.form.fieldNames.title' | translate"
-                    ></agal-textinput>
+                    ></artdv-textinput>
                 </div>          
-                <div class="agal-form-item agal-form-multiple">
-                    <agal-textinput
+                <div class="artdv-form-item artdv-form-multiple">
+                    <artdv-textinput
                         [ngStyle]="{'width': '50%'}"
-                        [className]="'agal-form-left'"
+                        [className]="'artdv-form-left'"
                         [inputType]="'text'"
                         [placeholder]="('modules.contact.form.placeholders.firstName' | translate) + '*'"
                         [formControl]="contactForm.get('firstName') | controlCast"
                         [fieldName]="'modules.contact.form.fieldNames.firstName' | translate"
-                        ></agal-textinput>
-                        <agal-textinput
+                        ></artdv-textinput>
+                        <artdv-textinput
                         [ngStyle]="{'width': '50%'}"
-                        [className]="'agal-form-right'"
+                        [className]="'artdv-form-right'"
                         [inputType]="'text'"
                         [placeholder]="('modules.contact.form.placeholders.lastName' | translate) + '*'"
                         [formControl]="contactForm.get('lastName') | controlCast"
                         [fieldName]="'modules.contact.form.fieldNames.lastName' | translate"
-                    ></agal-textinput>
+                    ></artdv-textinput>
                 </div>
-                <div class="agal-form-item">
-                    <agal-textareainput
+                <div class="artdv-form-item">
+                    <artdv-textareainput
                         [ngStyle]="{'width': '100%'}"
                         [placeholder]="('modules.contact.form.placeholders.message' | translate) + '*'"
                         [formControl]="contactForm.get('message') | controlCast"
                         [fieldName]="'modules.contact.form.fieldNames.message' | translate"
                         [rows]="6"
-                    ></agal-textareainput>
+                    ></artdv-textareainput>
                 </div>
             </form>
-            <div class="agal-contact-button-wrapper">
+            <div class="artdv-contact-button-wrapper">
                 <button 
                     type="submit"
-                    class="agal-button-submit"                    
+                    class="artdv-button-submit"                    
                     (click)="onSubmit()"
                     #submitButton
                 >{{'modules.contact.form.button' | translate}}</button>
