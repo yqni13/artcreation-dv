@@ -23,12 +23,10 @@
             "prints": "Prints"
         },
         "validation": {
-            "field": "Field",
-            "invalid": "has invalid format.",
-            "notexist": "does not exist.",
-            "refnr": "Reference number",
-            "refnr-length": "must be 6 characters.",
-            "required": "is required."
+            "email-invalid": "Field \"{{fieldName}}\" has invalid format.",
+            "refnr-length": "Reference number must be 6 characters.",
+            "refnr-notexist": "Reference number \"{{fieldValue}}\" does not exist.",
+            "required": "Field \"{{fieldName}}\" is required."
         }
     },
     "modules": {

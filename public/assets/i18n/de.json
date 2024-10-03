@@ -23,12 +23,10 @@
             "prints": "Kopien"
         },
         "validation": {
-            "field": "Das Feld",
-            "invalid": "hat das falsche Format.",
-            "notexist": "existiert nicht.",
-            "refnr": "Die Referenz-Nummer",
-            "refnr-length": "muss 6 Zeichen lang sein.",
-            "required": "ist erforderlich."
+            "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
+            "refnr-notexist": "Die Referenz-Nummer \"{{fieldValue}}\" existiert nicht.",
+            "refnr-length": "Die Referenz-Nummer muss 6 Zeichen lang sein.",
+            "required": "Das Feld \"{{fieldName}}\" ist erforderlich."
         }
     },
     "modules": {

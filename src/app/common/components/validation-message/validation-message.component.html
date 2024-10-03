@@ -1,22 +1,16 @@
 <ng-container *agalVar="ngControl as control">
     <div class="agal-validation-errors" *ngIf="control.invalid && (control.dirty || control.touched)">
         <div *ngIf="control.hasError('required')">
-            {{('common.validation.field' | translate) 
-            + ' "' + fieldName + '" '
-            + ('common.validation.required' | translate)}}
+            {{ 'common.validation.required' | translate: {fieldName: fieldName} }}
         </div>
         <div *ngIf="control.hasError('email')">
-            {{('common.validation.field' | translate) 
-            + ' "' + fieldName + '" '
-            + ('common.validation.invalid' | translate)}}
+            {{ 'common.validation.email-invalid' | translate: {fieldName: fieldName} }}
         </div>
         <div *ngIf="control.hasError('invalidRefNr')">
-            {{('common.validation.refnr' | translate)
-            + ' "' + control.value + '" '
-            + ('common.validation.notexist' | translate)}}
+            {{ 'common.validation.refnr-notexist' | translate: {fieldValue: control.value} }}
         </div>
         <div *ngIf="control.hasError('invalidRefNrLength')">
-            {{('common.validation.refnr' | translate) + ' ' + ('common.validation.refnr-length' | translate)}}
+            {{ 'common.validation.refnr-length' | translate }}
         </div>
     </div>
 </ng-container>
