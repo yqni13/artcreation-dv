@@ -131,7 +131,9 @@ Most of the images are linked with logic to either displaying more details or sc
 
 ### $\textsf{last\ update\ 1.0.0-beta.6\ >>\ {\color{pink}1.0.0-beta.7}}$
 
-- $\textsf{\color{green}Change:}$ Renamed project to fit domain name later on.
+- $\textsf{\color{green}Change:}$ Added listener to en/disable contact form submit button to avoid unintended sending of same message multiple times.
+- $\textsf{\color{green}Change:}$ Refactored de/en.json to work with placeholder variables for dynamic translations and added missing validation-message translations.
+- $\textsf{\color{green}Change:}$ Renamed project and specific pre-selector to fit domain name later on.
 
 <br>
 
