@@ -1,34 +1,34 @@
-<section class="agal-faq">
+<section class="artdv-faq">
     <header>
         <h1>{{'modules.faq.title' | translate}}</h1>
     </header>
-    <div class="agal-head-message">
+    <div class="artdv-head-message">
         <p>
             {{'modules.faq.message' | translate}} 
             <a
-                class="agal-faq-link agal-anchor"
+                class="artdv-faq-link artdv-anchor"
                 [attr.aria-disabled]="true"
                 href="/contact"
             >{{'common.footer.content.contact' | translate}}</a>
         </p>
     </div>
-    <div class="agal-faq-content">
-        <div class="agal-faq-wrapper">
-            <div class="agal-faq-coll-box faq-header">
-                <label for="agal-faq-header-close">menu</label>
+    <div class="artdv-faq-content">
+        <div class="artdv-faq-wrapper">
+            <div class="artdv-faq-coll-box faq-header">
+                <label for="artdv-faq-header-close">menu</label>
             </div>
-            <div class="agal-faq-coll" *ngFor="let element of data; index as i">
-                <input type="radio" name="collapsable" id="agal-faq-coll-{{i}}">
-                <div class="agal-faq-coll-box">
+            <div class="artdv-faq-coll" *ngFor="let element of data; index as i">
+                <input type="radio" name="collapsable" id="artdv-faq-coll-{{i}}">
+                <div class="artdv-faq-coll-box">
                     <label 
-                        class="agal-faq-coll-title" 
-                        for="agal-faq-coll-{{i}}"
+                        class="artdv-faq-coll-title" 
+                        for="artdv-faq-coll-{{i}}"
                     >{{'faq-content.' + element.ref + '.question' | translate}}</label>
-                    <label class="agal-faq-coll-close" for="agal-faq-header-close"></label>
-                    <div class="agal-faq-coll-content">{{'faq-content.' + element.ref + '.answer' | translate}}</div>
+                    <label class="artdv-faq-coll-close" for="artdv-faq-header-close"></label>
+                    <div class="artdv-faq-coll-content">{{'faq-content.' + element.ref + '.answer' | translate}}</div>
                 </div>
             </div>
-            <input type="radio" name="collapsable" id="agal-faq-header-close">
+            <input type="radio" name="collapsable" id="artdv-faq-header-close">
         </div>
     </div>
 </section>

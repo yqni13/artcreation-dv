@@ -1,7 +1,7 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-.agal-contact-content-wrapper {
+.artdv-contact-content-wrapper {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -9,7 +9,7 @@
     margin: sass.$comp-padding-medium 0;
 }
 
-.agal-contact-content {
+.artdv-contact-content {
     width: 100%;
     border: solid 1px var(--theme-body-text);
 
@@ -22,9 +22,14 @@
     }
 }
 
-.agal-contact-button-wrapper {
+.artdv-contact-button-wrapper {
     margin-top: calc(sass.$comp-padding-small / 2);
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.artdv-readonly {
+    color: sass.$color-dark-grey;
+    opacity: 0.4;
 }

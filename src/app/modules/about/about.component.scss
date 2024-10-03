@@ -1,12 +1,12 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-.agal-about-content {
+.artdv-about-content {
     display: flex;
     flex-direction: row;
 }
 
-.agal-about-image {
+.artdv-about-image {
     display: flex;
     justify-content: center;
     width: 50%;
@@ -28,7 +28,7 @@
     }
 } 
 
-.agal-about-text1 {
+.artdv-about-text1 {
     display: flex;
     justify-content: center;
     text-align: justify;
@@ -40,11 +40,11 @@
     }
 }
 
-.agal-about-text2 {
+.artdv-about-text2 {
     align-self: center;
 }
 
-.agal-about-additional {
+.artdv-about-additional {
     display: flex;
     justify-content: center;
     text-align: justify;

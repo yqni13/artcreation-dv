@@ -34,7 +34,7 @@ section {
     flex-direction: column;
 }
 
-.agal-active-route {
+.artdv-active-route {
     color: var(--theme-active-route)!important;
     &:hover {
         opacity: 1!important;
@@ -59,7 +59,7 @@ h1 {
     margin: sass.$comp-margin-h1 0;
 }
 
-.agal-head-message {
+.artdv-head-message {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -76,7 +76,7 @@ h1 {
     }
 }
 
-.agal-button-submit {    
+.artdv-button-submit {    
     background-color: sass.$color-ice-white;
     background-image: none;
     border: 1px solid sass.$color-light-grey;
@@ -134,21 +134,21 @@ textarea {
     text-overflow: ellipsis;
 }
 
-.agal-visible {
+.artdv-visible {
     visibility: visible;
 }
 
-.agal-hidden {
+.artdv-hidden {
     visibility: hidden;
 }
 
-.agal-anchor {
+.artdv-anchor {
     cursor: pointer;
     font-weight: bold;
     color: var(--theme-contrast-anchor);
 }
 
-.agal-query-value {
+.artdv-query-value {
     textarea,
     select,
     input,
@@ -159,7 +159,7 @@ textarea {
     }
 }
 
-.agal-readonly {
+.artdv-readonly {
     cursor: default;
     pointer-events: none;
 }
@@ -169,28 +169,28 @@ textarea {
     - overflow-y: scroll must stay active to keep scroll setback AND custom scrollbar working
     - change width dynamically wherever needed (app.component.ts checks route and adds className)
 */
-.agal-scroll-anchor {
+.artdv-scroll-anchor {
     overflow-y: scroll;
     overflow-x: hidden;
     height: 100%; // scrollbar-thumb doesn't work on height: auto
 }
 
-.agal-scroll-anchor::-webkit-scrollbar {
+.artdv-scroll-anchor::-webkit-scrollbar {
     width: 0;
 }
 
-.agal-scroll-wrapper::-webkit-scrollbar {
+.artdv-scroll-wrapper::-webkit-scrollbar {
     width: 6px;
 }
 
-.agal-scroll-anchor::-webkit-scrollbar-track {
+.artdv-scroll-anchor::-webkit-scrollbar-track {
     background-color: var(--theme-nav-bg);
 }
 
-.agal-scroll-anchor::-webkit-scrollbar-thumb {
+.artdv-scroll-anchor::-webkit-scrollbar-thumb {
     background-color: var(--theme-body-text);
 }
 
-.agal-scroll-anchor::-webkit-scrollbar-thumb:hover {
+.artdv-scroll-anchor::-webkit-scrollbar-thumb:hover {
     background-color: var(--theme-contrast-anchor);
 }

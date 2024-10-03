@@ -1,37 +1,37 @@
-<section class="agal-gallery agal-scroll" #gallerySection>
+<section class="artdv-gallery artdv-scroll" #gallerySection>
     <header>
         <h1>{{'modules.gallery.preview.title' | translate}}</h1>
     </header>
-    <nav class="agal-gallery-nav">
-        <div class="agal-gallery-nav-row">
+    <nav class="artdv-gallery-nav">
+        <div class="artdv-gallery-nav-row">
             <a
-                class="agal-gallery-nav-type"
+                class="artdv-gallery-nav-type"
                 [attr.aria-disabled]="true"
                 (click)="selectGenre('gallery')"
                 (keydown.enter)="selectGenre('gallery')"
-                [ngClass]="activeGenre === 'gallery' ? 'agal-active-route' : ''"
+                [ngClass]="activeGenre === 'gallery' ? 'artdv-active-route' : ''"
             >{{'modules.gallery.preview.gallery' | translate}}</a>
         </div>
-        <div class="agal-gallery-nav-row">
+        <div class="artdv-gallery-nav-row">
             <a
                 *ngFor="let nav of paintingGenres | keyvalue"
-                class="agal-gallery-nav-type"
+                class="artdv-gallery-nav-type"
                 [attr.aria-disabled]="true"
                 (click)="selectGenre(nav.value)"
                 (keydown.enter)="selectGenre(nav.value)"
-                [ngClass]="activeGenre === nav.key ? 'agal-active-route' : ''"
+                [ngClass]="activeGenre === nav.key ? 'artdv-active-route' : ''"
             >{{'shared.enum.painting-genre.' + nav.key | translate}}</a>
         </div>
     </nav>
-    <div class="agal-gallery-content">
-        <div class="agal-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
-            <agal-imgpreload
+    <div class="artdv-gallery-content">
+        <div class="artdv-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
+            <artdv-imgpreload
                 *ngIf="reloadFlag"
                 [card]="card"
                 [activeGenre]="activeGenre"
-            ></agal-imgpreload>
+            ></artdv-imgpreload>
         </div>
-        <div class="agal-gallery-nodata" *ngIf="paintingsDisplayedByGenre.length === 0">
+        <div class="artdv-gallery-nodata" *ngIf="paintingsDisplayedByGenre.length === 0">
             No paintings found for this genre.
         </div>
     </div>
