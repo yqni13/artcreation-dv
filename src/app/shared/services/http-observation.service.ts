@@ -9,7 +9,7 @@ export class HttpObservationService {
     private emailStatusSubject = new BehaviorSubject<boolean>(false);
     emailStatus$ = this.emailStatusSubject.asObservable();
 
-    setEmailStatus(isOK: boolean) {
-        this.emailStatusSubject.next(isOK);
+    setEmailStatus(isStatus200: boolean) {
+        this.emailStatusSubject.next(isStatus200);
     }
 }

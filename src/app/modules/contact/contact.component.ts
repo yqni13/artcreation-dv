@@ -82,16 +82,14 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
                 }
         })).subscribe();
 
-        
-
         this.initEdit();
     }
 
     ngAfterViewInit() {
         this.subscriptionHttpObservation$ = this.httpObservationService.emailStatus$.pipe(
             filter((x) => x || !x),
-            tap((isStatusOK: boolean) => {
-                if(isStatusOK) {
+            tap((isStatus200: boolean) => {
+                if(isStatus200) {
                     this.checkParameters(null)
                     this.initForm();
                 }
