@@ -21,6 +21,12 @@
             "gallery": "Galerie",
             "home": "Start",
             "prints": "Kopien"
+        },
+        "validation": {
+            "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
+            "refnr-notexist": "Die Referenz-Nummer \"{{fieldValue}}\" existiert nicht.",
+            "refnr-length": "Die Referenz-Nummer muss 6 Zeichen lang sein.",
+            "required": "Das Feld \"{{fieldName}}\" ist erforderlich."
         }
     },
     "modules": {

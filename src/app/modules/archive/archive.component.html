@@ -1,22 +1,22 @@
-<agal-imgfullscale 
+<artdv-imgfullscale 
     [imgPath]="currentPath" 
     [isActive]="isFullscale"
     (fullscaleChanged)="navigateFullscale($event)"
-></agal-imgfullscale>
-<section class="agal-archive">
+></artdv-imgfullscale>
+<section class="artdv-archive">
     <header>
         <h1>{{'modules.archive.title' | translate}}</h1>
     </header>
-    <div class="agal-head-message">
+    <div class="artdv-head-message">
         <p>
             {{'modules.archive.message' | translate}}
         </p>
     </div>
-    <div class="agal-archive-content">
-        <div class="agal-archive-entry" *ngFor="let news of newsCollection">
+    <div class="artdv-archive-content">
+        <div class="artdv-archive-entry" *ngFor="let news of newsCollection">
             @defer(on viewport) { <img src="{{ news.imageResized }}" alt="404-picture-not-found">
-            <div class="agal-archive-wrapper">                
-                <div class="agal-archive-text">
+            <div class="artdv-archive-wrapper">                
+                <div class="artdv-archive-text">
                     <h3 *ngIf="news.title">{{ 'archive-content.' + news.referenceNr + '.title' | translate }}</h3>
                     <span>{{news.date | dateFormat:'dd.mm.yyyy'}}</span>
                     <p *ngIf="news.text">{{ 'archive-content.' + news.referenceNr + '.text' | translate }}</p>
@@ -28,7 +28,7 @@
                 </div>
             </div> } 
             @placeholder {
-                <img class="agal-loading" src="/assets/loading.gif" alt="loading...">
+                <img class="artdv-loading" src="/assets/loading.gif" alt="loading...">
             }
         </div>
     </div>

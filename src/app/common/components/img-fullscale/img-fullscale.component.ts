@@ -2,11 +2,11 @@ import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, HostListener, Input, Output } from "@angular/core";
 
 @Component({
-    selector: 'agal-imgfullscale',
+    selector: 'artdv-imgfullscale',
     template: `
         <div 
             *ngIf="isActive"
-            class="agal-imgfullscale-wrapper" 
+            class="artdv-imgfullscale-wrapper" 
             [attr.aria-disabled]="true"
             (click)="closeFullscale(false)"
             (keydown.enter)="closeFullscale(false)" 

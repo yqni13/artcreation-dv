@@ -8,7 +8,7 @@ footer {
     background-color: var(--theme-highlight-body);
 }
 
-.agal-footer-credits {
+.artdv-footer-credits {
     width: 55%;
     height: 100%;
     display: flex;
@@ -25,7 +25,7 @@ footer {
     }
 }
 
-.agal-footer-links {
+.artdv-footer-links {
     width: 45%;
     height: 100%;
     display: flex;
@@ -67,20 +67,20 @@ footer {
         }
         
         $icon-size-difference: 2px;
-        .agal-footer-language {
+        .artdv-footer-language {
             position: relative;
             display: inline-flex;
             cursor: pointer;
             padding-top: $icon-size-difference;
 
-            .agal-footer-language-select {
+            .artdv-footer-language-select {
                 display: flex;
                 align-items: center;
             }
 
-            .agal-footer-language-select:hover {
+            .artdv-footer-language-select:hover {
                 opacity: 0.3;
-                .agal-footer-language-list:not(:hover) {
+                .artdv-footer-language-list:not(:hover) {
                     opacity: 1;
                 }
             }
@@ -90,7 +90,7 @@ footer {
                 opacity: 1;
             }
 
-            .agal-footer-language-list {
+            .artdv-footer-language-list {
                 display: flex;
                 flex-direction: column;
                 position: absolute;
@@ -105,13 +105,13 @@ footer {
                 -webkit-backdrop-filter: blur(6.7px);
                 text-wrap: nowrap;
 
-                .agal-language-option-select {
+                .artdv-language-option-select {
                     padding: 10px 15px 30px 15px;
                     font-weight: bold;
                     cursor: default;
                 }
 
-                .agal-language-options {
+                .artdv-language-options {
                     padding: 5px 0 5px 15px;
                     font-weight: bold;
 
@@ -124,8 +124,8 @@ footer {
         }
     }
 
-    .agal-footer-links-connection,
-    .agal-footer-links-information {
+    .artdv-footer-links-connection,
+    .artdv-footer-links-information {
         margin: 0 sass.$comp-padding-small;
         height: 150px;
     }

@@ -875,6 +875,126 @@
             ],
             "comment": null,
             "technique": null
+        },
+        "1F6D68": {
+            "title": "a dream full of waves",
+            "referenceNr": "1F6D68",
+            "genre": "abstract",
+            "tags": [
+                "blue", "abstract", "water", "wave"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "5F6640": {
+            "title": null,
+            "referenceNr": "5F6640",
+            "genre": "abstract",
+            "tags": [
+                "roots"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "119AB1": {
+            "title": "flowers of rainbow",
+            "referenceNr": "119AB1",
+            "genre": "nature",
+            "tags": [
+                "flowers", "rainbow"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "396E42": {
+            "title": null,
+            "referenceNr": "396E42",
+            "genre": "people",
+            "tags": [
+                "einstein", "people"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "682B7F": {
+            "title": null,
+            "referenceNr": "682B7F",
+            "genre": "abstract",
+            "tags": [
+                "cristalls"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "720F12": {
+            "title": null,
+            "referenceNr": "720F12",
+            "genre": "nature",
+            "tags": [
+                "flowers"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "202917": {
+            "title": null,
+            "referenceNr": "202917",
+            "genre": "abstract",
+            "tags": [
+                "abstract"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "BD3390": {
+            "title": null,
+            "referenceNr": "BD3390",
+            "genre": "abstract",
+            "tags": [
+                "forest"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "C6C2BC": {
+            "title": "dark moon wolves",
+            "referenceNr": "C6C2BC",
+            "genre": "nature",
+            "tags": [
+                "wolves"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "C7CEBD": {
+            "title": null,
+            "referenceNr": "C7CEBD",
+            "genre": "abstract",
+            "tags": [
+                "forest"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "CDA144": {
+            "title": null,
+            "referenceNr": "CDA144",
+            "genre": "abstract",
+            "tags": [
+                "abstract"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "F7F695": {
+            "title": null,
+            "referenceNr": "F7F695",
+            "genre": "abstract",
+            "tags": [
+                "cristalls"
+            ],
+            "comment": null,
+            "technique": null
         }
     }
 }

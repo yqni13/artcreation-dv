@@ -1,7 +1,7 @@
 @use '../../../../stylesheets/utilities' as sass;
 
 
-.agal-nav-bar {
+.artdv-nav-bar {
     display: flex;
     flex-wrap: nowrap;
     position: fixed;
@@ -30,7 +30,7 @@
                 color: var(--theme-body-text);
             }
             
-            .agal-nav-routes {
+            .artdv-nav-routes {
                 position: relative;
     
                 &:after {
@@ -58,7 +58,7 @@
     }
 }
 
-.agal-nav-logo {
+.artdv-nav-logo {
     width: calc(var(--view-nav-width) / 2);
     aspect-ratio: 1 / 1;
     cursor: pointer;

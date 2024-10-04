@@ -9,7 +9,7 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { LanguageOption } from "../../../shared/enums/language-option.enum";
 
 @Component({
-    selector: 'agal-footer',
+    selector: 'artdv-footer',
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.scss',
     standalone: true,
@@ -23,7 +23,7 @@ export class FooterComponent implements OnInit {
 
     @HostListener('window:click', ['$event'])
     clickOutside($event: any) {
-        if(!$event.target.className.includes('agal-language-element')) {
+        if(!$event.target.className.includes('artdv-language-element')) {
                 this.showLanguageList = false;
             }
     }
@@ -52,7 +52,7 @@ export class FooterComponent implements OnInit {
         this.infoRoutes = [];
         this.connectRoutes = [];
         this.socialmediaURL = 'https://instagram.com/vargarella_';
-        this.creatorURL = 'https://yqni13.github.io/portfolio';
+        this.creatorURL = 'https://yqni13.com';
     }
 
     ngOnInit() {
@@ -78,7 +78,7 @@ export class FooterComponent implements OnInit {
 
     private checkLanguageData(): LanguageOption {
         if(this.isLocalStorageAvailable) {
-            const language = localStorage.getItem('agal-language');
+            const language = localStorage.getItem('artdv-language');
 
             if(!language) {
                 return LanguageOption.de;
@@ -100,7 +100,7 @@ export class FooterComponent implements OnInit {
     protected setLanguageData(language: LanguageOption) {
         if(this.isLocalStorageAvailable) {
             if(language) {
-                localStorage.setItem("agal-language", language);
+                localStorage.setItem("artdv-language", language);
                 this.switchLanguage(language);
                 // change lang in index.html to prevent unwanted google translation
                 this.document.querySelector('html')?.setAttribute('lang', language);

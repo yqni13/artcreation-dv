@@ -2,7 +2,7 @@
 import { Directive, ElementRef, EventEmitter, HostListener, OnInit, Output } from "@angular/core";
 
 @Directive({
-    selector: '[agalGalleryScroll]',
+    selector: '[artdvGalleryScroll]',
     standalone: true
 })
 export class GalleryScrollDirective implements OnInit {
@@ -60,7 +60,7 @@ export class GalleryScrollDirective implements OnInit {
 
     @HostListener('window:click', ['$event'])
     isRoutingGenre($event: any) {
-        if($event.target.className === 'agal-gallery-nav-type' && !this.loaded) {
+        if($event.target.className === 'artdv-gallery-nav-type' && !this.loaded) {
             this.preloadOnScroll();
         }
     }

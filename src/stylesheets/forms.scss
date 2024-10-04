@@ -1,25 +1,25 @@
 
-.agal-form-item {
+.artdv-form-item {
     margin: sass.$contact-input-margin 0;
     display: flex;
 }
 
-.agal-form-multiple {
+.artdv-form-multiple {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     width: 100%;
 
-    .agal-form-left {
+    .artdv-form-left {
         margin-right: sass.$form-divider-margin!important;
     }
-    .agal-form-left-select {
+    .artdv-form-left-select {
         margin-right: calc(sass.$form-divider-margin - 1px)!important;
     }
 
     // together to adapt calculating width as last-right form element
-    .agal-form-right,
-    .agal-form-right-select {
+    .artdv-form-right,
+    .artdv-form-right-select {
         margin-left: sass.$form-divider-margin!important;
     }
 }

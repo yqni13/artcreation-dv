@@ -8,7 +8,7 @@ import { NewsUpdateStorage } from '../../../shared/interfaces/NewsUpdateStorage'
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
-    selector: 'agal-carousel',
+    selector: 'artdv-carousel',
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss'],
     standalone: true,

@@ -1,18 +1,18 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-.agal-faq-content {
+.artdv-faq-content {
     display: flex;
     justify-content: center;
     margin: sass.$comp-padding-medium 0 sass.$comp-padding-big 0;
 
-    .agal-faq-wrapper {
+    .artdv-faq-wrapper {
 
         input {
             display: none;
         }
 
-        .agal-faq-coll-box {
+        .artdv-faq-coll-box {
             position: relative;
             background: var(--theme-faq-collapsable);
             transition: all .15s ease-in-out;
@@ -43,11 +43,11 @@
             }
         }
         
-        .agal-faq-coll {
+        .artdv-faq-coll {
             width: 100%;
         }
 
-        .agal-faq-coll-title {
+        .artdv-faq-coll-title {
             text-overflow: ellipsis;
             width: calc(100% - (sass.$comp-padding-small * 2));
             padding: 15px 0;
@@ -61,24 +61,24 @@
         }
 
         // TODO(yqni13): check if this works in other browsers (modern browser concept)
-        .agal-faq-coll:nth-last-child(1 of .agal-faq-coll) {
-            .agal-faq-coll-title {
+        .artdv-faq-coll:nth-last-child(1 of .artdv-faq-coll) {
+            .artdv-faq-coll-title {
                 border-bottom: none;
             }
-            .agal-faq-coll-box {
+            .artdv-faq-coll-box {
                 border-bottom-left-radius: 5px;
                 border-bottom-right-radius: 5px;
             }
         }
 
-        .agal-faq-coll-content {
+        .artdv-faq-coll-content {
             width: calc(100% - (sass.$comp-padding-small * 2));
             padding: 40px sass.$comp-padding-small;
             display: none;
             text-align: justify;
         }
 
-        .agal-faq-coll-close {
+        .artdv-faq-coll-close {
             position: absolute;
             height: sass.$faq-box-height;
             width: 100%;
@@ -88,21 +88,21 @@
             display: none;
         }
 
-        input:checked + .agal-faq-coll-box {
+        input:checked + .artdv-faq-coll-box {
             height: auto;
             margin: 16px 0;
         }
 
-        input:checked + .agal-faq-coll-box .agal-faq-coll-title {
+        input:checked + .artdv-faq-coll-box .artdv-faq-coll-title {
             border-bottom: solid 1px var(--theme-faq-activeborder);
         }
 
-        input:checked + .agal-faq-coll-box .agal-faq-coll-content,
-        input:checked + .agal-faq-coll-box .agal-faq-coll-close {
+        input:checked + .artdv-faq-coll-box .artdv-faq-coll-content,
+        input:checked + .artdv-faq-coll-box .artdv-faq-coll-close {
             display: inline-block;
         }
 
-        div .agal-faq-coll-title {
+        div .artdv-faq-coll-title {
             $text-wrap-padding: 15px;
             padding-left: calc(sass.$comp-padding-small * 2);
             padding-right: $text-wrap-padding;
@@ -118,12 +118,12 @@
             }
         }
 
-        input:checked + div.agal-faq-coll-box .agal-faq-coll-title:before {
+        input:checked + div.artdv-faq-coll-box .artdv-faq-coll-title:before {
             transform: rotate(90deg);
         }
     }
 }
 
-.agal-anchor {
+.artdv-anchor {
     text-transform: uppercase;
 }

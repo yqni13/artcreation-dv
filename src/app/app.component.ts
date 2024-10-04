@@ -41,7 +41,7 @@ export class AppComponent implements AfterViewInit, OnDestroy{
       '/privacy',
       '/gallery'
     ];    
-    this.scrollAnchor = this.elRef.nativeElement.querySelector(".agal-scroll-anchor");
+    this.scrollAnchor = this.elRef.nativeElement.querySelector(".artdv-scroll-anchor");
     
     router.events.subscribe(e => {
       if(e instanceof NavigationStart) {

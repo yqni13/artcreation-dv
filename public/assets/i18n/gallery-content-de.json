@@ -875,6 +875,126 @@
             ],
             "comment": null,
             "technique": null
+        },
+        "1F6D68": {
+            "title": "ein Traum voller Wellen",
+            "referenceNr": "1F6D68",
+            "genre": "abstrakt",
+            "tags": [
+                "Blau", "Abstrakt", "Wasser", "Wellen"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "5F6640": {
+            "title": null,
+            "referenceNr": "5F6640",
+            "genre": "abstrakt",
+            "tags": [
+                "Wurzeln"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "119AB1": {
+            "title": "Regenbogen-Blumen",
+            "referenceNr": "119AB1",
+            "genre": "natur",
+            "tags": [
+                "Blumen", "Regenbogen"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "396E42": {
+            "title": null,
+            "referenceNr": "396E42",
+            "genre": "personen",
+            "tags": [
+                "Einstein", "Personen"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "682B7F": {
+            "title": null,
+            "referenceNr": "682B7F",
+            "genre": "abstrakt",
+            "tags": [
+                "Kristalle"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "720F12": {
+            "title": null,
+            "referenceNr": "720F12",
+            "genre": "natur",
+            "tags": [
+                "Blumen"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "202917": {
+            "title": null,
+            "referenceNr": "202917",
+            "genre": "abstrakt",
+            "tags": [
+                "abstrakt"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "BD3390": {
+            "title": null,
+            "referenceNr": "BD3390",
+            "genre": "abstrakt",
+            "tags": [
+                "Wald"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "C6C2BC": {
+            "title": "Wölfe des dunklen Mondes",
+            "referenceNr": "C6C2BC",
+            "genre": "natur",
+            "tags": [
+                "Wölfe"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "C7CEBD": {
+            "title": null,
+            "referenceNr": "C7CEBD",
+            "genre": "abstrakt",
+            "tags": [
+                "Wald"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "CDA144": {
+            "title": null,
+            "referenceNr": "CDA144",
+            "genre": "abstrakt",
+            "tags": [
+                "abstrakt"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "F7F695": {
+            "title": null,
+            "referenceNr": "F7F695",
+            "genre": "abstrakt",
+            "tags": [
+                "Kristalle"
+            ],
+            "comment": null,
+            "technique": null
         }
     }
 }
