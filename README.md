@@ -131,6 +131,7 @@ Most of the images are linked with logic to either displaying more details or sc
 
 ### $\textsf{last\ update\ 1.0.0-beta.6\ >>\ {\color{pink}1.0.0-beta.7}}$
 
+- $\textsf{\color{teal}Addition:}$ New content (features) added to 'gallery' component.
 - $\textsf{\color{green}Change:}$ Added listener to en/disable contact form submit button to avoid unintended sending of same message multiple times.
 - $\textsf{\color{green}Change:}$ Refactored de/en.json to work with placeholder variables for dynamic translations and added missing validation-message translations.
 - $\textsf{\color{green}Change:}$ Renamed project and specific pre-selector to fit domain name later on.
@@ -140,11 +141,9 @@ Most of the images are linked with logic to either displaying more details or sc
 ### Aimed objectives for next $\textsf{\color{green}minor}$ update:
 <dl>
       <dd>- change host to deploy working backend</dd>
-      <dd>- dis/enable sending-button of contact form until response intercepted</dd>
       <dd>- selection of numbers of articles to order via contact form</dd>
       <dd>- real text content</dd>
       <dd>- correct email accounts to recieve and send in BE</dd>
-      <dd>- key listeners</dd>
       <dd>- text search in archive component</dd>
       <dd>- provide security standards: input sanitizations, content security policies & HttpOnly cookies</dd>
       <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
