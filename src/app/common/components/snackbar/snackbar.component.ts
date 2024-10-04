@@ -5,7 +5,7 @@ import { CommonModule } from "@angular/common";
 import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
 
 @Component({
-    selector: 'agal-snackbar',
+    selector: 'artdv-snackbar',
     templateUrl: './snackbar.component.html',
     styleUrl: './snackbar.component.scss',
     standalone: true,

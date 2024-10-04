@@ -1,5 +1,5 @@
 {
-  "name": "art-gallery-fe-only",
+  "name": "artcreation-dv",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:art-gallery-FE-only": "node dist/art-gallery-fe-only/server/server.mjs",
+    "serve:ssr:artcreation-dv": "node dist/artcreation-dv/server/server.mjs",
     "lint": "ng lint"
   },
   "private": true,
@@ -51,8 +51,10 @@
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "rollup": "^4.24.0",
     "ts-node": "^10.9.2",
     "typescript": "~5.5.4",
-    "typescript-eslint": "8.4.0"
+    "typescript-eslint": "8.4.0",
+    "vite": "^5.4.8"
   }
 }

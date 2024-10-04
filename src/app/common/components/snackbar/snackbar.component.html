@@ -1,14 +1,14 @@
-<div class="agal-snackbar-container" [ngClass]="'snackbar-' + snackbarClass">
-    <div class="agal-snackbar-content" [ngClass]="!!snackbarMsg.text ? 'agal-multiline' : 'agal-singleline'">
-        <div class="agal-snackbar-title">
+<div class="artdv-snackbar-container" [ngClass]="'snackbar-' + snackbarClass">
+    <div class="artdv-snackbar-content" [ngClass]="!!snackbarMsg.text ? 'artdv-multiline' : 'artdv-singleline'">
+        <div class="artdv-snackbar-title">
             <span>{{snackbarMsg.type}}: </span>
             <h4>{{snackbarMsg.title}}</h4>
         </div>
-        <div class="agal-snackbar-text" *ngIf="!!snackbarMsg.text">
+        <div class="artdv-snackbar-text" *ngIf="!!snackbarMsg.text">
             {{snackbarMsg.text}}
         </div>
     </div>
-    <div class="agal-snackbar-btn" *ngIf="!snackbarMsg.autoClose">
+    <div class="artdv-snackbar-btn" *ngIf="!snackbarMsg.autoClose">
         <i 
             class="icon-CloseX" 
             (click)="close()" 

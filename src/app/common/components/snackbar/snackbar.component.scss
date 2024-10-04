@@ -1,7 +1,7 @@
 @use '../../../../stylesheets/utilities' as sass;
 
 
-.agal-snackbar-container {
+.artdv-snackbar-container {
     width: fit-content;
     max-width: 400px;
     display: flex;
@@ -35,11 +35,11 @@
     }
 }
 
-.agal-snackbar-content {
+.artdv-snackbar-content {
     display: flex;
     flex-direction: column;
     
-    .agal-snackbar-title {
+    .artdv-snackbar-title {
         display: flex;
         flex-direction: row;
         padding: 0 0 5px 0;
@@ -56,7 +56,7 @@
             margin-inline: 0;
         }
     }
-    .agal-snackbar-text {        
+    .artdv-snackbar-text {        
         padding: 0 15px;
         margin-block: 0;
         margin-inline: 0;
@@ -64,7 +64,7 @@
     }
 }
 
-.agal-singleline {
+.artdv-singleline {
     align-self: center;
     padding: 25px 0;
 
@@ -73,11 +73,11 @@
     }
 }
 
-.agal-multiline {
+.artdv-multiline {
     padding: 15px 0;
 }
 
-.agal-snackbar-btn {
+.artdv-snackbar-btn {
     display: flex;
     align-items: center;
     padding: 15px;

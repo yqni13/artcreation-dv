@@ -1,24 +1,24 @@
 @use '../../../../stylesheets/utilities' as sass;
 
 
-.agal-carousel-wrapper {
+.artdv-carousel-wrapper {
     width: 100%;
     margin: auto;
     overflow: hidden;
     position: relative;
 }
 
-.agal-carousel-slides {
+.artdv-carousel-slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
 
-.agal-carousel-slide {
+.artdv-carousel-slide {
     min-width: 100%;
     box-sizing: border-box;
 }
 
-.agal-carousel-default-wrapper {
+.artdv-carousel-default-wrapper {
     width: 100%;
     height: 100%;
     display: flex;
@@ -26,7 +26,7 @@
     align-items: center;
 }
 
-.agal-carousel-default-img {
+.artdv-carousel-default-img {
     width: calc(50% + sass.$comp-padding-medium);
     display: flex;
     justify-content: center;
@@ -40,12 +40,12 @@
     }
 }
 
-.agal-carousel-default-text-wrapper {
+.artdv-carousel-default-text-wrapper {
     width: calc(50% - sass.$comp-padding-medium);
     padding: 0 sass.$comp-padding-medium;
 }
 
-.agal-carousel-default-text-header {
+.artdv-carousel-default-text-header {
     h3 {
         font-size: sass.$home-news-header-size;
         color: var(--theme-contrast-anchor);
@@ -58,7 +58,7 @@
     }
 }
 
-.agal-carousel-default-text-content {
+.artdv-carousel-default-text-content {
     p {
         text-align: justify;
         font-size: sass.$home-news-content-size;
@@ -66,7 +66,7 @@
     }
 }
 
-.agal-carousel-arrows {
+.artdv-carousel-arrows {
     display: flex;
     justify-content: center;
     position: absolute;
@@ -84,11 +84,11 @@
         }
     }
 
-    .agal-arrow-left {
+    .artdv-arrow-left {
         transform: rotate(-90deg);
     }
 
-    .agal-arrow-right {
+    .artdv-arrow-right {
         transform: rotate(90deg);
     }
 }

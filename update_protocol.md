@@ -4,6 +4,13 @@
 
 <br>
 
+### 2024/10/03 - $\textsf{update\ 1.0.0-beta.6\ >>\ {\color{pink}1.0.0-beta.7}}$
+
+- $\textsf{\color{teal}Addition:}$ New content (features) added to 'gallery' component.
+- $\textsf{\color{green}Change:}$ Added listener to en/disable contact form submit button to avoid unintended sending of same message multiple times.
+- $\textsf{\color{green}Change:}$ Refactored de/en.json to work with placeholder variables for dynamic translations and added missing validation-message translations.
+- $\textsf{\color{green}Change:}$ Renamed project and specific pre-selector to fit domain name later on.
+
 ### 2024/09/29 - $\textsf{update\ 1.0.0-beta.5\ >>\ {\color{pink}1.0.0-beta.6}}$
 
 - $\textsf{\color{green}Change:}$ Adapted some translations.

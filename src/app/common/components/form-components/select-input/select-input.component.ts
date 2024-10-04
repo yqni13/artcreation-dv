@@ -8,7 +8,7 @@ import { AbstractInputComponent } from "../abstract-input.component";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
-    selector: 'agal-selectinput',
+    selector: 'artdv-selectinput',
     templateUrl: './select-input.component.html',
     styleUrl: './select-input.component.scss',
     standalone: true,

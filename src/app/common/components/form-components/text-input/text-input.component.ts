@@ -8,7 +8,7 @@ import { AbstractInputComponent } from "../abstract-input.component";
 import { Subscription } from "rxjs";
 
 @Component({
-    selector: 'agal-textinput',
+    selector: 'artdv-textinput',
     templateUrl: './text-input.component.html',
     styleUrl: './text-input.component.scss',
     standalone: true,

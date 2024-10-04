@@ -6,7 +6,7 @@ import { CastAbstractToFormControlPipe } from "../../../pipes/cast-abstracttofor
 import { AbstractInputComponent } from "../abstract-input.component";
 
 @Component({
-    selector: 'agal-textareainput',
+    selector: 'artdv-textareainput',
     templateUrl: './textarea-input.component.html',
     styleUrl: './textarea-input.component.scss',
     standalone: true,

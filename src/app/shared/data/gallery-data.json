@@ -1562,5 +1562,221 @@
         "date": 2024,
         "path": "/assets/paintings/D4A766.jpg",
         "pathResized": "/assets/paintings_resized/D4A766.jpg"
+    },
+    {
+        "title": "a dream full of waves",
+        "referenceNr": "1F6D68",
+        "genre": "abstract",
+        "tags": [
+            "blue", "abstract", "water", "wave"
+        ],
+        "price": 0,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            40, 100
+        ],
+        "date": 2021,
+        "path": "/assets/paintings/1F6D68.jpg",
+        "pathResized": "/assets/paintings_resized/1F6D68.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "5F6640",
+        "genre": "abstract",
+        "tags": [
+            "roots"
+        ],
+        "price": 299.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            40, 70
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/5F6640.webp",
+        "pathResized": "/assets/paintings_resized/5F6640.webp"
+    },
+    {
+        "title": "flowers of rainbow",
+        "referenceNr": "119AB1",
+        "genre": "nature",
+        "tags": [
+            "flowers", "rainbow"
+        ],
+        "price": 599.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            40, 100
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/119AB1.jpg",
+        "pathResized": "/assets/paintings_resized/119AB1.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "396E42",
+        "genre": "people",
+        "tags": [
+            "einstein", "people"
+        ],
+        "price": 399.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60, 90
+        ],
+        "date": 2019,
+        "path": "/assets/paintings/396E42.jpg",
+        "pathResized": "/assets/paintings_resized/396E42.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "682B7F",
+        "genre": "abstract",
+        "tags": [
+            "cristalls"
+        ],
+        "price": 450,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            70
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/682B7F.jpg",
+        "pathResized": "/assets/paintings_resized/682B7F.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "720F12",
+        "genre": "nature",
+        "tags": [
+            "flowers"
+        ],
+        "price": 0,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            50, 80
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/720F12.jpg",
+        "pathResized": "/assets/paintings_resized/720F12.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "202917",
+        "genre": "abstract",
+        "tags": [
+            "abstract"
+        ],
+        "price": 0,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60, 90
+        ],
+        "date": 2021,
+        "path": "/assets/paintings/202917.jpg",
+        "pathResized": "/assets/paintings_resized/202917.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "BD3390",
+        "genre": "abstract",
+        "tags": [
+            "forest"
+        ],
+        "price": 399.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 70
+        ],
+        "date": 2020,
+        "path": "/assets/paintings/BD3390.jpg",
+        "pathResized": "/assets/paintings_resized/BD3390.jpg"
+    },
+    {
+        "title": "dark moon wolves",
+        "referenceNr": "C6C2BC",
+        "genre": "nature",
+        "tags": [
+            "wolves"
+        ],
+        "price": 299.99,
+        "type": "originalORprint",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            40, 70
+        ],
+        "date": 2018,
+        "path": "/assets/paintings/C6C2BC.jpg",
+        "pathResized": "/assets/paintings_resized/C6C2BC.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "C7CEBD",
+        "genre": "abstract",
+        "tags": [
+            "forest"
+        ],
+        "price": 249.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 50
+        ],
+        "date": 2021,
+        "path": "/assets/paintings/C7CEBD.jpg",
+        "pathResized": "/assets/paintings_resized/C7CEBD.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "CDA144",
+        "genre": "abstract",
+        "tags": [
+            "abstract"
+        ],
+        "price": 0,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            50, 80
+        ],
+        "date": 2020,
+        "path": "/assets/paintings/CDA144.jpg",
+        "pathResized": "/assets/paintings_resized/CDA144.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "F7F695",
+        "genre": "abstract",
+        "tags": [
+            "cristalls"
+        ],
+        "price": 449.99,
+        "type": "original",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            50, 80
+        ],
+        "date": 2024,
+        "path": "/assets/paintings/F7F695.jpg",
+        "pathResized": "/assets/paintings_resized/F7F695.jpg"
     }
 ]

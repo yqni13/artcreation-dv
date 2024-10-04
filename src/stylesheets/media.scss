@@ -15,7 +15,7 @@
         margin: 0 0 0 var(--view-nav-width);
     }
 
-    .agal-home {
+    .artdv-home {
         header {
             min-height: 500px;
             max-height: 700px;
@@ -23,8 +23,8 @@
         }
     }
 
-    .agal-about {
-        .agal-about-content {
+    .artdv-about {
+        .artdv-about-content {
             margin: sass.$comp-padding-big sass.$comp-padding-big 0 sass.$comp-padding-big;
         }
         #img1 img {
@@ -32,17 +32,17 @@
             max-height: 700px;
             object-position: center top;
         }
-        .agal-about-text1 {
+        .artdv-about-text1 {
             p {
                 margin: 0 0 0 sass.$comp-padding-medium;
                 font-size: clamp(16px, 2.5vw, 20px);
             }
         }
-        .agal-about-additional {
+        .artdv-about-additional {
             flex-direction: row;
             margin: sass.$comp-padding-big;
 
-            .agal-about-text2 {
+            .artdv-about-text2 {
                 width: 60%;
                 p {
                     font-size: clamp(16px, 2.5vw, 20px);
@@ -58,17 +58,17 @@
         }
     }
 
-    .agal-gallerydetails {
-        .agal-gallerydetails-content {
+    .artdv-gallerydetails {
+        .artdv-gallerydetails-content {
             margin: calc(sass.$comp-padding-medium + sass.$comp-padding-small) 0!important;
         }
         // TODO(yqni13): adapt responsive design for width > 1800px
-        .agal-gallerydetails-img {
+        .artdv-gallerydetails-img {
             height: 100vh!important;
             background-position-x: center!important;
             background-position-y: 80%!important;
 
-            .agal-gallerydetails-img-wrapper {
+            .artdv-gallerydetails-img-wrapper {
                 margin: 0 0 calc((1000px - 100vh) * 0.5) 0!important;
             }
 
@@ -77,23 +77,23 @@
                 max-height: calc(250px + ((100vw - 1440px) * 0.3))!important;
             }
         }
-        .agal-gallerydetails-divider {
+        .artdv-gallerydetails-divider {
             width: 45%!important;
         }
     }
 
-    .agal-faq {
-        .agal-faq-wrapper {
+    .artdv-faq {
+        .artdv-faq-wrapper {
             width: 60%;
             max-width: 700px;
         }
     }
 
-    .agal-archive {
-        .agal-archive-content {
+    .artdv-archive {
+        .artdv-archive-content {
             margin: sass.$comp-padding-big;
         }
-        .agal-archive-entry {
+        .artdv-archive-entry {
             margin: calc(sass.$comp-padding-small / 2);
             img {
                 max-width: 350px;
@@ -102,29 +102,29 @@
         }
     }
 
-    .agal-imprint,
-    .agal-privacy {
-        .agal-imprint-content,
-        .agal-privacy-content {
+    .artdv-imprint,
+    .artdv-privacy {
+        .artdv-imprint-content,
+        .artdv-privacy-content {
             margin: calc(sass.$comp-padding-medium + sass.$comp-padding-small) sass.$comp-padding-big sass.$comp-padding-big sass.$comp-padding-big;
         }
     }
 
-    .agal-privacy {
-        .agal-privacy-content {
+    .artdv-privacy {
+        .artdv-privacy-content {
             h2 {
                 padding-top: sass.$comp-padding-small;
             }
         }
     }
 
-    agal-carousel {
-        .agal-carousel-wrapper {
+    artdv-carousel {
+        .artdv-carousel-wrapper {
             padding: sass.$comp-padding-big 0;
         }
     }
     
-    .agal-nav-bar {
+    .artdv-nav-bar {
         height: 100vh;
         width: var(--view-nav-width);
         border-right: solid 2px var(--theme-nav-border);
@@ -144,7 +144,7 @@
         margin: 0 0 0 var(--view-nav-width);
         width: calc(100% - var(--view-nav-width));
 
-        .agal-footer-credits {
+        .artdv-footer-credits {
 
             h3 {
                 margin: 10px 0;
@@ -162,7 +162,7 @@
             }
         }
 
-        .agal-footer-links {
+        .artdv-footer-links {
 
             h4,
             a,
@@ -177,9 +177,9 @@
     }
 
     @media screen and (height <= 600px) {
-        .agal-gallerydetails {
-            .agal-gallerydetails-img {
-                .agal-gallerydetails-img-wrapper {
+        .artdv-gallerydetails {
+            .artdv-gallerydetails-img {
+                .artdv-gallerydetails-img-wrapper {
                     margin: 0 0 calc((1000px - 100vh) * 0.25) 0!important;
                 }
                 img {
@@ -198,21 +198,21 @@
         margin: 0 0 0 var(--view-nav-width);
     }
 
-    .agal-home {
+    .artdv-home {
         header {
             min-height: 500px;
             max-height: 700px;
             height: 80vh;
         }
-        .agal-home-top-img {
+        .artdv-home-top-img {
             img {
                 width: calc(100% - (sass.$comp-padding-big * 2))!important;
             }
         }
     }
 
-    .agal-about {
-        .agal-about-content {
+    .artdv-about {
+        .artdv-about-content {
             margin: sass.$comp-padding-medium sass.$comp-padding-medium 0 sass.$comp-padding-medium;
         }
         #img1 img {
@@ -220,17 +220,17 @@
             max-height: 700px;
             object-position: center top;
         }
-        .agal-about-text1 {
+        .artdv-about-text1 {
             p {
                 margin: 0 0 0 sass.$comp-padding-medium;
                 font-size: clamp(16px, 2.5vw, 20px);
             }
         }
-        .agal-about-additional {
+        .artdv-about-additional {
             flex-direction: row;
             margin: sass.$comp-padding-medium;
 
-            .agal-about-text2 {
+            .artdv-about-text2 {
                 width: 60%;
                 p {
                     font-size: clamp(16px, 2.5vw, 20px);
@@ -246,11 +246,11 @@
         }
     }
 
-    .agal-gallerydetails {
-        .agal-gallerydetails-content {
+    .artdv-gallerydetails {
+        .artdv-gallerydetails-content {
             margin: sass.$comp-padding-medium 0!important;
         }
-        .agal-gallerydetails-img {
+        .artdv-gallerydetails-img {
             height: 100vh!important;
             background-position-x: center!important;
             background-position-y: 80%!important;
@@ -264,7 +264,7 @@
             + ($img-widthborder-wrapper * 2) 
             + (clamp(175px, 18vw, 300px) * 2));
 
-            .agal-gallerydetails-img-wrapper {
+            .artdv-gallerydetails-img-wrapper {
                 margin: 0 0 calc((1000px - 100vh) * 0.05) 0!important;
             }
 
@@ -273,23 +273,23 @@
                 max-height: 33vh!important;
             }
         }
-        .agal-gallerydetails-divider {
+        .artdv-gallerydetails-divider {
             width: 55%!important;
         }
     }
 
-    .agal-faq {
-        .agal-faq-wrapper {
+    .artdv-faq {
+        .artdv-faq-wrapper {
             width: 60vw;
             max-width: 700px;
         }
     }
 
-    .agal-archive {
-        .agal-archive-content {
+    .artdv-archive {
+        .artdv-archive-content {
             margin: sass.$comp-padding-medium;
         }
-        .agal-archive-entry {
+        .artdv-archive-entry {
             margin: calc(sass.$comp-padding-small / 2);
             img {
                 max-width: 300px;
@@ -298,29 +298,29 @@
         }
     }
 
-    .agal-imprint,
-    .agal-privacy {
-        .agal-imprint-content,
-        .agal-privacy-content {
+    .artdv-imprint,
+    .artdv-privacy {
+        .artdv-imprint-content,
+        .artdv-privacy-content {
             margin: calc(sass.$comp-padding-medium + sass.$comp-padding-small) sass.$comp-padding-big sass.$comp-padding-big sass.$comp-padding-big;
         }
     }
 
-    .agal-privacy {
-        .agal-privacy-content {
+    .artdv-privacy {
+        .artdv-privacy-content {
             h2 {
                 padding-top: sass.$comp-padding-medium;
             }
         }
     }
 
-    agal-carousel {
-        .agal-carousel-wrapper {
+    artdv-carousel {
+        .artdv-carousel-wrapper {
             padding: sass.$comp-padding-medium 0;
         }
     }
 
-    .agal-nav-bar {
+    .artdv-nav-bar {
         height: 100vh;
         width: var(--view-nav-width);
         border-right: solid 2px var(--theme-nav-border);
@@ -340,7 +340,7 @@
         margin: 0 0 0 var(--view-nav-width);
         width: calc(100% - var(--view-nav-width));
 
-        .agal-footer-credits {
+        .artdv-footer-credits {
 
             h3 {
                 margin: 10px 0;
@@ -358,7 +358,7 @@
             }
         }
 
-        .agal-footer-links {
+        .artdv-footer-links {
             i {
                 width: 17px;
             }
@@ -366,10 +366,10 @@
     }
 
     @media screen and (height <= 700px) {
-        .agal-gallerydetails {
-            .agal-gallerydetails-img {
+        .artdv-gallerydetails {
+            .artdv-gallerydetails-img {
                 background-position-y: 85%!important;
-                .agal-gallerydetails-img-wrapper {
+                .artdv-gallerydetails-img-wrapper {
                     margin: 0 0 calc((1000px - 100vh) * 0.15) 0!important;
                 }
                 img {
@@ -384,7 +384,7 @@
 
 // 768px > width < 1024px
 @media screen and (width <= sass.$device-tablet-landscape) {
-    .agal-scroll-wrapper {
+    .artdv-scroll-wrapper {
         position: relative;
         top: calc(var(--view-nav-width) + 3px);
         section {
@@ -398,7 +398,7 @@
         min-height: calc(100% - (400px + var(--view-nav-width)))!important;
     }
 
-    .agal-home {
+    .artdv-home {
         header {
             min-height: 450px;
             max-height: 600px;
@@ -406,15 +406,15 @@
             background-size: calc(110%);
         }
 
-        .agal-home-top-img {
+        .artdv-home-top-img {
             img {
                 width: 75vw!important;
             }
         }
     }
 
-    .agal-about {
-        .agal-about-content {
+    .artdv-about {
+        .artdv-about-content {
             margin: sass.$comp-padding-small;
         }
         #img1 img {
@@ -422,17 +422,17 @@
             max-height: 600px;
             object-position: center top;
         }
-        .agal-about-text1 {
+        .artdv-about-text1 {
             p {
                 margin: 0 0 0 calc(sass.$comp-padding-small / 2);
                 font-size: clamp(16px, 2.5vw, 20px);
             }
         }
-        .agal-about-additional {
+        .artdv-about-additional {
             flex-direction: row;
             margin: 0 sass.$comp-padding-small sass.$comp-padding-small sass.$comp-padding-small;
 
-            .agal-about-text2 {
+            .artdv-about-text2 {
                 width: 60%;
                 p {
                     font-size: clamp(16px, 2.5vw, 20px);
@@ -449,25 +449,25 @@
         }
     }
 
-    .agal-gallery {
-        .agal-gallery-content {
+    .artdv-gallery {
+        .artdv-gallery-content {
             margin: 50px 5px!important;
 
-            .agal-gallery-cards {
+            .artdv-gallery-cards {
                 margin: 0 3px 1.5px 3px!important;
             }
         }
     }
 
-    .agal-gallerydetails {
-        .agal-gallerydetails-tools {
+    .artdv-gallerydetails {
+        .artdv-gallerydetails-tools {
             top: calc(var(--view-nav-width) + 15px)!important;
             left: sass.$comp-padding-small!important;
         }
-        .agal-gallerydetails-content {
+        .artdv-gallerydetails-content {
             margin: 0 0 sass.$comp-padding-medium 0!important;
         }
-        .agal-gallerydetails-img {
+        .artdv-gallerydetails-img {
             height: 100vh!important;
             background-position-x: center!important;
             background-position-y: -50px!important;
@@ -481,7 +481,7 @@
             + ($img-widthborder-wrapper * 2) 
             + (12vw * 2));
 
-            .agal-gallerydetails-img-wrapper {
+            .artdv-gallerydetails-img-wrapper {
                 margin: 0 0 calc((1000px - 97vh) * 0.5) 0!important;
             }
 
@@ -490,26 +490,26 @@
                 max-height: 30vh!important;
             }
         }
-        .agal-gallerydetails-divider {
+        .artdv-gallerydetails-divider {
             width: 60%!important;
         }
     }
 
-    .agal-faq {
-        .agal-faq-wrapper {
+    .artdv-faq {
+        .artdv-faq-wrapper {
             width: calc(100% - (sass.$comp-padding-big * 2));
         }
-        .agal-faq-coll-title,
-        .agal-faq-coll-content {
+        .artdv-faq-coll-title,
+        .artdv-faq-coll-content {
             font-size: clamp(14px, 1.8vw, 17px);
         }
     }
 
-    .agal-archive {
-        .agal-archive-content {
+    .artdv-archive {
+        .artdv-archive-content {
             margin: sass.$comp-padding-medium;
         }
-        .agal-archive-entry {
+        .artdv-archive-entry {
             margin: calc(sass.$comp-padding-small / 2);
             img {
                 max-width: 300px;
@@ -518,10 +518,10 @@
         }
     }
 
-    .agal-imprint,
-    .agal-privacy {
-        .agal-imprint-content,
-        .agal-privacy-content {
+    .artdv-imprint,
+    .artdv-privacy {
+        .artdv-imprint-content,
+        .artdv-privacy-content {
             margin: sass.$comp-padding-medium;
             a,
             p {
@@ -530,28 +530,28 @@
         }
     }
 
-    .agal-privacy {
-        .agal-privacy-content {
+    .artdv-privacy {
+        .artdv-privacy-content {
             h2 {
                 padding-top: calc(sass.$comp-padding-medium + sass.$comp-padding-small);
             }
         }
     }
 
-    agal-carousel {
-        .agal-carousel-wrapper {
+    artdv-carousel {
+        .artdv-carousel-wrapper {
             padding: sass.$comp-padding-small 0;
         }
     }
 
-    agal-imgfullscale {
+    artdv-imgfullscale {
 
         $border-img: 5px;
         $padding-img: 5px;
         $puffer-space: 3px;
         $gap-sum: calc(($border-img * 2) + ($padding-img * 2) + $puffer-space);
 
-        .agal-imgfullscale-wrapper {            
+        .artdv-imgfullscale-wrapper {            
             img {
                 max-width: calc(100vw - $gap-sum)!important;
                 max-height: calc(100vh - $gap-sum)!important;
@@ -559,8 +559,8 @@
         }
     }
 
-    agal-imgpreload {
-        .agal-gallery-cards-wrapper {
+    artdv-imgpreload {
+        .artdv-gallery-cards-wrapper {
             img {
                 $gallery-cards-margin: 6px;
                 $img-preload-padding: 4px;
@@ -571,7 +571,7 @@
         }
     }
 
-    .agal-nav-bar {
+    .artdv-nav-bar {
         height: var(--view-nav-width)!important;
         width: 100%!important;
         border-right: none;
@@ -591,7 +591,7 @@
         margin: 0;
         width: 100vw;
 
-        .agal-footer-credits {
+        .artdv-footer-credits {
             width:45%!important;
 
             h3 {
@@ -613,7 +613,7 @@
                 aspect-ratio: 1 / 1;
             }
         }
-        .agal-footer-links {
+        .artdv-footer-links {
             width: 55%!important;
 
             h4,
@@ -629,10 +629,10 @@
     }
     
     @media screen and (height >= 1000px) {
-        .agal-gallerydetails {
-            .agal-gallerydetails-img {
+        .artdv-gallerydetails {
+            .artdv-gallerydetails-img {
                 background-position-y: -50px!important;
-                .agal-gallerydetails-img-wrapper {
+                .artdv-gallerydetails-img-wrapper {
                     margin: 0 0 calc((100vh - 1000px) * 0.2) 0!important;
                 }
                 img {
@@ -642,10 +642,10 @@
         }
     }
     @media screen and (height <= 700px) {
-        .agal-gallerydetails {
-            .agal-gallerydetails-img {
+        .artdv-gallerydetails {
+            .artdv-gallerydetails-img {
                 background-position-y: calc(80% - 8vh)!important;
-                .agal-gallerydetails-img-wrapper {
+                .artdv-gallerydetails-img-wrapper {
                     margin: 0 0 calc((1000px - 99vh) * 0.2) 0!important;
                 }
                 img {
@@ -659,8 +659,8 @@
 
 // 500px > width < 768px
 @media screen and (width <= sass.$device-phone-landscape) {
-    .agal-home {
-        .agal-home-top-img {
+    .artdv-home {
+        .artdv-home-top-img {
             padding: sass.$comp-padding-small 0!important;
             justify-content: center!important;
             
@@ -671,24 +671,24 @@
         }
     }
 
-    .agal-about {
-        .agal-about-content {
+    .artdv-about {
+        .artdv-about-content {
             margin: sass.$comp-padding-small;
         }
         #img1 img {
             width: 100%!important;
         }
-        .agal-about-text1 {
+        .artdv-about-text1 {
             margin-left: calc(sass.$comp-padding-small / 2);
             p {
                 font-size: clamp(14px, 2.5vw, 20px);
             }
         }
-        .agal-about-additional {
+        .artdv-about-additional {
             flex-direction: column;
             margin: sass.$comp-padding-small;
 
-            .agal-about-text2 {
+            .artdv-about-text2 {
                 width: 100%;                
                 p {
                     font-size: clamp(14px, 2.5vw, 20px);
@@ -702,8 +702,8 @@
         }
     }
 
-    .agal-gallerydetails {
-        .agal-gallerydetails-img {
+    .artdv-gallerydetails {
+        .artdv-gallerydetails-img {
             height: 100vh!important;
             background-position-x: center!important;
             background-position-y: -50px!important;
@@ -717,7 +717,7 @@
             + ($img-widthborder-wrapper * 2) 
             + (sass.$comp-padding-medium * 2));
 
-            .agal-gallerydetails-img-wrapper {
+            .artdv-gallerydetails-img-wrapper {
                 margin: 0 0 150px 0!important;
             }
 
@@ -725,26 +725,26 @@
                 max-width: calc(100vw - $gap-sum)!important;
             }
         }
-        .agal-gallerydetails-divider {
+        .artdv-gallerydetails-divider {
             width: 70%!important;
         }
     }
 
-    .agal-faq {
-        .agal-faq-wrapper {
+    .artdv-faq {
+        .artdv-faq-wrapper {
             width: calc(100% - (sass.$comp-padding-medium * 2));
         }
-        .agal-faq-coll-title,
-        .agal-faq-coll-content {
+        .artdv-faq-coll-title,
+        .artdv-faq-coll-content {
             font-size: clamp(14px, 1.8vw, 17px);
         }
     }
 
-    .agal-archive {
-        .agal-archive-content {
+    .artdv-archive {
+        .artdv-archive-content {
             margin: sass.$comp-padding-medium;
         }
-        .agal-archive-entry {
+        .artdv-archive-entry {
             margin: calc(sass.$comp-padding-small / 2) 0;
             img {
                 max-width: 500px;
@@ -753,10 +753,10 @@
         }
     }
 
-    .agal-imprint,
-    .agal-privacy {
-        .agal-imprint-content,
-        .agal-privacy-content {
+    .artdv-imprint,
+    .artdv-privacy {
+        .artdv-imprint-content,
+        .artdv-privacy-content {
             margin: sass.$comp-padding-small;
             h2 {
                 font-size: clamp(19px, 3vw, 26px);
@@ -771,11 +771,11 @@
         }
     }
 
-    agal-carousel {
-        .agal-carousel-wrapper {
+    artdv-carousel {
+        .artdv-carousel-wrapper {
             padding: sass.$comp-padding-medium 0;
         }
-        .agal-carousel-default-text-wrapper {
+        .artdv-carousel-default-text-wrapper {
             padding: 0 sass.$comp-padding-small!important;
         }
         img {
@@ -785,7 +785,7 @@
     }
 
     footer {
-        .agal-footer-links {
+        .artdv-footer-links {
             i {
                 bottom: calc(9px - 0.5vw);
             }
@@ -793,10 +793,10 @@
     }
 
     @media screen and (height <= 700px) {
-        .agal-gallerydetails {
-            .agal-gallerydetails-img {
+        .artdv-gallerydetails {
+            .artdv-gallerydetails-img {
                 background-position-y: calc(80% - 8vw)!important;
-                .agal-gallerydetails-img-wrapper {
+                .artdv-gallerydetails-img-wrapper {
                     margin: 0 0 calc((1000px - 99vh) * 0.2) 0!important;
                 }
                 img {
@@ -815,14 +815,14 @@
         min-height: calc(100% - (300px + var(--view-nav-width)))!important;
     }
 
-    .agal-home {
+    .artdv-home {
         header {
             min-height: 350px;
             max-height: 450px;
             height: 60vh;
         }
 
-        .agal-home-top-img {
+        .artdv-home-top-img {
             padding: sass.$comp-padding-small 0!important;
             justify-content: center!important;
             
@@ -833,8 +833,8 @@
         }
     }
 
-    .agal-about {
-        .agal-about-content {
+    .artdv-about {
+        .artdv-about-content {
             flex-direction: column-reverse!important;
 
         }
@@ -848,7 +848,7 @@
                 object-position: center top;
             }
         }
-        .agal-about-text1 {
+        .artdv-about-text1 {
             width: 100%!important;
             margin: calc(sass.$comp-padding-small / 2) 0!important;
             p {
@@ -857,7 +857,7 @@
                 width: 100%!important;
             }
         }
-        .agal-about-additional {
+        .artdv-about-additional {
             flex-direction: column;
             margin: sass.$comp-padding-small;
             p {
@@ -873,17 +873,17 @@
         }
     }
 
-    .agal-gallery {
-        .agal-gallery-content {
+    .artdv-gallery {
+        .artdv-gallery-content {
 
-            .agal-gallery-cards {
+            .artdv-gallery-cards {
                 margin: 0 2px!important;
             }
         }
     }
 
-    .agal-gallerydetails {
-        .agal-gallerydetails-img {
+    .artdv-gallerydetails {
+        .artdv-gallerydetails-img {
             height: 100vh!important;
             background-position-x: center!important;
             background-position-y: -50px!important;
@@ -897,7 +897,7 @@
             + ($img-widthborder-wrapper * 2) 
             + (sass.$comp-padding-small * 2));
 
-            .agal-gallerydetails-img-wrapper {
+            .artdv-gallerydetails-img-wrapper {
                 margin: 0 0 150px 0!important;
             }
 
@@ -907,11 +907,11 @@
         }
     }
 
-    .agal-contact {
-        .agal-contact-content-wrapper {
+    .artdv-contact {
+        .artdv-contact-content-wrapper {
             margin: sass.$comp-padding-small!important;
 
-            .agal-contact-content {
+            .artdv-contact-content {
                 width: calc(100% - (sass.$comp-padding-small * 2))!important;
 
                 form {
@@ -921,11 +921,11 @@
         }
     }
 
-    .agal-archive {
-        .agal-archive-content {
+    .artdv-archive {
+        .artdv-archive-content {
             margin: sass.$comp-padding-small;
         }
-        .agal-archive-entry {
+        .artdv-archive-entry {
             margin: calc(sass.$comp-padding-small / 2) 0;
             img {
                 width: 70vw!important;
@@ -934,10 +934,10 @@
         }
     }
 
-    .agal-imprint,
-    .agal-privacy {
-        .agal-imprint-content,
-        .agal-privacy-content {
+    .artdv-imprint,
+    .artdv-privacy {
+        .artdv-imprint-content,
+        .artdv-privacy-content {
             margin: sass.$comp-padding-small;
             h2 {
                 text-wrap: balance;
@@ -954,24 +954,24 @@
         }
     }
 
-    agal-carousel {
-        .agal-carousel-wrapper {
+    artdv-carousel {
+        .artdv-carousel-wrapper {
             padding: sass.$comp-padding-small 0 0 0;
         }
-        .agal-carousel-default-wrapper {
+        .artdv-carousel-default-wrapper {
             display: flex!important;
             flex-direction: column!important;
-            .agal-carousel-default-text-wrapper {
+            .artdv-carousel-default-text-wrapper {
                 width: calc(100% - 100px)!important;
             }
         }
-        .agal-carousel-arrows {
+        .artdv-carousel-arrows {
             bottom: 5px!important;
         }
     }
 
-    agal-imgfullscale {
-        .agal-imgfullscale-wrapper {
+    artdv-imgfullscale {
+        .artdv-imgfullscale-wrapper {
             img {
                 $border-img: 5px;
                 $padding-img: 5px;
@@ -982,8 +982,8 @@
         }
     }
 
-    agal-imgpreload {
-        .agal-gallery-cards-wrapper {
+    artdv-imgpreload {
+        .artdv-gallery-cards-wrapper {
             img {
                 $gallery-cards-margin: 4px;
                 $img-preload-padding: 4px;
@@ -994,7 +994,7 @@
         }
     }
 
-    .agal-nav-bar {
+    .artdv-nav-bar {
 
         ul {
 
@@ -1009,7 +1009,7 @@
         flex-direction: column-reverse!important;
         height: 300px!important;
 
-        .agal-footer-credits {
+        .artdv-footer-credits {
             width: 100%!important;
             text-align: center;
             h3 {
@@ -1023,14 +1023,14 @@
             }
         }
 
-        .agal-footer-links {
+        .artdv-footer-links {
             margin-top: sass.$comp-padding-small;
             width: 100%!important;
             ul {
                 li {
                     padding: 2px 0!important;
 
-                    .agal-footer-language-select {
+                    .artdv-footer-language-select {
                         max-height: 25px;
                     }
                 }
@@ -1038,10 +1038,10 @@
         }
     }
 
-    .agal-component-snackbar {
+    .artdv-component-snackbar {
         top: var(--view-nav-width)!important;
         left: 0!important;
-        .agal-snackbar-container {
+        .artdv-snackbar-container {
             margin: 15px auto!important;
         }
     }

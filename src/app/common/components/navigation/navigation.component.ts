@@ -9,7 +9,7 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { filter } from "rxjs";
 
 @Component({
-    selector: 'agal-navigation',
+    selector: 'artdv-navigation',
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss',
     standalone: true,
@@ -114,7 +114,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
     private checkThemeData(): ThemeOption {
         if(this.isLocalStorageAvailable) {
-            const theme = localStorage.getItem('agal-theme');
+            const theme = localStorage.getItem('artdv-theme');
             if(!theme) {
                 return ThemeOption.darkMode;
             }
@@ -128,7 +128,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     private setThemeData(theme: ThemeOption) {
         if(this.isLocalStorageAvailable) {
             if(theme) {
-                localStorage.setItem("agal-theme", theme);
+                localStorage.setItem("artdv-theme", theme);
                 this.document.body.setAttribute("data-theme", theme);
                 return;
             }

@@ -4,10 +4,12 @@ import { inject } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { SnackbarMessageService } from './shared/services/snackbar.service';
 import { SnackbarOption } from './shared/enums/snackbar-option.enum';
+import { HttpObservationService } from './shared/services/http-observation.service';
 
 
 export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
     const snackbarService = inject(SnackbarMessageService);
+    const httpObservationService = inject(HttpObservationService);
     return next(req).pipe(
         tap((httpEvent) => {
             if((httpEvent as HttpResponse<any>).status === HttpStatusCode.Ok) {
@@ -20,6 +22,11 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
                         type: SnackbarOption.success,
                         displayTime: 10000
                     });
+                }
+                if(httpbody.url?.includes('/send-email')) {
+                    setTimeout(() => {
+                        httpObservationService.setEmailStatus(true);
+                    }, 1000);
                 }
             }
         })
@@ -42,6 +49,9 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
                     type: SnackbarOption.error,
                     displayTime: 10000
                 })
+            }
+            if(response.url.includes('/send-email')) {
+                httpObservationService.setEmailStatus(false);
             }
             return of(response);
         })

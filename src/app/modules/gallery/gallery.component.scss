@@ -1,12 +1,12 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-.agal-gallery-nav {
+.artdv-gallery-nav {
     display: flex;
     justify-content: center;
     flex-direction: column;
 
-    .agal-gallery-nav-row {
+    .artdv-gallery-nav-row {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -22,12 +22,12 @@
         border-radius: 5px;
     }
 
-    .agal-active-route {
+    .artdv-active-route {
         border-color: var(--theme-active-route);
     }
 }
 
-.agal-gallery-content {
+.artdv-gallery-content {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -35,21 +35,21 @@
     margin: sass.$comp-padding-medium calc(sass.$comp-padding-small + sass.$top-reset-size);
     pointer-events: none;
 
-    .agal-gallery-cards {
+    .artdv-gallery-cards {
         margin: 0 6px 6px 6px;
         pointer-events:all; /* block hover brightness when hovering inbetween */
     }
 
-    &:hover .agal-gallery-cards:not(:hover) {
+    &:hover .artdv-gallery-cards:not(:hover) {
         filter: brightness(45%);
     }
 
-    .agal-gallery-cards:hover {
+    .artdv-gallery-cards:hover {
         filter: drop-shadow(0px 0px 15px var(--theme-contrast-anchor));
     }
 }
 
-.agal-gallery-nodata {
+.artdv-gallery-nodata {
     margin: sass.$comp-padding-big 0;
     color: sass.$color-light-grey;
     font-size: 30px;
