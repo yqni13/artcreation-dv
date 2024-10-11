@@ -4,8 +4,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-const sender = 'lukas.varga@gmx.at'
-const receiver = 'artcreation.dv@gmx.at'
 
 const app = express();
 const port = 3000;
@@ -28,16 +26,16 @@ app.post('/send-email', (req, res) => {
             rejectUnauthorized: false
         },
         auth: {
-            user: sender,
+            user: process.env.SECRET_EMAIL_SENDER,
             pass: process.env.SECRET_EMAIL_PASS
         }
     });
 
-    // TODO(yqni13): add correct from-address starting with beta version
+    // TODO(yqni13): add correct from-address starting with v1.0.0
     const mailOptions = {
-        from: sender,
+        from: process.env.SECRET_EMAIL_SENDER,
         replyTo: email,
-        to: email,
+        to: process.env.SECRET_EMAIL_RECEIVER,
         subject: subject,
         text: message
     };
