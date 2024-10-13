@@ -31,11 +31,11 @@ app.post('/send-email', (req, res) => {
         }
     });
 
-    // TODO(yqni13): add correct from-address starting with v1.0.0
+    // TODO(yqni13): add correct from- and to-address starting with v1.0.0
     const mailOptions = {
         from: process.env.SECRET_EMAIL_SENDER,
         replyTo: email,
-        to: process.env.SECRET_EMAIL_RECEIVER,
+        to: email,
         subject: subject,
         text: message
     };
