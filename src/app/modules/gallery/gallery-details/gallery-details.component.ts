@@ -101,7 +101,8 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
         const data = {
             'referenceNr': this.card?.referenceNr, 
             'type': this.card?.type,
-            'subject': subject
+            'subject': subject,
+            'requestPrice': this.card?.price === 0 && this.card?.type !== ArtworkOptions.originalORprint ? true : false
         };
         
         this.dataShareService.setSharedData(data);

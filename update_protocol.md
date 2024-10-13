@@ -4,6 +4,13 @@
 
 <br>
 
+### 2024/10/13 - $\textsf{update\ 1.0.0-beta.7\ >>\ {\color{pink}1.0.0-beta.8}}$
+
+- $\textsf{\color{teal}Addition:}$ New content (features) added to 'archive' component.
+- $\textsf{\color{green}Change:}$ Issue: <a href="https://github.com/yqni13/artcreation-dv/issues/42">artdv-001</a>.
+- $\textsf{\color{red}Patch:}$ Addressing github dependabot alerts: adapted dependencies.
+- $\textsf{\color{green}Change:}$ Adapted info data of developer in 'imprint' component.
+
 ### 2024/10/03 - $\textsf{update\ 1.0.0-beta.6\ >>\ {\color{pink}1.0.0-beta.7}}$
 
 - $\textsf{\color{teal}Addition:}$ New content (features) added to 'gallery' component.
