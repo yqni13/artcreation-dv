@@ -9,7 +9,7 @@ import { default as galleryData } from "../data/gallery-data.json";
 export class ReferenceCheckService {
 
     private source: GalleryItem[]
-    private referenceCollection: Record<string, ArtworkOptions>;
+    private referenceCollection: Record<string, {type: ArtworkOptions, sale: boolean, price: number|null}>;
 
     constructor() {
         this.source = [];
@@ -39,6 +39,7 @@ export class ReferenceCheckService {
         Object.values(this.source).forEach((entries) => {
             let ref = '';
             let type = null;
+            let price = null;
             Object.entries(entries).forEach(([key, val]) => {
                 if(key === 'referenceNr') {
                     ref = val;
@@ -46,9 +47,30 @@ export class ReferenceCheckService {
                 if(key === 'type') {
                     type = val;
                 }
+                if(key === 'price' && val !== null && val !== 0) {
+                    price = val;
+                }
             })
-            Object.assign(this.referenceCollection, {[ref]: type});
+            Object.assign(this.referenceCollection, {[ref]: {type: type, sale: price ? true : false, price: price}});
         })
+    }
+
+    checkSaleStatusByReference(reference: string): boolean | null {
+        reference = reference.toUpperCase();
+        if(!Object.keys(this.referenceCollection).includes(reference)) {
+            return null;
+        }
+
+        return this.referenceCollection[reference]['sale'];
+    }
+
+    checkPriceByReference(reference: string): number | null {
+        reference = reference.toUpperCase();
+        if(!Object.keys(this.referenceCollection).includes(reference)) {
+            return null;
+        }
+
+        return this.referenceCollection[reference]['price'];
     }
 
     checkReferenceValidity(reference: string): boolean {
@@ -61,6 +83,6 @@ export class ReferenceCheckService {
             return null;
         }
 
-        return this.referenceCollection[reference];
+        return this.referenceCollection[reference]['type'];
     } 
 }

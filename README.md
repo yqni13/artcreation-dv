@@ -1,6 +1,6 @@
 
 # yqni13 artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.7}}$
+$\texttt{\color{teal}{v1.0.0-beta.8}}$
 
 
 
@@ -22,7 +22,7 @@ $\texttt{\color{teal}{v1.0.0-beta.7}}$
 </div>
 <br>
 
-### <a href="https://artcreation-dv.netlify.app/">TRY LIVE DEMO</a> (currently without contact form functionality [NodeJS backend])
+### <a href="https://artcreation-dv.netlify.app/">TRY LIVE DEMO</a> (without BE [mailing] functionality)
 
 <br>
 
@@ -129,12 +129,12 @@ Most of the images are linked with logic to either displaying more details or sc
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.0.0-beta.6\ >>\ {\color{pink}1.0.0-beta.7}}$
+### $\textsf{last\ update\ 1.0.0-beta.7\ >>\ {\color{pink}1.0.0-beta.8}}$
 
-- $\textsf{\color{teal}Addition:}$ New content (features) added to 'gallery' component.
-- $\textsf{\color{green}Change:}$ Added listener to en/disable contact form submit button to avoid unintended sending of same message multiple times.
-- $\textsf{\color{green}Change:}$ Refactored de/en.json to work with placeholder variables for dynamic translations and added missing validation-message translations.
-- $\textsf{\color{green}Change:}$ Renamed project and specific pre-selector to fit domain name later on.
+- $\textsf{\color{teal}Addition:}$ New content (features) added to 'archive' component.
+- $\textsf{\color{green}Change:}$ Issue: <a href="https://github.com/yqni13/artcreation-dv/issues/42">artdv-001</a>.
+- $\textsf{\color{red}Patch:}$ Addressing github dependabot alerts: adapted dependencies.
+- $\textsf{\color{green}Change:}$ Adapted info data of developer in 'imprint' component.
 
 <br>
 
