@@ -57,3 +57,5 @@ app.post('/send-email', (req, res) => {
 app.listen(port, () => {
     console.log(`Node server listening at http://localhost:${port}`);
 });
+
+module.exports = app;
