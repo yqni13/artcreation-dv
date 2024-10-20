@@ -6,14 +6,9 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const port = 3000;
 
 app.use(bodyParser.json());
 app.use(cors());
-
-app.get('/get-check', (req, res) => {
-    res.send({'title': 'Demo get response.', 'text': 'This text does not contain any important data.'})
-});
 
 
 app.post('/send-email', (req, res) => {
@@ -59,6 +54,4 @@ app.post('/send-email', (req, res) => {
     });
 });
 
-app.listen(port, () => {
-    console.log(`Node server listening at http://localhost:${port}`);
-});
+module.exports = app;
