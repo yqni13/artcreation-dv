@@ -4,6 +4,7 @@ import { ContactMailItem } from "../interfaces/ContactMailItems";
 import { SubjectOptions } from "../enums/contact-subject.enum";
 import { HttpClient } from "@angular/common/http";
 import { ArtworkOptions } from "../enums/artwork-option.enum";
+import { environment } from "../../../environments/environment";
 
 
 @Injectable({
@@ -20,7 +21,7 @@ export class MailService {
         // TODO(yqni13): clean input before use
 
         // endpoint backend (server-custom.js)
-        this.url = 'http://localhost:3000/send-email';
+        this.url = environment.API_BASE_URL + '/send-email';
     }
 
     setMailData(data: ContactMailItem) {
