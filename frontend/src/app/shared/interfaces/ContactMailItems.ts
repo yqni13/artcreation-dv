@@ -1,8 +1,12 @@
-export declare interface ContactMailItem {
+export declare interface ContactFormItem {
     subject: string,
     referenceNr?: string,
-    email: string,
+    to: string,
+    honorifics: string,
+    title: string,
     firstName: string,
     lastName: string,
-    message: string
+    price: string,
+    type: string,
+    body: string
 } 

@@ -10,11 +10,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+// demo for communication check
+app.get('', async (req, res) => {
+    res.send('communication works on artcreation-dv');
+})
 
 app.post('/send-email', (req, res) => {
+    const email = req.body.to;
     const subject = req.body.subject
-    const email = req.body.email;
-    const message = req.body.message;
+    const message = req.body.body;
 
     const transporter = nodemailer.createTransport({
         service: 'gmx',
@@ -43,13 +47,14 @@ app.post('/send-email', (req, res) => {
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             if(error.responseCode === 535) {
-                res.status(535).json({'title': 'Auth Error sending email.', 'text': 'Please contact developer at http://yqni13.github.io/portfolio.'})
+                res.status(535).json({'title': 'Auth Error sending email.', 'text': 'Please contact developer at http://yqni13.github.io/portfolio.', 'error': error})
             } else {
-                res.status(500).json({'title': 'Server Error sending email.', 'text': 'Please try again later.'});
+                res.status(500).json({'title': 'Server Error sending email.', 'text': 'Please try again later.', 'error': error});
             }
+            console.log('Error: ', error);
         } else {
             console.log('Email sent:', info.response);
-            res.status(200).json({'title': 'Email sent successfully', 'text': `Email sent from user: ${email}`});
+            res.status(200).json({'title': 'Email sent successfully', 'text': `Email sent from user: ${email}`, 'messageID': info.messageId});
         }
     });
 });

@@ -12,9 +12,6 @@ RUN npm cache clean --force
 # copy source code into image
 COPY . .
 
-# provide compatibility of build for different browsers
-RUN npx ngcc --properties es2023 browser module main --first-only --create-ivy-entry-points
-
 # parameter to adapt api url on prod
 ARG API_URL
 ENV API_URL=${API_URL}

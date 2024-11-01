@@ -1,7 +1,7 @@
 services:
   frontend:
     image: artcreation-dv_frontend
-    container_name: artcreation-dv_fe-container
+    container_name: artdv-frontend
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
@@ -16,7 +16,7 @@ services:
 
   backend:
     image: artcreation-dv_backend
-    container_name: artcreation-dv_be-container
+    container_name: artdv-backend
     build:
       context: ./backend
       dockerfile: ./Dockerfile
