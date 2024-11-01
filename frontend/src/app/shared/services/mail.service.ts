@@ -32,7 +32,6 @@ export class MailService {
 
         // endpoint backend (server-custom.js)
         this.url = environment.API_BASE_URL + '/send-email';
-        console.log("environment url: ", this.url);
     }
 
     setMailData(data: any) {
