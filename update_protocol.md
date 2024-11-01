@@ -4,6 +4,10 @@
 
 <br>
 
+### 2024/11/01 - $\textsf{update\ 1.0.0-beta.8\ >>\ {\color{pink}1.0.0-beta.9}}$
+
+- $\textsf{\color{green}Change:}$ Added dockerization and selected new hosting service. Working Backend functionality now available.
+
 ### 2024/10/13 - $\textsf{update\ 1.0.0-beta.7\ >>\ {\color{pink}1.0.0-beta.8}}$
 
 - $\textsf{\color{teal}Addition:}$ New content (features) added to 'archive' component.

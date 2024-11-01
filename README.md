@@ -1,13 +1,13 @@
 
 # yqni13 artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.8}}$
+$\texttt{\color{teal}{v1.0.0-beta.9}}$
 
 
 
 <br><br>
 
 <div>
-      <img src="public/assets/readme/responsive_overview.png">
+      <img src="frontend/public/assets/readme/responsive_overview.png">
 </div>
 
 ### Technology
@@ -15,14 +15,15 @@ $\texttt{\color{teal}{v1.0.0-beta.8}}$
 <div style="display:flex; align-items:center;">    
       <img src="https://img.shields.io/badge/Angular-%23DD0031.svg?logo=angular&logoColor=white">
       <img alt="Google Fonts" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-world.net%2Fwp-content%2Fuploads%2F2021%2F03%2FGoogle-Fonts-Logo.png&f=1&nofb=1&ipt=570b1eadbf10850285149faa90b47496e415ec5daf70efb973248c194025a6a5&ipo=images" style="height:auto; width:5%">
-      <img src="public/assets/logo_ico/rxjs_logo32.ico" alt="RxJS">&nbsp;&nbsp;
-      <img src="public/assets/logo_ico/json_logo28.ico" alt="JSON">&nbsp;&nbsp;
-      <img src="public/assets/logo_ico/nodejs_logo32.ico" alt="JSON">&nbsp;&nbsp;
-      <img src="public/assets/logo_ico/i18n_logo32.ico" alt="JSON">
+      <img src="frontend/public/assets/logo_ico/rxjs_logo32.ico" alt="RxJS">&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/json_logo28.ico" alt="JSON">&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/nodejs_logo32.ico" alt="JSON">&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/i18n_logo32.ico" alt="JSON">
 </div>
 <br>
 
 ### <a href="https://artcreation-dv.netlify.app/">TRY LIVE DEMO</a> (without BE [mailing] functionality)
+### <a href="https://artcreation-dv.onrender.com">TRY LIVE DEMO</a> (with working BE [mailing] functionality => sends mail only back to sender)
 
 <br>
 
@@ -35,6 +36,20 @@ Get startet with `npm install` to create necessary modules and run `ng serve` to
 ### BUILD & DEPLOY
 This project is currently hosted by Netlify <a href="https://app.netlify.com/">LINK</a> with the custom URL "https://artcreation-dv.netlify.app/" without backend functionality. Hosting is fully automated and only access to the repository is necessary to build the app and run deployment.
 
+
+### DOCKER CMD
+
+Build the necessary docker images and containers on different ways: #1 simple commands<br>
+[frontend]<br>
+yourpath/artcreation-dv/frontend> `docker build -t artcreation-dv_frontend .`<br>
+yourpath/artcreation-dv/frontend> `docker run --name artcreation-dv -p 4200:4200 frontend`<br>
+[backend]<br>
+yourpath/artcreation-dv/backend> `docker build -t artcreation-dv_backend .`<br>
+yourpath/artcreation-dv/backend> `docker run --name artcreation-dv -it -p 3000:3000 backend`<br>
+or with #2 docker-compose.yaml<br>
+yourpath/artcreation-dv> `docker compose up -d`<br>
+Remove containers and images via command:<br>
+`docker compose down --rmi=all`
 <br><br>
 
 ## Overview
@@ -62,7 +77,7 @@ This project is currently hosted by Netlify <a href="https://app.netlify.com/">L
 For contacting the artist regarding ordering a product or other requests, there is a form to fill in which works currently not in live version due to missing backend hosting. The combination of customized form components, validation structure and logic (frontend/backend service, nodemailer & Node.js) sends an email via predefined no-reply account to the artist. Custom validation checks for required input, correct format of necessary reference number and valid selection (see figure 2; message "ReferenceNr '561H65' does not exist").
 
 <div align="center">
-      <img src="public/assets/readme/responsive_form.jpg" alt="&nbsp;no picture found">
+      <img src="frontend/public/assets/readme/responsive_form.jpg" alt="&nbsp;no picture found">
       Figure 2
 </div>
 
@@ -73,7 +88,7 @@ For contacting the artist regarding ordering a product or other requests, there 
 Due to the interest of artist and art fans around the globe, the webpage was developed primarily in english. Additionally, internationalization was implemented (via ngx-translate/core & /http-loader) and at this point 2 languages are available to select (see Figure 3). Dynamic and static texts can be displayed in english or german by choosing the regarding option in the footer. The value gets saved in the localstorage (same as the colour theme) and will stay translated in the selected language. To improve maintanence, the TranslateHttpLoader was customized to join multiple .json files for the same language translation rather than the usual way with only 1 file per language (see custom-translate-loader.ts). 
 
 <div align="center">
-      <img src="public/assets/readme/i18n.gif" alt="&nbsp;no picture found">
+      <img src="frontend/public/assets/readme/i18n.gif" alt="&nbsp;no picture found">
       Figure 3
 </div>
 
@@ -84,7 +99,7 @@ Due to the interest of artist and art fans around the globe, the webpage was dev
 In case of unexpected responses or to visually confirm actions, a customized snackbar will appear on the right upper side (or centered for mobile < 500px width). The snackbar can easily be constructed by 2 required inputs (title + type) or more advanced up to 5 input options. For better visual contrast, 4 types (error, info, success, warning) differ additionally in colors. Figure 4 shows an error message, that the email could not be sent (red highlighted) which is triggered by the response caught in the http-interceptor (case of no active backend).
 
 <div align="center">
-      <img src="public/assets/readme/responsive_snackbar.jpg" alt="&nbsp;no picture found">
+      <img src="frontend/public/assets/readme/responsive_snackbar.jpg" alt="&nbsp;no picture found">
       Figure 4
 </div>
 
@@ -95,7 +110,7 @@ In case of unexpected responses or to visually confirm actions, a customized sna
 Instead of using the predefined @defer blocks of Angular to provide lazy loading, this webpage uses a customized preload/lazy loading via HostListeners. Opening the "Gallery" component, all pictures inside the viewport will be rendered. Additionally, a certain number of images that are below the viewport get loaded in the same instance to provide a buffer of already rendered images when scrolling. HostListeners also keep preloading images when scrolling to optimize the user experience. Figure 5 shows the loading of the displaying 6 images inside the viewport + the next 3 rows of pre-rendered images in the network tab of DevTools.
 
 <div align="center">
-      <img src="public/assets/readme/custom-preload.gif" alt="&nbsp;no picture found">
+      <img src="frontend/public/assets/readme/custom-preload.gif" alt="&nbsp;no picture found">
       Figure 5
 </div>
 
@@ -106,9 +121,9 @@ Instead of using the predefined @defer blocks of Angular to provide lazy loading
 The webpage offeres two theme settings: $\textsf{\color{gray}{dark mode}}$ & $\textsf{\color{goldenrod}{light mode}}$. The information on the active setting is stored in the localstorage with dark mode as default setting at the beginning.
 
 <div align="center">
-      <img src="public/assets/readme/responsive_darkmode.jpg">
+      <img src="frontend/public/assets/readme/responsive_darkmode.jpg">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="public/assets/readme/responsive_lightmode.jpg">
+      <img src="frontend/public/assets/readme/responsive_lightmode.jpg">
       Figure 6
 </div>
 
@@ -119,7 +134,7 @@ The webpage offeres two theme settings: $\textsf{\color{gray}{dark mode}}$ & $\t
 Most of the images are linked with logic to either displaying more details or scaling up. In the archive, regarding news, text is displayed and click on the magnifier shows the image in max display resolution. The previews in the gallery open up the museums-view and all the details regarding the artwork. Another click on the picture also displays in max display resolution (see figure 7).
 
 <div align="center">
-      <img src="public/assets/readme/image_reactive.gif" alt="&nbsp;no picture found">
+      <img src="frontend/public/assets/readme/image_reactive.gif" alt="&nbsp;no picture found">
       Figure 7
 </div>
 
@@ -129,18 +144,14 @@ Most of the images are linked with logic to either displaying more details or sc
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.0.0-beta.7\ >>\ {\color{pink}1.0.0-beta.8}}$
+### $\textsf{last\ update\ 1.0.0-beta.8\ >>\ {\color{pink}1.0.0-beta.9}}$
 
-- $\textsf{\color{teal}Addition:}$ New content (features) added to 'archive' component.
-- $\textsf{\color{green}Change:}$ Issue: <a href="https://github.com/yqni13/artcreation-dv/issues/42">artdv-001</a>.
-- $\textsf{\color{red}Patch:}$ Addressing github dependabot alerts: adapted dependencies.
-- $\textsf{\color{green}Change:}$ Adapted info data of developer in 'imprint' component.
+- $\textsf{\color{green}Change:}$ Added dockerization and selected new hosting service. Working Backend functionality now available.
 
 <br>
 
 ### Aimed objectives for next $\textsf{\color{green}minor}$ update:
 <dl>
-      <dd>- change host to deploy working backend</dd>
       <dd>- selection of numbers of articles to order via contact form</dd>
       <dd>- real text content</dd>
       <dd>- correct email accounts to recieve and send in BE</dd>

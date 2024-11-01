@@ -1,0 +1,12 @@
+**/node_modules
+**/.git
+**/README.md
+**/update_protocol.md
+**/.vscode
+**/coverage
+**/.env
+**/dist
+**/docs
+**/.editorconfig
+**/npm-debug.log
+**/LICENSE
