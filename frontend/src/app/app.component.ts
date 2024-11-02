@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './common/components/navigation/navigation.component';
 import { FooterComponent } from './common/components/footer/footer.component';
@@ -19,14 +19,14 @@ import { CommonModule, DOCUMENT } from '@angular/common';
     FooterComponent
   ]
 })
-export class AppComponent implements AfterViewInit, OnDestroy{
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
 
   protected title = 'artcreation-dv';
   protected scrollbarActive: boolean;
 
   private scrollbarRoutes: string[];
   private listenerDefault!: () => void;
-  private scrollAnchor: HTMLElement;
+  private scrollAnchor!: HTMLElement;
 
   constructor(
     protected snackbarService: SnackbarMessageService,
@@ -38,10 +38,8 @@ export class AppComponent implements AfterViewInit, OnDestroy{
     this.scrollbarActive = false;
     this.scrollbarRoutes = [
       '/imprint',
-      '/privacy',
-      '/gallery'
+      '/privacy'
     ];    
-    this.scrollAnchor = this.elRef.nativeElement.querySelector(".artdv-scroll-anchor");
     
     router.events.subscribe(e => {
       if(e instanceof NavigationStart) {
@@ -54,6 +52,10 @@ export class AppComponent implements AfterViewInit, OnDestroy{
         }
       }
     })
+  }
+
+  ngOnInit() {
+    this.scrollAnchor = this.elRef.nativeElement.querySelector(".artdv-scroll-anchor");
   }
 
   scrollToTop() {
