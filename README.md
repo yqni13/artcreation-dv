@@ -146,6 +146,7 @@ Most of the images are linked with logic to either displaying more details or sc
 
 ### $\textsf{last\ update\ 1.0.0-beta.9\ >>\ {\color{pink}1.0.0-beta.10}}$
 
+- $\textsf{\color{red}Bugfix:}$ Contact form displays all fields as expected before and after usage. [Before: After sending a request, the form would not display the fields 'price' and 'type' => specific reset was necessary.]
 - $\textsf{\color{green}Change:}$ Removed scrollbar from 'gallery' page.
 - $\textsf{\color{red}Bugfix:}$ Scroll-to-top works again as expected. [Before: Element 'scrollAnchor' got value assigned inside constructor which now leads to null and can't scroll to top => assign value inside ngOnInit lifecycle instead.]
 - $\textsf{\color{red}Bugfix:}$ Sending an general request mail works as expected. [Before: Mail form was invalid for subject 'general request', because field 'type' was invalid due to no chosen reference-number and missing value of 'type' => validator gets removed in case of subject 'general request'.]
