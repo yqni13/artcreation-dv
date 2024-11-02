@@ -107,7 +107,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
             tap((isStatus200: boolean) => {
                 if(isStatus200) {
                     this.checkParametersFromGallery(null)
-                    this.initForm();
+                    this.resetForm();
                 }
 
                 this.setButtonUsage(true);
@@ -238,6 +238,15 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         }        
     }
 
+    configSubjectByChanges(event: any) {
+        if(event.target?.value === SubjectOptions.generalRequest) {
+            this.contactForm.get('type')?.removeValidators(Validators.required);
+            this.contactForm.get('type')?.setErrors(null); // no error in this case for type required
+        } else {
+            this.contactForm.get('type')?.addValidators(Validators.required);
+        }
+    }
+
     configTypeByChanges(event: any) {
         this.contactForm.get('type')?.setValue(event.target?.value);
     }
@@ -269,6 +278,14 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
             this.submitButton.nativeElement.classList.add('artdv-readonly');
         }
+    }
+
+    resetForm() {
+        Object.keys(this.contactForm.value).forEach((key) => {
+            this.contactForm.get(key)?.setValue('');
+            this.contactForm.get(key)?.markAsUntouched();
+            this.contactForm.get(key)?.setErrors(null);
+        })
     }
 
     ngOnDestroy() {

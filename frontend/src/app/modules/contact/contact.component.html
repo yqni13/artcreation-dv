@@ -25,7 +25,7 @@
                         [options]="subjectOptions"
                         [optionsTranslateRoot]="'shared.enum.contact-subject.'"
                         [fieldName]="'modules.contact.form.fieldNames.subject' | translate"
-                        (byChange)="configRefNrByType()"
+                        (byChange)="configRefNrByType(); configSubjectByChanges($event)"
                         [ngClass]="selectedParams['subject'] === subjectOptions.artOrder ||
                         selectedParams['subject'] === subjectOptions.specificInformation 
                         ? 'artdv-query-value artdv-readonly' 
