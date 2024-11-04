@@ -18,7 +18,7 @@ ENV API_URL=${API_URL}
 
 # run js-script to replace env var(s) and build application
 RUN node replace-env.js
-RUN npm run build --prod
+RUN npm run build:prod
 
 
 # nginx static webserver phase
