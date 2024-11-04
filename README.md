@@ -17,13 +17,13 @@ $\texttt{\color{teal}{v1.0.0-beta.10}}$
       <img alt="Google Fonts" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-world.net%2Fwp-content%2Fuploads%2F2021%2F03%2FGoogle-Fonts-Logo.png&f=1&nofb=1&ipt=570b1eadbf10850285149faa90b47496e415ec5daf70efb973248c194025a6a5&ipo=images" style="height:auto; width:5%">
       <img src="frontend/public/assets/logo_ico/rxjs_logo32.ico" alt="RxJS">&nbsp;&nbsp;
       <img src="frontend/public/assets/logo_ico/json_logo28.ico" alt="JSON">&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/nodejs_logo32.ico" alt="JSON">&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/i18n_logo32.ico" alt="JSON">
+      <img src="frontend/public/assets/logo_ico/nodejs_logo32.ico" alt="NodeJS">&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/i18n_logo32.ico" alt="i18n">&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/docker_logo32.ico" alt="Docker">
 </div>
 <br>
 
-### <a href="https://artcreation-dv.netlify.app/">TRY LIVE DEMO</a> (without BE [mailing] functionality)
-### <a href="https://artcreation-dv.onrender.com">TRY LIVE DEMO</a> (with working BE [mailing] functionality => sends mail only back to sender)
+### <a href="https://artcreation-dv.netlify.app/">TRY LIVE DEMO</a> (contact form sends request to your 'from' email for demo)
 
 <br>
 
@@ -33,20 +33,26 @@ $\texttt{\color{teal}{v1.0.0-beta.10}}$
 
 Get startet with `npm install` to create necessary modules and run `ng serve` to start on local dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files. To activate the backend (to use email service for the contact form) run command `node server-custom.js` on port 3000.
 
-### BUILD & DEPLOY
-This project is currently hosted by Netlify <a href="https://app.netlify.com/">LINK</a> with the custom URL "https://artcreation-dv.netlify.app/" without backend functionality. Hosting is fully automated and only access to the repository is necessary to build the app and run deployment.
-
-
-### DOCKER CMD
-
-Build the necessary docker images and containers on different ways: #1 simple commands<br>
+### Build & Deploy
+This project is currently hosted by 2 different hosting services. Frontend is hosted by <a href="https://app.netlify.com/">Netlify</a> and for the backend part <a href="https://vercel.com/">Vercel</a> is used to deploy and host. Both services require environment variables, which are provided in Angular as .js files and in NodeJS as .env files (the .env needs to be in root of backend):<br>
 [frontend]<br>
+var: API_BASE_URL, val: url/port you use for backend, default=https://localhost:3000<br>
+[backend]<br>
+var: SECRET_EMAIL_RECEIVER, val: receiver email<br>
+var: SECRET_EMAIL_SENDER, val: sender email you need to setup yourself<br>
+var: SECRET_EMAIL_PASS, val: sender email password for external use<br>
+
+### Docker CMD
+
+Docker-ready to create images and containers on different ways in *Powershell*: #1 manual for FE/BE<br>
+[frontend]<br>
+yourpath/artcreation-dv/frontend> $env:API_URL="http://localhost:3000"<br>
 yourpath/artcreation-dv/frontend> `docker build -t artcreation-dv_frontend .`<br>
 yourpath/artcreation-dv/frontend> `docker run --name artcreation-dv -p 4200:4200 frontend`<br>
 [backend]<br>
 yourpath/artcreation-dv/backend> `docker build -t artcreation-dv_backend .`<br>
 yourpath/artcreation-dv/backend> `docker run --name artcreation-dv -it -p 3000:3000 backend`<br>
-or with #2 docker-compose.yaml<br>
+or #2 in one go via docker-compose.yaml<br>
 yourpath/artcreation-dv> `docker compose up -d`<br>
 Remove containers and images via command:<br>
 `docker compose down --rmi=all`

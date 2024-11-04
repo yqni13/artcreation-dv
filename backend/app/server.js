@@ -12,7 +12,7 @@ app.use(cors());
 
 // demo for communication check
 app.get('', async (req, res) => {
-    res.send('artcreation-dv backend active');
+    res.send('artcreation-dv backend active!');
 })
 
 app.post('/send-email', (req, res) => {
