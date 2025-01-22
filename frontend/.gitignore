@@ -7,6 +7,7 @@
 /tmp
 /out-tsc
 /bazel-out
+public/assets/temp
 
 # Node
 /node_modules
