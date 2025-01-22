@@ -24,8 +24,8 @@ export class FooterComponent implements OnInit {
     @HostListener('window:click', ['$event'])
     clickOutside($event: any) {
         if(!$event.target.className.includes('artdv-language-element')) {
-                this.showLanguageList = false;
-            }
+            this.showLanguageList = false;
+        }
     }
 
     protected language = LanguageOption;

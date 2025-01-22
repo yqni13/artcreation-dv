@@ -31,16 +31,10 @@ $\texttt{\color{teal}{v1.0.0-beta.10}}$
 
 ### Start
 
-Get startet with `npm install` to create necessary modules and run `ng serve` to start on local dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files. To activate the backend (to use email service for the contact form) run command `node server-custom.js` on port 3000.
+Get startet with `npm install` (/frontend and /backend) to create necessary modules and run `ng serve` to start on local dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files. To activate the backend (to use email service for the contact form) run command `node server-custom.js` on port 3000.
 
 ### Build & Deploy
-This project is currently hosted by 2 different hosting services. Frontend is hosted by <a href="https://app.netlify.com/">Netlify</a> and for the backend part <a href="https://vercel.com/">Vercel</a> is used to deploy and host. Both services require environment variables, which are provided in Angular as .js files and in NodeJS as .env files (the .env needs to be in root of backend):<br>
-[frontend]<br>
-var: API_BASE_URL, val: url/port you use for backend, default=https://localhost:3000<br>
-[backend]<br>
-var: SECRET_EMAIL_RECEIVER, val: receiver email<br>
-var: SECRET_EMAIL_SENDER, val: sender email you need to setup yourself<br>
-var: SECRET_EMAIL_PASS, val: sender email password for external use<br>
+This project is currently hosted by 2 different hosting services. Frontend is hosted by <a href="https://app.netlify.com/">Netlify</a> and for the backend part <a href="https://vercel.com/">Vercel</a> is used to deploy and host.
 
 ### Docker CMD
 
