@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'stylesheets/utilities' as sass;
 
-@import 'stylesheets/defines.scss';
-@import 'stylesheets/icons.scss';
-@import 'stylesheets/media.scss';
-@import 'stylesheets/forms.scss';
+@forward 'stylesheets/defines.scss';
+@forward 'stylesheets/icons.scss';
+@forward 'stylesheets/media.scss';
+@forward 'stylesheets/forms.scss';
 
 
 html {

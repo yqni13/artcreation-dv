@@ -29,7 +29,6 @@ import { FloatPrecisionPipe } from "../../common/pipes/float-precision.pipe";
         CommonModule,
         CastAbstractToFormControlPipe,
         FormsModule,
-        FloatPrecisionPipe,
         ReactiveFormsModule,
         RouterModule,
         SelectInputComponent,

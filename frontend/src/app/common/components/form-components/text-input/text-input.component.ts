@@ -3,7 +3,6 @@ import { Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output }
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
-import { CastAbstractToFormControlPipe } from "../../../pipes/cast-abstracttoform-control.pipe";
 import { AbstractInputComponent } from "../abstract-input.component";
 import { Subscription } from "rxjs";
 
@@ -13,7 +12,6 @@ import { Subscription } from "rxjs";
     styleUrl: './text-input.component.scss',
     imports: [
         CommonModule,
-        CastAbstractToFormControlPipe,
         ReactiveFormsModule,
         ValidationMessageComponent
     ],
