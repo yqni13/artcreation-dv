@@ -15,7 +15,6 @@ import { Component, EventEmitter, HostListener, Input, Output } from "@angular/c
         </div>
     `,
     styleUrl: "./img-fullscale.component.scss",
-    standalone: true,
     imports: [
         CommonModule
     ]

@@ -12,7 +12,6 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
     selector: 'app-archive',
     templateUrl: './archive.component.html',
     styleUrl: './archive.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         DateFormatPipe,

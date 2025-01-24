@@ -27,7 +27,6 @@ import { CommonModule } from "@angular/common";
         </div>
     `,
     styleUrl: "./img-preload.component.scss",
-    standalone: true,
     imports: [
         CommonModule,
         GalleryScrollDirective

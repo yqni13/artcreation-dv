@@ -12,7 +12,6 @@ import { LanguageOption } from "../../../shared/enums/language-option.enum";
     selector: 'artdv-footer',
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         RouterModule,

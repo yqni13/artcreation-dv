@@ -7,17 +7,16 @@ import { SnackbarMessageService } from './shared/services/snackbar.service';
 import { CommonModule, DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  imports: [
-    CommonModule,
-    RouterOutlet, 
-    NavigationComponent,
-    SnackbarComponent,
-    FooterComponent
-  ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        NavigationComponent,
+        SnackbarComponent,
+        FooterComponent
+    ]
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
 

@@ -8,7 +8,6 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
     selector: 'artdv-validation',
     templateUrl: './validation-message.component.html',
     styleUrl: './validation-message.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         TranslateModule,

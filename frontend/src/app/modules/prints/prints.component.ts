@@ -6,7 +6,6 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
     selector: 'app-prints',
     templateUrl: './prints.component.html',
     styleUrl: './prints.component.scss',
-    standalone: true,
     imports: [
         RouterModule,
         TranslateModule

@@ -16,7 +16,6 @@ import { PaintingGenre } from "../../shared/enums/painting-genre.enum";
     selector: 'app-gallery',
     templateUrl: './gallery.component.html',
     styleUrl: './gallery.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         ImgPreloadComponent,

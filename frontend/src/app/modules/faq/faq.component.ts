@@ -9,7 +9,6 @@ import { FAQItems } from "../../shared/interfaces/FAQItems";
     selector: 'app-faq',
     templateUrl: './faq.component.html',
     styleUrl: './faq.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         TranslateModule

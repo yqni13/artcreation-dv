@@ -8,7 +8,6 @@ import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
     selector: 'artdv-snackbar',
     templateUrl: './snackbar.component.html',
     styleUrl: './snackbar.component.scss',
-    standalone: true,
     imports: [
         CommonModule
     ]

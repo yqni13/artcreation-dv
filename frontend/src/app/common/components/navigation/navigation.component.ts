@@ -12,9 +12,8 @@ import { filter } from "rxjs";
     selector: 'artdv-navigation',
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss',
-    standalone: true,
     imports: [
-        CommonModule, 
+        CommonModule,
         RouterModule,
         TranslateModule
     ]
