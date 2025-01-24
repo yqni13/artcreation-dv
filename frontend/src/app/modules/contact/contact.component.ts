@@ -25,7 +25,6 @@ import { FloatPrecisionPipe } from "../../common/pipes/float-precision.pipe";
     selector: 'app-contact',
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         CastAbstractToFormControlPipe,

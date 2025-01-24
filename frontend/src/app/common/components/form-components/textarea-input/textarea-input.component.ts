@@ -9,7 +9,6 @@ import { AbstractInputComponent } from "../abstract-input.component";
     selector: 'artdv-textareainput',
     templateUrl: './textarea-input.component.html',
     styleUrl: './textarea-input.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         CastAbstractToFormControlPipe,

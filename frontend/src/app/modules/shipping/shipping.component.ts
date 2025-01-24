@@ -4,7 +4,6 @@ import { Component } from "@angular/core";
     selector: 'app-shipping',
     templateUrl: './shipping.component.html',
     styleUrl: './shipping.component.scss',
-    standalone: true,
     imports: []
 })
 export class ShippingComponent {

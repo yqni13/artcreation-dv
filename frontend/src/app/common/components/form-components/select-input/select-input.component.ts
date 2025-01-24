@@ -11,7 +11,6 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
     selector: 'artdv-selectinput',
     templateUrl: './select-input.component.html',
     styleUrl: './select-input.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         CastAbstractToFormControlPipe,

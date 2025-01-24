@@ -11,7 +11,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     selector: 'artdv-carousel',
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss'],
-    standalone: true,
     imports: [
         CommonModule,
         DateFormatPipe,

@@ -11,7 +11,6 @@ import { Subscription } from "rxjs";
     selector: 'artdv-textinput',
     templateUrl: './text-input.component.html',
     styleUrl: './text-input.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         CastAbstractToFormControlPipe,
