@@ -1,5 +1,25 @@
 {
     "common": {
+        "backend": {
+            "error": {
+                "data": {
+                    "backend-email": "Your email address is invalid. Check spelling mistakes and structure:\nlocal-part + @ + host-name + '.' + top-level-domain.\nExample: local@host.com",
+                    "backend-required": "Not all necessary data were transferred. Please check your input.",
+                    "backend-server": "Server connection failed. Please try again later or contact our support: lukas.varga@yqni13.com"
+                },
+                "header": {
+                    "AuthenticationException": "Invalid authentication",
+                    "InternalServerException": "Technical error",
+                    "InvalidPropertiesException": "Invalid data"
+                }
+            },
+            "success": {
+                "email": {
+                    "text": "An answer with further information will follow shortly. Your request has been received from the following email address: ",
+                    "title": "THANK YOU FOR REQUESTING"
+                }
+            }
+        },
         "footer": {
             "content": {
                 "archive": "Archive",
