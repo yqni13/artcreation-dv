@@ -46,6 +46,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     protected hasSelectedParameters: boolean; 
     protected hasValidReferenceNr: boolean;
     protected hasReferenceFromParams: boolean;
+    protected isLoadingResponse: boolean;
     protected readonly: boolean;
     protected isOrigORPrint: boolean;
     protected hasPriceZero: boolean;
@@ -76,6 +77,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         this.hasSelectedParameters = false;
         this.hasValidReferenceNr = false;
         this.hasReferenceFromParams = false;
+        this.isLoadingResponse = false;
         this.readonly = true;
         this.isOrigORPrint = false;
         this.hasPriceZero = false;
@@ -107,8 +109,8 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
                     this.checkParametersFromGallery(null)
                     this.resetForm();
                 }
-
                 this.setButtonUsage(true);
+                this.isLoadingResponse = false;
             })
         ).subscribe();
     }
@@ -265,6 +267,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
             return;
         }
 
+        this.isLoadingResponse = true;
         this.setButtonUsage(false);
         this.mailService.setMailData(this.contactForm.getRawValue());
         this.mailService.sendMail().subscribe();
