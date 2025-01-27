@@ -13,6 +13,7 @@ import { environment } from "../../../environments/environment";
 export class MailService {
 
     private mailData: ContactFormItem;
+    private mailParams: any;
     private url: string;
 
     constructor(private http: HttpClient) {
@@ -31,7 +32,7 @@ export class MailService {
         // TODO(yqni13): clean input before use
 
         // endpoint backend (server-custom.js)
-        this.url = environment.API_BASE_URL + '/send-email';
+        this.url = environment.API_BASE_URL + '/api/v1/mailing/send';
     }
 
     setMailData(data: any) {
@@ -66,11 +67,17 @@ export class MailService {
             ? this.mailData.referenceNr?.toUpperCase() + `\nType: ${msgPartType}`
             : `--`
 
-        this.mailData.body = `This email was sent by: ${this.mailData.honorifics} ${msgTitle}${this.mailData.firstName} ${this.mailData.lastName}\nReference-Number: ${msgArtworkData}\n\nMessage: ${this.mailData.body}`
+        this.mailData.body = `This email was sent by: ${this.mailData.honorifics} ${msgTitle}${this.mailData.firstName} ${this.mailData.lastName}\nEmail: ${this.mailData.to}\n${this.mailData.referenceNr ? 'Reference-Number: ' + msgArtworkData : ''}\n\nMessage: ${this.mailData.body}`;
+
+        this.mailParams = {
+            sender: this.mailData.to,
+            subject: this.mailData.subject,
+            body: this.mailData.body
+        }
     }
 
     sendMail() {
         this.configMailData();
-        return this.http.post(this.url, this.mailData, { observe: 'response' });        
+        return this.http.post(this.url, this.mailParams, { observe: 'response' });        
     }
 }

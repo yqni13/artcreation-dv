@@ -17,7 +17,6 @@ import { VarDirective } from "../../../common/directives/ng-var.directive";
     selector: 'app-gallery-details',
     templateUrl: './gallery-details.component.html',
     styleUrl: './gallery-details.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         DimensionsFormatPipe,

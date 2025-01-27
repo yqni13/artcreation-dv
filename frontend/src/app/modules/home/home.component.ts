@@ -10,7 +10,6 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
         CarouselComponent,

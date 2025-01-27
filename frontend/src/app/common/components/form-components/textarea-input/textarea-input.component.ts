@@ -2,17 +2,14 @@ import { Component, forwardRef, Input } from "@angular/core";
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
-import { CastAbstractToFormControlPipe } from "../../../pipes/cast-abstracttoform-control.pipe";
 import { AbstractInputComponent } from "../abstract-input.component";
 
 @Component({
     selector: 'artdv-textareainput',
     templateUrl: './textarea-input.component.html',
     styleUrl: './textarea-input.component.scss',
-    standalone: true,
     imports: [
         CommonModule,
-        CastAbstractToFormControlPipe,
         ReactiveFormsModule,
         ValidationMessageComponent
     ],
