@@ -121,6 +121,12 @@
             "message": "The textual content is currently only in german language available. We will provide the translations as soon as possible.",
             "title": "Imprint"
         },
+        "login": {
+            "user": "username",
+            "pass": "password",
+            "login": "login",
+            "logout": "logout"
+        },
         "prints": {
             "message1": "Option to sell prints is not available for the moment. More information will be posted in the news section and in the ",
             "message2": " as soon as possible.",
@@ -132,6 +138,9 @@
         }
     },
     "shared": {
+        "assets": {
+            "author": "\u00a9 image"
+        },
         "enum": {
             "artwork-option": {
                 "handcraft": "handcraft",

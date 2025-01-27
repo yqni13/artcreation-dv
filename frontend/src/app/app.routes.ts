@@ -10,6 +10,8 @@ import { ArchiveComponent } from './modules/archive/archive.component';
 import { ShippingComponent } from './modules/shipping/shipping.component';
 import { PrintsComponent } from './modules/prints/prints.component';
 import { GalleryDetailsComponent } from './modules/gallery/gallery-details/gallery-details.component';
+import { LoginComponent } from './modules/login/login.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -61,6 +63,16 @@ export const routes: Routes = [
         path: 'imprint',
         component: ImprintComponent,
         data: { title: 'imprint', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
+        data: { title: 'login', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: { title: 'dashboard', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'privacy',

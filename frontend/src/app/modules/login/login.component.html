@@ -1,0 +1,39 @@
+<section class="artdv-login">
+    <header>
+        <h1>Login</h1>
+    </header>
+    <div class="artdv-login-content">
+        <div class="artdv-login-input">
+            <form [formGroup]="loginForm">
+                <div class="artdv-login-input-wrapper">
+                    <artdv-textinput
+                        [placeholder]="'modules.login.user' | translate"
+                        [inputType]="'text'"
+                        [formControl]="loginForm.get('user') | controlCast"
+                        [fieldName]="'modules.login.user' | translate"
+                    ></artdv-textinput>
+                </div>
+                <div class="artdv-login-input-wrapper">
+                    <artdv-textinput
+                        [placeholder]="'modules.login.pass' | translate"
+                        [inputType]="'password'"
+                        [ngClass]="'artdv-input-password'"
+                        [formControl]="loginForm.get('user') | controlCast"
+                        [fieldName]="'modules.login.pass' | translate"
+                    ></artdv-textinput>
+                </div>
+            </form>
+            <div class="artdv-login-input-button">
+                <button
+                    type="submit"
+                    (click)="onLogin()"
+                    (keydown.enter)="onLogin()"
+                    [attr.aria-disabled]="true"
+                >{{'modules.login.login' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <span class="artdv-author">
+        <a href="{{authorLink}}" target="_blank">{{'shared.assets.author' | translate}}</a>
+    </span>
+</section>

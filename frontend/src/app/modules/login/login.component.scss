@@ -1,0 +1,76 @@
+@use '../../../stylesheets/utilities' as sass;
+
+
+section {
+    height: 100vh;
+    background-image: url('/assets/temp/login_bg_smaller_01.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+header h1 {
+    margin: calc(sass.$comp-margin-h1 / 2);
+    padding: calc(sass.$comp-margin-h1 / 2) sass.$comp-padding-medium;
+    backdrop-filter: blur(5px);
+    border-radius: sass.$space5;
+    box-shadow: 5px 5px 15px;
+}
+
+.artdv-login-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+}
+
+.artdv-login-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 350px;
+    height: 300px;
+    border: 1px solid sass.$color-ice-white;
+    box-shadow: 5px 5px 15px;
+    border-radius: sass.$space5;
+    padding: sass.$comp-padding-medium;
+    backdrop-filter: blur(10px);
+    
+    form {
+        width: 100%;
+    }
+
+    .artdv-login-input-wrapper {
+        width: 100%;
+        margin-bottom: sass.$space5;
+    }
+
+    .artdv-login-input-button {
+        
+        button {
+            color: var(--theme-contrast-text);
+            font-weight: bold;
+            width: 100%;
+            padding: 7.5px 6px;
+            margin: sass.$space15 0;
+            border-radius: sass.$space5;
+            &:hover {
+                cursor: pointer;
+                border: solid 2px var(--theme-contrast-text);
+                text-shadow: 1px 1px 1px sass.$color-fullscale-bg;
+            }
+        }
+    }
+}
+
+.artdv-author {
+    position: relative;
+    margin-bottom: sass.$space5;
+    
+    a {
+        color: sass.$color-ice-white;
+        padding: sass.$space5 sass.$space15;
+        text-decoration: none;
+        cursor: help;
+        font-size: 11px;
+    }
+}
