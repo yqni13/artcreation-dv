@@ -8,6 +8,7 @@
 /out-tsc
 /bazel-out
 public/assets/temp
+public/assets/logo
 
 # Node
 /node_modules
