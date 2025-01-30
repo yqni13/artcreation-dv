@@ -4,6 +4,10 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { TextInputComponent } from "../../common/components/form-components/text-input/text-input.component";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { CastAbstractToFormControlPipe } from "../../common/pipes/cast-abstracttoform-control.pipe";
+import { EncryptionService } from "../../shared/services/encryption.service";
+import { AuthService } from "../../shared/services/auth.service";
+import { TokenService } from "../../shared/services/token.service";
+import { TokenOptions } from "../../shared/enums/token-options.enum";
 
 @Component({
     selector: 'app-login',
@@ -27,7 +31,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     constructor(
         private readonly fb: FormBuilder,
-        private readonly translate: TranslateService
+        private readonly auth: AuthService,
+        private readonly translate: TranslateService,
     ) {
         this.loginForm = new FormGroup({});
         this.isLoadingResponse = false;
@@ -69,14 +74,25 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
         this.isLoadingResponse = true;
         this.setButtonStatus(false);
-        // login call
+        this.auth.login(
+            this.loginForm.get('user')?.value,
+            this.loginForm.get('pass')?.value
+        ).subscribe((response) => {
+            console.log(response);
+        })
+    }
+
+    logout() {
+        this.auth.logout();
     }
 
     private setButtonStatus(isEnabled: boolean) {
-        if(isEnabled) {
-            this.loginButton.nativeElement.classList.remove('artdv-readonly');
-        } else {
-            this.loginButton.nativeElement.classList.add('artdv-readonly');
+        if(this.loginButton) {
+            if(isEnabled) {
+                this.loginButton.nativeElement.classList.remove('artdv-readonly');
+            } else {
+                this.loginButton.nativeElement.classList.add('artdv-readonly');
+            }
         }
     }
 

@@ -37,6 +37,7 @@
         },
         "navigation": {
             "about": "About",
+            "admin": "Admin",
             "faq": "FAQ",
             "gallery": "Gallery",
             "home": "Home",
@@ -122,10 +123,10 @@
             "title": "Imprint"
         },
         "login": {
-            "user": "username",
-            "pass": "password",
             "login": "login",
-            "logout": "logout"
+            "logout": "logout",
+            "pass": "password",
+            "user": "username"
         },
         "prints": {
             "message1": "Option to sell prints is not available for the moment. More information will be posted in the news section and in the ",

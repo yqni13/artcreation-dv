@@ -37,6 +37,7 @@
         },
         "navigation": {
             "about": "Profil",
+            "admin": "Admin",
             "faq": "Fragen",
             "gallery": "Galerie",
             "home": "Start",
@@ -122,10 +123,10 @@
             "title": "Impressum"
         },
         "login": {
-            "user": "Username",
-            "pass": "Passwort",
             "login": "Anmelden",
-            "logout": "Abmelden"
+            "logout": "Abmelden",
+            "pass": "Passwort",
+            "user": "Username"
         },
         "prints": {
             "message1": "Aktuell sind Kunstdrucke nicht verfügbar. Weitere Informationen werden in der News-Sektion und im ",

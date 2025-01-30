@@ -18,7 +18,7 @@
                         [placeholder]="'modules.login.pass' | translate"
                         [inputType]="'password'"
                         [ngClass]="'artdv-input-password'"
-                        [formControl]="loginForm.get('user') | controlCast"
+                        [formControl]="loginForm.get('pass') | controlCast"
                         [fieldName]="'modules.login.pass' | translate"
                     ></artdv-textinput>
                 </div>
@@ -30,6 +30,14 @@
                     (keydown.enter)="onLogin()"
                     [attr.aria-disabled]="true"
                 >{{'modules.login.login' | translate}}</button>
+            </div>
+            <div class="artdv-login-input-button">
+                <button
+                    type="submit"
+                    (click)="logout()"
+                    (keydown.enter)="logout()"
+                    [attr.aria-disabled]="true"
+                >{{'logout'}}</button>
             </div>
         </div>
     </div>
