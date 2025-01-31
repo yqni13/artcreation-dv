@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        // subscription of login callback?
         this.setButtonStatus(true);
         this.isLoadingResponse = false;
         this.resetForm();

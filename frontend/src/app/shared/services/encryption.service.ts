@@ -10,8 +10,7 @@ export class EncryptionService {
     private key: string;
 
     constructor() {
-        this.key = 'encrypt!135790';
-        // this.key = environment.PRIVATE_DEV_KEY;
+        this.key = environment.PRIVATE_DEV_KEY;
     }
 
     encryptData(data: any): string {

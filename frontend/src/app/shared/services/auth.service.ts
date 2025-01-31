@@ -13,21 +13,7 @@ import { DateTimeService } from "./datetime.service";
 })
 export class AuthService {
 
-    protected msg: string;
-
-    private isAuthenticated: boolean;
-    private redirectUrl: string | null;
-    private authToken: string | null;
-    private siteKey: string;
-    private secretKey: string;
-
-    private readonly TOKEN_KEY: string;
-    private readonly USER_DATA_KEY: string;
-    private readonly SESSION_EXPIRE_KEY: string;
-    private readonly SESSION_DURATION: number;
-
     protected urlLoginAPI: string;
-    protected urlLogoutAPI: string;
 
     constructor(
         private readonly http: HttpClient,
@@ -35,21 +21,7 @@ export class AuthService {
         private readonly datetime: DateTimeService,
         private readonly encrypt: EncryptionService,
     ) {
-        this.msg = '';
-
-        this.isAuthenticated = false;
-        this.redirectUrl = null;
-        this.authToken = null;
-        this.siteKey = '';
-        this.secretKey = '';
-
-        this.TOKEN_KEY = 'tokenData';
-        this.USER_DATA_KEY = 'userData';
-        this.SESSION_EXPIRE_KEY = 'sessionExpireData';
-        this.SESSION_DURATION = 24 * 60 * 60 * 1000;
-
         this.urlLoginAPI = environment.API_BASE_URL + '/api/v1/auth/login'
-        this.urlLogoutAPI = environment.API_BASE_URL + '/api/v1/auth/logout'
     }
 
     login(user: string, pass: string): Observable<any> {
