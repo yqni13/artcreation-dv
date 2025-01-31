@@ -145,7 +145,12 @@ textarea {
 .artdv-anchor {
     cursor: pointer;
     font-weight: bold;
-    color: var(--theme-contrast-anchor);
+    color: var(--theme-contrast-anchor)!important;
+}
+
+.artdv-hidden-anchor {
+    cursor: default;
+    color: var(--theme-body-text)!important;
 }
 
 .artdv-query-value {

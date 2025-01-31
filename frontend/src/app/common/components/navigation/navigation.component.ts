@@ -7,6 +7,7 @@ import { ThemeOption } from "../../../shared/enums/theme-option.enum";
 import _ from 'underscore';
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { filter } from "rxjs";
+import { AuthService } from "../../../shared/services/auth.service";
 
 @Component({
     selector: 'artdv-navigation',
@@ -34,6 +35,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         @Inject(DOCUMENT) private document: Document,
         private navigation: NavigationService,
         private translate: TranslateService,
+        private auth: AuthService,
         private router: Router
     ) {
         this.isLocalStorageAvailable = typeof localStorage !== 'undefined';
@@ -50,6 +52,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         .subscribe((event: any) => {
             this.navigation.setPreviousUrl(this.navigation.getCurrentUrl());
             this.navigation.setCurrentUrl(event.url);
+            this.redirectNotAuthRoute(event.url);
         })
     }
 
@@ -140,6 +143,22 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         if(this.themeModeIcon) {
             this.themeModeIcon.nativeElement.classList.remove(ThemeOption.darkMode, ThemeOption.lightMode);
             this.themeModeIcon.nativeElement.classList.add(this.selectedTheme);
+        }
+    }
+
+    authRoute(auth: boolean | null): boolean {
+        if(!auth || (auth && this.auth.isLoggedIn())) {
+            return true;
+        }
+        return false;
+    }
+
+    redirectNotAuthRoute(url: string) {
+        if(this.auth.isLoggedIn() && url === '/login') {
+            this.router.navigate(['admin']);
+        }
+        if(!this.auth.isLoggedIn() && url === '/admin') {
+            this.router.navigate(['login']);
         }
     }
 }

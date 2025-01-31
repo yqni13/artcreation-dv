@@ -5,6 +5,20 @@
         [readonly]="readonly"
         [formControl]="formControl"
     >
+    <i
+        class="icon-EyeClosed"
+        *ngIf="ngClass === 'artdv-input-password' && !showPassword"
+        (click)="setPasswordVisibility(true)"
+        (keydown.enter)="setPasswordVisibility(true)"
+        [attr.aria-disabled]="true"
+    ></i>
+    <i
+        class="icon-EyeOpen"
+        *ngIf="ngClass === 'artdv-input-password' && showPassword"
+        (click)="setPasswordVisibility(false)"
+        (keydown.enter)="setPasswordVisibility(false)"
+        [attr.aria-disabled]="true"
+    ></i>
     <artdv-validation
         [ngControl]="formControl"
         [fieldName]="fieldName"

@@ -37,6 +37,7 @@
         },
         "navigation": {
             "about": "Profil",
+            "admin": "Admin",
             "faq": "Fragen",
             "gallery": "Galerie",
             "home": "Start",
@@ -121,6 +122,12 @@
             "message": "null",
             "title": "Impressum"
         },
+        "login": {
+            "login": "Anmelden",
+            "logout": "Abmelden",
+            "pass": "Passwort",
+            "user": "Username"
+        },
         "prints": {
             "message1": "Aktuell sind Kunstdrucke nicht verfügbar. Weitere Informationen werden in der News-Sektion und im ",
             "message2": " sobald wie möglich zur Verfügung stehen.",
@@ -132,6 +139,9 @@
         }
     },
     "shared": {
+        "assets": {
+            "author": "\u00a9 bild"
+        },
         "enum": {
             "artwork-option": {
                 "handcraft": "Handwerk",

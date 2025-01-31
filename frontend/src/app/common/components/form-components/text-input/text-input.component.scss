@@ -10,3 +10,17 @@
         padding: 8.5px sass.$comp-form-padding;
     }
 }
+
+i {
+    position: absolute;
+    display: flex;
+    justify-self: end;
+}
+
+.artdv-input-password i {
+    margin: 7.5px 10px 0 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: sass.$color-fullscale-bg;
+}

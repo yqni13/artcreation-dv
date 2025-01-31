@@ -4,19 +4,21 @@
             <img
                 [attr.aria-disabled]="true"
                 class="artdv-nav-logo"
-                src="logo_bold.png" 
+                src="logo.png" 
                 alt="logo to navigate home"
                 routerLink="home"
-            >
+                >
         </li>
-        <li *ngFor="let route of routes">
-            <span
-                class="artdv-nav-routes"
-                [attr.aria-disabled]="true"
-                routerLink="{{ route.path }}"
-                routerLinkActive="artdv-active-route"
-            >{{!isMobileMode ? ('common.navigation.' + route.data?.['title'] | translate) : ''}} <i *ngIf="isMobileMode" class="{{route.data?.['icon']}}"></i></span>
-        </li>
+        <ng-container *ngFor="let route of routes">
+            <li *ngIf="authRoute(route.data?.['onAuth'])">
+                <span
+                    class="artdv-nav-routes"
+                    [attr.aria-disabled]="true"
+                    routerLink="{{ route.path }}"
+                    routerLinkActive="artdv-active-route"
+                >{{!isMobileMode ? ('common.navigation.' + route.data?.['title'] | translate) : ''}} <i *ngIf="isMobileMode" class="{{route.data?.['icon']}}"></i></span>
+            </li>
+        </ng-container>
         <li>
             <span
                 [attr.aria-disabled]="true"

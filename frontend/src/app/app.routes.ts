@@ -10,6 +10,8 @@ import { ArchiveComponent } from './modules/archive/archive.component';
 import { ShippingComponent } from './modules/shipping/shipping.component';
 import { PrintsComponent } from './modules/prints/prints.component';
 import { GalleryDetailsComponent } from './modules/gallery/gallery-details/gallery-details.component';
+import { LoginComponent } from './modules/login/login.component';
+import { AdminComponent } from './modules/admin/admin.component';
 
 export const routes: Routes = [
     {
@@ -21,6 +23,11 @@ export const routes: Routes = [
         path: 'home',
         component: HomeComponent,
         data: { title: 'home', showInNavbar: true, icon:'icon-Home', showInFooterConnect: false, showInFooterInfo: false }
+    },
+    {
+        path: 'admin',
+        component: AdminComponent,
+        data: { title: 'admin', onAuth: true, showInNavbar: true, icon: 'icon-Admin', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'about',
@@ -63,6 +70,11 @@ export const routes: Routes = [
         data: { title: 'imprint', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
+        path: 'login',
+        component: LoginComponent,
+        data: { title: 'login', onAuth: false, showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+    },
+    {
         path: 'privacy',
         component: PrivacyComponent,
         data: { title: 'privacy', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
@@ -71,5 +83,9 @@ export const routes: Routes = [
         path: 'shipping',
         component: ShippingComponent,
         data: { title: 'shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+    },
+    {
+        path: '**',
+        redirectTo: '/home',
     }
 ];
