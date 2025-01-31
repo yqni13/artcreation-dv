@@ -8,6 +8,7 @@ import { EncryptionService } from "../../shared/services/encryption.service";
 import { AuthService } from "../../shared/services/auth.service";
 import { TokenService } from "../../shared/services/token.service";
 import { TokenOptions } from "../../shared/enums/token-options.enum";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-login',
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     protected authorLink: string;
 
     constructor(
+        private readonly router: Router,
         private readonly fb: FormBuilder,
         private readonly auth: AuthService,
         private readonly translate: TranslateService,
@@ -77,13 +79,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
         this.auth.login(
             this.loginForm.get('user')?.value,
             this.loginForm.get('pass')?.value
-        ).subscribe((response) => {
-            console.log(response);
+        ).subscribe(() => {
+            if(this.auth.isLoggedIn()) {
+                this.router.navigate(['admin']);
+            }
         })
-    }
-
-    logout() {
-        this.auth.logout();
     }
 
     private setButtonStatus(isEnabled: boolean) {

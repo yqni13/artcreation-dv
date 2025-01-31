@@ -62,20 +62,28 @@ export class AuthService {
             )
     }
 
-    private setSession(authResponse: AuthResponse) {
-        const expiration = this.datetime.addTimestampWithCurrentMoment(
-            this.datetime.getTimeInMillisecondsFromHourString(authResponse.expiresIn)
-        );
-
-        this.token.setToken(TokenOptions.session_id, authResponse.token);
-        this.token.setToken(TokenOptions.session_expiration, JSON.stringify(expiration));
-    }
-
     logout() {
         this.token.removeToken(TokenOptions.session_id);
         this.token.removeToken(TokenOptions.session_expiration);
     }
 
+    private setSession(authResponse: AuthResponse) {
+        this.token.removeToken(TokenOptions.session_id);
+        this.token.removeToken(TokenOptions.session_expiration);
+        const expiration = this.datetime.addTimestampWithCurrentMoment(
+            this.datetime.getTimeInMillisecondsFromHours(authResponse.expiresIn)
+        );
+        
+        this.token.setToken(TokenOptions.session_id, authResponse.token);
+        this.token.setToken(TokenOptions.session_expiration, JSON.stringify(expiration));
+    }
+
+    isLoggedIn(): boolean {
+        const hasSessionToken = this.token.getToken(TokenOptions.session_id) !== null ? true : false;
+        return hasSessionToken && (this.getExpiration() - Date.now()) > 0 ? true : false;
+    }
+
+    // use to automatically renew token?
     getExpiration() {
         const expirationToken = this.token.getToken(TokenOptions.session_expiration) as unknown;
         return expirationToken as number;

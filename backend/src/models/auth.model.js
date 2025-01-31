@@ -25,10 +25,13 @@ class AuthModel {
             throw new InvalidCredentialsException('Incorrect password.');
         }
 
-        const expiresIn = '6h';
-        const token = jwt.sign({ user_id: user.id }, process.env.SECRET_JWT, {
-            expiresIn: expiresIn
-        });
+        const expiresIn = 6; // input handled as hours
+        const token = jwt.sign({}, process.env.SECRET_ASYMMETRIC_KEY, {
+            algorithm: 'RS256',
+            expiresIn: expiresIn,
+            subject: user.id
+        })
+
         const responseBody = {
             user: user.name,
             user_id: user.id,

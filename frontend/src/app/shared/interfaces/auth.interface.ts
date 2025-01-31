@@ -1,6 +1,6 @@
 export declare interface AuthResponse {
     user: string,
     user_id: string,
-    expiresIn: string,
+    expiresIn: number,
     token: string
 }

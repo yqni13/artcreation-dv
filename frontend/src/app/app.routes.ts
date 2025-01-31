@@ -27,7 +27,7 @@ export const routes: Routes = [
     {
         path: 'admin',
         component: AdminComponent,
-        data: { title: 'admin', showInNavbar: true, icon: 'icon-Admin', showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'admin', onAuth: true, showInNavbar: true, icon: 'icon-Admin', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'about',
@@ -72,7 +72,7 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
-        data: { title: 'login', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'login', onAuth: false, showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'privacy',

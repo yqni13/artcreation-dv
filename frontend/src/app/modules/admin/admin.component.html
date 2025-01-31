@@ -1,0 +1,11 @@
+<section class="artdv-admin">
+    <header>
+        <h1>Dashboard</h1>
+    </header>
+    <button
+                    type="submit"
+                    (click)="logout()"
+                    (keydown.enter)="logout()"
+                    [attr.aria-disabled]="true"
+                >{{'modules.login.logout' | translate}}</button>
+</section>
