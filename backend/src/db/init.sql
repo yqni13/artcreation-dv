@@ -1,0 +1,28 @@
+CREATE TABLE gallery (
+    gallery_id UUID PRIMARY KEY NOT NULL,
+    image_path TEXT NOT NULL,
+    thumbnail_path TEXT NOT NULL,
+    title VARCHAR(100),
+    reference_nr VARCHAR(6) NOT NULL,
+    price NUMERIC(9, 2),
+    art_type VARCHAR(50) NOT NULL,
+    dimensions VARCHAR(50) NOT NULL,
+    keywords TEXT [],
+    comment TEXT,
+    technique TEXT,
+    publication_year NUMERIC,
+    created_on TIMESTAMP NOT NULL,
+    last_modified TIMESTAMP NOT NULL
+);
+
+CREATE TABLE news (
+    news_id UUID PRIMARY KEY NOT NULL,
+    gallery UUID REFERENCES gallery(gallery_id),
+    image_path TEXT,
+    thumbnail_path TEXT,
+    visual_timestamp TIMESTAMP NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    created_on TIMESTAMP NOT NULL,
+    last_modified TIMESTAMP NOT NULL
+);
