@@ -7,5 +7,8 @@ module.exports.ErrorStatusCodes = {
     InvalidTokenException: 401,
     UnexpectedException: 500,
     HealthCheckFailedException: 503,
-    InvalidCredentialsException: 401
+    InvalidCredentialsException: 401,
+    DBConnectionException: 535,
+    DBNotExistingException: 404,
+    DBSyntaxSQLException: 429
 }

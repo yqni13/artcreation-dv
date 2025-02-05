@@ -9,4 +9,7 @@ module.exports.ErrorCodes = {
     HealthCheckFailedException: 7,
     InvalidCredentialsException: 8,
     AuthenticationException: 9,
+    DBConnectionException:10,
+    DBNotExistingException: 11,
+    DBSyntaxSQLException: 12
 };
