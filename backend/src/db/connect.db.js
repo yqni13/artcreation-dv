@@ -51,6 +51,6 @@ class DBConnect {
     }
 }
 
-module.exports = { DBConnect };
+module.exports = DBConnect;
 
 

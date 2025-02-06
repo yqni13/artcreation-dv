@@ -25,12 +25,7 @@ class AuthModel {
             throw new InvalidCredentialsException('Incorrect password.');
         }
 
-        const expiresIn = 6; // input handled as hours
-        const token = jwt.sign({}, process.env.SECRET_ASYMMETRIC_KEY, {
-            algorithm: 'RS256',
-            expiresIn: expiresIn,
-            subject: user.id
-        })
+        const token = this.extendToken(user);
 
         const responseBody = {
             user: user.name,
@@ -41,6 +36,30 @@ class AuthModel {
 
         return responseBody;
     }
+
+    checkToken = async (params) => {
+        if(!Object.keys(params).length) {
+            return { error: 'no params found' };
+        }
+
+        const decryptedToken = jwt.verify(params['accessToken'], process.env.SECRET_ASYMMETRIC_KEY);
+        const user = await UserModel.findOne('user');
+        if(user.id !== decryptedToken.id) {
+            return { error: 'invalid user' };
+        }
+
+        return this.extendToken(user);
+    }
+
+    extendToken = (user) => {
+        const expireInHours = 168 // 7 days
+        const token = jwt.sign({id: user.id}, process.env.SECRET_ASYMMETRIC_KEY, {
+            algorithm: 'RS256',
+            expiresIn: expireInHours
+        });
+
+        return token;
+    }
 }
 
-module.exports = new AuthModel;
+module.exports = new AuthModel();
