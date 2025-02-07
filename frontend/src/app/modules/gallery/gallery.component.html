@@ -14,13 +14,13 @@
         </div>
         <div class="artdv-gallery-nav-row">
             <a
-                *ngFor="let nav of paintingGenres | keyvalue"
+                *ngFor="let nav of artGenres | keyvalue"
                 class="artdv-gallery-nav-type"
                 [attr.aria-disabled]="true"
                 (click)="selectGenre(nav.value)"
                 (keydown.enter)="selectGenre(nav.value)"
                 [ngClass]="activeGenre === nav.key ? 'artdv-active-route' : ''"
-            >{{'shared.enum.painting-genre.' + nav.key | translate}}</a>
+            >{{'shared.enum.art-genre.' + nav.key | translate}}</a>
         </div>
     </nav>
     <div class="artdv-gallery-content">

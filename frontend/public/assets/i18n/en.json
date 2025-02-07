@@ -143,7 +143,25 @@
             "author": "\u00a9 image"
         },
         "enum": {
-            "artwork-option": {
+            "art-genre": {
+                "abstract": "abstract",
+                "creative": "creative",
+                "nature": "nature",
+                "people": "people",
+                "pouring": "pouring",
+                "spiritual": "spiritual"
+            },
+            "art-medium": {
+                "canvas": "Canvas",
+                "other": "Other",
+                "wood": "Wood"
+            },
+            "art-technique": {
+                "acrylic": "Acrylic",
+                "pouring": "Pouring",
+                "other": "Other"
+            },
+            "art-type": {
                 "handcraft": "handcraft",
                 "original": "original",
                 "originalORprint": "original / print",
@@ -161,14 +179,6 @@
             "language": {
                 "de": "German",
                 "en": "English"
-            },
-            "painting-genre": {
-                "abstract": "abstract",
-                "creative": "creative",
-                "nature": "nature",
-                "people": "people",
-                "pouring": "pouring",
-                "spiritual": "spiritual"
             }
         }
     }

@@ -143,7 +143,25 @@
             "author": "\u00a9 bild"
         },
         "enum": {
-            "artwork-option": {
+            "art-genre": {
+                "abstract": "abstrakt",
+                "creative": "kreatives",
+                "nature": "natur",
+                "people": "personen",
+                "pouring": "pouring",
+                "spiritual": "spirituell"
+            },
+            "art-medium": {
+                "canvas": "Leinwand",
+                "other": "Sonstiges",
+                "wood": "Holz"
+            },
+            "art-technique": {
+                "acrylic": "Acryl",
+                "pouring": "Pouring",
+                "other": "Sonstiges"
+            },
+            "art-type": {
                 "handcraft": "Handwerk",
                 "original": "Original",
                 "originalORprint": "Original / Kunstdruck",
@@ -161,14 +179,6 @@
             "language": {
                 "de": "Deutsch",
                 "en": "Englisch"
-            },
-            "painting-genre": {
-                "abstract": "abstrakt",
-                "creative": "kreatives",
-                "nature": "natur",
-                "people": "personen",
-                "pouring": "pouring",
-                "spiritual": "spirituell"
             }
         }
     }

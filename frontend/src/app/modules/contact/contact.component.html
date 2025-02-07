@@ -69,19 +69,19 @@
                         [formControl]="contactForm.get('type') | controlCast"
                         [placeholder]="('modules.contact.form.placeholders.type' | translate) + '*'"
                         [options]="contactForm.get('subject')?.value === subjectOptions.artOrder && isOrigORPrint
-                        ? artworkOptionsOrigORPrint
+                        ? artTypeOrigORPrint
                         : contactForm.get('subject')?.value === subjectOptions.specificInformation &&
-                        contactForm.get('type')?.value === artworkOptionsAll.handcraft
-                        ? artworkOptionsHandcraftOnly
+                        contactForm.get('type')?.value === artTypeAll.handcraft
+                        ? artTypeHandcraftOnly
                         : contactForm.get('subject')?.value === subjectOptions.specificInformation &&
-                        contactForm.get('type')?.value !== artworkOptionsAll.handcraft
-                        ? artworkOptionsPaintingOnly
-                        : artworkOptionsAll"
-                        [optionsTranslateRoot]="'shared.enum.artwork-option.'"
+                        contactForm.get('type')?.value !== artTypeAll.handcraft
+                        ? artTypePaintingOnly
+                        : artTypeAll"
+                        [optionsTranslateRoot]="'shared.enum.art-type.'"
                         [fieldName]="'modules.contact.form.fieldNames.type' | translate"
                         [ngClass]="contactForm.get('subject')?.value === subjectOptions.artOrder && isOrigORPrint
                                     ? 'artdv-query-value' 
-                                    : contactForm.get('subject')?.value === subjectOptions.artOrder || (contactForm.get('subject')?.value === subjectOptions.specificInformation && hasPriceZero && contactForm.get('type')?.value !== artworkOptionsAll.originalORprint)
+                                    : contactForm.get('subject')?.value === subjectOptions.artOrder || (contactForm.get('subject')?.value === subjectOptions.specificInformation && hasPriceZero && contactForm.get('type')?.value !== artTypeAll.originalORprint)
                                     ? 'artdv-query-value artdv-readonly'
                                     : ''"
                         (byChange)="configTypeByChanges($event)"

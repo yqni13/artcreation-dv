@@ -1,7 +1,7 @@
 import { Component, HostListener, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router, RouterModule } from "@angular/router";
 import { GalleryItem } from "../../../shared/interfaces/GalleryItems";
-import { ArtworkOptions } from "../../../shared/enums/artwork-option.enum";
+import { ArtType } from "../../../shared/enums/art-type.enum";
 import { DataShareService } from "../../../shared/services/data-share.service";
 import { FilterGalleryService } from "../../../shared/services/filter-gallery.service";
 import { Subscription } from "rxjs";
@@ -11,7 +11,6 @@ import { FloatPrecisionPipe } from "../../../common/pipes/float-precision.pipe";
 import { ImgFullscaleComponent } from "../../../common/components/img-fullscale/img-fullscale.component";
 import { SubjectOptions } from "../../../shared/enums/contact-subject.enum";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { VarDirective } from "../../../common/directives/ng-var.directive";
 
 @Component({
     selector: 'app-gallery-details',
@@ -24,7 +23,6 @@ import { VarDirective } from "../../../common/directives/ng-var.directive";
         ImgFullscaleComponent,
         RouterModule,
         TranslateModule,
-        VarDirective
     ]
 })
 export class GalleryDetailsComponent implements OnInit, OnDestroy {
@@ -38,7 +36,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
 
     protected card: GalleryItem | null;
 
-    protected artworkOption = ArtworkOptions;
+    protected artworkOption = ArtType;
     protected subject = SubjectOptions;
     protected galleryGenre: string;
     protected isFullscale: boolean;
@@ -59,7 +57,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
             genre: 'gallery',
             tags: null,
             price: null,
-            type: ArtworkOptions.originalORprint,
+            type: ArtType.originalORprint,
             comment: null,
             technique: null,
             measurementsWxH: null,
@@ -101,7 +99,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
             'referenceNr': this.card?.referenceNr, 
             'type': this.card?.type,
             'subject': subject,
-            'requestPrice': this.card?.price === 0 && this.card?.type !== ArtworkOptions.originalORprint ? true : false
+            'requestPrice': this.card?.price === 0 && this.card?.type !== ArtType.originalORprint ? true : false
         };
         
         this.dataShareService.setSharedData(data);

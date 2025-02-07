@@ -117,7 +117,7 @@
         "price": 0,
         "type": "original",
         "comment": null,
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": null,
         "date": null,
         "path": "/assets/paintings/21ABCD.jpg",
@@ -169,7 +169,7 @@
         "price": 1500.00,
         "type": "originalORprint",
         "comment": "I painted this after my last enemy died by my own hands.",
-        "technique": "Acryl-Pouring auf Keilrahmen", 
+        "technique": "acrylic", 
         "measurementsWxH": null,
         "date": null,
         "path": "/assets/paintings/A1CAF1.jpg",
@@ -185,7 +185,7 @@
         "price": 0,
         "type": "original",
         "comment": null,
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": null,
         "date": null,
         "path": "/assets/paintings/F4C2C2.jpg",
@@ -199,7 +199,7 @@
         "price": null,
         "type": "print",
         "comment": null,
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": null,
         "date": null,
         "path": "/assets/paintings/FE6F5E.jpg",
@@ -215,7 +215,7 @@
         "price": 778.00,
         "type": "original",
         "comment": "heaven tastes different every time",
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": null,
         "date": null,
         "path": "/assets/paintings/0D98BA.jpg",
@@ -231,7 +231,7 @@
         "price": null,
         "type": "originalORprint",
         "comment": null,
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": [
             100, 60
         ],
@@ -249,7 +249,7 @@
         "price": 0,
         "type": "print",
         "comment": null,
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": null,
         "date": null,
         "path": "/assets/paintings/004225.jpg",
@@ -265,7 +265,7 @@
         "price": 2700.00,
         "type": "original",
         "comment": "inspired by this stylish lady I saw buying some oranges",
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": null,
         "date": null,
         "path": "/assets/paintings/91A3B0.jpg",
@@ -281,7 +281,7 @@
         "price": 255.99,
         "type": "originalORprint",
         "comment": null,
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": [
             50, 80, 5
         ],
@@ -299,7 +299,7 @@
         "price": 255.99,
         "type": "handcraft",
         "comment": "The real work comes at the end.",
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": [
             60
         ],
@@ -407,7 +407,7 @@
         "price": 459,
         "type": "original",
         "comment": null,
-        "technique": "Pouring",
+        "technique": "pouring",
         "measurementsWxH": [
             120, 70
         ],
@@ -425,7 +425,7 @@
         "price": 0,
         "type": "print",
         "comment": null,
-        "technique": "Pouring",
+        "technique": "pouring",
         "measurementsWxH": [
             70, 130
         ],
@@ -443,7 +443,7 @@
         "price": null,
         "type": "original",
         "comment": null,
-        "technique": "Pouring",
+        "technique": "pouring",
         "measurementsWxH": [
             150, 40
         ],
@@ -461,7 +461,7 @@
         "price": 330.99,
         "type": "originalORprint",
         "comment": null,
-        "technique": "Pouring",
+        "technique": "pouring",
         "measurementsWxH": [
             50
         ],
@@ -479,7 +479,7 @@
         "price": 499,
         "type": "original",
         "comment": null,
-        "technique": "Pouring",
+        "technique": "pouring",
         "measurementsWxH": [
             120, 70
         ],
@@ -497,7 +497,7 @@
         "price": null,
         "type": "original",
         "comment": null,
-        "technique": "Pouring",
+        "technique": "pouring",
         "measurementsWxH": [
             140, 90
         ],
@@ -515,7 +515,7 @@
         "price": 399.99,
         "type": "original",
         "comment": "only available as complete set (measurements each peace)",
-        "technique": "Pouring",
+        "technique": "pouring",
         "measurementsWxH": [
             50
         ],
@@ -533,7 +533,7 @@
         "price": null,
         "type": "original",
         "comment": null,
-        "technique": "Pouring",
+        "technique": "pouring",
         "measurementsWxH": [
             50, 50
         ],
@@ -1053,7 +1053,7 @@
         "price": 999.99,
         "type": "print",
         "comment": null,
-        "technique": "Acryl-Pouring auf Keilrahmen",
+        "technique": "acrylic",
         "measurementsWxH": null,
         "date": null,
         "path": "/assets/paintings/FFE135.jpg",
@@ -1105,7 +1105,7 @@
         "price": 400,
         "type": "original",
         "comment": "inspired by wild flowers blooming in our garden, seen in the morning sun",
-        "technique": "acryl",
+        "technique": "acrylic",
         "measurementsWxH": [
             40, 70
         ],
