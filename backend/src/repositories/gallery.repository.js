@@ -1,7 +1,9 @@
 const DBConnect = require('../db/connect.db')
-const { v4: uuidv4 } = require('uuid');
+
 
 class GalleryRepository {
+
+
     findOne = async (params) => {
         if(!Object.keys(params).length) {
             return {error: 'no params found'};
@@ -9,7 +11,7 @@ class GalleryRepository {
 
         const table = 'gallery';
         const idColumn = 'gallery_id';
-        const sql = `SELECT * FROM ${table} WHERE ${idColumn} = $1`;
+        const sql = `SELECT * FROM ${table} WHERE ${idColumn} = $1;`;
         const values = [params['id']];
 
         try {
@@ -20,7 +22,7 @@ class GalleryRepository {
                 token: params['accessToken']
             };
         } catch (error) {
-            console.log("DB ERROR ON SELECT: ", error.message);
+            console.log("DB ERROR ON SELECT (Gallery Repository, FindOne): ", error.message);
             return {
                 db_select: 'fail',
                 error: error,
@@ -34,7 +36,42 @@ class GalleryRepository {
     }
 
     findAllFiltered = async (params) => {
+        // params must contain: {table: value} & {queryParams: {key-value pair(s)}}
+        if(!Object.keys(params).length) {
+            return {error: 'no params found'};
+        }
 
+        const filter = {};
+        Object.entries(params['queryParams']).forEach(([k, v]) => {
+            Object.assign(filter, {[k]: v});
+        });
+        let whereClause = '';
+        if(Object.keys(filter).length === 1) {
+            whereClause += `${Object.keys(filter)[0]} = $1`
+        } else if(Object.keys(filter).length > 1) {
+            for(let i = 0; i < filter.length; i++) {
+                if(i === filter.length-1) {
+                    whereClause += `${Object.keys(filter)[i]} = $${i+1}'`
+                } else {
+                    whereClause += `${Object.keys(filter)[i]} = $${i+1} AND `
+                }
+            }
+        }
+
+        const sql = 'SELECT * FROM ' + params['table'] + ' WHERE ' + whereClause;
+        const values = Object.values(params['queryParams']);
+
+        try {
+            const connection = await DBConnect.connect();
+            const result = await connection.query(sql, values);
+            return {db_select: result['rows']};
+        } catch(error) {
+            console.log("DB ERROR ON SELECT (Gallery Repository, FindAllFiltered): ", error.message);
+            return {
+                db_select: 'fail',
+                error: error
+            };
+        }
     }
 
     create = async (params) => {
@@ -43,16 +80,15 @@ class GalleryRepository {
         }
         
         const table = 'gallery';
-        const uuid = uuidv4();
         const timeStamp = new Date().toISOString();
     
         const sql = `INSERT INTO ${table} 
-        (gallery_id, image_path, thumbnail_path, title, reference_nr, price, art_type, dimensions, keywords, comment, technique, publication_year, created_on, last_modified) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)`;
+        (gallery_id, image_path, thumbnail_path, title, reference_nr, price, art_type, dimensions, art_genre, art_comment, art_technique, art_medium, publication_year, created_on, last_modified) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`;
 
-        const values = [uuid, imagePath, imagePath, params['title'], params['referenceNr'], params['price'], 
-        params['artType'], params['dimensions'], params['keywords'], params['comment'], params['technique'], 
-        params['publication'], timeStamp, timeStamp];
+        const values = [params['uuid'], params['imagePath'], params['thumbnailPath'], params['title'],
+        params['referenceNr'], params['price'], params['artType'], params['dimensions'], params['artGenre'],
+        params['comment'], params['artTechnique'], params['artMedium'], params['publication'], timeStamp, timeStamp];
 
         try {
             const connection = await DBConnect.connect();

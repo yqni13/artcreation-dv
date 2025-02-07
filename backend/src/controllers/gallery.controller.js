@@ -8,6 +8,12 @@ class GalleryController {
         res.send(response);
     }
 
+    findAllFiltered = async (req, res, next) => {
+        checkValidation(req);
+        const response = await GalleryService.findAllFiltered(req.body);
+        res.send(response);
+    }
+
     create = async (req, res, next) => {
         checkValidation(req);
         const response = await GalleryService.create(req.body);

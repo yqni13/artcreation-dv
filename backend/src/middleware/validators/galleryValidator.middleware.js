@@ -1,12 +1,19 @@
 const { body } = require('express-validator');
+const CustomValidator = require('../../utils/customValidators.utils');
 
 exports.galleryFindOneSchema = [
 
-]
+];
 
 exports.galleryFindAllFilteredSchema = [
-
-]
+    body('table')
+        .trim()
+        .notEmpty()
+        .withMessage('backend-required'),
+    body('queryParams')
+        .notEmpty()
+        .withMessage('backend-required')
+];
 
 exports.galleryCreateSchema = [
     body('accessToken')
@@ -27,13 +34,6 @@ exports.galleryCreateSchema = [
     body('title')
         .isLength({max: 100})
         .optional(),
-    body('referenceNr')
-        .trim()
-        .notEmpty()
-        .withMessage('backend-require')
-        .bail() 
-        .isLength({min: 6, max: 6})
-        .withMessage('backend-length-refNr'),
     body('price')
         .isNumeric()
         .optional(),
@@ -42,31 +42,35 @@ exports.galleryCreateSchema = [
         .notEmpty()
         .withMessage('backend-require')
         .bail()
-        .custom((value) => validateArtType(value)),
+        .custom((value) => CustomValidator.validateArtType(value)),
     body('dimensions')
         .trim()
         .notEmpty()
         .withMessage('backend-require'),
-    body('keywords')
-        .isLength({max: 10})
-        .withMessage('backend-length-keywords')
-        .optional(),
+    body('artGenre')
+        .trim()
+        .notEmpty()
+        .withMessage('backend-required')
+        .bail()
+        .custom((value) => CustomValidator.validateArtGenre(value)),
     body('comment')
         .optional(),
-    body('technique')
-        .optional(),
+    body('artMedium')
+        .trim()
+        .notEmpty()
+        .withMessage('backend-required')
+        .bail()
+        .custom((value) => CustomValidator.validateArtMedium(value)),
+    body('artTechnique')
+        .trim()
+        .notEmpty()
+        .withMessage('backend-required')
+        .bail()
+        .custom((value) => CustomValidator.validateArtTechnique(value)),
     body('publication')
         .notEmpty()
         .withMessage('backend-require')
         .bail()
         .isInt({min: 1000, max: 2100})
         .withMessage('backend-range-publication')
-]
-
-validateArtType = (value) => {
-    const types = ['original', 'print', 'originalORprint', 'handcraft'];
-    if(!types.includes(value)) {
-        throw new Error('backend-invalid-type')
-    }
-    return true;
-}
+];

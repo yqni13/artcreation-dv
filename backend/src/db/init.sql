@@ -7,10 +7,11 @@ CREATE TABLE gallery (
     price NUMERIC(9, 2),
     art_type VARCHAR(50) NOT NULL,
     dimensions VARCHAR(20) NOT NULL,
-    genre VARCHAR(20) NOT NULL,
-    comment TEXT,
-    technique VARCHAR(20),
-    publication_year NUMERIC,
+    art_genre VARCHAR(20) NOT NULL,
+    art_comment TEXT,
+    art_medium VARCHAR(20) NOT NULL,
+    art_technique VARCHAR(20) NOT NULL,
+    publication_year NUMERIC NOT NULL,
     created_on TIMESTAMP NOT NULL,
     last_modified TIMESTAMP NOT NULL
 );

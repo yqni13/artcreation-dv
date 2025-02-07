@@ -7,7 +7,7 @@ class GalleryService {
     msg = '';
 
     constructor() {
-        msg = 'Success';
+        this.msg = 'Success';
     }
 
     findOne = async (params) => {
@@ -15,15 +15,22 @@ class GalleryService {
         const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
         params['accessToken'] = acceptedToken;
         const data = await GalleryRepository.findOne(hasParams ? params : {});
-        return basicResponse(data, 1, msg);
+        return basicResponse(data, 1, this.msg);
     }
 
+    findAllFiltered = async (params) => {
+        const hasParams = Object.keys(params).length !== 0;
+        const result = await GalleryRepository.findAllFiltered(hasParams ? params : {});
+        return basicResponse(result, 1, this.msg);
+    }
+    
     create = async (params) => {
         const hasParams = Object.keys(params).length !== 0;
         const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
         params['accessToken'] = acceptedToken;
+        Object.assign(params, GalleryModel.create(params));
         const data = await GalleryRepository.create(hasParams ? params : {});
-        return basicResponse(data, 1, msg);
+        return basicResponse(data, 1, this.msg);
     }
 }
 
