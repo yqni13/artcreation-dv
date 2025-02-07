@@ -6,10 +6,10 @@ CREATE TABLE gallery (
     reference_nr VARCHAR(6) NOT NULL,
     price NUMERIC(9, 2),
     art_type VARCHAR(50) NOT NULL,
-    dimensions VARCHAR(50) NOT NULL,
-    keywords TEXT [],
+    dimensions VARCHAR(20) NOT NULL,
+    genre VARCHAR(20) NOT NULL,
     comment TEXT,
-    technique TEXT,
+    technique VARCHAR(20),
     publication_year NUMERIC,
     created_on TIMESTAMP NOT NULL,
     last_modified TIMESTAMP NOT NULL

@@ -1,5 +1,23 @@
 [
     {
+        "title": null,
+        "referenceNr": "006988",
+        "genre": "nature",
+        "tags": [
+            "mountain", "gold"
+        ],
+        "price": 499,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            70, 90
+        ],
+        "date": 2025,
+        "path": "/assets/paintings/006988.jpg",
+        "pathResized": "/assets/paintings_resized/006988.jpg"
+    },
+    {
         "title": "lotus",
         "referenceNr": "AE6177",
         "genre": "nature",
@@ -16,6 +34,78 @@
         "date": 2017,
         "path": "/assets/paintings/AE6177.jpg",
         "pathResized": "/assets/paintings_resized/AE6177.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "F2C682",
+        "genre": "people",
+        "tags": [
+            "gold", "female"
+        ],
+        "price": 499,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            60, 80
+        ],
+        "date": 2025,
+        "path": "/assets/paintings/F2C682.jpg",
+        "pathResized": "/assets/paintings_resized/F2C682.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "AE0000",
+        "genre": "nature",
+        "tags": [
+            "nature", "entrance", "heaven"
+        ],
+        "price": 499,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            90, 80
+        ],
+        "date": 2022,
+        "path": "/assets/paintings/AE0000.jpg",
+        "pathResized": "/assets/paintings_resized/AE0000.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "D3D5DD",
+        "genre": "nature",
+        "tags": [
+            "winter", "lonely"
+        ],
+        "price": 499,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            80, 60
+        ],
+        "date": 2024,
+        "path": "/assets/paintings/D3D5DD.jpg",
+        "pathResized": "/assets/paintings_resized/D3D5DD.jpg"
+    },
+    {
+        "title": null,
+        "referenceNr": "AA0000",
+        "genre": "nature",
+        "tags": [
+            "nature", "bridge"
+        ],
+        "price": 499,
+        "type": "print",
+        "comment": null,
+        "technique": null,
+        "measurementsWxH": [
+            80, 60
+        ],
+        "date": 2023,
+        "path": "/assets/paintings/AA0000.jpg",
+        "pathResized": "/assets/paintings_resized/AA0000.jpg"
     },
     {
         "title": null,
