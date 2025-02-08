@@ -2,22 +2,22 @@ const GalleryRepository = require('../repositories/gallery.repository');
 const { v4: uuidv4 } = require('uuid');
 
 class GalleryModel {
-    createID = async (params) => {
-        if(!Object.keys(params).length) {
-            return {error: 'no params found'};
-        }
-        
+    createID = () => {        
         const uuid = uuidv4();
+        return { id: uuid };
+    }
+
+    createRefNr = async (params) => {
+        let refNr = '';
         const refParams = {
             table: 'gallery',
             queryParams: {
                 art_genre: params['artGenre']
             }
         };
-        let refNr = '';
-
         const allRefNr = await GalleryRepository.findAllFiltered(refParams);
-        if(allRefNr['db_select'].length === 0) {
+
+        if(allRefNr['number_of_entries'] === 0) {
             refNr = String(params['artGenre'][0].toUpperCase()) + '00001';
         } else {
             const lastElement = allRefNr['db_select'].at(-1);
@@ -27,10 +27,16 @@ class GalleryModel {
             refNr = String(params['artGenre'][0]).toUpperCase() + String(pureNumber).padStart(5, '0');
         }
 
-        return {
-            uuid: uuid,
-            referenceNr: refNr
+        return { referenceNr: refNr };
+    }
+
+    checkGenreChange = async (params) => {
+        const dataCurrent = await GalleryRepository.findOne({id: params['id']});
+        if(params['artGenre'] !== dataCurrent['db_select']['art_genre']) {
+            params['referenceNr'] = (await this.createRefNr(params)).referenceNr;
         }
+
+        return params['referenceNr'];
     }
 }
 

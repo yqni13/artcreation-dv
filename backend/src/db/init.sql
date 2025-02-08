@@ -1,9 +1,9 @@
 CREATE TABLE gallery (
     gallery_id UUID PRIMARY KEY NOT NULL,
+    reference_nr VARCHAR(6) NOT NULL,
     image_path TEXT NOT NULL,
     thumbnail_path TEXT NOT NULL,
     title VARCHAR(100),
-    reference_nr VARCHAR(6) NOT NULL,
     price NUMERIC(9, 2),
     art_type VARCHAR(50) NOT NULL,
     dimensions VARCHAR(20) NOT NULL,

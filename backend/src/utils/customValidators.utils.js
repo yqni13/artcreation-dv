@@ -34,3 +34,11 @@ exports.validateArtType = (value) => {
     }
     return true;
 };
+
+exports.validateUUID = (value) => {
+    const pureValue = value.replaceAll('-', '');
+    if(pureValue.length !== 32) {
+        throw new Error('backend-invalid-uuid');
+    }
+    return true;
+}

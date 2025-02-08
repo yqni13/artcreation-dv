@@ -14,9 +14,21 @@ class GalleryController {
         res.send(response);
     }
 
+    findAll = async (req, res, next) => {
+        checkValidation(req);
+        const response = await GalleryService.findAll(req.body);
+        res.send(response);
+    }
+
     create = async (req, res, next) => {
         checkValidation(req);
         const response = await GalleryService.create(req.body);
+        res.send(response);
+    }
+
+    update = async (req, res, next) => {
+        checkValidation(req);
+        const response = await GalleryService.update(req.body);
         res.send(response);
     }
 }
