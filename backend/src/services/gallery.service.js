@@ -14,8 +14,8 @@ class GalleryService {
         const hasParams = Object.keys(params).length !== 0;
         const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
         params['accessToken'] = acceptedToken;
-        const data = await GalleryRepository.findOne(hasParams ? params : {});
-        return basicResponse(data, 1, this.msg);
+        const result = await GalleryRepository.findOne(hasParams ? params : {});
+        return basicResponse(result, 1, this.msg);
     }
 
     findAllFiltered = async (params) => {
@@ -26,11 +26,11 @@ class GalleryService {
     
     create = async (params) => {
         const hasParams = Object.keys(params).length !== 0;
-        const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
-        params['accessToken'] = acceptedToken;
-        Object.assign(params, GalleryModel.create(params));
-        const data = await GalleryRepository.create(hasParams ? params : {});
-        return basicResponse(data, 1, this.msg);
+        // const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
+        // params['accessToken'] = acceptedToken;
+        Object.assign(params, await GalleryModel.createID(hasParams ? params : {}));
+        const result = await GalleryRepository.create(hasParams ? params : {});
+        return basicResponse(result, 1, this.msg);
     }
 }
 

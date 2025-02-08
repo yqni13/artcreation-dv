@@ -45,6 +45,7 @@ class GalleryRepository {
         Object.entries(params['queryParams']).forEach(([k, v]) => {
             Object.assign(filter, {[k]: v});
         });
+        const orderClause = ' ORDER BY reference_nr ASC';
         let whereClause = '';
         if(Object.keys(filter).length === 1) {
             whereClause += `${Object.keys(filter)[0]} = $1`
@@ -58,7 +59,7 @@ class GalleryRepository {
             }
         }
 
-        const sql = 'SELECT * FROM ' + params['table'] + ' WHERE ' + whereClause;
+        const sql = 'SELECT * FROM ' + params['table'] + ' WHERE ' + whereClause + orderClause;
         const values = Object.values(params['queryParams']);
 
         try {

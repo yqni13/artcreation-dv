@@ -33,10 +33,10 @@ exports.galleryCreateSchema = [
         .withMessage('backend-required'),
     body('title')
         .isLength({max: 100})
-        .optional(),
+        .optional({values: 'null'}),
     body('price')
         .isNumeric()
-        .optional(),
+        .optional({values: 'null'}),
     body('artType')
         .trim()
         .notEmpty()
@@ -54,7 +54,7 @@ exports.galleryCreateSchema = [
         .bail()
         .custom((value) => CustomValidator.validateArtGenre(value)),
     body('comment')
-        .optional(),
+        .optional({values: 'null'}),
     body('artMedium')
         .trim()
         .notEmpty()
