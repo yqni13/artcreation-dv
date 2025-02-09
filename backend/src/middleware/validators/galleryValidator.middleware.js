@@ -16,10 +16,6 @@ exports.galleryFindOneSchema = [
 ];
 
 exports.galleryFindAllFilteredSchema = [
-    body('table')
-        .trim()
-        .notEmpty()
-        .withMessage('backend-required'),
     body('queryParams')
         .notEmpty()
         .withMessage('backend-required')
@@ -53,6 +49,7 @@ exports.galleryCreateSchema = [
         .withMessage('backend-required'),
     body('title')
         .isLength({max: 100})
+        .withMessage('backend-title-length')
         .optional({values: 'null'}),
     body('price')
         .isNumeric()
@@ -166,4 +163,18 @@ exports.galleryUpdateSchema = [
         .bail()
         .isInt({min: 1000, max: 2100})
         .withMessage('backend-range-publication')
+];
+
+exports.galleryDeleteSchema = [
+    // body('accessToken')
+    //     .trim()
+    //     .notEmpty()
+    //     .withMessage('backend-required')
+    //     .bail()
+    //     .isJWT()
+    //     .withMessage('backend-invalid-jwt'),
+    body('id')
+        .trim()
+        .notEmpty()
+        .withMessage('backend-require')
 ];

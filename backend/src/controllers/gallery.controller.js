@@ -31,6 +31,12 @@ class GalleryController {
         const response = await GalleryService.update(req.body);
         res.send(response);
     }
+
+    delete = async (req, res, next) => {
+        checkValidation(req);
+        const response = await GalleryService.delete(req.body);
+        res.send(response);
+    }
 }
 
 module.exports = new GalleryController();

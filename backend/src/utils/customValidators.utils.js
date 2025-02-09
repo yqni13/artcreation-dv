@@ -42,3 +42,29 @@ exports.validateUUID = (value) => {
     }
     return true;
 }
+
+exports.validateNewsFK = (fk) => {
+    if(fk === null) {
+        return true;
+    } else if(fk.length !== 6) {
+        throw new Error('backend-refNr-length');
+    }
+    return true;
+}
+
+exports.validateNewsImages = (img, fk) => {
+    if(fk === null && img === null) {
+        throw new Error('backend-news-missing-img');
+    } else if(fk !== null && img !== null) {
+        throw new Error('backend-news-overload-img')
+    }
+    return true;
+}
+
+exports.validateDateTime = (datetime) => {
+    const convert = new Date(datetime);
+    if(convert === undefined || convert === null) {
+        throw new Error('backend-invalid-datetime');
+    }
+    return true;
+}

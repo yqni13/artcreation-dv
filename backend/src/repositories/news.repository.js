@@ -1,6 +1,6 @@
-const DBConnect = require('../db/connect.db')
+const DBConnect = require("../db/connect.db");
 
-class GalleryRepository {
+class NewsRepository {
 
     msg0 = '';
     msg1 = '';
@@ -15,8 +15,8 @@ class GalleryRepository {
             return {error: 'no params found'};
         }
 
-        const table = 'gallery';
-        const idColumn = 'gallery_id';
+        const table = 'news';
+        const idColumn = 'news_id';
         const sql = `SELECT * FROM ${table} WHERE ${idColumn} = $1;`;
         const values = [params['id']];
 
@@ -26,15 +26,15 @@ class GalleryRepository {
             return {
                 data: result['rows'][0],
                 db_operation: 'select',
-                token: params['accessToken'],
+                // token: params['accessToken'],
                 code: 1,
                 msg: this.msg1
             };
         } catch (error) {
-            console.log("DB ERROR ON SELECT (Gallery Repository, FindOne): ", error.message);
+            console.log("DB ERROR ON SELECT (News Repository, FindOne): ", error.message);
             return {
                 db_operation: 'select',
-                token: params['accessToken'],
+                // token: params['accessToken'],
                 error: error,
                 code: 0,
                 msg: this.msg0
@@ -43,18 +43,17 @@ class GalleryRepository {
     }
 
     findAllFiltered = async (params) => {
-        // params must contain: {table: value} & {queryParams: {key-value pair(s)}}
         if(!Object.keys(params).length) {
             return {error: 'no params found'};
         }
 
-        const table = 'gallery';
+        const table = 'news';
         const filter = {};
         Object.entries(params['queryParams']).forEach(([k, v]) => {
             Object.assign(filter, {[k]: v});
         });
 
-        const orderClause = ' ORDER BY reference_nr ASC';
+        const orderClause = ' ORDER BY visual_timestamp ASC';
         let whereClause = '';
         if(Object.keys(filter).length === 1) {
             whereClause += `${Object.keys(filter)[0]} = $1`
@@ -82,7 +81,7 @@ class GalleryRepository {
                 msg: this.msg1
             };
         } catch(error) {
-            console.log("DB ERROR ON SELECT (Gallery Repository, FindAllFiltered): ", error.message);
+            console.log("DB ERROR ON SELECT (News Repository, FindAllFiltered): ", error.message);
             return {
                 db_operation: 'select',
                 error: error,
@@ -93,7 +92,7 @@ class GalleryRepository {
     }
 
     findAll = async (params) => {
-        const table = 'gallery';
+        const table = 'news';
 
         const sql = `SELECT * FROM ${table}`;
         try {
@@ -108,7 +107,7 @@ class GalleryRepository {
                 msg: this.msg1
             }
         } catch(error) {
-            console.log("DB ERROR ON SELECT (Gallery Repository, FindAll): ", error.message);
+            console.log("DB ERROR ON SELECT (News Repository, FindAll): ", error.message);
             return {
                 db_operation: 'select',
                 // token: params['accessToken'],
@@ -123,36 +122,35 @@ class GalleryRepository {
         if(!Object.keys(params).length) {
             return {error: 'no params found'};
         }
-        
-        const table = 'gallery';
-        const timeStamp = new Date().toISOString();
-    
-        const sql = `INSERT INTO ${table} 
-        (gallery_id, image_path, thumbnail_path, title, reference_nr, price, art_type, dimensions, art_genre, art_comment, art_technique, art_medium, publication_year, created_on, last_modified) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`;
 
-        const values = [params['id'], params['imagePath'], params['thumbnailPath'], params['title'],
-        params['referenceNr'], params['price'], params['artType'], params['dimensions'], params['artGenre'],
-        params['comment'], params['artTechnique'], params['artMedium'], params['publication'], timeStamp, timeStamp];
+        const table = 'news';
+        const timestamp = new Date().toISOString();
+
+        const sql = `INSERT INTO ${table}
+        (news_id, gallery, image_path, thumbnail_path, visual_timestamp, title, content, created_on, last_modified)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+
+        const values = [params['id'], params['galleryId'], params['imagePath'], params['thumbnailPath'], 
+        params['datetime'], params['title'], params['text'], timestamp, timestamp];
 
         try {
             const connection = await DBConnect.connect();
             await connection.query(sql, values);
-            return { 
+            return {
                 db_operation: 'insert',
                 // token: params['accessToken'],
                 code: 1,
                 msg: this.msg1
             };
-        } catch (error) {
-            console.log("DB ERROR ON INSERT (Gallery Repository): ", error.message);
+        } catch(error) {
+            console.log("DB ERROR ON INSERT (News Repository): ", error.message);
             return {
                 db_operation: 'insert',
                 // token: params['accessToken'],
                 error: error,
                 code: 0,
                 msg: this.msg0
-            };
+            }
         }
     }
 
@@ -161,16 +159,15 @@ class GalleryRepository {
             return {error: 'no params found'};
         }
 
-        const table = 'gallery';
-        const timeStamp = new Date().toISOString();
+        const table = 'news';
+        const timestamp = new Date().toISOString();
 
-        const sql = `UPDATE ${table} 
-        SET reference_nr = $1, image_path = $2, thumbnail_path = $3, title = $4, price = $5, art_type = $6, dimensions = $7, art_genre = $8, art_comment = $9, art_technique = $10, art_medium = $11, publication_year = $12, last_modified = $13
-        WHERE gallery_id = $14`;
+        const sql = `UPDATE ${table}
+        SET gallery = $1, image_path = $2, thumbnail_path = $3, visual_timestamp = $4, title = $5, content = $6, last_modified = $7
+        WHERE news_id = $8`;
 
-        const values = [params['referenceNr'], params['imagePath'], params['thumbnailPath'], params['title'],
-        params['price'], params['artType'], params['dimensions'], params['artGenre'], params['comment'], 
-        params['artTechnique'], params['artMedium'], params['publication'], timeStamp, params['id']];
+        const values = [params['galleryId'], params['imagePath'], params['thumbnailPath'], 
+        params['datetime'], params['title'], params['text'], timestamp, params['id']];
 
         try {
             const connection = await DBConnect.connect();
@@ -180,9 +177,9 @@ class GalleryRepository {
                 // token: params['accessToken'],
                 code: 1,
                 msg: this.msg1
-            }
+            };
         } catch(error) {
-            console.log("DB ERROR ON UPDATE (Gallery Repository): ", error.message);
+            console.log("DB ERROR ON UPDATE (News Repository): ", error.message);
             return {
                 db_operation: 'update',
                 // token: params['accessToken'],
@@ -198,8 +195,8 @@ class GalleryRepository {
             return {error: 'no params found'};
         }
 
-        const table = 'gallery';
-        const sql = `DELETE FROM ${table} WHERE gallery_id = $1`;
+        const table = 'news';
+        const sql = `DELETE FROM ${table} WHERE news_id = $1`;
         const values = [params['id']];
 
         try {
@@ -210,9 +207,9 @@ class GalleryRepository {
                 // token: params['accessToken'],
                 code: 1,
                 msg: this.msg1
-            }
+            };
         } catch(error) {
-            console.log("DB ERROR ON DELETE (Gallery Repository): ", error.message);
+            console.log("DB ERROR ON DELETE (News Repository): ", error.message);
             return {
                 db_operation: 'delete',
                 // token: params['accessToken'],
@@ -224,4 +221,4 @@ class GalleryRepository {
     }
 }
 
-module.exports = new GalleryRepository();
+module.exports = new NewsRepository();

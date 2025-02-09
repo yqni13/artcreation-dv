@@ -2,11 +2,6 @@ const GalleryRepository = require('../repositories/gallery.repository');
 const { v4: uuidv4 } = require('uuid');
 
 class GalleryModel {
-    createID = () => {        
-        const uuid = uuidv4();
-        return { id: uuid };
-    }
-
     createRefNr = async (params) => {
         let refNr = '';
         const refParams = {
@@ -20,7 +15,7 @@ class GalleryModel {
         if(allRefNr['number_of_entries'] === 0) {
             refNr = String(params['artGenre'][0].toUpperCase()) + '00001';
         } else {
-            const lastElement = allRefNr['db_select'].at(-1);
+            const lastElement = allRefNr['data'].at(-1);
             let pureNumber = lastElement['reference_nr'].match(/\d/g);
             pureNumber = Number(pureNumber.join(""));
             pureNumber++;
@@ -32,7 +27,7 @@ class GalleryModel {
 
     checkGenreChange = async (params) => {
         const dataCurrent = await GalleryRepository.findOne({id: params['id']});
-        if(params['artGenre'] !== dataCurrent['db_select']['art_genre']) {
+        if(params['artGenre'] !== dataCurrent['data']['art_genre']) {
             params['referenceNr'] = (await this.createRefNr(params)).referenceNr;
         }
 
