@@ -2,7 +2,7 @@ require('dotenv').config();
 const { ExpressLoader } = require('./src/loaders/express.loader');
 const { RoutesLoader } = require('./src/loaders/routes.loader');
 const { MiddlewareLoader } = require('./src/loaders/middleware.loader');
-const { DBConnect } = require('./src/db/connect.db');
+const DBConnect = require('./src/db/connect.db');
 
 const app = ExpressLoader.init();
 
@@ -14,7 +14,8 @@ DBConnect.init();
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`ARTCREATION-DV SERVER RUNNING ON PORT: ${port}`);
+    const divider = '=================';
+    console.log(`${divider} ARTCREATION-DV SERVER ${divider}\n${divider} RUNNING ON PORT: ${port} ${divider}`);
 });
 
 module.exports = app;

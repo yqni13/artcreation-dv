@@ -5,7 +5,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailService } from "../../shared/services/mail.service";
 import { Router, RouterModule } from "@angular/router";
-import { ArtworkOptions, ArtworkOptionsHandcraftOnly, ArtworkOptionsOrigORPrint, ArtworkOptionsPaintingOnly } from "../../shared/enums/artwork-option.enum";
+import { ArtType, ArtTypeHandcraftOnly, ArtTypeOrigORPrint, ArtTypePaintingOnly } from "../../shared/enums/art-type.enum";
 import { DataShareService } from "../../shared/services/data-share.service";
 import { filter, Subscription, tap } from "rxjs";
 import { TextInputComponent } from "../../common/components/form-components/text-input/text-input.component";
@@ -53,10 +53,10 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     protected artworkPrice: number | null;
     protected selectedParams: Record<string, string>;
     protected subjectOptions = SubjectOptions;
-    protected artworkOptionsAll = ArtworkOptions;
-    protected artworkOptionsOrigORPrint = ArtworkOptionsOrigORPrint;
-    protected artworkOptionsHandcraftOnly = ArtworkOptionsHandcraftOnly;
-    protected artworkOptionsPaintingOnly = ArtworkOptionsPaintingOnly;
+    protected artTypeAll = ArtType;
+    protected artTypeOrigORPrint = ArtTypeOrigORPrint; //ArtTypeOrigORPrint
+    protected artTypeHandcraftOnly = ArtTypeHandcraftOnly; //ArtTypeHandcraftOnly
+    protected artTypePaintingOnly = ArtTypePaintingOnly; // ArtTypePaintingOnly
 
     private subscriptionDataShare$: Subscription;
     private subscriptionHttpObservation$: Subscription;
@@ -173,7 +173,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private checkTypeParam(type: string) {
-        if(type === ArtworkOptions.originalORprint) {
+        if(type === ArtType.originalORprint) {
             this.setOrigORPrintFlag(true);
             this.selectedParams['type'] = '';
         } else {
@@ -216,7 +216,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
             this.setPriceAndFormat(refNr);
 
             // handle artworkOption 'originalORprint' seperately
-            if(artworkOption === this.artworkOptionsAll.originalORprint) {
+            if(artworkOption === this.artTypeAll.originalORprint) {
                 this.setOrigORPrintFlag(true);
                 this.contactForm.get('type')?.setValue('');
             } else {

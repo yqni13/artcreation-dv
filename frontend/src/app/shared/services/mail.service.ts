@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { ContactFormItem } from "../interfaces/ContactMailItems";
 import { SubjectOptions } from "../enums/contact-subject.enum";
 import { HttpClient } from "@angular/common/http";
-import { ArtworkOptions } from "../enums/artwork-option.enum";
+import { ArtType } from "../enums/art-type.enum";
 import { environment } from "../../../environments/environment";
 
 
@@ -55,8 +55,8 @@ export class MailService {
         ? `${this.mailData.subject}: ${this.mailData.referenceNr}`
         : this.mailData.subject;
 
-        const msgPartType = this.mailData.type === ArtworkOptions.originalORprint
-            ? `${ArtworkOptions.original} & ${ArtworkOptions.print}`
+        const msgPartType = this.mailData.type === ArtType.originalORprint
+            ? `${ArtType.original} & ${ArtType.print}`
             : this.mailData.type;
 
         const msgTitle = this.mailData.title !== ''

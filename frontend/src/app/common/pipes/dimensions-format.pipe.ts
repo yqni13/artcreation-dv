@@ -11,9 +11,9 @@ export class DimensionsFormatPipe implements PipeTransform {
             case(1):
                 return `${value[0]} cm`;
             case(2):
-                return `${value[0]} x ${value[1]} cm (w/h)`;
+                return `${value[0]} x ${value[1]} cm`;
             case(3):
-                return `${value[0]} x ${value[1]} x ${value[2]} cm (w/h/d)`;
+                return `${value[0]} x ${value[1]} x ${value[2]} cm`;
             default:
                 return 'wrong measurements';
         }
