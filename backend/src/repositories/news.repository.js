@@ -47,7 +47,8 @@ class NewsRepository {
     }
 
     findAllFiltered = async (params) => {
-        if(!Object.keys(params).length) {
+        if((params['queryParams'] === undefined || Object.keys(params['queryParams']).length === 0) 
+            || !Object.keys(params).length) {
             return {error: 'no params found'};
         }
 
@@ -64,7 +65,7 @@ class NewsRepository {
         } else if(Object.keys(filter).length > 1) {
             for(let i = 0; i < filter.length; i++) {
                 if(i === filter.length-1) {
-                    whereClause += `${Object.keys(filter)[i]} = $${i+1}'`
+                    whereClause += `${Object.keys(filter)[i]} = $${i+1}`
                 } else {
                     whereClause += `${Object.keys(filter)[i]} = $${i+1} AND `
                 }

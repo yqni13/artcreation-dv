@@ -1,5 +1,6 @@
 const { body, param } = require('express-validator');
 const CustomValidator = require('../../utils/customValidators.utils');
+const NewsRepository = require('../../repositories/news.repository');
 
 exports.newsFindOneSchema = [
     param('id')
@@ -55,7 +56,9 @@ exports.newsUpdateSchema = [
             .notEmpty()
             .withMessage('backend-required')
             .bail()
-            .custom((value) => CustomValidator.validateUUID(value)),
+            .custom((value) => CustomValidator.validateUUID(value))
+            .bail()
+            .custom((id) => CustomValidator.validateExistingEntry(id, NewsRepository)),
     body('galleryId')
         .custom((foreignKey) => CustomValidator.validateNewsFK(foreignKey)),
     body('imagePath')
@@ -92,4 +95,8 @@ exports.newsDeleteSchema = [
         .trim()
         .notEmpty()
         .withMessage('backend-require')
+        .bail()
+        .custom((id) => CustomValidator.validateUUID(id))
+        .bail()
+        .custom((id) => CustomValidator.validateExistingEntry(id, NewsRepository))
 ];

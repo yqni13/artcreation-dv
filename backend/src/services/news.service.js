@@ -19,7 +19,7 @@ class NewsService {
         const hasParams = Object.keys(params).length !== 0;
         // const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
         // params['accessToken'] = acceptedToken;
-        Object.assign(params, await createID(NewsRepository, 'news'));
+        Object.assign(params, await createID(NewsRepository, 'news')); // params['id']
         const result = await NewsRepository.create(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }

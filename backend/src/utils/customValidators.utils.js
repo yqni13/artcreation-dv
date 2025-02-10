@@ -38,15 +38,17 @@ exports.validateArtType = (value) => {
 exports.validateUUID = (value) => {
     const pureValue = value.replaceAll('-', '');
     if(pureValue.length !== 32) {
-        console.log("pureValue from validateUUID: ", pureValue);
         throw new Error('backend-invalid-uuid');
     }
     return true;
 }
 
 exports.validateRefNrNoManualChange = async (refNr, id, repository) => {
+    if(refNr.length !== 6) {
+        throw new Error('backend-length-refNr');
+    }
     const entry = await repository.findOne({id: id});
-    if(refNr !== entry.body.data.reference_nr || refNr.length !== 6) {
+    if(refNr !== entry.body.data.reference_nr) {
         throw new Error('backend-invalid-referenceNr');
     }
     return true;
@@ -73,6 +75,14 @@ exports.validateDateTime = (datetime) => {
     const convert = new Date(datetime);
     if(convert === undefined || convert === null) {
         throw new Error('backend-invalid-datetime');
+    }
+    return true;
+}
+
+exports.validateExistingEntry = async (id, repository) => {
+    const result = await repository.findOne({id: id});
+    if(result.code === 0 || result.body.data === null) {
+        throw new Error('backend-entry-404');
     }
     return true;
 }

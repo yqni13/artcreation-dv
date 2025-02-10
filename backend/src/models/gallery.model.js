@@ -18,6 +18,7 @@ class GalleryModel {
             let pureNumber = lastElement['reference_nr'].match(/\d/g);
             pureNumber = Number(pureNumber.join(""));
             pureNumber++;
+            // structure: first char (genre) like 'S' for spiritual + 5 digits (sequential number with leading zeros)
             refNr = String(params['artGenre'][0]).toUpperCase() + String(pureNumber).padStart(5, '0');
         }
 

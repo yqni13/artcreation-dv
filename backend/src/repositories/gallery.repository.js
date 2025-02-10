@@ -47,8 +47,9 @@ class GalleryRepository {
     }
 
     findAllFiltered = async (params) => {
-        // params must contain: {table: value} & {queryParams: {key-value pair(s)}}
-        if(!Object.keys(params).length) {
+        // params must contain: {table: value, queryParams: {key: value, key: value, ...}}
+        if((params['queryParams'] === undefined || Object.keys(params['queryParams']).length === 0) 
+            || !Object.keys(params).length) {
             return {error: 'no params found'};
         }
 
@@ -65,7 +66,7 @@ class GalleryRepository {
         } else if(Object.keys(filter).length > 1) {
             for(let i = 0; i < filter.length; i++) {
                 if(i === filter.length-1) {
-                    whereClause += `${Object.keys(filter)[i]} = $${i+1}'`
+                    whereClause += `${Object.keys(filter)[i]} = $${i+1}`
                 } else {
                     whereClause += `${Object.keys(filter)[i]} = $${i+1} AND `
                 }
