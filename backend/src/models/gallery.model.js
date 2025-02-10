@@ -1,5 +1,4 @@
 const GalleryRepository = require('../repositories/gallery.repository');
-const { v4: uuidv4 } = require('uuid');
 
 class GalleryModel {
     createRefNr = async (params) => {
@@ -27,7 +26,7 @@ class GalleryModel {
 
     checkGenreChange = async (params) => {
         const dataCurrent = await GalleryRepository.findOne({id: params['id']});
-        if(params['artGenre'] !== dataCurrent['data']['art_genre']) {
+        if(params['artGenre'] !== dataCurrent['body']['data']['art_genre']) {
             params['referenceNr'] = (await this.createRefNr(params)).referenceNr;
         }
 

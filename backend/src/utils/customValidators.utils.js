@@ -38,7 +38,16 @@ exports.validateArtType = (value) => {
 exports.validateUUID = (value) => {
     const pureValue = value.replaceAll('-', '');
     if(pureValue.length !== 32) {
+        console.log("pureValue from validateUUID: ", pureValue);
         throw new Error('backend-invalid-uuid');
+    }
+    return true;
+}
+
+exports.validateRefNrNoManualChange = async (refNr, id, repository) => {
+    const entry = await repository.findOne({id: id});
+    if(refNr !== entry.body.data.reference_nr || refNr.length !== 6) {
+        throw new Error('backend-invalid-referenceNr');
     }
     return true;
 }
@@ -46,16 +55,15 @@ exports.validateUUID = (value) => {
 exports.validateNewsFK = (fk) => {
     if(fk === null) {
         return true;
-    } else if(fk.length !== 6) {
-        throw new Error('backend-refNr-length');
     }
+    this.validateUUID(fk);
     return true;
 }
 
 exports.validateNewsImages = (img, fk) => {
-    if(fk === null && img === null) {
+    if(fk === null && (img === null || img === undefined)) {
         throw new Error('backend-news-missing-img');
-    } else if(fk !== null && img !== null) {
+    } else if(fk !== null && img !== null && img !== undefined) {
         throw new Error('backend-news-overload-img')
     }
     return true;

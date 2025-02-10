@@ -4,13 +4,12 @@ const NewsService = require('../services/news.service');
 class NewsController {
     findOne = async (req, res, next) => {
         checkValidation(req);
-        const response = await NewsService.findOne(req.body);
+        const response = await NewsService.findOne({id: req.params.id});
         res.send(response);
     }
 
     findAll = async (req, res, next) => {
-        checkValidation(req);
-        const response = await NewsService.findAll(req.body);
+        const response = await NewsService.findAll();
         res.send(response);
     }
 

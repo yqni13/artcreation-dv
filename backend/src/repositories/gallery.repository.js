@@ -24,18 +24,22 @@ class GalleryRepository {
             const connection = await DBConnect.connect();
             const result = await connection.query(sql, values);
             return {
-                data: result['rows'][0],
-                db_operation: 'select',
-                token: params['accessToken'],
+                body: {
+                    db_operation: 'select',
+                    data: result['rows'][0] || null,
+                    // token: params['accessToken'],
+                },
                 code: 1,
                 msg: this.msg1
             };
         } catch (error) {
             console.log("DB ERROR ON SELECT (Gallery Repository, FindOne): ", error.message);
             return {
-                db_operation: 'select',
-                token: params['accessToken'],
-                error: error,
+                body: {
+                    db_operation: 'select',
+                    // token: params['accessToken'],
+                    error: error,
+                },
                 code: 0,
                 msg: this.msg0
             };
@@ -75,24 +79,20 @@ class GalleryRepository {
             const connection = await DBConnect.connect();
             const result = await connection.query(sql, values);
             return {
-                number_of_entries: result['rows'].length,
-                data: result['rows'],
                 db_operation: 'select',
-                code: 1,
-                msg: this.msg1
+                number_of_entries: result['rows'].length,
+                data: result['rows'] || null,
             };
         } catch(error) {
             console.log("DB ERROR ON SELECT (Gallery Repository, FindAllFiltered): ", error.message);
             return {
                 db_operation: 'select',
                 error: error,
-                code: 0,
-                msg: this.msg0
             };
         }
     }
 
-    findAll = async (params) => {
+    findAll = async () => {
         const table = 'gallery';
 
         const sql = `SELECT * FROM ${table}`;
@@ -100,19 +100,23 @@ class GalleryRepository {
             const connection = await DBConnect.connect();
             const result = await connection.query(sql);
             return {
-                number_of_entries: result['rows'].length,
-                data: result['rows'],
-                db_operation: 'select',
-                // token: params['accessToken'],
+                body: {
+                    db_operation: 'select',
+                    number_of_entries: result['rows'].length,
+                    data: result['rows'] || null,
+                    // token: params['accessToken'],
+                },
                 code: 1,
                 msg: this.msg1
             }
         } catch(error) {
             console.log("DB ERROR ON SELECT (Gallery Repository, FindAll): ", error.message);
             return {
-                db_operation: 'select',
-                // token: params['accessToken'],
-                error: error,
+                body: {
+                    db_operation: 'select',
+                    // token: params['accessToken'],
+                    error: error,
+                },
                 code: 0,
                 msg: this.msg0
             }
@@ -138,18 +142,23 @@ class GalleryRepository {
         try {
             const connection = await DBConnect.connect();
             await connection.query(sql, values);
-            return { 
-                db_operation: 'insert',
-                // token: params['accessToken'],
+            return {
+                body: {
+                    db_operation: 'insert',
+                    id: params['id'],
+                    // token: params['accessToken'],
+                },
                 code: 1,
                 msg: this.msg1
             };
         } catch (error) {
             console.log("DB ERROR ON INSERT (Gallery Repository): ", error.message);
             return {
-                db_operation: 'insert',
-                // token: params['accessToken'],
-                error: error,
+                body: {
+                    db_operation: 'insert',
+                    error: error,
+                    // token: params['accessToken'],
+                },
                 code: 0,
                 msg: this.msg0
             };
@@ -176,17 +185,22 @@ class GalleryRepository {
             const connection = await DBConnect.connect();
             await connection.query(sql, values);
             return {
-                db_operation: 'update',
-                // token: params['accessToken'],
+                body: {
+                    db_operation: 'update',
+                    id: params['id'],
+                    // token: params['accessToken'],
+                },
                 code: 1,
                 msg: this.msg1
             }
         } catch(error) {
             console.log("DB ERROR ON UPDATE (Gallery Repository): ", error.message);
             return {
-                db_operation: 'update',
-                // token: params['accessToken'],
-                error: error,
+                body: {
+                    db_operation: 'update',
+                    // token: params['accessToken'],
+                    error: error,
+                },
                 code: 0,
                 msg: this.msg0
             }
@@ -206,17 +220,21 @@ class GalleryRepository {
             const connection = await DBConnect.connect();
             await connection.query(sql, values);
             return {
-                db_operation: 'delete',
-                // token: params['accessToken'],
+                body: {
+                    db_operation: 'delete',
+                    // token: params['accessToken'],
+                },
                 code: 1,
                 msg: this.msg1
             }
         } catch(error) {
             console.log("DB ERROR ON DELETE (Gallery Repository): ", error.message);
             return {
-                db_operation: 'delete',
-                // token: params['accessToken'],
-                error: error,
+                body: {
+                    db_operation: 'delete',
+                    // token: params['accessToken'],
+                    error: error,
+                },
                 code: 0,
                 msg: this.msg0
             }

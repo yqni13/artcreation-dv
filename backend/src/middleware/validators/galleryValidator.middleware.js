@@ -1,34 +1,20 @@
-const { body } = require('express-validator');
+const { body, param } = require('express-validator');
 const CustomValidator = require('../../utils/customValidators.utils');
+const GalleryRepository = require('../../repositories/gallery.repository');
 
 exports.galleryFindOneSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
-    body('id')
+    param('id')
         .trim()
         .notEmpty()
         .withMessage('backend-require')
+        .bail()
+        .custom((id) => CustomValidator.validateUUID(id))
 ];
 
 exports.galleryFindAllFilteredSchema = [
     body('queryParams')
         .notEmpty()
         .withMessage('backend-required')
-];
-
-exports.galleryFindAllSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
 ];
 
 exports.galleryCreateSchema = [
@@ -111,8 +97,7 @@ exports.galleryUpdateSchema = [
         .notEmpty()
         .withMessage('backend-required')
         .bail()
-        .isLength({min: 6, max: 6})
-        .withMessage('backend-invalid-referenceNr'),
+        .custom((value, { req }) => CustomValidator.validateRefNrNoManualChange(value, req.body.id, GalleryRepository)),
     body('imagePath')
         .trim()
         .notEmpty()

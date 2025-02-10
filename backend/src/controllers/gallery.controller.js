@@ -4,19 +4,12 @@ const { checkValidation } = require('../middleware/validation.middleware');
 class GalleryController {
     findOne = async (req, res, next) => {
         checkValidation(req);
-        const response = await GalleryService.findOne(req.body);
-        res.send(response);
-    }
-
-    findAllFiltered = async (req, res, next) => {
-        checkValidation(req);
-        const response = await GalleryService.findAllFiltered(req.body);
+        const response = await GalleryService.findOne({id: req.params.id});
         res.send(response);
     }
 
     findAll = async (req, res, next) => {
-        checkValidation(req);
-        const response = await GalleryService.findAll(req.body);
+        const response = await GalleryService.findAll();
         res.send(response);
     }
 

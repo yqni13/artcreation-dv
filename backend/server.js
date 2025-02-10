@@ -14,7 +14,8 @@ DBConnect.init();
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`ARTCREATION-DV SERVER RUNNING ON PORT: ${port}`);
+    const divider = '=================';
+    console.log(`${divider} ARTCREATION-DV SERVER ${divider}\n${divider} RUNNING ON PORT: ${port} ${divider}`);
 });
 
 module.exports = app;

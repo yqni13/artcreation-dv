@@ -1,28 +1,13 @@
-const { body } = require('express-validator');
+const { body, param } = require('express-validator');
 const CustomValidator = require('../../utils/customValidators.utils');
 
 exports.newsFindOneSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
-    body('id')
+    param('id')
         .trim()
         .notEmpty()
         .withMessage('backend-require')
-];
-
-exports.newsFindAllSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
+        .bail()
+        .custom((id) => CustomValidator.validateUUID(id))
 ];
 
 exports.newsCreateSchema = [

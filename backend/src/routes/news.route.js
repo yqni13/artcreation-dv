@@ -3,7 +3,6 @@ const router = express.Router();
 const NewsController = require('../controllers/news.controller');
 const {
     newsFindOneSchema,
-    newsFindAllSchema,
     newsCreateSchema,
     newsUpdateSchema,
     newsDeleteSchema
@@ -11,7 +10,7 @@ const {
 const awaitHandlerFactory = require('../middleware/awaitHandlerFactory.middleware');
 
 router.get('/findOne/:id', newsFindOneSchema, awaitHandlerFactory(NewsController.findOne));
-router.get('/findAll', newsFindAllSchema, awaitHandlerFactory(NewsController.findAll));
+router.get('/findAll', awaitHandlerFactory(NewsController.findAll));
 router.post('/create', newsCreateSchema, awaitHandlerFactory(NewsController.create));
 router.put('/update', newsUpdateSchema, awaitHandlerFactory(NewsController.update));
 router.delete('/delete', newsDeleteSchema, awaitHandlerFactory(NewsController.delete));

@@ -10,7 +10,8 @@ class NewsModel {
         };
 
         const linkedNewsEntries = await NewsRepository.findAllFiltered(refParams);
-        let proceedDeletion, number_of_entries, useOfFK, code;
+        let proceedDeletion, number_of_entries, code;
+        let useOfFK = [];
         if(linkedNewsEntries['data'] && linkedNewsEntries['number_of_entries'] === 0) {
             proceedDeletion = true;
             number_of_entries = 0;
@@ -25,18 +26,23 @@ class NewsModel {
             code = 1;
         } else if(!linkedNewsEntries['data']) {
             return {
-                db_operation: linkedNewsEntries['db_operation'],
-                error: linkedNewsEntries['error'],
+                body: {
+                    db_operation: linkedNewsEntries['db_operation'],
+                    error: linkedNewsEntries['error'],
+                },
                 code: 0,
-                msg: linkedNewsEntries['msg']
+                msg: 'Error'
             }
         }
 
         return {
-            proceedDeletion: proceedDeletion,
-            number_of_entries: number_of_entries,
-            useOfFK: useOfFK,
-            code: code
+            body: {
+                proceedDeletion: proceedDeletion,
+                number_of_entries: number_of_entries,
+                useOfFK: useOfFK,
+            },
+            code: code,
+            msg: 'Success'
         }
     }
 }
