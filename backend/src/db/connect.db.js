@@ -13,22 +13,22 @@ class DBConnect {
         const pool = await this.connect();
         pool.query(`SELECT * FROM gallery`, async (error, results) => {
             // table not existing => error.code 42P01
-            if(error && error.code === '42P01') {
-                const sql = fs.readFileSync(path.resolve(__dirname, 'init.sql')).toString();
-                pool.query(sql, (error, results) => {
-                    if(error) {
-                        throw new DBSyntaxSQLException(error);
-                    } else if(results) {
-                        console.log(`tables successfully created;`)
-                    }
-                })
+            if((error && error.code === '42P01') || (results && results.rowCount === 0)) {
+                await this.initTables(pool);
             } else if(error) {
                 console.log("DB INIT ERROR: ", error);
             }
+        })
+    }
 
-            if(results && results.rowCount === 0) {
-                console.log(`tables are empty;`);
-                // TODO(yqni13): load init data
+    static initTables =  async (pool) => {
+        const sql = fs.readFileSync(path.resolve(__dirname, 'init.sql')).toString();
+        pool.query(sql, (error, results) => {
+            if(error) {
+                console.log("DB INIT ERROR: ", error);
+                throw new DBSyntaxSQLException(error);
+            } else if(results) {
+                console.log(`db successfully initiated;`)
             }
         })
     }

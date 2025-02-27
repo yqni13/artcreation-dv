@@ -1,0 +1,4 @@
+"news_id"|"gallery"|"image_path"|"thumbnail_path"|"visual_timestamp"|"title"|"content"|"created_on"|"last_modified"
+"74ec1a40-fb5c-418e-89da-4ea43a32ec17"|NULL|"path"|"path"|"2025-02-09 17:23:07"|"Upps I painted again"|"Demo text for multiple lines ..."|"2025-02-09 23:14:36.06"|"2025-02-09 23:14:36.06"
+"e74803c5-c80c-47a1-a96d-325c921fe05b"|NULL|"path"|"path"|"2025-02-09 11:23:07"|"First Backend Demo"|"demo text for multiple lines ..."|"2025-02-09 23:15:42.705"|"2025-02-09 23:15:42.705"
+"338f27bb-ef82-4cb6-8b53-6226cf6274da"|"cfc53c50-fb3a-4f68-8cc1-7d62026bbb42"|NULL|NULL|"2025-02-09 13:11:46"|"Second Backend Demo"|"demo text for multiple lines ..."|"2025-02-09 23:21:00.241"|"2025-02-09 23:21:00.241"

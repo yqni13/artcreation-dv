@@ -1,7 +1,6 @@
 const { ArtGenre } = require('./enums/art-genre.enum');
 const { ArtMedium } = require('./enums/art-medium.enum');
 const { ArtTechnique } = require('./enums/art-technique.enum');
-const { ArtType } = require('./enums/art-type.enum');
 
 exports.validateArtGenre = (value) => {
     const genres = Object.values(ArtGenre);
@@ -23,14 +22,6 @@ exports.validateArtTechnique = (value) => {
     const genres = Object.values(ArtTechnique);
     if(!genres.includes(value)) {
         throw new Error('backend-art-technique');
-    }
-    return true;
-};
-
-exports.validateArtType = (value) => {
-    const types = Object.values(ArtType);
-    if(!types.includes(value)) {
-        throw new Error('backend-art-type')
     }
     return true;
 };

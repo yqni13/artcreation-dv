@@ -12,13 +12,6 @@ exports.galleryFindOneSchema = [
 ];
 
 exports.galleryCreateSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
     body('imagePath')
         .trim()
         .notEmpty()
@@ -34,15 +27,6 @@ exports.galleryCreateSchema = [
     body('price')
         .isNumeric()
         .optional({values: 'null'}),
-    body('artType')
-        .trim()
-        .notEmpty()
-        .withMessage('backend-require')
-        .bail()
-        .isLength({max: 50})
-        .withMessage('backend-length-50')
-        .bail()
-        .custom((value) => CustomValidator.validateArtType(value)),
     body('dimensions')
         .trim()
         .notEmpty()
@@ -88,13 +72,6 @@ exports.galleryCreateSchema = [
 ];
 
 exports.galleryUpdateSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
     body('id')
         .trim()
         .notEmpty()
@@ -123,15 +100,6 @@ exports.galleryUpdateSchema = [
     body('price')
         .isNumeric()
         .optional({values: 'null'}),
-    body('artType')
-        .trim()
-        .notEmpty()
-        .withMessage('backend-require')
-        .bail()
-        .isLength({max: 50})
-        .withMessage('backend-length-50')
-        .bail()
-        .custom((value) => CustomValidator.validateArtType(value)),
     body('dimensions')
         .trim()
         .notEmpty()
@@ -148,8 +116,6 @@ exports.galleryUpdateSchema = [
         .withMessage('backend-length-20')
         .bail()
         .custom((value) => CustomValidator.validateArtGenre(value)),
-    body('comment')
-        .optional({values: 'null'}),
     body('artMedium')
         .trim()
         .notEmpty()
