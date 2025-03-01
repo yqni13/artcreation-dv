@@ -1,15 +1,10 @@
 const { ErrorCodes } = require('../errorCodes.utils');
 const { ErrorStatusCodes } = require('../errorStatusCodes.utils');
-const { Config } = require('../../configs/config');
 
 class AuthException extends Error {
     constructor(code, message, data, status = 401) {
         super(message);
-        if(Config.MODE === 'development') {
-            this.message = 'Auth Error: ' + message;
-        } else {
-            this.message = message;
-        }
+        this.message = message;
         this.name = 'Auth Error';
         this.code = code;
         this.error = this.constructor.name;
@@ -30,7 +25,14 @@ class InvalidCredentialsException extends AuthException {
     }
 }
 
+class AuthSecretNotFoundException extends AuthException {
+    constructor (message, data) {
+        super(ErrorCodes.AuthSecretNotFoundException, message, data, ErrorStatusCodes.AuthSecretNotFoundException);
+    }
+}
+
 module.exports = {
     UnauthorizedException,
-    InvalidCredentialsException
+    InvalidCredentialsException,
+    AuthSecretNotFoundException
 }

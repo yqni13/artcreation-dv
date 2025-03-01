@@ -42,7 +42,7 @@ class AuthModel {
             return { error: 'no params found' };
         }
 
-        const decryptedToken = jwt.verify(params['accessToken'], process.env.SECRET_ASYMMETRIC_KEY);
+        const decryptedToken = jwt.verify(params['accessToken'], process.env.SECRET_PRIVATE_KEY);
         const user = await UserModel.findOne('user');
         if(user.id !== decryptedToken.id) {
             return { error: 'invalid user' };
@@ -53,7 +53,7 @@ class AuthModel {
 
     extendToken = (user) => {
         const expireInHours = 168 // 7 days
-        const token = jwt.sign({id: user.id}, process.env.SECRET_ASYMMETRIC_KEY, {
+        const token = jwt.sign({id: user.id}, process.env.SECRET_PRIVATE_KEY, {
             algorithm: 'RS256',
             expiresIn: expireInHours
         });
