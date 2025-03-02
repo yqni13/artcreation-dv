@@ -43,8 +43,6 @@ exports.galleryCreateSchema = [
         .withMessage('backend-length-20')
         .bail()
         .custom((value) => CustomValidator.validateArtGenre(value)),
-    body('comment')
-        .optional({values: 'null'}),
     body('artMedium')
         .trim()
         .notEmpty()
