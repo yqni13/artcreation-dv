@@ -44,6 +44,7 @@ class DBConnect {
     }
 
     #getConnectionString = (localhost = false) => {
+        // keep local version for testing/maintenance
         if(localhost) {
             const db = Database.database;
             const user = Database.user;

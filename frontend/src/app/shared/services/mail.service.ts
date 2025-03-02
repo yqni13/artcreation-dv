@@ -31,7 +31,7 @@ export class MailService {
         }
         // TODO(yqni13): clean input before use
 
-        // endpoint backend (server-custom.js)
+        // this.url = '/api/v1/mailing/send';
         this.url = environment.API_BASE_URL + '/api/v1/mailing/send';
     }
 
