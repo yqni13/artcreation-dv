@@ -10,5 +10,6 @@ module.exports.ErrorStatusCodes = {
     InvalidCredentialsException: 401,
     DBConnectionException: 535,
     DBNotExistingException: 404,
-    DBSyntaxSQLException: 429
+    DBSyntaxSQLException: 429,
+    AuthSecretNotFoundException: 404
 }

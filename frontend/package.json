@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-local-ssl": "ng serve --ssl true --ssl-cert D:/Dokumente/GitHub/artcreation-dv/local_ssl/localhost.crt --ssl-key D:/Dokumente/GitHub/artcreation-dv/local_ssl/localhost.key --open",
     "start:prod": "node set-env.ts && ng serve --configuration production --open",
     "build": "ng build",
     "build:prod": "node set-env.ts && ng build --configuration production",

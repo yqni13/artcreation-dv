@@ -11,5 +11,6 @@ module.exports.ErrorCodes = {
     AuthenticationException: 9,
     DBConnectionException:10,
     DBNotExistingException: 11,
-    DBSyntaxSQLException: 12
+    DBSyntaxSQLException: 12,
+    AuthSecretNotFoundException: 13
 };
