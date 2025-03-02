@@ -28,6 +28,7 @@ class DBConnect {
                 console.log("DB REQUEST ERROR: ", error);
             }
         }
+        console.log("DB COMMUNICATION: SUCCESS")
         await this.close(client);
     }
 
@@ -62,7 +63,6 @@ class DBConnect {
     connection = async () => {
         try {
             const client = await this.#pool.connect()
-            console.log("DB CONNECT SUCCESS");
             return client;
         } catch(error) {
             console.log("DB CONNECT ERROR: ", error);

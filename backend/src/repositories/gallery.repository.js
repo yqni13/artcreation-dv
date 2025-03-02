@@ -21,7 +21,7 @@ class GalleryRepository {
         const values = [params['id']];
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
             return {
                 body: {
@@ -75,7 +75,7 @@ class GalleryRepository {
         const values = Object.values(params['queryParams']);
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
             return {
                 db_operation: 'select',
@@ -96,7 +96,7 @@ class GalleryRepository {
 
         const sql = `SELECT * FROM ${table}`;
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             const result = await connection.query(sql);
             return {
                 body: {
@@ -137,7 +137,7 @@ class GalleryRepository {
         params['artTechnique'], params['artMedium'], params['publication'], timeStamp, timeStamp];
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             await connection.query(sql, values);
             return {
                 body: {
@@ -178,7 +178,7 @@ class GalleryRepository {
         params['artTechnique'], params['artMedium'], params['publication'], timeStamp, params['id']];
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             await connection.query(sql, values);
             return {
                 body: {
@@ -211,7 +211,7 @@ class GalleryRepository {
         const values = [params['id']];
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             await connection.query(sql, values);
             return {
                 body: {

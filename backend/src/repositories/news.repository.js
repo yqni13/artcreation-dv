@@ -21,7 +21,7 @@ class NewsRepository {
         const values = [params['id']];
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
             return {
                 body: {
@@ -76,7 +76,7 @@ class NewsRepository {
         const values = Object.values(params['queryParams']);
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
             return {
                 db_operation: 'select',
@@ -97,7 +97,7 @@ class NewsRepository {
 
         const sql = `SELECT * FROM ${table}`;
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             const result = await connection.query(sql);
             return {
                 body: {
@@ -139,7 +139,7 @@ class NewsRepository {
         params['datetime'], params['title'], params['text'], timestamp, timestamp];
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             await connection.query(sql, values);
             return {
                 body: {
@@ -180,7 +180,7 @@ class NewsRepository {
         params['datetime'], params['title'], params['text'], timestamp, params['id']];
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             await connection.query(sql, values);
             return {
                 body: {
@@ -215,7 +215,7 @@ class NewsRepository {
         const values = [params['id']];
 
         try {
-            const connection = await DBConnect.connect();
+            const connection = await DBConnect.connection();
             await connection.query(sql, values);
             return {
                 body: {
