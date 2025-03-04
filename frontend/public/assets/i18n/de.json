@@ -54,6 +54,15 @@
         "about": {
             "title": "die Künstlerin"
         },
+        "admin": {
+            "options": {
+                "gallery": "Gallerie",
+                "news": "News",
+                "logout": "Abmelden"
+            },
+            "gallery": {},
+            "news": {}
+        },
         "archive": {
             "message": "Zum Lesen des Textes, den Mauszeiger über den jeweiligen Artikel halten.",
             "title": "News Archiv"
@@ -124,7 +133,6 @@
         },
         "login": {
             "login": "Anmelden",
-            "logout": "Abmelden",
             "pass": "Passwort",
             "user": "Username"
         },

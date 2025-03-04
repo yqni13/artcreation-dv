@@ -54,6 +54,15 @@
         "about": {
             "title": "the artist"
         },
+        "admin": {
+            "options": {
+                "gallery": "gallery",
+                "news": "news",
+                "logout": "logout"
+            },
+            "gallery": {},
+            "news": {}
+        },
         "archive": {
             "message": "Hover your mouse over the image to read more on the article.",
             "title": "News Archive"
@@ -124,7 +133,6 @@
         },
         "login": {
             "login": "login",
-            "logout": "logout",
             "pass": "password",
             "user": "username"
         },

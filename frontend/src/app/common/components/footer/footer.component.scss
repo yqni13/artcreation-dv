@@ -2,7 +2,7 @@
 
 
 footer {
-    height: 400px;
+    height: var(--view-footer-height);
     display: flex;
     flex-direction: row;
     background-color: var(--theme-highlight-body);

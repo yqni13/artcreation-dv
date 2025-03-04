@@ -26,8 +26,8 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
-        component: AdminComponent,
-        data: { title: 'admin', onAuth: true, showInNavbar: true, icon: 'icon-Admin', showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'admin', onAuth: true, showInNavbar: true, icon: 'icon-Admin', showInFooterConnect: false, showInFooterInfo: false },
+        loadChildren: () => import('./modules/admin/admin.routes').then(feature => feature.adminRoutes)
     },
     {
         path: 'about',
