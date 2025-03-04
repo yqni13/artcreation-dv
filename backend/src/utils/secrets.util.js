@@ -8,6 +8,7 @@ class Secrets {
     EMAIL_RECEIVER = '';
     EMAIL_SENDER = '';
     EMAIL_PASS = '';
+    ADMIN_ID = 0;
     ADMIN_USER = '';
     ADMIN_PASS = '';
     AUTH_KEY = '';
@@ -23,6 +24,7 @@ class Secrets {
         this.EMAIL_RECEIVER = this.#setEmailReceiver();
         this.EMAIL_SENDER = this.#setEmailSender();
         this.EMAIL_PASS = this.#setEmailPass();
+        this.ADMIN_ID = this.#setAdminID();
         this.ADMIN_USER = this.#setAdminUser();
         this.ADMIN_PASS = this.#setAdminPass();
         this.AUTH_KEY = this.#setAuthKey();
@@ -60,6 +62,13 @@ class Secrets {
             throw new AuthSecretNotFoundException('backend-404-env#EMAIL_PASS');
         }
         return Config.EMAIL_PASS;
+    }
+
+    #setAdminID = () => {
+        if(!Config.ADMIN_ID) {
+            throw new AuthSecretNotFoundException('backend-404-env#ADMIN_ID');
+        }
+        return Config.ADMIN_ID;
     }
 
     #setAdminUser = () => {

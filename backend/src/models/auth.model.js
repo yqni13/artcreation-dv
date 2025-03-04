@@ -1,10 +1,11 @@
 require('dotenv').config();
-const CryptoJS = require('crypto-js');
 const jwt = require('jsonwebtoken');
 const UserModel = require('./user.model');
 const { 
     InvalidCredentialsException 
 } = require('../utils/exceptions/auth.exception');
+const { decryptRSA } = require('../utils/crypto.utils');
+const Secrets = require('../utils/secrets.util');
 
 
 class AuthModel {
@@ -18,47 +19,43 @@ class AuthModel {
             throw new InvalidCredentialsException('Username not registered.');
         }
 
-        const cryptoKey = process.env.SECRET_CRYPTO_KEY
-        const decryptedPass = CryptoJS.AES.decrypt(params['pass'], cryptoKey).toString(CryptoJS.enc.Utf8);
-        const passMatching = decryptedPass === process.env.SECRET_ADMIN_PASS;
+        const decryptedPass = decryptRSA(params['pass'], Secrets.PRIVATE_KEY);
+        const passMatching = decryptedPass === Secrets.ADMIN_PASS;
         if(!passMatching) {
             throw new InvalidCredentialsException('Incorrect password.');
         }
 
-        const token = this.extendToken(user);
+        const expiration = '12h';
+        const token = await this.generateToken(user, expiration);
 
-        const responseBody = {
+        return {
             user: user.name,
-            user_id: user.id,
-            expiresIn: expiresIn, 
+            expiresIn: expiration, 
             token: token
         }
-
-        return responseBody;
     }
 
-    checkToken = async (params) => {
-        if(!Object.keys(params).length) {
-            return { error: 'no params found' };
+    generateToken = async (user, expiration) => {
+        const payload = {
+            id: Secrets.ADMIN_ID,
+            user: user + String(Date.now()),
+            role: 'admin'
         }
 
-        const decryptedToken = jwt.verify(params['accessToken'], process.env.SECRET_PRIVATE_KEY);
-        const user = await UserModel.findOne('user');
-        if(user.id !== decryptedToken.id) {
-            return { error: 'invalid user' };
-        }
-
-        return this.extendToken(user);
-    }
-
-    extendToken = (user) => {
-        const expireInHours = 168 // 7 days
-        const token = jwt.sign({id: user.id}, process.env.SECRET_PRIVATE_KEY, {
+        const options = {
+            expiresIn: expiration,
             algorithm: 'RS256',
-            expiresIn: expireInHours
-        });
+            issuer: 'https://artcreation-dv.at'
+        }
 
-        return token;
+        const token = jwt.sign(payload, Secrets.PRIVATE_KEY, options)
+        return {
+            body: {
+                token: token
+            },
+            code: 1,
+            msg: this.msg1
+        }
     }
 }
 

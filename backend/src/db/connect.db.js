@@ -13,16 +13,20 @@ class DBConnect {
     #pool;
 
     constructor() {
-        const connectionString = this.#getConnectionString(false);
+        const connectionString = this.#getConnectionString(true);
+        console.log("connection string: ", connectionString);
         this.#pool = new Pool({connectionString});
     }
 
     init = async () => {
         const client = await this.connection();
         try {
-            await client.query(`SELECT * FROM gallery`);
+            const results = await client.query(`SELECT * FROM gallery;`);
+            if((results && results.rowCount === 0)){
+                await this.#initTables(client);
+            }
         } catch(error) {
-            if((error && error.code === '42P01') || (results && results.rowCount === 0)) {
+            if(error && error.code === '42P01') {
                 await this.#initTables(client);
             } else if(error) {
                 console.log("DB REQUEST ERROR: ", error);
@@ -43,9 +47,9 @@ class DBConnect {
         }
     }
 
-    #getConnectionString = (localhost = false) => {
+    #getConnectionString = (isLocalhost) => {
         // keep local version for testing/maintenance
-        if(localhost) {
+        if(isLocalhost) {
             const db = Database.database;
             const user = Database.user;
             const pass = Database.password;

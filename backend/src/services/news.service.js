@@ -17,8 +17,6 @@ class NewsService {
     
     create = async (params) => {
         const hasParams = Object.keys(params).length !== 0;
-        // const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
-        // params['accessToken'] = acceptedToken;
         Object.assign(params, await createID(NewsRepository, 'news')); // params['id']
         const result = await NewsRepository.create(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
@@ -26,16 +24,12 @@ class NewsService {
     
     update = async (params) => {
         const hasParams = Object.keys(params).length !== 0;
-        // const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
-        // params['accessToken'] = acceptedToken;
         const result = await NewsRepository.update(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }
     
     delete = async (params) => {
         const hasParams = Object.keys(params).length !== 0;
-        // const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
-        // params['accessToken'] = acceptedToken;
         const result = await NewsRepository.delete(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }

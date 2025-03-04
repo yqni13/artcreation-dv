@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         })
     }
 
-    onLogin() {
+    async onLogin() {
         this.loginForm.markAllAsTouched();
 
         if(this.loginForm.invalid) {
@@ -75,10 +75,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
         this.isLoadingResponse = true;
         this.setButtonStatus(false);
-        this.auth.login(
+        await this.auth.setCredentials(
             this.loginForm.get('user')?.value,
             this.loginForm.get('pass')?.value
-        ).subscribe(() => {
+        );
+        this.auth.login().subscribe(() => {
             if(this.auth.isLoggedIn()) {
                 this.router.navigate(['admin']);
             }

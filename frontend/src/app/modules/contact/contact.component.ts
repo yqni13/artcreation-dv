@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
-import { MailService } from "../../shared/services/mail.service";
+import { MailAPIService } from "../../api/services/mail.service";
 import { Router, RouterModule } from "@angular/router";
 import { ArtType, ArtTypeHandcraftOnly, ArtTypeOrigORPrint, ArtTypePaintingOnly } from "../../shared/enums/art-type.enum";
 import { DataShareService } from "../../shared/services/data-share.service";
@@ -69,7 +69,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         private dataShareService: DataShareService,
         private navigate: NavigationService,
         private translate: TranslateService,
-        private mailService: MailService,
+        private mailService: MailAPIService,
         private fb: FormBuilder,
         private router: Router
     ) {

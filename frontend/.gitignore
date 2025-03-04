@@ -10,6 +10,11 @@
 public/assets/temp
 public/assets/logo
 
+# environmental
+set-env.dev.ts
+public_key.pem
+.env
+
 # Node
 /node_modules
 npm-debug.log
