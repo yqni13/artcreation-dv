@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
 import { AdminComponent } from "./admin.component";
-import { AdminGalleryComponent } from "./admin-gallery/admin-gallery.component";
+import { AdminGalleryListComponent } from "./admin-gallery/list/admin-gallery-list.component";
+import { AdminGalleryDetailComponent } from "./admin-gallery/detail/admin-gallery-detail.component";
 
 export const adminRoutes: Routes = [
     {
@@ -9,6 +10,14 @@ export const adminRoutes: Routes = [
     },
     {
         path: 'gallery',
-        component: AdminGalleryComponent
-    }
+        component: AdminGalleryListComponent
+    },
+    {
+        path: 'gallery/create',
+        component: AdminGalleryDetailComponent
+    },
+    {
+        path: 'gallery/:id',
+        component: AdminGalleryDetailComponent
+    },
 ]

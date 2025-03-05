@@ -1,0 +1,102 @@
+@use '../../../../../stylesheets/utilities' as sass;
+
+
+.artdv-admingallerylist-content {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - var(--view-nav-width));
+    height: 100%;
+
+    .artdv-admingallerylist-filterbar {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0 0 sass.$space50 0;
+
+        .artdv-admingallerylist-search-wrapper {
+            $wrapper-width: 33%;
+            display: grid;
+            width: $wrapper-width;
+            min-width: 150px;
+
+            
+            #artdv-admingallerylist-search-icon {
+                position: absolute;
+                display: flex;
+                justify-self: end;
+                padding: 2.2px 0;
+                margin-right: sass.$space5;
+
+                i {
+                    color: var(--theme-contrast-text);
+                }
+            }
+        }
+
+        .artdv-admingallerylist-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-left: sass.$space25;
+            padding: 0 sass.$space5;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.6;
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .btn-close {
+            border: 2px solid var(--theme-snackbar-error);
+            a {
+                color: var(--theme-snackbar-error);
+                i {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+
+        .btn-add {
+            border: 2px solid var(--theme-snackbar-success);
+            a {
+                color: var(--theme-snackbar-success);
+            }
+        }
+
+        .btn-return {
+            border: 2px solid var(--theme-snackbar-warning);
+            a {
+                color: var(--theme-snackbar-warning);
+            }
+        }
+    }
+
+    .artdv-admingallerylist-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: sass.$space50;
+
+        .artdv-admingallerylist-list-element {
+            $border-width: 2px;
+            $width-limit: calc(($border-width * 2) + (sass.$space15 * 2));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: calc((100vw - var(--view-nav-width) - $width-limit) / 5);
+            aspect-ratio: 1/1;
+            border: $border-width solid var(--theme-contrast-text);
+            margin: sass.$space15;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+}
