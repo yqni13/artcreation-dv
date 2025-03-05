@@ -1,0 +1,41 @@
+<section class="artdv-admingallery">
+    <header>
+        <h1>Gallery Administration</h1>
+    </header>
+    <div class="artdv-admingallery-content">
+        <div class="artdv-admingallery-filterbar">
+            <div class="artdv-admingallery-search-wrapper">
+                <artdv-textinput
+                    class="artdv-admingallery-search-input"
+                    [placeholder]="'modules.admin.gallery.placeholder' | translate"
+                    [ngStyle]="{'width': '100%'}"
+                    #keywordInputField
+                ></artdv-textinput>
+                <a
+                    id="artdv-admingallery-search-icon"
+                    (click)="filterForKeyword()"
+                    (keydown.enter)="filterForKeyword()"
+                    [attr.aria-disabled]="true"
+                    >
+                    <i class="icon-Search"></i>
+                </a>
+                <a
+                    id="artdv-admingallery-search-close"
+                    (click)="removeKeyword()"
+                    (keydown.enter)="removeKeyword()"
+                    [attr.aria-disabled]="true"
+                    *ngIf="hasKeyword"
+                >
+                    <i class="icon-Close"></i>
+                </a>
+            </div>
+        </div>
+        <div class="artdv-admingallery-list">
+            <ng-container *ngFor="let item of galleryList">
+                <div class="artdv-admingallery-list-element">
+                    <span>{{item.reference_nr}}</span>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>

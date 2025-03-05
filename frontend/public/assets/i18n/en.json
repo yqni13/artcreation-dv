@@ -60,7 +60,9 @@
                 "news": "news",
                 "logout": "logout"
             },
-            "gallery": {},
+            "gallery": {
+                "placeholder": "search in gallery"
+            },
             "news": {}
         },
         "archive": {

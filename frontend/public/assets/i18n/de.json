@@ -60,7 +60,9 @@
                 "news": "News",
                 "logout": "Abmelden"
             },
-            "gallery": {},
+            "gallery": {
+                "placeholder": "in der Gallerie suchen"
+            },
             "news": {}
         },
         "archive": {

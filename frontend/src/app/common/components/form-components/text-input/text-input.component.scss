@@ -6,8 +6,9 @@
     display: grid;
     
     input {
-        width: calc(100% - 12px);
+        width: calc(100% - sass.$text-input-balance);
         padding: 8.5px sass.$comp-form-padding;
+        cursor: text;
     }
 }
 
