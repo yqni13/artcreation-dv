@@ -23,6 +23,7 @@ class NewsRepository {
         try {
             const connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -34,6 +35,7 @@ class NewsRepository {
             };
         } catch (error) {
             console.log("DB ERROR ON SELECT (News Repository, FindOne): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -78,6 +80,7 @@ class NewsRepository {
         try {
             const connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 db_operation: 'select',
                 number_of_entries: result['rows'].length,
@@ -85,6 +88,7 @@ class NewsRepository {
             };
         } catch(error) {
             console.log("DB ERROR ON SELECT (News Repository, FindAllFiltered): ", error.message);
+            await DBConnect.close(connection);
             return {
                 db_operation: 'select',
                 error: error,
@@ -99,6 +103,7 @@ class NewsRepository {
         try {
             const connection = await DBConnect.connection();
             const result = await connection.query(sql);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -111,6 +116,7 @@ class NewsRepository {
             }
         } catch(error) {
             console.log("DB ERROR ON SELECT (News Repository, FindAll): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -141,6 +147,7 @@ class NewsRepository {
         try {
             const connection = await DBConnect.connection();
             await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'insert',
@@ -152,6 +159,7 @@ class NewsRepository {
             };
         } catch(error) {
             console.log("DB ERROR ON INSERT (News Repository): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'insert',
@@ -182,6 +190,7 @@ class NewsRepository {
         try {
             const connection = await DBConnect.connection();
             await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'update',
@@ -193,6 +202,7 @@ class NewsRepository {
             };
         } catch(error) {
             console.log("DB ERROR ON UPDATE (News Repository): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'update',
@@ -217,6 +227,7 @@ class NewsRepository {
         try {
             const connection = await DBConnect.connection();
             await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'delete',
@@ -227,6 +238,7 @@ class NewsRepository {
             };
         } catch(error) {
             console.log("DB ERROR ON DELETE (News Repository): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'delete',

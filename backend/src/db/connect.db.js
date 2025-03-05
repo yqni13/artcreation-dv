@@ -14,7 +14,6 @@ class DBConnect {
 
     constructor() {
         const connectionString = this.#getConnectionString(true);
-        console.log("connection string: ", connectionString);
         this.#pool = new Pool({connectionString});
     }
 

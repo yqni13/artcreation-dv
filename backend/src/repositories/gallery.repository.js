@@ -23,6 +23,7 @@ class GalleryRepository {
         try {
             const connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -33,6 +34,7 @@ class GalleryRepository {
             };
         } catch (error) {
             console.log("DB ERROR ON SELECT (Gallery Repository, FindOne): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -77,6 +79,7 @@ class GalleryRepository {
         try {
             const connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 db_operation: 'select',
                 number_of_entries: result['rows'].length,
@@ -84,6 +87,7 @@ class GalleryRepository {
             };
         } catch(error) {
             console.log("DB ERROR ON SELECT (Gallery Repository, FindAllFiltered): ", error.message);
+            await DBConnect.close(connection);
             return {
                 db_operation: 'select',
                 error: error,
@@ -98,6 +102,7 @@ class GalleryRepository {
         try {
             const connection = await DBConnect.connection();
             const result = await connection.query(sql);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -109,6 +114,7 @@ class GalleryRepository {
             }
         } catch(error) {
             console.log("DB ERROR ON SELECT (Gallery Repository, FindAll): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -139,6 +145,7 @@ class GalleryRepository {
         try {
             const connection = await DBConnect.connection();
             await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'insert',
@@ -149,6 +156,7 @@ class GalleryRepository {
             };
         } catch (error) {
             console.log("DB ERROR ON INSERT (Gallery Repository): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'insert',
@@ -180,6 +188,7 @@ class GalleryRepository {
         try {
             const connection = await DBConnect.connection();
             await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'update',
@@ -190,6 +199,7 @@ class GalleryRepository {
             }
         } catch(error) {
             console.log("DB ERROR ON UPDATE (Gallery Repository): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'update',
@@ -213,6 +223,7 @@ class GalleryRepository {
         try {
             const connection = await DBConnect.connection();
             await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'delete',
@@ -222,6 +233,7 @@ class GalleryRepository {
             }
         } catch(error) {
             console.log("DB ERROR ON DELETE (Gallery Repository): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'delete',
