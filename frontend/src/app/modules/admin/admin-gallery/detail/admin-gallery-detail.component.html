@@ -2,4 +2,109 @@
     <header>
         <h1>{{'modules.admin.gallery.title.' + (mode === modeOptions.create ? 'create' : 'update') | translate}}</h1>
     </header>
+    <div class="artdv-admingallerydetail-content" *ngIf="!isLoadingInit">
+        <form [formGroup]="artworkForm">
+            <div class="artdv-admingallerydetail-form artdv-form-genre">
+                <div class="artdv-admingallerydetail-form-wrapper">
+                    <span>{{('modules.admin.gallery.details.genre' | translate) + ':*'}}</span>
+                    <artdv-selectinput
+                        class="artdv-admingallerydetail-select"
+                        [placeholder]="'modules.admin.gallery.placeholder-genre' | translate"
+                        [fieldName]="'modules.admin.gallery.details.genre' | translate"
+                        [options]="genreOptions"
+                        [optionsTranslateRoot]="'shared.enum.art-genre.'"
+                        [formControl]="artworkForm.get('genre') | controlCast"
+                        (byChange)="onGenreChange($event)"
+                    ></artdv-selectinput>
+                </div>
+            </div>
+            <div class="artdv-admingallerydetail-form artdv-form-image" *ngIf="hasGenre">
+                <button>upload</button>
+            </div>
+            <div class="artdv-admingallerydetail-form artdv-form-details" *ngIf="hasGenre">
+                <div class="artdv-admingallerydetail-form-wrapper">
+                    <span>{{('modules.admin.gallery.details.title' | translate) + ':'}}</span>
+                    <artdv-textinput
+                        class="artdv-admingallerydetail-text"
+                        [inputType]="'text'"
+                        [formControl]="artworkForm.get('title') | controlCast"
+                        [fieldName]="'modules.admin.gallery.details.title' | translate"
+                    ></artdv-textinput>
+                </div>
+                <div class="artdv-admingallerydetail-form-wrapper">
+                    <span>{{('modules.admin.gallery.details.price' | translate) + ':'}}</span>
+                    <artdv-textinput
+                        class="artdv-admingallerydetail-text"
+                        [inputType]="'text'"
+                        [placeholder]="artworkForm.get('price')?.value === null 
+                            ? ('modules.admin.gallery.placeholder-price' | translate) 
+                            : ''"
+                        [formControl]="artworkForm.get('price') | controlCast"
+                        [fieldName]="'modules.admin.gallery.details.price' | translate"
+                    ></artdv-textinput>
+                </div>
+                <div class="artdv-admingallerydetail-form-wrapper">
+                    <span>{{('modules.admin.gallery.details.dimensions' | translate) + ':*'}}</span>
+                    <artdv-textinput
+                        class="artdv-admingallerydetail-text"
+                        [inputType]="'text'"
+                        [placeholder]="'modules.admin.gallery.placeholder-dimensions' | translate"
+                        [formControl]="artworkForm.get('dimensions') | controlCast"
+                        [fieldName]="'modules.admin.gallery.details.dimensions' | translate"
+                    ></artdv-textinput>
+                </div>                
+                <div class="artdv-admingallerydetail-form-wrapper">
+                    <span>{{('modules.admin.gallery.details.medium' | translate) + ':*'}}</span>
+                    <artdv-selectinput
+                        class="artdv-admingallerydetail-select"
+                        [placeholder]="'modules.admin.gallery.placeholder-medium' | translate"
+                        [fieldName]="'modules.admin.gallery.details.medium' | translate"
+                        [options]="mediumOptions"
+                        [optionsTranslateRoot]="'shared.enum.art-medium.'"
+                        [formControl]="artworkForm.get('medium') | controlCast"
+                    ></artdv-selectinput>
+                </div>
+                <div class="artdv-admingallerydetail-form-wrapper">
+                    <span>{{('modules.admin.gallery.details.technique' | translate) + ':*'}}</span>
+                    <artdv-selectinput
+                        class="artdv-admingallerydetail-select"
+                        [placeholder]="'modules.admin.gallery.placeholder-technique' | translate"
+                        [fieldName]="'modules.admin.gallery.details.technique.' | translate"
+                        [options]="techniqueOptions"
+                        [optionsTranslateRoot]="'shared.enum.art-technique.'"
+                        [formControl]="artworkForm.get('technique') | controlCast"
+                    ></artdv-selectinput>
+                </div>
+                <div class="artdv-admingallerydetail-form-wrapper">
+                    <span>{{('modules.admin.gallery.details.publication' | translate) + ':*'}}</span>
+                    <artdv-textinput
+                        class="artdv-admingallerydetail-text"
+                        [inputType]="'text'"
+                        [placeholder]="getPublicationYearPlaceholder()"
+                        [formControl]="artworkForm.get('publication') | controlCast"
+                        [fieldName]="'modules.admin.gallery.details.publication' | translate"
+                    ></artdv-textinput>
+                </div>
+            </div>
+        </form>
+        <div class="artdv-admingallerydetail-form-btn">
+            <div
+                class="artdv-admingallerydetail-form-btn-wrapper btn-confirm"
+                (click)="onSubmit()"
+                (keydown.enter)="onSubmit()"
+                [attr.aria-disabled]="true"
+            >
+                <a>{{('modules.admin.buttons.' + (mode === modeOptions.create ? 'create' : 'save')) | translate}}</a>
+            </div>
+            <div
+                class="artdv-admingallerydetail-form-btn-wrapper btn-cancel"
+                (click)="cancel()"
+                (keydown.enter)="cancel()"
+                [attr.aria-disabled]="true"
+            >
+                <a>{{'modules.admin.buttons.cancel' | translate}}</a>
+            </div>
+        </div>
+    </div>
+    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
 </section>

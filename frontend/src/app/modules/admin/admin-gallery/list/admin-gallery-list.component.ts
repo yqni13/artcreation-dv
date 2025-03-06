@@ -134,10 +134,11 @@ export class AdminGalleryListComponent implements OnInit {
     navigateToUpdateItem(id: string) {
         const data = {
             mode: CRUDMode.update,
-            item: this.galleryList.find(data => data.gallery_id === id)
+            entryId: id,
+            refNr: (this.galleryList.find(data => data.gallery_id === id))?.reference_nr
         }
 
         this.dataSharing.setSharedData(data);
-        this.router.navigate([`admin/gallery/${data.item?.reference_nr}`])
+        this.router.navigate([`admin/gallery/${data.refNr}`])
     }
 }

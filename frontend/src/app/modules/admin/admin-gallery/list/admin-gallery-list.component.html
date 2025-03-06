@@ -8,7 +8,7 @@
                 <artdv-selectinput
                     class="artdv-admingallerylist-select"
                     [ngStyle]="{'width': '100%'}"
-                    [placeholder]="'demo'"
+                    [placeholder]="'modules.admin.gallery.placeholder-genre' | translate"
                     [options]="genreOptions"
                     [optionsTranslateRoot]="'shared.enum.art-genre.'"
                     [formControl]="searchForm.get('genre') | controlCast"
@@ -19,7 +19,7 @@
             <div class="artdv-admingallerylist-search-wrapper">
                 <artdv-textinput
                     class="artdv-admingallerylist-search-input"
-                    [placeholder]="'modules.admin.gallery.placeholder' | translate"
+                    [placeholder]="'modules.admin.gallery.placeholder-search' | translate"
                     [ngStyle]="{'width': '100%'}"
                     [inputType]="'text'"
                     [formControl]="searchForm.get('searchText') | controlCast"
