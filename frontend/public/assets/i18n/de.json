@@ -55,20 +55,39 @@
             "title": "die Künstlerin"
         },
         "admin": {
-            "options": {
-                "gallery": "Galerie",
-                "news": "News",
-                "logout": "Abmelden"
+            "buttons": {
+                "cancel": "abbrechen",
+                "create": "erstellen",
+                "save": "speichern"
             },
             "gallery": {
-                "placeholder": "in der Galerie suchen",
+                "details": {
+                    "dimensions": "Abmessungen",
+                    "genre": "Genre",
+                    "medium": "Material",
+                    "price": "Preis",
+                    "publication": "Erstellungsjahr",
+                    "technique": "Technik",
+                    "title": "Titel"
+                },
+                "placeholder-dimensions": "Höhe x Breite => z.B.: 80x60",
+                "placeholder-genre": "wählen Sie ein Genre",
+                "placeholder-medium": "wählen Sie ein Material",
+                "placeholder-price": "Preis auf Anfrage",
+                "placeholder-search": "in der Galerie suchen",
+                "placeholder-technique": "wählen Sie eine Technik",
                 "title": {
-                    "list": "Galerie Management",
                     "create": "Kunstwerk hinzufügen",
+                    "list": "Galerie Management",
                     "update": "Kunstwerk bearbeiten"
                 }
             },
-            "news": {}
+            "news": {},
+            "options": {
+                "gallery": "Galerie",
+                "logout": "Abmelden",
+                "news": "News"
+            }
         },
         "archive": {
             "message": "Zum Lesen des Textes, den Mauszeiger über den jeweiligen Artikel halten.",
@@ -159,8 +178,8 @@
         },
         "enum": {
             "art-genre": {
-                "all": "alle",
                 "abstract": "abstrakt",
+                "all": "alle",
                 "creative": "kreatives",
                 "nature": "natur",
                 "people": "personen",
@@ -174,8 +193,8 @@
             },
             "art-technique": {
                 "acrylic": "Acryl",
-                "pouring": "Pouring",
-                "other": "Sonstiges"
+                "other": "Sonstiges",
+                "pouring": "Pouring"
             },
             "art-type": {
                 "handcraft": "Handwerk",

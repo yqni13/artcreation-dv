@@ -70,18 +70,20 @@ $form-divider-margin: 2.5px;
 $select-symbol-balance: 1px;
 $text-input-balance: 12px;
 
+$hover-opacity: 0.6;
+
 /* use padding variables to highlight relation to used padding values in divs */
 $faq-box-height: calc($comp-padding-small * 2);
 
 
 /* snackbar color definitions */
-$color-lightmode-error: #b01515;
-$color-darkmode-error: #d62323;
+$color-lightmode-error: #b91c1c;
+$color-darkmode-error: #ba3131;
 
 $color-lightmode-info: #384bfbe6;
 $color-darkmode-info: #235cb1;
 
-$color-lightmode-success: #5ecb5e;
+$color-lightmode-success: #0a8b0a;
 $color-darkmode-success: #116600;
 
 $color-lightmode-warning: #e69900;

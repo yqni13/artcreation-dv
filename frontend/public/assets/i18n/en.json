@@ -55,20 +55,39 @@
             "title": "the artist"
         },
         "admin": {
-            "options": {
-                "gallery": "gallery",
-                "news": "news",
-                "logout": "logout"
+            "buttons": {
+                "cancel": "cancel",
+                "create": "add",
+                "save": "save"
             },
             "gallery": {
-                "placeholder": "search in gallery",
+                "details": {
+                    "dimensions": "Dimensions",
+                    "genre": "Genre",
+                    "medium": "Medium",
+                    "price": "Price",
+                    "publication": "Publication year",
+                    "technique": "Technique",
+                    "title": "Title"
+                },
+                "placeholder-dimensions": "height x width => e.g.: 80x60",
+                "placeholder-genre": "select a genre",
+                "placeholder-medium": "select a medium",
+                "placeholder-price": "price on request",
+                "placeholder-search": "search in gallery",
+                "placeholder-technique": "select a technique",
                 "title": {
-                    "list": "gallery administration",
                     "create": "add artwork",
+                    "list": "gallery administration",
                     "update": "edit artwork"
                 }
             },
-            "news": {}
+            "news": {},
+            "options": {
+                "gallery": "gallery",
+                "logout": "logout",
+                "news": "news"
+            }
         },
         "archive": {
             "message": "Hover your mouse over the image to read more on the article.",
@@ -159,8 +178,8 @@
         },
         "enum": {
             "art-genre": {
-                "all": "all",
                 "abstract": "abstract",
+                "all": "all",
                 "creative": "creative",
                 "nature": "nature",
                 "people": "people",
@@ -174,8 +193,8 @@
             },
             "art-technique": {
                 "acrylic": "Acrylic",
-                "pouring": "Pouring",
-                "other": "Other"
+                "other": "Other",
+                "pouring": "Pouring"
             },
             "art-type": {
                 "handcraft": "handcraft",

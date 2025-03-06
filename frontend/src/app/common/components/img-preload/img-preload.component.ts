@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { GalleryScrollDirective } from "../../directives/ng-scroll.directive";
-import { GalleryItem } from "../../../shared/interfaces/GalleryItems";
+import { GalleryItemDEPRECATED } from "../../../shared/interfaces/GalleryItems";
 import { Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 
@@ -34,7 +34,7 @@ import { CommonModule } from "@angular/common";
 })
 export class ImgPreloadComponent {
 
-    @Input() card!: GalleryItem;
+    @Input() card!: GalleryItemDEPRECATED;
     @Input() activeGenre!: string;
 
     protected loaded: boolean;

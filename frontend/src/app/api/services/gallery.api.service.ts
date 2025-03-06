@@ -34,15 +34,14 @@ export class GalleryAPIService {
 
     setIdParam(id: string) {
         this.idParam = id;
-        this.urlGetOne = `${this.urlGetOne}/${this.idParam}`;
     }
 
     setFilterParams(data: GalleryFilterRequest) {
         this.filterParams = data;
     }
 
-    sendGetOneRequest(): Observable<HttpResponse<GalleryResponse.GalleryItem>> {
-        return this.http.get<GalleryResponse.GalleryItem>(this.urlGetOne, { observe: 'response'});
+    sendGetOneRequest(): Observable<HttpResponse<GalleryResponse.GalleryItemResponse>> {
+        return this.http.get<GalleryResponse.GalleryItemResponse>(`${this.urlGetOne}/${this.idParam}`, { observe: 'response'});
     }
 
     sendGetAllRequest(): Observable<HttpResponse<GalleryResponse.GalleryListResponse>> {

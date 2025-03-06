@@ -21,3 +21,9 @@ export declare interface GalleryListResponse {
         data: GalleryItem[]
     }
 }
+
+export declare interface GalleryItemResponse {
+    body: {
+        data: GalleryItem
+    }
+}

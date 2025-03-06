@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { GalleryItem } from "../interfaces/GalleryItems";
+import { GalleryItemDEPRECATED } from "../interfaces/GalleryItems";
 import { ArtType } from "../enums/art-type.enum";
 import { default as galleryData } from "../data/gallery-data.json";
 
@@ -8,7 +8,7 @@ import { default as galleryData } from "../data/gallery-data.json";
 })
 export class ReferenceCheckService {
 
-    private source: GalleryItem[]
+    private source: GalleryItemDEPRECATED[]
     private referenceCollection: Record<string, {type: ArtType, sale: boolean, price: number|null}>;
 
     constructor() {
@@ -23,7 +23,7 @@ export class ReferenceCheckService {
         }        
     }
 
-    private setSource(data: GalleryItem[]) {
+    private setSource(data: GalleryItemDEPRECATED[]) {
         if(data === null || data === undefined || data.length === 0) {
             return;
         }

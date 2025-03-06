@@ -11,5 +11,6 @@ $select-left-padding: calc(sass.$comp-form-padding - sass.$select-intern-leftpad
     select {
         width: calc(100% - sass.$select-intern-leftpadding);
         padding: 7.5px 0 7.5px $select-left-padding;
+        cursor: pointer;
     }
 }

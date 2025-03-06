@@ -20,6 +20,7 @@ import { HttpObservationService } from "../../shared/services/http-observation.s
 import { SnackbarMessageService } from "../../shared/services/snackbar.service";
 import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
 import { FloatPrecisionPipe } from "../../common/pipes/float-precision.pipe";
+import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
 
 @Component({
     selector: 'app-contact',
@@ -29,6 +30,7 @@ import { FloatPrecisionPipe } from "../../common/pipes/float-precision.pipe";
         CommonModule,
         CastAbstractToFormControlPipe,
         FormsModule,
+        LoadingAnimationComponent,
         ReactiveFormsModule,
         RouterModule,
         SelectInputComponent,
