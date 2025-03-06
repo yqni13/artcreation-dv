@@ -56,12 +56,17 @@
         },
         "admin": {
             "options": {
-                "gallery": "Gallerie",
+                "gallery": "Galerie",
                 "news": "News",
                 "logout": "Abmelden"
             },
             "gallery": {
-                "placeholder": "in der Gallerie suchen"
+                "placeholder": "in der Galerie suchen",
+                "title": {
+                    "list": "Galerie Management",
+                    "create": "Kunstwerk hinzufügen",
+                    "update": "Kunstwerk bearbeiten"
+                }
             },
             "news": {}
         },
@@ -154,6 +159,7 @@
         },
         "enum": {
             "art-genre": {
+                "all": "alle",
                 "abstract": "abstrakt",
                 "creative": "kreatives",
                 "nature": "natur",

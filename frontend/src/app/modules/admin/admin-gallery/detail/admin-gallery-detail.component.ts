@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { filter, Subscription, tap } from "rxjs";
 import { DataShareService } from "../../../../shared/services/data-share.service";
 import { NavigationService } from "../../../../shared/services/navigation.service";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
     selector: 'app-admin-gallery-detail',
@@ -13,7 +14,8 @@ import { NavigationService } from "../../../../shared/services/navigation.servic
     styleUrl: './admin-gallery-detail.component.scss',
     imports: [
         CommonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslateModule
     ]
 })
 export class AdminGalleryDetailComponent implements OnInit, OnDestroy{

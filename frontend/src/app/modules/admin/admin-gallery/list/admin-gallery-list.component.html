@@ -1,9 +1,21 @@
 <section class="artdv-admingallerylist">
     <header>
-        <h1>Gallery Administration</h1>
+        <h1>{{'modules.admin.gallery.title.list' | translate}}</h1>
     </header>
     <div class="artdv-admingallerylist-content">
         <div class="artdv-admingallerylist-filterbar">
+            <div class="artdv-admingallerylist-select-wrapper">
+                <artdv-selectinput
+                    class="artdv-admingallerylist-select"
+                    [ngStyle]="{'width': '100%'}"
+                    [placeholder]="'demo'"
+                    [options]="genreOptions"
+                    [optionsTranslateRoot]="'shared.enum.art-genre.'"
+                    [formControl]="searchForm.get('genre') | controlCast"
+                    (byChange)="onGenreChange($event)"
+                ></artdv-selectinput>
+                <span class="artdv-admingallerylist-filter-label">Genre</span>
+            </div>
             <div class="artdv-admingallerylist-search-wrapper">
                 <artdv-textinput
                     class="artdv-admingallerylist-search-input"
@@ -14,6 +26,7 @@
                     (byChange)="onSearchTextChange($event)"
                     #keywordInputField
                 ></artdv-textinput>
+                <span class="artdv-admingallerylist-filter-label">Filter</span>
                 <a
                     id="artdv-admingallerylist-search-icon"
                     (click)="onSearchSubmit()"
@@ -51,7 +64,7 @@
             </div>
         </div>
         <div class="artdv-admingallerylist-list">
-            <ng-container *ngFor="let item of galleryList">
+            <ng-container *ngFor="let item of modifiedList">
                 <img 
                     class="artdv-admingallerylist-list-element"
                     src="{{item.image_path}}"
@@ -61,7 +74,7 @@
                     [attr.aria-disabled]="true"
                 >
             </ng-container>
-            <div class="artdv-query-placeholder" *ngIf="galleryList.length === 0">
+            <div class="artdv-query-placeholder" *ngIf="modifiedList.length === 0">
                 <span>no data found</span>
             </div>
         </div>

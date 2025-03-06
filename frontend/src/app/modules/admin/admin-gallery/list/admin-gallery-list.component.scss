@@ -13,13 +13,18 @@
         width: 100%;
         margin: 0 0 sass.$space50 0;
 
+        .artdv-admingallerylist-select-wrapper {
+            width: 125px;
+            display: flex;
+            margin-right: sass.$space25;
+        }
+
         .artdv-admingallerylist-search-wrapper {
-            $wrapper-width: 33%;
+            $wrapper-width: 20%;
             display: grid;
             width: $wrapper-width;
-            min-width: 150px;
+            min-width: 200px;
 
-            
             #artdv-admingallerylist-search-icon {
                 position: absolute;
                 display: flex;
@@ -31,6 +36,21 @@
                     color: var(--theme-contrast-text);
                 }
             }
+        }
+
+        .artdv-admingallerylist-filter-label {
+            position: absolute;
+            display: flex;
+            align-self: end;
+            justify-content: left;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--theme-contrast-text);
+            background-color: var(--theme-body-bg);
+            padding: calc(sass.$space5 / 2);
+            padding-bottom: 0;
+            border-radius: sass.$space5;
+            margin: 0 0 calc(sass.$space25 + sass.$space5) sass.$space5;
         }
 
         .artdv-admingallerylist-btn-wrapper {

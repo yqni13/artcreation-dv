@@ -61,7 +61,12 @@
                 "logout": "logout"
             },
             "gallery": {
-                "placeholder": "search in gallery"
+                "placeholder": "search in gallery",
+                "title": {
+                    "list": "gallery administration",
+                    "create": "add artwork",
+                    "update": "edit artwork"
+                }
             },
             "news": {}
         },
@@ -154,6 +159,7 @@
         },
         "enum": {
             "art-genre": {
+                "all": "all",
                 "abstract": "abstract",
                 "creative": "creative",
                 "nature": "nature",
