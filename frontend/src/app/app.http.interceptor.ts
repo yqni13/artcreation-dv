@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpEvent, HttpHandlerFn, HttpRequest, HttpResponse, HttpStatusCode } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
@@ -7,6 +6,8 @@ import { SnackbarOption } from './shared/enums/snackbar-option.enum';
 import { HttpObservationService } from './shared/services/http-observation.service';
 import { StaticTranslateService } from './shared/services/static-translation.service';
 import { TranslateService } from '@ngx-translate/core';
+import { GalleryHttpInterceptor } from './common/http/gallery.http.interceptor';
+import { MailHttpInterceptor } from './common/http/mail.http.interceptor';
 
 
 export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
@@ -14,32 +15,26 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     const snackbarService = inject(SnackbarMessageService);
     const staticTranslate = inject(StaticTranslateService);
     const httpObservationService = inject(HttpObservationService);
-    const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+    const galleryIntercept = inject(GalleryHttpInterceptor);
+    const mailIntercept = inject(MailHttpInterceptor);
+    const apiVersion = '/api/v1';
 
     return next(req).pipe(
         tap(async (httpEvent) => {
             if((httpEvent as HttpResponse<any>).status === HttpStatusCode.Ok) {
                 const httpbody = (httpEvent as HttpResponse<any>);
-                if(httpbody.url?.includes('/mailing/send')) {
-                    await delay(1000);
-                    httpObservationService.setEmailStatus(true);
-                    snackbarService.notify({
-                        title: translate.currentLang === 'en'
-                        ? staticTranslate.getTranslationEN('common.backend.success.email.title')
-                        : staticTranslate.getTranslationDE('common.backend.success.email.title'),
-                    text: translate.currentLang === 'en'
-                        ? staticTranslate.getTranslationEN('common.backend.success.email.text') + (httpEvent as HttpResponse<any>).body.body.response.sender
-                        : staticTranslate.getTranslationDE('common.backend.success.email.text') + (httpEvent as HttpResponse<any>).body.body.response.sender,
-                        autoClose: true,
-                        type: SnackbarOption.success,
-                        displayTime: 10000
-                    });
+
+                if(httpbody.url?.includes(`${apiVersion}/gallery`)) {
+                    galleryIntercept.handleGalleryResponse(httpEvent as HttpResponse<any>);
+                }
+                if(httpbody.url?.includes(`${apiVersion}/mailing`)) {
+                    mailIntercept.handleMailResponse(httpEvent as HttpResponse<any>);
                 }
             }
         })
         ,
         catchError((response) => {
-            handleError(response, httpObservationService, snackbarService, staticTranslate, translate).catch((err) => {
+            handleError(response, httpObservationService, snackbarService, staticTranslate, translate, galleryIntercept, mailIntercept, apiVersion).catch((err) => {
                 console.log("Error handling failed", err);
             })
             
@@ -48,17 +43,19 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     );
 }
 
-export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, staticTranslate: StaticTranslateService, translate: TranslateService) {
-    const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    console.log("response error: ", response);
-
-    if(response.url.includes('/mailing/send')) {
-        await delay(1000);
-        httpObserve.setEmailStatus(false);
+export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, staticTranslate: StaticTranslateService, translate: TranslateService, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor, apiVersion: string) {
+    
+    if(response.url.includes(`${apiVersion}/gallery`)) {
+        galleryIntercept.handleGalleryError(response);
+    }
+    if(response.url.includes(`${apiVersion}/mailing`)) {
+        mailIntercept.handleMailError(response);
     }
 
-
-    if(response.statusText === 'Unknown Error' || (response.status === 0 && response.url.includes('/mailing/'))) {
+    // user response log
+    if(response.statusText === 'Unknown Error' 
+        || (response.status === 0 && response.url.includes('/gallery/'))
+        || (response.status === 0 && response.url.includes('/mailing/'))) {
         snackbarService.notify({
             title: translate.currentLang === 'en'
                 ? staticTranslate.getTranslationEN('common.backend.error.header.InternalServerException')
@@ -102,4 +99,8 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
             displayTime: 10000
         })
     }
+
+    // browser response log
+    console.log("response error: ", response);
+    httpObserve.setErrorStatus(response);
 }

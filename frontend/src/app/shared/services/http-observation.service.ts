@@ -6,10 +6,47 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HttpObservationService {
 
+    private galleryFindOneStatusSubject = new BehaviorSubject<boolean>(false);
+    private galleryFindAllStatusSubject = new BehaviorSubject<boolean>(false);
+    private galleryCreateStatusSubject = new BehaviorSubject<boolean>(false);
+    private galleryUpdateStatusSubject = new BehaviorSubject<boolean>(false);
+    private galleryDeleteStatusSubject = new BehaviorSubject<boolean>(false);
     private emailStatusSubject = new BehaviorSubject<boolean>(false);
+    private errorStatusSubject = new BehaviorSubject<any>(null);
+
+    galleryFindOneStatus$ = this.galleryFindOneStatusSubject.asObservable();
+    galleryFindAllStatus$ = this.galleryFindAllStatusSubject.asObservable();
+    galleryCreateStatus$ = this.galleryCreateStatusSubject.asObservable();
+    galleryUpdateStatus$ = this.galleryUpdateStatusSubject.asObservable();
+    galleryDeleteStatus$ = this.galleryDeleteStatusSubject.asObservable();
     emailStatus$ = this.emailStatusSubject.asObservable();
+    errorStatus$ = this.errorStatusSubject.asObservable();
+
+    setGalleryFindOneStatus(isStatus200: boolean) {
+        this.galleryFindOneStatusSubject.next(isStatus200);
+    }
+
+    setGalleryFindAllStatus(isStatus200: boolean) {
+        this.galleryFindAllStatusSubject.next(isStatus200);
+    }
+
+    setGalleryCreateStatus(isStatus200: boolean) {
+        this.galleryCreateStatusSubject.next(isStatus200);
+    }
+
+    setGalleryUpdateStatus(isStatus200: boolean) {
+        this.galleryUpdateStatusSubject.next(isStatus200);
+    }
+
+    setGalleryDeleteStatus(isStatus200: boolean) {
+        this.galleryDeleteStatusSubject.next(isStatus200);
+    }
 
     setEmailStatus(isStatus200: boolean) {
         this.emailStatusSubject.next(isStatus200);
+    }
+
+    setErrorStatus(error: any) {
+        this.errorStatusSubject.next(error);
     }
 }

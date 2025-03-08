@@ -23,6 +23,14 @@
             flex-direction: column;
         }
 
+        .artdv-form-image {
+            margin: sass.$space15 0;
+            span {
+                font-size: 14px;
+                color: var(--theme-snackbar-error);
+            }
+        }
+
         .artdv-admingallerydetail-form-wrapper {
             display: flex;
             flex-direction: row;
@@ -42,12 +50,32 @@
                 width: 55%;
             }
         }
+
+        .artdv-admingallerydetail-update-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: sass.$space15;
+
+            span {
+                font-size: 10px;
+                opacity: 0.7;
+            }
+
+            span:nth-of-type(1) {
+                margin-right: sass.$space5;
+            }
+        }
     }
 
     .artdv-admingallerydetail-form-btn {
         display: flex;
         flex-direction: row;
         margin: sass.$space50 0;
+
+        button {
+            background-color: transparent;
+        }
 
         .artdv-admingallerydetail-form-btn-wrapper {
             display: flex;

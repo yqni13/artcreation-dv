@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
 import { Router } from "@angular/router";
@@ -17,6 +17,9 @@ import * as EnumValidators from "../../../../common/helper/enum-converter";
 import { ArtGenre } from "../../../../shared/enums/art-genre.enum";
 import { CastAbstractToFormControlPipe } from "../../../../common/pipes/cast-abstracttoform-control.pipe";
 import { TextInputComponent } from "../../../../common/components/form-components/text-input/text-input.component";
+import { HttpObservationService } from "../../../../shared/services/http-observation.service";
+import { GalleryUpdateRequest } from "../../../../api/models/gallery-request.interface";
+import { DateTimeService } from "../../../../shared/services/datetime.service";
 
 @Component({
     selector: 'app-admin-gallery-detail',
@@ -32,7 +35,7 @@ import { TextInputComponent } from "../../../../common/components/form-component
         TranslateModule
     ]
 })
-export class AdminGalleryDetailComponent implements OnInit, OnDestroy{
+export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDestroy{
 
     protected artworkForm: FormGroup;
     protected mode: CRUDMode;
@@ -40,29 +43,39 @@ export class AdminGalleryDetailComponent implements OnInit, OnDestroy{
     protected genreOptions = ArtGenre;
     protected mediumOptions = ArtMedium;
     protected techniqueOptions = ArtTechnique
-    protected artWorkEntry: GalleryItem | null;
+    protected artworkEntry: GalleryItem | null;
     protected isLoadingResponse: boolean;
     protected isLoadingInit: boolean;
     protected hasGenre: boolean;
+    protected lastModified: string;
 
     private subscriptionDataSharing$: Subscription;
+    private subscriptionHttpObservationCreate$: Subscription;
+    private subscriptionHttpObservationUpdate$: Subscription;
+    private subscriptionHttpObservationError$: Subscription;
     private entryId: string;
     private delay: any;
 
     constructor(
         private readonly router: Router,
         private readonly fb: FormBuilder,
+        private readonly datetime: DateTimeService,
         private readonly navigate: NavigationService,
         private readonly galleryApi: GalleryAPIService,
-        private readonly dataSharing: DataShareService
+        private readonly dataSharing: DataShareService,
+        private readonly httpObservation: HttpObservationService
     ) {
         this.artworkForm = new FormGroup({});
         this.mode = CRUDMode.update;
-        this.artWorkEntry = null;
+        this.artworkEntry = null;
         this.isLoadingResponse = true;
         this.isLoadingInit = true;
+        this.lastModified = '';
         
         this.subscriptionDataSharing$ = new Subscription();
+        this.subscriptionHttpObservationCreate$ = new Subscription();
+        this.subscriptionHttpObservationUpdate$ = new Subscription();
+        this.subscriptionHttpObservationError$ = new Subscription();
         this.hasGenre = false;
         this.entryId = '';
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -82,8 +95,9 @@ export class AdminGalleryDetailComponent implements OnInit, OnDestroy{
                 if(this.mode === CRUDMode.update && this.entryId !== '') {
                     this.galleryApi.setIdParam(this.entryId);
                     this.galleryApi.sendGetOneRequest().subscribe(async data => {
-                        (this.artWorkEntry as any) = data.body?.body.data;
-                        this.hasGenre = this.artWorkEntry?.art_genre ? true : false;
+                        (this.artworkEntry as any) = data.body?.body.data;
+                        this.hasGenre = this.artworkEntry?.art_genre ? true : false;
+                        this.lastModified = this.datetime.convertTimestamp(this.artworkEntry?.last_modified ?? null);
                         this.initEdit();
                         await this.delay(500);
                         this.isLoadingInit = false;
@@ -99,32 +113,71 @@ export class AdminGalleryDetailComponent implements OnInit, OnDestroy{
         ).subscribe();
     }
 
+    ngAfterViewInit() {
+        this.subscriptionHttpObservationCreate$ = this.httpObservation.galleryCreateStatus$.pipe(
+            filter((x) => x !== null && x !== undefined),
+            tap((isStatus200: boolean) => {
+                if(isStatus200) {
+                    this.httpObservation.setGalleryCreateStatus(false);
+                    this.isLoadingResponse = false;
+                    this.navigateToGalleryList();
+                }
+            })
+        ).subscribe();
+
+        this.subscriptionHttpObservationUpdate$ = this.httpObservation.galleryUpdateStatus$.pipe(
+            filter((x) => x !== null && x !== undefined),
+            tap((isStatus200: boolean) => {
+                if(isStatus200) {
+                    this.httpObservation.setGalleryUpdateStatus(false);
+                    this.isLoadingResponse = false;
+                    this.navigateToGalleryList();
+                }
+            })
+        ).subscribe();
+
+        this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
+            filter((x) => x),
+            tap((response: any) => {
+                if(response.error.headers.error === 'InvalidPropertyException') {
+                    // TODO(yqni13): need to declare what errors to handle here
+                    this.httpObservation.setEmailStatus(false);
+                    this.isLoadingResponse = false;
+                }
+            })
+        ).subscribe();
+    }
+
     private initForm() {
         this.artworkForm = this.fb.group({
-            genre: new FormControl('', Validators.required),
-            imgPath: new FormControl(''),
+            id: new FormControl(null),
+            referenceNr: new FormControl(null),
+            artGenre: new FormControl('', Validators.required),
+            imagePath: new FormControl(''),
             thumbnailPath: new FormControl(''),
             title: new FormControl(null),
             price: new FormControl(null),
             dimensions: new FormControl('', Validators.required),
-            medium: new FormControl('', Validators.required),
-            technique: new FormControl('', Validators.required),
-            publication: new FormControl('', Validators.required)
+            artMedium: new FormControl('', Validators.required),
+            artTechnique: new FormControl('', Validators.required),
+            publication: new FormControl('', Validators.required),
         })
     }
 
     private initEdit() {
         this.initForm();
         this.artworkForm.patchValue({
-            genre: EnumValidators.getArtGenre(this.artWorkEntry?.art_genre) ?? '',
-            imgPath: this.artWorkEntry?.image_path ?? '',
-            thumbnailPath: this.artWorkEntry?.thumbnail_path ?? '',
-            title: this.artWorkEntry?.title ?? null,
-            price: this.artWorkEntry?.price ?? null,
-            dimensions: this.artWorkEntry?.dimensions ?? '',
-            medium: EnumValidators.isArtMedium(this.artWorkEntry?.art_medium) ?? ArtMedium.canvas,
-            technique: EnumValidators.isArtTechnique(this.artWorkEntry?.art_technique) ?? ArtTechnique.acrylic,
-            publication: this.artWorkEntry?.publication_year ?? '',
+            id: this.artworkEntry?.gallery_id ?? null,
+            referenceNr: this.artworkEntry?.reference_nr ?? null,
+            artGenre: EnumValidators.getArtGenre(this.artworkEntry?.art_genre) ?? '',
+            imagePath: this.artworkEntry?.image_path ?? '',
+            thumbnailPath: this.artworkEntry?.thumbnail_path ?? '',
+            title: this.artworkEntry?.title ?? null,
+            price: this.artworkEntry?.price ?? null,
+            dimensions: this.artworkEntry?.dimensions ?? '',
+            artMedium: EnumValidators.isArtMedium(this.artworkEntry?.art_medium) ?? ArtMedium.canvas,
+            artTechnique: EnumValidators.isArtTechnique(this.artworkEntry?.art_technique) ?? ArtTechnique.acrylic,
+            publication: this.artworkEntry?.publication_year ?? '',
         })
     }
 
@@ -133,9 +186,22 @@ export class AdminGalleryDetailComponent implements OnInit, OnDestroy{
     }
 
     onGenreChange(event: any) {
-        if(!this.hasGenre && Object.values(ArtGenre).includes(event.target?.value)) {
+        if(Object.values(ArtGenre).includes(event.target?.value)) {
             this.hasGenre = true;
+            this.galleryApi.sendRefNrPreviewRequest(event.target?.value).subscribe((response) => {
+                const refNr = response.body?.body.referenceNr ?? null;
+                this.artworkForm.get('referenceNr')?.setValue(refNr);
+                this.configPathByRefNr(refNr);
+            });
         }
+    }
+
+    configPathByRefNr(refNr: string | null) {
+        if(!refNr) {
+            return;
+        }
+        this.artworkForm.get('imagePath')?.setValue(`/assets/paintings/${refNr}.jpg`);
+        this.artworkForm.get('thumbnailPath')?.setValue(`/assets/paintings_resized/${refNr}.jpg`);
     }
 
     onSubmit() {
@@ -146,9 +212,11 @@ export class AdminGalleryDetailComponent implements OnInit, OnDestroy{
 
         this.isLoadingResponse = true;
         if(this.mode === CRUDMode.create) {
-            // send create request
+            this.galleryApi.setCreatePayload(this.artworkForm.getRawValue());
+            this.galleryApi.sendCreateRequest().subscribe();
         } else if(this.mode === CRUDMode.update) {
-            // send update request
+            this.galleryApi.setUpdatePayload(this.artworkForm.getRawValue());
+            this.galleryApi.sendUpdateRequest().subscribe();
         }
     }
 
@@ -179,5 +247,8 @@ export class AdminGalleryDetailComponent implements OnInit, OnDestroy{
 
     ngOnDestroy() {
         this.subscriptionDataSharing$.unsubscribe();
+        this.subscriptionHttpObservationCreate$.unsubscribe();
+        this.subscriptionHttpObservationUpdate$.unsubscribe();
+        this.subscriptionHttpObservationError$.unsubscribe();
     }
 }

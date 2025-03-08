@@ -28,9 +28,22 @@ export declare interface GalleryItemResponse {
     }
 }
 
+export declare interface GalleryCreateUpdateResponse {
+    body: {
+        db_operation: string,
+        id: string
+    }
+}
+
 export declare interface GalleryDeleteResponse {
     body: {
         db_operation: string,
         deleted: boolean
+    }
+}
+
+export declare interface GalleryRefNrPreviewResponse {
+    body: {
+        referenceNr: string
     }
 }
