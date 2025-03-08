@@ -32,6 +32,7 @@
     --theme-snackbar-info: #{sass.$color-lightmode-info};
     --theme-snackbar-success: #{sass.$color-lightmode-success};
     --theme-snackbar-warning: #{sass.$color-lightmode-warning};
+    --theme-snackbar-divider: #{sass.$color-ice-white};
     --theme-signature-filter: none;
 }
 
@@ -53,5 +54,6 @@
     --theme-snackbar-info: #{sass.$color-darkmode-info};
     --theme-snackbar-success: #{sass.$color-darkmode-success};
     --theme-snackbar-warning: #{sass.$color-darkmode-warning};
+    --theme-snackbar-divider: #{sass.$color-grey-label};
     --theme-signature-filter: #{sass.$color-signature-white};
 }

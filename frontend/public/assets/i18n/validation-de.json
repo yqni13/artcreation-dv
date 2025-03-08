@@ -1,0 +1,40 @@
+{
+    "validation": {
+        "backend": {
+            "data": {
+                "auth-invalid-pass": "Das Passwort für den Login ist ungültig. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
+                "auth-invalid-user": "Der Username für den Login ist ungültig. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
+                "auth-jwt-expiration": "Die aktuelle Sitzung ist nach 30 Minuten abgelaufen.",
+                "auth-jwt-missing": "Ohne Sitzungs-Token kann die Anfrage nicht authentifiziert werden. Bitte versuchen Sie es später erneut oder wenden sich an den Support.",
+                "data-invalid-email": "Ihre Email-Adresse ist ungültig. Prüfen Sie bitte Schreibfehler und Aufbau:\nindividuelle Kennzeichnung + @ + Host + '.' + Top-Level-Domain.\nBeispiel: local@host.com",
+                "data-required": "Es wurden nicht alle notwendigen Daten übertragen. Bitte kontrollieren Sie Ihre Angaben.",
+                "secret-404-env": "Umgebungsvariable {{ENV}} fehlt. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
+                "server-500-connection": "Die Verbindung mit dem Server ist im Moment nicht möglich. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
+                "server-500-routes": "Der passende API Zugang/Endpunkt ist im Moment nicht verfügbar. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
+                "server-max-email": "Email Service hat das Anfragen-Limit überschritten und ist temporär blockiert. Bitte versuchen Sie es in 24h erneut."
+            },
+            "header": {
+                "AuthSecretNotFoundException": "Umgebungsvariable fehlt",
+                "InternalServerException": "Server Verbindungs-Fehler",
+                "InvalidCredentialsException": "Ungültige Anmeldedaten",
+                "InvalidPropertiesException": "Ungültiger DatenSatz",
+                "JWTExpirationException": "Sitzung abgelaufen",
+                "RequestExceedMaxException": "Kapazität überschritten",
+                "TokenMissingException": "Sitzungs-Token fehlt"
+            }
+        },
+        "frontend": {
+            "form": {
+                "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
+                "refnr-length": "Die Referenz-Nummer muss 6 Zeichen lang sein.",
+                "refnr-notexist": "Die Referenz-Nummer \"{{fieldValue}}\" existiert nicht.",
+                "required": "Das Feld \"{{fieldName}}\" ist erforderlich."
+            },
+            "interceptor": {
+                "gallery-create-confirm": "Kunstwerk erstellt!",
+                "gallery-update-confirm": "Kunstwerk aktualisiert!",
+                "gallery-delete-confirm": "Kunstwerk gelöscht!"
+            }
+        }
+    }
+}

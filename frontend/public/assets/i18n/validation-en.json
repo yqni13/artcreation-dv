@@ -1,0 +1,40 @@
+{
+    "validation": {
+        "backend": {
+            "data": {
+                "auth-invalid-pass": "The login password is invalid. Please try again later or contact support.",
+                "auth-invalid-user": "The login user is invalid. Please try again later or contact support.",
+                "auth-jwt-expiration": "The session expired after 30 minutes.",
+                "auth-jwt-missing": "Access can not be authenticated without a session token. Please try again later or contact support.",
+                "data-invalid-email": "Your email address is invalid. Check spelling mistakes and structure:\nlocal-part + @ + host-name + '.' + top-level-domain.\nExample: local@host.com",
+                "data-required": "Not all necessary data were transferred. Please check your input.",
+                "secret-404-env": "Secret data {{ENV}} is missing. Please try again later or contact support.",
+                "server-500-connection": "Connection with the server is not possible at the moment. Please try again later or contact support.",
+                "server-500-routes": "The api endpoint is not available at the moment. Please try again later or contact support.",
+                "server-max-email": "Email service exceeded request limit and is temporary blocked. Please try again in 24h."
+            },
+            "header": {
+                "AuthSecretNotFoundException": "Env variable missing",
+                "InternalServerException": "Server connection error",
+                "InvalidCredentialsException": "Invalid credentials",
+                "InvalidPropertiesException": "Invalid data",
+                "JWTExpirationException": "Expired session",
+                "RequestExceedMaxException": "Capacity exceeded",
+                "TokenMissingException": "Session token missing"
+            }
+        },
+        "frontend": {
+            "form": {
+                "email-invalid": "Field \"{{fieldName}}\" has invalid format.",
+                "refnr-length": "Reference number must be 6 characters.",
+                "refnr-notexist": "Reference number \"{{fieldValue}}\" does not exist.",
+                "required": "Field \"{{fieldName}}\" is required."
+            },
+            "interceptor": {
+                "gallery-create-confirm": "Artwork created!",
+                "gallery-update-confirm": "Artwork updated!",
+                "gallery-delete-confirm": "Artwork deleted!"
+            }
+        }
+    }
+}

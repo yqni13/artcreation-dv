@@ -4,7 +4,7 @@
             "error": {
                 "data": {
                     "backend-email": "Ihre Email-Adresse ist ungültig. Prüfen Sie bitte Schreibfehler und Aufbau:\nindividuelle Kennzeichnung + @ + Host + '.' + Top-Level-Domain.\nBeispiel: local@host.com",
-                    "backend-required": "Es wurden nicht alle notwendigen Daten übertragen. Bitte kontrollieren Sie Ihre Angaben.",
+                    "data-required": "Es wurden nicht alle notwendigen Daten übertragen. Bitte kontrollieren Sie Ihre Angaben.",
                     "backend-server": "Verbindung zum Server aktuell nicht möglich. Bitte versuchen Sie es später wieder oder wenden sich an unseren Support: lukas.varga@yqni13.com"
                 },
                 "header": {
@@ -42,12 +42,6 @@
             "gallery": "Galerie",
             "home": "Start",
             "prints": "Kopien"
-        },
-        "validation": {
-            "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
-            "refnr-length": "Die Referenz-Nummer muss 6 Zeichen lang sein.",
-            "refnr-notexist": "Die Referenz-Nummer \"{{fieldValue}}\" existiert nicht.",
-            "required": "Das Feld \"{{fieldName}}\" ist erforderlich."
         }
     },
     "modules": {
@@ -59,6 +53,9 @@
                 "cancel": "abbrechen",
                 "create": "erstellen",
                 "save": "speichern"
+            },
+            "info": {
+                "last-update": "letzte Änderung:"
             },
             "gallery": {
                 "details": {

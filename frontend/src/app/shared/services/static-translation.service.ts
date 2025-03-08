@@ -2,6 +2,8 @@
 import { Injectable } from "@angular/core";
 import { default as langEN } from "../../../../public/assets/i18n/en.json";
 import { default as langDE } from "../../../../public/assets/i18n/de.json";
+import { default as validLangEN } from "../../../../public/assets/i18n/validation-en.json";
+import { default as validLangDE } from "../../../../public/assets/i18n/validation-de.json";
 
 @Injectable({
     providedIn: 'root'
@@ -9,15 +11,21 @@ import { default as langDE } from "../../../../public/assets/i18n/de.json";
 export class StaticTranslateService {
 
     private dataEN: any;
+    private validEN: any;
     private dataDE: any;
+    private validDE: any;
 
     constructor() {
         try {
             this.dataEN = langEN;
+            this.validEN = validLangEN;
             this.dataDE = langDE;
+            this.validDE = validLangDE
         } catch(err) {
             this.dataEN = {};
+            this.validEN = {};
             this.dataDE = {};
+            this.validDE = {};
             console.log(err);
         }
     }
@@ -36,6 +44,22 @@ export class StaticTranslateService {
         }
 
         return this.getTranslationByStringPath(path, this.dataDE);
+    }
+
+    getValidationEN(path: string): string {
+        if(path === '' || path.includes('undefined')) {
+            return '[TRANSLATION PATH NOT FOUND]';
+        }
+
+        return this.getTranslationByStringPath(path, this.validEN);
+    }
+
+    getValidationDE(path: string): string {
+        if(path === '' || path.includes('undefined')) {
+            return '[TRANSLATION PATH NOT FOUND]';
+        }
+
+        return this.getTranslationByStringPath(path, this.validDE);
     }
 
     getTranslationByStringPath(path: string, dataLang: any): string {
