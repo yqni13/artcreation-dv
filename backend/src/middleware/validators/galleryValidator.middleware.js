@@ -15,11 +15,11 @@ exports.galleryCreateSchema = [
     body('imagePath')
         .trim()
         .notEmpty()
-        .withMessage('backend-required'),
+        .withMessage('data-required'),
     body('thumbnailPath')
         .trim()
         .notEmpty()
-        .withMessage('backend-required'),
+        .withMessage('data-required'),
     body('title')
         .isLength({max: 100})
         .withMessage('backend-title-length')
@@ -37,7 +37,7 @@ exports.galleryCreateSchema = [
     body('artGenre')
         .trim()
         .notEmpty()
-        .withMessage('backend-required')
+        .withMessage('data-required')
         .bail()
         .isLength({max: 20})
         .withMessage('backend-length-20')
@@ -46,7 +46,7 @@ exports.galleryCreateSchema = [
     body('artMedium')
         .trim()
         .notEmpty()
-        .withMessage('backend-required')
+        .withMessage('data-required')
         .bail()
         .isLength({max: 20})
         .withMessage('backend-length-20')
@@ -55,7 +55,7 @@ exports.galleryCreateSchema = [
     body('artTechnique')
         .trim()
         .notEmpty()
-        .withMessage('backend-required')
+        .withMessage('data-required')
         .bail()
         .isLength({max: 20})
         .withMessage('backend-length-20')
@@ -73,7 +73,7 @@ exports.galleryUpdateSchema = [
     body('id')
         .trim()
         .notEmpty()
-        .withMessage('backend-required')
+        .withMessage('data-required')
         .bail()
         .custom((value) => CustomValidator.validateUUID(value))
         .bail()
@@ -81,17 +81,17 @@ exports.galleryUpdateSchema = [
     body('referenceNr')
         .trim()
         .notEmpty()
-        .withMessage('backend-required')
+        .withMessage('data-required')
         .bail()
         .custom((value, { req }) => CustomValidator.validateRefNrNoManualChange(value, req.body.id, GalleryRepository)),
     body('imagePath')
         .trim()
         .notEmpty()
-        .withMessage('backend-required'),
+        .withMessage('data-required'),
     body('thumbnailPath')
         .trim()
         .notEmpty()
-        .withMessage('backend-required'),
+        .withMessage('data-required'),
     body('title')
         .isLength({max: 100})
         .optional({values: 'null'}),
@@ -108,16 +108,13 @@ exports.galleryUpdateSchema = [
     body('artGenre')
         .trim()
         .notEmpty()
-        .withMessage('backend-required')
-        .bail()
-        .isLength({max: 20})
-        .withMessage('backend-length-20')
+        .withMessage('data-required')
         .bail()
         .custom((value) => CustomValidator.validateArtGenre(value)),
     body('artMedium')
         .trim()
         .notEmpty()
-        .withMessage('backend-required')
+        .withMessage('data-required')
         .bail()
         .isLength({max: 20})
         .withMessage('backend-length-20')
@@ -126,7 +123,7 @@ exports.galleryUpdateSchema = [
     body('artTechnique')
         .trim()
         .notEmpty()
-        .withMessage('backend-required')
+        .withMessage('data-required')
         .bail()
         .isLength({max: 20})
         .withMessage('backend-length-20')
@@ -149,4 +146,13 @@ exports.galleryDeleteSchema = [
         .custom((id) => CustomValidator.validateUUID(id))
         .bail()
         .custom((id) => CustomValidator.validateExistingEntry(id, GalleryRepository))
+];
+
+exports.galleryRefNrPreviewSchema = [
+    param('artGenre')
+        .trim()
+        .notEmpty()
+        .withMessage('data-required')
+        .bail()
+        .custom((value) => CustomValidator.validateArtGenre(value)),
 ];

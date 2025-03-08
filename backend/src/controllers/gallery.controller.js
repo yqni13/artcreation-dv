@@ -30,6 +30,12 @@ class GalleryController {
         const response = await GalleryService.delete({id: req.params.id});
         res.send(response);
     }
+
+    refNrPreview = async (req, res, next) => {
+        checkValidation(req);
+        const response = await GalleryService.refNrPreview({artGenre: req.params.artGenre});
+        res.send(response);
+    }
 }
 
 module.exports = new GalleryController();

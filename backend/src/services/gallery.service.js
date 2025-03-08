@@ -43,6 +43,12 @@ class GalleryService {
             : constrain;
         return basicResponse(result.body, result.code, result.msg);
     }
+
+    refNrPreview = async (params) => {
+        const hasParams = Object.keys(params).length !== 0;
+        const refNr = await GalleryModel.createRefNr(hasParams ? params : {});
+        return basicResponse(refNr, 1, 'Success');
+    }
 }
 
 module.exports = new GalleryService();

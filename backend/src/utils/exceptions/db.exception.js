@@ -6,7 +6,7 @@ class DBException extends Error {
     constructor(code, message, data, status = 500) {
         super(message);
         if(Config.MODE === 'development') {
-            this.message = 'Common Error: ' + message;
+            this.message = message;
         } else {
             this.message = message;
         }
@@ -17,6 +17,8 @@ class DBException extends Error {
         this.data = data;
     }
 }
+
+// TODO(yqni13): adapt exceptions in customValidator/repository and add translations
 
 class DBConnectionException extends DBException {
     constructor(data) {

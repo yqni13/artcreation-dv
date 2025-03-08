@@ -6,7 +6,7 @@ class CommonException extends Error {
     constructor(code, message, data, status = 500) {
         super(message);
         if(Config.MODE === 'development') {
-            this.message = 'Common Error: ' + message;
+            this.message = message;
         } else {
             this.message = message;
         }
@@ -18,26 +18,33 @@ class CommonException extends Error {
     }
 }
 
+class AuthenticationException extends CommonException {
+    constructor(message, data) {
+        super(ErrorCodes.AuthenticationException, message, data, ErrorStatusCodes.AuthenticationException);
+    }
+}
+
 class InternalServerException extends CommonException {
     constructor(data) {
         super(ErrorCodes.InternalServerException, 'Server not connected', data, ErrorStatusCodes.InternalServerException);
     }
 }
 
-class NotFoundException extends CommonException {
-    constructor(message, data) {
-        super(ErrorCodes.NotFoundException, message, data, ErrorStatusCodes.NotFoundException);
+class RequestExceedMaxException extends CommonException {
+    constructor(message = 'server-max-email', data) {
+        super(ErrorCodes.RequestExceedMaxException, message, data, ErrorStatusCodes.RequestExceedMaxException);
     }
 }
 
 class UnexpectedException extends CommonException {
-    constructor(data) {
-        super(ErrorCodes.UnexpectedException, 'Unexpected Error', data, ErrorStatusCodes.UnexpectedException);
+    constructor(message, data) {
+        super(ErrorCodes.UnexpectedException, message, data, ErrorStatusCodes.UnexpectedException);
     }
 }
 
 module.exports = {
+    AuthenticationException,
     InternalServerException,
-    NotFoundException,
+    RequestExceedMaxException,
     UnexpectedException
 };

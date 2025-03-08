@@ -16,13 +16,13 @@ class AuthModel {
 
         const user = await UserModel.findOne(params['user']);
         if(!user) {
-            throw new InvalidCredentialsException('Username not registered.');
+            throw new InvalidCredentialsException('auth-invalid-user');
         }
 
         const decryptedPass = decryptRSA(params['pass'], Secrets.PRIVATE_KEY);
         const passMatching = decryptedPass === Secrets.ADMIN_PASS;
         if(!passMatching) {
-            throw new InvalidCredentialsException('Incorrect password.');
+            throw new InvalidCredentialsException('auth-invalid-pass');
         }
 
         const expiration = '12h';

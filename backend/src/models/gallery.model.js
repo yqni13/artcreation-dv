@@ -3,6 +3,9 @@ const { ArtGenreCode } = require('../utils/enums/art-genre.enum');
 
 class GalleryModel {
     createRefNr = async (params) => {
+        if(!Object.keys(params).length) {
+            return { error: 'no params found' };
+        }
         let refNr = '';
         const refParams = {
             table: 'gallery',

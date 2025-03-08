@@ -1,5 +1,4 @@
 module.exports.ErrorStatusCodes = {
-    NotFoundException: 404,
     InternalServerException: 500,
     AuthenticationException: 535,
     InvalidEndpointException: 404,
@@ -11,5 +10,6 @@ module.exports.ErrorStatusCodes = {
     DBConnectionException: 535,
     DBNotExistingException: 404,
     DBSyntaxSQLException: 429,
-    AuthSecretNotFoundException: 404
+    AuthSecretNotFoundException: 404,
+    AuthenticationException: 535
 }

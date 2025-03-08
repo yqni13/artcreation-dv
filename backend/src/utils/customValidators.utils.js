@@ -1,6 +1,9 @@
 const { ArtGenre } = require('./enums/art-genre.enum');
 const { ArtMedium } = require('./enums/art-medium.enum');
 const { ArtTechnique } = require('./enums/art-technique.enum');
+const { InvalidPropertiesException } = require('../utils/exceptions/validation.exception');
+const Secrets = require('../utils/secrets.util');
+const { decryptRSA } = require('../utils/crypto.utils');
 
 exports.validateArtGenre = (value) => {
     const genres = Object.values(ArtGenre);
@@ -75,5 +78,14 @@ exports.validateExistingEntry = async (id, repository) => {
     if(result.code === 0 || result.body.data === null) {
         throw new Error('backend-entry-404');
     }
+    return true;
+}
+
+exports.validateEncryptedSender = (encryptedSender) => {
+    const decryptedSender = decryptRSA(encryptedSender, Secrets.PRIVATE_KEY);
+    if(!decryptedSender.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        throw new InvalidPropertiesException('data-invalid-email');
+    }
+
     return true;
 }

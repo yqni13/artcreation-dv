@@ -12,13 +12,6 @@ exports.newsFindOneSchema = [
 ];
 
 exports.newsCreateSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
     body('galleryId')
         .custom((foreignKey) => CustomValidator.validateNewsFK(foreignKey)),
     body('imagePath')
@@ -44,17 +37,10 @@ exports.newsCreateSchema = [
 ];
 
 exports.newsUpdateSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
     body('id')
             .trim()
             .notEmpty()
-            .withMessage('backend-required')
+            .withMessage('data-required')
             .bail()
             .custom((value) => CustomValidator.validateUUID(value))
             .bail()
@@ -84,13 +70,6 @@ exports.newsUpdateSchema = [
 ];
 
 exports.newsDeleteSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
     body('id')
         .trim()
         .notEmpty()
