@@ -227,6 +227,7 @@ class GalleryRepository {
             return {
                 body: {
                     db_operation: 'delete',
+                    deleted: true
                 },
                 code: 1,
                 msg: this.msg1
@@ -237,6 +238,7 @@ class GalleryRepository {
             return {
                 body: {
                     db_operation: 'delete',
+                    deleted: false,
                     error: error,
                 },
                 code: 0,

@@ -13,6 +13,6 @@ router.get('/findOne/:id', galleryFindOneSchema, awaitHandlerFactory(GalleryCont
 router.get('/findAll', awaitHandlerFactory(GalleryController.findAll));
 router.post('/create', galleryCreateSchema, awaitHandlerFactory(GalleryController.create));
 router.put('/update', galleryUpdateSchema, awaitHandlerFactory(GalleryController.update));
-router.delete('/delete', galleryDeleteSchema, awaitHandlerFactory(GalleryController.delete));
+router.delete('/delete/:id', galleryDeleteSchema, awaitHandlerFactory(GalleryController.delete));
 
 module.exports = router;

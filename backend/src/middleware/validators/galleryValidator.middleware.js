@@ -141,14 +141,7 @@ exports.galleryUpdateSchema = [
 ];
 
 exports.galleryDeleteSchema = [
-    // body('accessToken')
-    //     .trim()
-    //     .notEmpty()
-    //     .withMessage('backend-required')
-    //     .bail()
-    //     .isJWT()
-    //     .withMessage('backend-invalid-jwt'),
-    body('id')
+    param('id')
         .trim()
         .notEmpty()
         .withMessage('backend-require')

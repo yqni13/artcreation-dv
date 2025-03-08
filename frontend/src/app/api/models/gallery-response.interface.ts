@@ -27,3 +27,10 @@ export declare interface GalleryItemResponse {
         data: GalleryItem
     }
 }
+
+export declare interface GalleryDeleteResponse {
+    body: {
+        db_operation: string,
+        deleted: boolean
+    }
+}

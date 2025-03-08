@@ -4,6 +4,7 @@ import { environment } from "../../../environments/environment";
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
 import * as GalleryResponse from "../models/gallery-response.interface";
+import { GalleryRoute } from "../routes/gallery.route.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +16,9 @@ export class GalleryAPIService {
 
     private urlGetOne: string;
     private urlGetAll: string;
-    private urlGetFiltered: string;
+    private urlCreate: string;
+    private urlUpdate: string;
+    private urlDelete: string;
 
     constructor(private readonly http: HttpClient) {
         this.idParam = '';
@@ -24,12 +27,16 @@ export class GalleryAPIService {
             queryParams: {}
         }
 
-        // this.urlGetOne = '/api/v1/gallery/findOne';
-        // this.urlFindAll = '/api/v1/gallery/findAll';
-        // this.urlGalleryFiltered = '/api/v1/gallery/filtered';
-        this.urlGetOne = environment.API_BASE_URL + '/api/v1/gallery/findOne';
-        this.urlGetAll = environment.API_BASE_URL + '/api/v1/gallery/findAll';
-        this.urlGetFiltered = environment.API_BASE_URL + '/api/v1/gallery/filtered';
+        // this.urlGetOne = `/api/v1/gallery${GalleryRoute.findOne}`;
+        // this.urlGetAll = `/api/v1/gallery${GalleryRoute.findAll}`;
+        // this.urlCreate = `/api/v1/gallery${GalleryRoute.create}`;
+        // this.urlUpdate = `/api/v1/gallery${GalleryRoute.update}`;
+        // this.urlDelete = `/api/v1/gallery${GalleryRoute.delete}`;
+        this.urlGetOne = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.findOne}`;
+        this.urlGetAll = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.findAll}`;
+        this.urlCreate = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.create}`;
+        this.urlUpdate = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.update}`;
+        this.urlDelete = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.delete}`;
     }
 
     setIdParam(id: string) {
@@ -48,8 +55,7 @@ export class GalleryAPIService {
         return this.http.get<GalleryResponse.GalleryListResponse>(this.urlGetAll, { observe: 'response' });
     }
 
-    sendGetFilteredRequest(): Observable<HttpResponse<GalleryResponse.GalleryListResponse>> {
-        return this.http.post<GalleryResponse.GalleryListResponse>(this.urlGetFiltered, this.filterParams, { observe: 'response' });
+    sendDeleteRequest(): Observable<HttpResponse<GalleryResponse.GalleryDeleteResponse>> {
+        return this.http.delete<GalleryResponse.GalleryDeleteResponse>(`${this.urlDelete}/${this.idParam}`, { observe: 'response'});
     }
-
 }

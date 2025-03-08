@@ -156,6 +156,24 @@ export class AdminGalleryDetailComponent implements OnInit, OnDestroy{
         this.isLoadingResponse = true;
         await this.delay(500);
         this.isLoadingResponse = false;
+        this.navigateToGalleryList();
+    }
+
+    remove() {
+        if(this.mode === CRUDMode.update && this.entryId !== '') {
+            this.isLoadingResponse = true;
+            this.galleryApi.setIdParam(this.entryId);
+            this.galleryApi.sendDeleteRequest().subscribe(async (response) => {
+                await this.delay(500);
+                this.isLoadingResponse = false;
+                if(response.body?.body.deleted) {
+                    this.navigateToGalleryList();
+                }
+            });
+        }
+    }
+
+    navigateToGalleryList() {
         this.router.navigate(['/admin/gallery']);
     }
 

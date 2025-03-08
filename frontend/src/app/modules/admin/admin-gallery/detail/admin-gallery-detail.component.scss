@@ -47,7 +47,7 @@
     .artdv-admingallerydetail-form-btn {
         display: flex;
         flex-direction: row;
-        margin: sass.$space25 0;
+        margin: sass.$space50 0;
 
         .artdv-admingallerydetail-form-btn-wrapper {
             display: flex;
@@ -59,7 +59,7 @@
             cursor: pointer;
     
             &:hover {
-                opacity: sass.$hover-opacity;
+                filter: brightness(1.5);
             }
     
             a {
@@ -72,16 +72,23 @@
     
         .btn-confirm {
             border-color: var(--theme-snackbar-success);
-            margin-right: sass.$space15;
-            a {
+            margin-right: sass.$space50;
+            i {
                 color: var(--theme-snackbar-success);
             }
         }
     
         .btn-cancel {
+            border-color: var(--theme-snackbar-warning);
+            i {
+                color: var(--theme-snackbar-warning);
+            }
+        }
+
+        .btn-delete {
             border-color: var(--theme-snackbar-error);
-            margin-left: sass.$space15;
-            a {
+            margin-left: sass.$space50;
+            i {
                 color: var(--theme-snackbar-error);
             }
         }

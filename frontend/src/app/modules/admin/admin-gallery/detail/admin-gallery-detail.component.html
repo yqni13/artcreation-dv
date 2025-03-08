@@ -94,7 +94,7 @@
                 (keydown.enter)="onSubmit()"
                 [attr.aria-disabled]="true"
             >
-                <a>{{('modules.admin.buttons.' + (mode === modeOptions.create ? 'create' : 'save')) | translate}}</a>
+                <i class="icon-Save"></i>
             </div>
             <div
                 class="artdv-admingallerydetail-form-btn-wrapper btn-cancel"
@@ -102,7 +102,16 @@
                 (keydown.enter)="cancel()"
                 [attr.aria-disabled]="true"
             >
-                <a>{{'modules.admin.buttons.cancel' | translate}}</a>
+                <i class="icon-Return"></i>
+            </div>
+            <div
+                class="artdv-admingallerydetail-form-btn-wrapper btn-delete"
+                *ngIf="mode === modeOptions.update"
+                (click)="remove()"
+                (keydown.enter)="remove()"
+                [attr.aria-disabled]="true"
+            >
+                <i class="icon-Delete"></i>
             </div>
         </div>
     </div>

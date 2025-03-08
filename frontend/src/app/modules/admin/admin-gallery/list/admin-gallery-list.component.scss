@@ -61,7 +61,7 @@
             cursor: pointer;
 
             &:hover {
-                opacity: 0.6;
+                filter: brightness(1.5);
             }
 
             a {
@@ -110,12 +110,13 @@
             align-items: center;
             width: calc((100vw - var(--view-nav-width) - $width-limit) / 5);
             aspect-ratio: 1/1;
+            object-fit: cover;
             border: $border-width solid var(--theme-contrast-text);
             margin: sass.$space15;
             cursor: pointer;
 
             &:hover {
-                opacity: 0.6;
+                filter: brightness(1.5);
             }
         }
     }
