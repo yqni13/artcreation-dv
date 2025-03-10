@@ -13,7 +13,8 @@ class DBConnect {
     #pool;
 
     constructor() {
-        const connectionString = this.#getConnectionString(true);
+        // const connectionString = this.#getConnectionString(true); // local development
+        const connectionString = this.#getConnectionString(false);
         this.#pool = new Pool({connectionString});
     }
 
@@ -70,7 +71,7 @@ class DBConnect {
             return client;
         } catch(error) {
             console.log("DB CONNECT ERROR: ", error);
-            throw new DBConnectionException(error);
+            throw new DBConnectionException('server-535-auth#database');
         }
     }
 
@@ -79,7 +80,7 @@ class DBConnect {
             await client.release(true);
         } catch(error) {
             console.log("DB CLOSE ERROR: ", error);
-            throw new DBConnectionException(error);
+            throw new DBConnectionException('server-535-auth#database');
         }
     }
 }

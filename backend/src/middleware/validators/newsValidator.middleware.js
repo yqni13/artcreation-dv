@@ -6,7 +6,7 @@ exports.newsFindOneSchema = [
     param('id')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .bail()
         .custom((id) => CustomValidator.validateUUID(id))
 ];
@@ -21,19 +21,19 @@ exports.newsCreateSchema = [
     body('datetime')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .custom((datetime) => CustomValidator.validateDateTime(datetime)),
     body('title')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .bail()
         .isLength({max: 100})
-        .withMessage('backend-title-length'),
+        .withMessage('data-invalid-max#title!100'),
     body('text')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
 ];
 
 exports.newsUpdateSchema = [
@@ -44,7 +44,7 @@ exports.newsUpdateSchema = [
             .bail()
             .custom((value) => CustomValidator.validateUUID(value))
             .bail()
-            .custom((id) => CustomValidator.validateExistingEntry(id, NewsRepository)),
+            .custom((id, {req}) => CustomValidator.validateExistingEntry(id, NewsRepository, req)),
     body('galleryId')
         .custom((foreignKey) => CustomValidator.validateNewsFK(foreignKey)),
     body('imagePath')
@@ -54,28 +54,28 @@ exports.newsUpdateSchema = [
     body('datetime')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .custom((datetime) => CustomValidator.validateDateTime(datetime)),
     body('title')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .bail()
         .isLength({max: 100})
-        .withMessage('backend-title-length'),
+        .withMessage('data-invalid-max#title!100'),
     body('text')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
 ];
 
 exports.newsDeleteSchema = [
     body('id')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-require')
         .bail()
         .custom((id) => CustomValidator.validateUUID(id))
         .bail()
-        .custom((id) => CustomValidator.validateExistingEntry(id, NewsRepository))
+        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, NewsRepository, req))
 ];

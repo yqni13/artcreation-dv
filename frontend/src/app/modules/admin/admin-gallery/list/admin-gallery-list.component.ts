@@ -11,6 +11,8 @@ import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { CastAbstractToFormControlPipe } from "../../../../common/pipes/cast-abstracttoform-control.pipe";
 import { SelectInputComponent } from "../../../../common/components/form-components/select-input/select-input.component";
 import { ArtGenre } from "../../../../shared/enums/art-genre.enum";
+import { AdminRoute } from "../../../../api/routes/admin.route.enum";
+import { GalleryRoute } from "../../../../api/routes/gallery.route.enum";
 
 @Component({
     selector: 'app-admin-gallery-list',
@@ -128,7 +130,7 @@ export class AdminGalleryListComponent implements OnInit {
         }
 
         this.dataSharing.setSharedData(data);
-        this.router.navigate(['admin/gallery/create']);
+        this.router.navigate([`admin${AdminRoute.GALLERY}${GalleryRoute.CREATE}`]);
     }
 
     navigateToUpdateItem(id: string) {
@@ -139,6 +141,6 @@ export class AdminGalleryListComponent implements OnInit {
         }
 
         this.dataSharing.setSharedData(data);
-        this.router.navigate([`admin/gallery/${data.refNr}`])
+        this.router.navigate([`admin${AdminRoute.GALLERY}/${data.refNr}`])
     }
 }

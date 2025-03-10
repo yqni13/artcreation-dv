@@ -906,6 +906,14 @@
         }
     }
 
+    .artdv-component-snackbar {
+        align-items: center!important;
+    }
+
+    .artdv-snackbar-container {
+        margin: sass.$space15 0 0 0!important;
+    }
+
     footer {
         .artdv-footer-links {
             i {

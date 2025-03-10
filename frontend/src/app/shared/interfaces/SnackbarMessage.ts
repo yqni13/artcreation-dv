@@ -9,3 +9,10 @@ export declare interface SnackbarMessage {
     displayTime?: number,
     displayHandler?: any,
 }
+
+export declare interface SnackbarParameter {
+    val: string | null,
+    len: string | null,
+    min: string | null,
+    max: string | null
+}

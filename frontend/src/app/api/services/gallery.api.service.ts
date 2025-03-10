@@ -54,12 +54,12 @@ export class GalleryAPIService {
         // this.urlUpdate = `/api/v1/gallery${GalleryRoute.update}`;
         // this.urlDelete = `/api/v1/gallery${GalleryRoute.delete}`;
         // this.urlRefNr = `/api/v1/gallery${GalleryRoute.refNrPreview}`;
-        this.urlGetOne = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.findOne}`;
-        this.urlGetAll = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.findAll}`;
-        this.urlCreate = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.create}`;
-        this.urlUpdate = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.update}`;
-        this.urlDelete = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.delete}`;
-        this.urlRefNrPreview = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.refNrPreview}`;
+        this.urlGetOne = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.FINDONE}`;
+        this.urlGetAll = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.FINDALL}`;
+        this.urlCreate = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.CREATE}`;
+        this.urlUpdate = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.UPDATE}`;
+        this.urlDelete = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.DELETE}`;
+        this.urlRefNrPreview = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.REFNRPREVIEW}`;
     }
 
     setIdParam(id: string) {

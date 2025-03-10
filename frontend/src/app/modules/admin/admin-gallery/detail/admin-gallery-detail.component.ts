@@ -18,8 +18,9 @@ import { ArtGenre } from "../../../../shared/enums/art-genre.enum";
 import { CastAbstractToFormControlPipe } from "../../../../common/pipes/cast-abstracttoform-control.pipe";
 import { TextInputComponent } from "../../../../common/components/form-components/text-input/text-input.component";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
-import { GalleryUpdateRequest } from "../../../../api/models/gallery-request.interface";
 import { DateTimeService } from "../../../../shared/services/datetime.service";
+import { AuthService } from "../../../../shared/services/auth.service";
+import { AdminRoute } from "../../../../api/routes/admin.route.enum";
 
 @Component({
     selector: 'app-admin-gallery-detail',
@@ -59,6 +60,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     constructor(
         private readonly router: Router,
         private readonly fb: FormBuilder,
+        private readonly auth: AuthService,
         private readonly datetime: DateTimeService,
         private readonly navigate: NavigationService,
         private readonly galleryApi: GalleryAPIService,
@@ -84,7 +86,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     ngOnInit() {
         // do not remain in component after page refresh
         if(this.navigate.getPreviousUrl() === 'UNAVAILABLE') {
-            this.router.navigate(['admin/gallery']);
+            this.router.navigate([`admin${AdminRoute.GALLERY}`]);
         }
 
         this.subscriptionDataSharing$ = this.dataSharing.sharedData$.pipe(
@@ -138,10 +140,10 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
 
         this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
             filter((x) => x),
-            tap((response: any) => {
-                if(response.error.headers.error === 'InvalidPropertyException') {
-                    // TODO(yqni13): need to declare what errors to handle here
-                    this.httpObservation.setEmailStatus(false);
+            tap(async (response: any) => {
+                if(this.auth.getExceptionList().includes(response.error.headers.error)) {
+                    await this.delay(500); // delay after snackbar displays
+                    this.httpObservation.setErrorStatus(false);
                     this.isLoadingResponse = false;
                 }
             })
@@ -232,7 +234,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
             this.isLoadingResponse = true;
             this.galleryApi.setIdParam(this.entryId);
             this.galleryApi.sendDeleteRequest().subscribe(async (response) => {
-                await this.delay(500);
+                await this.delay(1500);
                 this.isLoadingResponse = false;
                 if(response.body?.body.deleted) {
                     this.navigateToGalleryList();
@@ -242,7 +244,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     }
 
     navigateToGalleryList() {
-        this.router.navigate(['/admin/gallery']);
+        this.router.navigate([`/admin${AdminRoute.GALLERY}`]);
     }
 
     ngOnDestroy() {

@@ -6,7 +6,7 @@ exports.galleryFindOneSchema = [
     param('id')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .bail()
         .custom((id) => CustomValidator.validateUUID(id))
 ];
@@ -22,7 +22,7 @@ exports.galleryCreateSchema = [
         .withMessage('data-required'),
     body('title')
         .isLength({max: 100})
-        .withMessage('backend-title-length')
+        .withMessage('data-invalid-max#title!100')
         .optional({values: 'null'}),
     body('price')
         .isNumeric()
@@ -30,17 +30,17 @@ exports.galleryCreateSchema = [
     body('dimensions')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .bail()
         .isLength({max: 20})
-        .withMessage('backend-length-20'),
+        .withMessage('data-invalid-max#dimensions!20'),
     body('artGenre')
         .trim()
         .notEmpty()
         .withMessage('data-required')
         .bail()
         .isLength({max: 20})
-        .withMessage('backend-length-20')
+        .withMessage('data-invalid-max#artGenre!20')
         .bail()
         .custom((value) => CustomValidator.validateArtGenre(value)),
     body('artMedium')
@@ -49,7 +49,7 @@ exports.galleryCreateSchema = [
         .withMessage('data-required')
         .bail()
         .isLength({max: 20})
-        .withMessage('backend-length-20')
+        .withMessage('data-invalid-max#artMedium!20')
         .bail()
         .custom((value) => CustomValidator.validateArtMedium(value)),
     body('artTechnique')
@@ -58,15 +58,15 @@ exports.galleryCreateSchema = [
         .withMessage('data-required')
         .bail()
         .isLength({max: 20})
-        .withMessage('backend-length-20')
+        .withMessage('data-invalid-max#artTechnique!20')
         .bail()
         .custom((value) => CustomValidator.validateArtTechnique(value)),
     body('publication')
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .bail()
         .isInt({min: 1000, max: 2100})
-        .withMessage('backend-range-publication')
+        .withMessage('data-invalid-range#publication?1000!2100')
 ];
 
 exports.galleryUpdateSchema = [
@@ -77,13 +77,13 @@ exports.galleryUpdateSchema = [
         .bail()
         .custom((value) => CustomValidator.validateUUID(value))
         .bail()
-        .custom((id) => CustomValidator.validateExistingEntry(id, GalleryRepository)),
+        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, GalleryRepository, req)),
     body('referenceNr')
         .trim()
         .notEmpty()
         .withMessage('data-required')
         .bail()
-        .custom((value, { req }) => CustomValidator.validateRefNrNoManualChange(value, req.body.id, GalleryRepository)),
+        .custom((value, { req }) => CustomValidator.validateRefNrNoManualChange(value, req, GalleryRepository)),
     body('imagePath')
         .trim()
         .notEmpty()
@@ -101,10 +101,10 @@ exports.galleryUpdateSchema = [
     body('dimensions')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .bail()
         .isLength({max: 20})
-        .withMessage('backend-length-20'),
+        .withMessage('data-invalid-max#dimensions!20'),
     body('artGenre')
         .trim()
         .notEmpty()
@@ -117,7 +117,7 @@ exports.galleryUpdateSchema = [
         .withMessage('data-required')
         .bail()
         .isLength({max: 20})
-        .withMessage('backend-length-20')
+        .withMessage('data-invalid-max#artMedium!20')
         .bail()
         .custom((value) => CustomValidator.validateArtMedium(value)),
     body('artTechnique')
@@ -126,26 +126,26 @@ exports.galleryUpdateSchema = [
         .withMessage('data-required')
         .bail()
         .isLength({max: 20})
-        .withMessage('backend-length-20')
+        .withMessage('data-invalid-max#artTechnique!20')
         .bail()
         .custom((value) => CustomValidator.validateArtTechnique(value)),
     body('publication')
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .bail()
         .isInt({min: 1000, max: 2100})
-        .withMessage('backend-range-publication')
+        .withMessage('data-invalid-range#publication?1000!2100')
 ];
 
 exports.galleryDeleteSchema = [
     param('id')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
         .bail()
         .custom((id) => CustomValidator.validateUUID(id))
         .bail()
-        .custom((id) => CustomValidator.validateExistingEntry(id, GalleryRepository))
+        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, GalleryRepository, req))
 ];
 
 exports.galleryRefNrPreviewSchema = [

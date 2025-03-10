@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, HostListener, Input, OnInit } from "@angular/core";
 import { SnackbarMessage } from "../../../shared/interfaces/SnackbarMessage";
 import { SnackbarMessageService } from "../../../shared/services/snackbar.service";
 import { CommonModule } from "@angular/common";
@@ -14,19 +14,29 @@ import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
 })
 export class SnackbarComponent implements OnInit {
 
+    @HostListener('window:keydown', ['$event'])
+    closeOnEscape(event: KeyboardEvent) {        
+        if(event.key === 'Escape' && this.isActive) {
+            this.close();
+        }
+    }
+
     @Input() snackbarMsg: SnackbarMessage;
     protected snackbarOptions = SnackbarOption;
     protected snackbarClass: string;
     protected snackbarIcon: string;
 
+    private isActive: boolean;
+
     constructor(private snackbarService: SnackbarMessageService) {
         this.snackbarMsg = {
             title: '',
             text: '',
-            type: SnackbarOption.warning,
+            type: SnackbarOption.info,
         }
         this.snackbarClass = '';
         this.snackbarIcon = '';
+        this.isActive = false;
     }
 
     setSnackbarIcon() {
@@ -52,9 +62,11 @@ export class SnackbarComponent implements OnInit {
     ngOnInit() {
         this.snackbarClass = this.snackbarMsg.type || SnackbarOption.info;
         this.setSnackbarIcon();
+        this.isActive = true;
     }
 
     close() {
         this.snackbarService.close(this.snackbarMsg);
+        this.isActive = false;
     }
 }

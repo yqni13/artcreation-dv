@@ -5,6 +5,8 @@ import { SnackbarMessageService } from "../../shared/services/snackbar.service";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
 import { HttpResponse } from "@angular/common/http";
 import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
+import { AdminRoute } from "../../api/routes/admin.route.enum";
+import { MailRoute } from "../../api/routes/mail.route.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -25,18 +27,17 @@ export class MailHttpInterceptor {
     async handleMailResponse(httpBody: HttpResponse<any>) {
         await this.delay(1000);
 
-        if(httpBody.url?.includes('/mailing/send')) {
+        if(httpBody.url?.includes(`${AdminRoute.MAILING}${MailRoute.SEND}`)) {
             this.httpObservationService.setEmailStatus(true);
             this.snackbarService.notify({
                 title: this.translate.currentLang === 'en'
-                ? this.staticTranslate.getTranslationEN('common.backend.success.email.title')
-                : this.staticTranslate.getTranslationDE('common.backend.success.email.title'),
+                ? this.staticTranslate.getTranslationEN('validation.frontend.email.title')
+                : this.staticTranslate.getTranslationDE('validation.frontend.email.title'),
             text: this.translate.currentLang === 'en'
-                ? this.staticTranslate.getTranslationEN('common.backend.success.email.text') + httpBody.body.body.response.sender
-                : this.staticTranslate.getTranslationDE('common.backend.success.email.text') + httpBody.body.body.response.sender,
-                autoClose: true,
+                ? this.staticTranslate.getTranslationEN('validation.frontend.email.text') + httpBody.body.body.response.sender
+                : this.staticTranslate.getTranslationDE('validation.frontend.email.text') + httpBody.body.body.response.sender,
+                autoClose: false,
                 type: SnackbarOption.success,
-                displayTime: 10000
             });
         }
     }
@@ -44,7 +45,7 @@ export class MailHttpInterceptor {
     async handleMailError(response: any) {
         await this.delay(1000);
         
-        if(response.url.includes('mailing/send')) {
+        if(response.url.includes(`${AdminRoute.MAILING}${MailRoute.SEND}`)) {
             this.httpObservationService.setEmailStatus(false);
         }
     }

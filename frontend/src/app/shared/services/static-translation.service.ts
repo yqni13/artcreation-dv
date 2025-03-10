@@ -46,23 +46,23 @@ export class StaticTranslateService {
         return this.getTranslationByStringPath(path, this.dataDE);
     }
 
-    getValidationEN(path: string): string {
+    getValidationEN(path: string, params?: any): string {
         if(path === '' || path.includes('undefined')) {
             return '[TRANSLATION PATH NOT FOUND]';
         }
 
-        return this.getTranslationByStringPath(path, this.validEN);
+        return this.getTranslationByStringPath(path, this.validEN, params || null);
     }
 
-    getValidationDE(path: string): string {
+    getValidationDE(path: string, params?: any): string {
         if(path === '' || path.includes('undefined')) {
             return '[TRANSLATION PATH NOT FOUND]';
         }
 
-        return this.getTranslationByStringPath(path, this.validDE);
+        return this.getTranslationByStringPath(path, this.validDE, params || null);
     }
 
-    getTranslationByStringPath(path: string, dataLang: any): string {
+    getTranslationByStringPath(path: string, dataLang: any, params?: any): string {
         const accessKeys: string[] = [];
         let start = 0;
         
@@ -75,7 +75,19 @@ export class StaticTranslateService {
                 accessKeys.push(path.slice(start, char.index+1));
             }
         });
-        const result = accessKeys.reduce((prev, curr) => prev?.[curr], dataLang);
+        let result = accessKeys.reduce((prev, curr) => prev?.[curr], dataLang);
+        if(params && params.val && result.includes('{{VAL}}')){
+            result = result.replace('{{VAL}}', params.val);
+        }
+        if(params && params.len && result.includes('{{LENGTH}}')) {
+            result = result.replace('{{LENGTH}}', params.len);
+        }
+        if(params && params.min && result.includes('{{MIN}}')) {
+            result = result.replace('{{MIN}}', params.min);
+        }
+        if(params && params.max && result.includes('{{MAX}}')) {
+            result = result.replace('{{MAX}}', params.max);
+        }
         return result !== undefined ? result : 'TRANSLATION PATH INVALID';
     }
 

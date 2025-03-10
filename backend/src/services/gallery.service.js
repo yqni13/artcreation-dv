@@ -1,5 +1,4 @@
 const { basicResponse } = require('../utils/common.utils');
-const AuthModel = require('../models/auth.model');
 const GalleryModel = require('../models/gallery.model');
 const GalleryRepository = require('../repositories/gallery.repository');
 const NewsModel = require('../models/news.model');

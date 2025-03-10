@@ -14,6 +14,7 @@ import { DateTimeService } from "./datetime.service";
 export class AuthService {
 
     protected urlLoginAPI: string;
+    protected exceptionList: string[];
 
     private credentials: any;
 
@@ -24,10 +25,23 @@ export class AuthService {
         private readonly encrypt: EncryptionService,
     ) {
         this.urlLoginAPI = environment.API_BASE_URL + '/api/v1/auth/login';
+        this.exceptionList = [
+            'JWTExpirationException',
+            'TokenMissingException',
+            'InvalidCredentialsException',
+            'InternalServerException',
+            'InvalidPropertiesException',
+            'AuthSecretNotFoundException',
+            'RequestExceedMaxException'
+        ];
         this.credentials = {
             user: '',
             pass: ''
         };
+    }
+
+    getExceptionList(): string[] {
+        return this.exceptionList;
     }
 
     async setCredentials(user: string, pass: string) {

@@ -1,6 +1,5 @@
 const { basicResponse } = require('../utils/common.utils');
 const { createID } = require('../utils/common.utils');
-const AuthModel = require('../models/auth.model');
 const NewsRepository = require('../repositories/news.repository');
 
 class NewsService {

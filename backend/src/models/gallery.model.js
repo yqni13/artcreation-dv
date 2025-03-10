@@ -14,7 +14,7 @@ class GalleryModel {
             }
         };
         const allRefNr = await GalleryRepository.findAllFiltered(refParams);
-        const genreCode = ArtGenreCode[(params['artGenre'].toUpperCase())];
+        const genreCode = ArtGenreCode[params['artGenre'].toUpperCase()];
 
         if(allRefNr['number_of_entries'] === 0) {
             refNr = `${genreCode}001`;
@@ -23,6 +23,7 @@ class GalleryModel {
             let pureNumber = lastElement['reference_nr'].match(/\d/g);
             pureNumber = Number(pureNumber.join(""));
             pureNumber++;
+            
             // structure: ArtGenreCode like 'PPL' for 'people' + 3 digits (sequential number with leading zeros)
             refNr = `${genreCode}${String(pureNumber).padStart(3, '0')}`;
         }

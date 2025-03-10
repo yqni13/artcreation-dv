@@ -25,7 +25,7 @@ class AuthModel {
             throw new InvalidCredentialsException('auth-invalid-pass');
         }
 
-        const expiration = '12h';
+        const expiration = '6h';
         const token = await this.generateToken(user, expiration);
 
         return {

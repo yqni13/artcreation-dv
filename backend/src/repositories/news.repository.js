@@ -1,4 +1,5 @@
 const DBConnect = require("../db/connect.db");
+const Utils = require('../utils/common.utils');
 
 class NewsRepository {
 
@@ -20,15 +21,15 @@ class NewsRepository {
         const sql = `SELECT * FROM ${table} WHERE ${idColumn} = $1;`;
         const values = [params['id']];
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
             await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
                     data: result['rows'][0] || null,
-                    // token: params['accessToken'],
                 },
                 code: 1,
                 msg: this.msg1
@@ -39,7 +40,6 @@ class NewsRepository {
             return {
                 body: {
                     db_operation: 'select',
-                    // token: params['accessToken'],
                     error: error,
                 },
                 code: 0,
@@ -77,8 +77,9 @@ class NewsRepository {
         const sql = `SELECT * FROM ${table} WHERE ${whereClause} ${orderClause}`;
         const values = Object.values(params['queryParams']);
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
             await DBConnect.close(connection);
             return {
@@ -100,8 +101,9 @@ class NewsRepository {
         const table = 'news';
 
         const sql = `SELECT * FROM ${table}`;
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             const result = await connection.query(sql);
             await DBConnect.close(connection);
             return {
@@ -109,7 +111,6 @@ class NewsRepository {
                     db_operation: 'select',
                     number_of_entries: result['rows'].length,
                     data: result['rows'] || null,
-                    // token: params['accessToken'],
                 },
                 code: 1,
                 msg: this.msg1
@@ -120,7 +121,6 @@ class NewsRepository {
             return {
                 body: {
                     db_operation: 'select',
-                    // token: params['accessToken'],
                     error: error,
                 },
                 code: 0,
@@ -135,7 +135,7 @@ class NewsRepository {
         }
 
         const table = 'news';
-        const timestamp = new Date().toISOString();
+        const timestamp = Utils.getCustomLocaleTimestamp();
 
         const sql = `INSERT INTO ${table}
         (news_id, gallery, image_path, thumbnail_path, visual_timestamp, title, content, created_on, last_modified)
@@ -144,15 +144,15 @@ class NewsRepository {
         const values = [params['id'], params['galleryId'], params['imagePath'], params['thumbnailPath'], 
         params['datetime'], params['title'], params['text'], timestamp, timestamp];
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             await connection.query(sql, values);
             await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'insert',
                     id: params['id'],
-                    // token: params['accessToken'],
                 },
                 code: 1,
                 msg: this.msg1
@@ -163,7 +163,6 @@ class NewsRepository {
             return {
                 body: {
                     db_operation: 'insert',
-                    // token: params['accessToken'],
                     error: error,
                 },
                 code: 0,
@@ -178,7 +177,7 @@ class NewsRepository {
         }
 
         const table = 'news';
-        const timestamp = new Date().toISOString();
+        const timestamp = Utils.getCustomLocaleTimestamp();
 
         const sql = `UPDATE ${table}
         SET gallery = $1, image_path = $2, thumbnail_path = $3, visual_timestamp = $4, title = $5, content = $6, last_modified = $7
@@ -187,15 +186,15 @@ class NewsRepository {
         const values = [params['galleryId'], params['imagePath'], params['thumbnailPath'], 
         params['datetime'], params['title'], params['text'], timestamp, params['id']];
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             await connection.query(sql, values);
             await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'update',
                     id: params['id'],
-                    // token: params['accessToken'],
                 },
                 code: 1,
                 msg: this.msg1
@@ -206,7 +205,6 @@ class NewsRepository {
             return {
                 body: {
                     db_operation: 'update',
-                    // token: params['accessToken'],
                     error: error,
                 },
                 code: 0,
@@ -224,14 +222,14 @@ class NewsRepository {
         const sql = `DELETE FROM ${table} WHERE news_id = $1`;
         const values = [params['id']];
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             await connection.query(sql, values);
             await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'delete',
-                    // token: params['accessToken'],
                 },
                 code: 1,
                 msg: this.msg1
@@ -242,7 +240,6 @@ class NewsRepository {
             return {
                 body: {
                     db_operation: 'delete',
-                    // token: params['accessToken'],
                     error: error,
                 },
                 code: 0,

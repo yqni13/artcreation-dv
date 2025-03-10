@@ -4,7 +4,7 @@
     
     <router-outlet></router-outlet>
     
-    <div class="artdv-component-snackbar">
+    <div class="artdv-component-snackbar" *ngIf="snackbarService.snackbarCollection.length > 0">
         <artdv-snackbar *ngFor="let snackbar of snackbarService.snackbarCollection" [snackbarMsg]="snackbar"></artdv-snackbar>
     </div>
     

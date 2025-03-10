@@ -1,10 +1,9 @@
+import { AdminRoute } from '../../api/routes/admin.route.enum';
 import { HttpResponse } from "@angular/common/http";
 import { SnackbarMessageService } from "../../shared/services/snackbar.service";
 import { Injectable } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { StaticTranslateService } from "../../shared/services/static-translation.service";
 import { GalleryRoute } from "../../api/routes/gallery.route.enum";
-import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
 
 @Injectable({
@@ -16,7 +15,6 @@ export class GalleryHttpInterceptor {
 
     constructor(
         private readonly translate: TranslateService,
-        private readonly staticTranslate: StaticTranslateService,
         private readonly snackbarService: SnackbarMessageService,
         private readonly httpObservationService: HttpObservationService
     ) {
@@ -26,57 +24,31 @@ export class GalleryHttpInterceptor {
     async handleGalleryResponse(httpBody: HttpResponse<any>) {
         await this.delay(1000);
     
-        if(httpBody.url?.includes(`gallery${GalleryRoute.findOne}`)) {
-            
-        } else if(httpBody.url?.includes(`gallery${GalleryRoute.findAll}`)) {
-            //
-        } else if(httpBody.url?.includes(`gallery${GalleryRoute.create}`)) {
+        if(httpBody.url?.includes(`${AdminRoute.GALLERY}${GalleryRoute.CREATE}`)) {
             this.httpObservationService.setGalleryCreateStatus(true);
-            this.snackbarService.notify({
-                title: this.translate.currentLang === 'en'
-                    ? this.staticTranslate.getValidationEN('validation.frontend.interceptor.gallery-create-confirm')
-                    : this.staticTranslate.getValidationDE('validation.frontend.interceptor.gallery-create-confirm'),
-                text: '',
-                autoClose: true,
-                type: SnackbarOption.success,
-                displayTime: 3500
-            })
-        } else if(httpBody.url?.includes(`gallery${GalleryRoute.update}`)) {
+            const path = 'validation.frontend.interceptor.gallery-create-confirm';
+            this.snackbarService.notifyOnInterceptorSuccess(path, this.translate.currentLang, true, 1500);
+        } else if(httpBody.url?.includes(`${AdminRoute.GALLERY}${GalleryRoute.UPDATE}`)) {
             this.httpObservationService.setGalleryUpdateStatus(true);
-            this.snackbarService.notify({
-                title: this.translate.currentLang === 'en'
-                    ? this.staticTranslate.getValidationEN('validation.frontend.interceptor.gallery-update-confirm')
-                    : this.staticTranslate.getValidationDE('validation.frontend.interceptor.gallery-update-confirm'),
-                text: '',
-                autoClose: true,
-                type: SnackbarOption.info,
-                displayTime: 3500
-            })
-        } else if(httpBody.url?.includes(`gallery${GalleryRoute.delete}`)) {
+            const path = 'validation.frontend.interceptor.gallery-update-confirm';
+            this.snackbarService.notifyOnInterceptorSuccess(path, this.translate.currentLang, true, 1500);
+        } else if(httpBody.url?.includes(`${AdminRoute.GALLERY}${GalleryRoute.DELETE}`)) {
             this.httpObservationService.setGalleryDeleteStatus(true);
-            this.snackbarService.notify({
-                title: this.translate.currentLang === 'en'
-                    ? this.staticTranslate.getValidationEN('validation.frontend.interceptor.gallery-delete-confirm')
-                    : this.staticTranslate.getValidationDE('validation.frontend.interceptor.gallery-delete-confirm'),
-                text: '',
-                autoClose: true,
-                type: SnackbarOption.success,
-                displayTime: 3500
-            })
+            const path = 'validation.frontend.interceptor.gallery-delete-confirm';
+            this.snackbarService.notifyOnInterceptorSuccess(path, this.translate.currentLang, true, 1500);
         }
     }
 
     async handleGalleryError(response: any) {
-        await this.delay(1000);
-        if(response.url.includes(`gallery${GalleryRoute.findOne}`)) {
+        if(response.url.includes(`${AdminRoute.GALLERY}${GalleryRoute.FINDONE}`)) {
             this.httpObservationService.setGalleryFindOneStatus(false);
-        } else if(response.url.includes(`gallery${GalleryRoute.findAll}`)) {
+        } else if(response.url.includes(`${AdminRoute.GALLERY}${GalleryRoute.FINDALL}`)) {
             this.httpObservationService.setGalleryFindAllStatus(false);
-        } else if(response.url.includes(`gallery${GalleryRoute.create}`)) {
+        } else if(response.url.includes(`${AdminRoute.GALLERY}${GalleryRoute.CREATE}`)) {
             this.httpObservationService.setGalleryCreateStatus(false);
-        } else if(response.url.includes(`gallery${GalleryRoute.update}`)) {
+        } else if(response.url.includes(`${AdminRoute.GALLERY}${GalleryRoute.UPDATE}`)) {
             this.httpObservationService.setGalleryUpdateStatus(false);
-        } else if(response.url.includes(`gallery${GalleryRoute.delete}`)) {
+        } else if(response.url.includes(`${AdminRoute.GALLERY}${GalleryRoute.DELETE}`)) {
             this.httpObservationService.setGalleryDeleteStatus(false);
         }
     }

@@ -1,25 +1,5 @@
 {
     "common": {
-        "backend": {
-            "error": {
-                "data": {
-                    "backend-email": "Your email address is invalid. Check spelling mistakes and structure:\nlocal-part + @ + host-name + '.' + top-level-domain.\nExample: local@host.com",
-                    "data-required": "Not all necessary data were transferred. Please check your input.",
-                    "backend-server": "Server connection failed. Please try again later or contact our support: lukas.varga@yqni13.com"
-                },
-                "header": {
-                    "AuthenticationException": "Invalid authentication",
-                    "InternalServerException": "Technical error",
-                    "InvalidPropertiesException": "Invalid data"
-                }
-            },
-            "success": {
-                "email": {
-                    "text": "An answer with further information will follow shortly. Your request has been received from the following email address: ",
-                    "title": "THANK YOU FOR REQUESTING"
-                }
-            }
-        },
         "footer": {
             "content": {
                 "archive": "Archive",
@@ -49,14 +29,6 @@
             "title": "the artist"
         },
         "admin": {
-            "buttons": {
-                "cancel": "cancel",
-                "create": "add",
-                "save": "save"
-            },
-            "info": {
-                "last-update": "last update:"
-            },
             "gallery": {
                 "details": {
                     "dimensions": "Dimensions",
@@ -78,6 +50,9 @@
                     "list": "gallery administration",
                     "update": "edit artwork"
                 }
+            },
+            "info": {
+                "last-update": "last update:"
             },
             "news": {},
             "options": {

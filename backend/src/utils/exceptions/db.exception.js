@@ -18,8 +18,6 @@ class DBException extends Error {
     }
 }
 
-// TODO(yqni13): adapt exceptions in customValidator/repository and add translations
-
 class DBConnectionException extends DBException {
     constructor(data) {
         super(ErrorCodes.DBConnectionException, 'Database not connected', data, ErrorStatusCodes.DBConnectionException);

@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import { SnackbarMessage } from "../interfaces/SnackbarMessage";
+import { SnackbarMessage, SnackbarParameter } from "../interfaces/SnackbarMessage";
 import { SnackbarOption } from "../enums/snackbar-option.enum";
 import { Subject } from "rxjs";
+import { StaticTranslateService } from "./static-translation.service";
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,7 @@ export class SnackbarMessageService {
     snackbarCollection: SnackbarMessage[];
     subject: Subject<boolean>;
 
-    constructor() {
+    constructor(private readonly staticTranslate: StaticTranslateService) {
         this.snackbarCollection = [];
         this.subject = new Subject<boolean>();
     }
@@ -40,6 +41,63 @@ export class SnackbarMessageService {
         }
 
         this.snackbarCollection.push(snackbar);
+    }
+
+    notifyOnInterceptorError(response: any, lang: string, message: string, closeMode: boolean, closeTime?: number) {        
+        const path = 'validation.backend';
+        const params: SnackbarParameter = {
+            val: null,
+            len: null,
+            min: null,
+            max: null
+        };
+    
+        // check for parameter, assign values and adapt validation message
+        if(message.includes('!')) {
+            const substring = message.substring(message.indexOf('!'), message.length);
+            message = message.replace(substring, '');
+            params.max = substring.replace('!', '');
+        }
+        if(message.includes('?')) {
+            const substring = message.substring(message.indexOf('?'), message.length);
+            message = message.replace(substring, '');
+            params.min = substring.replace('?', '');
+        }
+        if(message.includes('$')) {
+            const substring = message.substring(message.indexOf('$'), message.length);
+            message = message.replace(substring, '');
+            params.len = substring.replace('$', '');
+        }
+        if(message.includes('#')) {
+            const substring = message.substring(message.indexOf('#'), message.length);
+            message = message.replace(substring, '');
+            params.val = substring.replace('#', '');
+        }
+    
+        // display backend validation in UI
+        this.notify({
+            title: lang === 'en'
+                ? this.staticTranslate.getValidationEN(`${path}.header.${response.error.headers.error}`)
+                : this.staticTranslate.getValidationDE(`${path}.header.${response.error.headers.error}`),
+            text: lang === 'en'
+                ? this.staticTranslate.getValidationEN(`${path}.data.${message}`, params.val ? params : null)
+                : this.staticTranslate.getValidationDE(`${path}.data.${message}`, params.val ? params : null),
+            autoClose: closeMode,
+            type: SnackbarOption.error,
+            displayTime: closeTime
+        })
+    }
+
+    notifyOnInterceptorSuccess(path: string, lang: string, closeAuto: boolean, closeTimer?: number) {
+        this.notify({
+            title: lang === 'en'
+                ? this.staticTranslate.getValidationEN(path)
+                : this.staticTranslate.getValidationDE(path),
+            text: '',
+            autoClose: closeAuto,
+            type: SnackbarOption.success,
+            displayTime: closeTimer
+        })
     }
 
     close(snackbar: SnackbarMessage) {
