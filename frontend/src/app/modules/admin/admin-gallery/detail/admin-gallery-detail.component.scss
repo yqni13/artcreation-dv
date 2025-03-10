@@ -1,0 +1,125 @@
+@use '../../../../../stylesheets/utilities' as sass;
+
+
+.artdv-admingallerydetail-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: calc(50vw - var(--view-nav-width));
+        border: 2px solid var(--theme-body-text);
+        border-radius: sass.$space5;
+        padding: sass.$space25;
+
+        .artdv-admingallerydetail-form {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .artdv-form-image {
+            margin: sass.$space15 0;
+            span {
+                font-size: 14px;
+                color: var(--theme-snackbar-error);
+            }
+        }
+
+        .artdv-admingallerydetail-form-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 66%;
+            margin: sass.$space5 0;
+            align-items: center;
+
+            span {
+                margin-right: auto;
+                font-weight: bold;
+            }
+
+            artdv-selectinput,
+            artdv-textinput {
+                margin-left: auto;
+                width: 55%;
+            }
+        }
+
+        .artdv-admingallerydetail-update-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: sass.$space15;
+
+            span {
+                font-size: 10px;
+                opacity: 0.7;
+            }
+
+            span:nth-of-type(1) {
+                margin-right: sass.$space5;
+            }
+        }
+    }
+
+    .artdv-admingallerydetail-form-btn {
+        display: flex;
+        flex-direction: row;
+        margin: sass.$space50 0;
+
+        button {
+            background-color: transparent;
+        }
+
+        .artdv-admingallerydetail-form-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: sass.$space15 sass.$space25;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: sass.$space5;
+            cursor: pointer;
+    
+            &:hover {
+                filter: brightness(1.5);
+            }
+    
+            a {
+                display: flex;
+                align-items: center;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        }
+    
+        .btn-confirm {
+            border-color: var(--theme-snackbar-success);
+            margin-right: sass.$space50;
+            i {
+                color: var(--theme-snackbar-success);
+            }
+        }
+    
+        .btn-cancel {
+            border-color: var(--theme-snackbar-warning);
+            i {
+                color: var(--theme-snackbar-warning);
+            }
+        }
+
+        .btn-delete {
+            border-color: var(--theme-snackbar-error);
+            margin-left: sass.$space50;
+            i {
+                color: var(--theme-snackbar-error);
+            }
+        }
+    }
+
+}

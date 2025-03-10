@@ -1,4 +1,4 @@
-export declare interface GalleryItem {
+export declare interface GalleryItemDEPRECATED {
     title: string | null,
     referenceNr: string,
     genre: string,

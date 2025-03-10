@@ -1,5 +1,4 @@
 const { basicResponse } = require('../utils/common.utils');
-const AuthModel = require('../models/auth.model');
 const GalleryModel = require('../models/gallery.model');
 const GalleryRepository = require('../repositories/gallery.repository');
 const NewsModel = require('../models/news.model');
@@ -19,8 +18,6 @@ class GalleryService {
     
     create = async (params) => {
         const hasParams = Object.keys(params).length !== 0;
-        // const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
-        // params['accessToken'] = acceptedToken;
         Object.assign(params, await createID(GalleryRepository, 'gallery')); // params['id']
         Object.assign(params, await GalleryModel.createRefNr(params)); // params['referenceNr']
         const result = await GalleryRepository.create(hasParams ? params : {});
@@ -29,8 +26,6 @@ class GalleryService {
 
     update = async (params) => {
         const hasParams = Object.keys(params).length !== 0;
-        // const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
-        // params['accessToken'] = acceptedToken;
         params['referenceNr'] = await GalleryModel.checkGenreChange(params);
         const result = await GalleryRepository.update(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
@@ -38,8 +33,6 @@ class GalleryService {
 
     delete = async (params) => {
         const hasParams = Object.keys(params).length !== 0;
-        // const acceptedToken = await AuthModel.checkToken(hasParams ? params : {});
-        // params['accessToken'] = acceptedToken;
         const constrain = await NewsModel.checkUseOfForeignKey(params);
         if(constrain.code === 0) {
             return basicResponse(constrain.body, constrain.code, constrain.msg);
@@ -48,6 +41,12 @@ class GalleryService {
             ? await GalleryRepository.delete(hasParams ? params : {})
             : constrain;
         return basicResponse(result.body, result.code, result.msg);
+    }
+
+    refNrPreview = async (params) => {
+        const hasParams = Object.keys(params).length !== 0;
+        const refNr = await GalleryModel.createRefNr(hasParams ? params : {});
+        return basicResponse(refNr, 1, 'Success');
     }
 }
 

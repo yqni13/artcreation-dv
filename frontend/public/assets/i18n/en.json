@@ -1,25 +1,5 @@
 {
     "common": {
-        "backend": {
-            "error": {
-                "data": {
-                    "backend-email": "Your email address is invalid. Check spelling mistakes and structure:\nlocal-part + @ + host-name + '.' + top-level-domain.\nExample: local@host.com",
-                    "backend-required": "Not all necessary data were transferred. Please check your input.",
-                    "backend-server": "Server connection failed. Please try again later or contact our support: lukas.varga@yqni13.com"
-                },
-                "header": {
-                    "AuthenticationException": "Invalid authentication",
-                    "InternalServerException": "Technical error",
-                    "InvalidPropertiesException": "Invalid data"
-                }
-            },
-            "success": {
-                "email": {
-                    "text": "An answer with further information will follow shortly. Your request has been received from the following email address: ",
-                    "title": "THANK YOU FOR REQUESTING"
-                }
-            }
-        },
         "footer": {
             "content": {
                 "archive": "Archive",
@@ -42,17 +22,44 @@
             "gallery": "Gallery",
             "home": "Home",
             "prints": "Prints"
-        },
-        "validation": {
-            "email-invalid": "Field \"{{fieldName}}\" has invalid format.",
-            "refnr-length": "Reference number must be 6 characters.",
-            "refnr-notexist": "Reference number \"{{fieldValue}}\" does not exist.",
-            "required": "Field \"{{fieldName}}\" is required."
         }
     },
     "modules": {
         "about": {
             "title": "the artist"
+        },
+        "admin": {
+            "gallery": {
+                "details": {
+                    "dimensions": "Dimensions",
+                    "genre": "Genre",
+                    "medium": "Medium",
+                    "price": "Price",
+                    "publication": "Publication year",
+                    "technique": "Technique",
+                    "title": "Title"
+                },
+                "placeholder-dimensions": "height x width => e.g.: 80x60",
+                "placeholder-genre": "select a genre",
+                "placeholder-medium": "select a medium",
+                "placeholder-price": "price on request",
+                "placeholder-search": "search in gallery",
+                "placeholder-technique": "select a technique",
+                "title": {
+                    "create": "add artwork",
+                    "list": "gallery administration",
+                    "update": "edit artwork"
+                }
+            },
+            "info": {
+                "last-update": "last update:"
+            },
+            "news": {},
+            "options": {
+                "gallery": "gallery",
+                "logout": "logout",
+                "news": "news"
+            }
         },
         "archive": {
             "message": "Hover your mouse over the image to read more on the article.",
@@ -124,7 +131,6 @@
         },
         "login": {
             "login": "login",
-            "logout": "logout",
             "pass": "password",
             "user": "username"
         },
@@ -145,6 +151,7 @@
         "enum": {
             "art-genre": {
                 "abstract": "abstract",
+                "all": "all",
                 "creative": "creative",
                 "nature": "nature",
                 "people": "people",
@@ -158,8 +165,8 @@
             },
             "art-technique": {
                 "acrylic": "Acrylic",
-                "pouring": "Pouring",
-                "other": "Other"
+                "other": "Other",
+                "pouring": "Pouring"
             },
             "art-type": {
                 "handcraft": "handcraft",

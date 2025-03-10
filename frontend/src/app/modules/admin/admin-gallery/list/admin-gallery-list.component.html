@@ -1,0 +1,82 @@
+<section class="artdv-admingallerylist">
+    <header>
+        <h1>{{'modules.admin.gallery.title.list' | translate}}</h1>
+    </header>
+    <div class="artdv-admingallerylist-content">
+        <div class="artdv-admingallerylist-filterbar">
+            <div class="artdv-admingallerylist-select-wrapper">
+                <artdv-selectinput
+                    class="artdv-admingallerylist-select"
+                    [ngStyle]="{'width': '100%'}"
+                    [placeholder]="'modules.admin.gallery.placeholder-genre' | translate"
+                    [options]="genreOptions"
+                    [optionsTranslateRoot]="'shared.enum.art-genre.'"
+                    [formControl]="searchForm.get('genre') | controlCast"
+                    (byChange)="onGenreChange($event)"
+                ></artdv-selectinput>
+                <span class="artdv-admingallerylist-filter-label">Genre</span>
+            </div>
+            <div class="artdv-admingallerylist-search-wrapper">
+                <artdv-textinput
+                    class="artdv-admingallerylist-search-input"
+                    [placeholder]="'modules.admin.gallery.placeholder-search' | translate"
+                    [ngStyle]="{'width': '100%'}"
+                    [inputType]="'text'"
+                    [formControl]="searchForm.get('searchText') | controlCast"
+                    (byChange)="onSearchTextChange($event)"
+                    #keywordInputField
+                ></artdv-textinput>
+                <span class="artdv-admingallerylist-filter-label">Filter</span>
+                <a
+                    id="artdv-admingallerylist-search-icon"
+                    (click)="onSearchSubmit()"
+                    (keydown.enter)="onSearchSubmit()"
+                    [attr.aria-disabled]="true"
+                    >
+                    <i class="icon-Search"></i>
+                </a>
+            </div>
+            <div 
+                class="artdv-admingallerylist-btn-wrapper btn-close"
+                *ngIf="hasSearchText"
+            >
+                <a
+                    id="artdv-admingallerylist-search-close"
+                    (click)="removeKeyword()"
+                    (keydown.enter)="removeKeyword()"
+                    [attr.aria-disabled]="true"
+                >
+                    <i class="icon-CloseX"></i>
+                </a>
+            </div>
+            <div class="artdv-admingallerylist-btn-wrapper btn-add">
+                <a
+                    (click)="navigateToCreateItem()"
+                    (keydown.enter)="navigateToCreateItem()"
+                    [attr.aria-disabled]="true"
+                ><i class="icon-Add"></i></a>
+            </div>
+            <div class="artdv-admingallerylist-btn-wrapper btn-return">
+                <a
+                    [routerLink]="'/admin'"
+                    [attr.aria-disabled]="true"
+                ><i class="icon-Return"></i></a>
+            </div>
+        </div>
+        <div class="artdv-admingallerylist-list">
+            <ng-container *ngFor="let item of modifiedList">
+                <img 
+                    class="artdv-admingallerylist-list-element"
+                    src="{{item.image_path}}"
+                    alt="{{item.reference_nr}}"
+                    (click)="navigateToUpdateItem(item.gallery_id)"
+                    (keydown.enter)="navigateToUpdateItem(item.gallery_id)"
+                    [attr.aria-disabled]="true"
+                >
+            </ng-container>
+            <div class="artdv-query-placeholder" *ngIf="modifiedList.length === 0">
+                <span>no data found</span>
+            </div>
+        </div>
+    </div>
+</section>

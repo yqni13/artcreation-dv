@@ -3,5 +3,5 @@ import { Environment } from "./environment.model";
 export const environment: Environment = {
     production: true,
     API_BASE_URL: '',
-    PRIVATE_DEV_KEY: ''
+    PUBLIC_KEY: ''
 };

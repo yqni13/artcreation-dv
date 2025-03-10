@@ -2,7 +2,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { ArtType } from "../../shared/enums/art-type.enum";
 import { default as galleryData } from "../../shared/data/gallery-data.json";
-import { GalleryItem } from "../../shared/interfaces/GalleryItems";
+import { GalleryItemDEPRECATED } from "../../shared/interfaces/GalleryItems";
 import { ErrorService } from "../../shared/services/error.service";
 import { CommonModule } from "@angular/common";
 import { FilterGalleryService } from "../../shared/services/filter-gallery.service";
@@ -27,9 +27,9 @@ export class GalleryComponent implements OnInit, AfterViewInit {
 
     @ViewChild('gallerySection') gallerySection!: ElementRef;
 
-    protected paintingsRaw: GalleryItem[];
-    protected paintingsFiltered: Map<string, GalleryItem[]>;
-    protected paintingsDisplayedByGenre: GalleryItem[];
+    protected paintingsRaw: GalleryItemDEPRECATED[];
+    protected paintingsFiltered: Map<string, GalleryItemDEPRECATED[]>;
+    protected paintingsDisplayedByGenre: GalleryItemDEPRECATED[];
     protected artGenres = ArtGenre;
     protected activeGenre: string;
     protected reloadFlag: boolean;
@@ -50,7 +50,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
         
         this.activeGenre = 'gallery';
         this.paintingsDisplayedByGenre = []
-        this.paintingsFiltered = new Map<string, GalleryItem[]>(); 
+        this.paintingsFiltered = new Map<string, GalleryItemDEPRECATED[]>(); 
         this.reloadFlag = true;
 
         const currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;        

@@ -1,5 +1,4 @@
 module.exports.ErrorCodes = {
-    NotFoundException: 0,
     InternalServerException: 1,
     InvalidEndpointException: 2,
     InvalidPropertiesException: 3,
@@ -12,5 +11,8 @@ module.exports.ErrorCodes = {
     DBConnectionException:10,
     DBNotExistingException: 11,
     DBSyntaxSQLException: 12,
-    AuthSecretNotFoundException: 13
+    AuthSecretNotFoundException: 13,
+    JWTExpirationException: 14,
+    TokenMissingException: 15,
+    AuthenticationException: 16
 };

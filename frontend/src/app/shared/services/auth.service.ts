@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
 import { environment } from "../../../environments/environment";
@@ -14,6 +14,9 @@ import { DateTimeService } from "./datetime.service";
 export class AuthService {
 
     protected urlLoginAPI: string;
+    protected exceptionList: string[];
+
+    private credentials: any;
 
     constructor(
         private readonly http: HttpClient,
@@ -21,12 +24,35 @@ export class AuthService {
         private readonly datetime: DateTimeService,
         private readonly encrypt: EncryptionService,
     ) {
-        this.urlLoginAPI = environment.API_BASE_URL + '/api/v1/auth/login'
+        this.urlLoginAPI = environment.API_BASE_URL + '/api/v1/auth/login';
+        this.exceptionList = [
+            'JWTExpirationException',
+            'TokenMissingException',
+            'InvalidCredentialsException',
+            'InternalServerException',
+            'InvalidPropertiesException',
+            'AuthSecretNotFoundException',
+            'RequestExceedMaxException'
+        ];
+        this.credentials = {
+            user: '',
+            pass: ''
+        };
     }
 
-    login(user: string, pass: string): Observable<any> {
-        const encryptedPass = this.encrypt.encryptData(pass);
-        return this.http.post<any>(this.urlLoginAPI, { user: user, pass: encryptedPass }, { observe: 'response' })
+    getExceptionList(): string[] {
+        return this.exceptionList;
+    }
+
+    async setCredentials(user: string, pass: string) {
+        this.credentials = {
+            user: user,
+            pass: await this.encrypt.encryptRSA(pass)
+        }
+    }
+
+    login(): Observable<HttpResponse<any>> {
+        return this.http.post<any>(this.urlLoginAPI, this.credentials, { observe: 'response' })
             .pipe(
                 tap(response => {
                     this.setSession(response.body?.body);
@@ -43,7 +69,7 @@ export class AuthService {
         this.token.removeToken(TokenOptions.session_id);
         this.token.removeToken(TokenOptions.session_expiration);
         const expiration = this.datetime.addTimestampWithCurrentMoment(
-            this.datetime.getTimeInMillisecondsFromHours(authResponse.expiresIn)
+            this.datetime.getTimeInMillisecondsFromExpiration(authResponse.expiresIn)
         );
         
         this.token.setToken(TokenOptions.session_id, authResponse.token);

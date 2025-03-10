@@ -1,0 +1,56 @@
+{
+    "validation": {
+        "backend": {
+            "data": {
+                "auth-invalid-pass": "Das Passwort für den Login ist ungültig. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
+                "auth-invalid-user": "Der Username für den Login ist ungültig. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
+                "auth-jwt-expiration": "Die aktuelle Sitzung ist nach 30 Minuten abgelaufen.",
+                "auth-jwt-missing": "Ohne Sitzungs-Token kann die Anfrage nicht authentifiziert werden. Bitte versuchen Sie es später erneut oder wenden sich an den Support.",
+                "data-404-entry": "Kein Datensatz anhand von \"{{VAL}}\" gefunden. Bitte prüfen Sie Ihre Eingabe.",
+                "data-invalid-email": "Ihre Email-Adresse ist ungültig. Prüfen Sie bitte Schreibfehler und Aufbau:\nindividuelle Kennzeichnung + @ + Host + '.' + Top-Level-Domain.\nBeispiel: local@host.com",
+                "data-invalid-entry": "Die Eingabe für den Datensatz \"{{VAL}}\" ist fehlerhaft. Bitte überprüfen Sie Ihre Eingabe.",
+                "data-invalid-length": "Die Länge für den Datensatz \"{{VAL}}\" muss exakt {{LENGTH}} Zeichen sein. Bitte überprüfen Sie Ihre Eingabe.",
+                "data-invalid-max": "Die Länge für den Datensatz \"{{VAL}}\" darf nicht länger als {{MAX}} Zeichen sein. Bitte überprüfen Sie Ihre Eingabe.",
+                "data-invalid-min": "Die Länge für den Datensatz \"{{VAL}}\" darf nicht kürzer als {{MIN}} Zeichen lang sein. Bitte überprüfen Sie Ihre Eingabe.",
+                "data-invalid-range": "Der Wert für den Datensatz \"{{VAL}}\" muss zwischen {{MIN}} und {{MAX}} liegen. Bitte prüfen Sie Ihre Eingabe.",
+                "data-required": "Es wurden nicht alle notwendigen Daten übertragen. Bitte kontrollieren Sie Ihre Angaben.",
+                "error-unknown": "Ein technischer Fehler ist aufgetreten. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
+                "secret-404-env": "Umgebungsvariable \"{{VAL}}\" fehlt. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
+                "server-500-connection": "Die Verbindung mit dem Server ist im Moment nicht möglich. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
+                "server-500-routes": "Der passende API Zugang/Endpunkt ist im Moment nicht verfügbar. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
+                "server-535-auth": "Die Authentifizierung bei \"{{VAL}}\" ist im Moment nicht möglich. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
+                "server-max-email": "Email Service hat das Anfragen-Limit überschritten und ist temporär blockiert. Bitte versuchen Sie es in 24h erneut."
+            },
+            "header": {
+                "AuthenticationException": "Verbindung fehlgeschlagen",
+                "AuthSecretNotFoundException": "Umgebungsvariable fehlt",
+                "DBConnectionException": "Verbindung fehlgeschlagen",
+                "DBSyntaxSQLException": "Datenbank Fehler",
+                "InternalServerException": "Server Verbindungs-Fehler",
+                "InvalidCredentialsException": "Ungültige Anmeldedaten",
+                "InvalidPropertiesException": "Ungültiger DatenSatz",
+                "InvalidTokenException": "Ungültiger Token",
+                "JWTExpirationException": "Sitzung abgelaufen",
+                "RequestExceedMaxException": "Kapazität überschritten",
+                "TokenMissingException": "Sitzungs-Token fehlt"
+            }
+        },
+        "frontend": {
+            "email": {
+                "text": "Eine Antwort mit weiteren Informationen folgt in Kürze. Ihre Anfrage wurde von folgender Email-Adresse erhalten:",
+                "title": "Danke für Ihre Anfrage"
+            },
+            "form": {
+                "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
+                "refnr-length": "Die Referenz-Nummer muss 6 Zeichen lang sein.",
+                "refnr-notexist": "Die Referenz-Nummer \"{{fieldValue}}\" existiert nicht.",
+                "required": "Das Feld \"{{fieldName}}\" ist erforderlich."
+            },
+            "interceptor": {
+                "gallery-create-confirm": "Kunstwerk erstellt!",
+                "gallery-delete-confirm": "Kunstwerk gelöscht!",
+                "gallery-update-confirm": "Kunstwerk aktualisiert!"
+            }
+        }
+    }
+}

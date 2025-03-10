@@ -1,5 +1,4 @@
 module.exports.ErrorStatusCodes = {
-    NotFoundException: 404,
     InternalServerException: 500,
     AuthenticationException: 535,
     InvalidEndpointException: 404,

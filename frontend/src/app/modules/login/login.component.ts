@@ -1,13 +1,10 @@
 import { CommonModule } from "@angular/common";
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from "@angular/core";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { TextInputComponent } from "../../common/components/form-components/text-input/text-input.component";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { CastAbstractToFormControlPipe } from "../../common/pipes/cast-abstracttoform-control.pipe";
-import { EncryptionService } from "../../shared/services/encryption.service";
 import { AuthService } from "../../shared/services/auth.service";
-import { TokenService } from "../../shared/services/token.service";
-import { TokenOptions } from "../../shared/enums/token-options.enum";
 import { Router } from "@angular/router";
 
 @Component({
@@ -23,6 +20,13 @@ import { Router } from "@angular/router";
     ]
 })
 export class LoginComponent implements OnInit, AfterViewInit {
+
+    @HostListener('window:keydown', ['$event'])
+    loginOnEnter(event: KeyboardEvent) {
+        if(event.key  === 'Enter') {
+            this.onLogin();
+        }
+    }
 
     @ViewChild('loginButton') loginButton!: ElementRef;
 
@@ -66,7 +70,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         })
     }
 
-    onLogin() {
+    async onLogin() {
         this.loginForm.markAllAsTouched();
 
         if(this.loginForm.invalid) {
@@ -75,10 +79,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
         this.isLoadingResponse = true;
         this.setButtonStatus(false);
-        this.auth.login(
+        await this.auth.setCredentials(
             this.loginForm.get('user')?.value,
             this.loginForm.get('pass')?.value
-        ).subscribe(() => {
+        );
+        this.auth.login().subscribe(() => {
             if(this.auth.isLoggedIn()) {
                 this.router.navigate(['admin']);
             }

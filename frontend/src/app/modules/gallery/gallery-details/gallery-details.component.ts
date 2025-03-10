@@ -1,6 +1,6 @@
 import { Component, HostListener, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router, RouterModule } from "@angular/router";
-import { GalleryItem } from "../../../shared/interfaces/GalleryItems";
+import { GalleryItemDEPRECATED } from "../../../shared/interfaces/GalleryItems";
 import { ArtType } from "../../../shared/enums/art-type.enum";
 import { DataShareService } from "../../../shared/services/data-share.service";
 import { FilterGalleryService } from "../../../shared/services/filter-gallery.service";
@@ -34,7 +34,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
         }
     }
 
-    protected card: GalleryItem | null;
+    protected card: GalleryItemDEPRECATED | null;
 
     protected artworkOption = ArtType;
     protected subject = SubjectOptions;

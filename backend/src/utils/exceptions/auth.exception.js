@@ -13,9 +13,15 @@ class AuthException extends Error {
     }
 }
 
-class UnauthorizedException extends AuthException {
-    constructor(data) {
-        super(ErrorCodes.UnauthorizedException, 'User unauthorized for action.', data);
+class JWTExpirationException extends AuthException {
+    constructor (message = 'auth-jwt-expiration', data){
+        super(ErrorCodes.JWTExpirationException, message, data);
+    }
+}
+
+class TokenMissingException extends AuthException {
+    constructor (message = 'auth-jwt-missing', data){
+        super(ErrorCodes.TokenMissingException, message, data);
     }
 }
 
@@ -32,7 +38,8 @@ class AuthSecretNotFoundException extends AuthException {
 }
 
 module.exports = {
-    UnauthorizedException,
+    JWTExpirationException,
+    TokenMissingException,
     InvalidCredentialsException,
     AuthSecretNotFoundException
 }

@@ -1,4 +1,5 @@
 const DBConnect = require('../db/connect.db')
+const Utils = require('../utils/common.utils');
 
 class GalleryRepository {
 
@@ -20,9 +21,11 @@ class GalleryRepository {
         const sql = `SELECT * FROM ${table} WHERE ${idColumn} = $1;`;
         const values = [params['id']];
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -33,6 +36,7 @@ class GalleryRepository {
             };
         } catch (error) {
             console.log("DB ERROR ON SELECT (Gallery Repository, FindOne): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -74,9 +78,11 @@ class GalleryRepository {
         const sql = `SELECT * FROM ${table} WHERE ${whereClause} ${orderClause}`;
         const values = Object.values(params['queryParams']);
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             const result = await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 db_operation: 'select',
                 number_of_entries: result['rows'].length,
@@ -84,6 +90,7 @@ class GalleryRepository {
             };
         } catch(error) {
             console.log("DB ERROR ON SELECT (Gallery Repository, FindAllFiltered): ", error.message);
+            await DBConnect.close(connection);
             return {
                 db_operation: 'select',
                 error: error,
@@ -93,11 +100,14 @@ class GalleryRepository {
 
     findAll = async () => {
         const table = 'gallery';
+        const orderProperty = 'last_modified'
 
-        const sql = `SELECT * FROM ${table}`;
+        const sql = `SELECT * FROM ${table} ORDER BY ${orderProperty} DESC`;
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             const result = await connection.query(sql);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -109,6 +119,7 @@ class GalleryRepository {
             }
         } catch(error) {
             console.log("DB ERROR ON SELECT (Gallery Repository, FindAll): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'select',
@@ -126,8 +137,8 @@ class GalleryRepository {
         }
         
         const table = 'gallery';
-        const timeStamp = new Date().toISOString();
-    
+        const timeStamp = Utils.getCustomLocaleTimestamp();
+
         const sql = `INSERT INTO ${table} 
         (gallery_id, image_path, thumbnail_path, title, reference_nr, price, dimensions, art_genre,art_technique, art_medium, publication_year, created_on, last_modified) 
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`;
@@ -136,9 +147,11 @@ class GalleryRepository {
         params['referenceNr'], params['price'], params['dimensions'], params['artGenre'],
         params['artTechnique'], params['artMedium'], params['publication'], timeStamp, timeStamp];
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'insert',
@@ -149,6 +162,7 @@ class GalleryRepository {
             };
         } catch (error) {
             console.log("DB ERROR ON INSERT (Gallery Repository): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'insert',
@@ -166,7 +180,7 @@ class GalleryRepository {
         }
 
         const table = 'gallery';
-        const timeStamp = new Date().toISOString();
+        const timeStamp = Utils.getCustomLocaleTimestamp();
 
         const sql = `UPDATE ${table} 
         SET reference_nr = $1, image_path = $2, thumbnail_path = $3, title = $4, price = $5, dimensions = $6,
@@ -177,9 +191,11 @@ class GalleryRepository {
         params['price'], params['dimensions'], params['artGenre'],
         params['artTechnique'], params['artMedium'], params['publication'], timeStamp, params['id']];
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'update',
@@ -190,6 +206,7 @@ class GalleryRepository {
             }
         } catch(error) {
             console.log("DB ERROR ON UPDATE (Gallery Repository): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'update',
@@ -210,21 +227,26 @@ class GalleryRepository {
         const sql = `DELETE FROM ${table} WHERE gallery_id = $1`;
         const values = [params['id']];
 
+        let connection;
         try {
-            const connection = await DBConnect.connection();
+            connection = await DBConnect.connection();
             await connection.query(sql, values);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'delete',
+                    deleted: true
                 },
                 code: 1,
                 msg: this.msg1
             }
         } catch(error) {
             console.log("DB ERROR ON DELETE (Gallery Repository): ", error.message);
+            await DBConnect.close(connection);
             return {
                 body: {
                     db_operation: 'delete',
+                    deleted: false,
                     error: error,
                 },
                 code: 0,

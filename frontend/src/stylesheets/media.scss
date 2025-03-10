@@ -58,6 +58,26 @@
         }
     }
 
+    .artdv-admin {
+        .artdv-admin-content {
+            flex-direction: row;
+
+            .triple-outer {
+                width: 33%;
+            }
+
+            .triple-inner {
+                width: 34%;
+            }
+
+            .artdv-admin-option {
+                .artdv-author {
+                    width: calc(33% - (var(--view-nav-width) / 3));
+                }
+            }
+        }
+    }
+
     .artdv-gallerydetails {
         .artdv-gallerydetails-content {
             margin: calc(sass.$comp-padding-medium + sass.$comp-padding-small) 0!important;
@@ -176,6 +196,37 @@
         }
     }
 
+    @media screen and (height > 1000px) {
+        .artdv-admin {
+            .artdv-admin-content {
+                flex-direction: column;
+
+                .triple-outer,
+                .triple-inner {
+                    width: 100%;
+                    border: none;
+
+                    .artdv-admin-option-description {
+                        padding: calc(sass.$space25 + sass.$space5)!important;
+                        .artdv-anchor {
+                            font-size: 34px;
+                        }
+                    }
+                }
+                
+                .artdv-admin-option {
+                    
+                    .artdv-author {
+                        width: calc(100% - var(--view-nav-width));
+                        a {
+                            font-size: 22px!important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     @media screen and (height <= 600px) {
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
@@ -242,6 +293,27 @@
             width: 40%;
             img {
                 max-height: 700px;
+            }
+        }
+    }
+
+    .artdv-admin {
+        .artdv-admin-content {
+            flex-direction: row;
+
+            .triple-outer {
+                width: 33%;
+            }
+
+            .triple-inner {
+                width: 34%;
+            }
+
+            .artdv-admin-option {
+
+                .artdv-author {
+                    width: calc(33% - (var(--view-nav-width) / 3));
+                }
             }
         }
     }
@@ -361,6 +433,37 @@
         .artdv-footer-links {
             i {
                 width: 17px;
+            }
+        }
+    }
+
+    @media screen and (height > 700px) {
+        .artdv-admin {
+            .artdv-admin-content {
+                flex-direction: column;
+
+                .triple-outer,
+                .triple-inner {
+                    width: 100%;
+                    border: none;
+
+                    .artdv-admin-option-description {
+                        padding: calc(sass.$space25 + sass.$space5)!important;
+                        .artdv-anchor {
+                            font-size: 28px;
+                        }
+                    }
+                }
+                
+                .artdv-admin-option {
+                    
+                    .artdv-author {
+                        width: calc(100% - var(--view-nav-width));
+                        a {
+                            font-size: 16px!important;
+                        }
+                    }
+                }
             }
         }
     }
@@ -702,6 +805,25 @@
         }
     }
 
+    .artdv-admin {
+        .artdv-admin-content {
+            flex-direction: column;
+
+            .triple-outer,
+            .triple-inner {
+                width: 100%;
+                border: none!important;
+            }
+
+            .artdv-admin-option {
+
+                .artdv-author {
+                    width: calc(100% - var(--view-nav-width));
+                }
+            }
+        }
+    }
+
     .artdv-gallerydetails {
         .artdv-gallerydetails-img {
             height: 100vh!important;
@@ -782,6 +904,14 @@
             width: 35vw!important;
             height: 35vw!important;
         }
+    }
+
+    .artdv-component-snackbar {
+        align-items: center!important;
+    }
+
+    .artdv-snackbar-container {
+        margin: sass.$space15 0 0 0!important;
     }
 
     footer {

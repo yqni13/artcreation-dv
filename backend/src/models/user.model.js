@@ -1,4 +1,5 @@
 require('dotenv').config();
+const Secrets = require('../utils/secrets.util')
 
 class UserModel {
 
@@ -8,7 +9,7 @@ class UserModel {
         }
 
         const user = {
-            name: process.env.SECRET_ADMIN_USER,
+            name: Secrets.ADMIN_USER,
             id: '01'
         }
         return params === user.name ? user : null;

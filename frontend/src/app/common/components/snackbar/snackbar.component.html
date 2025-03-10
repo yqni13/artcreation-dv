@@ -1,7 +1,7 @@
 <div class="artdv-snackbar-container" [ngClass]="'snackbar-' + snackbarClass">
     <div class="artdv-snackbar-content" [ngClass]="!!snackbarMsg.text ? 'artdv-multiline' : 'artdv-singleline'">
         <div class="artdv-snackbar-title">
-            <span>{{snackbarMsg.type}}: </span>
+            <div><i class="{{snackbarIcon}}"></i></div>
             <h4>{{snackbarMsg.title}}</h4>
         </div>
         <div class="artdv-snackbar-text" *ngIf="!!snackbarMsg.text">

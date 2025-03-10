@@ -1,11 +1,13 @@
 const { ArtGenre } = require('./enums/art-genre.enum');
 const { ArtMedium } = require('./enums/art-medium.enum');
 const { ArtTechnique } = require('./enums/art-technique.enum');
+const Secrets = require('../utils/secrets.util');
+const { decryptRSA } = require('../utils/crypto.utils');
 
 exports.validateArtGenre = (value) => {
     const genres = Object.values(ArtGenre);
     if(!genres.includes(value)) {
-        throw new Error('backend-art-genre');
+        throw new Error('data-invalid-entry#artGenre');
     }
     return true;
 };
@@ -13,7 +15,7 @@ exports.validateArtGenre = (value) => {
 exports.validateArtMedium = (value) => {
     const genres = Object.values(ArtMedium);
     if(!genres.includes(value)) {
-        throw new Error('backend-art-medium');
+        throw new Error('data-invalid-entry#artMedium');
     }
     return true;
 };
@@ -21,7 +23,7 @@ exports.validateArtMedium = (value) => {
 exports.validateArtTechnique = (value) => {
     const genres = Object.values(ArtTechnique);
     if(!genres.includes(value)) {
-        throw new Error('backend-art-technique');
+        throw new Error('data-invalid-entry#artTechnique');
     }
     return true;
 };
@@ -29,18 +31,22 @@ exports.validateArtTechnique = (value) => {
 exports.validateUUID = (value) => {
     const pureValue = value.replaceAll('-', '');
     if(pureValue.length !== 32) {
-        throw new Error('backend-invalid-uuid');
+        throw new Error('data-invalid-length#uuid$32');
     }
     return true;
 }
 
-exports.validateRefNrNoManualChange = async (refNr, id, repository) => {
-    if(refNr.length !== 6) {
-        throw new Error('backend-length-refNr');
+exports.validateRefNrNoManualChange = async (refNr, req, repository) => {
+    const entry = req.validatedEntry ?? null;
+    if(!entry) {
+        return true;
     }
-    const entry = await repository.findOne({id: id});
-    if(refNr !== entry.body.data.reference_nr) {
-        throw new Error('backend-invalid-referenceNr');
+
+    if(refNr.length !== 6) {
+        throw new Error('data-invalid-length#referenceNr$6');
+    }
+    if(refNr !== entry.reference_nr) {
+        throw new Error('data-invalid-entry#referenceNr');
     }
     return true;
 }
@@ -55,9 +61,9 @@ exports.validateNewsFK = (fk) => {
 
 exports.validateNewsImages = (img, fk) => {
     if(fk === null && (img === null || img === undefined)) {
-        throw new Error('backend-news-missing-img');
+        throw new Error('data-required');
     } else if(fk !== null && img !== null && img !== undefined) {
-        throw new Error('backend-news-overload-img')
+        throw new Error('data-invalid-entry#path')
     }
     return true;
 }
@@ -65,15 +71,25 @@ exports.validateNewsImages = (img, fk) => {
 exports.validateDateTime = (datetime) => {
     const convert = new Date(datetime);
     if(convert === undefined || convert === null) {
-        throw new Error('backend-invalid-datetime');
+        throw new Error('data-invalid-entry#datetime');
     }
     return true;
 }
 
-exports.validateExistingEntry = async (id, repository) => {
+exports.validateExistingEntry = async (id, repository, req) => {
     const result = await repository.findOne({id: id});
     if(result.code === 0 || result.body.data === null) {
-        throw new Error('backend-entry-404');
+        throw new Error('data-404-entry#id');
     }
+    req.validatedEntry = result.body.data;
+    return true;
+}
+
+exports.validateEncryptedSender = (encryptedSender) => {
+    const decryptedSender = decryptRSA(encryptedSender, Secrets.PRIVATE_KEY);
+    if(!decryptedSender.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        throw new Error('data-invalid-email');
+    }
+
     return true;
 }

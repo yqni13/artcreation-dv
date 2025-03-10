@@ -1,0 +1,56 @@
+{
+    "validation": {
+        "backend": {
+            "data": {
+                "auth-invalid-pass": "The login password is invalid. Please try again later or contact support.",
+                "auth-invalid-user": "The login user is invalid. Please try again later or contact support.",
+                "auth-jwt-expiration": "The session expired after 30 minutes.",
+                "auth-jwt-missing": "Access can not be authenticated without a session token. Please try again later or contact support.",
+                "data-404-entry": "No data found for \"{{VAL}}\".Please check your input.",
+                "data-invalid-email": "Your email address is invalid. Check spelling mistakes and structure:\nlocal-part + @ + host-name + '.' + top-level-domain.\nExample: local@host.com",
+                "data-invalid-entry": "The input for the record \"{{VAL}}\" is incorrect. Please check your input.",
+                "data-invalid-length": "The length for the record \"{{VAL}}\" must be exactly {{LENGTH}} characters long. Please check your input.",
+                "data-invalid-max": "The length for the record \"{{VAL}}\" must not be longer than {{MAX}} characters. Please check your input.",
+                "data-invalid-min": "The length for the record \"{{VAL}}\" must not be shorter than {{MIN}} characters. Please check your input.",
+                "data-invalid-range": "The value for the record \"{{VAL}}\" must be between {{MIN}} and {{MAX}}. Please check your input.",
+                "data-required": "Not all necessary data were transferred. Please check your input.",
+                "error-unknown": "A technical error has occurred. Please try again later or contact support.",
+                "secret-404-env": "Secret data \"{{VAL}}\" is missing. Please try again later or contact support.",
+                "server-500-connection": "Connection with the server is not possible at the moment. Please try again later or contact support.",
+                "server-500-routes": "The api endpoint is not available at the moment. Please try again later or contact support.",
+                "server-535-auth": "Authentication with the \"{{VAL}}\" failed. Please try again later or contact support.",
+                "server-max-email": "Email service exceeded request limit and is temporary blocked. Please try again in 24h."
+            },
+            "header": {
+                "AuthenticationException": "Connection failed",
+                "AuthSecretNotFoundException": "Env variable missing",
+                "DBConnectionException": "Connection failed",
+                "DBSyntaxSQLException": "Invalid database",
+                "InternalServerException": "Server connection error",
+                "InvalidCredentialsException": "Invalid credentials",
+                "InvalidPropertiesException": "Invalid data",
+                "InvalidTokenException": "Invalid token",
+                "JWTExpirationException": "Expired session",
+                "RequestExceedMaxException": "Capacity exceeded",
+                "TokenMissingException": "Session token missing"
+            }
+        },
+        "frontend": {
+            "email": {
+                "text": "An answer with further information will follow shortly. Your request has been received from the following email address:",
+                "title": "Thank you for requesting"
+            },
+            "form": {
+                "email-invalid": "Field \"{{fieldName}}\" has invalid format.",
+                "refnr-length": "Reference number must be 6 characters.",
+                "refnr-notexist": "Reference number \"{{fieldValue}}\" does not exist.",
+                "required": "Field \"{{fieldName}}\" is required."
+            },
+            "interceptor": {
+                "gallery-create-confirm": "Artwork created!",
+                "gallery-delete-confirm": "Artwork deleted!",
+                "gallery-update-confirm": "Artwork updated!"
+            }
+        }
+    }
+}

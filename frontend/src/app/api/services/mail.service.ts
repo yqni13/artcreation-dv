@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from "@angular/core";
-import { ContactFormItem } from "../interfaces/ContactMailItems";
-import { SubjectOptions } from "../enums/contact-subject.enum";
+import { ContactFormItem } from "../../shared/interfaces/ContactMailItems";
+import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { HttpClient } from "@angular/common/http";
-import { ArtType } from "../enums/art-type.enum";
+import { ArtType } from "../../shared/enums/art-type.enum";
 import { environment } from "../../../environments/environment";
 
 
 @Injectable({
     providedIn: 'root',
 })
-export class MailService {
+export class MailAPIService {
 
     private mailData: ContactFormItem;
     private mailParams: any;

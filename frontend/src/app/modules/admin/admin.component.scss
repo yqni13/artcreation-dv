@@ -1,0 +1,77 @@
+@use '../../../stylesheets/utilities' as sass;
+
+
+header {
+    background-color: var(--theme-highlight-body);
+    color: var(--theme-highlight-text);
+}
+
+.artdv-admin-content {
+    width: calc(100vw - var(--view-nav-width));
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid var(--theme-contrast-text);
+    border-bottom: 2px solid var(--theme-contrast-text);
+}
+
+.triple-inner {
+    border-left: 2px solid var(--theme-contrast-text);
+    border-right: 2px solid var(--theme-contrast-text);
+}
+
+.artdv-admin-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 100%;
+        height: calc(100vh - var(--view-footer-height));
+        min-height: 300px;
+        object-fit: cover;
+        filter: grayscale(1) brightness(0.7);
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+
+    img:has(+ .artdv-admin-option-description:hover) {
+        filter: grayscale(0);
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .artdv-anchor {
+        font-size: 22px;
+        text-transform: uppercase;
+    }
+
+    .artdv-admin-option-description {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        backdrop-filter: brightness(0.3);
+        padding: sass.$space15;
+        cursor: pointer;
+    }
+
+    .artdv-author {
+        position: absolute;
+        display: flex;
+        align-self: end;
+        justify-content: right;
+
+        a {
+            padding: sass.$space5 sass.$space15;
+            text-decoration: none;
+            cursor: help;
+            font-size: 11px;
+            color: sass.$color-ice-white;
+        }
+    }
+}

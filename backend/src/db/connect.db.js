@@ -13,6 +13,7 @@ class DBConnect {
     #pool;
 
     constructor() {
+        // const connectionString = this.#getConnectionString(true); // local development
         const connectionString = this.#getConnectionString(false);
         this.#pool = new Pool({connectionString});
     }
@@ -20,9 +21,12 @@ class DBConnect {
     init = async () => {
         const client = await this.connection();
         try {
-            await client.query(`SELECT * FROM gallery`);
+            const results = await client.query(`SELECT * FROM gallery;`);
+            if((results && results.rowCount === 0)){
+                await this.#initTables(client);
+            }
         } catch(error) {
-            if((error && error.code === '42P01') || (results && results.rowCount === 0)) {
+            if(error && error.code === '42P01') {
                 await this.#initTables(client);
             } else if(error) {
                 console.log("DB REQUEST ERROR: ", error);
@@ -43,9 +47,9 @@ class DBConnect {
         }
     }
 
-    #getConnectionString = (localhost = false) => {
+    #getConnectionString = (isLocalhost) => {
         // keep local version for testing/maintenance
-        if(localhost) {
+        if(isLocalhost) {
             const db = Database.database;
             const user = Database.user;
             const pass = Database.password;
@@ -67,7 +71,7 @@ class DBConnect {
             return client;
         } catch(error) {
             console.log("DB CONNECT ERROR: ", error);
-            throw new DBConnectionException(error);
+            throw new DBConnectionException('server-535-auth#database');
         }
     }
 
@@ -76,7 +80,7 @@ class DBConnect {
             await client.release(true);
         } catch(error) {
             console.log("DB CLOSE ERROR: ", error);
-            throw new DBConnectionException(error);
+            throw new DBConnectionException('server-535-auth#database');
         }
     }
 }

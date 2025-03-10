@@ -4,9 +4,9 @@ exports.authSchema = [
     body('user')
         .trim()
         .notEmpty()
-        .withMessage('backend-require'),
+        .withMessage('data-required'),
     body('pass')
         .trim()
         .notEmpty()
-        .withMessage('backend-require')
+        .withMessage('data-required')
 ]
