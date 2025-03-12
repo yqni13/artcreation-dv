@@ -26,7 +26,7 @@
                 "AuthSecretNotFoundException": "Env variable missing",
                 "DBConnectionException": "Connection failed",
                 "DBSyntaxSQLException": "Invalid database",
-                "InternalServerException": "Server connection error",
+                "InternalServerException": "Server unreachable",
                 "InvalidCredentialsException": "Invalid credentials",
                 "InvalidPropertiesException": "Invalid data",
                 "InvalidTokenException": "Invalid token",
@@ -36,6 +36,10 @@
             }
         },
         "frontend": {
+            "img-upload": {
+                "text-size-max": "The max. size for image uploads is {{VAL}}.",
+                "title-size-max": "Limit exceeded!"
+            },
             "email": {
                 "text": "An answer with further information will follow shortly. Your request has been received from the following email address:",
                 "title": "Thank you for requesting"

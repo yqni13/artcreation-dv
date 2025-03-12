@@ -7,12 +7,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { GalleryHttpInterceptor } from './common/http/gallery.http.interceptor';
 import { MailHttpInterceptor } from './common/http/mail.http.interceptor';
 import { AdminRoute } from './api/routes/admin.route.enum';
+import { AuthHttpInterceptor } from './common/http/auth.http.interceptor';
 
 
 export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
     const translate = inject(TranslateService);
     const snackbarService = inject(SnackbarMessageService);
     const httpObservationService = inject(HttpObservationService);
+    const authIntercept = inject(AuthHttpInterceptor);
     const galleryIntercept = inject(GalleryHttpInterceptor);
     const mailIntercept = inject(MailHttpInterceptor);
 
@@ -21,6 +23,9 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
             if((httpEvent as HttpResponse<any>).status === HttpStatusCode.Ok) {
                 const httpbody = (httpEvent as HttpResponse<any>);
 
+                if(httpbody.url?.includes(AdminRoute.AUTH)) {
+                    authIntercept.handleAuthResponse(httpEvent as HttpResponse<any>);
+                }
                 if(httpbody.url?.includes(AdminRoute.GALLERY)) {
                     galleryIntercept.handleGalleryResponse(httpEvent as HttpResponse<any>);
                 }
@@ -31,7 +36,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
         })
         ,
         catchError((response) => {
-            handleError(response, httpObservationService, snackbarService, translate, galleryIntercept, mailIntercept).catch((err) => {
+            handleError(response, httpObservationService, snackbarService, translate, authIntercept, galleryIntercept, mailIntercept).catch((err) => {
                 console.log("Error handling failed", err);
             })
             
@@ -40,8 +45,11 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     );
 }
 
-export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor) {
+export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, authIntercept: AuthHttpInterceptor, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor) {
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+    if(response.url.includes(AdminRoute.AUTH)) {
+        authIntercept.handleAuthError(response);
+    }
     if(response.url.includes(AdminRoute.GALLERY)) {
         galleryIntercept.handleGalleryError(response);
     }
@@ -53,7 +61,8 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
     
     // user response log
     if(response.status === 0 &&
-        (response.url.includes(AdminRoute.GALLERY)
+        (response.url.includes(AdminRoute.AUTH)
+        || response.url.includes(AdminRoute.GALLERY)
         || response.url.includes(AdminRoute.MAILING)
         || response.url.includes(AdminRoute.NEWS))) {
         Object.assign(response, {

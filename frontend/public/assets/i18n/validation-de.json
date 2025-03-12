@@ -26,7 +26,7 @@
                 "AuthSecretNotFoundException": "Umgebungsvariable fehlt",
                 "DBConnectionException": "Verbindung fehlgeschlagen",
                 "DBSyntaxSQLException": "Datenbank Fehler",
-                "InternalServerException": "Server Verbindungs-Fehler",
+                "InternalServerException": "Server Unerreichbar",
                 "InvalidCredentialsException": "Ungültige Anmeldedaten",
                 "InvalidPropertiesException": "Ungültiger DatenSatz",
                 "InvalidTokenException": "Ungültiger Token",
@@ -36,6 +36,10 @@
             }
         },
         "frontend": {
+            "img-upload": {
+                "text-size-max": "Die max. Größe für hochzuladende Bilder beträgt {{VAL}}.",
+                "title-size-max": "Limit überschritten!"
+            },
             "email": {
                 "text": "Eine Antwort mit weiteren Informationen folgt in Kürze. Ihre Anfrage wurde von folgender Email-Adresse erhalten:",
                 "title": "Danke für Ihre Anfrage"

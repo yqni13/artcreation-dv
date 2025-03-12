@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS news (
 
 INSERT INTO gallery
 (gallery_id, reference_nr, image_path, thumbnail_path, title, price, dimensions, art_genre, art_technique, art_medium, publication_year, created_on, last_modified)
-VALUES ('53b7f35f-68e6-475d-b5c3-eba472ee8770','N00001','/assets/paintings/N00001.jpg','/assets/paintings_resized/N00001.jpg','die Brücke',NULL,'100x70','nature','canvas','acrylic','2025','2025-03-02 00:49:00','2025-03-02 00:49:00');
+VALUES ('53b7f35f-68e6-475d-b5c3-eba472ee8770','NAT001','/assets/paintings/NAT001.jpg','/assets/paintings_resized/NAT001.jpg','die Brücke',NULL,'100x70','nature','canvas','acrylic','2025','2025-03-02 00:49:00','2025-03-02 00:49:00');
 
 INSERT INTO news
 (news_id, gallery, image_path, thumbnail_path, visual_timestamp, title, content, created_on, last_modified)
