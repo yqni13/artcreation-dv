@@ -15,6 +15,8 @@
                 "data-invalid-range": "The value for the record \"{{VAL}}\" must be between {{MIN}} and {{MAX}}. Please check your input.",
                 "data-required": "Not all necessary data were transferred. Please check your input.",
                 "error-unknown": "A technical error has occurred. Please try again later or contact support.",
+                "image-invalid-type": "The format for the record \"Image-Upload\" needs to be one of the following: \".jpg\", \".jpeg/.jfif\", \".webp\" or \".png\".",
+                "image-required": "The necessary image from upload was not transferred. Please check your input",
                 "secret-404-env": "Secret data \"{{VAL}}\" is missing. Please try again later or contact support.",
                 "server-500-connection": "Connection with the server is not possible at the moment. Please try again later or contact support.",
                 "server-500-routes": "The api endpoint is not available at the moment. Please try again later or contact support.",
@@ -36,10 +38,6 @@
             }
         },
         "frontend": {
-            "img-upload": {
-                "text-size-max": "The max. size for image uploads is {{VAL}}.",
-                "title-size-max": "Limit exceeded!"
-            },
             "email": {
                 "text": "An answer with further information will follow shortly. Your request has been received from the following email address:",
                 "title": "Thank you for requesting"
@@ -49,6 +47,12 @@
                 "refnr-length": "Reference number must be 6 characters.",
                 "refnr-notexist": "Reference number \"{{fieldValue}}\" does not exist.",
                 "required": "Field \"{{fieldName}}\" is required."
+            },
+            "img-upload": {
+                "text-size-max": "The max. size for image uploads is {{VAL}}.",
+                "text-type-allowed": "Only images of the following formats are allowed to upload: \".jpg\", \".jpeg/.jfif\", \".webp\" or \".png\".",
+                "title-size-max": "Limit exceeded!",
+                "title-type-allowed": "Unsupported format!"
             },
             "interceptor": {
                 "gallery-create-confirm": "Artwork created!",

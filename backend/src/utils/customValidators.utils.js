@@ -3,6 +3,7 @@ const { ArtMedium } = require('./enums/art-medium.enum');
 const { ArtTechnique } = require('./enums/art-technique.enum');
 const Secrets = require('../utils/secrets.util');
 const { decryptRSA } = require('../utils/crypto.utils');
+const { InvalidPropertiesException } = require('./exceptions/validation.exception');
 
 exports.validateArtGenre = (value) => {
     const genres = Object.values(ArtGenre);
@@ -91,5 +92,46 @@ exports.validateEncryptedSender = (encryptedSender) => {
         throw new Error('data-invalid-email');
     }
 
+    return true;
+}
+
+exports.validateImageFileUpdate = (req, res, next) => {
+    if(req.files.length > 0) {
+        this.validateImageType(req.files[0]);
+    }
+
+    next();
+}
+
+exports.validateImageFileInput = (req, res, next) => {
+    if(req.files.length === 0 || req.files[0].fieldname !== 'imageFile') {
+        const data = [{
+            type: 'input',
+            value: null,
+            msg: 'image-required',
+            path: 'imageFile',
+            location: 'files'
+        }];
+        throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
+    }
+
+    this.validateImageType(req.files[0]);
+
+    next();
+}
+
+exports.validateImageType = (image) => {
+    const type = image.mimetype.replace('image/', '');
+    const validTypes = ['jpeg', 'jpg', 'webp', 'png', 'jfif']
+    if(!validTypes.includes(type)) {
+        const data = [{
+            type: 'input',
+            value: image.mimetype,
+            msg: 'image-invalid-type',
+            path: 'imageFile',
+            location: 'files'
+        }];
+        throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
+    }
     return true;
 }

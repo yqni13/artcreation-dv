@@ -22,6 +22,11 @@ export class GalleryHttpInterceptor {
     }
 
     async handleGalleryResponse(httpBody: HttpResponse<any>) {
+        if(httpBody.url?.includes(`${AdminRoute.GALLERY}${GalleryRoute.FINDALL}`)) {
+            this.httpObservationService.setGalleryFindAllStatus(true);
+            return;
+        } 
+        
         await this.delay(1000);
     
         if(httpBody.url?.includes(`${AdminRoute.GALLERY}${GalleryRoute.CREATE}`)) {

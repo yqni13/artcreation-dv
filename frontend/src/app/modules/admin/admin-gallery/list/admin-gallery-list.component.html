@@ -67,16 +67,17 @@
             <ng-container *ngFor="let item of modifiedList">
                 <img 
                     class="artdv-admingallerylist-list-element"
-                    src="{{item.image_path}}"
                     alt="{{item.reference_nr}}"
+                    src="{{item.image_path}}"
                     (click)="navigateToUpdateItem(item.gallery_id)"
                     (keydown.enter)="navigateToUpdateItem(item.gallery_id)"
                     [attr.aria-disabled]="true"
                 >
             </ng-container>
-            <div class="artdv-query-placeholder" *ngIf="modifiedList.length === 0">
+            <div class="artdv-query-placeholder" *ngIf="!isLoadingResponse && modifiedList.length === 0">
                 <span>no data found</span>
             </div>
         </div>
     </div>
+    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
 </section>

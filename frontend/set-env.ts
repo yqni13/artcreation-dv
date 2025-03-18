@@ -5,6 +5,7 @@ const envConfigFile = `import { Environment } from "./environment.model";
 
 export const environment: Environment = {
     production: true,
+    STORAGE_URL: '${process.env['CLOUDFLARE_URL']}',
     API_BASE_URL: '${process.env['API_URL']}',
     PUBLIC_KEY: '${process.env['PUBLIC_KEY']}'
 };

@@ -37,3 +37,13 @@ exports.getCustomLocaleTimestamp = () => {
     month = month < 10 ? `0${month}` : month;
     return `${year}-${month}-${day}T${time}.000Z`;
 }
+
+exports.getEntryImagePaths = async (repository, params) => {
+    const data = await repository.findOne(params);
+    return data.body.error
+        ? data.body
+        : {
+            imagePath: data.body.data.image_path,
+            thumbnailPath: data.body.data.thumbnail_path
+        }
+}
