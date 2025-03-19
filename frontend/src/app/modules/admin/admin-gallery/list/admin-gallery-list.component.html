@@ -58,7 +58,8 @@
             </div>
             <div class="artdv-admingallerylist-btn-wrapper btn-return">
                 <a
-                    [routerLink]="'/admin'"
+                    (click)="navigateToDashboard()"
+                    (keydown.enter)="navigateToDashboard()"
                     [attr.aria-disabled]="true"
                 ><i class="icon-Return"></i></a>
             </div>
@@ -68,7 +69,7 @@
                 <img 
                     class="artdv-admingallerylist-list-element"
                     alt="{{item.reference_nr}}"
-                    src="{{item.image_path}}"
+                    src="{{storageDomain + '/' + item.thumbnail_path}}"
                     (click)="navigateToUpdateItem(item.gallery_id)"
                     (keydown.enter)="navigateToUpdateItem(item.gallery_id)"
                     [attr.aria-disabled]="true"

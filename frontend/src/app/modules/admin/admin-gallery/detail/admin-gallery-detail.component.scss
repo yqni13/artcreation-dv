@@ -25,9 +25,9 @@
 
         .artdv-form-image {
             margin: sass.$space15 0;
-            span {
-                font-size: 14px;
-                color: var(--theme-snackbar-error);
+            
+            artdv-imgupload {
+                width: 66%;
             }
         }
 
