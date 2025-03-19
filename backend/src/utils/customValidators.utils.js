@@ -104,7 +104,7 @@ exports.validateImageFileUpdate = (req, res, next) => {
 }
 
 exports.validateImageFileInput = (req, res, next) => {
-    if(req.files.length === 0 || req.files[0].fieldname !== 'imageFile') {
+    if(req.files.length === 0) {
         const data = [{
             type: 'input',
             value: null,

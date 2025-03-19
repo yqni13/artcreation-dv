@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @HostListener('window:keydown', ['$event'])
     loginOnEnter(event: KeyboardEvent) {
-        if(event.key  === 'Enter') {
+        if(event.key === 'Enter') {
             this.onLogin();
         }
     }

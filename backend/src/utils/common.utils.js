@@ -47,3 +47,14 @@ exports.getEntryImagePaths = async (repository, params) => {
             thumbnailPath: data.body.data.thumbnail_path
         }
 }
+
+exports.parseReqBody = (req, res, next) => {
+    try {
+        if(req.body && req.body.data) {
+            req.body = JSON.parse(req.body.data);
+        }
+    } catch(err) {
+        return res.status(400).json({ message: 'Invalid JSON data in request body' });
+    }
+    next();
+}

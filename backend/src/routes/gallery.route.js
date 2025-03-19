@@ -9,11 +9,12 @@ const {
     galleryRefNrPreviewSchema
 } = require('../middleware/validators/galleryValidator.middleware');
 const awaitHandlerFactory = require('../middleware/awaitHandlerFactory.middleware');
+const Utils = require('../utils/common.utils');
 
 router.get('/findOne/:id', galleryFindOneSchema, awaitHandlerFactory(GalleryController.findOne));
 router.get('/findAll', awaitHandlerFactory(GalleryController.findAll));
-router.post('/create', galleryCreateSchema, awaitHandlerFactory(GalleryController.create));
-router.put('/update', galleryUpdateSchema, awaitHandlerFactory(GalleryController.update));
+router.post('/create', Utils.parseReqBody, galleryCreateSchema, awaitHandlerFactory(GalleryController.create));
+router.put('/update', Utils.parseReqBody, galleryUpdateSchema, awaitHandlerFactory(GalleryController.update));
 router.delete('/delete/:id', galleryDeleteSchema, awaitHandlerFactory(GalleryController.delete));
 router.get('/refNrPreview/:artGenre', galleryRefNrPreviewSchema, awaitHandlerFactory(GalleryController.refNrPreview));
 

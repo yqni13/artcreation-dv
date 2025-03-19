@@ -22,6 +22,10 @@
             "gallery": "Galerie",
             "home": "Start",
             "prints": "Kopien"
+        },
+        "unavailable": {
+            "title": "Nicht verfügbar",
+            "text": "Diese Komponente ist momentan eine Baustelle und wird so bald wie möglich zur Verfügung stehen."
         }
     },
     "modules": {

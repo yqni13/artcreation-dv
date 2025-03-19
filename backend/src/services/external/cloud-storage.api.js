@@ -30,7 +30,6 @@ class CloudStorageAPI {
     }
 
     uploadImageOnCDN = async (fileBuffer, path) => {
-        // cloud storage configuration
         const storageClient = this.#getS3Client();
         const uploadParams = this.#getUploadParams(fileBuffer, path);
 
@@ -47,7 +46,6 @@ class CloudStorageAPI {
     }
 
     deleteImageOnCDN = async (path) => {
-        // cloud storage configuration
         const storageClient = this.#getS3Client();
         const deleteParams = this.#getDeleteParams(path);
 
