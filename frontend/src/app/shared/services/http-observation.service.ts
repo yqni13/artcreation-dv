@@ -12,6 +12,7 @@ export class HttpObservationService {
     private galleryUpdateStatusSubject = new BehaviorSubject<boolean>(false);
     private galleryDeleteStatusSubject = new BehaviorSubject<boolean>(false);
     private emailStatusSubject = new BehaviorSubject<boolean>(false);
+    private loginStatusSubject = new BehaviorSubject<boolean>(false);
     private errorStatusSubject = new BehaviorSubject<any>(null);
 
     galleryFindOneStatus$ = this.galleryFindOneStatusSubject.asObservable();
@@ -20,6 +21,7 @@ export class HttpObservationService {
     galleryUpdateStatus$ = this.galleryUpdateStatusSubject.asObservable();
     galleryDeleteStatus$ = this.galleryDeleteStatusSubject.asObservable();
     emailStatus$ = this.emailStatusSubject.asObservable();
+    loginStatus$ = this.loginStatusSubject.asObservable();
     errorStatus$ = this.errorStatusSubject.asObservable();
 
     setGalleryFindOneStatus(isStatus200: boolean) {
@@ -44,6 +46,10 @@ export class HttpObservationService {
 
     setEmailStatus(isStatus200: boolean) {
         this.emailStatusSubject.next(isStatus200);
+    }
+
+    setLoginStatus(isStatus200: boolean) {
+        this.loginStatusSubject.next(isStatus200);
     }
 
     setErrorStatus(error: any) {

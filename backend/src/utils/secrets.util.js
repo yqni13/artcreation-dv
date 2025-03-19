@@ -18,6 +18,10 @@ class Secrets {
     DB_DB = '';
     PUBLIC_KEY = '';
     PRIVATE_KEY = '';
+    CLOUDSTORAGE_BUCKET = '';
+    CLOUDSTORAGE_ENDPOINT = '';
+    CLOUDSTORAGE_ACCESS_KEY_ID = '';
+    CLOUDSTORAGE_SECRET_KEY = '';
 
     constructor() {
         this.MODE = this.#setMode();
@@ -34,6 +38,10 @@ class Secrets {
         this.DB_DB = this.#setDbDatabase();
         this.PUBLIC_KEY = this.#setPublicKey();
         this.PRIVATE_KEY = this.#setPrivateKey();
+        this.CLOUDSTORAGE_BUCKET = this.#setCloudStorageBucket();
+        this.CLOUDSTORAGE_ENDPOINT = this.#setCloudStorageEndpoint();
+        this.CLOUDSTORAGE_ACCESS_KEY_ID = this.#setCloudStorageAccessKeyID();
+        this.CLOUDSTORAGE_SECRET_KEY = this.#setCloudStorageSecretKey();
     }
 
     #setMode = () => {
@@ -146,6 +154,34 @@ class Secrets {
             throw new AuthSecretNotFoundException('secret-404-env#PRIVATE_KEY');
         }    
         return key;
+    }
+
+    #setCloudStorageBucket = () => {
+        if(!Config.CLOUDSTORAGE_BUCKET) {
+            throw new AuthSecretNotFoundException('secret-404-env#CLOUDSTORAGE_BUCKET');
+        }
+        return Config.CLOUDSTORAGE_BUCKET;
+    }
+
+    #setCloudStorageEndpoint = () => {
+        if(!Config.CLOUDSTORAGE_ENDPOINT) {
+            throw new AuthSecretNotFoundException('secret-404-env#CLOUDSTORAGE_ENDPOINT');
+        }
+        return Config.CLOUDSTORAGE_ENDPOINT;
+    }
+
+    #setCloudStorageAccessKeyID = () => {
+        if(!Config.CLOUDSTORAGE_ACCESS_KEY_ID) {
+            throw new AuthSecretNotFoundException('secret-404-env#CLOUDSTORAGE_ACCESS_KEY_ID');
+        }
+        return Config.CLOUDSTORAGE_ACCESS_KEY_ID;
+    }
+
+    #setCloudStorageSecretKey = () => {
+        if(!Config.CLOUDSTORAGE_SECRET_KEY) {
+            throw new AuthSecretNotFoundException('secret-404-env#CLOUDSTORAGE_SECRET_KEY');
+        }
+        return Config.CLOUDSTORAGE_SECRET_KEY;
     }
 }
 

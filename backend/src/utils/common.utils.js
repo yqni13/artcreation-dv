@@ -37,3 +37,24 @@ exports.getCustomLocaleTimestamp = () => {
     month = month < 10 ? `0${month}` : month;
     return `${year}-${month}-${day}T${time}.000Z`;
 }
+
+exports.getEntryImagePaths = async (repository, params) => {
+    const data = await repository.findOne(params);
+    return data.body.error
+        ? data.body
+        : {
+            imagePath: data.body.data.image_path,
+            thumbnailPath: data.body.data.thumbnail_path
+        }
+}
+
+exports.parseReqBody = (req, res, next) => {
+    try {
+        if(req.body && req.body.data) {
+            req.body = JSON.parse(req.body.data);
+        }
+    } catch(err) {
+        return res.status(400).json({ message: 'Invalid JSON data in request body' });
+    }
+    next();
+}

@@ -4,6 +4,10 @@
 
 <br>
 
+### 2024/03/19 - $\textsf{update\ 1.0.0-beta.10\ >>\ {\color{pink}1.0.0-beta.11}}$
+
+- $\textsf{\color{green}Change:}$ Add administration feature to login as Admin and manage gallery entries (including encryption, login via jwt, database and cloud storage).
+
 ### 2024/11/02 - $\textsf{update\ 1.0.0-beta.9\ >>\ {\color{pink}1.0.0-beta.10}}$
 
 - $\textsf{\color{red}Bugfix:}$ Contact form displays all fields as expected before and after usage. [Before: After sending a request, the form would not display the fields 'price' and 'type' => specific reset was necessary.]

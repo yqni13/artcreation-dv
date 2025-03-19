@@ -1,0 +1,129 @@
+@use '../../../../stylesheets/utilities' as sass;
+
+
+.artdv-imgupload {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: sass.$space5 0;
+    
+    .artdv-imgupload-upload-wrapper {
+        display: flex;
+        width: 100%;
+        border-radius: 10px;
+        background-color: var(--theme-contrast-anchor);
+        cursor: pointer;
+
+        label {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            width: calc(100% - 10px);
+            height: 125px;
+            background-color: var(--theme-contrast-anchor);
+            filter: brightness(1.2);
+            border: 2px dotted grey;
+            border-radius: 5px;    
+            cursor: pointer;
+    
+            &:hover {
+                border: 2px solid sass.$color-ice-white;
+                filter: brightness(1.5);
+            }
+    
+            span {
+                color: var(--theme-body-text);
+                text-transform: uppercase;
+            }
+
+            #artdv-upload-btn-desc-main {
+                font-size: 14px;
+                font-weight: bold;
+            }
+            #artdv-upload-btn-desc-sub {
+                margin-top: 2.5px;
+                font-size: 10px;
+                font-weight: normal;
+            }
+            #artdv-upload-size-limit {
+                position: absolute;
+                display: flex;
+                justify-self: end;
+                bottom: calc(sass.$space5 / 2);
+                font-size: 8px;
+                opacity: 0.5;
+            }
+    
+            input {
+                display: none;
+            }
+        }
+    }
+
+    #artdv-upload-valid-msg {
+        color: sass.$color-validation-red;
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: calc(sass.$space5 / 2);
+    }
+
+    .artdv-imgupload-preview-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        .artdv-imgupload-preview-container {
+            position: relative;
+            display: flex;
+            justify-content: end;
+            width: auto;
+            height: auto;
+            max-width: 250px;
+            max-height: 200px;
+            border: 1px solid var(--theme-body-text);
+            border-radius: 5px;
+            background-color: var(--theme-nav-bg);
+            padding: sass.$space15;
+            
+            img {
+                width: 100%;
+                display: grid;
+                object-fit: contain;
+            }
+
+            .artdv-imgupload-close-wrapper {
+                position: absolute;
+                display: flex;
+                margin: 0 0 15px 15px;
+                background-color: var(--theme-snackbar-error);
+                border-radius: 50%;
+                cursor: pointer;
+                top: sass.$space5;
+                right: sass.$space5;
+
+                &:hover {
+                    filter: brightness(1.5);
+                    i {
+                        color: var(--theme-highlight-text);
+                    }
+                }
+
+                i {
+                    color: var(--theme-body-text);
+                    display: flex;
+                    width: 20px;
+                    height: 20px;
+                    margin: sass.$space5;
+                }
+            }
+
+            canvas {
+                display: none;
+            }
+        }
+    }
+}

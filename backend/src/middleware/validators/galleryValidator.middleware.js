@@ -12,6 +12,7 @@ exports.galleryFindOneSchema = [
 ];
 
 exports.galleryCreateSchema = [
+    CustomValidator.validateImageFileInput,
     body('imagePath')
         .trim()
         .notEmpty()
@@ -70,6 +71,7 @@ exports.galleryCreateSchema = [
 ];
 
 exports.galleryUpdateSchema = [
+    CustomValidator.validateImageFileUpdate,
     body('id')
         .trim()
         .notEmpty()
@@ -154,5 +156,5 @@ exports.galleryRefNrPreviewSchema = [
         .notEmpty()
         .withMessage('data-required')
         .bail()
-        .custom((value) => CustomValidator.validateArtGenre(value)),
+        .custom((value) => CustomValidator.validateArtGenre(value))
 ];

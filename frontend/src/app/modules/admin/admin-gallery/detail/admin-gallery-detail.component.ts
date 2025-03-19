@@ -1,9 +1,10 @@
+import { BaseRoute } from './../../../../api/routes/base.route.enum';
 import { CommonModule } from "@angular/common";
 import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
 import { Router } from "@angular/router";
-import { filter, Subscription, tap } from "rxjs";
+import { filter, Subject, Subscription, tap } from "rxjs";
 import { DataShareService } from "../../../../shared/services/data-share.service";
 import { NavigationService } from "../../../../shared/services/navigation.service";
 import { TranslateModule } from "@ngx-translate/core";
@@ -21,6 +22,10 @@ import { HttpObservationService } from "../../../../shared/services/http-observa
 import { DateTimeService } from "../../../../shared/services/datetime.service";
 import { AuthService } from "../../../../shared/services/auth.service";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
+import { ImgUploadComponent } from "../../../../common/components/img-upload/img-upload.component";
+import { StorageRoute } from "../../../../api/routes/storage.route.enum";
+import { environment } from '../../../../../environments/environment';
+import * as CustomValidator from '../../../../common/helper/custom-validators';
 
 @Component({
     selector: 'app-admin-gallery-detail',
@@ -29,6 +34,7 @@ import { AdminRoute } from "../../../../api/routes/admin.route.enum";
     imports: [
         CommonModule,
         CastAbstractToFormControlPipe,
+        ImgUploadComponent,
         LoadingAnimationComponent,
         ReactiveFormsModule,
         SelectInputComponent,
@@ -49,6 +55,8 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     protected isLoadingInit: boolean;
     protected hasGenre: boolean;
     protected lastModified: string;
+    protected pathFromExistingImg: string | null;
+    protected onSubmitTrigger: Subject<boolean>;
 
     private subscriptionDataSharing$: Subscription;
     private subscriptionHttpObservationCreate$: Subscription;
@@ -73,6 +81,8 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
         this.isLoadingResponse = true;
         this.isLoadingInit = true;
         this.lastModified = '';
+        this.pathFromExistingImg = null;
+        this.onSubmitTrigger = new Subject<boolean>();
         
         this.subscriptionDataSharing$ = new Subscription();
         this.subscriptionHttpObservationCreate$ = new Subscription();
@@ -98,9 +108,11 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
                     this.galleryApi.setIdParam(this.entryId);
                     this.galleryApi.sendGetOneRequest().subscribe(async data => {
                         (this.artworkEntry as any) = data.body?.body.data;
+                        Object.assign((this.artworkEntry as any), {imageFile: data.body?.body.data.reference_nr});
                         this.hasGenre = this.artworkEntry?.art_genre ? true : false;
                         this.lastModified = this.datetime.convertTimestamp(this.artworkEntry?.last_modified ?? null);
                         this.initEdit();
+                        this.pathFromExistingImg = this.configPathFromExistingImg(this.artworkEntry?.thumbnail_path);
                         await this.delay(500);
                         this.isLoadingInit = false;
                         this.isLoadingResponse = false;
@@ -155,6 +167,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
             id: new FormControl(null),
             referenceNr: new FormControl(null),
             artGenre: new FormControl('', Validators.required),
+            imageFile: new FormControl(null, Validators.required),
             imagePath: new FormControl(''),
             thumbnailPath: new FormControl(''),
             title: new FormControl(null),
@@ -162,7 +175,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
             dimensions: new FormControl('', Validators.required),
             artMedium: new FormControl('', Validators.required),
             artTechnique: new FormControl('', Validators.required),
-            publication: new FormControl('', Validators.required),
+            publication: new FormControl('', [Validators.required, CustomValidator.invalidPublicationValidator()]),
         })
     }
 
@@ -172,6 +185,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
             id: this.artworkEntry?.gallery_id ?? null,
             referenceNr: this.artworkEntry?.reference_nr ?? null,
             artGenre: EnumValidators.getArtGenre(this.artworkEntry?.art_genre) ?? '',
+            imageFile: (this.artworkEntry as any)?.imageFile ?? null,
             imagePath: this.artworkEntry?.image_path ?? '',
             thumbnailPath: this.artworkEntry?.thumbnail_path ?? '',
             title: this.artworkEntry?.title ?? null,
@@ -181,6 +195,19 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
             artTechnique: EnumValidators.isArtTechnique(this.artworkEntry?.art_technique) ?? ArtTechnique.acrylic,
             publication: this.artworkEntry?.publication_year ?? '',
         })
+    }
+
+    readFileUpload(event: any) {
+        this.pathFromExistingImg = null;
+        this.artworkForm.get('imageFile')?.setValue(event);
+        this.configPathByRefNr(this.artworkForm.get('referenceNr')?.value);
+    }
+
+    readRemovalInfo(event: any) {
+        if(event && !event.existingImgPath) {
+            this.pathFromExistingImg = null;
+            this.artworkForm.get('imageFile')?.setValue(null);
+        }
     }
 
     getPublicationYearPlaceholder(): string {
@@ -198,16 +225,21 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
         }
     }
 
+    configPathFromExistingImg(dbPath?: string): string | null {
+        return dbPath ? `${environment.STORAGE_URL}/${dbPath}` : null;
+    }
+
     configPathByRefNr(refNr: string | null) {
         if(!refNr) {
             return;
         }
-        this.artworkForm.get('imagePath')?.setValue(`/assets/paintings/${refNr}.jpg`);
-        this.artworkForm.get('thumbnailPath')?.setValue(`/assets/paintings_resized/${refNr}.jpg`);
+        this.artworkForm.get('imagePath')?.setValue(`${StorageRoute.ART_ORIGINAL}/${refNr}.webp`);
+        this.artworkForm.get('thumbnailPath')?.setValue(`${StorageRoute.ART_RESIZED}/${refNr}.webp`);
     }
 
     onSubmit() {
         this.artworkForm.markAllAsTouched();
+        this.onSubmitTrigger.next(this.artworkForm.get('imageFile')?.value !== null);
         if(this.artworkForm.invalid) {
             return;
         }
@@ -234,7 +266,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
             this.isLoadingResponse = true;
             this.galleryApi.setIdParam(this.entryId);
             this.galleryApi.sendDeleteRequest().subscribe(async (response) => {
-                await this.delay(1500);
+                await this.delay(500);
                 this.isLoadingResponse = false;
                 if(response.body?.body.deleted) {
                     this.navigateToGalleryList();
@@ -244,7 +276,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     }
 
     navigateToGalleryList() {
-        this.router.navigate([`/admin${AdminRoute.GALLERY}`]);
+        this.router.navigate([`${BaseRoute.ADMIN}${AdminRoute.GALLERY}`]);
     }
 
     ngOnDestroy() {

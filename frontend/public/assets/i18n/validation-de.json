@@ -15,6 +15,8 @@
                 "data-invalid-range": "Der Wert für den Datensatz \"{{VAL}}\" muss zwischen {{MIN}} und {{MAX}} liegen. Bitte prüfen Sie Ihre Eingabe.",
                 "data-required": "Es wurden nicht alle notwendigen Daten übertragen. Bitte kontrollieren Sie Ihre Angaben.",
                 "error-unknown": "Ein technischer Fehler ist aufgetreten. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
+                "image-invalid-type": "Das Format für den Datensatz \"Bild-Upload\" muss einem der Folgenden gleichen: \".jpg\", \".jpeg/.jfif\", \".webp\" oder \".png\".",
+                "image-required": "Es wurde nicht das notwendige Bild vom Upload übertragen. Bitte kontrollieren Sie Ihre Angaben.",
                 "secret-404-env": "Umgebungsvariable \"{{VAL}}\" fehlt. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
                 "server-500-connection": "Die Verbindung mit dem Server ist im Moment nicht möglich. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
                 "server-500-routes": "Der passende API Zugang/Endpunkt ist im Moment nicht verfügbar. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
@@ -26,7 +28,7 @@
                 "AuthSecretNotFoundException": "Umgebungsvariable fehlt",
                 "DBConnectionException": "Verbindung fehlgeschlagen",
                 "DBSyntaxSQLException": "Datenbank Fehler",
-                "InternalServerException": "Server Verbindungs-Fehler",
+                "InternalServerException": "Server Unerreichbar",
                 "InvalidCredentialsException": "Ungültige Anmeldedaten",
                 "InvalidPropertiesException": "Ungültiger DatenSatz",
                 "InvalidTokenException": "Ungültiger Token",
@@ -42,9 +44,18 @@
             },
             "form": {
                 "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
+                "publication-invalid": "Das Erstellungsjahr muss eine gültige Zahl sein.",
+                "publication-length": "Das Erstellungsjahr muss zwischen 1000 und 2100 liegen.",
                 "refnr-length": "Die Referenz-Nummer muss 6 Zeichen lang sein.",
                 "refnr-notexist": "Die Referenz-Nummer \"{{fieldValue}}\" existiert nicht.",
                 "required": "Das Feld \"{{fieldName}}\" ist erforderlich."
+            },
+            "img-upload": {
+                "required": "Ein Bild aus dem Upload ist erforderlich.",
+                "text-size-max": "Die max. Größe für hochzuladende Bilder beträgt {{VAL}}.",
+                "text-type-allowed": "Für den Upload sind nur Bilder mit den folgenden Formaten erlaubt: \".jpg\", \".jpeg/.jfif\", \".webp\" oder \".png\".",
+                "title-size-max": "Limit überschritten!",
+                "title-type-allowed": "Format nicht unterstützt!"
             },
             "interceptor": {
                 "gallery-create-confirm": "Kunstwerk erstellt!",

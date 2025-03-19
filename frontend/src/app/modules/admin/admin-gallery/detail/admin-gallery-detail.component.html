@@ -19,7 +19,12 @@
                 </div>
             </div>
             <div class="artdv-admingallerydetail-form artdv-form-image" *ngIf="hasGenre">
-                <span>Hier könnte Ihr Bild stehen.</span>
+                <artdv-imgupload
+                    [existingImgPath]="pathFromExistingImg"
+                    [isSubmitTriggered]="onSubmitTrigger"
+                    (byChange)="readFileUpload($event)"
+                    (byRemove)="readRemovalInfo($event)"
+                ></artdv-imgupload>
             </div>
             <div class="artdv-admingallerydetail-form artdv-form-details" *ngIf="hasGenre">
                 <div class="artdv-admingallerydetail-form-wrapper">

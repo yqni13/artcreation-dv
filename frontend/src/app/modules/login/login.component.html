@@ -35,4 +35,5 @@
     <span class="artdv-author">
         <a href="{{authorLink}}" target="_blank">{{'shared.assets.author' | translate}}</a>
     </span>
+    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
 </section>

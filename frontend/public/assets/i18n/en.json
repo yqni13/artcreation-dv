@@ -22,6 +22,10 @@
             "gallery": "Gallery",
             "home": "Home",
             "prints": "Prints"
+        },
+        "unavailable": {
+            "title": "Not available",
+            "text": "This component is currently a construction site and will be available as soon as possible."
         }
     },
     "modules": {

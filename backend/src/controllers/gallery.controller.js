@@ -15,13 +15,13 @@ class GalleryController {
 
     create = async (req, res, next) => {
         checkValidation(req);
-        const response = await GalleryService.create(req.body);
+        const response = await GalleryService.create(req.body, req.files);
         res.send(response);
     }
 
     update = async (req, res, next) => {
         checkValidation(req);
-        const response = await GalleryService.update(req.body);
+        const response = await GalleryService.update(req.body, req.files);
         res.send(response);
     }
 

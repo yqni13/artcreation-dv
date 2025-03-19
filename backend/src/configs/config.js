@@ -14,6 +14,10 @@ module.exports.Config = {
     DB_DB: process.env.SECRET_DB_DB_NEON || null,
     DB_USER: process.env.SECRET_DB_USER_NEON || null,
     DB_PASS: process.env.SECRET_DB_PASS_NEON || null,
+    CLOUDSTORAGE_BUCKET: process.env.SECRET_CLOUDSTORAGE_BUCKET || null,
+    CLOUDSTORAGE_ENDPOINT: process.env.SECRET_CLOUDSTORAGE_ENDPOINT || null,
+    CLOUDSTORAGE_ACCESS_KEY_ID: process.env.SECRET_CLOUDSTORAGE_ACCESS_KEY_ID || null,
+    CLOUDSTORAGE_SECRET_KEY: process.env.SECRET_CLOUDSTORAGE_SECRET_KEY || null
 };
 
 module.exports.Database = {
