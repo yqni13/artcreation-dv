@@ -11,24 +11,19 @@ import { HttpObservationService } from "../../shared/services/http-observation.s
 })
 export class GalleryHttpInterceptor {
 
-    private delay: any;
-
     constructor(
         private readonly translate: TranslateService,
         private readonly snackbarService: SnackbarMessageService,
         private readonly httpObservationService: HttpObservationService
     ) {
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+        //
     }
 
     async handleGalleryResponse(httpBody: HttpResponse<any>) {
         if(httpBody.url?.includes(`${AdminRoute.GALLERY}${GalleryRoute.FINDALL}`)) {
             this.httpObservationService.setGalleryFindAllStatus(true);
             return;
-        } 
-        
-        await this.delay(1000);
-    
+        }     
         if(httpBody.url?.includes(`${AdminRoute.GALLERY}${GalleryRoute.CREATE}`)) {
             this.httpObservationService.setGalleryCreateStatus(true);
             const path = 'validation.frontend.interceptor.gallery-create-confirm';

@@ -15,7 +15,9 @@ import { ArtTechnique } from "../../shared/enums/art-technique.enum";
 export class GalleryAPIService {
 
     private idParam: string;
+    private formDataCreate: FormData;
     private payloadCreate: GalleryCreateRequest;
+    private formDataUpdate: FormData;
     private payloadUpdate: GalleryUpdateRequest;
 
     private urlRefNrPreview: string;
@@ -27,6 +29,7 @@ export class GalleryAPIService {
 
     constructor(private readonly http: HttpClient) {
         this.idParam = '';
+        this.formDataCreate = new FormData();
         this.payloadCreate = {
             imagePath: '',
             thumbnailPath: '',
@@ -36,6 +39,7 @@ export class GalleryAPIService {
             artTechnique: ArtTechnique.acrylic,
             publication: new Date().getFullYear()
         };
+        this.formDataUpdate = new FormData();
         this.payloadUpdate = {
             id: '',
             referenceNr: '',
@@ -66,7 +70,8 @@ export class GalleryAPIService {
         this.idParam = id;
     }
 
-    setCreatePayload(data: GalleryCreateRequest) {
+    setCreatePayload(data: any) {
+        const imageFile = data.imageFile;
         this.payloadCreate = {
             imagePath: data.imagePath,
             thumbnailPath: data.thumbnailPath,
@@ -78,9 +83,12 @@ export class GalleryAPIService {
             artTechnique: data.artTechnique,
             publication: data.publication
         };
+        this.formDataCreate = new FormData(); // reset to avoid unwanted zombie data
+        this.formDataCreate.append('file', imageFile);
+        this.formDataCreate.append('data', JSON.stringify(this.payloadCreate));
     }
 
-    setUpdatePayload(data: GalleryUpdateRequest) {
+    setUpdatePayload(data: any) {
         this.payloadUpdate = {
             id: data.id,
             referenceNr: data.referenceNr,
@@ -94,6 +102,12 @@ export class GalleryAPIService {
             artTechnique: data.artTechnique,
             publication: data.publication
         };
+        this.formDataUpdate = new FormData();
+        if(data.imageFile) {
+            const imageFile = data.imageFile;
+            this.formDataUpdate.append('file', imageFile);
+        }
+        this.formDataUpdate.append('data', JSON.stringify(this.payloadUpdate));
     }
 
     sendGetOneRequest(): Observable<HttpResponse<GalleryResponse.GalleryItemResponse>> {
@@ -105,11 +119,11 @@ export class GalleryAPIService {
     }
 
     sendCreateRequest(): Observable<HttpResponse<GalleryResponse.GalleryCreateUpdateResponse>> {
-        return this.http.post<GalleryResponse.GalleryCreateUpdateResponse>(this.urlCreate, this.payloadCreate, { observe: 'response'});
+        return this.http.post<GalleryResponse.GalleryCreateUpdateResponse>(this.urlCreate, this.formDataCreate, { observe: 'response'});
     }
 
     sendUpdateRequest(): Observable<HttpResponse<GalleryResponse.GalleryCreateUpdateResponse>> {
-        return this.http.put<GalleryResponse.GalleryCreateUpdateResponse>(this.urlUpdate, this.payloadUpdate, { observe: 'response'});
+        return this.http.put<GalleryResponse.GalleryCreateUpdateResponse>(this.urlUpdate, this.formDataUpdate, { observe: 'response'});
     }
 
     sendDeleteRequest(): Observable<HttpResponse<GalleryResponse.GalleryDeleteResponse>> {

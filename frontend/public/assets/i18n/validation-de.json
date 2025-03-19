@@ -49,6 +49,7 @@
                 "required": "Das Feld \"{{fieldName}}\" ist erforderlich."
             },
             "img-upload": {
+                "required": "Ein Bild aus dem Upload ist erforderlich.",
                 "text-size-max": "Die max. Größe für hochzuladende Bilder beträgt {{VAL}}.",
                 "text-type-allowed": "Für den Upload sind nur Bilder mit den folgenden Formaten erlaubt: \".jpg\", \".jpeg/.jfif\", \".webp\" oder \".png\".",
                 "title-size-max": "Limit überschritten!",

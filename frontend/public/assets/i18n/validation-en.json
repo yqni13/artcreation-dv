@@ -49,6 +49,7 @@
                 "required": "Field \"{{fieldName}}\" is required."
             },
             "img-upload": {
+                "required": "Image from the upload is required.",
                 "text-size-max": "The max. size for image uploads is {{VAL}}.",
                 "text-type-allowed": "Only images of the following formats are allowed to upload: \".jpg\", \".jpeg/.jfif\", \".webp\" or \".png\".",
                 "title-size-max": "Limit exceeded!",

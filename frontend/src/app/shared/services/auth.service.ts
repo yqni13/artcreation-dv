@@ -52,6 +52,7 @@ export class AuthService {
     }
 
     login(): Observable<HttpResponse<any>> {
+        this.logout();
         return this.http.post<any>(this.urlLoginAPI, this.credentials, { observe: 'response' })
             .pipe(
                 tap(response => {
