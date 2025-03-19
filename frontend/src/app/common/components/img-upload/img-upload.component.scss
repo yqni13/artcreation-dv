@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: sass.$space25 0;
+    margin: sass.$space5 0;
     
     .artdv-imgupload-upload-wrapper {
         display: flex;
@@ -68,7 +68,7 @@
         color: sass.$color-validation-red;
         font-size: 10px;
         font-weight: bold;
-        margin-top: sass.$space5;
+        margin-top: calc(sass.$space5 / 2);
     }
 
     .artdv-imgupload-preview-wrapper {

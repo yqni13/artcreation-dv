@@ -104,6 +104,7 @@ exports.validateImageFileUpdate = (req, res, next) => {
 }
 
 exports.validateImageFileInput = (req, res, next) => {
+    // custom solution file input => express-validator does not handle files
     if(req.files.length === 0) {
         const data = [{
             type: 'input',
@@ -122,7 +123,7 @@ exports.validateImageFileInput = (req, res, next) => {
 
 exports.validateImageType = (image) => {
     const type = image.mimetype.replace('image/', '');
-    const validTypes = ['jpeg', 'jpg', 'webp', 'png', 'jfif']
+    const validTypes = ['jpeg', 'jpg', 'webp', 'png']
     if(!validTypes.includes(type)) {
         const data = [{
             type: 'input',

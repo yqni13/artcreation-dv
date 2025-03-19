@@ -35,7 +35,7 @@ import { environment } from "../../../../../environments/environment";
 })
 export class AdminGalleryListComponent implements OnInit, OnDestroy {
     @HostListener('window:keydown', ['$event'])
-    searchOnEnter(event: KeyboardEvent) {
+    navigateSearchByKey(event: KeyboardEvent) {
         if(event.key === 'Enter') {
             this.onSearchSubmit();
         } else if(event.key === 'Escape') {

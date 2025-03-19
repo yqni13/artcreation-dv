@@ -12,7 +12,6 @@ exports.galleryFindOneSchema = [
 ];
 
 exports.galleryCreateSchema = [
-    // custom solution file input => express-validator does not handle files
     CustomValidator.validateImageFileInput,
     body('imagePath')
         .trim()

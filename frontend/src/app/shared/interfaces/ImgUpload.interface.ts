@@ -12,7 +12,5 @@ export declare interface ImgUploadInformation {
     imagePreview: WritableSignal<string>,
     uploadProgress: WritableSignal<number>,
     uploadSuccess: boolean,
-    uploadError: boolean,
-    width: number,
-    height: number
+    uploadError: boolean
 }

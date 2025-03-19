@@ -16,9 +16,7 @@ export class GalleryAPIService {
 
     private idParam: string;
     private formDataCreate: FormData;
-    private payloadCreate: GalleryCreateRequest;
     private formDataUpdate: FormData;
-    private payloadUpdate: GalleryUpdateRequest;
 
     private urlRefNrPreview: string;
     private urlGetOne: string;
@@ -30,27 +28,7 @@ export class GalleryAPIService {
     constructor(private readonly http: HttpClient) {
         this.idParam = '';
         this.formDataCreate = new FormData();
-        this.payloadCreate = {
-            imagePath: '',
-            thumbnailPath: '',
-            dimensions: '',
-            artGenre: ArtGenre.abstract,
-            artMedium: ArtMedium.canvas,
-            artTechnique: ArtTechnique.acrylic,
-            publication: new Date().getFullYear()
-        };
         this.formDataUpdate = new FormData();
-        this.payloadUpdate = {
-            id: '',
-            referenceNr: '',
-            imagePath: '',
-            thumbnailPath: '',
-            dimensions: '',
-            artGenre: ArtGenre.abstract,
-            artMedium: ArtMedium.canvas,
-            artTechnique: ArtTechnique.acrylic,
-            publication: new Date().getFullYear()
-        };
 
         // this.urlGetOne = `/api/v1/gallery${GalleryRoute.findOne}`;
         // this.urlGetAll = `/api/v1/gallery${GalleryRoute.findAll}`;
@@ -72,7 +50,7 @@ export class GalleryAPIService {
 
     setCreatePayload(data: any) {
         const imageFile = data.imageFile;
-        this.payloadCreate = {
+        const payloadCreate = {
             imagePath: data.imagePath,
             thumbnailPath: data.thumbnailPath,
             title: data.title,
@@ -85,11 +63,11 @@ export class GalleryAPIService {
         };
         this.formDataCreate = new FormData(); // reset to avoid unwanted zombie data
         this.formDataCreate.append('file', imageFile);
-        this.formDataCreate.append('data', JSON.stringify(this.payloadCreate));
+        this.formDataCreate.append('data', JSON.stringify(payloadCreate));
     }
 
     setUpdatePayload(data: any) {
-        this.payloadUpdate = {
+        const payloadUpdate = {
             id: data.id,
             referenceNr: data.referenceNr,
             imagePath: data.imagePath,
@@ -107,7 +85,7 @@ export class GalleryAPIService {
             const imageFile = data.imageFile;
             this.formDataUpdate.append('file', imageFile);
         }
-        this.formDataUpdate.append('data', JSON.stringify(this.payloadUpdate));
+        this.formDataUpdate.append('data', JSON.stringify(payloadUpdate));
     }
 
     sendGetOneRequest(): Observable<HttpResponse<GalleryResponse.GalleryItemResponse>> {

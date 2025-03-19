@@ -12,5 +12,11 @@
         <div *ngIf="control.hasError('invalidRefNrLength')">
             {{ 'validation.frontend.form.refnr-length' | translate }}
         </div>
+        <div *ngIf="control.hasError('invalidPublicationContent')">
+            {{ 'validation.frontend.form.publication-invalid' | translate }}
+        </div>
+        <div *ngIf="control.hasError('invalidPublicationYear')">
+            {{ 'validation.frontend.form.publication-length' | translate }}
+        </div>
     </div>
 </ng-container>

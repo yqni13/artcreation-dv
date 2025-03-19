@@ -44,6 +44,8 @@
             },
             "form": {
                 "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
+                "publication-invalid": "Das Erstellungsjahr muss eine gültige Zahl sein.",
+                "publication-length": "Das Erstellungsjahr muss zwischen 1000 und 2100 liegen.",
                 "refnr-length": "Die Referenz-Nummer muss 6 Zeichen lang sein.",
                 "refnr-notexist": "Die Referenz-Nummer \"{{fieldValue}}\" existiert nicht.",
                 "required": "Das Feld \"{{fieldName}}\" ist erforderlich."

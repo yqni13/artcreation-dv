@@ -44,6 +44,8 @@
             },
             "form": {
                 "email-invalid": "Field \"{{fieldName}}\" has invalid format.",
+                "publication-invalid": "Publication year must be a valid number.",
+                "publication-length": "Publication year must be between 1000 and 2100.",
                 "refnr-length": "Reference number must be 6 characters.",
                 "refnr-notexist": "Reference number \"{{fieldValue}}\" does not exist.",
                 "required": "Field \"{{fieldName}}\" is required."

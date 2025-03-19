@@ -20,7 +20,6 @@ class Secrets {
     PRIVATE_KEY = '';
     CLOUDSTORAGE_BUCKET = '';
     CLOUDSTORAGE_ENDPOINT = '';
-    CLOUDSTORAGE_PUBLIC_URL = '';
     CLOUDSTORAGE_ACCESS_KEY_ID = '';
     CLOUDSTORAGE_SECRET_KEY = '';
 
@@ -41,7 +40,6 @@ class Secrets {
         this.PRIVATE_KEY = this.#setPrivateKey();
         this.CLOUDSTORAGE_BUCKET = this.#setCloudStorageBucket();
         this.CLOUDSTORAGE_ENDPOINT = this.#setCloudStorageEndpoint();
-        this.CLOUDSTORAGE_PUBLIC_URL = this.#setCloudStoragePublicUrl();
         this.CLOUDSTORAGE_ACCESS_KEY_ID = this.#setCloudStorageAccessKeyID();
         this.CLOUDSTORAGE_SECRET_KEY = this.#setCloudStorageSecretKey();
     }
@@ -170,13 +168,6 @@ class Secrets {
             throw new AuthSecretNotFoundException('secret-404-env#CLOUDSTORAGE_ENDPOINT');
         }
         return Config.CLOUDSTORAGE_ENDPOINT;
-    }
-
-    #setCloudStoragePublicUrl = () => {
-        if(!Config.CLOUDSTORAGE_PUBLIC_URL) {
-            throw new AuthSecretNotFoundException('secret-404-env#CLOUDSTORAGE_PUBLIC_URL');
-        }
-        return Config.CLOUDSTORAGE_PUBLIC_URL;
     }
 
     #setCloudStorageAccessKeyID = () => {

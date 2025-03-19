@@ -3,7 +3,7 @@ import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, 
 import { ImgUploadData, ImgUploadInformation } from "../../../shared/interfaces/ImgUpload.interface";
 import { ImgUploadService } from "../../../shared/services/img-upload.service";
 import { TranslateModule } from "@ngx-translate/core";
-import { Subject, takeUntil } from "rxjs";
+import { Subject, Subscription } from "rxjs";
 
 @Component({
     selector: 'artdv-imgupload',
@@ -21,13 +21,13 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
     @ViewChild('artworkImage', {static: false}) artworkImage: ElementRef<HTMLCanvasElement | null>
 
     @Input() existingImgPath: string | null;
-    @Input() isUploadValid: Subject<boolean>;
+    @Input() isSubmitTriggered: Subject<boolean>;
 
     protected fileInformation: ImgUploadInformation;
     protected sizeFactorInMB: number;
     protected showValidationMessage: boolean;
     
-    private destroy$: Subject<void>;
+    private subscriptionSubmitTrigger$: Subscription;
 
     @Output() byChange: EventEmitter<any>;
     @Output() byRemove: EventEmitter<any>;
@@ -38,7 +38,7 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
         this.artworkImage = {} as ElementRef;
 
         this.existingImgPath = null;
-        this.isUploadValid = new Subject<boolean>();
+        this.isSubmitTriggered = new Subject<boolean>();
 
         this.fileInformation = {
             hasFile: false,
@@ -48,12 +48,10 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
             uploadProgress: signal(0),
             uploadSuccess: false,
             uploadError: false,
-            width: 0,
-            height: 0
         };
         this.sizeFactorInMB = 10;
         this.showValidationMessage = false;
-        this.destroy$ = new Subject<void>();
+        this.subscriptionSubmitTrigger$ = new Subscription();
 
         this.byChange = new EventEmitter<any>();
         this.byRemove = new EventEmitter<any>();
@@ -61,9 +59,9 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.imgUploadService.setMaxFileSize(this.sizeFactorInMB);
-        this.isUploadValid.pipe(takeUntil(this.destroy$)).subscribe((isValid: boolean) => {
+        this.subscriptionSubmitTrigger$ = this.isSubmitTriggered.subscribe((isValid: boolean) => {
             this.showValidationMessage = !isValid;
-        })
+        });
     }
 
     onFileDrop(event: DragEvent): void {
@@ -76,12 +74,11 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
                 target: event
             }
             this.uploadImage(file);
-            this.byChange.emit(file);
         }
     }
 
     onDragOver(event: DragEvent): void {
-        event.preventDefault(); // Prevent default dragover behavior
+        event.preventDefault();
     }
 
     onFileSelect(event: any) {
@@ -101,7 +98,7 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
             const reader = new FileReader();
             reader.onload = (event: any) => {
                 this.fileInformation.imagePreview.set(event.target.result as string);
-                this.isUploadValid.next(true);
+                this.isSubmitTriggered.next(true);
                 this.fileInformation.hasFile = true;
                 this.byChange.emit(file.files);
             };
@@ -124,8 +121,6 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
         this.fileInformation.uploadProgress.set(0);
         this.fileInformation.uploadSuccess = false;
         this.fileInformation.uploadError = false;
-        this.fileInformation.width = 0;
-        this.fileInformation.height = 0;
         this.showValidationMessage = true;
         const removeInfo = {
             existingImgPath: false
@@ -134,7 +129,6 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.destroy$.next();
-        this.destroy$.complete();
+        this.subscriptionSubmitTrigger$.unsubscribe();
     }
 }
