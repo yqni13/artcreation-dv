@@ -79,6 +79,19 @@
         }
     }
 
+    .artdv-admingallerydetail {
+        form {
+            width: calc(60vw - var(--view-nav-width));
+            .artdv-admingallerydetail-form {
+                .artdv-admingallerydetail-form-wrapper {
+                    width: 70%;
+                }
+            } artdv-imgupload {
+                width: 70%;
+            }
+        }
+    }
+
     .artdv-admingallerylist {
         .artdv-admingallerylist-filterbar {
             flex-direction: row;
@@ -345,6 +358,21 @@
         }
     }
 
+    .artdv-admingallerydetail {
+        form {
+            width: calc(70vw - var(--view-nav-width));
+            min-width: 700px;
+            .artdv-admingallerydetail-form {
+                .artdv-admingallerydetail-form-wrapper {
+                    width: 70%;
+                }
+            }
+            artdv-imgupload {
+                width: 70%;
+            }
+        }
+    }
+
     .artdv-admingallerylist {
         .artdv-admingallerylist-filterbar {
             flex-direction: row;
@@ -600,6 +628,23 @@
             justify-content: end!important;
             img {
                 max-height: 600px;
+            }
+        }
+    }
+
+    .artdv-admingallerydetail {
+        form {
+            $margin-form: calc(sass.$space100);
+            margin: 0 $margin-form;
+            width: calc(100% - ($margin-form * 2));
+            min-width: 0;
+            .artdv-admingallerydetail-form {
+                .artdv-admingallerydetail-form-wrapper {
+                    width: 75%;
+                }
+            }
+            artdv-imgupload {
+                width: 75%;
             }
         }
     }
@@ -898,6 +943,23 @@
         }
     }
 
+    .artdv-admingallerydetail {
+        form {
+            $margin-form: 75px;
+            margin: 0 $margin-form;
+            width: calc(100% - ($margin-form * 2));
+            min-width: 0;
+            .artdv-admingallerydetail-form {
+                .artdv-admingallerydetail-form-wrapper {
+                    width: 100%;
+                }
+            }
+            artdv-imgupload {
+                width: calc(100% - 5px) // 5px as visual buffer
+            }
+        }
+    }
+
     .artdv-admingallerylist {
         .artdv-admingallerylist-filterbar {
             flex-direction: column;
@@ -1114,6 +1176,21 @@
             img {
                 max-width: 300px!important;
                 margin: sass.$comp-padding-small auto!important;
+            }
+        }
+    }
+
+    .artdv-admingallerydetail {
+        .artdv-admingallerydetail-form-wrapper {
+            flex-direction: column!important;
+            margin-bottom: sass.$space15!important;
+            span {
+                font-size: 14px;
+                margin-bottom: sass.$space5;
+            }
+            artdv-textinput,
+            artdv-selectinput {
+                width: 100%!important;
             }
         }
     }

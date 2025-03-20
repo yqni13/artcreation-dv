@@ -12,7 +12,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: calc(50vw - var(--view-nav-width));
         border: 2px solid var(--theme-body-text);
         border-radius: sass.$space5;
         padding: sass.$space25;
@@ -25,17 +24,12 @@
 
         .artdv-form-image {
             margin: sass.$space15 0;
-            
-            artdv-imgupload {
-                width: 66%;
-            }
         }
 
         .artdv-admingallerydetail-form-wrapper {
             display: flex;
             flex-direction: row;
             justify-content: center;
-            width: 66%;
             margin: sass.$space5 0;
             align-items: center;
 
