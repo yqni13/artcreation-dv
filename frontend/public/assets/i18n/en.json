@@ -24,8 +24,8 @@
             "prints": "Prints"
         },
         "unavailable": {
-            "title": "Not available",
-            "text": "This component is currently a construction site and will be available as soon as possible."
+            "text": "This component is currently a construction site and will be available as soon as possible.",
+            "title": "Not available"
         }
     },
     "modules": {
@@ -51,6 +51,7 @@
                 "placeholder-sale-status": "Select a status",
                 "placeholder-search": "search in gallery",
                 "placeholder-technique": "select a technique",
+                "placeholder-title": "\"What shall I represent?\"",
                 "title": {
                     "create": "add artwork",
                     "list": "gallery administration",

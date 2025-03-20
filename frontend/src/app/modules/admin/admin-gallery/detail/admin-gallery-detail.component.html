@@ -31,6 +31,7 @@
                     <span>{{('modules.admin.gallery.details.title' | translate) + ':'}}</span>
                     <artdv-textinput
                         class="artdv-admingallerydetail-text"
+                        [placeholder]="'modules.admin.gallery.placeholder-title' | translate"
                         [inputType]="'text'"
                         [formControl]="artworkForm.get('title') | controlCast"
                         [fieldName]="'modules.admin.gallery.details.title' | translate"

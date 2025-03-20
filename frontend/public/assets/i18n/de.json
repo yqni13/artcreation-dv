@@ -24,8 +24,8 @@
             "prints": "Kopien"
         },
         "unavailable": {
-            "title": "Nicht verfügbar",
-            "text": "Diese Komponente ist momentan eine Baustelle und wird so bald wie möglich zur Verfügung stehen."
+            "text": "Diese Komponente ist momentan eine Baustelle und wird so bald wie möglich zur Verfügung stehen.",
+            "title": "Nicht verfügbar"
         }
     },
     "modules": {
@@ -51,6 +51,7 @@
                 "placeholder-sale-status": "Wählen Sie einen Status",
                 "placeholder-search": "in der Galerie suchen",
                 "placeholder-technique": "wählen Sie eine Technik",
+                "placeholder-title": "\"Was soll ich aussagen?\"",
                 "title": {
                     "create": "Kunstwerk hinzufügen",
                     "list": "Galerie Management",
