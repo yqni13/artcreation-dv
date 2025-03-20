@@ -11,8 +11,9 @@
 // width > 1440px
 @media screen and (width >= sass.$device-desktop-xk) {
     section {
-        width: calc(100% - var(--view-nav-width));
-        margin: 0 0 0 var(--view-nav-width);
+        $navbar-border: 2px;
+        width: calc(100% - var(--view-nav-width) - $navbar-border);
+        margin: 0 0 0 calc(var(--view-nav-width) + $navbar-border);
     }
 
     .artdv-home {
@@ -74,6 +75,32 @@
                 .artdv-author {
                     width: calc(33% - (var(--view-nav-width) / 3));
                 }
+            }
+        }
+    }
+
+    .artdv-admingallerylist {
+        .artdv-admingallerylist-filterbar {
+            flex-direction: row;
+            .artdv-admingallerylist-select-wrapper {
+                width: 250px;
+            }
+            .artdv-admingallerylist-search-wrapper {
+                min-width: 400px;
+                width: 20%;
+            }
+        }
+
+        .artdv-admingallerylist-list {
+            $margin-list: sass.$space50;
+            margin: 0 $margin-list sass.$space50 $margin-list;
+            
+            .artdv-admingallerylist-list-element {
+                $border-width: 2px;
+                $width-limit: calc($border-width * 2);
+                $margin-element: sass.$space15;
+                width: calc(((100vw - var(--view-nav-width) - 2px - ($margin-list * 2)) / 4) - $width-limit - ($margin-element * 2));
+                margin: $margin-element;
             }
         }
     }
@@ -318,6 +345,31 @@
         }
     }
 
+    .artdv-admingallerylist {
+        .artdv-admingallerylist-filterbar {
+            flex-direction: row;
+            .artdv-admingallerylist-select-wrapper {
+                width: 200px;
+            }
+            .artdv-admingallerylist-search-wrapper {
+                min-width: 300px;
+                width: 20%;
+            }
+        }
+        .artdv-admingallerylist-list {
+            $margin-list: sass.$space50;
+            margin: 0 $margin-list sass.$space50 $margin-list;
+            
+            .artdv-admingallerylist-list-element {
+                $border-width: 2px;
+                $width-limit: calc($border-width * 2);
+                $margin-element: sass.$space5;
+                width: calc(((100vw - var(--view-nav-width) - 2px - ($margin-list * 2)) / 4) - $width-limit - ($margin-element * 2));
+                margin: $margin-element;
+            }
+        }
+    }
+
     .artdv-gallerydetails {
         .artdv-gallerydetails-content {
             margin: sass.$comp-padding-medium 0!important;
@@ -552,6 +604,29 @@
         }
     }
 
+    .artdv-admingallerylist {
+        .artdv-admingallerylist-filterbar {
+            .artdv-admingallerylist-select-wrapper {
+                width: 200px;
+            }
+            .artdv-admingallerylist-search-wrapper {
+                min-width: 300px;
+            }
+        }
+        .artdv-admingallerylist-list {
+            $margin-list: sass.$space50;
+            margin: 0 $margin-list sass.$space50 $margin-list;
+            
+            .artdv-admingallerylist-list-element {
+                $border-width: 2px;
+                $width-limit: calc($border-width * 2);
+                $margin-element: sass.$space5;
+                width: calc(((100vw - ($margin-list * 2)) / 3) - $width-limit - ($margin-element * 2));
+                margin: $margin-element;
+            }
+        }
+    }
+
     .artdv-gallery {
         .artdv-gallery-content {
             margin: 50px 5px!important;
@@ -648,7 +723,6 @@
     }
 
     artdv-imgfullscale {
-
         $border-img: 5px;
         $padding-img: 5px;
         $puffer-space: 3px;
@@ -824,6 +898,48 @@
         }
     }
 
+    .artdv-admingallerylist {
+        .artdv-admingallerylist-filterbar {
+            flex-direction: column;
+            justify-content: none;
+            align-items: center;
+            .artdv-admingallerylist-select-wrapper {
+                width: 150px;
+                margin-bottom: sass.$space15;
+                margin-right: 0!important;
+            }
+            .artdv-admingallerylist-search-wrapper {
+                width: 100%;
+                min-width: 0;
+                max-width: 350px;
+                margin-bottom: sass.$space15;
+            }
+            .artdv-admingallerylist-media-wrapper {
+                justify-content: center;
+                margin: 0 sass.$space50;
+                width: calc(100% - (sass.$space50 * 2));
+            }
+            .artdv-admingallerylist-btn-wrapper {
+                margin-left: 0!important;
+            }
+            .btn-close, .btn-add {
+                margin-right: sass.$space15;
+            }
+        }
+        .artdv-admingallerylist-list {
+            $margin-list: sass.$space50;
+            margin: 0 $margin-list sass.$space50 $margin-list;
+            
+            .artdv-admingallerylist-list-element {
+                $border-width: 2px;
+                $width-limit: calc($border-width * 2);
+                $margin-element: sass.$space5;
+                width: calc(((100vw - ($margin-list * 2)) / 2) - $width-limit - ($margin-element * 2));
+                margin: $margin-element;
+            }
+        }
+    }
+
     .artdv-gallerydetails {
         .artdv-gallerydetails-img {
             height: 100vh!important;
@@ -940,7 +1056,6 @@
 
 // 400px > width < 500px
 @media screen and (width <= sass.$device-phone-portrait) {
-
     section {
         min-height: calc(100% - (300px + var(--view-nav-width)))!important;
     }
@@ -999,6 +1114,21 @@
             img {
                 max-width: 300px!important;
                 margin: sass.$comp-padding-small auto!important;
+            }
+        }
+    }
+
+    .artdv-admingallerylist {
+        .artdv-admingallerylist-list {
+            $margin-list: sass.$space50;
+            margin: 0 $margin-list sass.$space50 $margin-list;
+            
+            .artdv-admingallerylist-list-element {
+                $border-width: 2px;
+                $width-limit: calc($border-width * 2);
+                $margin-element: sass.$space5;
+                width: calc(((100vw - ($margin-list * 2)) / 2) - $width-limit - ($margin-element * 2));
+                margin: $margin-element;
             }
         }
     }
@@ -1125,9 +1255,7 @@
     }
 
     .artdv-nav-bar {
-
         ul {
-
             i {
                 width: clamp(20px, 5.5vw, 35px);
                 aspect-ratio: 1 / 1;
