@@ -1,7 +1,7 @@
-export type ArtMedium = 'Canvas' | 'Wood' | 'Other';
+export type ArtMedium = 'canvas' | 'wood' | 'other';
 
 export const ArtMedium = {
-    canvas: 'canvas' as ArtMedium,
-    wood: 'wood' as ArtMedium,
-    other: 'other' as ArtMedium
+    CANVAS: 'canvas' as ArtMedium,
+    WOOD: 'wood' as ArtMedium,
+    OTHER: 'other' as ArtMedium
 };

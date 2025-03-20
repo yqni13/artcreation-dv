@@ -4,7 +4,6 @@
 .artdv-admingallerylist-content {
     display: flex;
     flex-direction: column;
-    width: calc(100vw - var(--view-nav-width));
     height: 100%;
 
     .artdv-admingallerylist-filterbar {
@@ -14,16 +13,17 @@
         margin: 0 0 sass.$space50 0;
 
         .artdv-admingallerylist-select-wrapper {
-            width: 125px;
             display: flex;
             margin-right: sass.$space25;
         }
 
+        .artdv-admingallerylist-media-wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+
         .artdv-admingallerylist-search-wrapper {
-            $wrapper-width: 20%;
             display: grid;
-            width: $wrapper-width;
-            min-width: 200px;
 
             #artdv-admingallerylist-search-icon {
                 position: absolute;
@@ -100,19 +100,15 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin-bottom: sass.$space50;
 
         .artdv-admingallerylist-list-element {
             $border-width: 2px;
-            $width-limit: calc(($border-width * 2) + (sass.$space15 * 2));
             display: flex;
             justify-content: center;
             align-items: center;
-            width: calc((100vw - var(--view-nav-width) - $width-limit) / 5);
             aspect-ratio: 1/1;
             object-fit: cover;
             border: $border-width solid var(--theme-contrast-text);
-            margin: sass.$space15;
             cursor: pointer;
 
             &:hover {

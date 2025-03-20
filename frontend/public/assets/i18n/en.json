@@ -24,8 +24,8 @@
             "prints": "Prints"
         },
         "unavailable": {
-            "title": "Not available",
-            "text": "This component is currently a construction site and will be available as soon as possible."
+            "text": "This component is currently a construction site and will be available as soon as possible.",
+            "title": "Not available"
         }
     },
     "modules": {
@@ -40,6 +40,7 @@
                     "medium": "Medium",
                     "price": "Price",
                     "publication": "Publication year",
+                    "sale-status": "Availability",
                     "technique": "Technique",
                     "title": "Title"
                 },
@@ -47,8 +48,10 @@
                 "placeholder-genre": "select a genre",
                 "placeholder-medium": "select a medium",
                 "placeholder-price": "price on request",
+                "placeholder-sale-status": "Select a status",
                 "placeholder-search": "search in gallery",
                 "placeholder-technique": "select a technique",
+                "placeholder-title": "\"What shall I represent?\"",
                 "title": {
                     "create": "add artwork",
                     "list": "gallery administration",
@@ -154,23 +157,23 @@
         },
         "enum": {
             "art-genre": {
-                "abstract": "abstract",
-                "all": "all",
-                "creative": "creative",
-                "nature": "nature",
-                "people": "people",
-                "pouring": "pouring",
-                "spiritual": "spiritual"
+                "ABSTRACT": "abstract",
+                "ALL": "all",
+                "CREATIVE": "creative",
+                "NATURE": "nature",
+                "PEOPLE": "people",
+                "POURING": "pouring",
+                "SPIRITUAL": "spiritual"
             },
             "art-medium": {
-                "canvas": "Canvas",
-                "other": "Other",
-                "wood": "Wood"
+                "CANVAS": "Canvas",
+                "OTHER": "Other",
+                "WOOD": "Wood"
             },
             "art-technique": {
-                "acrylic": "Acrylic",
-                "other": "Other",
-                "pouring": "Pouring"
+                "ACRYLIC": "Acrylic",
+                "OTHER": "Other",
+                "POURING": "Pouring"
             },
             "art-type": {
                 "handcraft": "handcraft",
@@ -190,6 +193,10 @@
             "language": {
                 "de": "German",
                 "en": "English"
+            },
+            "sale-status": {
+                "AVAILABLE": "Available",
+                "UNAVAILABLE": "Unavailable"
             }
         }
     }

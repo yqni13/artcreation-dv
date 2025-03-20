@@ -71,7 +71,7 @@ export class AdminGalleryListComponent implements OnInit, OnDestroy {
         this.hasSearchText = false;
         this.genreOptions = {
             ...ArtGenre,
-            all: 'all'
+            ALL: 'all'
         };
         this.isLoadingResponse = false;
         this.storageDomain = environment.STORAGE_URL;
@@ -135,7 +135,7 @@ export class AdminGalleryListComponent implements OnInit, OnDestroy {
         }
         
         const genre = event.target?.value ?? 'all';
-        if(genre !== this.genreOptions.all) {
+        if(genre !== this.genreOptions.ALL) {
             this.modifiedList = this.modifiedList.filter(data => data.art_genre === genre)
         }
     }
@@ -180,7 +180,7 @@ export class AdminGalleryListComponent implements OnInit, OnDestroy {
 
     navigateToCreateItem() {
         const data = {
-            mode: CRUDMode.create
+            mode: CRUDMode.CREATE
         }
         this.dataSharing.setSharedData(data);
         this.router.navigate([`${BaseRoute.ADMIN}${AdminRoute.GALLERY}${GalleryRoute.CREATE}`]);
@@ -188,7 +188,7 @@ export class AdminGalleryListComponent implements OnInit, OnDestroy {
 
     navigateToUpdateItem(id: string) {
         const data = {
-            mode: CRUDMode.update,
+            mode: CRUDMode.UPDATE,
             entryId: id,
             refNr: (this.galleryList.find(data => data.gallery_id === id))?.reference_nr
         }

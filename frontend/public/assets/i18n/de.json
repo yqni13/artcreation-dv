@@ -24,8 +24,8 @@
             "prints": "Kopien"
         },
         "unavailable": {
-            "title": "Nicht verfügbar",
-            "text": "Diese Komponente ist momentan eine Baustelle und wird so bald wie möglich zur Verfügung stehen."
+            "text": "Diese Komponente ist momentan eine Baustelle und wird so bald wie möglich zur Verfügung stehen.",
+            "title": "Nicht verfügbar"
         }
     },
     "modules": {
@@ -40,6 +40,7 @@
                     "medium": "Material",
                     "price": "Preis",
                     "publication": "Erstellungsjahr",
+                    "sale-status": "Verfügbarkeit",
                     "technique": "Technik",
                     "title": "Titel"
                 },
@@ -47,8 +48,10 @@
                 "placeholder-genre": "wählen Sie ein Genre",
                 "placeholder-medium": "wählen Sie ein Material",
                 "placeholder-price": "Preis auf Anfrage",
+                "placeholder-sale-status": "Wählen Sie einen Status",
                 "placeholder-search": "in der Galerie suchen",
                 "placeholder-technique": "wählen Sie eine Technik",
+                "placeholder-title": "\"Was soll ich aussagen?\"",
                 "title": {
                     "create": "Kunstwerk hinzufügen",
                     "list": "Galerie Management",
@@ -154,23 +157,23 @@
         },
         "enum": {
             "art-genre": {
-                "abstract": "abstrakt",
-                "all": "alle",
-                "creative": "kreatives",
-                "nature": "natur",
-                "people": "personen",
-                "pouring": "pouring",
-                "spiritual": "spirituell"
+                "ABSTRACT": "abstrakt",
+                "ALL": "alle",
+                "CREATIVE": "kreatives",
+                "NATURE": "natur",
+                "PEOPLE": "personen",
+                "POURING": "pouring",
+                "SPIRITUAL": "spirituell"
             },
             "art-medium": {
-                "canvas": "Leinwand",
-                "other": "Sonstiges",
-                "wood": "Holz"
+                "CANVAS": "Leinwand",
+                "OTHER": "Sonstiges",
+                "WOOD": "Holz"
             },
             "art-technique": {
-                "acrylic": "Acryl",
-                "other": "Sonstiges",
-                "pouring": "Pouring"
+                "ACRYLIC": "Acryl",
+                "OTHER": "Sonstiges",
+                "POURING": "Pouring"
             },
             "art-type": {
                 "handcraft": "Handwerk",
@@ -190,6 +193,10 @@
             "language": {
                 "de": "Deutsch",
                 "en": "Englisch"
+            },
+            "sale-status": {
+                "AVAILABLE": "Verfügbar",
+                "UNAVAILABLE": "Nicht verfügbar"
             }
         }
     }

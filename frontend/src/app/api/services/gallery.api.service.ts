@@ -5,9 +5,6 @@ import { Observable } from "rxjs";
 import * as GalleryResponse from "../models/gallery-response.interface";
 import { GalleryRoute } from "../routes/gallery.route.enum";
 import { ArtGenre } from "../../shared/enums/art-genre.enum";
-import { GalleryCreateRequest, GalleryUpdateRequest } from "../models/gallery-request.interface";
-import { ArtMedium } from "../../shared/enums/art-medium.enum";
-import { ArtTechnique } from "../../shared/enums/art-technique.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -54,6 +51,7 @@ export class GalleryAPIService {
             imagePath: data.imagePath,
             thumbnailPath: data.thumbnailPath,
             title: data.title,
+            saleStatus: data.saleStatus,
             price: data.price,
             dimensions: data.dimensions,
             artGenre: data.artGenre,
@@ -73,6 +71,7 @@ export class GalleryAPIService {
             imagePath: data.imagePath,
             thumbnailPath: data.thumbnailPath,
             title: data.title,
+            saleStatus: data.saleStatus,
             price: data.price,
             dimensions: data.dimensions,
             artGenre: data.artGenre,

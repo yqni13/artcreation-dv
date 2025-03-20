@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS gallery (
     image_path TEXT NOT NULL,
     thumbnail_path TEXT NOT NULL,
     title VARCHAR(100),
+    sale_status VARCHAR(50) NOT NULL,
     price NUMERIC(9, 2),
     dimensions VARCHAR(20) NOT NULL,
     art_genre VARCHAR(20) NOT NULL,
@@ -30,8 +31,8 @@ CREATE TABLE IF NOT EXISTS news (
 -- init data
 
 INSERT INTO gallery
-(gallery_id, reference_nr, image_path, thumbnail_path, title, price, dimensions, art_genre, art_technique, art_medium, publication_year, created_on, last_modified)
-VALUES ('53b7f35f-68e6-475d-b5c3-eba472ee8770','NAT001','artwork_original/NAT001.webp','artwork_resized/NAT001.webp','die Brücke',NULL,'100x70','nature','canvas','acrylic','2025','2025-03-02 00:49:00','2025-03-02 00:49:00');
+(gallery_id, reference_nr, image_path, thumbnail_path, title, sale_status, price, dimensions, art_genre, art_technique, art_medium, publication_year, created_on, last_modified)
+VALUES ('53b7f35f-68e6-475d-b5c3-eba472ee8770','PUR001','artwork_original/PUR001.webp','artwork_resized/PUR001.webp','Pouring des Königs','available',NULL,'70x70','pouring','canvas','acrylic','2025','2025-03-20 00:49:00','2025-03-20 00:49:00');
 
 INSERT INTO news
 (news_id, gallery, image_path, thumbnail_path, visual_timestamp, title, content, created_on, last_modified)

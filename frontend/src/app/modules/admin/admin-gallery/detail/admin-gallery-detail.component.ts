@@ -26,6 +26,7 @@ import { ImgUploadComponent } from "../../../../common/components/img-upload/img
 import { StorageRoute } from "../../../../api/routes/storage.route.enum";
 import { environment } from '../../../../../environments/environment';
 import * as CustomValidator from '../../../../common/helper/custom-validators';
+import { SaleStatus } from '../../../../shared/enums/sale-status.enum';
 
 @Component({
     selector: 'app-admin-gallery-detail',
@@ -47,6 +48,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     protected artworkForm: FormGroup;
     protected mode: CRUDMode;
     protected modeOptions = CRUDMode;
+    protected saleStatusOptions = SaleStatus;
     protected genreOptions = ArtGenre;
     protected mediumOptions = ArtMedium;
     protected techniqueOptions = ArtTechnique
@@ -76,7 +78,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
         private readonly httpObservation: HttpObservationService
     ) {
         this.artworkForm = new FormGroup({});
-        this.mode = CRUDMode.update;
+        this.mode = CRUDMode.UPDATE;
         this.artworkEntry = null;
         this.isLoadingResponse = true;
         this.isLoadingInit = true;
@@ -104,7 +106,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
             tap(async (data) => {
                 this.mode = data.mode;
                 this.entryId = data.entryId ?? '';
-                if(this.mode === CRUDMode.update && this.entryId !== '') {
+                if(this.mode === CRUDMode.UPDATE && this.entryId !== '') {
                     this.galleryApi.setIdParam(this.entryId);
                     this.galleryApi.sendGetOneRequest().subscribe(async data => {
                         (this.artworkEntry as any) = data.body?.body.data;
@@ -171,6 +173,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
             imagePath: new FormControl(''),
             thumbnailPath: new FormControl(''),
             title: new FormControl(null),
+            saleStatus: new FormControl('', Validators.required),
             price: new FormControl(null),
             dimensions: new FormControl('', Validators.required),
             artMedium: new FormControl('', Validators.required),
@@ -184,15 +187,16 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
         this.artworkForm.patchValue({
             id: this.artworkEntry?.gallery_id ?? null,
             referenceNr: this.artworkEntry?.reference_nr ?? null,
-            artGenre: EnumValidators.getArtGenre(this.artworkEntry?.art_genre) ?? '',
+            artGenre: EnumValidators.isArtGenre(this.artworkEntry?.art_genre) ?? '',
             imageFile: (this.artworkEntry as any)?.imageFile ?? null,
             imagePath: this.artworkEntry?.image_path ?? '',
             thumbnailPath: this.artworkEntry?.thumbnail_path ?? '',
             title: this.artworkEntry?.title ?? null,
+            saleStatus: EnumValidators.isSaleStatus(this.artworkEntry?.sale_status) ?? '',
             price: this.artworkEntry?.price ?? null,
             dimensions: this.artworkEntry?.dimensions ?? '',
-            artMedium: EnumValidators.isArtMedium(this.artworkEntry?.art_medium) ?? ArtMedium.canvas,
-            artTechnique: EnumValidators.isArtTechnique(this.artworkEntry?.art_technique) ?? ArtTechnique.acrylic,
+            artMedium: EnumValidators.isArtMedium(this.artworkEntry?.art_medium) ?? ArtMedium.CANVAS,
+            artTechnique: EnumValidators.isArtTechnique(this.artworkEntry?.art_technique) ?? ArtTechnique.ACRYLIC,
             publication: this.artworkEntry?.publication_year ?? '',
         })
     }
@@ -245,10 +249,10 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
         }
 
         this.isLoadingResponse = true;
-        if(this.mode === CRUDMode.create) {
+        if(this.mode === CRUDMode.CREATE) {
             this.galleryApi.setCreatePayload(this.artworkForm.getRawValue());
             this.galleryApi.sendCreateRequest().subscribe();
-        } else if(this.mode === CRUDMode.update) {
+        } else if(this.mode === CRUDMode.UPDATE) {
             this.galleryApi.setUpdatePayload(this.artworkForm.getRawValue());
             this.galleryApi.sendUpdateRequest().subscribe();
         }
@@ -262,7 +266,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     }
 
     remove() {
-        if(this.mode === CRUDMode.update && this.entryId !== '') {
+        if(this.mode === CRUDMode.UPDATE && this.entryId !== '') {
             this.isLoadingResponse = true;
             this.galleryApi.setIdParam(this.entryId);
             this.galleryApi.sendDeleteRequest().subscribe(async (response) => {

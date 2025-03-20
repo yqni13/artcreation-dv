@@ -1,7 +1,7 @@
-export type ArtTechnique = 'Acrylic' | 'Pouring' | 'Other';
+export type ArtTechnique = 'acrylic' | 'pouring' | 'other';
 
 export const ArtTechnique = {
-    acrylic: 'acrylic' as ArtTechnique,
-    pouring: 'pouring' as ArtTechnique,
-    other: 'other' as ArtTechnique
+    ACRYLIC: 'acrylic' as ArtTechnique,
+    POURING: 'pouring' as ArtTechnique,
+    OTHER: 'other' as ArtTechnique
 };
