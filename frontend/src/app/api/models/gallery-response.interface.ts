@@ -4,6 +4,7 @@ export declare interface GalleryItem {
     image_path: string,
     thumbnail_path: string,
     title?: string,
+    sale_status?: string,
     price?: number,
     dimensions: string,
     art_genre: string,

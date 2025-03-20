@@ -16,52 +16,56 @@
                 ></artdv-selectinput>
                 <span class="artdv-admingallerylist-filter-label">Genre</span>
             </div>
-            <div class="artdv-admingallerylist-search-wrapper">
-                <artdv-textinput
-                    class="artdv-admingallerylist-search-input"
-                    [placeholder]="'modules.admin.gallery.placeholder-search' | translate"
-                    [ngStyle]="{'width': '100%'}"
-                    [inputType]="'text'"
-                    [formControl]="searchForm.get('searchText') | controlCast"
-                    (byChange)="onSearchTextChange($event)"
-                    #keywordInputField
-                ></artdv-textinput>
-                <span class="artdv-admingallerylist-filter-label">Filter</span>
-                <a
-                    id="artdv-admingallerylist-search-icon"
-                    (click)="onSearchSubmit()"
-                    (keydown.enter)="onSearchSubmit()"
-                    [attr.aria-disabled]="true"
-                    >
-                    <i class="icon-Search"></i>
-                </a>
+            <div class="artdv-admingallerylist-media-wrapper">
+                <div class="artdv-admingallerylist-search-wrapper">
+                    <artdv-textinput
+                        class="artdv-admingallerylist-search-input"
+                        [placeholder]="'modules.admin.gallery.placeholder-search' | translate"
+                        [ngStyle]="{'width': '100%'}"
+                        [inputType]="'text'"
+                        [formControl]="searchForm.get('searchText') | controlCast"
+                        (byChange)="onSearchTextChange($event)"
+                        #keywordInputField
+                    ></artdv-textinput>
+                    <span class="artdv-admingallerylist-filter-label">Filter</span>
+                    <a
+                        id="artdv-admingallerylist-search-icon"
+                        (click)="onSearchSubmit()"
+                        (keydown.enter)="onSearchSubmit()"
+                        [attr.aria-disabled]="true"
+                        >
+                        <i class="icon-Search"></i>
+                    </a>
+                </div>
             </div>
-            <div 
-                class="artdv-admingallerylist-btn-wrapper btn-close"
-                *ngIf="hasSearchText"
-            >
-                <a
-                    id="artdv-admingallerylist-search-close"
-                    (click)="removeKeyword()"
-                    (keydown.enter)="removeKeyword()"
-                    [attr.aria-disabled]="true"
+            <div class="artdv-admingallerylist-media-wrapper">
+                <div 
+                    class="artdv-admingallerylist-btn-wrapper btn-close"
+                    *ngIf="hasSearchText"
                 >
-                    <i class="icon-CloseX"></i>
-                </a>
-            </div>
-            <div class="artdv-admingallerylist-btn-wrapper btn-add">
-                <a
-                    (click)="navigateToCreateItem()"
-                    (keydown.enter)="navigateToCreateItem()"
-                    [attr.aria-disabled]="true"
-                ><i class="icon-Add"></i></a>
-            </div>
-            <div class="artdv-admingallerylist-btn-wrapper btn-return">
-                <a
-                    (click)="navigateToDashboard()"
-                    (keydown.enter)="navigateToDashboard()"
-                    [attr.aria-disabled]="true"
-                ><i class="icon-Return"></i></a>
+                    <a
+                        id="artdv-admingallerylist-search-close"
+                        (click)="removeKeyword()"
+                        (keydown.enter)="removeKeyword()"
+                        [attr.aria-disabled]="true"
+                    >
+                        <i class="icon-CloseX"></i>
+                    </a>
+                </div>
+                <div class="artdv-admingallerylist-btn-wrapper btn-add">
+                    <a
+                        (click)="navigateToCreateItem()"
+                        (keydown.enter)="navigateToCreateItem()"
+                        [attr.aria-disabled]="true"
+                    ><i class="icon-Add"></i></a>
+                </div>
+                <div class="artdv-admingallerylist-btn-wrapper btn-return">
+                    <a
+                        (click)="navigateToDashboard()"
+                        (keydown.enter)="navigateToDashboard()"
+                        [attr.aria-disabled]="true"
+                    ><i class="icon-Return"></i></a>
+                </div>
             </div>
         </div>
         <div class="artdv-admingallerylist-list">

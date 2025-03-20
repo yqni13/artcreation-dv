@@ -1,9 +1,18 @@
+const { SaleStatus } = require('./enums/sale-status.enum');
 const { ArtGenre } = require('./enums/art-genre.enum');
 const { ArtMedium } = require('./enums/art-medium.enum');
 const { ArtTechnique } = require('./enums/art-technique.enum');
 const Secrets = require('../utils/secrets.util');
 const { decryptRSA } = require('../utils/crypto.utils');
 const { InvalidPropertiesException } = require('./exceptions/validation.exception');
+
+exports.validateSaleStatus = (value) => {
+    const statusCollection = Object.values(SaleStatus);
+    if(!statusCollection.includes(value)) {
+        throw new Error('data-invalid-entry#saleStatus');
+    }
+    return true;
+}
 
 exports.validateArtGenre = (value) => {
     const genres = Object.values(ArtGenre);

@@ -1,10 +1,10 @@
 export type ArtGenre = 'abstract' | 'creative' | 'nature' | 'people' | 'pouring' | 'spiritual';
 
 export const ArtGenre = {
-    abstract: 'abstract' as ArtGenre,
-    creative: 'creative' as ArtGenre,
-    nature: 'nature' as ArtGenre,
-    people: 'people' as ArtGenre,
-    pouring: 'pouring' as ArtGenre,
-    spiritual: 'spiritual' as ArtGenre,
+    ABSTRACT: 'abstract' as ArtGenre,
+    CREATIVE: 'creative' as ArtGenre,
+    NATURE: 'nature' as ArtGenre,
+    PEOPLE: 'people' as ArtGenre,
+    POURING: 'pouring' as ArtGenre,
+    SPIRITUAL: 'spiritual' as ArtGenre,
 };

@@ -14,4 +14,4 @@ exports.ArtGenreCode = Object.freeze({
     PEOPLE: 'PPL',
     POURING: 'PUR',
     SPIRITUAL: 'SPI'
-})
+});

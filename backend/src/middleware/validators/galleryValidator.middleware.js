@@ -25,6 +25,15 @@ exports.galleryCreateSchema = [
         .isLength({max: 100})
         .withMessage('data-invalid-max#title!100')
         .optional({values: 'null'}),
+    body('saleStatus')
+        .trim()
+        .notEmpty()
+        .withMessage('data-required')
+        .bail()
+        .isLength({max: 50})
+        .withMessage('data-invalid-max#saleStatus!50')
+        .bail()
+        .custom((value) => CustomValidator.validateSaleStatus(value)),
     body('price')
         .isNumeric()
         .optional({values: 'null'}),
@@ -96,7 +105,17 @@ exports.galleryUpdateSchema = [
         .withMessage('data-required'),
     body('title')
         .isLength({max: 100})
+        .withMessage('data-invalid-max#title!100')
         .optional({values: 'null'}),
+    body('saleStatus')
+        .trim()
+        .notEmpty()
+        .withMessage('data-required')
+        .bail()
+        .isLength({max: 50})
+        .withMessage('data-invalid-max#saleStatus!50')
+        .bail()
+        .custom((value) => CustomValidator.validateSaleStatus(value)),
     body('price')
         .isNumeric()
         .optional({values: 'null'}),

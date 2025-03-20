@@ -1,6 +1,6 @@
 <section class="artdv-admingallerydetail">
     <header>
-        <h1>{{'modules.admin.gallery.title.' + (mode === modeOptions.create ? 'create' : 'update') | translate}}</h1>
+        <h1>{{'modules.admin.gallery.title.' + (mode === modeOptions.CREATE ? 'create' : 'update') | translate}}</h1>
     </header>
     <div class="artdv-admingallerydetail-content" *ngIf="!isLoadingInit">
         <form [formGroup]="artworkForm">
@@ -35,6 +35,17 @@
                         [formControl]="artworkForm.get('title') | controlCast"
                         [fieldName]="'modules.admin.gallery.details.title' | translate"
                     ></artdv-textinput>
+                </div>
+                <div class="artdv-admingallerydetail-form-wrapper">
+                    <span>{{('modules.admin.gallery.details.sale-status' | translate) + ':*'}}</span>
+                    <artdv-selectinput
+                        class="artdv-admingallerydetail-select"
+                        [placeholder]="'modules.admin.gallery.placeholder-sale-status' | translate"
+                        [fieldName]="'modules.admin.gallery.details.sale-status' | translate"
+                        [options]="saleStatusOptions"
+                        [optionsTranslateRoot]="'shared.enum.sale-status.'"
+                        [formControl]="artworkForm.get('saleStatus') | controlCast"
+                    ></artdv-selectinput>
                 </div>
                 <div class="artdv-admingallerydetail-form-wrapper">
                     <span>{{('modules.admin.gallery.details.price' | translate) + ':'}}</span>
@@ -113,7 +124,7 @@
             </button>
             <button
                 class="artdv-admingallerydetail-form-btn-wrapper btn-delete"
-                *ngIf="mode === modeOptions.update"
+                *ngIf="mode === modeOptions.UPDATE"
                 (click)="remove()"
                 [attr.aria-disabled]="true"
             >

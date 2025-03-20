@@ -29,7 +29,7 @@ export class DateTimeService {
         const hours = source.getHours() < 10 ? `0${source.getHours()}` : `${source.getHours()}`;
         const minutes = source.getMinutes() < 10 ? `0${source.getMinutes()}` : `${source.getMinutes()}`;
         const seconds = source.getSeconds() < 10 ? `0${source.getSeconds()}` : `${source.getSeconds()}`;
-        return `${hours}:${minutes}:${seconds} - ${day}.${month}.${source.getFullYear()}`;
+        return `${day}.${month}.${source.getFullYear()}, ${hours}:${minutes}:${seconds}`;
     }
 
     getTimeInMillisecondsFromHours(time: number): number {
