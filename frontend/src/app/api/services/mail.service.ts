@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from "@angular/core";
-import { ContactFormItem } from "../interfaces/ContactMailItems";
-import { SubjectOptions } from "../enums/contact-subject.enum";
+import { ContactFormItem } from "../../shared/interfaces/ContactMailItems";
+import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { HttpClient } from "@angular/common/http";
-import { ArtworkOptions } from "../enums/artwork-option.enum";
+import { ArtType } from "../../shared/enums/art-type.enum";
 import { environment } from "../../../environments/environment";
 
 
 @Injectable({
     providedIn: 'root',
 })
-export class MailService {
+export class MailAPIService {
 
     private mailData: ContactFormItem;
     private mailParams: any;
@@ -31,7 +31,7 @@ export class MailService {
         }
         // TODO(yqni13): clean input before use
 
-        // endpoint backend (server-custom.js)
+        // this.url = '/api/v1/mailing/send';
         this.url = environment.API_BASE_URL + '/api/v1/mailing/send';
     }
 
@@ -55,8 +55,8 @@ export class MailService {
         ? `${this.mailData.subject}: ${this.mailData.referenceNr}`
         : this.mailData.subject;
 
-        const msgPartType = this.mailData.type === ArtworkOptions.originalORprint
-            ? `${ArtworkOptions.original} & ${ArtworkOptions.print}`
+        const msgPartType = this.mailData.type === ArtType.originalORprint
+            ? `${ArtType.original} & ${ArtType.print}`
             : this.mailData.type;
 
         const msgTitle = this.mailData.title !== ''

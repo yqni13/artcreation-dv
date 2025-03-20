@@ -1,4 +1,4 @@
-const MailingRepository = require('../repositories/mailing.repository');
+const MailingRepository = require('../services/mailing.service');
 const { checkValidation } = require('../middleware/validation.middleware');
 
 class MailingController {

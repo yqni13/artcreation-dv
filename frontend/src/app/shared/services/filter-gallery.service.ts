@@ -1,8 +1,8 @@
 import { inject, Injectable } from "@angular/core";
-import { GalleryItem } from "../interfaces/GalleryItems";
+import { GalleryItemDEPRECATED } from "../interfaces/GalleryItems";
 import { default as galleryData } from "../data/gallery-data.json";
 import { ErrorService } from "./error.service";
-import { PaintingGenre } from "../enums/painting-genre.enum";
+import { ArtGenre } from "../enums/art-genre.enum";
 
 
 @Injectable({
@@ -10,14 +10,14 @@ import { PaintingGenre } from "../enums/painting-genre.enum";
 })
 export class FilterGalleryService {
 
-    private source: GalleryItem[];
+    private source: GalleryItemDEPRECATED[];
     private genres: string[];
     private errorService: ErrorService;
 
     constructor() {
         this.errorService = inject(ErrorService);
         this.source = [];
-        this.genres = Object.values(PaintingGenre);
+        this.genres = Object.values(ArtGenre);
         this.genres = this.sortGenres('ascending');
 
         try {
@@ -27,7 +27,7 @@ export class FilterGalleryService {
         }
     }
 
-    private setSource(data: GalleryItem[]) {
+    private setSource(data: GalleryItemDEPRECATED[]) {
         this.source = data;
     }
     
@@ -60,8 +60,8 @@ export class FilterGalleryService {
         return data;
     }
 
-    filterByGenre(): Map<string, GalleryItem[]> {
-        const results = new Map<string, GalleryItem[]>()
+    filterByGenre(): Map<string, GalleryItemDEPRECATED[]> {
+        const results = new Map<string, GalleryItemDEPRECATED[]>()
         if(this.genres.length === 0) {
             return results;
         }
@@ -81,8 +81,8 @@ export class FilterGalleryService {
         return results;
     }
 
-    filterByRefNr(refNr: string | null): GalleryItem | null {
-        let result: GalleryItem | null = null;
+    filterByRefNr(refNr: string | null): GalleryItemDEPRECATED | null {
+        let result: GalleryItemDEPRECATED | null = null;
         if(refNr !== null && refNr.length !== 6) {
             return null;
         }

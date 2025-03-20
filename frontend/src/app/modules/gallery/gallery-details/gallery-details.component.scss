@@ -66,28 +66,6 @@
     #card-referenceNr span {
         font-size: 14px;
     }
-
-    #card-tags .artdv-tags {
-        padding: 2.5px 5px;
-        border: solid 1px var(--theme-body-text);
-        border-radius: 3px;
-        font-size: 12px;
-        
-    }
-
-    #card-tags .artdv-gallerydetails-key {
-        display: flex;
-        justify-content: end;
-        align-items: center;
-    }
-
-    #card-tags .artdv-gallerydetails-value {
-        display: flex;
-        flex-wrap: wrap;
-        span {
-            margin: 7.5px;
-        }
-    }
 }
 
 .artdv-gallerydetails-divider {

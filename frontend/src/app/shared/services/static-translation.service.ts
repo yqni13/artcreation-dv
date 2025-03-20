@@ -2,6 +2,8 @@
 import { Injectable } from "@angular/core";
 import { default as langEN } from "../../../../public/assets/i18n/en.json";
 import { default as langDE } from "../../../../public/assets/i18n/de.json";
+import { default as validLangEN } from "../../../../public/assets/i18n/validation-en.json";
+import { default as validLangDE } from "../../../../public/assets/i18n/validation-de.json";
 
 @Injectable({
     providedIn: 'root'
@@ -9,15 +11,21 @@ import { default as langDE } from "../../../../public/assets/i18n/de.json";
 export class StaticTranslateService {
 
     private dataEN: any;
+    private validEN: any;
     private dataDE: any;
+    private validDE: any;
 
     constructor() {
         try {
             this.dataEN = langEN;
+            this.validEN = validLangEN;
             this.dataDE = langDE;
+            this.validDE = validLangDE
         } catch(err) {
             this.dataEN = {};
+            this.validEN = {};
             this.dataDE = {};
+            this.validDE = {};
             console.log(err);
         }
     }
@@ -38,7 +46,23 @@ export class StaticTranslateService {
         return this.getTranslationByStringPath(path, this.dataDE);
     }
 
-    getTranslationByStringPath(path: string, dataLang: any): string {
+    getValidationEN(path: string, params?: any): string {
+        if(path === '' || path.includes('undefined')) {
+            return '[TRANSLATION PATH NOT FOUND]';
+        }
+
+        return this.getTranslationByStringPath(path, this.validEN, params || null);
+    }
+
+    getValidationDE(path: string, params?: any): string {
+        if(path === '' || path.includes('undefined')) {
+            return '[TRANSLATION PATH NOT FOUND]';
+        }
+
+        return this.getTranslationByStringPath(path, this.validDE, params || null);
+    }
+
+    getTranslationByStringPath(path: string, dataLang: any, params?: any): string {
         const accessKeys: string[] = [];
         let start = 0;
         
@@ -51,7 +75,19 @@ export class StaticTranslateService {
                 accessKeys.push(path.slice(start, char.index+1));
             }
         });
-        const result = accessKeys.reduce((prev, curr) => prev?.[curr], dataLang);
+        let result = accessKeys.reduce((prev, curr) => prev?.[curr], dataLang);
+        if(params && params.val && result.includes('{{VAL}}')){
+            result = result.replace('{{VAL}}', params.val);
+        }
+        if(params && params.len && result.includes('{{LENGTH}}')) {
+            result = result.replace('{{LENGTH}}', params.len);
+        }
+        if(params && params.min && result.includes('{{MIN}}')) {
+            result = result.replace('{{MIN}}', params.min);
+        }
+        if(params && params.max && result.includes('{{MAX}}')) {
+            result = result.replace('{{MAX}}', params.max);
+        }
         return result !== undefined ? result : 'TRANSLATION PATH INVALID';
     }
 

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { GalleryItem } from "../interfaces/GalleryItems";
-import { ArtworkOptions } from "../enums/artwork-option.enum";
+import { GalleryItemDEPRECATED } from "../interfaces/GalleryItems";
+import { ArtType } from "../enums/art-type.enum";
 import { default as galleryData } from "../data/gallery-data.json";
 
 @Injectable({
@@ -8,8 +8,8 @@ import { default as galleryData } from "../data/gallery-data.json";
 })
 export class ReferenceCheckService {
 
-    private source: GalleryItem[]
-    private referenceCollection: Record<string, {type: ArtworkOptions, sale: boolean, price: number|null}>;
+    private source: GalleryItemDEPRECATED[]
+    private referenceCollection: Record<string, {type: ArtType, sale: boolean, price: number|null}>;
 
     constructor() {
         this.source = [];
@@ -23,7 +23,7 @@ export class ReferenceCheckService {
         }        
     }
 
-    private setSource(data: GalleryItem[]) {
+    private setSource(data: GalleryItemDEPRECATED[]) {
         if(data === null || data === undefined || data.length === 0) {
             return;
         }
@@ -77,7 +77,7 @@ export class ReferenceCheckService {
         return Object.keys(this.referenceCollection).includes(reference.toUpperCase());
     }
 
-    checkTypeByReference(reference: string): ArtworkOptions | null {
+    checkTypeByReference(reference: string): ArtType | null {
         reference = reference.toUpperCase();
         if(!Object.keys(this.referenceCollection).includes(reference)) {
             return null;

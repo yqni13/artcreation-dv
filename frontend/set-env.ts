@@ -5,8 +5,10 @@ const envConfigFile = `import { Environment } from "./environment.model";
 
 export const environment: Environment = {
     production: true,
-    API_BASE_URL: '${process.env['API_URL']}'
+    STORAGE_URL: '${process.env['CLOUDSTORAGE_TRAFFIC_URL']}',
+    API_BASE_URL: '${process.env['API_URL']}',
+    PUBLIC_KEY: '${process.env['PUBLIC_KEY']}'
 };
 `;
 fs.writeFileSync(targetPath, envConfigFile);
-console.log(`Output generated at ${targetPath}`);
+console.log(`Environment output generated at ${targetPath}`);

@@ -1,25 +1,5 @@
 {
     "common": {
-        "backend": {
-            "error": {
-                "data": {
-                    "backend-email": "Ihre Email-Adresse ist ungültig. Prüfen Sie bitte Schreibfehler und Aufbau:\nindividuelle Kennzeichnung + @ + Host + '.' + Top-Level-Domain.\nBeispiel: local@host.com",
-                    "backend-required": "Es wurden nicht alle notwendigen Daten übertragen. Bitte kontrollieren Sie Ihre Angaben.",
-                    "backend-server": "Verbindung zum Server aktuell nicht möglich. Bitte versuchen Sie es später wieder oder wenden sich an unseren Support: lukas.varga@yqni13.com"
-                },
-                "header": {
-                    "AuthenticationException": "Ungültige Anmeldedaten",
-                    "InternalServerException": "Technischer Fehler",
-                    "InvalidPropertiesException": "Ungültiger Datensatz"
-                }
-            },
-            "success": {
-                "email": {
-                    "text": "Eine Antwort mit weiteren Informationen folgt in Kürze. Ihre Anfrage wurde von folgender Email-Adresse erhalten: ",
-                    "title": "DANKE FÜR IHRE ANFRAGE"
-                }
-            }
-        },
         "footer": {
             "content": {
                 "archive": "Archiv",
@@ -37,21 +17,56 @@
         },
         "navigation": {
             "about": "Profil",
+            "admin": "Admin",
             "faq": "Fragen",
             "gallery": "Galerie",
             "home": "Start",
             "prints": "Kopien"
         },
-        "validation": {
-            "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
-            "refnr-length": "Die Referenz-Nummer muss 6 Zeichen lang sein.",
-            "refnr-notexist": "Die Referenz-Nummer \"{{fieldValue}}\" existiert nicht.",
-            "required": "Das Feld \"{{fieldName}}\" ist erforderlich."
+        "unavailable": {
+            "text": "Diese Komponente ist momentan eine Baustelle und wird so bald wie möglich zur Verfügung stehen.",
+            "title": "Nicht verfügbar"
         }
     },
     "modules": {
         "about": {
             "title": "die Künstlerin"
+        },
+        "admin": {
+            "gallery": {
+                "details": {
+                    "dimensions": "Abmessungen",
+                    "genre": "Genre",
+                    "medium": "Material",
+                    "price": "Preis",
+                    "publication": "Erstellungsjahr",
+                    "sale-status": "Verfügbarkeit",
+                    "technique": "Technik",
+                    "title": "Titel"
+                },
+                "placeholder-dimensions": "Höhe x Breite => z.B.: 80x60",
+                "placeholder-genre": "wählen Sie ein Genre",
+                "placeholder-medium": "wählen Sie ein Material",
+                "placeholder-price": "Preis auf Anfrage",
+                "placeholder-sale-status": "Wählen Sie einen Status",
+                "placeholder-search": "in der Galerie suchen",
+                "placeholder-technique": "wählen Sie eine Technik",
+                "placeholder-title": "\"Was soll ich aussagen?\"",
+                "title": {
+                    "create": "Kunstwerk hinzufügen",
+                    "list": "Galerie Management",
+                    "update": "Kunstwerk bearbeiten"
+                }
+            },
+            "info": {
+                "last-update": "letzte Änderung:"
+            },
+            "news": {},
+            "options": {
+                "gallery": "Galerie",
+                "logout": "Abmelden",
+                "news": "News"
+            }
         },
         "archive": {
             "message": "Zum Lesen des Textes, den Mauszeiger über den jeweiligen Artikel halten.",
@@ -121,6 +136,11 @@
             "message": "null",
             "title": "Impressum"
         },
+        "login": {
+            "login": "Anmelden",
+            "pass": "Passwort",
+            "user": "Username"
+        },
         "prints": {
             "message1": "Aktuell sind Kunstdrucke nicht verfügbar. Weitere Informationen werden in der News-Sektion und im ",
             "message2": " sobald wie möglich zur Verfügung stehen.",
@@ -132,8 +152,30 @@
         }
     },
     "shared": {
+        "assets": {
+            "author": "\u00a9 bild"
+        },
         "enum": {
-            "artwork-option": {
+            "art-genre": {
+                "ABSTRACT": "abstrakt",
+                "ALL": "alle",
+                "CREATIVE": "kreatives",
+                "NATURE": "natur",
+                "PEOPLE": "personen",
+                "POURING": "pouring",
+                "SPIRITUAL": "spirituell"
+            },
+            "art-medium": {
+                "CANVAS": "Leinwand",
+                "OTHER": "Sonstiges",
+                "WOOD": "Holz"
+            },
+            "art-technique": {
+                "ACRYLIC": "Acryl",
+                "OTHER": "Sonstiges",
+                "POURING": "Pouring"
+            },
+            "art-type": {
                 "handcraft": "Handwerk",
                 "original": "Original",
                 "originalORprint": "Original / Kunstdruck",
@@ -152,13 +194,9 @@
                 "de": "Deutsch",
                 "en": "Englisch"
             },
-            "painting-genre": {
-                "abstract": "abstrakt",
-                "creative": "kreatives",
-                "nature": "natur",
-                "people": "personen",
-                "pouring": "pouring",
-                "spiritual": "spirituell"
+            "sale-status": {
+                "AVAILABLE": "Verfügbar",
+                "UNAVAILABLE": "Nicht verfügbar"
             }
         }
     }

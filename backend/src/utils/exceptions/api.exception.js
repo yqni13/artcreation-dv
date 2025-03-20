@@ -6,7 +6,7 @@ class ApiException extends Error {
     constructor(code, message, data, status = 400) {
         super(message);
         if(Config.MODE === 'development') {
-            this.message = 'API Error: ' + message;
+            this.message = message;
         } else {
             this.message = message;
         }

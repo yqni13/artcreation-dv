@@ -1,10 +1,10 @@
 <!-- keep navigation outside wrapper to improve scrollbar-position control in mobile mode -->
 <artdv-navigation></artdv-navigation>
-<div class="artdv-scroll-anchor" [ngClass]="scrollbarActive ? 'artdv-scroll-wrapper' : ''">
+<main class="artdv-scroll-anchor" [ngClass]="scrollbarActive ? 'artdv-scroll-wrapper' : ''">
     
     <router-outlet></router-outlet>
     
-    <div class="artdv-component-snackbar">
+    <div class="artdv-component-snackbar" *ngIf="snackbarService.snackbarCollection.length > 0">
         <artdv-snackbar *ngFor="let snackbar of snackbarService.snackbarCollection" [snackbarMsg]="snackbar"></artdv-snackbar>
     </div>
     
@@ -18,4 +18,4 @@
     >
         <i class="icon-Top"></i>
     </div>
-</div>
+</main>

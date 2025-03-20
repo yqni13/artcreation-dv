@@ -14,7 +14,9 @@ COPY . .
 
 # parameter to adapt api url on prod
 ARG API_URL
+ARG PUBLIC_KEY
 ENV API_URL=${API_URL}
+ENV PUBLIC_KEY=${PUBLIC_KEY}
 
 # run js-script to replace env var(s) and build application
 RUN node replace-env.js

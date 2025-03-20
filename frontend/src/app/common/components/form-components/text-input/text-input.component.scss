@@ -6,7 +6,23 @@
     display: grid;
     
     input {
-        width: calc(100% - 12px);
+        width: calc(100% - sass.$text-input-balance);
         padding: 8.5px sass.$comp-form-padding;
+        cursor: text;
+        border-radius: 2.5px;
     }
+}
+
+i {
+    position: absolute;
+    display: flex;
+    justify-self: end;
+}
+
+.artdv-input-password i {
+    margin: 7.5px 10px 0 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: sass.$color-fullscale-bg;
 }

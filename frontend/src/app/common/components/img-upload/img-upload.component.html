@@ -1,0 +1,41 @@
+<div class="artdv-imgupload">
+    <div class="artdv-imgupload-upload-wrapper" *ngIf="!fileInformation.hasFile && !existingImgPath">
+        <label 
+            for="artdv-imgupload-fileInput"
+            (drop)="onFileDrop($event)"
+            (dragover)="onDragOver($event)"
+            #dropContainer        
+        >
+            <span id="artdv-upload-btn-desc-main">upload image</span>
+            <span id="artdv-upload-btn-desc-sub">drop/click here</span>
+            <input 
+                type="file"
+                accept="image/*"
+                class="artdv-file-input-btn"
+                id="artdv-imgupload-fileInput"
+                (change)="onFileSelect($event)"
+                #fileInput
+            >
+            
+            <span id="artdv-upload-size-limit">limit: {{sizeFactorInMB}}MB</span>
+        </label>
+    </div>
+    <span id="artdv-upload-valid-msg" *ngIf="showValidationMessage">
+        {{'validation.frontend.img-upload.required' | translate}}
+    </span>
+
+    <div class="artdv-imgupload-preview-wrapper" *ngIf="fileInformation.hasFile || existingImgPath">
+        <div class="artdv-imgupload-preview-container">
+            <img src="{{existingImgPath ? existingImgPath : fileInformation.imagePreview()}}" alt="404 not found">
+            <div
+                class="artdv-imgupload-close-wrapper"
+                (click)="removeImage()"
+                (keydown.enter)="removeImage()"
+                [attr.aria-disabled]="true"
+            >
+                <i class="icon-CloseX"></i>
+            </div>
+            <canvas #artworkImage></canvas>
+        </div>
+    </div>
+</div>

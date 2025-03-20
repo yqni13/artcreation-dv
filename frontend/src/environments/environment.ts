@@ -1,6 +1,8 @@
 import { Environment } from "./environment.model";
 
 export const environment: Environment = {
-    production: false,
-    API_BASE_URL: 'http://192.168.178.27:3000'
-}
+    production: true,
+    STORAGE_URL: '',
+    API_BASE_URL: '',
+    PUBLIC_KEY: ``
+};

@@ -1,11 +1,61 @@
 {
     "gallery-content": {
+        "006988": {
+            "title": null,
+            "referenceNr": "006988",
+            "genre": "nature",
+            "tags": [
+                "mountain", "gold"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "AA0000": {
+            "title": null,
+            "referenceNr": "AA0000",
+            "genre": "nature",
+            "tags": [
+                "nature", "bridge"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "F2C682": {
+            "title": null,
+            "referenceNr": "F2C682",
+            "genre": "people",
+            "tags": [
+                "gold", "female"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "D3D5DD": {
+            "title": null,
+            "referenceNr": "D3D5DD",
+            "genre": "nature",
+            "tags": [
+                "winter", "lonely"
+            ],
+            "comment": null,
+            "technique": null
+        },
         "AE6177": {
             "title": "lotus",
             "referenceNr": "AE6177",
             "genre": "nature",
             "tags": [
                 "lotus", "peace", "water"
+            ],
+            "comment": null,
+            "technique": null
+        },
+        "AE0000": {
+            "title": null,
+            "referenceNr": "AE0000",
+            "genre": "nature",
+            "tags": [
+                "nature", "entrance", "heaven"
             ],
             "comment": null,
             "technique": null

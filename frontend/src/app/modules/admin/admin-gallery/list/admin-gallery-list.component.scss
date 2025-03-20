@@ -1,0 +1,119 @@
+@use '../../../../../stylesheets/utilities' as sass;
+
+
+.artdv-admingallerylist-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .artdv-admingallerylist-filterbar {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0 0 sass.$space50 0;
+
+        .artdv-admingallerylist-select-wrapper {
+            display: flex;
+            margin-right: sass.$space25;
+        }
+
+        .artdv-admingallerylist-media-wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .artdv-admingallerylist-search-wrapper {
+            display: grid;
+
+            #artdv-admingallerylist-search-icon {
+                position: absolute;
+                display: flex;
+                justify-self: end;
+                padding: 2.2px 0;
+                margin-right: sass.$space5;
+
+                i {
+                    color: var(--theme-contrast-text);
+                }
+            }
+        }
+
+        .artdv-admingallerylist-filter-label {
+            position: absolute;
+            display: flex;
+            align-self: end;
+            justify-content: left;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--theme-contrast-text);
+            background-color: var(--theme-body-bg);
+            padding: calc(sass.$space5 / 2);
+            padding-bottom: 0;
+            border-radius: sass.$space5;
+            margin: 0 0 calc(sass.$space25 + sass.$space5) sass.$space5;
+        }
+
+        .artdv-admingallerylist-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-left: sass.$space25;
+            padding: 0 sass.$space5;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(1.5);
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .btn-close {
+            border: 2px solid var(--theme-snackbar-error);
+            a {
+                color: var(--theme-snackbar-error);
+                i {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+
+        .btn-add {
+            border: 2px solid var(--theme-snackbar-success);
+            a {
+                color: var(--theme-snackbar-success);
+            }
+        }
+
+        .btn-return {
+            border: 2px solid var(--theme-snackbar-warning);
+            a {
+                color: var(--theme-snackbar-warning);
+            }
+        }
+    }
+
+    .artdv-admingallerylist-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .artdv-admingallerylist-list-element {
+            $border-width: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border: $border-width solid var(--theme-contrast-text);
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(1.5);
+            }
+        }
+    }
+}

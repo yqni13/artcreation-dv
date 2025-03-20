@@ -32,6 +32,7 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
     @Input() inputType: string;
     @Input() className: string;
     @Input() ngClass: string;
+    @Input() showPassword: boolean;
 
     @Output() byChange: EventEmitter<any>;
 
@@ -47,6 +48,7 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
         this.inputType = '';
         this.className = '';
         this.ngClass = '';
+        this.showPassword = false;
         this.byChange = new EventEmitter<any>();
         this.subscription$ = new Subscription();
     }
@@ -55,6 +57,15 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
         this.subscription$ = this.formControl.valueChanges.subscribe(change => {
             this.byChange.emit(change);
         })
+    }
+
+    setPasswordVisibility(visible: boolean) {
+        this.showPassword = visible
+        if(visible) {
+            this.inputType = 'text';
+        } else {
+            this.inputType = 'password';
+        }
     }
 
     ngOnDestroy() {

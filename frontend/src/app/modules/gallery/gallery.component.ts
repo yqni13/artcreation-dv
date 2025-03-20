@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { ArtworkOptions } from "../../shared/enums/artwork-option.enum";
+import { ArtType } from "../../shared/enums/art-type.enum";
 import { default as galleryData } from "../../shared/data/gallery-data.json";
-import { GalleryItem } from "../../shared/interfaces/GalleryItems";
+import { GalleryItemDEPRECATED } from "../../shared/interfaces/GalleryItems";
 import { ErrorService } from "../../shared/services/error.service";
 import { CommonModule } from "@angular/common";
 import { FilterGalleryService } from "../../shared/services/filter-gallery.service";
 import { Router, RouterModule } from "@angular/router";
 import { ImgPreloadComponent } from "../../common/components/img-preload/img-preload.component";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { PaintingGenre } from "../../shared/enums/painting-genre.enum";
+import { ArtGenre } from "../../shared/enums/art-genre.enum";
 
 
 @Component({
@@ -27,11 +27,10 @@ export class GalleryComponent implements OnInit, AfterViewInit {
 
     @ViewChild('gallerySection') gallerySection!: ElementRef;
 
-    protected artworkOptions = ArtworkOptions;
-    protected paintingsRaw: GalleryItem[];
-    protected paintingsFiltered: Map<string, GalleryItem[]>;
-    protected paintingsDisplayedByGenre: GalleryItem[];
-    protected paintingGenres = PaintingGenre;
+    protected paintingsRaw: GalleryItemDEPRECATED[];
+    protected paintingsFiltered: Map<string, GalleryItemDEPRECATED[]>;
+    protected paintingsDisplayedByGenre: GalleryItemDEPRECATED[];
+    protected artGenres = ArtGenre;
     protected activeGenre: string;
     protected reloadFlag: boolean;
 
@@ -51,7 +50,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
         
         this.activeGenre = 'gallery';
         this.paintingsDisplayedByGenre = []
-        this.paintingsFiltered = new Map<string, GalleryItem[]>(); 
+        this.paintingsFiltered = new Map<string, GalleryItemDEPRECATED[]>(); 
         this.reloadFlag = true;
 
         const currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;        

@@ -1,0 +1,82 @@
+<section class="artdv-admin">
+    <header>
+        <h1>Dashboard</h1>
+    </header>
+    <div class="artdv-admin-content">
+        <div class="artdv-admin-option triple-outer">
+            <img 
+                class="artdv-admin-option-image"
+                src="assets/admin/admin-gallery.jpg"
+                alt="404 image not found"
+                [routerLink]="'gallery'"
+                [attr.aria-disabled]="true"
+            >
+            <div 
+                class="artdv-admin-option-description"
+                [routerLink]="'gallery'"
+                [attr.aria-disabled]="true"
+            >
+                <span class="artdv-anchor">{{editLabel + ('modules.admin.options.gallery' | translate)}}</span>
+            </div>
+            <span class="artdv-author">
+                <a href="{{authorGalleryImg}}" target="_blank">{{'shared.assets.author' | translate}}</a>
+            </span>
+        </div>
+        <div class="artdv-admin-option triple-inner">
+            <img 
+                class="artdv-admin-option-image"
+                src="assets/admin/admin-news.jpg"
+                alt="404 image not found"
+                (click)="notAvailableInfo()"
+                (keydown.enter)="notAvailableInfo()"
+                [attr.aria-disabled]="true"
+            >
+            <div 
+                class="artdv-admin-option-description"
+                (click)="notAvailableInfo()"
+                (keydown.enter)="notAvailableInfo()"
+                [attr.aria-disabled]="true"
+            >
+                <span class="artdv-anchor">{{editLabel + ('modules.admin.options.news' | translate)}}</span>
+            </div>
+            <!-- <img 
+                class="artdv-admin-option-image"
+                src="assets/admin/admin-news.jpg"
+                alt="404 image not found"
+                [routerLink]="'news'"
+                [attr.aria-disabled]="true"
+            > -->
+            <!-- <div 
+                class="artdv-admin-option-description"
+                [routerLink]="'news'"
+                [attr.aria-disabled]="true"
+            >
+                <span class="artdv-anchor">{{editLabel + ('modules.admin.options.news' | translate)}}</span>
+            </div> -->
+            <span class="artdv-author">
+                <a href="{{authorNewsImg}}" target="_blank">{{'shared.assets.author' | translate}}</a>
+            </span>
+        </div>
+        <div class="artdv-admin-option triple-outer">
+            <img 
+                class="artdv-admin-option-image"
+                src="assets/admin/admin-logout.jpg"
+                alt="404 image not found"
+                (click)="logout()"
+                (keydown.enter)="logout()"
+                [attr.aria-disabled]="true"
+            >
+            <div 
+                class="artdv-admin-option-description"
+                (click)="logout()"
+                (keydown.enter)="logout()"
+                [attr.aria-disabled]="true"
+            >
+                <span class="artdv-anchor">{{'modules.admin.options.logout' | translate}}</span>
+            </div>
+            <span class="artdv-author">
+                <a href="{{authorLogoutImg}}" target="_blank">{{'shared.assets.author' | translate}}</a>
+            </span>
+        </div>
+    </div>
+</section>

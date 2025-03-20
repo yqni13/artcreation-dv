@@ -1,4 +1,6 @@
 export interface Environment {
-    production: boolean;
-    API_BASE_URL: string;
+    production: boolean,
+    STORAGE_URL: string,
+    API_BASE_URL: string,
+    PUBLIC_KEY: string
 }

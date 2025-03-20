@@ -20,3 +20,18 @@ export const invalidRefNrLengthValidator = (): ValidatorFn => {
         return null;
     }
 }
+
+export const invalidPublicationValidator = (): ValidatorFn => {
+    return (control: AbstractControl): ValidationErrors | null => {
+        if(control?.value !== '') {
+            if(!control?.value.match(/^[0-9]+$/)) {
+                return { invalidPublicationContent: true };
+            }
+            const publication = control?.value as number;
+            if(publication < 1000 || publication > 2100) {
+                return { invalidPublicationYear: true}
+            }
+        }
+        return null;
+    }
+}

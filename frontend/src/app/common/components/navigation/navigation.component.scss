@@ -60,9 +60,8 @@
 
 .artdv-nav-logo {
     width: calc(var(--view-nav-width) / 2);
-    aspect-ratio: 1 / 1;
-    cursor: pointer;
     filter: var(--theme-signature-filter);
+    cursor: pointer;
 }
 
 .lightMode {

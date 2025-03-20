@@ -1,25 +1,5 @@
 {
     "common": {
-        "backend": {
-            "error": {
-                "data": {
-                    "backend-email": "Your email address is invalid. Check spelling mistakes and structure:\nlocal-part + @ + host-name + '.' + top-level-domain.\nExample: local@host.com",
-                    "backend-required": "Not all necessary data were transferred. Please check your input.",
-                    "backend-server": "Server connection failed. Please try again later or contact our support: lukas.varga@yqni13.com"
-                },
-                "header": {
-                    "AuthenticationException": "Invalid authentication",
-                    "InternalServerException": "Technical error",
-                    "InvalidPropertiesException": "Invalid data"
-                }
-            },
-            "success": {
-                "email": {
-                    "text": "An answer with further information will follow shortly. Your request has been received from the following email address: ",
-                    "title": "THANK YOU FOR REQUESTING"
-                }
-            }
-        },
         "footer": {
             "content": {
                 "archive": "Archive",
@@ -37,21 +17,56 @@
         },
         "navigation": {
             "about": "About",
+            "admin": "Admin",
             "faq": "FAQ",
             "gallery": "Gallery",
             "home": "Home",
             "prints": "Prints"
         },
-        "validation": {
-            "email-invalid": "Field \"{{fieldName}}\" has invalid format.",
-            "refnr-length": "Reference number must be 6 characters.",
-            "refnr-notexist": "Reference number \"{{fieldValue}}\" does not exist.",
-            "required": "Field \"{{fieldName}}\" is required."
+        "unavailable": {
+            "text": "This component is currently a construction site and will be available as soon as possible.",
+            "title": "Not available"
         }
     },
     "modules": {
         "about": {
             "title": "the artist"
+        },
+        "admin": {
+            "gallery": {
+                "details": {
+                    "dimensions": "Dimensions",
+                    "genre": "Genre",
+                    "medium": "Medium",
+                    "price": "Price",
+                    "publication": "Publication year",
+                    "sale-status": "Availability",
+                    "technique": "Technique",
+                    "title": "Title"
+                },
+                "placeholder-dimensions": "height x width => e.g.: 80x60",
+                "placeholder-genre": "select a genre",
+                "placeholder-medium": "select a medium",
+                "placeholder-price": "price on request",
+                "placeholder-sale-status": "Select a status",
+                "placeholder-search": "search in gallery",
+                "placeholder-technique": "select a technique",
+                "placeholder-title": "\"What shall I represent?\"",
+                "title": {
+                    "create": "add artwork",
+                    "list": "gallery administration",
+                    "update": "edit artwork"
+                }
+            },
+            "info": {
+                "last-update": "last update:"
+            },
+            "news": {},
+            "options": {
+                "gallery": "gallery",
+                "logout": "logout",
+                "news": "news"
+            }
         },
         "archive": {
             "message": "Hover your mouse over the image to read more on the article.",
@@ -121,6 +136,11 @@
             "message": "The textual content is currently only in german language available. We will provide the translations as soon as possible.",
             "title": "Imprint"
         },
+        "login": {
+            "login": "login",
+            "pass": "password",
+            "user": "username"
+        },
         "prints": {
             "message1": "Option to sell prints is not available for the moment. More information will be posted in the news section and in the ",
             "message2": " as soon as possible.",
@@ -132,8 +152,30 @@
         }
     },
     "shared": {
+        "assets": {
+            "author": "\u00a9 image"
+        },
         "enum": {
-            "artwork-option": {
+            "art-genre": {
+                "ABSTRACT": "abstract",
+                "ALL": "all",
+                "CREATIVE": "creative",
+                "NATURE": "nature",
+                "PEOPLE": "people",
+                "POURING": "pouring",
+                "SPIRITUAL": "spiritual"
+            },
+            "art-medium": {
+                "CANVAS": "Canvas",
+                "OTHER": "Other",
+                "WOOD": "Wood"
+            },
+            "art-technique": {
+                "ACRYLIC": "Acrylic",
+                "OTHER": "Other",
+                "POURING": "Pouring"
+            },
+            "art-type": {
                 "handcraft": "handcraft",
                 "original": "original",
                 "originalORprint": "original / print",
@@ -152,13 +194,9 @@
                 "de": "German",
                 "en": "English"
             },
-            "painting-genre": {
-                "abstract": "abstract",
-                "creative": "creative",
-                "nature": "nature",
-                "people": "people",
-                "pouring": "pouring",
-                "spiritual": "spiritual"
+            "sale-status": {
+                "AVAILABLE": "Available",
+                "UNAVAILABLE": "Unavailable"
             }
         }
     }

@@ -1,16 +1,22 @@
 <ng-container *artdvVar="ngControl as control">
     <div class="artdv-validation-errors" *ngIf="control.invalid && (control.dirty || control.touched)">
         <div *ngIf="control.hasError('required')">
-            {{ 'common.validation.required' | translate: {fieldName: fieldName} }}
+            {{ 'validation.frontend.form.required' | translate: {fieldName: fieldName} }}
         </div>
         <div *ngIf="control.hasError('email')">
-            {{ 'common.validation.email-invalid' | translate: {fieldName: fieldName} }}
+            {{ 'validation.frontend.form.email-invalid' | translate: {fieldName: fieldName} }}
         </div>
         <div *ngIf="control.hasError('invalidRefNr')">
-            {{ 'common.validation.refnr-notexist' | translate: {fieldValue: control.value} }}
+            {{ 'validation.frontend.form.refnr-notexist' | translate: {fieldValue: control.value} }}
         </div>
         <div *ngIf="control.hasError('invalidRefNrLength')">
-            {{ 'common.validation.refnr-length' | translate }}
+            {{ 'validation.frontend.form.refnr-length' | translate }}
+        </div>
+        <div *ngIf="control.hasError('invalidPublicationContent')">
+            {{ 'validation.frontend.form.publication-invalid' | translate }}
+        </div>
+        <div *ngIf="control.hasError('invalidPublicationYear')">
+            {{ 'validation.frontend.form.publication-length' | translate }}
         </div>
     </div>
 </ng-container>

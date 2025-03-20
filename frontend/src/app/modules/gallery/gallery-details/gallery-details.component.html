@@ -32,7 +32,7 @@
             </div>
             <div class="artdv-gallerydetails-value">
                 <span>{{card?.title === null ? '--' : 
-                '" ' + ('gallery-content.' + card?.referenceNr + '.title' | translate) + ' "'}}</span>
+                ('gallery-content.' + card?.referenceNr + '.title' | translate)}}</span>
             </div>
         </div>
         <div class="artdv-gallerydetails-property" id="card-referenceNr">
@@ -70,7 +70,7 @@
                 <label for="card-type">{{'modules.gallery.details.header.type' | translate}}:</label>
             </div>
             <div class="artdv-gallerydetails-value">
-                <span>{{card?.price === null ? '--' : ('shared.enum.artwork-option.' + card?.type | translate)}}</span>
+                <span>{{card?.price === null ? '--' : ('shared.enum.art-type.' + card?.type | translate)}}</span>
             </div>
         </div>
         <div class="artdv-gallerydetails-property" id="card-measurements">
@@ -81,18 +81,11 @@
                 <span>{{card?.measurementsWxH === null ? '--' : card?.measurementsWxH | dimensionFormat}}</span>
             </div>
         </div>
+
+        <!-- DIVIDER -->
         <div class="artdv-gallerydetails-divider"></div>
-        <div class="artdv-gallerydetails-property" id="card-tags">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-tags">{{'modules.gallery.details.header.tags' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value" *artdvVar="('gallery-content.' + card?.referenceNr + '.tags' | translate) as tagsTranslated">
-                <span class="artdv-tags" *ngFor="let tag of tagsTranslated">
-                    {{tag}}
-                </span>
-                <span *ngIf="card?.tags === null">--</span>
-            </div>
-        </div>
+        <!-- DIVIDER -->
+        
         <div 
             class="artdv-gallerydetails-property" 
             id="card-comment" 
@@ -110,7 +103,7 @@
                 <label for="card-technique">{{'modules.gallery.details.header.technique' | translate}}:</label>
             </div>
             <div class="artdv-gallerydetails-value">
-                <span>{{card?.technique === null ? '--' : ('gallery-content.' + card?.referenceNr + '.technique' | translate)}}</span>
+                <span>{{card?.technique === null ? '--' : ('shared.enum.art-technique.' + card?.technique | translate)}}</span>
             </div>
         </div>
         <div class="artdv-gallerydetails-property" id="card-year">
