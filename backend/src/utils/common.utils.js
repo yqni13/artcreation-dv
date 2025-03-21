@@ -24,18 +24,19 @@ exports.createID = async (repository, table) => {
 }
 
 exports.getCustomLocaleTimestamp = () => {
-    const time = new Date().toLocaleTimeString();
-    let rawLocaleDate = new Date().toLocaleDateString(); // dd.mm.yyyy
+    // this solution does NOT take care of timezones (neither local nor prod)!
+    const time = new Date();
+    const date = new Date();
     
-    let day = rawLocaleDate.substring(0, rawLocaleDate.indexOf('.'));
-    rawLocaleDate = rawLocaleDate.replace(`${day}.`, '');
-    let month = rawLocaleDate.substring(0, rawLocaleDate.indexOf('.'));
-    const year = rawLocaleDate.replace(`${month}.`, '');
+    const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate().toString();
+    const month = date.getMonth()+1 < 10 ? `0${date.getMonth()+1}` : (date.getMonth()+1).toString();
+
+    const hours = time.getHours() < 10 ? `0${time.getHours()}` : `${time.getHours()}`;
+    const minutes = time.getMinutes() < 10 ? `0${time.getMinutes()}` : `${time.getMinutes()}`;
+    const seconds = time.getSeconds() < 10 ? `0${time.getSeconds()}` : `${time.getSeconds()}`;
     
     // need prefix-0 on single digits
-    day = day < 10 ? `0${day}` : day;
-    month = month < 10 ? `0${month}` : month;
-    return `${year}-${month}-${day}T${time}.000Z`;
+    return `${date.getFullYear()}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
 }
 
 exports.getEntryImagePaths = async (repository, params) => {
