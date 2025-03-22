@@ -101,6 +101,10 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
         const message = response.error.headers.message ? response.error.headers.message : 'server-535-auth#server';
         snackbarService.notifyOnInterceptorError(response, translate.currentLang, message, false);
     } 
+    else if(response.status === 502 || response.status === 504) {
+        const message = response.error.headers.message ? response.error.headers.message : 'error-unknown';
+        snackbarService.notifyOnInterceptorError(response, translate.currentLang, message, false);
+    }
     // OTHER VALIDATION
     else if(response.status > 400 || response.status < 500 || response.status === 535) {
         const message = response.error.headers.message ? response.error.headers.message : 'error-unknown';

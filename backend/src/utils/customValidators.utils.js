@@ -46,7 +46,7 @@ exports.validateUUID = (value) => {
     return true;
 }
 
-exports.validateRefNrNoManualChange = async (refNr, req, repository) => {
+exports.validateRefNrNoManualChange = async (refNr, req) => {
     const entry = req.validatedEntry ?? null;
     if(!entry) {
         return true;
@@ -55,7 +55,8 @@ exports.validateRefNrNoManualChange = async (refNr, req, repository) => {
     if(refNr.length !== 6) {
         throw new Error('data-invalid-length#referenceNr$6');
     }
-    if(refNr !== entry.reference_nr) {
+    // as refNr changes, genre AND paths must be changed too, otherwise invalid
+    if(refNr !== entry.reference_nr && (entry.art_genre === req.body.artGenre || !req.body.imagePath.includes(refNr))) {
         throw new Error('data-invalid-entry#referenceNr');
     }
     return true;

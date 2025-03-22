@@ -157,13 +157,13 @@
         },
         "enum": {
             "art-genre": {
-                "ABSTRACT": "abstrakt",
-                "ALL": "alle",
-                "CREATIVE": "kreatives",
-                "NATURE": "natur",
-                "PEOPLE": "personen",
-                "POURING": "pouring",
-                "SPIRITUAL": "spirituell"
+                "ABSTRACT": "Abstrakt",
+                "ALL": "Alle",
+                "CREATIVE": "Kreatives",
+                "NATURE": "Natur",
+                "PEOPLE": "Personen",
+                "POURING": "Pouring",
+                "SPIRITUAL": "Spirituell"
             },
             "art-medium": {
                 "CANVAS": "Leinwand",

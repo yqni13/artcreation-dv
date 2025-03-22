@@ -21,7 +21,7 @@ class GalleryController {
 
     update = async (req, res, next) => {
         checkValidation(req);
-        const response = await GalleryService.update(req.body, req.files);
+        const response = await GalleryService.update(req.body, req.files, req.validatedEntry);
         res.send(response);
     }
 

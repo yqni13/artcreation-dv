@@ -14,6 +14,7 @@
                 "data-invalid-min": "Die Länge für den Datensatz \"{{VAL}}\" darf nicht kürzer als {{MIN}} Zeichen lang sein. Bitte überprüfen Sie Ihre Eingabe.",
                 "data-invalid-range": "Der Wert für den Datensatz \"{{VAL}}\" muss zwischen {{MIN}} und {{MAX}} liegen. Bitte prüfen Sie Ihre Eingabe.",
                 "data-required": "Es wurden nicht alle notwendigen Daten übertragen. Bitte kontrollieren Sie Ihre Angaben.",
+                "error-invalid-api": "Ein technischer Fehler bei der internen Verarbeitung ist aufgetreten. Dieser Service ist vorübergehend nicht nutzbar.",
                 "error-unknown": "Ein technischer Fehler ist aufgetreten. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
                 "image-invalid-type": "Das Format für den Datensatz \"Bild-Upload\" muss einem der Folgenden gleichen: \".jpg\", \".jpeg/.jfif\", \".webp\" oder \".png\".",
                 "image-required": "Es wurde nicht das notwendige Bild vom Upload übertragen. Bitte kontrollieren Sie Ihre Angaben.",
@@ -34,7 +35,8 @@
                 "InvalidTokenException": "Ungültiger Token",
                 "JWTExpirationException": "Sitzung abgelaufen",
                 "RequestExceedMaxException": "Kapazität überschritten",
-                "TokenMissingException": "Sitzungs-Token fehlt"
+                "TokenMissingException": "Sitzungs-Token fehlt",
+                "UnexpectedApiResponseException": "Server fehlgeschlagen"
             }
         },
         "frontend": {

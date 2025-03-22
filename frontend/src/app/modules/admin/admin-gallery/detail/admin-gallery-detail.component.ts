@@ -221,10 +221,12 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     onGenreChange(event: any) {
         if(Object.values(ArtGenre).includes(event.target?.value)) {
             this.hasGenre = true;
+            this.isLoadingResponse = true;
             this.galleryApi.sendRefNrPreviewRequest(event.target?.value).subscribe((response) => {
                 const refNr = response.body?.body.referenceNr ?? null;
                 this.artworkForm.get('referenceNr')?.setValue(refNr);
                 this.configPathByRefNr(refNr);
+                this.isLoadingResponse = false;
             });
         }
     }

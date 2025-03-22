@@ -18,6 +18,12 @@ class ApiException extends Error {
     }
 }
 
+class UnexpectedApiResponseException extends ApiException {
+    constructor(message = 'error-invalid-api', data) {
+        super(ErrorCodes.UnexpectedApiResponseException, message, data, ErrorStatusCodes.UnexpectedApiResponseException)
+    }
+}
+
 class InvalidEndpointException extends ApiException {
     constructor(message = 'Endpoint not found', data) {
         super(ErrorCodes.InvalidEndpointException, message, data, ErrorStatusCodes.InvalidEndpointException);
@@ -43,6 +49,7 @@ class HealthCheckFailedException extends ApiException {
 }
 
 module.exports = {
+    UnexpectedApiResponseException,
     InvalidEndpointException,
     InvalidTokenException,
     UnimplementedException,
