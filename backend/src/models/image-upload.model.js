@@ -1,5 +1,7 @@
 const sharp = require('sharp');
 const CloudStorageAPI = require('../services/external/cloud-storage.api');
+const { UnexpectedApiResponseException } = require('../utils/exceptions/api.exception');
+const Utils = require('../utils/common.utils');
 
 class ImageUpload {
     msg0 = '';
@@ -58,13 +60,13 @@ class ImageUpload {
     }
 
     handleImageUploads = async (params, files) => {
-        let image = files[0].buffer;
+        let image = !files[0].buffer ? files : files[0].buffer;
         const imageData = {
             meta: await sharp(image).metadata(),
             path: params['imagePath']
         };
 
-        let thumbnail = files[0].buffer;
+        let thumbnail = !files[0].buffer ? files : files[0].buffer;
         const thumbnailData = {
             meta: await sharp(thumbnail).metadata(),
             path: params['thumbnailPath']
@@ -79,15 +81,9 @@ class ImageUpload {
             
             await CloudStorageAPI.uploadImageOnCDN(image, imageData.path);
             await CloudStorageAPI.uploadImageOnCDN(thumbnail, thumbnailData.path)
-            return {body: {code: 1}};
         } catch(err) {
-            return {
-                body: {
-                    error: err
-                },
-                code: 0,
-                msg: this.msg0
-            }
+            console.log("ERROR handleImageUploads: ", err);
+            throw new UnexpectedApiResponseException();
         }
     }
 
@@ -95,25 +91,28 @@ class ImageUpload {
         try {
             await CloudStorageAPI.deleteImageOnCDN(params['imagePath']);
             await CloudStorageAPI.deleteImageOnCDN(params['thumbnailPath']);
-            return {body: {code: 1}};
         } catch(err) {
-            return {
-                body: {
-                    error: err
-                },
-                code: 0,
-                msg: this.msg0
-            }
+            console.log("ERROR handleImageRemoval: ", err);
+            throw new UnexpectedApiResponseException();
         }
     }
 
-    handleImageUpdate = async (params, files) => {
-        if(files.length === 0) {
-            return { code: 1 }; // no changes on image
+    handleImageUpdate = async (params, files, existDbEntry) => {
+        // change on file and/or genre needs to delete old/upload new images (new file or changed name => path + refNr)
+        try {
+            if(files.length === 0 && existDbEntry.art_genre !== params.artGenre) {
+                const response = await CloudStorageAPI.readImageFromCDN(existDbEntry.image_path);
+                files = await Utils.streamToBuffer(response.Body);
+            }
+            if(files.length === 0 && existDbEntry.art_genre === params.artGenre) {
+                return;
+            }            
+            await this.handleImageRemoval({imagePath: existDbEntry.image_path, thumbnailPath: existDbEntry.thumbnail_path});
+            return await this.handleImageUploads(params, files);
+        } catch(err) {
+            console.log("ERROR handleImageUpdate: ", err);
+            throw new UnexpectedApiResponseException();
         }
-        
-        const imgDelete = await this.handleImageRemoval(params);
-        return imgDelete.body.error ? imgDelete : this.handleImageUploads(params, files);
     }
 }
 

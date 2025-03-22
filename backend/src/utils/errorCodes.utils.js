@@ -14,5 +14,6 @@ module.exports.ErrorCodes = {
     AuthSecretNotFoundException: 13,
     JWTExpirationException: 14,
     TokenMissingException: 15,
-    AuthenticationException: 16
+    AuthenticationException: 16,
+    UnexpectedApiResponseException: 17
 };

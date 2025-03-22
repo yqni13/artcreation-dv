@@ -14,6 +14,7 @@
                 "data-invalid-min": "The length for the record \"{{VAL}}\" must not be shorter than {{MIN}} characters. Please check your input.",
                 "data-invalid-range": "The value for the record \"{{VAL}}\" must be between {{MIN}} and {{MAX}}. Please check your input.",
                 "data-required": "Not all necessary data were transferred. Please check your input.",
+                "error-invalid-api": "A technical error on intern systems has occured. This service is not available in the moment.",
                 "error-unknown": "A technical error has occurred. Please try again later or contact support.",
                 "image-invalid-type": "The format for the record \"Image-Upload\" needs to be one of the following: \".jpg\", \".jpeg/.jfif\", \".webp\" or \".png\".",
                 "image-required": "The necessary image from upload was not transferred. Please check your input",
@@ -34,7 +35,8 @@
                 "InvalidTokenException": "Invalid token",
                 "JWTExpirationException": "Expired session",
                 "RequestExceedMaxException": "Capacity exceeded",
-                "TokenMissingException": "Session token missing"
+                "TokenMissingException": "Session token missing",
+                "UnexpectedApiResponseException": "Server failed"
             }
         },
         "frontend": {
