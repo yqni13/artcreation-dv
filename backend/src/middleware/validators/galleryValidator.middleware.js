@@ -94,7 +94,7 @@ exports.galleryUpdateSchema = [
         .notEmpty()
         .withMessage('data-required')
         .bail()
-        .custom((value, { req }) => CustomValidator.validateRefNrNoManualChange(value, req, GalleryRepository)),
+        .custom((value, { req }) => CustomValidator.validateRefNrNoManualChange(value, req)),
     body('imagePath')
         .trim()
         .notEmpty()

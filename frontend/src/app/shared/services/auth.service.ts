@@ -32,7 +32,8 @@ export class AuthService {
             'InternalServerException',
             'InvalidPropertiesException',
             'AuthSecretNotFoundException',
-            'RequestExceedMaxException'
+            'RequestExceedMaxException',
+            'UnexpectedApiResponseException'
         ];
         this.credentials = {
             user: '',

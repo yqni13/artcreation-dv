@@ -21,21 +21,15 @@ class GalleryService {
         const hasParams = Object.keys(params).length !== 0;
         Object.assign(params, await createID(GalleryRepository, 'gallery')); // params['id']
         Object.assign(params, await GalleryModel.createRefNr(params)); // params['referenceNr']
-        const imgUpload = await ImgUploadModel.handleImageUploads(params, files);
-        if(imgUpload.error) {
-            return basicResponse(imgUpload.error, imgUpload.code, imgUpload.msg);
-        }
+        await ImgUploadModel.handleImageUploads(params, files);
         const result = await GalleryRepository.create(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }
 
-    update = async (params, files) => {
+    update = async (params, files, compareData) => {
         const hasParams = Object.keys(params).length !== 0;
         params['referenceNr'] = await GalleryModel.checkGenreChange(params);
-        const imgUpdate = await ImgUploadModel.handleImageUpdate(params, files);
-        if(imgUpdate.error) {
-            return basicResponse(imgUpdate.body, imgUpdate.code, imgUpdate.msg);
-        }
+        await ImgUploadModel.handleImageUpdate(params, files, compareData);
         const result = await GalleryRepository.update(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }
@@ -46,11 +40,9 @@ class GalleryService {
 
         if(constrain.body.proceedDeletion) {
             const pathData = await getEntryImagePaths(GalleryRepository, params);
-            const imgDelete = await ImgUploadModel.handleImageRemoval(pathData);
-            const result = imgDelete.body.error ? null : await GalleryRepository.delete(hasParams ? params : {});
-            return imgDelete.body.error
-                ? basicResponse(imgDelete.body, imgDelete.code, imgDelete.msg)
-                : basicResponse(result.body, result.code, result.msg);
+            await ImgUploadModel.handleImageRemoval(pathData);
+            const result = await GalleryRepository.delete(hasParams ? params : {});
+            return basicResponse(result.body, result.code, result.msg);
         }
         return basicResponse(constrain.body, constrain.code, constrain.msg);
     }

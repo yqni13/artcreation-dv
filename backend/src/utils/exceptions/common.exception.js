@@ -46,5 +46,5 @@ module.exports = {
     AuthenticationException,
     InternalServerException,
     RequestExceedMaxException,
-    UnexpectedException
+    UnexpectedException,
 };

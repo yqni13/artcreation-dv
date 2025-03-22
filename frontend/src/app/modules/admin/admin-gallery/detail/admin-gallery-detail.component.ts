@@ -66,6 +66,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     private subscriptionHttpObservationError$: Subscription;
     private entryId: string;
     private delay: any;
+    private refNrOnGenreChange: string;
 
     constructor(
         private readonly router: Router,
@@ -93,6 +94,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
         this.hasGenre = false;
         this.entryId = '';
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+        this.refNrOnGenreChange = '';
     }
 
     ngOnInit() {
@@ -112,6 +114,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
                         (this.artworkEntry as any) = data.body?.body.data;
                         Object.assign((this.artworkEntry as any), {imageFile: data.body?.body.data.reference_nr});
                         this.hasGenre = this.artworkEntry?.art_genre ? true : false;
+                        this.refNrOnGenreChange = this.artworkEntry?.reference_nr ?? '';
                         this.lastModified = this.datetime.convertTimestamp(this.artworkEntry?.last_modified ?? null);
                         this.initEdit();
                         this.pathFromExistingImg = this.configPathFromExistingImg(this.artworkEntry?.thumbnail_path);
@@ -192,7 +195,7 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
             imagePath: this.artworkEntry?.image_path ?? '',
             thumbnailPath: this.artworkEntry?.thumbnail_path ?? '',
             title: this.artworkEntry?.title ?? null,
-            saleStatus: EnumValidators.isSaleStatus(this.artworkEntry?.sale_status) ?? '',
+            saleStatus: EnumValidators.isSaleStatus(this.artworkEntry?.sale_status) ?? SaleStatus.AVAILABLE,
             price: this.artworkEntry?.price ?? null,
             dimensions: this.artworkEntry?.dimensions ?? '',
             artMedium: EnumValidators.isArtMedium(this.artworkEntry?.art_medium) ?? ArtMedium.CANVAS,
@@ -221,10 +224,12 @@ export class AdminGalleryDetailComponent implements OnInit, AfterViewInit, OnDes
     onGenreChange(event: any) {
         if(Object.values(ArtGenre).includes(event.target?.value)) {
             this.hasGenre = true;
+            this.isLoadingResponse = true;
             this.galleryApi.sendRefNrPreviewRequest(event.target?.value).subscribe((response) => {
                 const refNr = response.body?.body.referenceNr ?? null;
                 this.artworkForm.get('referenceNr')?.setValue(refNr);
                 this.configPathByRefNr(refNr);
+                this.isLoadingResponse = false;
             });
         }
     }
