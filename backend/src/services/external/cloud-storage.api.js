@@ -38,7 +38,6 @@ class CloudStorageAPI {
     }
 
     readImageFromCDN = async (path) => {
-        
         try {
             const storageClient = this.#getS3Client();
             const readParams = this.#getReadParams(path);
@@ -52,10 +51,9 @@ class CloudStorageAPI {
     }
 
     uploadImageOnCDN = async (fileBuffer, path) => {
-        const storageClient = this.#getS3Client();
-        const uploadParams = this.#getUploadParams(fileBuffer, path);
-
         try {
+            const storageClient = this.#getS3Client();
+            const uploadParams = this.#getUploadParams(fileBuffer, path);
             const command = new PutObjectCommand(uploadParams);
             await storageClient.send(command);
         } catch(err) {
@@ -65,10 +63,9 @@ class CloudStorageAPI {
     }
 
     deleteImageOnCDN = async (path) => {
-        const storageClient = this.#getS3Client();
-        const deleteParams = this.#getDeleteParams(path);
-
         try {
+            const storageClient = this.#getS3Client();
+            const deleteParams = this.#getDeleteParams(path);
             const command = new DeleteObjectCommand(deleteParams);
             await storageClient.send(command);
         } catch(err) {
