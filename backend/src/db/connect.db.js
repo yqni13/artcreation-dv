@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 const fs = require('fs');
 const path = require('path');
-const Secrets = require('../utils/secrets.util');
+const Secrets = require('../utils/secrets.utils');
 const { Database } = require('../configs/config');
 const {
     DBConnectionException,

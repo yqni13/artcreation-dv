@@ -1,5 +1,5 @@
 require('dotenv').config();
-const Secrets = require('../utils/secrets.util')
+const Secrets = require('../utils/secrets.utils')
 
 class UserModel {
 

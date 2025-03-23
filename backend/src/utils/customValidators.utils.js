@@ -2,7 +2,7 @@ const { SaleStatus } = require('./enums/sale-status.enum');
 const { ArtGenre } = require('./enums/art-genre.enum');
 const { ArtMedium } = require('./enums/art-medium.enum');
 const { ArtTechnique } = require('./enums/art-technique.enum');
-const Secrets = require('../utils/secrets.util');
+const Secrets = require('../utils/secrets.utils');
 const { decryptRSA } = require('../utils/crypto.utils');
 const { InvalidPropertiesException } = require('./exceptions/validation.exception');
 
