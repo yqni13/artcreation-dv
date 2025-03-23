@@ -5,7 +5,7 @@ import { environment } from "../../../environments/environment";
 import { AuthResponse } from "../interfaces/auth.interface";
 import { EncryptionService } from "./encryption.service";
 import { TokenService } from "./token.service";
-import { TokenOptions } from "../enums/token-options.enum";
+import { TokenOption } from "../enums/token-option.enum";
 import { DateTimeService } from "./datetime.service";
 
 @Injectable({
@@ -63,23 +63,23 @@ export class AuthService {
     }
 
     logout() {
-        this.token.removeToken(TokenOptions.session_id);
-        this.token.removeToken(TokenOptions.session_expiration);
+        this.token.removeToken(TokenOption.TOKEN);
+        this.token.removeToken(TokenOption.EXPIRATION);
     }
 
     private setSession(authResponse: AuthResponse) {
-        this.token.removeToken(TokenOptions.session_id);
-        this.token.removeToken(TokenOptions.session_expiration);
+        this.token.removeToken(TokenOption.TOKEN);
+        this.token.removeToken(TokenOption.EXPIRATION);
         const expiration = this.datetime.addTimestampWithCurrentMoment(
             this.datetime.getTimeInMillisecondsFromExpiration(authResponse.expiresIn)
         );
         
-        this.token.setToken(TokenOptions.session_id, authResponse.token);
-        this.token.setToken(TokenOptions.session_expiration, JSON.stringify(expiration));
+        this.token.setToken(TokenOption.TOKEN, authResponse.token);
+        this.token.setToken(TokenOption.EXPIRATION, JSON.stringify(expiration));
     }
 
     isLoggedIn(): boolean {
-        const hasSessionToken = this.token.getToken(TokenOptions.session_id) !== null ? true : false;
+        const hasSessionToken = this.token.getToken(TokenOption.TOKEN) !== null ? true : false;
         if(hasSessionToken && (this.getExpiration() - Date.now()) > 0) {
             return true;
         }
@@ -89,7 +89,7 @@ export class AuthService {
 
     // use to automatically renew token?
     getExpiration() {
-        const expirationToken = this.token.getToken(TokenOptions.session_expiration) as unknown;
+        const expirationToken = this.token.getToken(TokenOption.EXPIRATION) as unknown;
         return expirationToken as number;
     }
 }

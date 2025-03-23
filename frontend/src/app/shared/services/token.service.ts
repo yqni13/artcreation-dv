@@ -1,21 +1,27 @@
 import { Injectable } from "@angular/core";
-import { TokenOptions } from "../enums/token-options.enum";
+import { TokenOption } from "../enums/token-option.enum";
 
 @Injectable({
     providedIn: 'root'
 })
 export class TokenService {
 
-    setToken(key: TokenOptions, token: string) {
-        sessionStorage.setItem('artcreation-dv_' + key, token);
+    private identifier: string;
+
+    constructor() {
+        this.identifier = 'artcreation-dv_';
     }
 
-    getToken(key: TokenOptions): string | null {
-        return sessionStorage.getItem('artcreation-dv_' + key);
+    setToken(key: TokenOption, token: string) {
+        sessionStorage.setItem(this.identifier + key, token);
     }
 
-    removeToken(key: TokenOptions) {
-        sessionStorage.removeItem('artcreation-dv_' + key);
+    getToken(key: TokenOption): string | null {
+        return sessionStorage.getItem(this.identifier + key);
+    }
+
+    removeToken(key: TokenOption) {
+        sessionStorage.removeItem(this.identifier + key);
     }
 
     clearSession() {

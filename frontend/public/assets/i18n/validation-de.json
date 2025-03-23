@@ -2,6 +2,7 @@
     "validation": {
         "backend": {
             "data": {
+                "auth-invalid-id": "Die ID für den Login ist ungültig. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
                 "auth-invalid-pass": "Das Passwort für den Login ist ungültig. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
                 "auth-invalid-user": "Der Username für den Login ist ungültig. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
                 "auth-jwt-expiration": "Die aktuelle Sitzung ist nach 30 Minuten abgelaufen.",
