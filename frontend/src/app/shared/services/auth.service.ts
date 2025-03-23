@@ -80,7 +80,11 @@ export class AuthService {
 
     isLoggedIn(): boolean {
         const hasSessionToken = this.token.getToken(TokenOptions.session_id) !== null ? true : false;
-        return hasSessionToken && (this.getExpiration() - Date.now()) > 0 ? true : false;
+        if(hasSessionToken && (this.getExpiration() - Date.now()) > 0) {
+            return true;
+        }
+        this.logout();
+        return false;
     }
 
     // use to automatically renew token?
