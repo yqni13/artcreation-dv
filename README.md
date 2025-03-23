@@ -1,6 +1,6 @@
 
 # yqni13 artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.11}}$
+$\texttt{\color{teal}{v1.0.0-beta.12}}$
 
 
 
@@ -144,9 +144,10 @@ Most of the images are linked with logic to either displaying more details or sc
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.0.0-beta.10\ >>\ {\color{pink}1.0.0-beta.11}}$
+### $\textsf{last\ update\ 1.0.0-beta.11\ >>\ {\color{pink}1.0.0-beta.12}}$
 
-- $\textsf{\color{green}Change:}$ Add administration feature to login as Admin and manage gallery entries (including encryption, login via jwt, database and cloud storage).
+- $\textsf{\color{green}Change:}$ Add security layer for admin-only operations regarding access to routes and server requests only when admin is logged in.
+- $\textsf{\color{red}Bugfix:}$ Creating a new gallery entry works as expected. [Before: Creating new gallery entry requests were denied only from mobile devices with hint on parameter error => github bug report recommends including flag to ignore error and continue process.]
 
 <br>
 

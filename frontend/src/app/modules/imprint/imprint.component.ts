@@ -19,7 +19,7 @@ export class ImprintComponent {
     constructor(private translate: TranslateService) {
         this. devData = {
             project: 'artcreation-dv',
-            version: 'v1.0.0-beta.11',
+            version: 'v1.0.0-beta.12',
             github: 'https://github.com/yqni13/artcreation-dv',
             portfolio: 'https://yqni13.com',
             email: 'lukas.varga@yqni13.com'
