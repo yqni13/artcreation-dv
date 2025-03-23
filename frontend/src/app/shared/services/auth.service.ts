@@ -13,9 +13,11 @@ import { DateTimeService } from "./datetime.service";
 })
 export class AuthService {
 
-    protected urlLoginAPI: string;
     protected exceptionList: string[];
-
+    
+    private urlPreConnect: string;
+    private urlLoginAPI: string;
+    private preConnection: boolean;
     private credentials: any;
 
     constructor(
@@ -24,7 +26,6 @@ export class AuthService {
         private readonly datetime: DateTimeService,
         private readonly encrypt: EncryptionService,
     ) {
-        this.urlLoginAPI = environment.API_BASE_URL + '/api/v1/auth/login';
         this.exceptionList = [
             'JWTExpirationException',
             'TokenMissingException',
@@ -35,6 +36,10 @@ export class AuthService {
             'RequestExceedMaxException',
             'UnexpectedApiResponseException'
         ];
+        
+        this.urlPreConnect = environment.API_BASE_URL + '/api/v1/auth/pre-connect';
+        this.urlLoginAPI = environment.API_BASE_URL + '/api/v1/auth/login';
+        this.preConnection = false;
         this.credentials = {
             user: '',
             pass: ''
@@ -45,6 +50,10 @@ export class AuthService {
         return this.exceptionList;
     }
 
+    getPreConnectionStatus(): boolean {
+        return this.preConnection;
+    }
+
     async setCredentials(user: string, pass: string) {
         this.credentials = {
             user: user,
@@ -52,14 +61,21 @@ export class AuthService {
         }
     }
 
+    preConnect(): Observable<HttpResponse<any>> {
+        return this.http.get<any>(this.urlPreConnect, {observe: 'response'}).pipe(
+            tap(response => {
+                this.preConnection = response.body?.body.connection;
+            })
+        )
+    }
+
     login(): Observable<HttpResponse<any>> {
         this.logout();
-        return this.http.post<any>(this.urlLoginAPI, this.credentials, { observe: 'response' })
-            .pipe(
-                tap(response => {
-                    this.setSession(response.body?.body);
-                })
-            )
+        return this.http.post<any>(this.urlLoginAPI, this.credentials, { observe: 'response' }).pipe(
+            tap(response => {
+                this.setSession(response.body?.body);
+            })
+        )
     }
 
     logout() {

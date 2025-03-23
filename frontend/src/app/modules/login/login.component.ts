@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { CommonModule } from "@angular/common";
 import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.auth.preConnect().subscribe();
         this.subscriptionHttpObservationLogin$ = this.httpObservation.loginStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {

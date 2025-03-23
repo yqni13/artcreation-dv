@@ -1,5 +1,6 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable, PLATFORM_ID } from "@angular/core";
 import { TokenOption } from "../enums/token-option.enum";
+import { isPlatformBrowser } from "@angular/common";
 
 @Injectable({
     providedIn: 'root'
@@ -7,24 +8,35 @@ import { TokenOption } from "../enums/token-option.enum";
 export class TokenService {
 
     private identifier: string;
+    private readonly platformId = inject(PLATFORM_ID);
 
     constructor() {
         this.identifier = 'artcreation-dv_';
     }
 
     setToken(key: TokenOption, token: string) {
-        sessionStorage.setItem(this.identifier + key, token);
+        if(this.checkSessionStorage()) {
+            sessionStorage.setItem(this.identifier + key, token);
+        }
     }
 
     getToken(key: TokenOption): string | null {
-        return sessionStorage.getItem(this.identifier + key);
+        return this.checkSessionStorage() ? sessionStorage.getItem(this.identifier + key) : null;
     }
 
     removeToken(key: TokenOption) {
-        sessionStorage.removeItem(this.identifier + key);
+        if(this.checkSessionStorage()) {
+            sessionStorage.removeItem(this.identifier + key);
+        }
     }
 
     clearSession() {
-        sessionStorage.clear();
+        if(this.checkSessionStorage()) {
+            sessionStorage.clear();
+        }
+    }
+
+    private checkSessionStorage(): boolean {
+        return isPlatformBrowser(this.platformId) ? true : false;
     }
 }
