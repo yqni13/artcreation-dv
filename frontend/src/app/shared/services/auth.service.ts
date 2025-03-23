@@ -74,7 +74,7 @@ export class AuthService {
             this.datetime.getTimeInMillisecondsFromExpiration(authResponse.expiresIn)
         );
         
-        this.token.setToken(TokenOption.TOKEN, authResponse.token);
+        this.token.setToken(TokenOption.TOKEN, authResponse.token.body.token);
         this.token.setToken(TokenOption.EXPIRATION, JSON.stringify(expiration));
     }
 

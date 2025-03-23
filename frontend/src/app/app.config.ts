@@ -8,6 +8,7 @@ import { appHttpInterceptor } from './app.http.interceptor';
 import { provideNetlifyLoader } from '@angular/common';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 import { CustomTranslateLoader } from '../../public/assets/i18n/custom-translate-loader';
+import { authInterceptorFn } from './app.auth.interceptor';
 
 export function createTranslateLoader(http: HttpClient) {
   return new CustomTranslateLoader(http, './assets/i18n/', '.json');
@@ -18,7 +19,13 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes, withPreloading(PreloadAllModules)), 
     provideClientHydration(), 
-    provideHttpClient(withFetch(), withInterceptors([appHttpInterceptor])),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([
+        appHttpInterceptor,
+        authInterceptorFn
+      ])
+    ),
     provideNetlifyLoader(),
     importProvidersFrom(TranslateModule.forRoot({
       loader: {

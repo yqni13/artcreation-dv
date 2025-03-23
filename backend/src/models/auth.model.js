@@ -5,7 +5,7 @@ const {
     InvalidCredentialsException 
 } = require('../utils/exceptions/auth.exception');
 const { decryptRSA } = require('../utils/crypto.utils');
-const Secrets = require('../utils/secrets.util');
+const Secrets = require('../utils/secrets.utils');
 
 
 class AuthModel {

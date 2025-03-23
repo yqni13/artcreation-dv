@@ -3,7 +3,7 @@ const {
     InvalidCredentialsException,
     TokenMissingException
 } = require('../utils/exceptions/auth.exception');
-const Secrets = require('../utils/secrets.util');
+const Secrets = require('../utils/secrets.utils');
 
 
 const auth = () => {
@@ -19,7 +19,7 @@ const auth = () => {
             const token = authHeader.replace(bearer, '');
             const decode = jwt.verify(token, privateKey);
 
-            if(decode.id !== Secrets.AUTH_ID) {
+            if(decode.id !== Secrets.ADMIN_ID) {
                 throw new InvalidCredentialsException('auth-invalid-id');
             }
             
