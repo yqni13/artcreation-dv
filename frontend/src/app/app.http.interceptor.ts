@@ -8,6 +8,7 @@ import { GalleryHttpInterceptor } from './common/http/gallery.http.interceptor';
 import { MailHttpInterceptor } from './common/http/mail.http.interceptor';
 import { AdminRoute } from './api/routes/admin.route.enum';
 import { AuthHttpInterceptor } from './common/http/auth.http.interceptor';
+import { AuthRoute } from './api/routes/auth.route.enum';
 
 
 export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
@@ -61,6 +62,7 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
     
     // user response log
     if(response.status === 0 &&
+        !response.url.includes(AuthRoute.PRECONNECT) &&
         (response.url.includes(AdminRoute.AUTH)
         || response.url.includes(AdminRoute.GALLERY)
         || response.url.includes(AdminRoute.MAILING)
