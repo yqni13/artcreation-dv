@@ -4,6 +4,11 @@
 
 <br>
 
+### 2024/03/23 - $\textsf{update\ 1.0.0-beta.11\ >>\ {\color{pink}1.0.0-beta.12}}$
+
+- $\textsf{\color{green}Change:}$ Add security layer for admin-only operations regarding access to routes and server requests only when admin is logged in.
+- $\textsf{\color{red}Bugfix:}$ Creating a new gallery entry works as expected. [Before: Creating new gallery entry requests were denied only from mobile devices with hint on parameter error => github bug report recommends including flag to ignore error and continue process.]
+
 ### 2024/03/19 - $\textsf{update\ 1.0.0-beta.10\ >>\ {\color{pink}1.0.0-beta.11}}$
 
 - $\textsf{\color{green}Change:}$ Add administration feature to login as Admin and manage gallery entries (including encryption, login via jwt, database and cloud storage).

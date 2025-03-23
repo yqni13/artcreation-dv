@@ -28,7 +28,7 @@ class ImageUpload {
         }
 
         try {
-            return await sharp(imageBuffer)
+            return await sharp(imageBuffer, {failOn: 'none', unlimited: true})
                 .resize({
                     width: newWidth,
                     height: newHeight
@@ -49,7 +49,7 @@ class ImageUpload {
         }
 
         try {
-            return meta.format === 'webp' ? imageBuffer : await sharp(imageBuffer).webp().toBuffer();
+            return meta.format === 'webp' ? imageBuffer : await sharp(imageBuffer, {failOn: 'none', unlimited: true}).webp().toBuffer();
         } catch(err) {
             console.log("CONVERT IMAGE TYPE ERROR: ", err);
             throw {
