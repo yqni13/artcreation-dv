@@ -1,4 +1,4 @@
-const Secrets = require('../../utils/secrets.util');
+const Secrets = require('../../utils/secrets.utils');
 const { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3')
 const { UnexpectedApiResponseException } = require('../../utils/exceptions/api.exception');
 

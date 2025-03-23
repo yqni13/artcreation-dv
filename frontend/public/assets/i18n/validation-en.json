@@ -2,6 +2,7 @@
     "validation": {
         "backend": {
             "data": {
+                "auth-invalid-id": "The login identifier is invalid. Please try again later or contact support.",
                 "auth-invalid-pass": "The login password is invalid. Please try again later or contact support.",
                 "auth-invalid-user": "The login user is invalid. Please try again later or contact support.",
                 "auth-jwt-expiration": "The session expired after 30 minutes.",

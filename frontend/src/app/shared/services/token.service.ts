@@ -1,24 +1,42 @@
-import { Injectable } from "@angular/core";
-import { TokenOptions } from "../enums/token-options.enum";
+import { inject, Injectable, PLATFORM_ID } from "@angular/core";
+import { TokenOption } from "../enums/token-option.enum";
+import { isPlatformBrowser } from "@angular/common";
 
 @Injectable({
     providedIn: 'root'
 })
 export class TokenService {
 
-    setToken(key: TokenOptions, token: string) {
-        sessionStorage.setItem('artcreation-dv_' + key, token);
+    private identifier: string;
+    private readonly platformId = inject(PLATFORM_ID);
+
+    constructor() {
+        this.identifier = 'artcreation-dv_';
     }
 
-    getToken(key: TokenOptions): string | null {
-        return sessionStorage.getItem('artcreation-dv_' + key);
+    setToken(key: TokenOption, token: string) {
+        if(this.checkSessionStorage()) {
+            sessionStorage.setItem(this.identifier + key, token);
+        }
     }
 
-    removeToken(key: TokenOptions) {
-        sessionStorage.removeItem('artcreation-dv_' + key);
+    getToken(key: TokenOption): string | null {
+        return this.checkSessionStorage() ? sessionStorage.getItem(this.identifier + key) : null;
+    }
+
+    removeToken(key: TokenOption) {
+        if(this.checkSessionStorage()) {
+            sessionStorage.removeItem(this.identifier + key);
+        }
     }
 
     clearSession() {
-        sessionStorage.clear();
+        if(this.checkSessionStorage()) {
+            sessionStorage.clear();
+        }
+    }
+
+    private checkSessionStorage(): boolean {
+        return isPlatformBrowser(this.platformId) ? true : false;
     }
 }
