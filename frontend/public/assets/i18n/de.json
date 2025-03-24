@@ -24,6 +24,7 @@
             "prints": "Kopien"
         },
         "unavailable": {
+            "db-data-404": "Keine Daten gefunden.",
             "text": "Diese Komponente ist momentan eine Baustelle und wird so bald wie möglich zur Verfügung stehen.",
             "title": "Nicht verfügbar"
         }

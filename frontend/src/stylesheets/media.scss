@@ -128,6 +128,10 @@
             background-position-x: center!important;
             background-position-y: 80%!important;
 
+            .artdv-author {
+                width: calc(100% - var(--view-nav-width));
+            }
+
             .artdv-gallerydetails-img-wrapper {
                 margin: 0 0 calc((1000px - 100vh) * 0.5) 0!important;
             }
@@ -406,6 +410,10 @@
             height: 100vh!important;
             background-position-x: center!important;
             background-position-y: 80%!important;
+
+            .artdv-author {
+                width: calc(100% - var(--view-nav-width));
+            }
 
             $img-widthborder-wrapper: 10px;
             $img-widthborder-img: 2px;
@@ -695,6 +703,11 @@
             background-position-x: center!important;
             background-position-y: -50px!important;
 
+            .artdv-author {
+                width: 100%;
+                margin-bottom: var(--view-nav-width);
+            }
+
             $img-widthborder-wrapper: 10px;
             $img-widthborder-img: 2px;
             $img-widthpadding-img: 25px;
@@ -818,7 +831,7 @@
 
             h3 {
                 margin: 0.6vw 0;
-                font-size: 4.75vw;
+                font-size: sass.$font-footer-header;
                 padding-left: sass.$comp-padding-small;
             }
             a {
@@ -826,7 +839,7 @@
             }
             span,
             a {
-                font-size: 2.2vw;
+                font-size: sass.$font-footer-link;
             }
             i {
                 top:0.55vw;
@@ -835,17 +848,18 @@
                 aspect-ratio: 1 / 1;
             }
         }
+        
         .artdv-footer-links {
             width: 55%!important;
 
             h4,
             a,
             span {
-                font-size: 2.2vw;
+                font-size: sass.$font-footer-link;
             }
 
             i {
-                width: 2.2vw;
+                width: 2.4vw;
             }
         }
     }
@@ -881,6 +895,11 @@
 
 // 500px > width < 768px
 @media screen and (width <= sass.$device-phone-landscape) {
+    section {
+        $modified-nav-height: 350px;
+        min-height: calc(100vh - $modified-nav-height - var(--view-nav-width))!important;
+    }
+
     .artdv-home {
         .artdv-home-top-img {
             padding: sass.$comp-padding-small 0!important;
@@ -1093,9 +1112,38 @@
     }
 
     footer {
-        .artdv-footer-links {
+        flex-direction: column-reverse!important;
+        height: 350px!important;
+        .artdv-footer-credits {
+            width: 100%!important;
+            text-align: center;
+            h3 {
+                padding-left:0!important;
+            }
+            a {
+                padding-left: 3.5px!important;
+            }
             i {
-                bottom: calc(9px - 0.5vw);
+                left: 0;
+                width: 3vw;
+            }
+        }
+
+        .artdv-footer-links {
+            margin-top: sass.$comp-padding-small;
+            width: 100%!important;
+            ul {
+                li {
+                    padding: 2px 0!important;
+
+                    .artdv-footer-language-select {
+                        max-height: 25px;
+                    }
+                }
+            }
+            i {
+                width: 2.8vw;
+                margin-left: 4px!important;
             }
         }
     }
@@ -1197,7 +1245,7 @@
 
     .artdv-admingallerylist {
         .artdv-admingallerylist-list {
-            $margin-list: sass.$space50;
+            $margin-list: sass.$space15;
             margin: 0 $margin-list sass.$space50 $margin-list;
             
             .artdv-admingallerylist-list-element {
@@ -1336,39 +1384,6 @@
             i {
                 width: clamp(20px, 5.5vw, 35px);
                 aspect-ratio: 1 / 1;
-            }
-        }
-    }
-
-    footer {
-        flex-direction: column-reverse!important;
-        height: 300px!important;
-
-        .artdv-footer-credits {
-            width: 100%!important;
-            text-align: center;
-            h3 {
-                padding-left:0!important;
-            }
-            a {
-                padding-left: 3.5px!important;
-            }
-            i {
-                left: 0;
-            }
-        }
-
-        .artdv-footer-links {
-            margin-top: sass.$comp-padding-small;
-            width: 100%!important;
-            ul {
-                li {
-                    padding: 2px 0!important;
-
-                    .artdv-footer-language-select {
-                        max-height: 25px;
-                    }
-                }
             }
         }
     }

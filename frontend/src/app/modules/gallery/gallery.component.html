@@ -31,8 +31,8 @@
                 [activeGenre]="activeGenre"
             ></artdv-imgpreload>
         </div>
-        <div class="artdv-gallery-nodata" *ngIf="paintingsDisplayedByGenre.length === 0">
-            No paintings found for this genre.
+        <div class="artdv-gallery-nodata" *ngIf="modifiedList.length === 0">
+            {{'common.unavailable.db-data-404' | translate}}
         </div>
     </div>
 </section>

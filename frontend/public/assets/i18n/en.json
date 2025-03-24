@@ -24,6 +24,7 @@
             "prints": "Prints"
         },
         "unavailable": {
+            "db-data-404": "No data found.",
             "text": "This component is currently a construction site and will be available as soon as possible.",
             "title": "Not available"
         }
