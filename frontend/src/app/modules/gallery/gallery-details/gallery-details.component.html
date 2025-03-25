@@ -5,14 +5,13 @@
 ></artdv-imgfullscale>
 <section class="artdv-gallerydetails">
     <div class="artdv-gallerydetails-tools">
-        <div class="artdv-detail-tools back">
-            <i 
-                class="icon-GoBack artdv-back-arrow"
-                [attr.aria-disabled]="true"
-                (click)="navigateToGallery()"
-                (keydown.enter)="navigateToGallery()"
-            >back</i>
-        </div>
+        <button
+            class="artdv-detail-tools back"
+            [attr.aria-disabled]="true"
+            (click)="navigateToGallery()"
+        >
+            <i class="icon-GoBack artdv-back-arrow">back</i>
+        </button>
     </div>
     <div class="artdv-gallerydetails-img">
         <div class="artdv-gallerydetails-img-wrapper">
@@ -141,7 +140,6 @@
             </div>
         </div>
         
-                
         <div class="artdv-gallerydetails-order" *ngIf="artwork.price && artwork.price !== 0">
             <button
                 class="artdv-button-submit"

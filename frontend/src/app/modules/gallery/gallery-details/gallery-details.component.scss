@@ -10,7 +10,7 @@
     .artdv-detail-tools {
         width: 100%;
         max-height: 40px;
-        border: solid 1px var(--theme-submenu-route);
+        border: solid 1px sass.$color-rich-black;
         border-radius: 2.5px;
         cursor: pointer;
 
@@ -23,9 +23,10 @@
         height: 40px;
         line-height: 40px;
         margin-bottom: 5px;
+        background-color: transparent;
 
         .artdv-back-arrow {
-            color: var(--theme-submenu-route);
+            color: sass.$color-rich-black;
             text-transform: uppercase;
             text-decoration: none;
             font-size: 12px;
