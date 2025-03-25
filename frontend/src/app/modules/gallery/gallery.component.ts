@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { ArtType } from "../../shared/enums/art-type.enum";
-import { default as galleryData } from "../../shared/data/gallery-data.json";
-import { GalleryItemDEPRECATED } from "../../shared/interfaces/GalleryItems";
-import { ErrorService } from "../../shared/services/error.service";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FilterGalleryService } from "../../shared/services/filter-gallery.service";
 import { Router, RouterModule } from "@angular/router";
 import { ImgPreloadComponent } from "../../common/components/img-preload/img-preload.component";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 import { ArtGenre } from "../../shared/enums/art-genre.enum";
+import { GalleryAPIService } from "../../api/services/gallery.api.service";
+import { filter, Subscription, tap } from "rxjs";
+import { HttpObservationService } from "../../shared/services/http-observation.service";
+import { AuthService } from "../../shared/services/auth.service";
+import { GalleryItem } from "../../api/models/gallery-response.interface";
+import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
 
 
 @Component({
@@ -19,50 +20,70 @@ import { ArtGenre } from "../../shared/enums/art-genre.enum";
     imports: [
         CommonModule,
         ImgPreloadComponent,
+        LoadingAnimationComponent,
         RouterModule,
         TranslateModule
     ]
 })
-export class GalleryComponent implements OnInit, AfterViewInit {
+export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('gallerySection') gallerySection!: ElementRef;
 
-    protected paintingsRaw: GalleryItemDEPRECATED[];
-    protected paintingsFiltered: Map<string, GalleryItemDEPRECATED[]>;
-    protected paintingsDisplayedByGenre: GalleryItemDEPRECATED[];
+    protected galleryList: GalleryItem[];
+    protected modifiedList: GalleryItem[];
     protected artGenres = ArtGenre;
     protected activeGenre: string;
     protected reloadFlag: boolean;
+    protected isLoadingResponse: boolean;
+
+    private currentNavigation: any;
+    private subscriptionHttpObservationFindAll$: Subscription;
+    private subscriptionHttpObservationError$: Subscription;
+    private delay: any;
 
     constructor(
         private router: Router,
         private cdRef: ChangeDetectorRef,
-        private errorService: ErrorService,
-        private translate: TranslateService,
-        private filterGalleryService: FilterGalleryService
+        private readonly auth: AuthService,
+        private readonly galleryApi: GalleryAPIService,
+        private readonly httpObservation: HttpObservationService
     ) {
-        try {
-            this.paintingsRaw = galleryData;
-        } catch(err) {
-            this.errorService.handle(err);
-            this.paintingsRaw = [];
-        }        
-        
+        this.galleryList = [];
+        this.modifiedList = [];
         this.activeGenre = 'gallery';
-        this.paintingsDisplayedByGenre = []
-        this.paintingsFiltered = new Map<string, GalleryItemDEPRECATED[]>(); 
         this.reloadFlag = true;
+        this.isLoadingResponse = false;
 
-        const currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;        
-        if(currentNavigation !== undefined && currentNavigation !== null) {
-            Object.values(currentNavigation as {genre: string}).map((val) => {
-                this.activeGenre = val || 'gallery';
-            });
-        }
+        this.subscriptionHttpObservationFindAll$ = new Subscription();
+        this.subscriptionHttpObservationError$ = new Subscription();
+        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+        this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;        
     }
     
     ngOnInit() {
-        this.paintingsFiltered = this.filterGalleryService.filterByGenre();
+        this.subscriptionHttpObservationFindAll$ = this.httpObservation.galleryFindAllStatus$.pipe(
+            filter((x) => x !== null && x !== undefined),
+            tap((isStatus200: boolean) => {
+                if(isStatus200) {
+                    this.httpObservation.setGalleryFindAllStatus(false);
+                    this.isLoadingResponse = false;
+                }
+            })
+        ).subscribe();
+
+        this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
+            filter((x) => x),
+            tap(async (response: any) => {
+                if(this.auth.getExceptionList().includes(response.error.headers.error)) {
+                    await this.delay(500); // delay after snackbar displays
+                    this.httpObservation.setErrorStatus(false);
+                    this.isLoadingResponse = false;
+                }
+            })
+        ).subscribe();
+
+        this.initGallery();
     }
     
     ngAfterViewInit() {
@@ -73,29 +94,43 @@ export class GalleryComponent implements OnInit, AfterViewInit {
             }
         };
 
-        this.selectGenre(this.activeGenre);
+        // this.selectGenre(this.activeGenre); // deprecated
         this.cdRef.detectChanges();
 
         // TODO(yqni13): scrolling via custom scrollbar inside gallery component does not work on lazy/pre loads
     }
 
-    navigateToDetail(id: string) {
-        this.router.navigate(['gallery/detail', id], { state: {genre: this.activeGenre}});
+    initGallery() {
+        this.isLoadingResponse = true;
+        this.galleryApi.sendGetAllRequest().subscribe(data => {
+            this.galleryList = data.body?.body.data ?? [];
+            this.modifiedList = this.galleryList;
+            // navigate back from details, get to filtered situation from before
+            if(this.currentNavigation !== undefined && this.currentNavigation !== null) {
+                Object.values(this.currentNavigation as {genre: string}).map((val) => {
+                    this.onGenreChange(val || 'gallery');
+                });
+            }
+        })
     }
 
-    selectGenre(genre: string) {
+    onGenreChange(genre: string) {
         this.activeGenre = '';
         this.reloadFlag = false;
-
         setTimeout(() => {
-            this.activeGenre = genre;        
-            if (genre === 'gallery') {
-                this.paintingsDisplayedByGenre = this.paintingsRaw || [];
+            this.activeGenre = genre;
+            if(genre !== 'gallery') {
+                this.modifiedList = this.galleryList.filter(data => data.art_genre === genre);
             } else {
-                this.paintingsDisplayedByGenre = this.paintingsFiltered.get(this.activeGenre) || [];
-            }           
+                this.modifiedList = this.galleryList;
+            }
             // necessary to destroy and rebuild img-preload comp, otherwise error of picture preload
             this.reloadFlag = true;
         }, 0);
+    }
+
+    ngOnDestroy() {
+        this.subscriptionHttpObservationFindAll$.unsubscribe();
+        this.subscriptionHttpObservationError$.unsubscribe();
     }
 }

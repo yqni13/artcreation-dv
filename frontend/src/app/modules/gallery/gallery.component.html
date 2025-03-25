@@ -2,32 +2,32 @@
     <header>
         <h1>{{'modules.gallery.preview.title' | translate}}</h1>
     </header>
-    <nav class="artdv-gallery-nav">
+    <nav class="artdv-gallery-nav" *ngIf="!isLoadingResponse">
         <div class="artdv-gallery-nav-row">
             <a
                 class="artdv-gallery-nav-type"
                 [attr.aria-disabled]="true"
-                (click)="selectGenre('gallery')"
-                (keydown.enter)="selectGenre('gallery')"
+                (click)="onGenreChange('gallery')"
+                (keydown.enter)="onGenreChange('gallery')"
                 [ngClass]="activeGenre === 'gallery' ? 'artdv-active-route' : ''"
             >{{'modules.gallery.preview.gallery' | translate}}</a>
         </div>
         <div class="artdv-gallery-nav-row">
             <a
-                *ngFor="let nav of artGenres | keyvalue"
+                *ngFor="let genre of artGenres | keyvalue"
                 class="artdv-gallery-nav-type"
                 [attr.aria-disabled]="true"
-                (click)="selectGenre(nav.value)"
-                (keydown.enter)="selectGenre(nav.value)"
-                [ngClass]="activeGenre === nav.key ? 'artdv-active-route' : ''"
-            >{{'shared.enum.art-genre.' + nav.key | translate}}</a>
+                (click)="onGenreChange(genre.value)"
+                (keydown.enter)="onGenreChange(genre.value)"
+                [ngClass]="activeGenre === genre.value ? 'artdv-active-route' : ''"
+            >{{'shared.enum.art-genre.' + genre.key | translate}}</a>
         </div>
     </nav>
     <div class="artdv-gallery-content">
-        <div class="artdv-gallery-cards" *ngFor="let card of paintingsDisplayedByGenre">
+        <div class="artdv-gallery-cards" *ngFor="let artwork of modifiedList">
             <artdv-imgpreload
                 *ngIf="reloadFlag"
-                [card]="card"
+                [entry]="artwork"
                 [activeGenre]="activeGenre"
             ></artdv-imgpreload>
         </div>
@@ -35,4 +35,5 @@
             {{'common.unavailable.db-data-404' | translate}}
         </div>
     </div>
+    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
 </section>
