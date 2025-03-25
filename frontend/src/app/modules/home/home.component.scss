@@ -6,12 +6,17 @@ header {
     text-align: center;
     align-items: center;
 
-    background-image: url("/assets/color-bg3.webp");
-    background-size: 60vw;
+    background-image: url("/assets/background/home_bg_01.webp");
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #e5e5e5;
-    color: sass.$color-rich-black;
+    background-color: transparent;
+    color: sass.$color-ice-white;
+
+    .artdv-home-header-wrapper {
+        border-radius: 5px;
+        backdrop-filter: blur(1px);
+    }
     
     h1 {
         font-size: clamp(35px, 7vw, 90px);

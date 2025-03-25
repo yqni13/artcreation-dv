@@ -1,10 +1,15 @@
 <section class="artdv-home">
     <header>
-        <h1>{{'modules.home.title' | translate}}</h1>
-        <span>Daniela Varga</span>
+        <div class="artdv-home-header-wrapper">
+            <h1>{{'modules.home.title' | translate}}</h1>
+            <span>Daniela Varga</span>
+        </div>
     </header>
     <artdv-carousel [slides]="slides"></artdv-carousel>
     <div class="artdv-home-top-img">
         <img src="assets/background/home_bg_02.jpg" alt="404-picture-not-found">
+        <span class="artdv-author">
+            <a href="{{authorLink}}" target="_blank">{{'shared.assets.author' | translate}}</a>
+        </span>
     </div>
 </section>

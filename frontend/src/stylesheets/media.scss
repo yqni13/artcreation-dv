@@ -16,6 +16,10 @@
         margin: 0 0 0 calc(var(--view-nav-width) + $navbar-border);
     }
 
+    .artdv-author {
+        width: calc(100% - var(--view-nav-width));
+    }
+
     .artdv-home {
         header {
             min-height: 500px;
@@ -128,10 +132,6 @@
             background-position-x: center!important;
             background-position-y: 80%!important;
 
-            .artdv-author {
-                width: calc(100% - var(--view-nav-width));
-            }
-
             .artdv-gallerydetails-img-wrapper {
                 border-width: 15px;
                 top: 20%;
@@ -159,6 +159,12 @@
                 max-width: 350px;
                 aspect-ratio: 1 / 1;
             }
+        }
+    }
+
+    .artdv-login {
+        .artdv-author {
+            bottom: 0;
         }
     }
 
@@ -291,6 +297,10 @@
         margin: 0 0 0 var(--view-nav-width);
     }
 
+    .artdv-author {
+        width: calc(100% - var(--view-nav-width));
+    }
+
     .artdv-home {
         header {
             min-height: 500px;
@@ -409,10 +419,6 @@
             background-position-x: center!important;
             background-position-y: 80%!important;
 
-            .artdv-author {
-                width: calc(100% - var(--view-nav-width));
-            }
-
             .artdv-gallerydetails-img-wrapper {
                 border-width: 15px;
             }
@@ -439,6 +445,12 @@
                 max-width: 300px;
                 aspect-ratio: 1 / 1;
             }
+        }
+    }
+
+    .artdv-login {
+        .artdv-author {
+            bottom: 0;
         }
     }
 
@@ -543,6 +555,11 @@
                 top: 20%;
             }
         }
+        .artdv-login {
+            .artdv-login-input {
+                max-height: 300px!important;
+            }
+        }
     }
 
     @media screen and (height <= 700px) {
@@ -553,6 +570,16 @@
                     top: 17%;
                     border-width: 10px;
                 }
+            }
+        }
+
+        .artdv-login {
+            header h1 {
+                margin: sass.$space15!important;
+            }
+            .artdv-login-input {
+                max-height: 250px!important;
+                min-height: 175px!important;
             }
         }
     }
@@ -575,6 +602,10 @@
         min-height: calc(100% - (400px + var(--view-nav-width)))!important;
     }
 
+    .artdv-author {
+        width: 100%;
+    }
+
     .artdv-home {
         header {
             min-height: 450px;
@@ -586,6 +617,10 @@
         .artdv-home-top-img {
             img {
                 width: 75vw!important;
+            }
+
+            .artdv-author {
+                width: 100%!important;
             }
         }
     }
@@ -623,6 +658,12 @@
             img {
                 max-height: 600px;
             }
+        }
+    }
+
+    .artdv-admin {
+        .artdv-author {
+            width: 100%;
         }
     }
 
@@ -690,7 +731,6 @@
             background-position-y: -50px!important;
 
             .artdv-author {
-                width: 100%;
                 margin-bottom: var(--view-nav-width);
             }
 
@@ -724,6 +764,15 @@
                 max-width: 300px;
                 aspect-ratio: 1 / 1;
             }
+        }
+    }
+
+    .artdv-login {
+        section {
+            height: calc(100vh - var(--view-nav-width))!important;
+        }
+        .artdv-author {
+            bottom: calc(var(--view-nav-width) * (-1));
         }
     }
 
@@ -911,13 +960,6 @@
             .triple-inner {
                 width: 100%;
                 border: none!important;
-            }
-
-            .artdv-admin-option {
-
-                .artdv-author {
-                    width: calc(100% - var(--view-nav-width));
-                }
             }
         }
     }
@@ -1235,6 +1277,14 @@
                 width: 70vw!important;
                 height: 70vw!important;
             }
+        }
+    }
+
+    .artdv-login {
+        .artdv-login-input {
+            height: 33vh!important;
+            padding: 0 sass.$space15!important;
+            margin: sass.$space25!important;
         }
     }
 
