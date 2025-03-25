@@ -133,12 +133,8 @@
             }
 
             .artdv-gallerydetails-img-wrapper {
-                margin: 0 0 calc((1000px - 100vh) * 0.5) 0!important;
-            }
-
-            img {
-                max-width: 800px!important;
-                max-height: calc(250px + ((100vw - 1440px) * 0.3))!important;
+                border-width: 15px;
+                top: 20%;
             }
         }
         .artdv-gallerydetails-divider {
@@ -269,17 +265,19 @@
                 }
             }
         }
+        .artdv-gallerydetails {
+            .artdv-gallerydetails-img-wrapper {
+                top: 20%;
+            }
+        }
     }
 
     @media screen and (height <= 600px) {
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
                 .artdv-gallerydetails-img-wrapper {
-                    margin: 0 0 calc((1000px - 100vh) * 0.25) 0!important;
-                }
-                img {
-                    max-height: 45vh!important;
-                    padding: 20px 10px!important;
+                    top: 17%;
+                    border-width: 10px;
                 }
             }
         }
@@ -415,22 +413,8 @@
                 width: calc(100% - var(--view-nav-width));
             }
 
-            $img-widthborder-wrapper: 10px;
-            $img-widthborder-img: 2px;
-            $img-widthpadding-img: 25px;
-            
-            $gap-sum: calc(($img-widthpadding-img * 2) 
-            + ($img-widthborder-img * 2) 
-            + ($img-widthborder-wrapper * 2) 
-            + (clamp(175px, 18vw, 300px) * 2));
-
             .artdv-gallerydetails-img-wrapper {
-                margin: 0 0 calc((1000px - 100vh) * 0.05) 0!important;
-            }
-
-            img {
-                max-width: calc(100vw - $gap-sum)!important;
-                max-height: 33vh!important;
+                border-width: 15px;
             }
         }
         .artdv-gallerydetails-divider {
@@ -554,6 +538,11 @@
                 }
             }
         }
+        .artdv-gallerydetails {
+            .artdv-gallerydetails-img-wrapper {
+                top: 20%;
+            }
+        }
     }
 
     @media screen and (height <= 700px) {
@@ -561,11 +550,8 @@
             .artdv-gallerydetails-img {
                 background-position-y: 85%!important;
                 .artdv-gallerydetails-img-wrapper {
-                    margin: 0 0 calc((1000px - 100vh) * 0.15) 0!important;
-                }
-                img {
-                    max-height: 38vh!important;
-                    padding: 20px 10px!important;
+                    top: 17%;
+                    border-width: 10px;
                 }
             }
         }
@@ -708,22 +694,9 @@
                 margin-bottom: var(--view-nav-width);
             }
 
-            $img-widthborder-wrapper: 10px;
-            $img-widthborder-img: 2px;
-            $img-widthpadding-img: 25px;
-            
-            $gap-sum: calc(($img-widthpadding-img * 2) 
-            + ($img-widthborder-img * 2) 
-            + ($img-widthborder-wrapper * 2) 
-            + (12vw * 2));
-
             .artdv-gallerydetails-img-wrapper {
-                margin: 0 0 calc((1000px - 97vh) * 0.5) 0!important;
-            }
-
-            img {
-                max-width: calc(100vw - $gap-sum)!important;
-                max-height: 30vh!important;
+                border-width: 10px;
+                top: 18%;
             }
         }
         .artdv-gallerydetails-divider {
@@ -868,12 +841,6 @@
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
                 background-position-y: -50px!important;
-                .artdv-gallerydetails-img-wrapper {
-                    margin: 0 0 calc((100vh - 1000px) * 0.2) 0!important;
-                }
-                img {
-                    max-height: 28vh!important;
-                }
             }
         }
     }
@@ -881,13 +848,6 @@
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
                 background-position-y: calc(80% - 8vh)!important;
-                .artdv-gallerydetails-img-wrapper {
-                    margin: 0 0 calc((1000px - 99vh) * 0.2) 0!important;
-                }
-                img {
-                    max-height: 31vh!important;
-                    padding: 20px 10px!important;
-                }
             }
         }
     }
@@ -1026,23 +986,6 @@
             height: 100vh!important;
             background-position-x: center!important;
             background-position-y: -50px!important;
-
-            $img-widthborder-wrapper: 10px;
-            $img-widthborder-img: 2px;
-            $img-widthpadding-img: 25px;
-            
-            $gap-sum: calc(($img-widthpadding-img * 2) 
-            + ($img-widthborder-img * 2) 
-            + ($img-widthborder-wrapper * 2) 
-            + (sass.$comp-padding-medium * 2));
-
-            .artdv-gallerydetails-img-wrapper {
-                margin: 0 0 150px 0!important;
-            }
-
-            img {
-                max-width: calc(100vw - $gap-sum)!important;
-            }
         }
         .artdv-gallerydetails-divider {
             width: 70%!important;
@@ -1152,13 +1095,6 @@
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
                 background-position-y: calc(80% - 8vw)!important;
-                .artdv-gallerydetails-img-wrapper {
-                    margin: 0 0 calc((1000px - 99vh) * 0.2) 0!important;
-                }
-                img {
-                    max-height: 28vh!important;
-                    padding: 15px 10px!important;
-                }
             }
         }
     }
@@ -1272,23 +1208,6 @@
             height: 100vh!important;
             background-position-x: center!important;
             background-position-y: -50px!important;
-
-            $img-widthborder-wrapper: 10px;
-            $img-widthborder-img: 2px;
-            $img-widthpadding-img: 25px;
-
-            $gap-sum: calc(($img-widthpadding-img * 2) 
-            + ($img-widthborder-img * 2) 
-            + ($img-widthborder-wrapper * 2) 
-            + (sass.$comp-padding-small * 2));
-
-            .artdv-gallerydetails-img-wrapper {
-                margin: 0 0 150px 0!important;
-            }
-
-            img {
-                max-width: calc(100vw - $gap-sum)!important;
-            }
         }
     }
 

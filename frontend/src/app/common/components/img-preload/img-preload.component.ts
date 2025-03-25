@@ -19,8 +19,8 @@ import { environment } from "../../../../environments/environment";
                 class="artdv-img-preview"
                 src="{{storageDomain + '/' + entry.thumbnail_path}}" 
                 alt="404-picture-not-found"
-                (click)="navigateToDetail(entry.gallery_id, entry.reference_nr)"
-                (keydown.enter)="navigateToDetail(entry.gallery_id, entry.reference_nr)"
+                (click)="navigateToDetails(entry.reference_nr)"
+                (keydown.enter)="navigateToDetails(entry.reference_nr)"
                 [attr.aria-disabled]="true"
             >
             <img *ngIf="!loaded" class="artdv-loading" src="/assets/loading.gif" alt="loading...">
@@ -41,7 +41,9 @@ export class ImgPreloadComponent {
     protected loaded: boolean;
     protected storageDomain: string;
 
-    constructor(private router: Router) {
+    constructor(
+        private readonly router: Router
+    ) {
         this.loaded = false;
         this.storageDomain = environment.STORAGE_URL;
     }
@@ -50,11 +52,11 @@ export class ImgPreloadComponent {
         this.loaded = flag;
     }
 
-    navigateToDetail(id: string, refNr: string) {
+    navigateToDetails(refNr: string) {
         const stateData = {
-            id: id,
-            genre: this.activeGenre
-        };
+            activeGenre: this.activeGenre,
+            artwork: this.entry
+        }
         this.router.navigate(['gallery/detail', refNr], { state: stateData });
     }
 }

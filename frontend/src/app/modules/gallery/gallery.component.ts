@@ -94,7 +94,6 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
             }
         };
 
-        // this.selectGenre(this.activeGenre); // deprecated
         this.cdRef.detectChanges();
 
         // TODO(yqni13): scrolling via custom scrollbar inside gallery component does not work on lazy/pre loads

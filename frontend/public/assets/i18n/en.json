@@ -110,19 +110,18 @@
             "details": {
                 "button": "Order",
                 "content": {
-                    "not-available": "not available",
                     "request-price": "request price"
                 },
                 "header": {
-                    "comment": "Comment",
                     "date": "Publication",
                     "dimensions": "Dimensions",
+                    "genre": "Genre",
+                    "medium": "Medium",
                     "price": "Price",
                     "reference": "Reference",
-                    "tags": "Keywords",
+                    "sale-status": "Availability",
                     "technique": "Technique",
-                    "title": "Title",
-                    "type": "Type"
+                    "title": "Title"
                 }
             },
             "preview": {

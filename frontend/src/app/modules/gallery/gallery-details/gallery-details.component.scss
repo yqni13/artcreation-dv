@@ -66,6 +66,11 @@
     #card-referenceNr span {
         font-size: 14px;
     }
+
+    #card-sale-status span {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 }
 
 .artdv-gallerydetails-divider {
@@ -74,14 +79,16 @@
     margin: 15px 0;
 }
 
-.artdv-gallerydetails-sold {
-    text-transform: uppercase;
-    font-weight: bold;
+.artdv-artwork-unavailable {
     font-size: 14px;
-    color: sass.$color-light-grey;
+    color: var(--theme-snackbar-error);
     padding: 2px 8px;
-    border: solid 1px sass.$color-light-grey;
+    border: solid 1px var(--theme-snackbar-error);
     border-radius: 4px;
+}
+
+.artdv-artwork-available {
+    color: var(--theme-snackbar-success);
 }
 
 .artdv-gallerydetails-order {
@@ -93,37 +100,55 @@
 .artdv-gallerydetails-img {
     display: flex;
     justify-content: center;
-    background-image: url(/assets/art-wall.jpg);
+    background-image: url(/assets/background/art-wall.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
     align-items: center;
+    
+    .artdv-author {
+        position: absolute;
+        display: flex;
+        align-self: end;
+        justify-content: left;
+
+        a {
+            padding: sass.$space5 sass.$space15;
+            text-decoration: none;
+            cursor: help;
+            font-size: 13px;
+            color: sass.$color-rich-black;
+            backdrop-filter: blur(1px);
+        }
+    }
 }
 
-$img-widthborder-wrapper: 10px;
+
+$img-widthborder-wrapper: 15px;
 $img-widthborder-img: 2px;
-$img-widthpadding-img: 25px;
+$img-widthpadding-img: 1px;
 
 .artdv-gallerydetails-img-wrapper {
     overflow: hidden;
-    position:relative;
+    position: absolute;
     padding: 0;
-    margin: 0 0 170px 0;
-    border:solid $img-widthborder-wrapper #482b0c; 
+    border-style: solid;
+    border-color: #482b0c; 
     box-shadow:-3px -3px 12px #999;
 
     img {
         border:solid 70px white;
         box-shadow:-3px -3px 12px #999;
-        display:block;
-        background-color: #e0d6cc;
-        padding: 40px $img-widthpadding-img;
-        margin:0;
-        border-top:solid $img-widthborder-img #aaa;
-        border-left:solid $img-widthborder-img #aaa;
-        border-bottom:solid $img-widthborder-img #ccc;
-        border-right:solid $img-widthborder-img #ccc;
-        
+        display: block;
+        background-color: transparent;
+        padding: $img-widthpadding-img;
+        margin: 0;
+        border-top: solid $img-widthborder-img #aaa;
+        border-left: solid $img-widthborder-img #aaa;
+        border-bottom: solid $img-widthborder-img #ccc;
+        border-right: solid $img-widthborder-img #ccc;
+        max-width: 60vw;
+        max-height: 40vh;        
         cursor: zoom-in;
     }
 }

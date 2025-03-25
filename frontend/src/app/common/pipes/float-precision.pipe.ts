@@ -7,10 +7,11 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class FloatPrecisionPipe implements PipeTransform{
 
-    transform(value: number | null | undefined, decimalPlaces: number): number | null {
+    transform(value: number | string | null | undefined, decimalPlaces: number): string | null {
         if(decimalPlaces < 0 || decimalPlaces > 20) {
             decimalPlaces = 0;
         }
-        return value ? ((value as any).toFixed(decimalPlaces) as number) : null;
+
+        return value ? Number.parseFloat(value as string).toFixed(decimalPlaces) : null;
     }
 }

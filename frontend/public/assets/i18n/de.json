@@ -110,19 +110,18 @@
             "details": {
                 "button": "Bestellen",
                 "content": {
-                    "not-available": "nicht verfügbar",
                     "request-price": "Preis anfragen"
                 },
                 "header": {
-                    "comment": "Kommentar",
                     "date": "Erscheinungsjahr",
                     "dimensions": "Abmessungen",
+                    "genre": "Genre",
+                    "medium": "Material",
                     "price": "Preis",
                     "reference": "Referenz",
-                    "tags": "Schlüsselwörter",
+                    "sale-status": "Verfügbarkeit",
                     "technique": "Technik",
-                    "title": "Titel",
-                    "type": "Form"
+                    "title": "Titel"
                 }
             },
             "preview": {
