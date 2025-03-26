@@ -1,16 +1,18 @@
-import { Component, HostListener, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, ParamMap, Router, RouterModule } from "@angular/router";
-import { GalleryItemDEPRECATED } from "../../../shared/interfaces/GalleryItems";
-import { ArtType } from "../../../shared/enums/art-type.enum";
+import { Component, HostListener, OnInit } from "@angular/core";
+import { Router, RouterModule } from "@angular/router";
 import { DataShareService } from "../../../shared/services/data-share.service";
-import { FilterGalleryService } from "../../../shared/services/filter-gallery.service";
-import { Subscription } from "rxjs";
 import { CommonModule } from "@angular/common";
-import { DimensionsFormatPipe } from "../../../common/pipes/dimensions-format.pipe";
 import { FloatPrecisionPipe } from "../../../common/pipes/float-precision.pipe";
 import { ImgFullscaleComponent } from "../../../common/components/img-fullscale/img-fullscale.component";
 import { SubjectOptions } from "../../../shared/enums/contact-subject.enum";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
+import { GalleryItem } from "../../../api/models/gallery-response.interface";
+import { LowerUpperTextPipe } from "../../../common/pipes/lower-upper.pipe";
+import { environment } from "../../../../environments/environment";
+import { ArtMedium } from "../../../shared/enums/art-medium.enum";
+import { ArtTechnique } from "../../../shared/enums/art-technique.enum";
+import { SaleStatus } from "../../../shared/enums/sale-status.enum";
+import { ArtGenre } from "../../../shared/enums/art-genre.enum";
 
 @Component({
     selector: 'app-gallery-details',
@@ -18,14 +20,14 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
     styleUrl: './gallery-details.component.scss',
     imports: [
         CommonModule,
-        DimensionsFormatPipe,
         FloatPrecisionPipe,
         ImgFullscaleComponent,
+        LowerUpperTextPipe,
         RouterModule,
         TranslateModule,
     ]
 })
-export class GalleryDetailsComponent implements OnInit, OnDestroy {
+export class GalleryDetailsComponent implements OnInit {
 
     @HostListener('window:keydown', ['$event'])
     closeOnEscape(event: KeyboardEvent) {
@@ -34,56 +36,60 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
         }
     }
 
-    protected card: GalleryItemDEPRECATED | null;
+    protected artGenre = ArtGenre;
+    protected artMedium = ArtMedium;
+    protected artTechnique = ArtTechnique;
+    protected saleStatus = SaleStatus;
 
-    protected artworkOption = ArtType;
+    protected artwork: GalleryItem;
+    protected artworkList: GalleryItem[];
+    protected authorLink: string;
     protected subject = SubjectOptions;
     protected galleryGenre: string;
     protected isFullscale: boolean;
+    protected isLoadingResponse: boolean;
+    protected storageDomain: string;
 
-    private id: string | null;
-    private subscription$: Subscription;
+    private currentNavigation: any;
 
     constructor(
-        private filterGalleryService: FilterGalleryService,
         private dataShareService: DataShareService,
-        private translate: TranslateService,
-        private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
     ) {
-        this.card = {
-            title: null,
-            referenceNr: '',
-            genre: 'gallery',
-            tags: null,
-            price: null,
-            type: ArtType.originalORprint,
-            comment: null,
-            technique: null,
-            measurementsWxH: null,
-            date: null,
-            path: '',
-            pathResized: ''
-        };
+        this.artwork = {
+            gallery_id: '',
+            reference_nr: '',
+            image_path: '',
+            thumbnail_path: '',
+            title: '',
+            sale_status: '',
+            price: undefined,
+            dimensions: '',
+            art_genre: '',
+            art_medium: '',
+            art_technique: '',
+            publication_year: new Date().getFullYear(),
+            created_on: '',
+            last_modified: ''
+        }
+        this.artworkList = [];
+        this.authorLink = 'https://pixabay.com/de/users/stocksnap-894430/';
         this.galleryGenre = 'gallery';
         this.isFullscale = false;
-        this.id = '';
-        this.subscription$ = new Subscription();
+        this.isLoadingResponse = false;
+        this.storageDomain = environment.STORAGE_URL;
 
         // to get routing state, result only returns in constructor
-        const currentNavigation = this.router.getCurrentNavigation()?.extras.state as {genre: string};
-        if(currentNavigation !== undefined && currentNavigation !== null) {
-            Object.values(currentNavigation).map((val) => {
-                this.galleryGenre = val || 'gallery';
-            });
-        }
+        this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as {activeGenre: string, artwork: GalleryItem};
+        
     }
 
     ngOnInit() {
-        this.subscription$ = this.route.paramMap.subscribe((params: ParamMap) => {
-            this.id = params.get('id');
-            this.card = this.filterGalleryService.filterByRefNr(this.id);
-        })        
+        if(this.currentNavigation !== undefined && this.currentNavigation !== null) {
+            this.galleryGenre = this.currentNavigation.activeGenre;
+            this.artwork = this.currentNavigation.artwork;
+            this.artworkList = this.currentNavigation.artworkList;
+        }
     }
     
     navigateFullscale(flag: boolean) {
@@ -91,21 +97,16 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
     }
 
     navigateToGallery() {
-        this.router.navigate(['gallery'], { state: { genre: this.galleryGenre }});
+        this.router.navigate(['gallery'], { state: { genre: this.galleryGenre, artworkList: this.artworkList }});
     }
 
     navigateToContactWithData(subject: SubjectOptions) {
         const data = {
-            'referenceNr': this.card?.referenceNr, 
-            'type': this.card?.type,
+            'referenceNr': this.artwork?.reference_nr, 
             'subject': subject,
-            'requestPrice': this.card?.price === 0 && this.card?.type !== ArtType.originalORprint ? true : false
+            'requestPrice': this.artwork.price === 0 ? true : false
         };
         
         this.dataShareService.setSharedData(data);
-    }
-
-    ngOnDestroy() {
-        this.subscription$.unsubscribe();
     }
 }

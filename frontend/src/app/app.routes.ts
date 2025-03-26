@@ -11,7 +11,6 @@ import { ShippingComponent } from './modules/shipping/shipping.component';
 import { PrintsComponent } from './modules/prints/prints.component';
 import { GalleryDetailsComponent } from './modules/gallery/gallery-details/gallery-details.component';
 import { LoginComponent } from './modules/login/login.component';
-import { AdminComponent } from './modules/admin/admin.component';
 
 export const routes: Routes = [
     {
@@ -40,7 +39,7 @@ export const routes: Routes = [
         data: { title: 'gallery', showInNavbar: true, icon: 'icon-Gallery', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
-        path: 'gallery/detail/:id',
+        path: 'gallery/detail/:refNr',
         component: GalleryDetailsComponent,
         data: { title: 'Details', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
     },    

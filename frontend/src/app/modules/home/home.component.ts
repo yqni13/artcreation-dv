@@ -19,12 +19,14 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 export class HomeComponent implements OnInit {
 
     protected slides: NewsUpdateStorage[];
+    protected authorLink: string;
 
     constructor(
         private filterNewsService: FilterNewsService,
         private translate: TranslateService
     ) {
         this.slides = [];
+        this.authorLink = 'https://pixabay.com/de/users/alexey_marcov-8003626/';
     }
     
     ngOnInit() {

@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { GalleryItemDEPRECATED } from "../interfaces/GalleryItems";
 import { ArtType } from "../enums/art-type.enum";
-import { default as galleryData } from "../data/gallery-data.json";
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +15,7 @@ export class ReferenceCheckService {
         this.referenceCollection = {};
 
         try {
-            this.setSource(galleryData);
+            this.setSource([]); // TODO(yqni13): adapt or remove code
             this.setReferenceCollection();
         } catch(err) {
             console.log('Reference Service failed to initialize necessary data.', err);

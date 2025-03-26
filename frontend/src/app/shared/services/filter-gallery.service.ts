@@ -1,6 +1,5 @@
 import { inject, Injectable } from "@angular/core";
 import { GalleryItemDEPRECATED } from "../interfaces/GalleryItems";
-import { default as galleryData } from "../data/gallery-data.json";
 import { ErrorService } from "./error.service";
 import { ArtGenre } from "../enums/art-genre.enum";
 
@@ -21,7 +20,7 @@ export class FilterGalleryService {
         this.genres = this.sortGenres('ascending');
 
         try {
-            this.setSource(galleryData);
+            this.setSource([]); // TODO(yqni13): adapt or remove code
         } catch(err) {
             this.errorService.handle(err);
         }

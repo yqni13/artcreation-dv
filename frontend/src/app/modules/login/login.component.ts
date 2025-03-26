@@ -1,4 +1,3 @@
-import { environment } from './../../../environments/environment';
 import { CommonModule } from "@angular/common";
 import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
@@ -74,6 +73,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
             filter((x) => x),
             tap(async (response: any) => {
                 if(response.error.headers.error) {
+                    this.resetForm();
                     await this.delay(500); // delay after snackbar displays
                     this.httpObservation.setErrorStatus(false);
                     this.isLoadingResponse = false;
@@ -87,21 +87,20 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     ngAfterViewInit() {
         this.setButtonStatus(true);
         this.isLoadingResponse = false;
-        this.resetForm();
     }
 
     private initForm() {
         this.loginForm = this.fb.group({
-            user: new FormControl('', Validators.required),
-            pass: new FormControl('', Validators.required)
+            user: new FormControl(null, Validators.required),
+            pass: new FormControl(null, Validators.required)
         });
     }
 
     private initEdit() {
         this.initForm();
         this.loginForm.patchValue({
-            user: '',
-            pass: ''
+            user: null,
+            pass: null
         })
     }
 

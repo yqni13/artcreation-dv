@@ -14,20 +14,22 @@
     backdrop-filter: contrast(0.3) blur(1px);
 }
 
-$scroll-btn-color: sass.$color-light-grey;
+$scroll-btn-color: #d7d1d16c;
 
 .artdv-scroll-top {
     position: fixed;
     bottom: 10px;
     padding: 5px 5px 2px 5px;
-    border: 1px solid $scroll-btn-color;
+    border: 1px solid sass.$color-rich-black;
     border-radius: 5px;
     cursor: pointer;
+    background-color: $scroll-btn-color;
+    opacity: 0.7;
 
     i {
         width: sass.$top-reset-size;
         height: sass.$top-reset-size;
-        color: $scroll-btn-color;
+        color: sass.$color-rich-black;
     }
 
     &:hover {

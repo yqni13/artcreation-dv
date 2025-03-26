@@ -28,11 +28,11 @@ header h1 {
     flex-direction: column;
     justify-content: center;
     width: 350px;
-    height: 300px;
+    height: 250px;
     border: 1px solid sass.$color-ice-white;
     box-shadow: 5px 5px 15px;
     border-radius: sass.$space5;
-    padding: sass.$comp-padding-medium;
+    padding: sass.$space25;
     backdrop-filter: blur(10px);
     
     form {
@@ -51,7 +51,7 @@ header h1 {
             font-weight: bold;
             width: 100%;
             padding: 7.5px 6px;
-            margin: sass.$space15 0;
+            margin-top: sass.$space15;
             border-radius: sass.$space5;
             &:hover {
                 cursor: pointer;
@@ -63,14 +63,7 @@ header h1 {
 }
 
 .artdv-author {
-    position: relative;
-    margin-bottom: sass.$space5;
-    
     a {
         color: sass.$color-ice-white;
-        padding: sass.$space5 sass.$space15;
-        text-decoration: none;
-        cursor: help;
-        font-size: 11px;
     }
 }

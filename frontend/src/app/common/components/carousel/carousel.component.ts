@@ -5,7 +5,7 @@ import { DateFormatPipe } from '../../pipes/date-format.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { FilterGalleryService } from '../../../shared/services/filter-gallery.service';
 import { NewsUpdateStorage } from '../../../shared/interfaces/NewsUpdateStorage';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'artdv-carousel',
@@ -36,7 +36,6 @@ export class CarouselComponent {
 
     constructor(
         private router: Router,
-        private translate: TranslateService,
         private filterGalleryService: FilterGalleryService
     ) {
         this.slides = [];

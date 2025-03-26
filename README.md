@@ -1,6 +1,6 @@
 
 # yqni13 artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.12}}$
+$\texttt{\color{teal}{v1.0.0-beta.14}}$
 
 
 
@@ -144,16 +144,15 @@ Most of the images are linked with logic to either displaying more details or sc
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.0.0-beta.11\ >>\ {\color{pink}1.0.0-beta.12}}$
+### $\textsf{last\ update\ 1.0.0-beta.13\ >>\ {\color{pink}1.0.0-beta.14}}$
 
-- $\textsf{\color{green}Change:}$ Add security layer for admin-only operations regarding access to routes and server requests only when admin is logged in.
-- $\textsf{\color{red}Bugfix:}$ Creating a new gallery entry works as expected. [Before: Creating new gallery entry requests were denied only from mobile devices with hint on parameter error => github bug report recommends including flag to ignore error and continue process.]
+- $\textsf{\color{green}Change:}$ Login form automatically sets cursor inside username input when loading component.
+- $\textsf{\color{green}Change:}$ Navigating between gallery overview and gallery details (as guest user) uses preloaded data to avoid unnecessary loading delay (refresh or navigating with different previous route reloads content from database).
 
 <br>
 
 ### Aimed objectives for next $\textsf{\color{green}minor}$ update:
 <dl>
-      <dd>- selection of numbers of articles to order via contact form</dd>
       <dd>- real text content</dd>
       <dd>- correct email accounts to recieve and send in BE</dd>
       <dd>- text search in archive component</dd>
