@@ -23,11 +23,12 @@
             >{{'shared.enum.art-genre.' + genre.key | translate}}</a>
         </div>
     </nav>
-    <div class="artdv-gallery-content">
+    <div class="artdv-gallery-content" *ngIf="!isLoadingResponse">
         <div class="artdv-gallery-cards" *ngFor="let artwork of modifiedList">
             <artdv-imgpreload
                 *ngIf="reloadFlag"
                 [entry]="artwork"
+                [artworkList]="galleryList"
                 [activeGenre]="activeGenre"
             ></artdv-imgpreload>
         </div>

@@ -42,6 +42,7 @@ export class GalleryDetailsComponent implements OnInit {
     protected saleStatus = SaleStatus;
 
     protected artwork: GalleryItem;
+    protected artworkList: GalleryItem[];
     protected authorLink: string;
     protected subject = SubjectOptions;
     protected galleryGenre: string;
@@ -71,6 +72,7 @@ export class GalleryDetailsComponent implements OnInit {
             created_on: '',
             last_modified: ''
         }
+        this.artworkList = [];
         this.authorLink = 'https://pixabay.com/de/users/stocksnap-894430/';
         this.galleryGenre = 'gallery';
         this.isFullscale = false;
@@ -84,8 +86,9 @@ export class GalleryDetailsComponent implements OnInit {
 
     ngOnInit() {
         if(this.currentNavigation !== undefined && this.currentNavigation !== null) {
-            this.artwork = this.currentNavigation.artwork;
             this.galleryGenre = this.currentNavigation.activeGenre;
+            this.artwork = this.currentNavigation.artwork;
+            this.artworkList = this.currentNavigation.artworkList;
         }
     }
     
@@ -94,7 +97,7 @@ export class GalleryDetailsComponent implements OnInit {
     }
 
     navigateToGallery() {
-        this.router.navigate(['gallery'], { state: { genre: this.galleryGenre }});
+        this.router.navigate(['gallery'], { state: { genre: this.galleryGenre, artworkList: this.artworkList }});
     }
 
     navigateToContactWithData(subject: SubjectOptions) {

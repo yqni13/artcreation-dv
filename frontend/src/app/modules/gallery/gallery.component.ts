@@ -52,13 +52,13 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.modifiedList = [];
         this.activeGenre = 'gallery';
         this.reloadFlag = true;
-        this.isLoadingResponse = false;
+        this.isLoadingResponse = true;
 
         this.subscriptionHttpObservationFindAll$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-        this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;        
+        this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;
     }
     
     ngOnInit() {
@@ -83,7 +83,11 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
             })
         ).subscribe();
 
-        this.initGallery();
+        if(!this.currentNavigation || this.currentNavigation.artworkList.length === 0) {
+            this.initGallery();
+        } else {
+            this.reuseGallery();
+        }
     }
     
     ngAfterViewInit() {
@@ -103,14 +107,15 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isLoadingResponse = true;
         this.galleryApi.sendGetAllRequest().subscribe(data => {
             this.galleryList = data.body?.body.data ?? [];
-            this.modifiedList = this.galleryList;
-            // navigate back from details, get to filtered situation from before
-            if(this.currentNavigation !== undefined && this.currentNavigation !== null) {
-                Object.values(this.currentNavigation as {genre: string}).map((val) => {
-                    this.onGenreChange(val || 'gallery');
-                });
-            }
+            this.modifiedList = this.galleryList;            
         })
+    }
+
+    async reuseGallery() {
+        this.galleryList = this.currentNavigation.artworkList;
+        this.onGenreChange(this.currentNavigation.genre || 'gallery');
+        await this.delay(150);
+        this.isLoadingResponse = false;
     }
 
     onGenreChange(genre: string) {
