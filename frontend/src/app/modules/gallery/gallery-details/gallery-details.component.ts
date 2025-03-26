@@ -85,7 +85,7 @@ export class GalleryDetailsComponent implements OnInit {
     ngOnInit() {
         if(this.currentNavigation !== undefined && this.currentNavigation !== null) {
             this.artwork = this.currentNavigation.artwork;
-            this.galleryGenre = this.currentNavigation.artwork.art_genre;
+            this.galleryGenre = this.currentNavigation.activeGenre;
         }
     }
     

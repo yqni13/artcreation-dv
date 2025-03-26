@@ -106,22 +106,6 @@
     background-repeat: no-repeat;
     width: 100%;
     align-items: center;
-    
-    .artdv-author {
-        position: absolute;
-        display: flex;
-        align-self: end;
-        justify-content: left;
-
-        a {
-            padding: sass.$space5 sass.$space15;
-            text-decoration: none;
-            cursor: help;
-            font-size: 13px;
-            color: sass.$color-rich-black;
-            backdrop-filter: blur(1px);
-        }
-    }
 }
 
 
