@@ -37,6 +37,7 @@ export class ImgPreloadComponent {
 
     @Input() entry!: GalleryItem;
     @Input() activeGenre!: string;
+    @Input() artworkList!: GalleryItem[];
 
     protected loaded: boolean;
     protected storageDomain: string;
@@ -55,7 +56,8 @@ export class ImgPreloadComponent {
     navigateToDetails(refNr: string) {
         const stateData = {
             activeGenre: this.activeGenre,
-            artwork: this.entry
+            artwork: this.entry,
+            artworkList: this.artworkList
         }
         this.router.navigate(['gallery/detail', refNr], { state: stateData });
     }

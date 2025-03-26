@@ -4,6 +4,15 @@
 
 <br>
 
+### 2024/03/26 - $\textsf{update\ 1.0.0-beta.13\ >>\ {\color{pink}1.0.0-beta.14}}$
+
+
+
+### 2024/03/25 - $\textsf{update\ 1.0.0-beta.12\ >>\ {\color{pink}1.0.0-beta.13}}$
+
+- $\textsf{\color{green}Change:}$ Navigating to gallery overview/details (as guest user) shows up-to-date data loaded from database instead of static json data.
+- $\textsf{\color{green}Change:}$ Landing page displays now legal license-free images in background with link to author.
+
 ### 2024/03/23 - $\textsf{update\ 1.0.0-beta.11\ >>\ {\color{pink}1.0.0-beta.12}}$
 
 - $\textsf{\color{green}Change:}$ Add security layer for admin-only operations regarding access to routes and server requests only when admin is logged in.
