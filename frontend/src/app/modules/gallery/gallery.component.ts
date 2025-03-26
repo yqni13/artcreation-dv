@@ -121,7 +121,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
     onGenreChange(genre: string) {
         this.activeGenre = '';
         this.reloadFlag = false;
-        setTimeout(async () => {
+        setTimeout(() => {
             this.activeGenre = genre;
             if(genre !== 'gallery') {
                 this.modifiedList = this.galleryList.filter(data => data.art_genre === genre);

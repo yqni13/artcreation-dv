@@ -6,7 +6,8 @@
 
 ### 2024/03/26 - $\textsf{update\ 1.0.0-beta.13\ >>\ {\color{pink}1.0.0-beta.14}}$
 
-
+- $\textsf{\color{green}Change:}$ Login form automatically sets cursor inside username input when loading component.
+- $\textsf{\color{green}Change:}$ Navigating between gallery overview and gallery details (as guest user) uses preloaded data to avoid unnecessary loading delay (refresh or navigating with different previous route reloads content from database).
 
 ### 2024/03/25 - $\textsf{update\ 1.0.0-beta.12\ >>\ {\color{pink}1.0.0-beta.13}}$
 
