@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output, ViewChild } from "@angular/core";
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
@@ -23,7 +23,9 @@ import { Subscription } from "rxjs";
         }
     ]
 })
-export class TextInputComponent extends AbstractInputComponent implements OnInit, OnDestroy {
+export class TextInputComponent extends AbstractInputComponent implements OnInit, AfterViewInit, OnDestroy {
+
+    @ViewChild('isAutoFocus') isAutoFocus!: ElementRef;
 
     @Input() fieldName: string;
     @Input() formControl: FormControl;
@@ -33,6 +35,7 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
     @Input() className: string;
     @Input() ngClass: string;
     @Input() showPassword: boolean;
+    @Input() hasAutoFocus: boolean;
 
     @Output() byChange: EventEmitter<any>;
 
@@ -49,6 +52,7 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
         this.className = '';
         this.ngClass = '';
         this.showPassword = false;
+        this.hasAutoFocus = false;
         this.byChange = new EventEmitter<any>();
         this.subscription$ = new Subscription();
     }
@@ -57,6 +61,12 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
         this.subscription$ = this.formControl.valueChanges.subscribe(change => {
             this.byChange.emit(change);
         })
+    }
+
+    ngAfterViewInit() {
+        if(this.hasAutoFocus) {
+            this.isAutoFocus.nativeElement.focus();
+        }
     }
 
     setPasswordVisibility(visible: boolean) {
