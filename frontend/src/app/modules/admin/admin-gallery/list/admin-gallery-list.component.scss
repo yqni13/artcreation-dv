@@ -33,7 +33,7 @@
                 margin-right: sass.$space5;
 
                 i {
-                    color: var(--theme-contrast-text);
+                    color: var(--theme-contrast-anchor);
                 }
             }
         }
@@ -45,7 +45,7 @@
             justify-content: left;
             font-size: 12px;
             font-weight: bold;
-            color: var(--theme-contrast-text);
+            color: var(--theme-contrast-anchor);
             background-color: var(--theme-body-bg);
             padding: calc(sass.$space5 / 2);
             padding-bottom: 0;
@@ -108,7 +108,7 @@
             align-items: center;
             aspect-ratio: 1/1;
             object-fit: cover;
-            border: $border-width solid var(--theme-contrast-text);
+            border: $border-width solid var(--theme-contrast-anchor);
             cursor: pointer;
 
             &:hover {

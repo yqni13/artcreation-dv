@@ -10,13 +10,13 @@ header {
     height: 100%;
     display: flex;
     justify-content: center;
-    border-top: 2px solid var(--theme-contrast-text);
-    border-bottom: 2px solid var(--theme-contrast-text);
+    border-top: 2px solid var(--theme-contrast-anchor);
+    border-bottom: 2px solid var(--theme-contrast-anchor);
 }
 
 .triple-inner {
-    border-left: 2px solid var(--theme-contrast-text);
-    border-right: 2px solid var(--theme-contrast-text);
+    border-left: 2px solid var(--theme-contrast-anchor);
+    border-right: 2px solid var(--theme-contrast-anchor);
 }
 
 .artdv-admin-option {

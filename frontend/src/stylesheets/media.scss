@@ -20,46 +20,61 @@
         width: calc(100% - var(--view-nav-width));
     }
 
+    .artdv-about {
+        p {
+            margin: 0 15%;
+        }
+        .artdv-about-content {
+            margin: 0 sass.$space50;
+            #artdv-about-part1 {
+                flex-direction: row;
+                margin-bottom: sass.$space50;
+                #artdv-about-image1 {
+                    #artdv-about-image1-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 400px;
+                        }
+                    }
+                }
+                #artdv-about-part1-text {
+                    align-self: center;
+                    flex-direction: column;
+                }
+            }
+            #artdv-about-part2 {
+                flex-direction: row;
+                margin-bottom: sass.$space50;
+                #artdv-about-part2-text {
+                    align-self: center;
+                }
+                #artdv-about-image2 {
+                    height: fit-content;
+                    img {
+                        width: 700px;
+                    }
+                }
+            }
+            #artdv-about-part3 {
+                background-size: contain;
+                height: 100vh;
+                #artdv-about-part3-text {
+                    p {
+                        top: 25%;
+                        width: 25%;
+                        padding: sass.$space25 sass.$space15;
+                        margin: 0 calc((100% - var(--view-nav-width) - 100px) * 0.2) 0 0;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-home {
         header {
             min-height: 500px;
             max-height: 700px;
             height: 80vh;
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            margin: sass.$comp-padding-big sass.$comp-padding-big 0 sass.$comp-padding-big;
-        }
-        #img1 img {
-            width: 100%;
-            max-height: 700px;
-            object-position: center top;
-        }
-        .artdv-about-text1 {
-            p {
-                margin: 0 0 0 sass.$comp-padding-medium;
-                font-size: clamp(16px, 2.5vw, 20px);
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: row;
-            margin: sass.$comp-padding-big;
-
-            .artdv-about-text2 {
-                width: 60%;
-                p {
-                    font-size: clamp(16px, 2.5vw, 20px);
-                    margin-right: calc(sass.$comp-padding-small / 2);
-                }
-            }
-        }
-        #img2 {
-            width: 40%;
-            img {
-                max-height: 700px;
-            }
         }
     }
 
@@ -301,6 +316,58 @@
         width: calc(100% - var(--view-nav-width));
     }
 
+    .artdv-about {
+        p {
+            margin: 0 5%;
+        }
+        .artdv-about-content {
+            margin: 0 sass.$space50;
+            #artdv-about-part1 {
+                flex-direction: row;
+                margin-bottom: sass.$space50;
+                #artdv-about-image1 {
+                    #artdv-about-image1-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 300px;
+                        }
+                    }
+                }
+                #artdv-about-part1-text {
+                    margin-top: calc(sass.$space15 - 2px); // at same height as img
+                    align-self: start;
+                    flex-direction: column;
+                }
+            }
+            #artdv-about-part2 {
+                flex-direction: row;
+                margin-bottom: sass.$space50;
+                #artdv-about-part2-text {
+                    margin-top: calc(sass.$space15 - 2px); // at same height as img
+                    align-self: start;
+                }
+                #artdv-about-image2 {
+                    height: fit-content;
+                    img {
+                        width: 450px;
+                    }
+                }
+            }
+            #artdv-about-part3 {
+                background-size: contain;
+                height: 90vh;
+                #artdv-about-part3-text {
+                    p {
+                        top: 25%;
+                        width: 25%;
+                        padding: sass.$space25 sass.$space15;
+                        margin: 0 calc((100% - var(--view-nav-width) - 100px) * 0.2) 0 0;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-home {
         header {
             min-height: 500px;
@@ -310,41 +377,6 @@
         .artdv-home-top-img {
             img {
                 width: calc(100% - (sass.$comp-padding-big * 2))!important;
-            }
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            margin: sass.$comp-padding-medium sass.$comp-padding-medium 0 sass.$comp-padding-medium;
-        }
-        #img1 img {
-            width: 100%;
-            max-height: 700px;
-            object-position: center top;
-        }
-        .artdv-about-text1 {
-            p {
-                margin: 0 0 0 sass.$comp-padding-medium;
-                font-size: clamp(16px, 2.5vw, 20px);
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: row;
-            margin: sass.$comp-padding-medium;
-
-            .artdv-about-text2 {
-                width: 60%;
-                p {
-                    font-size: clamp(16px, 2.5vw, 20px);
-                    margin-right: calc(sass.$comp-padding-small / 2);
-                }
-            }
-        }
-        #img2 {
-            width: 40%;
-            img {
-                max-height: 700px;
             }
         }
     }
@@ -606,6 +638,46 @@
         width: 100%;
     }
 
+    .artdv-about {
+        p {
+            font-size: 14px;
+        }
+        .artdv-about-content {
+            #artdv-about-part1 {
+                #artdv-about-image1 {
+                    #artdv-about-image1-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+            #artdv-about-part2 {
+                #artdv-about-image2 {
+                    #artdv-about-image2-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 375px;
+                        }
+                    }
+                }
+            }
+            #artdv-about-part3 {
+                background-size: cover;
+                height: 80vh;
+                #artdv-about-part3-text {
+                    p {
+                        top: 25%;
+                        width: 33%;
+                        padding: sass.$space25 sass.$space15;
+                        margin: 0 calc((100% - var(--view-nav-width) - 100px) * 0.06) 0 0;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-home {
         header {
             min-height: 450px;
@@ -621,42 +693,6 @@
 
             .artdv-author {
                 width: 100%!important;
-            }
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            margin: sass.$comp-padding-small;
-        }
-        #img1 img {
-            width: 100%;
-            max-height: 600px;
-            object-position: center top;
-        }
-        .artdv-about-text1 {
-            p {
-                margin: 0 0 0 calc(sass.$comp-padding-small / 2);
-                font-size: clamp(16px, 2.5vw, 20px);
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: row;
-            margin: 0 sass.$comp-padding-small sass.$comp-padding-small sass.$comp-padding-small;
-
-            .artdv-about-text2 {
-                width: 60%;
-                p {
-                    font-size: clamp(16px, 2.5vw, 20px);
-                    margin-right: calc(sass.$comp-padding-small / 2);
-                }
-            }
-        }
-        #img2 {
-            width: 40%;
-            justify-content: end!important;
-            img {
-                max-height: 600px;
             }
         }
     }
@@ -909,6 +945,44 @@
         min-height: calc(100vh - $modified-nav-height - var(--view-nav-width))!important;
     }
 
+    .artdv-about {
+        .artdv-about-content {
+            #artdv-about-part1 {
+                flex-direction: column;
+                #artdv-about-image1 {
+                    justify-content: center;
+                    #artdv-about-image1-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 250px;
+                        }
+                    }
+                }
+                #artdv-about-text1 {
+                    width: 100%;
+                }
+            }
+            #artdv-about-part2 {
+                flex-direction: column-reverse;
+                #artdv-about-image2 {
+                    justify-content: center;
+                    #artdv-about-image2-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 375px;
+                        }
+                    }
+                }
+                #artdv-about-text2 {
+                    width: 100%;
+                }
+            }
+            #artdv-about-part3 {
+                height: 60vh;
+            }
+        }
+    }
+
     .artdv-home {
         .artdv-home-top-img {
             padding: sass.$comp-padding-small 0!important;
@@ -918,37 +992,6 @@
                 width: 85vw!important;
                 margin-right: 0!important;
             }
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            margin: sass.$comp-padding-small;
-        }
-        #img1 img {
-            width: 100%!important;
-        }
-        .artdv-about-text1 {
-            margin-left: calc(sass.$comp-padding-small / 2);
-            p {
-                font-size: clamp(14px, 2.5vw, 20px);
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: column;
-            margin: sass.$comp-padding-small;
-
-            .artdv-about-text2 {
-                width: 100%;                
-                p {
-                    font-size: clamp(14px, 2.5vw, 20px);
-                    margin: 0;
-                }
-            }
-        }
-        #img2 {
-            width: 100%;
-            justify-content: center!important;
         }
     }
 
@@ -1148,6 +1191,41 @@
         min-height: calc(100% - (300px + var(--view-nav-width)))!important;
     }
 
+    .artdv-about {
+        p {
+            margin: 0;
+        }
+        .artdv-about-content {
+            #artdv-about-part1 {
+                #artdv-about-image1 {
+                    #artdv-about-image1-wrapper {
+                        img {
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+            #artdv-about-part2 {
+                #artdv-about-image2 {
+                    #artdv-about-image2-wrapper {
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            #artdv-about-part3 {
+                height: 33vh;
+                #artdv-about-part3-text {
+                    p {
+                        top: 15px;
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-home {
         header {
             min-height: 350px;
@@ -1162,46 +1240,6 @@
             img {
                 width: 85vw!important;
                 margin-right: 0!important;
-            }
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            flex-direction: column-reverse!important;
-
-        }
-        #img1 {
-            width: 100%;
-            margin-top: 0!important;
-            img {
-                margin: 0 calc(sass.$comp-padding-small / 2);
-                width: 70vw!important;
-                max-height: 400px;
-                object-position: center top;
-            }
-        }
-        .artdv-about-text1 {
-            width: 100%!important;
-            margin: calc(sass.$comp-padding-small / 2) 0!important;
-            p {
-                margin: 0;
-                font-size: clamp(14px, 2.5vw, 20px);
-                width: 100%!important;
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: column;
-            margin: sass.$comp-padding-small;
-            p {
-                font-size: clamp(14px, 2.5vw, 20px);
-            }
-        }
-        #img2 {
-            width: 100%;
-            img {
-                max-width: 300px!important;
-                margin: sass.$comp-padding-small auto!important;
             }
         }
     }
