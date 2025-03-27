@@ -5,9 +5,10 @@ import { NavigationEnd, Route, Router, RouterModule } from "@angular/router";
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { ThemeOption } from "../../../shared/enums/theme-option.enum";
 import _ from 'underscore';
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 import { filter } from "rxjs";
 import { AuthService } from "../../../shared/services/auth.service";
+import { ThemeHandlerService } from "../../../shared/services/theme-handler.service";
 
 @Component({
     selector: 'artdv-navigation',
@@ -29,18 +30,16 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
     private maxMobileWidth: number;
     private window: any;
-    private isLocalStorageAvailable: any;
 
     constructor (
+        private readonly router: Router,
+        private readonly auth: AuthService,
         @Inject(DOCUMENT) private document: Document,
-        private navigation: NavigationService,
-        private translate: TranslateService,
-        private auth: AuthService,
-        private router: Router
+        private readonly navigation: NavigationService,
+        private readonly themeHandler: ThemeHandlerService
     ) {
-        this.isLocalStorageAvailable = typeof localStorage !== 'undefined';
-        this.selectedTheme = this.checkThemeData();
-        this.setThemeData(this.selectedTheme);
+        this.selectedTheme = this.themeHandler.checkThemeSettings();
+        this.themeHandler.setThemeSettings(this.selectedTheme);
 
         this.window = this.document.defaultView;
         this.maxMobileWidth = 1024;
@@ -98,45 +97,8 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         }
     }
 
-    protected switchTheme() {
-        if(this.isLocalStorageAvailable) {
-            if (this.selectedTheme === ThemeOption.darkMode) {
-                this.selectedTheme = ThemeOption.lightMode;
-            } else {
-                this.selectedTheme = ThemeOption.darkMode
-            }
-
-            this.setThemeData(this.selectedTheme);
-            return;
-        }
-
-        this.selectedTheme = ThemeOption.darkMode;
-        this.setThemeData(this.selectedTheme);
-    }
-
-    private checkThemeData(): ThemeOption {
-        if(this.isLocalStorageAvailable) {
-            const theme = localStorage.getItem('artdv-theme');
-            if(!theme) {
-                return ThemeOption.darkMode;
-            }
-
-            return String(theme) === 'lightMode' ? ThemeOption.lightMode : ThemeOption.darkMode;
-        }
-
-        return ThemeOption.darkMode;
-    }
-
-    private setThemeData(theme: ThemeOption) {
-        if(this.isLocalStorageAvailable) {
-            if(theme) {
-                localStorage.setItem("artdv-theme", theme);
-                this.document.body.setAttribute("data-theme", theme);
-                return;
-            }
-        }
-
-        this.document.body.setAttribute("data-theme", 'darkMode');
+    protected setTheme() {
+        this.selectedTheme = this.themeHandler.switchTheme(this.selectedTheme);
     }
 
     private applyThemeClass() {

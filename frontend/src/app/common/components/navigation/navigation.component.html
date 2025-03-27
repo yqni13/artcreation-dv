@@ -23,8 +23,8 @@
             <span
                 [attr.aria-disabled]="true"
                 [ngClass]="selectedTheme"
-                (click)="switchTheme()"
-                (keydown.enter)="switchTheme()"
+                (click)="setTheme()"
+                (keydown.enter)="setTheme()"
                 #themeModeIcon
             ><i class="icon-ThemeOptions artdv-nav-theme-ico"></i>
             </span>

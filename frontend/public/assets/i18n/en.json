@@ -8,7 +8,7 @@
                 "imprint": "Imprint",
                 "language": "Select your language:",
                 "privacy": "Privacy Policy",
-                "shipping": "Shipping"
+                "shipping": "Shipping & Return"
             },
             "titles": {
                 "connection": "connection",
@@ -31,13 +31,13 @@
     },
     "modules": {
         "about": {
-            "title": "the artist",
             "content": {
                 "block1": "Even in my youth, I felt a deep passion for creativity. Whether it was sewing, crafting, or decorating - I always enjoyed turning simple things into little works of art. My imagination was a constant companion, especially when it came to decorating spaces or coordinating colors in harmony.",
                 "block2": "However, painting and creating pictures often had to take a backseat. Between the demands of my career and family responsibilities, I often lacked the time and peace needed for it. But I still found ways to express my creativity through other projects. For example, I was given the opportunity to organize and design a Christmas market, which also brought me great joy. Yet, deep down, I knew that one day painting would again take a prominent place in my life - when the time was right.",
                 "block3": "When my professional life came to an end, this space finally opened up for me. I could now devote myself fully to painting and began learning the basics of acrylic painting, step by step. I also learned to trust and follow my intuition. Today, I enjoy expressing my thoughts, feelings, and sometimes even my wishes on canvas, free from external constraints.",
                 "block4": "I've got to realize:\nHappiness belongs to those who believe it is never too late to start something new."
-            }
+            },
+            "title": "the artist"
         },
         "admin": {
             "gallery": {
@@ -155,6 +155,32 @@
         "privacy": {
             "message": "The textual content is currently only in german language available. We will provide the translations as soon as possible.",
             "title": "Privacy Policy"
+        },
+        "shipping": {
+            "content": {
+                "delay": {
+                    "title": "Delivery delay"
+                },
+                "lost": {
+                    "title": "Order not received"
+                },
+                "packaging": {
+                    "title": "Packaging"
+                },
+                "process": {
+                    "text1": "Select artwork - select product type - provide contact information - send inquiry",
+                    "text2": "Agree on payment method and order - price is calculated from the cost of the product, shipping and other fees on request - fees include processing, transaction, customs, taxes and any currency conversion",
+                    "text3": "Delivery after receipt of payment - receive the package (pickup or delivery) or report any problems",
+                    "title": "How to get your favorite artwork?"
+                },
+                "refund": {
+                    "title": "Refund on damage"
+                },
+                "shipment": {
+                    "title": "Shipment"
+                }
+            },
+            "title": "Shipping & Return"
         }
     },
     "shared": {

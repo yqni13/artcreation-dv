@@ -1,0 +1,45 @@
+@use '../../../stylesheets/utilities' as sass;
+
+
+div {
+    display: flex;
+}
+
+span {
+    line-height: 1.6;
+}
+
+.artdv-shipping-content {
+    flex-direction: column;
+    .artdv-shipping-block {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: sass.$space50;
+        border: 2px solid red;
+
+        h2 {
+            color: var(--theme-contrast-anchor);
+            margin-bottom: sass.$space50;
+            font-size: clamp(16px, 2vw, 32px);
+        }
+    }
+
+    .artdv-shipping-block-content {
+        flex-direction: row; // media
+        justify-content: center;
+        .artdv-shipping-container-process {
+            width: calc(33% - 30px); // media
+            height: fit-content;
+            // border: 2px solid yellow;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 15px;
+            img {
+                height: 200px;
+                margin-bottom: sass.$space25;
+            }
+        }
+    }
+}

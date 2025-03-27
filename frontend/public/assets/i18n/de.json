@@ -8,7 +8,7 @@
                 "imprint": "Impressum",
                 "language": "Wählen Sie Ihre Sprache:",
                 "privacy": "Datenschutz",
-                "shipping": "Versand"
+                "shipping": "Versand & Rückgabe"
             },
             "titles": {
                 "connection": "Kommunikation",
@@ -31,13 +31,13 @@
     },
     "modules": {
         "about": {
-            "title": "die Künstlerin",
             "content": {
                 "block1": "Schon in meiner Jugend spürte ich eine große Leidenschaft für Kreativität. Ob Nähen, Basteln oder Dekorieren - es bereitet mir stets Freude, aus einfachen Dingen kleine Kunstwerke zu erschaffen. Meine Vorstellungskraft war dabei ein treuer Begleiter, besonders wenn es darum ging, Wohnungen einzurichten oder Farben harmonisch aufeinander abzustimmen.",
                 "block2": "Doch das Malen, das Schaffen von Bildern, kam lange Zeit zu kurz. Zwischen den Anforderungen meines Berufslebens und den Aufgaben in der Familie fehlte mir oft die nötige Zeit und Ruhe. Allerdings fand ich immer wieder Möglichkeiten, meine kreative Seite in anderen Projekten auszuleben. So bot sich mir zum Beispiel die Gelegenheit, einen Weihnachtsmarkt zu organisieren und zu gestalten, was mir ebenfalls große Freude bereitete. Dennoch wusste ich insgeheim, dass die Malerei eines Tages wieder einen festen Platz in meinem Leben einnehmen würde - wenn die Zeit dafür reif wäre.",
                 "block3": "Mit dem Ende meiner beruflichen Laufbahn eröffnete sich mir dieser Freiraum. Endlich konnte ich mich intensiv der Malerei widmen und begann, Schritt für Schritt die Grundlagen der Acrylmalerei zu erlernen. Dabei lernte ich auch, meiner Intuition zu vertrauen und ihr zu folgen. Heute genieße ich es, frei von äußeren Zwängen meine Gedanken, Gefühle und manchmal auch meine Wünsche auf die Leinwand zu bringen.",
                 "block4": "Ich habe erkannt:\nGlücklich ist derjenige, der daran glaubt, dass es nie zu spät ist, etwas Neues zu beginnen."
-            }
+            },
+            "title": "die Künstlerin"
         },
         "admin": {
             "gallery": {
@@ -155,6 +155,32 @@
         "privacy": {
             "message": "null",
             "title": "Datenschutz"
+        },
+        "shipping": {
+            "content": {
+                "delay": {
+                    "title": "Lieferverzögerungen"
+                },
+                "lost": {
+                    "title": "Bestellung nicht erhalten"
+                },
+                "packaging": {
+                    "title": "Verpackung"
+                },
+                "process": {
+                    "text1": "Kunstwerk aussuchen - Produktart auswählen - Kontaktinformationen angeben - Anfrage schicken",
+                    "text2": "Zahlungsmethode vereinbaren und bestellen - Preis stellt sich aus Kosten für das Produkt, Versand und sonstigen Gebühren auf Anfrage zusammen - Gebühren inkludieren Bearbeitung, Transaktion, Zoll, Steuern und etwaige Währungsumrechnung",
+                    "text3": "Lieferung nach Zahlungseingang - Paket erhalten (Selbstabholung oder Zustellung) oder Probleme jeglicher Art melden",
+                    "title": "Wie kommen Sie zu Ihrem Lieblingskunstwerk?"
+                },
+                "refund": {
+                    "title": "Rückgabe beschädigter Kunstwerke"
+                },
+                "shipment": {
+                    "title": "Versand"
+                }
+            },
+            "title": "Versand & Rückgabe"
         }
     },
     "shared": {
