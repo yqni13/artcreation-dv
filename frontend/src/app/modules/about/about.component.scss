@@ -11,6 +11,8 @@ p {
     line-height: 1.6;
 }
 
+$border-color: var(--theme-contrast-anchor);
+
 .artdv-about-content {
     display: flex;
     flex-direction: column;
@@ -22,7 +24,8 @@ p {
     #artdv-about-part1 {
         #artdv-about-image1 {
             #artdv-about-image1-wrapper {
-                border: 2px double var(--theme-body-text);
+                background-color: var(--theme-faq-activeborder);
+                border: 3px double $border-color;
                 border-radius: 30px;
                 padding: sass.$space15;
             }
@@ -31,11 +34,12 @@ p {
 
     #artdv-about-part2 {
         padding: sass.$space50 0;
-        border-top: 2px double var(--theme-body-text);
-        border-bottom: 2px double var(--theme-body-text);
+        border-top: 3px double $border-color;
+        border-bottom: 3px double $border-color;
         #artdv-about-image2 {
             #artdv-about-image2-wrapper {
-                border: 2px double var(--theme-body-text);
+                background-color: var(--theme-faq-activeborder);
+                border: 3px double $border-color;
                 border-radius: 30px;
                 padding: sass.$space15;
             }
@@ -43,7 +47,7 @@ p {
     }
 
     #artdv-about-part3 {
-        background-image: url('/assets/background/focus_02.webp');
+        background-image: url('/assets/background/focus.webp');
         background-repeat: no-repeat;
         background-position: center;
         border-radius: 15px;
@@ -57,18 +61,11 @@ p {
                 backdrop-filter: contrast(0.5);
                 border-radius: 15px;
                 position: absolute;
-                color: sass.$color-ice-white;
+                color: var(--theme-contrast-text);
                 line-height: 1.4;
                 text-align: left;
                 white-space: pre-line;
-                font-weight: bold;
             }
         }
     }
 }
-
-.artdv-about-image {
-    display: flex;
-    justify-content: center;
-}
-

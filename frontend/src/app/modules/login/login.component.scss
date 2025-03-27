@@ -47,7 +47,7 @@ header h1 {
     .artdv-login-input-button {
         
         button {
-            color: var(--theme-contrast-text);
+            color: var(--theme-contrast-anchor);
             font-weight: bold;
             width: 100%;
             padding: 7.5px 6px;
@@ -55,7 +55,7 @@ header h1 {
             border-radius: sass.$space5;
             &:hover {
                 cursor: pointer;
-                border: solid 2px var(--theme-contrast-text);
+                border: solid 2px var(--theme-contrast-anchor);
                 text-shadow: 1px 1px 1px sass.$color-fullscale-bg;
             }
         }
