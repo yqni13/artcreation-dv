@@ -1,51 +1,74 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
+img {
+    border-radius: 15px;
+    width: 100%;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.6;
+}
+
 .artdv-about-content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    
+    div {
+        display: flex;
+    }
+
+    #artdv-about-part1 {
+        #artdv-about-image1 {
+            #artdv-about-image1-wrapper {
+                border: 2px double var(--theme-body-text);
+                border-radius: 30px;
+                padding: sass.$space15;
+            }
+        }
+    }
+
+    #artdv-about-part2 {
+        padding: sass.$space50 0;
+        border-top: 2px double var(--theme-body-text);
+        border-bottom: 2px double var(--theme-body-text);
+        #artdv-about-image2 {
+            #artdv-about-image2-wrapper {
+                border: 2px double var(--theme-body-text);
+                border-radius: 30px;
+                padding: sass.$space15;
+            }
+        }
+    }
+
+    #artdv-about-part3 {
+        background-image: url('/assets/background/focus_02.webp');
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 15px;
+        margin-bottom: sass.$space50;
+        #artdv-about-part3-text {
+            width: 100%;
+            justify-content: end;
+            position: relative;
+            p {
+                font-size: clamp(8px, 1.5vw, 22px);
+                backdrop-filter: contrast(0.5);
+                border-radius: 15px;
+                position: absolute;
+                color: sass.$color-ice-white;
+                line-height: 1.4;
+                text-align: left;
+                white-space: pre-line;
+                font-weight: bold;
+            }
+        }
+    }
 }
 
 .artdv-about-image {
     display: flex;
     justify-content: center;
-    width: 50%;
 }
 
-#img1 {
-    img {
-        width: 100%;
-        object-fit: contain;
-    }
-}
-
-#img2 {
-    justify-content: center;
-    img {
-        max-width: 100%;
-        object-fit: cover;
-        margin: sass.$comp-padding-small 0;
-    }
-} 
-
-.artdv-about-text1 {
-    display: flex;
-    justify-content: center;
-    text-align: justify;
-    width: 50%;
-
-    p {
-        width: 100%;
-        align-content: center;
-    }
-}
-
-.artdv-about-text2 {
-    align-self: center;
-}
-
-.artdv-about-additional {
-    display: flex;
-    justify-content: center;
-    text-align: justify;
-}
