@@ -9,17 +9,17 @@
                 <h2>{{'modules.shipping.content.process.title' | translate}}</h2>
             </div>
             <div class="artdv-shipping-block-content">
-                <div class="artdv-shipping-container-process">
+                <div class="artdv-shipping-container artdv-shipping-triple">
                     <img src="{{blockProcess.img1}}" alt="404-not-found">
-                    <span>{{'modules.shipping.content.process.text1' | translate}}</span>
+                    <p>{{'modules.shipping.content.process.text1' | translate}}</p>
                 </div>
-                <div class="artdv-shipping-container-process">
+                <div class="artdv-shipping-container artdv-shipping-triple">
                     <img src="{{blockProcess.img2}}" alt="404-not-found">
-                    <span>{{'modules.shipping.content.process.text2' | translate}}</span>
+                    <p>{{'modules.shipping.content.process.text2' | translate}}</p>
                 </div>
-                <div class="artdv-shipping-container-process">
+                <div class="artdv-shipping-container artdv-shipping-triple">
                     <img src="{{blockProcess.img3}}" alt="404-not-found">
-                    <span>{{'modules.shipping.content.process.text3' | translate}}</span>
+                    <p>{{'modules.shipping.content.process.text3' | translate}}</p>
                 </div>
             </div>
         </div>
@@ -29,12 +29,26 @@
             <div class="artdv-shipping-block-header">
                 <h2>{{'modules.shipping.content.shipment.title' | translate}}</h2>
             </div>
+            <div class="artdv-shipping-block-content">
+                <div class="artdv-shipping-container artdv-shipping-single">
+                    <img src="{{blockShipment.img}}" alt="404-not-found">
+                    <p>{{'modules.shipping.content.shipment.text1' | translate}}</p>
+                    <p>{{'modules.shipping.content.shipment.text2' | translate}}</p>
+                    <p>{{'modules.shipping.content.shipment.text3' | translate}}</p>
+                </div>
+            </div>
         </div>
 
         <!-- DELIVERY DELAY -->
         <div class="artdv-shipping-block" id="artdv-shipping-delay">
             <div class="artdv-shipping-block-header">
                 <h2>{{'modules.shipping.content.delay.title' | translate}}</h2>
+            </div>
+            <div class="artdv-shipping-block-content">
+                <div class="artdv-shipping-container artdv-shipping-single">
+                    <img src="{{blockDelay.img}}" alt="404-not-found">
+                    <p>{{'modules.shipping.content.delay.text1' | translate}}</p>
+                </div>
             </div>
         </div>
         
@@ -43,6 +57,17 @@
             <div class="artdv-shipping-block-header">
                 <h2>{{'modules.shipping.content.refund.title' | translate}}</h2>
             </div>
+            <div class="artdv-shipping-block-content artdv-content-double">
+                <div class="artdv-shipping-container artdv-shipping-double">
+                    <img src="{{blockRefund.img1}}" alt="404-not-found">
+                    <p>{{'modules.shipping.content.refund.text1' | translate}}</p>
+                    <p>{{'modules.shipping.content.refund.text2' | translate}}</p>
+                </div>
+                <div class="artdv-shipping-container artdv-shipping-double">
+                    <img src="{{blockRefund.img2}}" alt="404-not-found">
+                    <p>{{'modules.shipping.content.refund.text3' | translate}}</p>
+                </div>
+            </div>
         </div>
         
         <!-- ORDER NOT RECEIVED -->
@@ -50,12 +75,35 @@
             <div class="artdv-shipping-block-header">
                 <h2>{{'modules.shipping.content.lost.title' | translate}}</h2>
             </div>
+            <div class="artdv-shipping-block-content">
+                <div class="artdv-shipping-container artdv-shipping-single">
+                    <img src="{{blockLost.img}}" alt="404-not-found">
+                    <p>{{'modules.shipping.content.lost.text' | translate}}</p>
+                    <ol class="artdv-ul-numeric">
+                        <li>{{'modules.shipping.content.lost.li1' | translate}}</li>
+                        <li>{{'modules.shipping.content.lost.li2' | translate}}</li>
+                    </ol>
+                </div>
+            </div>
         </div>
         
         <!-- PACKAGING -->
         <div class="artdv-shipping-block" id="artdv-shipping-packaging">
             <div class="artdv-shipping-block-header">
                 <h2>{{'modules.shipping.content.packaging.title' | translate}}</h2>
+            </div>
+            <div class="artdv-shipping-block-content">
+                <div class="artdv-shipping-container artdv-shipping-double">
+                    <img src="{{blockPackaging.img1}}" alt="404-not-found">
+                    <p>{{'modules.shipping.content.packaging.text1' | translate}}</p>
+                </div>
+                <div class="artdv-shipping-container artdv-shipping-double">
+                    <img src="{{blockPackaging.img2}}" alt="404-not-found">
+                    <p>{{'modules.shipping.content.packaging.text2' | translate}}</p>
+                    <a class="artdv-anchor" href="" target="_blank">Amazon</a>
+                    <a class="artdv-anchor" href="" target="_blank">boesner</a>
+                    <a class="artdv-anchor" href="" target="_blank">Gerstäcker</a>
+                </div>
             </div>
         </div>
     </div>
