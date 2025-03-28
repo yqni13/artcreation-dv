@@ -26,8 +26,8 @@ $border-color: var(--theme-contrast-anchor);
             #artdv-about-image1-wrapper {
                 background-color: var(--theme-faq-activeborder);
                 border: 3px double $border-color;
-                border-radius: 30px;
-                padding: sass.$space15;
+                border-radius: 20px;
+                padding: sass.$space5;
             }
         }
     }
@@ -40,31 +40,32 @@ $border-color: var(--theme-contrast-anchor);
             #artdv-about-image2-wrapper {
                 background-color: var(--theme-faq-activeborder);
                 border: 3px double $border-color;
-                border-radius: 30px;
-                padding: sass.$space15;
+                border-radius: 20px;
+                padding: sass.$space5;
             }
         }
     }
 
     #artdv-about-part3 {
-        background-image: url('/assets/background/focus.webp');
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 15px;
-        margin-bottom: sass.$space50;
         #artdv-about-part3-text {
             width: 100%;
-            justify-content: end;
+            justify-content: start;
             position: relative;
+            img {
+                object-fit: cover;
+                border-radius: 0;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+            }
             p {
-                font-size: clamp(8px, 1.5vw, 22px);
-                backdrop-filter: contrast(0.5);
-                border-radius: 15px;
+                font-size: clamp(8px, 1.6vw, 26px);
                 position: absolute;
-                color: var(--theme-contrast-text);
+                color: #5a6464; // color of dress in picture
                 line-height: 1.4;
-                text-align: left;
+                text-align: justify;
+                font-weight: bold;
                 white-space: pre-line;
+                margin: 0;
             }
         }
     }
