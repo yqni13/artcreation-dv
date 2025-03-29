@@ -57,14 +57,6 @@
                         routerLink="{{ route.path }}"
                     >{{ 'common.footer.content.' + route.data?.['title'] | translate }}</span>
                 </li>
-                <!-- TODO(yqni13): implement shipping comp and reset app.routes.ts and loop -->
-                <li>
-                    <span
-                        [attr.aria-disabled]="true"
-                        (click)="alertAvailability()"
-                        (keydown.enter)="alertAvailability()"
-                    >{{'common.footer.content.shipping' | translate}}</span>
-                </li>
             </ul>
         </div>
     </div>

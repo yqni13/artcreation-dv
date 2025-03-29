@@ -8,7 +8,7 @@
                 "imprint": "Impressum",
                 "language": "Wählen Sie Ihre Sprache:",
                 "privacy": "Datenschutz",
-                "shipping": "Versand"
+                "shipping": "Versand & Rückgabe"
             },
             "titles": {
                 "connection": "Kommunikation",
@@ -21,7 +21,7 @@
             "faq": "Fragen",
             "gallery": "Galerie",
             "home": "Start",
-            "prints": "Kopien"
+            "prints": "Drucke"
         },
         "unavailable": {
             "db-data-404": "Keine Daten gefunden.",
@@ -31,13 +31,13 @@
     },
     "modules": {
         "about": {
-            "title": "die Künstlerin",
             "content": {
                 "block1": "Schon in meiner Jugend spürte ich eine große Leidenschaft für Kreativität. Ob Nähen, Basteln oder Dekorieren - es bereitet mir stets Freude, aus einfachen Dingen kleine Kunstwerke zu erschaffen. Meine Vorstellungskraft war dabei ein treuer Begleiter, besonders wenn es darum ging, Wohnungen einzurichten oder Farben harmonisch aufeinander abzustimmen.",
                 "block2": "Doch das Malen, das Schaffen von Bildern, kam lange Zeit zu kurz. Zwischen den Anforderungen meines Berufslebens und den Aufgaben in der Familie fehlte mir oft die nötige Zeit und Ruhe. Allerdings fand ich immer wieder Möglichkeiten, meine kreative Seite in anderen Projekten auszuleben. So bot sich mir zum Beispiel die Gelegenheit, einen Weihnachtsmarkt zu organisieren und zu gestalten, was mir ebenfalls große Freude bereitete. Dennoch wusste ich insgeheim, dass die Malerei eines Tages wieder einen festen Platz in meinem Leben einnehmen würde - wenn die Zeit dafür reif wäre.",
                 "block3": "Mit dem Ende meiner beruflichen Laufbahn eröffnete sich mir dieser Freiraum. Endlich konnte ich mich intensiv der Malerei widmen und begann, Schritt für Schritt die Grundlagen der Acrylmalerei zu erlernen. Dabei lernte ich auch, meiner Intuition zu vertrauen und ihr zu folgen. Heute genieße ich es, frei von äußeren Zwängen meine Gedanken, Gefühle und manchmal auch meine Wünsche auf die Leinwand zu bringen.",
                 "block4": "Ich habe erkannt:\nGlücklich ist derjenige, der daran glaubt, dass es nie zu spät ist, etwas Neues zu beginnen."
-            }
+            },
+            "title": "die Künstlerin"
         },
         "admin": {
             "gallery": {
@@ -155,6 +155,44 @@
         "privacy": {
             "message": "null",
             "title": "Datenschutz"
+        },
+        "shipping": {
+            "content": {
+                "delay": {
+                    "text1": "Nach dem Versand haben wir keinen Einfluss mehr auf die Verteilungszentren und die Handhabung des Pakets, was zu Verzögerungen führen kann. Wir werden uns bemühen, Ihre Anfragen zu beantworten, indem wir Ihnen immer alle Informationen zukommen lassen, die mit der Nachverfolgung zu tun haben.",
+                    "title": "Lieferverzögerungen"
+                },
+                "lost": {
+                    "li1": "Kontaktieren Sie mich per E-Mail an artcreation-dv@gmx.at zur genauen Überwachung des Bestellstatus. Ein Update wird Ihnen proaktiv per E-Mail zugesandt.",
+                    "li2": "Bei Versandfragen werde ich Ihnen dabei helfen, den Verbleib des Produktes zu koordinieren. Wenn der Sendungsverfolgungsstatus „Paket zugestellt“ lautet, das Paket jedoch verloren gegangen oder gestohlen wurde, liegt es in Ihrer Verantwortung, den Anspruch direkt beim Spediteur geltend zu machen.",
+                    "text": "Sollten Sie die Ware innerhalb der angegebenen Frist nicht erhalten haben, können Sie wie folgt vorgehen:",
+                    "title": "Bestellung nicht erhalten"
+                },
+                "packaging": {
+                    "text1": "Jedes Gemälde wird besonders sorgfältig verpackt, um eine sichere und unversehrte Ankunft in seinem neuen Zuhause zu gewährleisten - unabhängig vom Transportmittel.",
+                    "text2": "Hier kaufe ich ein:",
+                    "title": "Verpackung"
+                },
+                "process": {
+                    "text1": "Kunstwerk aussuchen - Produktart auswählen - Kontaktinformationen angeben - Anfrage schicken",
+                    "text2": "Zahlungsmethode vereinbaren und bestellen - Preis stellt sich aus Kosten für das Produkt, Versand und sonstigen Gebühren auf Anfrage zusammen - Gebühren inkludieren Bearbeitung, Transaktion, Zoll, Steuern und etwaige Währungsumrechnung",
+                    "text3": "Lieferung nach Zahlungseingang - Paket erhalten (Selbstabholung oder Zustellung) oder Probleme jeglicher Art melden",
+                    "title": "Wie kommen Sie zu Ihrem Lieblingskunstwerk?"
+                },
+                "refund": {
+                    "text1": "Im unwahrscheinlichen Fall, dass Sie ein beschädigtes Kunstwerk erhalten, kontaktieren Sie mich bitte unter artcreation-dv@gmx.at innerhalb von 48 Stunden mit Foto des Schadens.",
+                    "text2": "Ich werde mich dann mit einer Lösung bei Ihnen melden. Wir nehmen Ihre Privatsphäre ernst und haben daher das Recht, die Weitergabe von Informationen an nicht verifizierte Konten zu verweigern. Bitte beachten Sie, dass bei der Einreichung eines Anspruchs aufgrund von Faktoren, die außerhalb unserer Kontrolle liegen, die Versandkosten von Ihnen zu tragen sind.",
+                    "text3": "Für den Fall, dass wir die Ausgabe nicht ersetzen können, veranlassen wir nach Erhalt des zurückgesendeten beschädigten Kunstwerks und des entsprechenden Echtheitszertifikats (sofern zutreffend) eine Rückerstattung.",
+                    "title": "Rückgabe beschädigter Kunstwerke"
+                },
+                "shipment": {
+                    "text1": "Bitte überprüfen Sie im Vorfeld ihre Versanddaten auf jedes Detail. Nach dem Versand des Artikels können Pakete nicht mehr abgefangen werden, um Änderungen vorzunehmen.",
+                    "text2": "Bestellungen können in alle Länder versandt werden, die die gängigen Lieferservices bedienen. Sollte Ihre Adresse beim Bezahlvorgang nicht akzeptiert werden, kontaktieren Sie uns bitte und wir werden versuchen, eine Lösung zu finden.",
+                    "text3": "Bestellungen werden, nach Eingang der Zahlung, so rasch wie möglich versandt. Sie erhalten nach dem Versand eine Sendungsverfolgungsnummer sowie die Lieferdauer per E-Mail. Alle Sendungen werden auf dem effizientesten und kostengünstigsten Versandweg verschickt.",
+                    "title": "Versand"
+                }
+            },
+            "title": "Versand & Rückgabe"
         }
     },
     "shared": {

@@ -147,6 +147,9 @@ textarea {
     cursor: pointer;
     font-weight: bold;
     color: var(--theme-contrast-anchor)!important;
+    &:hover {
+        opacity: 0.6;
+    }
 }
 
 .artdv-hidden-anchor {

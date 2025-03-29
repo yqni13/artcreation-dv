@@ -1,0 +1,72 @@
+@use '../../../stylesheets/utilities' as sass;
+
+
+div {
+    display: flex;
+}
+
+p,
+li {
+    line-height: 1.6;
+}
+
+.artdv-shipping-content {
+    flex-direction: column;
+    margin-top: sass.$space50;
+    .artdv-shipping-block {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: sass.$space100;
+
+        h2 {
+            color: var(--theme-contrast-anchor);
+            font-size: clamp(20px, 2.6vw, 38px);
+        }
+    }
+
+    .artdv-shipping-block-content {
+        justify-content: center;
+        $shipping-padding: sass.$space15;
+
+        .artdv-shipping-container {
+            height: fit-content;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: $shipping-padding;
+            img {
+                margin-bottom: sass.$space25;
+                border: 3px double var(--theme-contrast-anchor);
+                border-radius: 15px;
+                padding: sass.$space15;
+                background-color: var(--theme-icon-bg);
+                color: sass.$color-rich-black;
+            }
+            p {
+                margin-top: 0;
+                margin-bottom: sass.$space15;
+            }
+            a {
+                margin-bottom: sass.$space5;
+                text-decoration: none;
+            }
+            .artdv-ul-numeric li {
+                margin-bottom: sass.$space15;
+            }
+        }
+        
+        .artdv-shipping-single {
+            text-align: justify;
+        }
+        .artdv-shipping-double {
+            text-align: justify;
+        }
+        .artdv-shipping-triple {
+            text-align: center;
+        }
+    }
+
+    .artdv-content-double {
+        justify-content: space-evenly;
+    }
+}
