@@ -392,7 +392,6 @@
                         max-width: 470px;
                         width: 29vw;
                         padding: sass.$space25 sass.$space15;
-                        // 100 - ((1440px - 192px) * 10) => 25vw based on position 192px left from img start
                         left: calc(25vw - var(--view-nav-width));
                         font-style: italic;
                     }
