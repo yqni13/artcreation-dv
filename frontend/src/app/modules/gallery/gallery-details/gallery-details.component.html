@@ -1,5 +1,5 @@
 <artdv-imgfullscale 
-    [imgPath]="artwork.image_path || ''" 
+    [imgPath]="(storageDomain + '/' + artwork.image_path) || ''" 
     [isActive]="isFullscale"
     (fullscaleChanged)="navigateFullscale($event)"
 ></artdv-imgfullscale>
