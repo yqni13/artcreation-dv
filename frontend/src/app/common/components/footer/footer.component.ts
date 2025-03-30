@@ -34,6 +34,7 @@ export class FooterComponent implements OnInit {
     protected connectRoutes: Route[];
     protected socialmediaURL: string;
     protected creatorURL: string;
+    protected yearStamp: string;
 
     private isLocalStorageAvailable: any;
 
@@ -52,6 +53,7 @@ export class FooterComponent implements OnInit {
         this.connectRoutes = [];
         this.socialmediaURL = 'https://instagram.com/vargarella_';
         this.creatorURL = 'https://yqni13.com';
+        this.yearStamp = new Date().getFullYear().toString();
     }
 
     ngOnInit() {

@@ -148,8 +148,40 @@
             "user": "Username"
         },
         "prints": {
-            "message1": "Aktuell sind Kunstdrucke nicht verfügbar. Weitere Informationen werden in der News-Sektion und im ",
-            "message2": " sobald wie möglich zur Verfügung stehen.",
+            "canvas": {
+                "img-desc": {
+                    "img1": "Leinwanddruck",
+                    "img2": "Original",
+                    "img3": "Keilrahmen"
+                },
+                "subtitle": "Informationen zum Leinwanddruck",
+                "text0": "Falls Sie Ihr gewünschtes Kunstwerk als Leinwanddruck bestellen, bieten wir Ihnen die Möglichkeit, diesen auf einen Keilrahmen aufzuspannen und zusätzlich in einem hochwertigen Schattenfugenrahmen einrahmen zu lassen.",
+                "text1": "Der Canon imagePROGRAF PRO-6100 ist ein Großformatdrucker, der mit einem 12-Farb-Pigmenttintensystem arbeitet. Pigmenttinten sind bekannt für ihre hohe Lichtechtheit, was bedeutet, dass die Farben auch bei längerer Lichteinwirkung stabil bleiben und nicht verblassen. Dies ist besonders wichtig für Anwendungen wie Fine-Art-Drucke, Fotografien und hochwertige Grafiken. Epson hat hier 75 Jahre garantiert, bei Canon wird es auch so sein.",
+                "text2": "In Bezug auf die Druckqualität bietet der PRO-6100 eine maximale Auflösung von 2.400 dpi. Der 32,5 mm breite Druckkopf in Kombination mit der LUCIA PRO Pigmenttinte ermöglicht einen breiten Farbumfang und feine Abstufungen, was zu beeindruckenden und detailreichen Ausdrucken führt.",
+                "text3": "Zusammenfassend eignet sich der Canon imagePROGRAF PRO-6100 hervorragend für professionelle Anwendungen, bei denen sowohl eine hohe Lichtechtheit der Farben als auch eine exzellente Druckqualität gefordert sind.",
+                "title": "Leinwanddruck"
+            },
+            "overview": {
+                "info": "abhängig von der gewünschten Druck-Größe",
+                "link": "hier anfragen",
+                "text": "Alle verfügbaren Kunstwerke können bei uns auch als Kunstdruck erworben werden. Für den Erwerb können Sie aus verschiedenen Optionen Ihr gewünschtes Format wählen. Ein Kunstdruck ist in unterschiedlichen Größen bestellbar, maximal aber in der Originalgröße des Kunstwerkes.",
+                "title": "Preisinformation"
+            },
+            "paper": {
+                "list": {
+                    "li0": "Weiß",
+                    "li1": "Sanft ausgeprägte Filzstruktur",
+                    "li2": "Matte Premium-Inkjet-Beschichtung für herausragende Druckergebnisse",
+                    "li3": "Säure- und ligninfrei",
+                    "li4": "ISO9706 konform / Museumsqualität für höchste Alterungsbeständigkeit"
+                },
+                "subtitle": "Informationen zum Papierdruck",
+                "text0": "Falls Sie Ihr gewünschtes Kunstwerk als Papierdruck bestellen, bieten wir Ihnen die Möglichkeit, dieses optional mit Rahmen und/oder Verglasung zu bekommen. Der Papierdruck wird mit mattem Papier ausgeliefert.",
+                "text1": "Hahnemühle Photo Rag® ist eins der weltweit beliebtesten Papiere und der edle Allrounder für die Erstellung von hochwertigen FineArt Inkjet Drucken. Das weiße Baumwoll-Künstlerpapier mit seiner charakteristischen, angenehm weichen Haptik überzeugt mit einer sanft ausgeprägten Filzstruktur und verleiht jedem Kunstwerk eine Dreidimensionalität und beeindruckende Bildtiefe.",
+                "text2": "In Kombination mit der matten Premium-Inkjet-Beschichtung entstehen herausragende Drucke in brillanten Farben, tiefem Schwarz, bestechenden Kontrasten und perfekter Detailwiedergabe. Der säure- und ligninfreie Klassiker erfüllt höchste Anforderungen an die Alterungsbeständigkeit und ist speziell für die FineArt Anwendung konzipiert.",
+                "text3": "Egal ob FineArt Fotografie oder Kunstreproduktion, die ideale Kombination aus Struktur, Druckqualität und Gewicht macht Photo Rag® zu dem am vielseitigsten einsetzbaren FineArt Inkjet Papier.",
+                "title": "Papierdruck"
+            },
             "title": "Kunstdruck"
         },
         "privacy": {
@@ -175,7 +207,7 @@
                 },
                 "process": {
                     "text1": "Kunstwerk aussuchen - Produktart auswählen - Kontaktinformationen angeben - Anfrage schicken",
-                    "text2": "Zahlungsmethode vereinbaren und bestellen - Preis stellt sich aus Kosten für das Produkt, Versand und sonstigen Gebühren auf Anfrage zusammen - Gebühren inkludieren Bearbeitung, Transaktion, Zoll, Steuern und etwaige Währungsumrechnung",
+                    "text2": "Zahlungsmethode vereinbaren (Bank-Überweisung oder Paypal) und bestellen - Preis stellt sich aus Kosten für das Produkt, Versand und sonstigen Gebühren auf Anfrage zusammen - Gebühren inkludieren Bearbeitung, Transaktion, Zoll, Steuern und etwaige Währungsumrechnung",
                     "text3": "Lieferung nach Zahlungseingang - Paket erhalten (Selbstabholung oder Zustellung) oder Probleme jeglicher Art melden",
                     "title": "Wie kommen Sie zu Ihrem Lieblingskunstwerk?"
                 },

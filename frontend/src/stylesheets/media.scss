@@ -194,6 +194,38 @@
         }
     }
 
+    .artdv-prints {
+        .artdv-prints-overview {
+            width: 50%;
+            p {
+                font-size: 18px;
+            }
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: 66%;
+                max-width: 1000px;
+                margin: 0 0 sass.$space50 0;
+                .artdv-prints-block-content {
+                    p,
+                    li {
+                        font-size: 16px;
+                    }
+                }
+                .artdv-prints-canvas-img {
+                    width: 66%;
+                    max-width: 800px;
+                    img {
+                        height: 250px;
+                    }
+                    .artdv-prints-img-label-bottom {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-privacy {
         .artdv-privacy-content {
             h2 {
@@ -523,6 +555,39 @@
         .artdv-imprint-content,
         .artdv-privacy-content {
             margin: calc(sass.$comp-padding-medium + sass.$comp-padding-small) sass.$comp-padding-big sass.$comp-padding-big sass.$comp-padding-big;
+        }
+    }
+
+    .artdv-prints {
+        .artdv-prints-overview {
+            $padding: sass.$space25;
+            $border: 3px;
+            width: calc(66% - ($padding * 2) - ($border * 2));
+            p {
+                font-size: 18px;
+            }
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: 66%;
+                margin: 0 0 sass.$space50 0;
+                .artdv-prints-block-content {
+                    p,
+                    li {
+                        font-size: 16px;
+                    }
+                }
+                .artdv-prints-canvas-img {
+                    width: 90%;
+                    max-width: 600px;
+                    img {
+                        height: 250px;
+                    }
+                    .artdv-prints-img-label-bottom {
+                        font-size: 14px;
+                    }
+                }
+            }
         }
     }
 
@@ -883,6 +948,37 @@
         }
     }
 
+    .artdv-prints {
+        .artdv-prints-overview {
+            $padding: sass.$space25;
+            $border: 3px;
+            width: calc(75% - ($padding * 2) - ($border * 2));
+            p {
+                font-size: 17px;
+            }
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: 75%;
+                .artdv-prints-block-content {
+                    p,
+                    li {
+                        font-size: 15px;
+                    }
+                }
+                .artdv-prints-canvas-img {
+                    width: 80%;
+                    img {
+                        height: 200px;
+                    }
+                    .artdv-prints-img-label-bottom {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-privacy {
         .artdv-privacy-content {
             h2 {
@@ -1193,6 +1289,42 @@
         }
     }
 
+    .artdv-prints {
+        .artdv-prints-overview {
+            $padding: sass.$space25;
+            $border: 3px;
+            width: calc(100% - (sass.$space50 * 2) - ($padding * 2) - ($border * 2));
+            margin: 0 sass.$space50 sass.$space50 sass.$space50;
+            p {
+                font-size: 16px;
+            }
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: calc(100% - (sass.$space50 * 2));
+                margin: 0 sass.$space50 sass.$space50 sass.$space50;
+                .artdv-prints-block-content {
+                    p,
+                    li {
+                        font-size: 14px;
+                    }
+                }
+                .artdv-prints-canvas-img {
+                    width: 100%;
+                    .artdv-prints-img-label-bottom {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+        .artdv-prints-price-info {
+            a,
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+
     .artdv-shipping {
         p,
         li {
@@ -1450,6 +1582,34 @@
             a,
             p {
                 font-size: clamp(14px, 1.8vw, 17px);
+            }
+        }
+    }
+
+    .artdv-prints {
+        .artdv-prints-overview {
+            $padding: sass.$space25;
+            $border: 3px;
+            width: calc(100% - (sass.$space25 * 2) - ($padding * 2) - ($border * 2));
+            margin: 0 sass.$space25 sass.$space50 sass.$space25;
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: calc(100% - (sass.$space25 * 2));
+                margin: 0 sass.$space25 sass.$space50 sass.$space25;
+                .artdv-prints-canvas-img {
+                    img {
+                        height: 150px;
+                    }
+                    .artdv-prints-img-label-bottom {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+        .artdv-prints-price-info {
+            .artdv-prints-price-info-wrapper {
+                flex-direction: column;
             }
         }
     }
