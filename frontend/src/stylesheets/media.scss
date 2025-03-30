@@ -197,6 +197,9 @@
     .artdv-prints {
         .artdv-prints-overview {
             width: 50%;
+            p {
+                font-size: 18px;
+            }
         }
         .artdv-prints-content {
             .artdv-prints-block {
@@ -560,6 +563,9 @@
             $padding: sass.$space25;
             $border: 3px;
             width: calc(66% - ($padding * 2) - ($border * 2));
+            p {
+                font-size: 18px;
+            }
         }
         .artdv-prints-content {
             .artdv-prints-block {
@@ -947,6 +953,9 @@
             $padding: sass.$space25;
             $border: 3px;
             width: calc(75% - ($padding * 2) - ($border * 2));
+            p {
+                font-size: 17px;
+            }
         }
         .artdv-prints-content {
             .artdv-prints-block {
@@ -1286,6 +1295,9 @@
             $border: 3px;
             width: calc(100% - (sass.$space50 * 2) - ($padding * 2) - ($border * 2));
             margin: 0 sass.$space50 sass.$space50 sass.$space50;
+            p {
+                font-size: 16px;
+            }
         }
         .artdv-prints-content {
             .artdv-prints-block {
@@ -1306,9 +1318,6 @@
             }
         }
         .artdv-prints-price-info {
-            .artdv-prints-price-info-wrapper {
-                // flex-direction: column;
-            }
             a,
             span {
                 font-size: 14px;
@@ -1588,9 +1597,6 @@
             .artdv-prints-block {
                 width: calc(100% - (sass.$space25 * 2));
                 margin: 0 sass.$space25 sass.$space50 sass.$space25;
-                .artdv-prints-block-content {
-                    
-                }
                 .artdv-prints-canvas-img {
                     img {
                         height: 150px;
