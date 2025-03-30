@@ -8,7 +8,6 @@ div {
 .artdv-prints {
     .artdv-prints-overview {
         white-space: pre-line;
-        width: 50%;
         align-self: center;
         padding: sass.$space25;
         margin-bottom: sass.$space50;
@@ -28,14 +27,12 @@ div {
         flex-direction: column;
         margin-bottom: sass.$space50;
         .artdv-prints-block {
-            width: 66%;
             align-items: center;
             flex-direction: column;
-            margin-bottom: sass.$space50;
             .artdv-prints-block-content {
                 align-items: center;
                 flex-direction: column;
-                span {
+                .artdv-prints-info-span {
                     color: var(--theme-secondary-color);
                     font-size: 20px;
                     align-self: start;
@@ -49,7 +46,6 @@ div {
                 ul {
                     display: flex;
                     flex-direction: column;
-                    width: 66%;
                     margin: 0 auto;
                     line-height: 1.4;
                 }
@@ -60,7 +56,6 @@ div {
             }
             .artdv-prints-canvas-img {
                 flex-direction: row;
-                width: 66%;
                 justify-content: space-evenly;
                 margin: sass.$space25 0;
                 .artdv-prints-canvas-img-wrapper {
@@ -71,12 +66,11 @@ div {
                         opacity: 0.6;
                     }
                     img {
-                        height: 250px;
                         object-fit: cover;
                         border-radius: 15px;
                     }
                     span {
-                        font-size: 14px;
+                        font-style: italic;
                     }
                 }
             }
