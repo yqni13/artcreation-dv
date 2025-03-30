@@ -148,8 +148,40 @@
             "user": "username"
         },
         "prints": {
-            "message1": "Option to sell prints is not available for the moment. More information will be posted in the news section and in the ",
-            "message2": " as soon as possible.",
+            "canvas": {
+                "img-desc": {
+                    "img1": "Canvas print",
+                    "img2": "Original",
+                    "img3": "Stretcher frame"
+                },
+                "subtitle": "Information on canvas prints",
+                "text0": "If you choose to order your desired artwork as a canvas print, we offer the option to have it stretched onto a wooden stretcher frame and additionally framed in a high-quality floating frame.",
+                "text1": "The Canon imagePROGRAF PRO-6100 is a large format printer that uses a 12-color pigment ink system. Pigment inks are known for their high lightfastness, meaning colors remain stable and won't fade even after prolonged exposure to light. This is especially important for applications such as fine art prints, photographs, and high-quality graphics. Epson offers a 75-year guarantee, and Canon will do the same.",
+                "text2": "In terms of print quality, the PRO-6100 offers a maximum resolution of 2,400 dpi. The 32.5 mm wide print head combined with LUCIA PRO pigment ink enables a wide color gamut and fine gradations, resulting in impressive and detailed prints.",
+                "text3": "In summary, the Canon imagePROGRAF PRO-6100 is ideal for professional applications that require both high lightfastness of the colors and excellent print quality.",
+                "title": "Canvas printing"
+            },
+            "overview": {
+                "info": "depending on the desired print size",
+                "link": "request here",
+                "text": "All available artworks are also available as art prints. You can choose your preferred format from a variety of purchase options. Art prints can be ordered in various sizes, but the maximum size is the original size of the artwork.",
+                "title": "Price information:"
+            },
+            "paper": {
+                "list": {
+                    "li0": "White",
+                    "li1": "Gently pronounced felt structure",
+                    "li2": "Matte premium inkjet coating for outstanding print results",
+                    "li3": "Acid and lignin free",
+                    "li4": "ISO9706 compliant / museum quality for maximum ageing resistance"
+                },
+                "subtitle": "Information on paper prints",
+                "text0": "If you choose to order your desired artwork as a paper print, we offer the option to have it framed and/or glazed. The paper print comes in a matt paper style.",
+                "text1": "Hahnemühle Photo Rag® is one of the world's most popular papers and a sophisticated all-rounder for creating high-quality Fine Art inkjet prints. This white cotton artist paper, with its characteristic, pleasantly soft feel, impresses with its gently pronounced felt texture, lending every work of art a three-dimensional quality and impressive image depth.",
+                "text2": "Combined with the matte premium inkjet coating, this creates outstanding prints with brilliant colors, deep blacks, impressive contrasts, and perfect detail reproduction. This acid- and lignin-free classic meets the highest standards for aging resistance and is specifically designed for fine art applications.",
+                "text3": "Whether FineArt photography or art reproduction, the ideal combination of structure, print quality and weight makes Photo Rag® the most versatile fine art inkjet paper.",
+                "title": "Paper printing"
+            },
             "title": "prints"
         },
         "privacy": {
@@ -175,7 +207,7 @@
                 },
                 "process": {
                     "text1": "Select artwork - select product type - provide contact information - send inquiry",
-                    "text2": "Agree on payment method and order - price is calculated from the cost of the product, shipping and other fees on request - fees include processing, transaction, customs, taxes and any currency conversion",
+                    "text2": "Agree on payment method (direct debit or Paypal) and order - price is calculated from the cost of the product, shipping and other fees on request - fees include processing, transaction, customs, taxes and any currency conversion",
                     "text3": "Delivery after receipt of payment - receive the package (pickup or delivery) or report any problems",
                     "title": "How to get your favorite artwork?"
                 },

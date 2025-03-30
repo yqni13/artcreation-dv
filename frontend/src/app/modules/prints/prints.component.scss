@@ -1,7 +1,109 @@
-// TODO(yqni13): remove if not used
 @use '../../../stylesheets/utilities' as sass;
 
 
-.artdv-anchor {
-    text-transform: uppercase;
+div {
+    display: flex;
+}
+
+.artdv-prints {
+    .artdv-prints-overview {
+        white-space: pre-line;
+        width: 50%;
+        align-self: center;
+        padding: sass.$space25;
+        margin-bottom: sass.$space50;
+        border: 3px double var(--theme-contrast-anchor);
+        border-radius: 15px;
+        p {
+            color: var(--theme-secondary-color);
+            font-weight: bold;
+            font-size: 18px;
+            text-shadow: 2px 2px var(--theme-highlight-text);
+            margin: 0;
+        }
+    }
+    .artdv-prints-content {
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: sass.$space50;
+        .artdv-prints-block {
+            width: 66%;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: sass.$space50;
+            .artdv-prints-block-content {
+                align-items: center;
+                flex-direction: column;
+                span {
+                    color: var(--theme-secondary-color);
+                    font-size: 20px;
+                    align-self: start;
+                    margin-top: sass.$space25;
+                    font-style: italic;
+                }
+                p {
+                    text-align: justify;
+                    line-height: 1.4;
+                }
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    width: 66%;
+                    margin: 0 auto;
+                    line-height: 1.4;
+                }
+            }
+            h2 {
+                font-size: clamp(20px, 2.6vw, 38px);
+                color: var(--theme-contrast-anchor);
+            }
+            .artdv-prints-canvas-img {
+                flex-direction: row;
+                width: 66%;
+                justify-content: space-evenly;
+                margin: sass.$space25 0;
+                .artdv-prints-canvas-img-wrapper {
+                    flex-direction: column;
+                    text-align: center;
+                    cursor: zoom-in;
+                    &:hover {
+                        opacity: 0.6;
+                    }
+                    img {
+                        height: 250px;
+                        object-fit: cover;
+                        border-radius: 15px;
+                    }
+                    span {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .artdv-prints-price-info {
+        flex-direction: column;
+        align-items: center;
+        margin: sass.$space50 0;
+        img {
+            width: 100px;
+            margin-bottom: sass.$space15;
+            padding: sass.$space15;
+            background-color: var(--theme-icon-bg);
+            border-radius: 15px;
+            border: 3px double var(--theme-contrast-anchor);
+        }
+        h3 {
+            color: var(--theme-secondary-color);
+            margin: 0 sass.$space15 0 0;
+        }
+        span {
+            align-self: center;
+        }
+        a {
+            text-decoration: none;
+            margin-top: sass.$space5;
+        }
+    }
 }

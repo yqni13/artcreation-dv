@@ -1,12 +1,109 @@
+<artdv-imgfullscale 
+    [imgPath]="activeFullscaleImg" 
+    [isActive]="isFullscale"
+    (fullscaleChanged)="navigateFullscale($event)"
+></artdv-imgfullscale>
 <section class="artdv-prints">
     <header>
         <h1>{{'modules.prints.title' | translate}}</h1>
     </header>
-    <div class="artdv-head-message">
-        <p>
-            {{'modules.prints.message1' | translate}}
-            <a class="artdv-anchor" [routerLink]="'/archive'">{{'common.footer.content.archive' | translate}}</a>
-            {{'modules.prints.message2' | translate}}
-        </p>
+    <div class="artdv-prints-overview">
+        <p>{{'modules.prints.overview.text' | translate}}</p>
+    </div>
+    <div class="artdv-prints-content">
+        <div class="artdv-prints-block" id="artdv-prints-canvas">
+            <div class="artdv-prints-header">
+                <h2>{{'modules.prints.canvas.title' | translate}}</h2>
+            </div>
+            <div class="artdv-prints-block-content">
+                <p>
+                    {{'modules.prints.canvas.text0' | translate}}
+                </p>
+                <span>{{'modules.prints.canvas.subtitle' | translate}}</span>
+                <p>
+                    {{'modules.prints.canvas.text1' | translate}}
+                </p>
+                <p>
+                    {{'modules.prints.canvas.text2' | translate}}
+                </p>
+                <div class="artdv-prints-canvas-img">
+                    <div
+                        class="artdv-prints-canvas-img-wrapper"
+                        (click)="setActiveFullscaleImg('/assets/prints/block1_01.jpg');navigateFullscale(true)"
+                        (keydown.enter)="setActiveFullscaleImg('/assets/prints/block1_01.jpg');navigateFullscale(true)"
+                        [attr.aria-disabled]="true"
+                    >
+                        <img src="/assets/prints/block1_01.jpg" alt="404-not-found">
+                        <span class="artdv-prints-img-label-bottom">
+                            {{'modules.prints.canvas.img-desc.img1' | translate}}
+                        </span>
+                    </div>
+                    <div
+                        class="artdv-prints-canvas-img-wrapper"
+                        [attr.aria-disabled]="true"
+                        (click)="setActiveFullscaleImg('/assets/prints/block1_02.jpg');navigateFullscale(true)"
+                        (keydown.enter)="setActiveFullscaleImg('/assets/prints/block1_02.jpg');navigateFullscale(true)"
+                    >
+                        <img src="/assets/prints/block1_02.jpg" alt="404-not-found">
+                        <span class="artdv-prints-img-label-bottom">
+                            {{'modules.prints.canvas.img-desc.img2' | translate}}
+                        </span>
+                    </div>
+                    <div
+                        class="artdv-prints-canvas-img-wrapper"
+                        [attr.aria-disabled]="true"
+                        (click)="setActiveFullscaleImg('/assets/prints/block1_03.jpg');navigateFullscale(true)"
+                        (keydown.enter)="setActiveFullscaleImg('/assets/prints/block1_03.jpg');navigateFullscale(true)"
+                    >
+                        <img src="/assets/prints/block1_03.jpg" alt="404-not-found">
+                        <span class="artdv-prints-img-label-bottom">
+                            {{'modules.prints.canvas.img-desc.img3' | translate}}
+                        </span>
+                    </div>
+                </div>
+                <p>
+                    {{'modules.prints.canvas.text3' | translate}}
+                </p>
+            </div>
+        </div>
+        <div class="artdv-prints-block" id="artdv-prints-paper">
+            <div class="artdv-prints-header">
+                <h2>{{'modules.prints.paper.title' | translate}}</h2>
+            </div>
+            <div class="artdv-prints-block-content">
+                <p>
+                    {{'modules.prints.paper.text0' | translate}}
+                </p>
+                <span>{{'modules.prints.paper.subtitle' | translate}}</span>
+                <p>
+                    {{'modules.prints.paper.text1' | translate}}
+                </p>
+                <p>
+                    {{'modules.prints.paper.text2' | translate}}
+                </p>
+                <p>
+                    {{'modules.prints.paper.text3' | translate}}
+                </p>
+                <ul>
+                    <li *ngFor="let entry of [].constructor(paperPrintsListLength), index as i">
+                        {{'modules.prints.paper.list.li' + i | translate}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="artdv-prints-price-info">
+            <img src="{{blockPriceInfo.img}}" alt="404-not-found">
+            <div class="artdv-prints-price-info-wrapper">
+                <h3>{{'modules.prints.overview.title' | translate}}</h3>
+                <span>{{'modules.prints.overview.info' | translate}}</span>
+            </div>
+            <div class="artdv-prints-request-wrapper">
+                <a
+                    class="artdv-anchor"
+                    [routerLink]="baseRoute.CONTACT"
+                    [attr.aria-disabled]="true"
+                >{{'modules.prints.overview.link' | translate}}</a>
+            </div>
+        </div>
     </div>
 </section>
