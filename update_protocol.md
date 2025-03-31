@@ -4,6 +4,12 @@
 
 <br>
 
+### 2024/03/31 - $\textsf{update\ 1.0.0-beta.14\ >>\ {\color{pink}1.0.0-beta.15}}$
+
+- $\textsf{\color{green}Change:}$ Implement 'prints' and 'shipping' component including content and translations.
+- $\textsf{\color{green}Change:}$ Add translations to 'imprint' and 'privacy' component.
+- $\textsf{\color{green}Change:}$ Add content to 'about' component.
+
 ### 2024/03/26 - $\textsf{update\ 1.0.0-beta.13\ >>\ {\color{pink}1.0.0-beta.14}}$
 
 - $\textsf{\color{green}Change:}$ Login form automatically sets cursor inside username input when loading component.

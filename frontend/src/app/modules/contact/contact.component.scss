@@ -1,6 +1,11 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
+.artdv-anchor {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
 .artdv-contact-content-wrapper {
     display: flex;
     align-items: center;
