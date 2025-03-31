@@ -58,6 +58,7 @@ h1 {
     font-size: clamp(25px, 5vw, 60px);
     font-weight: normal;
     margin: sass.$comp-margin-h1 sass.$space25;
+    color: var(--theme-secondary-color);
 }
 
 .artdv-head-message {

@@ -27,7 +27,9 @@ export class ImprintComponent {
 
         this. ownerData = {
             name: 'Daniela Varga',
-            address: '2500 Baden-Umgebung'
+            address: 'Anton Bruckner-Gasse 11\n2544 Leobersdorf, Österreich',
+            email: 'artcreation-dv@gmx.at',
+            phone: '+436643445935'
         };
     }
 
