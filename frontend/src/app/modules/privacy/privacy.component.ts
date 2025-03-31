@@ -1,6 +1,7 @@
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { Component, Inject } from "@angular/core";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
+import * as content from "../../../../public/assets/i18n/privacy-en.json";
 
 @Component({
     selector: 'app-privacy',
@@ -13,15 +14,21 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 })
 export class PrivacyComponent {
 
+    protected privacyData: string[];
+
     constructor(
-        @Inject(DOCUMENT) private document: Document,
-        private translate: TranslateService
+        @Inject(DOCUMENT) private document: Document
     ) {
-        //
+        this.privacyData = this.configContentLoop();
+    }
+
+    private configContentLoop() {
+        const usedNumberOfElements = Object.keys(content['privacy-content']['headers']);
+        return usedNumberOfElements.filter(item => item !== 'complaint');
     }
 
     navigateToHeader(id: string) {
-        this.document.getElementById(id)?.scrollIntoView();
+        this.document.getElementById(id)?.scrollIntoView({behavior: 'smooth', block: 'start'});
     }
 
 }
