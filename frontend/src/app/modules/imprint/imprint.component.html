@@ -8,29 +8,6 @@
                 {{'imprint-content.content.data-open-source.warning' | translate}}
             </span>
         </div>
-        <h3>
-            {{'imprint-content.headers.open-source' | translate}}
-        </h3>
-        <div class="artdv-imprint-content-p">
-            <span>
-                {{('imprint-content.content.data-open-source.project' | translate) + devData.project}}
-            </span>
-            <span>
-                {{devData.version}}
-            </span>
-            <span>
-                <a class="artdv-anchor" href="{{devData.github}}" target="_blank">GitHub repository</a>
-            </span>
-            <span>
-                <a class="artdv-anchor" href="{{devData.portfolio}}" target="_blank">{{devData.portfolio}}</a>
-            </span>
-            <span>
-                <a class="artdv-anchor" href="mailto:{{devData.email}}">{{devData.email}}</a>
-            </span>
-            <span>
-                {{'imprint-content.content.data-open-source.address' | translate}}
-            </span>
-        </div>
 
         <h3>
             {{'imprint-content.headers.owner' | translate}}
@@ -47,6 +24,27 @@
             </span>
             <span>
                 <a class="artdv-anchor" href="mailto:{{ownerData.email}}">{{ownerData.email}}</a>
+            </span>
+        </div>
+
+        <h3>
+            {{'imprint-content.headers.open-source' | translate}}
+        </h3>
+        <div class="artdv-imprint-content-p">
+            <span>
+                {{('imprint-content.content.data-open-source.project' | translate) + devData.project}}
+            </span>
+            <span>
+                {{devData.version}}
+            </span>
+            <span>
+                <a class="artdv-anchor" href="{{devData.github}}" target="_blank">GitHub</a>
+            </span>
+            <span>
+                <a class="artdv-anchor" href="{{devData.portfolio}}" target="_blank">{{devData.portfolio}}</a>
+            </span>
+            <span>
+                <a class="artdv-anchor" href="mailto:{{devData.email}}">{{devData.email}}</a>
             </span>
         </div>
 
