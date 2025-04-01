@@ -1,36 +1,40 @@
 {
     "faq-content": {
         "element1": {
-            "question": "Wie erfolgt der Bestellvorgang?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "Wo finde ich Details zu einem Kunstwerk?",
+            "answer": "In der Navigationsleiste kann unter dem Reiter \"Galerie\" die Sammlung aller Kunstwerke gefunden werden. Mit dem Klick auf das Vorschau-Bild öffnet sich die Detail-Anzeige des gewählten Kunstwerkes, welches zuerst das Kunstwerk im Licht einer Ausstellung zeigt.\nScrollen Sie nun hinunter, finden Sie alle weiteren Informationen zum Kunstwerk: Referenz-Nummer, Status zur Verfügbarkeit, Genre, Abmessungen, Technik, Material und Erscheinungsjahr. Titel und Preis können ebenfalls angezeigt werden, sind aber nicht bei jedem Kunstwerk vorhanden."
         },
         "element2": {
-            "question": "Wie erfolgt die Bezahlung für eine Bestellung?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "Kann ich ein Kunstwerk erwerben?",
+            "answer": "Jedes Kunstwerk zeigt in der Detailansicht einen Status für die Verfügbarkeit an. Wenn der Status \"VERFÜGBAR\" anzeigt, ist das Kunstwerk erhältlich. Wenn Sie Interesse am Erwerb eines Originals oder Kunstdruckes haben, müssen Sie über unser Kontaktformular eine entsprechende Anfrage stellen.\nWeitere Informationen finden Sie in der Fußzeile unter dem Reiter \"Versand & Rückgabe\". Sollten Sie weitere offene Fragen haben, beantworten wir diese gerne im Zuge Ihrer Anfrage über das Kontaktformular."
         },
         "element3": {
-            "question": "Wie kann eine Bestellung storniert werden?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "Ist ein Kunstwerk in unterschiedlichen Formaten erhältlich?",
+            "answer": "Ein Kunstwerk Ihrer Wahl, welches als verfügbar in der Detailansicht angezeigt wird, kann entweder als Original erhältlich sein (Abmessungen finden Sie ebenfalls in der Detailsansicht) oder als Kunstdruck. Für den Kunstdruck können Sie zwischen einem Leinwanddruck und Papierdruck wählen und weiters Rahmen, Bespannung, etc. bestimmen. Für weitere Informationen, sehen Sie sich den Reiter \"Drucke\" in der Navigationsleiste näher an."
         },
         "element4": {
+            "question": "Woher weiß ich, ob ich ein Original oder einen Kunstdruck von einem bestimmten Kunstwerk erwerben kann?",
+            "answer": "Grundsätzlich zeigt der Status der Verfügbarkeit, in der Galerie-Detailansicht, ob ein Kunstwerk erhältlich ist oder nicht. Da ein Kunstdruck (Kopie) auf Anfrage angefertigt wird, haben wir zu keinem Zeitpunkt Kunstdrucke vorrätig. Für manche Kunstwerke, bei denen ein Original nicht mehr erhältlich ist, steht ein professionller Scan zur Verfügung, anhand dessen Kunstdrucke angefertigt werden können.\nUm zu erfahren, ob ein Kunstwerk in Ihrem gewünschten Format erhältlich ist, senden Sie uns über das Kontaktformular, mit dem Betreff \"Spezifische Anfrage\", eine Anfrage."
+        },
+        "element5": {
             "question": "Können Kunstwerke auf Kundenwunsch angepasst bestellt werden?",
             "answer": "Kundenspezifische Kunstwerke werden nicht erstellt und entsprechende Anfragen ignoriert."
         },
-        "element5": {
-            "question": "Wie werden die Bestellungen verpackt?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        },
         "element6": {
-            "question": "Warum werden nicht für alle Kunstwerke Preise angezeigt?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "Wie erfolgt die Bestellung eines Kunstwerkes?",
+            "answer": "1. Treten Sie über das Kontaktformular mit uns in Verbindung. Wenn ein Preis verfügbar ist, können Sie sich direkt mit dem Betreff \"Bestellung\" an uns wenden, oder Sie senden uns Ihre Anfrage unter dem Betreff \"Spezifische Anfrage\".\n2. Vereinbaren Sie mit uns im Schriftverkehr alle notwendigen Schritte (Zahlungsmittel, Lieferung/Abholung, Format und Größe bei Kunstdrucken, etc)\n3. Tätigung der Zahlung"
         },
         "element7": {
             "question": "Gibt es weitere Kosten die auf den Kaufpreis kommen wie Verpackung/Versand/..?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "answer": "Im Zuge Ihrer Anfrage über unser Kontaktformular, wird der endgültige Preis kommuniziert. Da wir zu Originalen und Kunstdrucken verschiedene Optionen zur Verfügung stellen (Größe, Material, Format, Rahmen, Verpackungs-Paket, etc.) kann ein Preis erst nach Berücksichtigung der Produkt-Optionen und des Lieferortes berechnet werden."
         },
         "element8": {
             "question": "In welche Länder werden Kunstwerke verschickt?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "answer": "Kunstwerke werden in alle Länder verschickt, die, für die von uns genutzten Lieferdienste, verfügbar sind. Bei Schwierigkeiten mit Auslierungsorten sind wir stets darum bemüht eine optimale Lösung für Sie zu finden. Sollten Sie Fragen haben, können Sie sich auch vorab über unser Kontaktformular unter dem Betreff \"Generelle Anfrage\" an uns wenden."
+        },
+        "element9": {
+            "question": "Wie werden die Bestellungen verpackt?",
+            "answer": "k.A."
         }        
     }    
 }

@@ -81,6 +81,8 @@
             padding: 40px sass.$comp-padding-small;
             display: none;
             text-align: justify;
+            white-space: pre-line;
+            line-height: 1.4;
         }
 
         .artdv-faq-coll-close {

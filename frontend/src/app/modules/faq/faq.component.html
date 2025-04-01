@@ -15,17 +15,17 @@
     <div class="artdv-faq-content">
         <div class="artdv-faq-wrapper">
             <div class="artdv-faq-coll-box faq-header">
-                <label for="artdv-faq-header-close">menu</label>
+                <label for="artdv-faq-header-close">Q&A</label>
             </div>
-            <div class="artdv-faq-coll" *ngFor="let element of data; index as i">
+            <div class="artdv-faq-coll" *ngFor="let entry of data; index as i">
                 <input type="radio" name="collapsable" id="artdv-faq-coll-{{i}}">
                 <div class="artdv-faq-coll-box">
                     <label 
                         class="artdv-faq-coll-title" 
                         for="artdv-faq-coll-{{i}}"
-                    >{{'faq-content.' + element.ref + '.question' | translate}}</label>
+                    >{{'faq-content.' + entry + '.question' | translate}}</label>
                     <label class="artdv-faq-coll-close" for="artdv-faq-header-close"></label>
-                    <div class="artdv-faq-coll-content">{{'faq-content.' + element.ref + '.answer' | translate}}</div>
+                    <div class="artdv-faq-coll-content">{{'faq-content.' + entry + '.answer' | translate}}</div>
                 </div>
             </div>
             <input type="radio" name="collapsable" id="artdv-faq-header-close">
