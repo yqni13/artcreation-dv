@@ -31,10 +31,6 @@
         "element8": {
             "question": "Which countries do you ship artworks to?",
             "answer": "Artworks are shipped to all countries that are available through our selected delivery services. In case of difficulties with delivery locations, we always strive to find the best possible solution for you. If you have any questions, you can also contact us in advance via the contact form with the subject \"General Request\"."
-        },
-        "element9": {
-            "question": "How are orders packaged?",
-            "answer": "n/a"
         }
     }
 }
