@@ -1,36 +1,36 @@
 {
     "faq-content": {
         "element1": {
-            "question": "How to order a painting?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "Where can I find details about an artwork?",
+            "answer": "In the navigation bar, you can find the collection of all artworks under the \"Gallery\" tab. Clicking on the preview image opens the detail view of the selected artwork, which first presents the artwork in an exhibition setting.\nScrolling down, you will find all further details about the artwork: reference number, availability status, genre, dimensions, technique, material, and year of creation. Title and price may also be displayed, but they are not available for every artwork."
         },
         "element2": {
-            "question": "How to pay for a painting?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "Can I purchase an artwork?",
+            "answer": "Each artwork displays an availability status in the detail view. If the status shows \"AVAILABLE\", the artwork is for sale. If you are interested in purchasing an original or a print, you need to submit a request via our contact form.\nFurther information can be found in the footer under the \"Shipping & Return\" tab. If you have additional questions, we are happy to answer them as part of your inquiry through the contact form."
         },
         "element3": {
-            "question": "How to cancel an order?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "Is an artwork available in different formats?",
+            "answer": "An artwork marked as available in the detail view may be offered as an original (dimensions can be found in the detail view) or as a print. For prints, you can choose between a canvas print and a paper print, as well as select framing, stretching, etc. For more information, please check out the \"Prints\" tab in the navigation bar."
         },
         "element4": {
-            "question": "Can I order a customized painting?",
-            "answer": "Customized artwork is not an option and such orders will be rejected."
+            "question": "How do I know whether I can purchase an original or a print of a particular artwork?",
+            "answer": "In general, the availability status in the gallery detail view indicates whether an artwork is available or not. Since prints (copies) are made upon request, we do not keep any prints in stock. For some artworks where the original is no longer available, a professional scan is available, allowing prints to be created.\nTo find out if an artwork is available in your desired format, please send us a request via the contact form with the subject \"Specific Request\"."
         },
         "element5": {
-            "question": "How are my orders packaged?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "Can artworks be customized upon customer request?",
+            "answer": "Custom artworks are not created, and such requests will be ignored."
         },
         "element6": {
-            "question": "Why do not all paintings have fixed prices displayed?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "How do I place an order for an artwork?",
+            "answer": "1. Contact us via the contact form. If a price is available, you can reach out directly with the subject \"Order\" or submit your request under the subject \"Specific Request\".\n2. Coordinate all necessary steps with us in written communication (payment methods, delivery/pickup, format and size for prints, etc.).\n3. Complete the payment."
         },
         "element7": {
-            "question": "Are there additional costs like packaging/delivery/..?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            "question": "Are there additional costs beyond the purchase price, such as packaging/shipping?",
+            "answer": "As part of your inquiry via our contact form, the final price will be communicated. Since we offer various options for originals and prints (size, material, format, framing, packaging options, etc.), the price can only be calculated after considering the product options and the delivery destination."
         },
         "element8": {
-            "question": "What countries do you send your paintings to?",
-            "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        }        
-    }    
+            "question": "Which countries do you ship artworks to?",
+            "answer": "Artworks are shipped to all countries that are available through our selected delivery services. In case of difficulties with delivery locations, we always strive to find the best possible solution for you. If you have any questions, you can also contact us in advance via the contact form with the subject \"General Request\"."
+        }
+    }
 }

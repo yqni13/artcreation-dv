@@ -1,9 +1,8 @@
 import { Component } from "@angular/core";
-import { default as faqData } from "../../shared/data/faq-data.json";
 import { ErrorService } from "../../shared/services/error.service";
 import { CommonModule } from "@angular/common";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { FAQItems } from "../../shared/interfaces/FAQItems";
+import { TranslateModule } from "@ngx-translate/core";
+import * as content from "../../../../public/assets/i18n/faq-content-en.json";
 
 @Component({
     selector: 'app-faq',
@@ -16,15 +15,12 @@ import { FAQItems } from "../../shared/interfaces/FAQItems";
 })
 export class FAQComponent {
 
-    protected data: FAQItems[];
     protected hasData: boolean;
+    protected data: any;
 
-    constructor(
-        private errorService: ErrorService,
-        private translate: TranslateService
-    ) {
+    constructor(private readonly errorService: ErrorService) {
         try {
-            this.data = faqData;
+            this.data = Object.keys(content['faq-content']);
             this.hasData = true;
         } catch(err) {
             this.errorService.handle(err);
@@ -32,6 +28,4 @@ export class FAQComponent {
             this.hasData = false;
         }
     }
-
-    // TODO(yqni13): need custom sorting of object keys for FAQ?
 }
