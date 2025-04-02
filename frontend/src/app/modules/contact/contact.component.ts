@@ -15,7 +15,6 @@ import  * as CustomValidators  from "../../common/helper/custom-validators";
 import { TranslateModule } from "@ngx-translate/core";
 import { NavigationService } from "../../shared/services/navigation.service";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
-import { SnackbarMessageService } from "../../shared/services/snackbar.service";
 import { FloatPrecisionPipe } from "../../common/pipes/float-precision.pipe";
 import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
 import { AuthService } from "../../shared/services/auth.service";

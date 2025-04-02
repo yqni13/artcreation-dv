@@ -1,7 +1,7 @@
 const { basicResponse } = require('../utils/common.utils');
 const MailingModel = require('../models/mailing.model');
 
-class MailingRepository {
+class MailingService {
     sendMail = async (params) => {
         const hasParams = Object.keys(params).length !== 0;
         let mail = await MailingModel.sendMail(hasParams ? params : {});
@@ -9,4 +9,4 @@ class MailingRepository {
     }
 }
 
-module.exports = new MailingRepository;
+module.exports = new MailingService;

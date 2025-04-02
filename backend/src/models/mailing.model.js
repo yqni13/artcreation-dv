@@ -1,6 +1,7 @@
-require('dotenv').config();
 const { AuthenticationException, UnexpectedException } = require("../utils/exceptions/common.exception");
 const nodemailer = require('nodemailer');
+const Secrets = require('../utils/secrets.utils');
+const { decryptRSA } = require('../utils/crypto.utils');
 
 class MailingModel {
     sendMail = async (params) => {
@@ -8,17 +9,18 @@ class MailingModel {
             return { error: 'no params found' };
         }
 
-        const sender = params['sender'];
-        const subject = params['subject'];
+        const sender = decryptRSA(params['sender'], Secrets.PRIVATE_KEY);
+        const subject = decryptRSA(params['subject'], Secrets.PRIVATE_KEY);
         const message = params['body'];
 
         const mailOptions = {
-            from: process.env.SECRET_EMAIL_SENDER,
-            to: process.env.SECRET_EMAIL_RECEIVER,
+            from: Secrets.EMAIL_SENDER,
+            to: Secrets.EMAIL_RECEIVER,
             replyTo: sender,
             subject: subject,
             text: message
         };
+
         try {
             const success = await this.wrapedSendMail(mailOptions);
             return { response: { success, sender } };
@@ -45,8 +47,8 @@ class MailingModel {
                     rejectUnauthorized: false
                 },
                 auth: {
-                    user: process.env.SECRET_EMAIL_SENDER,
-                    pass: process.env.SECRET_EMAIL_PASS
+                    user: Secrets.EMAIL_SENDER,
+                    pass: Secrets.EMAIL_PASS
                 }
             });
 

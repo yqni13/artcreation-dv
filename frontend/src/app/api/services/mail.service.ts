@@ -72,7 +72,7 @@ export class MailAPIService {
         try {
             this.mailParams = {
                 sender: await this.crypto.encryptRSA(this.mailData.to),
-                subject: this.mailData.subject,
+                subject: await this.crypto.encryptRSA(this.mailData.subject),
                 body: this.mailData.body
             }
         } catch(err) {

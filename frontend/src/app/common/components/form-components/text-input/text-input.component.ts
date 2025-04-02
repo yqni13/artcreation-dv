@@ -13,7 +13,6 @@ import { TextCaseOption } from "../../../../shared/enums/text-case.enum";
     styleUrl: './text-input.component.scss',
     imports: [
         CommonModule,
-
         ReactiveFormsModule,
         ValidationMessageComponent
     ],
