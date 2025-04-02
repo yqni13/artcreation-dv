@@ -4,6 +4,7 @@
         placeholder="{{placeholder}}"
         [readonly]="readonly"
         [formControl]="formControl"
+        (input)="onInputChange($event)"
         #isAutoFocus
     >
     <i

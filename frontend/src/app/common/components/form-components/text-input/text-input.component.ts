@@ -5,6 +5,7 @@ import { ValidationMessageComponent } from "../../validation-message/validation-
 import { CommonModule } from "@angular/common";
 import { AbstractInputComponent } from "../abstract-input.component";
 import { Subscription } from "rxjs";
+import { TextCaseOption } from "../../../../shared/enums/text-case.enum";
 
 @Component({
     selector: 'artdv-textinput',
@@ -36,9 +37,11 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
     @Input() ngClass: string;
     @Input() showPassword: boolean;
     @Input() hasAutoFocus: boolean;
+    @Input() forceTextCase: TextCaseOption;
 
     @Output() byChange: EventEmitter<any>;
 
+    protected textCaseOption = TextCaseOption;
     private subscription$: Subscription;
 
     constructor() {
@@ -53,6 +56,7 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
         this.ngClass = '';
         this.showPassword = false;
         this.hasAutoFocus = false;
+        this.forceTextCase = TextCaseOption.NEUTRAL;
         this.byChange = new EventEmitter<any>();
         this.subscription$ = new Subscription();
     }
@@ -66,6 +70,24 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
     ngAfterViewInit() {
         if(this.hasAutoFocus) {
             this.isAutoFocus.nativeElement.focus();
+        }
+    }
+
+    onInputChange(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        if (!input) return;
+    
+        switch (this.forceTextCase) {
+            case this.textCaseOption.FORCEUP:
+                input.value = input.value.toUpperCase();
+                break;
+            case this.textCaseOption.FORCELOW:
+                input.value = input.value.toLowerCase();
+                break;
+            case this.textCaseOption.NEUTRAL:
+            default:
+                // no change
+                break;
         }
     }
 

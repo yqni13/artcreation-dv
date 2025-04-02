@@ -31,6 +31,10 @@
         "element8": {
             "question": "Which countries do you ship artworks to?",
             "answer": "Artworks are shipped to all countries that are available through our selected delivery services. In case of difficulties with delivery locations, we always strive to find the best possible solution for you. If you have any questions, you can also contact us in advance via the contact form with the subject \"General Request\"."
+        },
+        "element9": {
+            "question": "How does the contact form work?",
+            "answer": "Order - Fill in the reference number field to select your desired artwork. If a price is available for this artwork, you can order the original directly. Select the subject \"Order\" and fill in the corresponding reference number. Alternatively, you can open the artwork in the gallery and click the \"Order\" button in the details to access the pre-filled contact form.\n\nGeneral request - Do you have a question that is not directly related to a specific artwork? Select this subject and share your request with us.\n\nSpecific request - Are you interested in an artwork and would like to know the price for an original or a fine art print? Under this subject, we can quickly and easily assign your request to the desired artwork. Select the subject \"Specific request\" and fill in the corresponding reference number. Alternatively, you can open the artwork in the gallery and click the \"request price\" link in the details to access the pre-filled contact form.\n\nAll inquiries related to a specific artwork (with purchase interest) can only be submitted if the artwork is classified as \"available\".Once your request has been processed, a confirmation or information message will be displayed on your screen."
         }
     }
 }

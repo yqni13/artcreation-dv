@@ -34,7 +34,8 @@ export class AuthService {
             'InvalidPropertiesException',
             'AuthSecretNotFoundException',
             'RequestExceedMaxException',
-            'UnexpectedApiResponseException'
+            'UnexpectedApiResponseException',
+            'AuthenticationException'
         ];
         
         this.urlPreConnect = environment.API_BASE_URL + '/api/v1/auth/pre-connect';

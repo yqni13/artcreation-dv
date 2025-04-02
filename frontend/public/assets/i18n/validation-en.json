@@ -42,10 +42,12 @@
         },
         "frontend": {
             "email": {
-                "text": "An answer with further information will follow shortly. Your request has been received from the following email address:",
+                "text": "Your request has been successfully forwarded to us. We will endeavor to process your request and respond to you as quickly as possible.",
                 "title": "Thank you for requesting"
             },
             "form": {
+                "artwork-invalid-purchase": "No price available. Use subject \"specific request\".",
+                "artwork-unavailable": "This artwork is no longer available.",
                 "email-invalid": "Field \"{{fieldName}}\" has invalid format.",
                 "publication-invalid": "Publication year must be a valid number.",
                 "publication-length": "Publication year must be between 1000 and 2100.",
