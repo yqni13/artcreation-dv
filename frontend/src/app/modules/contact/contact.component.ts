@@ -5,22 +5,22 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailAPIService } from "../../api/services/mail.service";
 import { Router, RouterModule } from "@angular/router";
-import { ArtType, ArtTypeHandcraftOnly, ArtTypeOrigORPrint, ArtTypePaintingOnly } from "../../shared/enums/art-type.enum";
 import { DataShareService } from "../../shared/services/data-share.service";
 import { filter, Subscription, tap } from "rxjs";
 import { TextInputComponent } from "../../common/components/form-components/text-input/text-input.component";
 import { CastAbstractToFormControlPipe } from "../../common/pipes/cast-abstracttoform-control.pipe";
 import { SelectInputComponent } from "../../common/components/form-components/select-input/select-input.component";
 import { TextareaInputComponent } from "../../common/components/form-components/textarea-input/textarea-input.component";
-import { ReferenceCheckService } from "../../shared/services/reference-check.service";
 import  * as CustomValidators  from "../../common/helper/custom-validators";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 import { NavigationService } from "../../shared/services/navigation.service";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
-import { SnackbarMessageService } from "../../shared/services/snackbar.service";
-import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
 import { FloatPrecisionPipe } from "../../common/pipes/float-precision.pipe";
 import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
+import { AuthService } from "../../shared/services/auth.service";
+import { GalleryAPIService } from "../../api/services/gallery.api.service";
+import { GalleryItem } from "../../api/models/gallery-response.interface";
+import { TextCaseOption } from '../../shared/enums/text-case.enum';
 
 @Component({
     selector: 'app-contact',
@@ -46,47 +46,43 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
     protected contactForm: FormGroup;
     protected hasSelectedParameters: boolean; 
-    protected hasValidReferenceNr: boolean;
+    protected hasPriceValue: boolean;
     protected hasReferenceFromParams: boolean;
     protected isLoadingResponse: boolean;
     protected readonly: boolean;
-    protected isOrigORPrint: boolean;
-    protected hasPriceZero: boolean;
     protected artworkPrice: number | null;
     protected selectedParams: Record<string, string>;
+    protected selectedArtworkByRefNr: any;
     protected subjectOptions = SubjectOptions;
-    protected artTypeAll = ArtType;
-    protected artTypeOrigORPrint = ArtTypeOrigORPrint; //ArtTypeOrigORPrint
-    protected artTypeHandcraftOnly = ArtTypeHandcraftOnly; //ArtTypeHandcraftOnly
-    protected artTypePaintingOnly = ArtTypePaintingOnly; // ArtTypePaintingOnly
+    protected textCaseOption = TextCaseOption;
 
     private subscriptionDataShare$: Subscription;
-    private subscriptionHttpObservation$: Subscription;
+    private subscriptionHttpObservationMailSend$: Subscription;
+    private subscriptionHttpObservationError$: Subscription;
+    private delay: any;
 
     constructor(
-        private httpObservationService: HttpObservationService,
-        private snackbarService: SnackbarMessageService,
-        private refCheckService: ReferenceCheckService,
-        private floatPrecisionPipe: FloatPrecisionPipe,
-        private dataShareService: DataShareService,
-        private navigate: NavigationService,
-        private translate: TranslateService,
-        private mailService: MailAPIService,
-        private fb: FormBuilder,
-        private router: Router
+        private readonly httpObservation: HttpObservationService,
+        private readonly dataShareService: DataShareService,
+        private readonly galleryApi: GalleryAPIService,
+        private readonly navigate: NavigationService,
+        private readonly mailService: MailAPIService,
+        private readonly auth: AuthService,
+        private readonly fb: FormBuilder,
+        private readonly router: Router
     ) {
         this.contactForm = new FormGroup({});
         this.hasSelectedParameters = false;
-        this.hasValidReferenceNr = false;
+        this.hasPriceValue = false;
         this.hasReferenceFromParams = false;
         this.isLoadingResponse = false;
         this.readonly = true;
-        this.isOrigORPrint = false;
-        this.hasPriceZero = false;
         this.artworkPrice = null;
         this.selectedParams = {}
         this.subscriptionDataShare$ = new Subscription(); 
-        this.subscriptionHttpObservation$ = new Subscription();
+        this.subscriptionHttpObservationMailSend$ = new Subscription();
+        this.subscriptionHttpObservationError$ = new Subscription();
+        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     ngOnInit() {
@@ -100,19 +96,32 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
                 }
         })).subscribe();
 
+        this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
+            filter((x) => x),
+            tap(async (response: any) => {
+                if(this.auth.getExceptionList().includes(response.error.headers.error)) {
+                    await this.delay(500); // delay after snackbar displays
+                    this.httpObservation.setErrorStatus(false);
+                    this.isLoadingResponse = false;
+                }
+            })
+        ).subscribe();
+
         this.initEdit();
     }
 
     ngAfterViewInit() {
-        this.subscriptionHttpObservation$ = this.httpObservationService.emailStatus$.pipe(
-            filter((x) => x || !x),
+        this.subscriptionHttpObservationMailSend$ = this.httpObservation.emailStatus$.pipe(
+            filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
                 if(isStatus200) {
                     this.checkParametersFromGallery(null)
                     this.resetForm();
+                    this.initForm();
+                    this.httpObservation.setEmailStatus(false);
+                    this.isLoadingResponse = false;
                 }
                 this.setButtonUsage(true);
-                this.isLoadingResponse = false;
             })
         ).subscribe();
     }
@@ -121,7 +130,6 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         this.contactForm = this.fb.group({
             subject: new FormControl('', Validators.required),
             referenceNr: new FormControl(''),
-            type: new FormControl(''),
             price: new FormControl(''),
             email: new FormControl('', [Validators.required, Validators.email]),
             honorifics: new FormControl('', Validators.required),
@@ -137,8 +145,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         this.contactForm.patchValue({
             subject: this.hasSelectedParameters ? this.selectedParams['subject'] : '',
             referenceNr: this.hasSelectedParameters ? this.selectedParams['referenceNr'] : '',
-            type: this.hasSelectedParameters ? this.selectedParams['type'] : '',
-            price: '',
+            price: this.hasSelectedParameters ? this.selectedParams['requestPrice'] : '',
             email: '',
             honorifics: '',
             title: '',
@@ -146,40 +153,21 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
             lastName: '',
             message: ''
         });
-        this.reassignValidators();
-        this.setPriceAndFormat(this.contactForm.get('referenceNr')?.value);
-    }
-
-    private reassignValidators() {
-        // by overwriting form with params from gallery, need to reassign necessary validators (case originalORprint)
-        this.contactForm.get('type')?.setValidators(Validators.required);
     }
 
     private checkParametersFromGallery(data: Record<string, string> | null) {
         if(data !== null && data !== undefined &&
-            (data['referenceNr'] !== '' && data['type'] !== '' && data['subject'] !== '')) {
+            (data['referenceNr'] !== '' && data['subject'] !== '')) {
             this.hasSelectedParameters = true;
             this.hasReferenceFromParams = true;
-            this.hasValidReferenceNr = true;
+            this.hasPriceValue = data['requestPrice'] !== '' && data['requestPrice'] !== null ? true : false;
             this.readonly = true;
             this.selectedParams = data;
-            this.hasPriceZero = !!data['requestPrice'];
-            this.checkTypeParam(data['type'])            
         } else {
             this.hasSelectedParameters = false;
             this.hasReferenceFromParams = false;
-            this.hasValidReferenceNr = false;
-            this.readonly = false;
+            this.readonly = true;
             this.selectedParams = {};
-        }
-    }
-
-    private checkTypeParam(type: string) {
-        if(type === ArtType.originalORprint) {
-            this.setOrigORPrintFlag(true);
-            this.selectedParams['type'] = '';
-        } else {
-            this.setOrigORPrintFlag(false);
         }
     }
 
@@ -187,19 +175,19 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         const subject = this.contactForm.get('subject')?.value;        
         if(subject === SubjectOptions.artOrder || subject === SubjectOptions.specificInformation) {
             this.contactForm.get('referenceNr')?.markAsUntouched();
-            this.contactForm.get('referenceNr')?.setValidators([Validators.required, CustomValidators.invalidRefNrValidator(this.refCheckService), CustomValidators.invalidRefNrLengthValidator()]);
+            this.contactForm.get('referenceNr')?.setValidators([Validators.required, CustomValidators.invalidRefNrValidator(this.selectedArtworkByRefNr, this.contactForm.get('subject')?.value), CustomValidators.invalidRefNrLengthValidator()]);
             this.contactForm.get('referenceNr')?.markAsPristine();            
             this.contactForm.get('referenceNr')?.setValue('');
             this.contactForm.get('price')?.setValue(null);
             this.readonly = false;
         } else {
             this.contactForm.get('referenceNr')?.clearValidators();
-            this.contactForm.get('referenceNr')?.setValidators(CustomValidators.invalidRefNrValidator(this.refCheckService));
+            this.contactForm.get('referenceNr')?.setValidators(CustomValidators.invalidRefNrValidator(this.selectedArtworkByRefNr, this.contactForm.get('subject')?.value));
             this.contactForm.get('referenceNr')?.setValue('');
             this.contactForm.get('price')?.setValue(null);
             this.configRefNrByChanges();
             this.hasReferenceFromParams = false;
-            this.readonly = false;
+            this.readonly = true;
             this.selectedParams = {};
             this.hasSelectedParameters = false;
         }
@@ -208,61 +196,31 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     configRefNrByChanges() {
         const refNr = this.contactForm.get('referenceNr')?.value;
         if(refNr === null || refNr.length !== 6) {
-            this.hasValidReferenceNr = false;
+            this.selectedArtworkByRefNr = undefined;
             return;
         }
 
-        if(this.refCheckService.checkReferenceValidity(refNr)) {
-            this.hasValidReferenceNr = true;
-            const artworkOption = this.refCheckService.checkTypeByReference(refNr);
-            this.setPriceAndFormat(refNr);
-
-            // handle artworkOption 'originalORprint' seperately
-            if(artworkOption === this.artTypeAll.originalORprint) {
-                this.setOrigORPrintFlag(true);
-                this.contactForm.get('type')?.setValue('');
-            } else {
-                this.setOrigORPrintFlag(false);
-                this.contactForm.get('type')?.setValue(artworkOption);
-            }
-
-            // handle not-for-sale artwork seperately
-            if(this.contactForm.get('subject')?.value === SubjectOptions.artOrder && !this.refCheckService.checkSaleStatusByReference(refNr)) {
-                this.contactForm.get('subject')?.setValue(this.subjectOptions.specificInformation);
-                this.snackbarService.notify({
-                    title: 'Only specific request available.',
-                    text: 'Artwork is not for sale or has no price at the moment!',
-                    autoClose: true,
-                    type: SnackbarOption.info,
-                    displayTime: 7500
-                })
-            }
-        }        
-    }
-
-    configSubjectByChanges(event: any) {
-        if(event.target?.value === SubjectOptions.generalRequest) {
-            this.contactForm.get('type')?.removeValidators(Validators.required);
-            this.contactForm.get('type')?.setErrors(null); // no error in this case for type required
-        } else {
-            this.contactForm.get('type')?.addValidators(Validators.required);
+        if(this.selectedArtworkByRefNr === undefined ||
+            (this.selectedArtworkByRefNr.reference_nr && this.selectedArtworkByRefNr.reference_nr !== refNr) ) {
+            this.isLoadingResponse = true;
+            this.galleryApi.setRefNrParam(refNr);
+            this.galleryApi.sendGetByRefNrRequest().subscribe((response) => {
+                const result = response.body?.body.data[0] ?? []
+                this.selectedArtworkByRefNr = result;
+                this.contactForm.get('referenceNr')?.clearValidators();
+                this.contactForm.get('referenceNr')?.setValidators(CustomValidators.invalidRefNrValidator((result as GalleryItem), this.contactForm.get('subject')?.value));
+                this.contactForm.get('referenceNr')?.setValue(refNr)
+                this.contactForm.get('price')?.setValue(this.configPriceFormat((result as GalleryItem).price ?? null));
+                this.isLoadingResponse = false;
+            });
         }
     }
 
-    configTypeByChanges(event: any) {
-        this.contactForm.get('type')?.setValue(event.target?.value);
+    private configPriceFormat(value: string | number | null): string | null {
+        return value === null ? null : `EUR ${value as string}`;
     }
 
-    private setOrigORPrintFlag(flag: boolean) {
-        this.isOrigORPrint = flag;
-    }
-
-    private setPriceAndFormat(reference: string) {
-        const price = this.floatPrecisionPipe.transform(this.refCheckService.checkPriceByReference(reference), 2)
-        this.contactForm.get('price')?.setValue(String('€ ' + price));
-    }
-
-    onSubmit() {
+    async onSubmit() {
         this.contactForm.markAllAsTouched();
 
         if(this.contactForm.invalid) {
@@ -271,7 +229,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.isLoadingResponse = true;
         this.setButtonUsage(false);
-        this.mailService.setMailData(this.contactForm.getRawValue());
+        await this.mailService.setMailData(this.contactForm.getRawValue());
         this.mailService.sendMail().subscribe();
     }
 
@@ -293,6 +251,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnDestroy() {
         this.subscriptionDataShare$.unsubscribe();
-        this.subscriptionHttpObservation$.unsubscribe();
+        this.subscriptionHttpObservationMailSend$.unsubscribe();
+        this.subscriptionHttpObservationError$.unsubscribe();
     }
 }

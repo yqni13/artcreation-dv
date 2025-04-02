@@ -84,7 +84,12 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         ).subscribe();
 
         if(!this.currentNavigation || this.currentNavigation.artworkList.length === 0) {
-            this.initGallery();
+            // preconnect to avoid loading fail in server timeout (vercel wake-up problem)
+            this.auth.preConnect().subscribe({
+                complete: () => {
+                    this.initGallery();
+                }
+            });
         } else {
             this.reuseGallery();
         }

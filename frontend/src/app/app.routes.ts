@@ -81,7 +81,7 @@ export const routes: Routes = [
     {
         path: 'shipping',
         component: ShippingComponent,
-        data: { title: 'shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+        data: { title: 'shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
         path: '**',

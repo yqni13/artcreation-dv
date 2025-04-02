@@ -8,7 +8,7 @@
                 "imprint": "Imprint",
                 "language": "Select your language:",
                 "privacy": "Privacy Policy",
-                "shipping": "Shipping"
+                "shipping": "Shipping & Return"
             },
             "titles": {
                 "connection": "connection",
@@ -31,6 +31,12 @@
     },
     "modules": {
         "about": {
+            "content": {
+                "block1": "Even in my youth, I felt a deep passion for creativity. Whether it was sewing, crafting, or decorating - I always enjoyed turning simple things into little works of art. My imagination was a constant companion, especially when it came to decorating spaces or coordinating colors in harmony.",
+                "block2": "However, painting and creating pictures often had to take a backseat. Between the demands of my career and family responsibilities, I often lacked the time and peace needed for it. But I still found ways to express my creativity through other projects. For example, I was given the opportunity to organize and design a Christmas market, which also brought me great joy. Yet, deep down, I knew that one day painting would again take a prominent place in my life - when the time was right.",
+                "block3": "When my professional life came to an end, this space finally opened up for me. I could now devote myself fully to painting and began learning the basics of acrylic painting, step by step. I also learned to trust and follow my intuition. Today, I enjoy expressing my thoughts, feelings, and sometimes even my wishes on canvas, free from external constraints.",
+                "block4": "I've got to realize:\nHappiness belongs to those who believe it is never too late to start something new."
+            },
             "title": "the artist"
         },
         "admin": {
@@ -142,13 +148,83 @@
             "user": "username"
         },
         "prints": {
-            "message1": "Option to sell prints is not available for the moment. More information will be posted in the news section and in the ",
-            "message2": " as soon as possible.",
+            "canvas": {
+                "img-desc": {
+                    "img1": "Canvas print",
+                    "img2": "Original",
+                    "img3": "Stretcher frame"
+                },
+                "subtitle": "Information on canvas prints",
+                "text0": "If you choose to order your desired artwork as a canvas print, we offer the option to have it stretched onto a wooden stretcher frame and additionally framed in a high-quality floating frame.",
+                "text1": "The Canon imagePROGRAF PRO-6100 is a large format printer that uses a 12-color pigment ink system. Pigment inks are known for their high lightfastness, meaning colors remain stable and won't fade even after prolonged exposure to light. This is especially important for applications such as fine art prints, photographs, and high-quality graphics. Epson offers a 75-year guarantee, and Canon will do the same.",
+                "text2": "In terms of print quality, the PRO-6100 offers a maximum resolution of 2,400 dpi. The 32.5 mm wide print head combined with LUCIA PRO pigment ink enables a wide color gamut and fine gradations, resulting in impressive and detailed prints.",
+                "text3": "In summary, the Canon imagePROGRAF PRO-6100 is ideal for professional applications that require both high lightfastness of the colors and excellent print quality.",
+                "title": "Canvas printing"
+            },
+            "overview": {
+                "info": "depending on the desired print size",
+                "link": "request here",
+                "text": "All available artworks are also available as art prints. You can choose your preferred format from a variety of purchase options. Art prints can be ordered in various sizes, but the maximum size is the original size of the artwork.",
+                "title": "Price information"
+            },
+            "paper": {
+                "list": {
+                    "li0": "White",
+                    "li1": "Gently pronounced felt structure",
+                    "li2": "Matte premium inkjet coating for outstanding print results",
+                    "li3": "Acid and lignin free",
+                    "li4": "ISO9706 compliant / museum quality for maximum ageing resistance"
+                },
+                "subtitle": "Information on paper prints",
+                "text0": "If you choose to order your desired artwork as a paper print, we offer the option to have it framed and/or glazed. The paper print comes in a matt paper style.",
+                "text1": "Hahnemühle Photo Rag® is one of the world's most popular papers and a sophisticated all-rounder for creating high-quality Fine Art inkjet prints. This white cotton artist paper, with its characteristic, pleasantly soft feel, impresses with its gently pronounced felt texture, lending every work of art a three-dimensional quality and impressive image depth.",
+                "text2": "Combined with the matte premium inkjet coating, this creates outstanding prints with brilliant colors, deep blacks, impressive contrasts, and perfect detail reproduction. This acid- and lignin-free classic meets the highest standards for aging resistance and is specifically designed for fine art applications.",
+                "text3": "Whether FineArt photography or art reproduction, the ideal combination of structure, print quality and weight makes Photo Rag® the most versatile fine art inkjet paper.",
+                "title": "Paper printing"
+            },
             "title": "prints"
         },
         "privacy": {
             "message": "The textual content is currently only in german language available. We will provide the translations as soon as possible.",
             "title": "Privacy Policy"
+        },
+        "shipping": {
+            "content": {
+                "delay": {
+                    "text1": "Once shipped, we have no control over the distribution centers and handling of the package, which may result in delays. We will endeavor to respond to your inquiries by always providing you with all information related to tracking.",
+                    "title": "Delivery delay"
+                },
+                "lost": {
+                    "li1": "Contact me via email at artcreation-dv@gmx.at for detailed tracking of your order status. An update will be proactively sent to you via email.",
+                    "li2": "For shipping inquiries, I will assist you in coordinating the whereabouts of your product. If the tracking status indicates 'Package Delivered' but the package has been lost or stolen, it is your responsibility to file a claim directly with the shipping carrier.",
+                    "text": "If you have not received your order within the specified timeframe, you can proceed as follows:",
+                    "title": "Order not received"
+                },
+                "packaging": {
+                    "text1": "Each painting is carefully packaged to ensure a safe and intact arrival at its new home - regardless of the mode of transport.",
+                    "text2": "I shop here:",
+                    "title": "Packaging"
+                },
+                "process": {
+                    "text1": "Select artwork - select product type - provide contact information - send inquiry",
+                    "text2": "Agree on payment method (direct debit or Paypal) and order - price is calculated from the cost of the product, shipping and other fees on request - fees include processing, transaction, customs, taxes and any currency conversion",
+                    "text3": "Delivery after receipt of payment - receive the package (pickup or delivery) or report any problems",
+                    "title": "How to get your favorite artwork?"
+                },
+                "refund": {
+                    "text1": "In the unlikely event that you receive a damaged artwork, please contact me at artcreation-dv@gmx.at within 48 hours and include a photo of the damage.",
+                    "text2": "I will then get back to you with a solution. We take your privacy seriously and therefore reserve the right to refuse the sharing of information with unverified accounts. Please note that when submitting a claim, shipping costs may be your responsibility due to factors beyond our control.",
+                    "text3": "If we are unable to replace the item, we will issue a refund upon receipt of the returned damaged artwork and the corresponding certificate of authenticity (if applicable).",
+                    "title": "Refund on damage"
+                },
+                "shipment": {
+                    "text1": "Please double-check your shipping details in advance. Once the item has been shipped, packages can no longer be intercepted to make changes.",
+                    "text2": "Orders can be shipped to all countries served by common delivery services. If your address is not accepted during checkout, please contact us, and we will try to find a solution.",
+                    "text3": "Orders will be shipped as quickly as possible after payment is received. You will receive a tracking number and estimated delivery time via email after dispatch. All shipments are sent using the most efficient and cost-effective shipping method.",
+                    "title": "Shipment"
+                }
+            },
+            "title": "Shipping & Return"
         }
     },
     "shared": {

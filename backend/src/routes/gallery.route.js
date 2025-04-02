@@ -4,6 +4,7 @@ const router = express.Router();
 const GalleryController = require('../controllers/gallery.controller');
 const {
     galleryFindOneSchema,
+    galleryFindByRefNrSchema,
     galleryCreateSchema,
     galleryUpdateSchema,
     galleryDeleteSchema,
@@ -13,6 +14,7 @@ const awaitHandlerFactory = require('../middleware/awaitHandlerFactory.middlewar
 const Utils = require('../utils/common.utils');
 
 router.get('/findOne/:id', galleryFindOneSchema, awaitHandlerFactory(GalleryController.findOne));
+router.get('/findByRefNr/:refNr', galleryFindByRefNrSchema, awaitHandlerFactory(GalleryController.findByRefNr));
 router.get('/findAll', awaitHandlerFactory(GalleryController.findAll));
 router.post('/create', auth(), Utils.parseReqBody, galleryCreateSchema, awaitHandlerFactory(GalleryController.create));
 router.put('/update', auth(), Utils.parseReqBody, galleryUpdateSchema, awaitHandlerFactory(GalleryController.update));

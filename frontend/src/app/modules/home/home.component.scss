@@ -21,6 +21,7 @@ header {
     h1 {
         font-size: clamp(35px, 7vw, 90px);
         margin-bottom: 0;
+        color: sass.$color-ice-white;
     }
 
     span {

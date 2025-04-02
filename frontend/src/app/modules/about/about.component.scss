@@ -1,51 +1,72 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
+img {
+    border-radius: 15px;
+    width: 100%;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+$border-color: var(--theme-contrast-anchor);
+
 .artdv-about-content {
     display: flex;
-    flex-direction: row;
-}
-
-.artdv-about-image {
-    display: flex;
-    justify-content: center;
-    width: 50%;
-}
-
-#img1 {
-    img {
-        width: 100%;
-        object-fit: contain;
+    flex-direction: column;
+    
+    div {
+        display: flex;
     }
-}
 
-#img2 {
-    justify-content: center;
-    img {
-        max-width: 100%;
-        object-fit: cover;
-        margin: sass.$comp-padding-small 0;
+    #artdv-about-part1 {
+        #artdv-about-image1 {
+            #artdv-about-image1-wrapper {
+                background-color: var(--theme-faq-activeborder);
+                border: 3px double $border-color;
+                border-radius: 20px;
+                padding: sass.$space5;
+            }
+        }
     }
-} 
 
-.artdv-about-text1 {
-    display: flex;
-    justify-content: center;
-    text-align: justify;
-    width: 50%;
-
-    p {
-        width: 100%;
-        align-content: center;
+    #artdv-about-part2 {
+        padding: sass.$space50 0;
+        border-top: 3px double $border-color;
+        border-bottom: 3px double $border-color;
+        #artdv-about-image2 {
+            #artdv-about-image2-wrapper {
+                background-color: var(--theme-faq-activeborder);
+                border: 3px double $border-color;
+                border-radius: 20px;
+                padding: sass.$space5;
+            }
+        }
     }
-}
 
-.artdv-about-text2 {
-    align-self: center;
-}
-
-.artdv-about-additional {
-    display: flex;
-    justify-content: center;
-    text-align: justify;
+    #artdv-about-part3 {
+        #artdv-about-part3-text {
+            width: 100%;
+            justify-content: start;
+            position: relative;
+            img {
+                object-fit: cover;
+                border-radius: 0;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+            }
+            p {
+                font-size: clamp(8px, 1.6vw, 26px);
+                position: absolute;
+                color: #5a6464; // color of dress in picture
+                line-height: 1.4;
+                text-align: justify;
+                font-weight: bold;
+                white-space: pre-line;
+                margin: 0;
+            }
+        }
+    }
 }

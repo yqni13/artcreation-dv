@@ -1,6 +1,11 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
+.artdv-anchor {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
 .artdv-contact-content-wrapper {
     display: flex;
     align-items: center;
@@ -12,7 +17,7 @@
 .artdv-contact-content {
     width: 100%;
     border: solid 1px var(--theme-body-text);
-
+    border-radius: 5px;
     margin: 25px 0;
     padding: calc(sass.$comp-padding-small / 2);
     width: sass.$contact-form-width;

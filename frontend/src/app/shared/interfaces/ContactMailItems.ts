@@ -7,6 +7,5 @@ export declare interface ContactFormItem {
     firstName: string,
     lastName: string,
     price: string,
-    type: string,
     body: string
 } 

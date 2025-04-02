@@ -1,6 +1,7 @@
-require('dotenv').config();
-const { AuthenticationException, InternalServerException } = require("../utils/exceptions/common.exception");
+const { AuthenticationException, UnexpectedException } = require("../utils/exceptions/common.exception");
 const nodemailer = require('nodemailer');
+const Secrets = require('../utils/secrets.utils');
+const { decryptRSA } = require('../utils/crypto.utils');
 
 class MailingModel {
     sendMail = async (params) => {
@@ -8,31 +9,36 @@ class MailingModel {
             return { error: 'no params found' };
         }
 
-        const sender = params['sender'];
-        const subject = params['subject'];
+        const sender = decryptRSA(params['sender'], Secrets.PRIVATE_KEY);
+        const subject = decryptRSA(params['subject'], Secrets.PRIVATE_KEY);
         const message = params['body'];
 
         const mailOptions = {
-            from: process.env.SECRET_EMAIL_SENDER,
-            to: process.env.SECRET_EMAIL_RECEIVER,
+            from: Secrets.EMAIL_SENDER,
+            to: Secrets.EMAIL_RECEIVER,
             replyTo: sender,
             subject: subject,
             text: message
         };
-        
-        const success = await this.wrapedSendMail(mailOptions);
-        
-        return {response: {
-            success: success,
-            sender: sender
-        }};
+
+        try {
+            const success = await this.wrapedSendMail(mailOptions);
+            return { response: { success, sender } };
+        } catch (error) {
+            console.error("ERROR sendMail: ", error);
+            if(error.status === 535) {
+                throw new AuthenticationException('server-535-auth#email-service', { data: error.message});
+            } else {
+                throw new UnexpectedException();
+            }
+        }
     }
 
     async wrapedSendMail(mailOptions) {
         return new Promise((resolve, reject) => {
             const transporter = nodemailer.createTransport({
                 service: 'gmx',
-                host: 'mail.gmx.com',
+                host: 'mail.gmx.net',
                 port: 465,
                 secure: true,
                 tls: {
@@ -41,22 +47,20 @@ class MailingModel {
                     rejectUnauthorized: false
                 },
                 auth: {
-                    user: process.env.SECRET_EMAIL_SENDER,
-                    pass: process.env.SECRET_EMAIL_PASS
+                    user: Secrets.EMAIL_SENDER,
+                    pass: Secrets.EMAIL_PASS
                 }
             });
 
             transporter.sendMail(mailOptions, function(error, info) {
                 if(error) {
-                    reject(false);
                     if(error.responseCode === 535) {
-                        throw new AuthenticationException();
+                        return reject(new AuthenticationException(error));
                     } else {
-                        throw new InternalServerException();
+                        return reject(new UnexpectedException(error));
                     }
-                } else {
-                    resolve(true);
                 }
+                resolve(true);
             })
         })
     }

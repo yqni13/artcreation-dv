@@ -12,6 +12,13 @@ class GalleryService {
         return basicResponse(result.body, result.code, result.msg);
     }
 
+    findByRefNr = async (params) => {
+        const hasParams = Object.keys(params).length !== 0;
+        params = await GalleryModel.parseGalleryRefParams(params);
+        const result = await GalleryRepository.findAllFiltered(hasParams ? params : {});
+        return basicResponse(result, result.error ? 0 : 1, result.error ? 'Error' : 'Success');
+    }
+
     findAll = async () => {
         const result = await GalleryRepository.findAll();
         return basicResponse(result.body, result.code, result.msg);

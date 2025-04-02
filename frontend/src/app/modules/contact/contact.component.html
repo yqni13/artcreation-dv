@@ -9,14 +9,15 @@
                 class="artdv-nav-routes artdv-anchor"
                 [attr.aria-disabled]="true"
                 routerLink="/faq"
-            >{{'common.navigation.faq' | translate}}</a>.
+            >FAQ</a>
         </p>
     </div>
     <div class="artdv-contact-content-wrapper">
         <div class="artdv-contact-content">
-
             <form [formGroup]="contactForm">
                 <div class="artdv-form-item artdv-form-multiple">
+
+                    <!-- SUBJECT -->
                     <artdv-selectinput
                         [ngStyle]="{'width': '50%'}"
                         [className]="'artdv-form-left-select'"
@@ -25,12 +26,14 @@
                         [options]="subjectOptions"
                         [optionsTranslateRoot]="'shared.enum.contact-subject.'"
                         [fieldName]="'modules.contact.form.fieldNames.subject' | translate"
-                        (byChange)="configRefNrByType(); configSubjectByChanges($event)"
+                        (byChange)="configRefNrByType()"
                         [ngClass]="selectedParams['subject'] === subjectOptions.artOrder ||
                         selectedParams['subject'] === subjectOptions.specificInformation 
                         ? 'artdv-query-value artdv-readonly' 
                         : ''"
                     ></artdv-selectinput>
+
+                    <!-- REFERENCE NUMBER -->
                     <artdv-textinput
                         [className]="'artdv-form-right'"
                         [placeholder]="(contactForm.get('subject')?.value === subjectOptions.generalRequest || 
@@ -41,54 +44,39 @@
                         [ngStyle]="{'width': '50%'}"
                         [readonly]="readonly"
                         [ngClass]="hasReferenceFromParams 
-                        ? 'artdv-query-value artdv-readonly' 
-                        : (contactForm.get('subject')?.value === subjectOptions.generalRequest ||
+                            ? 'artdv-query-value artdv-readonly' 
+                            : (contactForm.get('subject')?.value === subjectOptions.generalRequest ||
                         contactForm.get('subject')?.value === '')
-                        ? 'artdv-readonly'
-                        : ''"
+                            ? 'artdv-readonly'
+                            : ''"
                         [formControl]="contactForm.get('referenceNr') | controlCast"
                         [fieldName]="'modules.contact.form.fieldNames.referenceNr' | translate"
+                        [forceTextCase]="textCaseOption.FORCEUP"
                         (byChange)="configRefNrByChanges()"
-
                     ></artdv-textinput>
                 </div>
-                <div class="artdv-form-item" *ngIf="contactForm.get('subject')?.value === subjectOptions.artOrder && contactForm.get('price')?.value && contactForm.get('type')?.value && contactForm.get('referenceNr')?.value.length === 6">
+                <div div class="artdv-form-item artdv-form-multiple">
+
+                    <!-- PRICE -->
                     <artdv-textinput
-                        [ngClass]="'artdv-query-value artdv-readonly'"
+                        [ngClass]="'artdv-query-value artdv-readonly artdv-form-left-select'"
                         [formControl]="contactForm.get('price') | controlCast"
                         [placeholder]="''"
+                        [readonly]="true"
                         [fieldName]="''"
-                        [ngStyle]="{'width': '100%'}"
+                        [ngStyle]="{'width': '40%'}"
+                        *ngIf="contactForm.get('subject')?.value === subjectOptions.artOrder && contactForm.get('price')?.value !== null && contactForm.get('referenceNr')?.value.length === 6"
                     ></artdv-textinput>
-                </div>
-                <div class="artdv-form-item artdv-form-multiple">
-                    <artdv-selectinput
-                        *ngIf="hasValidReferenceNr"
-                        [className]="'artdv-form-left-select'"
-                        [ngStyle]="!hasValidReferenceNr ? {} : {'width': '40%'}"
-                        [formControl]="contactForm.get('type') | controlCast"
-                        [placeholder]="('modules.contact.form.placeholders.type' | translate) + '*'"
-                        [options]="contactForm.get('subject')?.value === subjectOptions.artOrder && isOrigORPrint
-                        ? artTypeOrigORPrint
-                        : contactForm.get('subject')?.value === subjectOptions.specificInformation &&
-                        contactForm.get('type')?.value === artTypeAll.handcraft
-                        ? artTypeHandcraftOnly
-                        : contactForm.get('subject')?.value === subjectOptions.specificInformation &&
-                        contactForm.get('type')?.value !== artTypeAll.handcraft
-                        ? artTypePaintingOnly
-                        : artTypeAll"
-                        [optionsTranslateRoot]="'shared.enum.art-type.'"
-                        [fieldName]="'modules.contact.form.fieldNames.type' | translate"
-                        [ngClass]="contactForm.get('subject')?.value === subjectOptions.artOrder && isOrigORPrint
-                                    ? 'artdv-query-value' 
-                                    : contactForm.get('subject')?.value === subjectOptions.artOrder || (contactForm.get('subject')?.value === subjectOptions.specificInformation && hasPriceZero && contactForm.get('type')?.value !== artTypeAll.originalORprint)
-                                    ? 'artdv-query-value artdv-readonly'
-                                    : ''"
-                        (byChange)="configTypeByChanges($event)"
-                    ></artdv-selectinput>
+
+                    <!-- EMAIL-->
                     <artdv-textinput
-                        [className]="hasValidReferenceNr ? 'artdv-form-right' : ''"
-                        [ngStyle]="hasValidReferenceNr ? {'width': '60%'} : {'width': '100%'}"
+                        [className]="hasPriceValue ? 'artdv-form-right' : ''"
+                        [ngStyle]="contactForm.get('price')?.value !== null 
+                        && contactForm.get('price')?.value !== ''
+                        && contactForm.get('referenceNr')?.value.length === 6
+                        && contactForm.get('subject')?.value === subjectOptions.artOrder
+                            ? {'width': '60%'}
+                            : {'width': '100%'}"
                         [inputType]="'email'"
                         [placeholder]="('modules.contact.form.placeholders.email' | translate) + '*'"
                         [formControl]="contactForm.get('email') | controlCast"
@@ -97,6 +85,8 @@
                     ></artdv-textinput>
                 </div>
                 <div class="artdv-form-item artdv-form-multiple">
+
+                    <!-- HONORIFICS -->
                     <artdv-selectinput
                         [className]="'artdv-form-left-select'"
                         [ngStyle]="{'width': '40%'}"
@@ -106,6 +96,8 @@
                         [optionsTranslateRoot]="'shared.enum.honorifics-option.'"
                         [fieldName]="'modules.contact.form.fieldNames.honorifics' | translate"
                     ></artdv-selectinput>
+
+                    <!-- TITLE -->
                     <artdv-textinput
                         [className]="'artdv-form-right'"
                         [ngStyle]="{'width': '60%'}"
@@ -116,6 +108,8 @@
                     ></artdv-textinput>
                 </div>          
                 <div class="artdv-form-item artdv-form-multiple">
+
+                    <!-- FIRSTNAME -->
                     <artdv-textinput
                         [ngStyle]="{'width': '50%'}"
                         [className]="'artdv-form-left'"
@@ -124,7 +118,9 @@
                         [formControl]="contactForm.get('firstName') | controlCast"
                         [fieldName]="'modules.contact.form.fieldNames.firstName' | translate"
                         ></artdv-textinput>
-                        <artdv-textinput
+
+                    <!-- LASTNAME -->
+                    <artdv-textinput
                         [ngStyle]="{'width': '50%'}"
                         [className]="'artdv-form-right'"
                         [inputType]="'text'"
@@ -134,6 +130,8 @@
                     ></artdv-textinput>
                 </div>
                 <div class="artdv-form-item">
+
+                    <!-- MESSAGE -->
                     <artdv-textareainput
                         [ngStyle]="{'width': '100%'}"
                         [placeholder]="('modules.contact.form.placeholders.message' | translate) + '*'"

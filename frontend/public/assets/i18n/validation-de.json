@@ -42,10 +42,12 @@
         },
         "frontend": {
             "email": {
-                "text": "Eine Antwort mit weiteren Informationen folgt in Kürze. Ihre Anfrage wurde von folgender Email-Adresse erhalten:",
+                "text": "Ihre Anfrage wurde erfolgreich an uns weitergeleitet. Wir bemühen uns darum Ihr Anliegen so schnell wie möglich zu bearbeiten und Ihnen zu antworten.",
                 "title": "Danke für Ihre Anfrage"
             },
             "form": {
+                "artwork-invalid-purchase": "Kein Preis verfügbar. Nutzen Sie den Betreff \"Spezifische Anfrage\".",
+                "artwork-unavailable": "Dieses Kunstwerk ist nicht mehr verfügbar.",
                 "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
                 "publication-invalid": "Das Erstellungsjahr muss eine gültige Zahl sein.",
                 "publication-length": "Das Erstellungsjahr muss zwischen 1000 und 2100 liegen.",

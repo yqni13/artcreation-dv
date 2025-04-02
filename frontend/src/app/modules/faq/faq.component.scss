@@ -1,6 +1,11 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
+.artdv-anchor {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
 .artdv-faq-content {
     display: flex;
     justify-content: center;
@@ -36,7 +41,7 @@
             cursor: initial;
 
             label {
-                color: var(--theme-contrast-text);
+                color: var(--theme-contrast-anchor);
                 font-weight: bold;
                 text-transform: uppercase;
                 letter-spacing: 2px;
@@ -76,6 +81,8 @@
             padding: 40px sass.$comp-padding-small;
             display: none;
             text-align: justify;
+            white-space: pre-line;
+            line-height: 1.4;
         }
 
         .artdv-faq-coll-close {
@@ -122,8 +129,4 @@
             transform: rotate(90deg);
         }
     }
-}
-
-.artdv-anchor {
-    text-transform: uppercase;
 }

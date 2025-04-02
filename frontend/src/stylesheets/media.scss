@@ -20,46 +20,64 @@
         width: calc(100% - var(--view-nav-width));
     }
 
+    .artdv-about {
+        p {
+            margin: 0 15%;
+        }
+        .artdv-about-content {
+            .artdv-about-indented {
+                margin: 0 sass.$space50;
+            }
+            #artdv-about-part1 {
+                flex-direction: row;
+                margin-bottom: sass.$space50;
+                #artdv-about-image1 {
+                    #artdv-about-image1-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 400px;
+                        }
+                    }
+                }
+                #artdv-about-part1-text {
+                    align-self: center;
+                    flex-direction: column;
+                }
+            }
+            #artdv-about-part2 {
+                flex-direction: row;
+                margin-bottom: sass.$space50;
+                #artdv-about-part2-text {
+                    align-self: center;
+                }
+                #artdv-about-image2 {
+                    height: fit-content;
+                    img {
+                        width: 700px;
+                    }
+                }
+            }
+            #artdv-about-part3 {
+                height: 100vh;
+                #artdv-about-part3-text {
+                    p {
+                        top: 33%;
+                        width: 470px;
+                        padding: sass.$space25 sass.$space15;
+                        $img-width-gap: 137px;
+                        left: calc((100vw - 1440px) / 2 + $img-width-gap);
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-home {
         header {
             min-height: 500px;
             max-height: 700px;
             height: 80vh;
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            margin: sass.$comp-padding-big sass.$comp-padding-big 0 sass.$comp-padding-big;
-        }
-        #img1 img {
-            width: 100%;
-            max-height: 700px;
-            object-position: center top;
-        }
-        .artdv-about-text1 {
-            p {
-                margin: 0 0 0 sass.$comp-padding-medium;
-                font-size: clamp(16px, 2.5vw, 20px);
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: row;
-            margin: sass.$comp-padding-big;
-
-            .artdv-about-text2 {
-                width: 60%;
-                p {
-                    font-size: clamp(16px, 2.5vw, 20px);
-                    margin-right: calc(sass.$comp-padding-small / 2);
-                }
-            }
-        }
-        #img2 {
-            width: 40%;
-            img {
-                max-height: 700px;
-            }
         }
     }
 
@@ -168,18 +186,76 @@
         }
     }
 
-    .artdv-imprint,
-    .artdv-privacy {
-        .artdv-imprint-content,
-        .artdv-privacy-content {
-            margin: calc(sass.$comp-padding-medium + sass.$comp-padding-small) sass.$comp-padding-big sass.$comp-padding-big sass.$comp-padding-big;
+    .artdv-imprint {
+        .artdv-imprint-content {
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+    }
+
+    .artdv-prints {
+        .artdv-prints-overview {
+            width: 50%;
+            p {
+                font-size: 18px;
+            }
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: 66%;
+                max-width: 1000px;
+                margin: 0 0 sass.$space50 0;
+                .artdv-prints-block-content {
+                    p,
+                    li {
+                        font-size: 16px;
+                    }
+                }
+                .artdv-prints-canvas-img {
+                    width: 66%;
+                    max-width: 800px;
+                    img {
+                        height: 250px;
+                    }
+                    .artdv-prints-img-label-bottom {
+                        font-size: 14px;
+                    }
+                }
+            }
         }
     }
 
     .artdv-privacy {
         .artdv-privacy-content {
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+    }
+
+    .artdv-shipping {
+        .artdv-shipping-block {
             h2 {
-                padding-top: sass.$comp-padding-small;
+                margin: 0 0 sass.$space50 0;
+            }
+        }
+        .artdv-shipping-block-content {
+            flex-direction: row;
+            $shipping-padding: sass.$space15;
+            .artdv-shipping-container {
+                img {
+                    height: 175px;
+                }
+            }
+            .artdv-shipping-single {
+                width: calc(50% - ($shipping-padding * 2));
+            }
+            .artdv-shipping-double {
+                width: calc(35% - ($shipping-padding * 2));
+            }
+            .artdv-shipping-triple {
+                width: calc(33% - ($shipping-padding * 2));
             }
         }
     }
@@ -301,6 +377,61 @@
         width: calc(100% - var(--view-nav-width));
     }
 
+    .artdv-about {
+        p {
+            margin: 0 5%;
+        }
+        .artdv-about-content {
+            .artdv-about-indented {
+                margin: 0 sass.$space50;
+            }
+            #artdv-about-part1 {
+                flex-direction: row;
+                margin-bottom: sass.$space50;
+                #artdv-about-image1 {
+                    #artdv-about-image1-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 300px;
+                        }
+                    }
+                }
+                #artdv-about-part1-text {
+                    margin-top: calc(sass.$space5 - 2px); // at same height as img
+                    align-self: start;
+                    flex-direction: column;
+                }
+            }
+            #artdv-about-part2 {
+                flex-direction: row;
+                margin-bottom: sass.$space50;
+                #artdv-about-part2-text {
+                    margin-top: calc(sass.$space5 - 2px); // at same height as img
+                    align-self: start;
+                }
+                #artdv-about-image2 {
+                    height: fit-content;
+                    img {
+                        width: 450px;
+                    }
+                }
+            }
+            #artdv-about-part3 {
+                height: 90vh;
+                #artdv-about-part3-text {
+                    p {
+                        top: 33%;
+                        max-width: 470px;
+                        width: 29vw;
+                        padding: sass.$space25 sass.$space15;
+                        left: calc(25vw - var(--view-nav-width));
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-home {
         header {
             min-height: 500px;
@@ -310,41 +441,6 @@
         .artdv-home-top-img {
             img {
                 width: calc(100% - (sass.$comp-padding-big * 2))!important;
-            }
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            margin: sass.$comp-padding-medium sass.$comp-padding-medium 0 sass.$comp-padding-medium;
-        }
-        #img1 img {
-            width: 100%;
-            max-height: 700px;
-            object-position: center top;
-        }
-        .artdv-about-text1 {
-            p {
-                margin: 0 0 0 sass.$comp-padding-medium;
-                font-size: clamp(16px, 2.5vw, 20px);
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: row;
-            margin: sass.$comp-padding-medium;
-
-            .artdv-about-text2 {
-                width: 60%;
-                p {
-                    font-size: clamp(16px, 2.5vw, 20px);
-                    margin-right: calc(sass.$comp-padding-small / 2);
-                }
-            }
-        }
-        #img2 {
-            width: 40%;
-            img {
-                max-height: 700px;
             }
         }
     }
@@ -454,18 +550,77 @@
         }
     }
 
-    .artdv-imprint,
-    .artdv-privacy {
-        .artdv-imprint-content,
-        .artdv-privacy-content {
-            margin: calc(sass.$comp-padding-medium + sass.$comp-padding-small) sass.$comp-padding-big sass.$comp-padding-big sass.$comp-padding-big;
+    .artdv-imprint {
+        .artdv-imprint-content {
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+    }
+
+    .artdv-prints {
+        .artdv-prints-overview {
+            $padding: sass.$space25;
+            $border: 3px;
+            width: calc(66% - ($padding * 2) - ($border * 2));
+            p {
+                font-size: 18px;
+            }
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: 66%;
+                margin: 0 0 sass.$space50 0;
+                .artdv-prints-block-content {
+                    p,
+                    li {
+                        font-size: 16px;
+                    }
+                }
+                .artdv-prints-canvas-img {
+                    width: 90%;
+                    max-width: 600px;
+                    img {
+                        height: 250px;
+                    }
+                    .artdv-prints-img-label-bottom {
+                        font-size: 14px;
+                    }
+                }
+            }
         }
     }
 
     .artdv-privacy {
         .artdv-privacy-content {
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+    }
+
+    .artdv-shipping {
+        .artdv-shipping-block {
             h2 {
-                padding-top: sass.$comp-padding-medium;
+                margin: 0 0 sass.$space50 0;
+            }
+        }
+        .artdv-shipping-block-content {
+            flex-direction: row;
+            $shipping-padding: sass.$space15;
+            .artdv-shipping-container {
+                img {
+                    height: 150px;
+                }
+            }
+            .artdv-shipping-single {
+                width: calc(60% - ($shipping-padding * 2));
+            }
+            .artdv-shipping-double {
+                width: calc(45% - ($shipping-padding * 2));
+            }
+            .artdv-shipping-triple {
+                width: calc(33% - ($shipping-padding * 2));
             }
         }
     }
@@ -606,6 +761,47 @@
         width: 100%;
     }
 
+    .artdv-about {
+        p {
+            font-size: 14px;
+        }
+        .artdv-about-content {
+            #artdv-about-part1 {
+                #artdv-about-image1 {
+                    #artdv-about-image1-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+            #artdv-about-part2 {
+                #artdv-about-image2 {
+                    #artdv-about-image2-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 375px;
+                        }
+                    }
+                }
+            }
+            #artdv-about-part3 {
+                background-size: cover;
+                height: 80vh;
+                #artdv-about-part3-text {
+                    p {
+                        top: 33%;
+                        max-width: 300px;
+                        width: 33%;
+                        padding: sass.$space25 sass.$space15;
+                        margin: 0 calc((100% - var(--view-nav-width) - 100px) * 0.06) 0 0;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-home {
         header {
             min-height: 450px;
@@ -621,42 +817,6 @@
 
             .artdv-author {
                 width: 100%!important;
-            }
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            margin: sass.$comp-padding-small;
-        }
-        #img1 img {
-            width: 100%;
-            max-height: 600px;
-            object-position: center top;
-        }
-        .artdv-about-text1 {
-            p {
-                margin: 0 0 0 calc(sass.$comp-padding-small / 2);
-                font-size: clamp(16px, 2.5vw, 20px);
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: row;
-            margin: 0 sass.$comp-padding-small sass.$comp-padding-small sass.$comp-padding-small;
-
-            .artdv-about-text2 {
-                width: 60%;
-                p {
-                    font-size: clamp(16px, 2.5vw, 20px);
-                    margin-right: calc(sass.$comp-padding-small / 2);
-                }
-            }
-        }
-        #img2 {
-            width: 40%;
-            justify-content: end!important;
-            img {
-                max-height: 600px;
             }
         }
     }
@@ -776,22 +936,58 @@
         }
     }
 
-    .artdv-imprint,
-    .artdv-privacy {
-        .artdv-imprint-content,
-        .artdv-privacy-content {
-            margin: sass.$comp-padding-medium;
-            a,
+    .artdv-imprint {
+        .artdv-imprint-content {
+            margin: sass.$space25 calc(sass.$space50 * 2);
+        }
+    }
+
+    .artdv-prints {
+        .artdv-prints-overview {
+            $padding: sass.$space25;
+            $border: 3px;
+            width: calc(75% - ($padding * 2) - ($border * 2));
             p {
-                font-size: clamp(14px, 1.8vw, 17px);
+                font-size: 17px;
+            }
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: 75%;
+                .artdv-prints-block-content {
+                    p,
+                    li {
+                        font-size: 15px;
+                    }
+                }
+                .artdv-prints-canvas-img {
+                    width: 80%;
+                    img {
+                        height: 200px;
+                    }
+                    .artdv-prints-img-label-bottom {
+                        font-size: 12px;
+                    }
+                }
             }
         }
     }
 
     .artdv-privacy {
         .artdv-privacy-content {
-            h2 {
-                padding-top: calc(sass.$comp-padding-medium + sass.$comp-padding-small);
+            margin: sass.$space25 calc(sass.$space50 * 2);
+        }
+    }
+
+    .artdv-shipping {
+        p,
+        li {
+            font-size: 15px;
+        }
+        .artdv-shipping-block-content {
+            $shipping-padding: sass.$space15;
+            .artdv-shipping-single {
+                width: calc(75% - ($shipping-padding * 2));
             }
         }
     }
@@ -909,6 +1105,47 @@
         min-height: calc(100vh - $modified-nav-height - var(--view-nav-width))!important;
     }
 
+    .artdv-about {
+        .artdv-about-content {
+            .artdv-about-indented > div {
+                margin-bottom: sass.$space15;
+            }
+            #artdv-about-part1 {
+                flex-direction: column;
+                #artdv-about-image1 {
+                    justify-content: center;
+                    #artdv-about-image1-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 250px;
+                        }
+                    }
+                }
+                #artdv-about-text1 {
+                    width: 100%;
+                }
+            }
+            #artdv-about-part2 {
+                flex-direction: column-reverse;
+                #artdv-about-image2 {
+                    justify-content: center;
+                    #artdv-about-image2-wrapper {
+                        height: fit-content;
+                        img {
+                            width: 375px;
+                        }
+                    }
+                }
+                #artdv-about-text2 {
+                    width: 100%;
+                }
+            }
+            #artdv-about-part3 {
+                height: 60vh;
+            }
+        }
+    }
+
     .artdv-home {
         .artdv-home-top-img {
             padding: sass.$comp-padding-small 0!important;
@@ -918,37 +1155,6 @@
                 width: 85vw!important;
                 margin-right: 0!important;
             }
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            margin: sass.$comp-padding-small;
-        }
-        #img1 img {
-            width: 100%!important;
-        }
-        .artdv-about-text1 {
-            margin-left: calc(sass.$comp-padding-small / 2);
-            p {
-                font-size: clamp(14px, 2.5vw, 20px);
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: column;
-            margin: sass.$comp-padding-small;
-
-            .artdv-about-text2 {
-                width: 100%;                
-                p {
-                    font-size: clamp(14px, 2.5vw, 20px);
-                    margin: 0;
-                }
-            }
-        }
-        #img2 {
-            width: 100%;
-            justify-content: center!important;
         }
     }
 
@@ -1057,20 +1263,83 @@
         }
     }
 
-    .artdv-imprint,
-    .artdv-privacy {
-        .artdv-imprint-content,
-        .artdv-privacy-content {
-            margin: sass.$comp-padding-small;
-            h2 {
-                font-size: clamp(19px, 3vw, 26px);
-            }
-            h3 {
-                font-size: clamp(17px, 2.7vw, 24px);
-            }
-            a,
+    .artdv-imprint {
+        .artdv-imprint-content {
+            font-size: 14px;
+        }
+    }
+
+    .artdv-prints {
+        .artdv-prints-overview {
+            $padding: sass.$space25;
+            $border: 3px;
+            width: calc(100% - (sass.$space50 * 2) - ($padding * 2) - ($border * 2));
+            margin: 0 sass.$space50 sass.$space50 sass.$space50;
             p {
-                font-size: clamp(14px, 1.8vw, 17px);
+                font-size: 16px;
+            }
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: calc(100% - (sass.$space50 * 2));
+                margin: 0 sass.$space50 sass.$space50 sass.$space50;
+                .artdv-prints-block-content {
+                    p,
+                    li {
+                        font-size: 14px;
+                    }
+                }
+                .artdv-prints-canvas-img {
+                    width: 100%;
+                    .artdv-prints-img-label-bottom {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+        .artdv-prints-price-info {
+            a,
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .artdv-privacy {
+        .artdv-privacy-content {
+            font-size: 14px;
+        }
+    }
+
+    .artdv-shipping {
+        p,
+        li {
+            font-size: 14px;
+        }
+        $responsive-margin: sass.$space50;
+        .artdv-shipping-block {
+            h2 {
+                margin: 0 $responsive-margin sass.$space5 $responsive-margin;
+                text-align: center;
+            }
+        }
+        .artdv-shipping-block-content {
+            flex-direction: column;
+            $shipping-padding: sass.$space15;
+            .artdv-shipping-container {
+                margin: 0 $responsive-margin;
+                img {
+                    height: 125px;
+                }
+            }
+            .artdv-shipping-single {
+                width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
+            }
+            .artdv-shipping-double {
+                width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
+            }
+            .artdv-shipping-triple {
+                width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
             }
         }
     }
@@ -1148,6 +1417,41 @@
         min-height: calc(100% - (300px + var(--view-nav-width)))!important;
     }
 
+    .artdv-about {
+        p {
+            margin: 0;
+        }
+        .artdv-about-content {
+            #artdv-about-part1 {
+                #artdv-about-image1 {
+                    #artdv-about-image1-wrapper {
+                        img {
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+            #artdv-about-part2 {
+                #artdv-about-image2 {
+                    #artdv-about-image2-wrapper {
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            #artdv-about-part3 {
+                height: 33vh;
+                #artdv-about-part3-text {
+                    p {
+                        top: 33%;
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+    }
+
     .artdv-home {
         header {
             min-height: 350px;
@@ -1162,46 +1466,6 @@
             img {
                 width: 85vw!important;
                 margin-right: 0!important;
-            }
-        }
-    }
-
-    .artdv-about {
-        .artdv-about-content {
-            flex-direction: column-reverse!important;
-
-        }
-        #img1 {
-            width: 100%;
-            margin-top: 0!important;
-            img {
-                margin: 0 calc(sass.$comp-padding-small / 2);
-                width: 70vw!important;
-                max-height: 400px;
-                object-position: center top;
-            }
-        }
-        .artdv-about-text1 {
-            width: 100%!important;
-            margin: calc(sass.$comp-padding-small / 2) 0!important;
-            p {
-                margin: 0;
-                font-size: clamp(14px, 2.5vw, 20px);
-                width: 100%!important;
-            }
-        }
-        .artdv-about-additional {
-            flex-direction: column;
-            margin: sass.$comp-padding-small;
-            p {
-                font-size: clamp(14px, 2.5vw, 20px);
-            }
-        }
-        #img2 {
-            width: 100%;
-            img {
-                max-width: 300px!important;
-                margin: sass.$comp-padding-small auto!important;
             }
         }
     }
@@ -1288,22 +1552,70 @@
         }
     }
 
-    .artdv-imprint,
+    .artdv-imprint {
+        .artdv-imprint-content {
+            margin: 0 calc(sass.$space25 * 2) sass.$space25 calc(sass.$space25 * 2);
+        }
+    }
+
+    .artdv-prints {
+        .artdv-prints-overview {
+            $padding: sass.$space25;
+            $border: 3px;
+            width: calc(100% - (sass.$space25 * 2) - ($padding * 2) - ($border * 2));
+            margin: 0 sass.$space25 sass.$space50 sass.$space25;
+        }
+        .artdv-prints-content {
+            .artdv-prints-block {
+                width: calc(100% - (sass.$space25 * 2));
+                margin: 0 sass.$space25 sass.$space50 sass.$space25;
+                .artdv-prints-canvas-img {
+                    img {
+                        height: 150px;
+                    }
+                    .artdv-prints-img-label-bottom {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+        .artdv-prints-price-info {
+            .artdv-prints-price-info-wrapper {
+                flex-direction: column;
+            }
+        }
+    }
+
     .artdv-privacy {
-        .artdv-imprint-content,
         .artdv-privacy-content {
-            margin: sass.$comp-padding-small;
+            margin: 0 calc(sass.$space25 * 2) sass.$space25 calc(sass.$space25 * 2);
+        }
+    }
+
+    .artdv-shipping {
+        $responsive-margin: sass.$space25;
+        .artdv-shipping-block {
             h2 {
-                text-wrap: balance;
-                font-size: clamp(19px, 3vw, 26px);
+                margin: 0 $responsive-margin sass.$space5 $responsive-margin;
+                text-align: center;
             }
-            h3 {
-                text-wrap: balance;
-                font-size: clamp(17px, 2.7vw, 24px);
+        }
+        .artdv-shipping-block-content {
+            $shipping-padding: sass.$space15;
+            .artdv-shipping-container {
+                margin: 0 $responsive-margin;
+                img {
+                    height: 100px;
+                }
             }
-            a,
-            p {
-                font-size: clamp(14px, 1.8vw, 17px);
+            .artdv-shipping-single {
+                width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
+            }
+            .artdv-shipping-double {
+                width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
+            }
+            .artdv-shipping-triple {
+                width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
             }
         }
     }

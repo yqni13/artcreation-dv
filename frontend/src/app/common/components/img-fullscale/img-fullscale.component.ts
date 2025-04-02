@@ -1,6 +1,5 @@
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, HostListener, Input, Output } from "@angular/core";
-import { environment } from "../../../../environments/environment";
 
 @Component({
     selector: 'artdv-imgfullscale',
@@ -12,7 +11,7 @@ import { environment } from "../../../../environments/environment";
             (click)="closeFullscale(false)"
             (keydown.enter)="closeFullscale(false)" 
         >
-            <img src="{{storageDomain + '/' + imgPath}}" alt="404-picture-not-found">
+            <img src="{{imgPath}}" alt="404-picture-not-found">
         </div>
     `,
     styleUrl: "./img-fullscale.component.scss",
@@ -31,14 +30,11 @@ export class ImgFullscaleComponent {
     @Input() imgPath: string;
     @Input() isActive: boolean;
 
-    protected storageDomain: string;
-
     @Output() fullscaleChanged = new EventEmitter<boolean>();
 
     constructor() {
         this.imgPath = '';
         this.isActive = false;
-        this.storageDomain = environment.STORAGE_URL;
     }
 
     closeFullscale(flag: boolean) {

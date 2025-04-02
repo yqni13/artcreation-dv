@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
     selector: 'app-imprint',
@@ -16,18 +16,20 @@ export class ImprintComponent {
     protected ownerData: any;
     protected devData: any;
 
-    constructor(private translate: TranslateService) {
+    constructor() {
         this. devData = {
             project: 'artcreation-dv',
-            version: 'v1.0.0-beta.14',
-            github: 'https://github.com/yqni13/artcreation-dv',
+            version: 'v1.0.0-beta.15',
+            github: 'https://github.com/yqni13/artcreation-dv/tree/production',
             portfolio: 'https://yqni13.com',
             email: 'lukas.varga@yqni13.com'
         };
 
         this. ownerData = {
             name: 'Daniela Varga',
-            address: '2500 Baden-Umgebung'
+            address: 'Anton Bruckner-Gasse 11\n2544 Leobersdorf, Österreich',
+            email: 'artcreation-dv@gmx.at',
+            phone: '+436643445935'
         };
     }
 
