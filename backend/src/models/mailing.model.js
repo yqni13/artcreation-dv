@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { AuthenticationException, InternalServerException } = require("../utils/exceptions/common.exception");
+const { AuthenticationException, UnexpectedException } = require("../utils/exceptions/common.exception");
 const nodemailer = require('nodemailer');
 
 class MailingModel {
@@ -19,20 +19,24 @@ class MailingModel {
             subject: subject,
             text: message
         };
-        
-        const success = await this.wrapedSendMail(mailOptions);
-        
-        return {response: {
-            success: success,
-            sender: sender
-        }};
+        try {
+            const success = await this.wrapedSendMail(mailOptions);
+            return { response: { success, sender } };
+        } catch (error) {
+            console.error("ERROR sendMail: ", error);
+            if(error.status === 535) {
+                throw new AuthenticationException('server-535-auth#email-service', { data: error.message});
+            } else {
+                throw new UnexpectedException();
+            }
+        }
     }
 
     async wrapedSendMail(mailOptions) {
         return new Promise((resolve, reject) => {
             const transporter = nodemailer.createTransport({
                 service: 'gmx',
-                host: 'mail.gmx.com',
+                host: 'mail.gmx.net',
                 port: 465,
                 secure: true,
                 tls: {
@@ -48,15 +52,13 @@ class MailingModel {
 
             transporter.sendMail(mailOptions, function(error, info) {
                 if(error) {
-                    reject(false);
                     if(error.responseCode === 535) {
-                        throw new AuthenticationException();
+                        return reject(new AuthenticationException(error));
                     } else {
-                        throw new InternalServerException();
+                        return reject(new UnexpectedException(error));
                     }
-                } else {
-                    resolve(true);
                 }
+                resolve(true);
             })
         })
     }

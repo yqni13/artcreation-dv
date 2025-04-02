@@ -31,6 +31,10 @@
         "element8": {
             "question": "In welche Länder werden Kunstwerke verschickt?",
             "answer": "Kunstwerke werden in alle Länder verschickt, die, für die von uns genutzten Lieferdienste, verfügbar sind. Bei Schwierigkeiten mit Auslierungsorten sind wir stets darum bemüht eine optimale Lösung für Sie zu finden. Sollten Sie Fragen haben, können Sie sich auch vorab über unser Kontaktformular unter dem Betreff \"Generelle Anfrage\" an uns wenden."
+        },
+        "element9": {
+            "question": "Wie funktioniert das Kontakt-Formular?",
+            "answer": "Bestellung - füllen Sie das Feld für die Referenz-Nummer aus, um ihr gewünschtes Kunstwerk auszuwählen. Wenn für dieses Kunstwerk ein Preis besteht, können Sie auf direktem Wege das Kunstwerk als Original bestellen. Wählen Sie den Betreff \"Bestellung\" und füllen die entsprechende Referenz-Nummer aus. Alternativ können Sie auch in der Galerie das Kunstwerk öffnen und in den Details über den Button \"Bestellen\" zum vorausgefüllten Kontakt-Formular kommen.\n\nGenerelle Anfrage - Sie haben eine Frage die sich nicht direkt mit einem ausgewählten Kunstwerk zu tun hat? Wählen Sie diesen Betreff und teilen uns Ihr Anliegen mit.\n\nSpezifische Anfrage - Sie interessieren sich für ein Kunstwerk und möchten den Preis für ein Original oder einen Kunstdruck erfahren? Unter diesem Betreff können wir eine Anfrage schnell und einfach dem gewünschten Kunstwerk zuordnen. Wählen Sie den Betreff \"Spezifische Anfrage\" und füllen die entsprechende Referenz-Nummer aus. Alternativ können Sie auch in der Galerie das Kunstwerk öffnen und in den Details über den Link \"Preis anfragen\" zum vorausgefüllten Kontakt-Formular kommen.\n\nAlle Anfragen die sich an ein gewünschtes Kunstwerk richten (mit Kaufinteresse), können nur dann gestellt werden, wenn dieses Kunstwerk auch als \"verfügbar\" eingestuft ist. Wenn Ihre Anfrage verarbeitet wurde, wird Ihnen am Bildschirm eine Nachricht zur Bestätigung/Information angezeigt."
         }       
     }    
 }

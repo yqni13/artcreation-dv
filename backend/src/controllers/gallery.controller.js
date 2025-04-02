@@ -8,6 +8,12 @@ class GalleryController {
         res.send(response);
     }
 
+    findByRefNr = async (req, res, next) => {
+        checkValidation(req);
+        const response = await GalleryService.findByRefNr({reference_nr: req.params.refNr});
+        res.send(response);
+    }
+
     findAll = async (req, res, next) => {
         const response = await GalleryService.findAll();
         res.send(response);

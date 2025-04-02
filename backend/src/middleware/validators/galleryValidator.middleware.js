@@ -11,6 +11,13 @@ exports.galleryFindOneSchema = [
         .custom((id) => CustomValidator.validateUUID(id))
 ];
 
+exports.galleryFindByRefNrSchema = [
+    param('refNr')
+        .trim()
+        .notEmpty()
+        .withMessage('data-required')
+];
+
 exports.galleryCreateSchema = [
     CustomValidator.validateImageFileInput,
     body('imagePath')

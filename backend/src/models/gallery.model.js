@@ -39,6 +39,15 @@ class GalleryModel {
 
         return params['referenceNr'];
     }
+
+    parseGalleryRefParams = async (refNr) => {
+        return {
+            table: 'gallery',
+            queryParams: {
+                reference_nr: refNr['reference_nr']
+            }
+        }
+    }
 }
 
 module.exports = new GalleryModel();
