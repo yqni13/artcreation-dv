@@ -12,11 +12,13 @@ import { ArtGenre } from "../../shared/enums/art-genre.enum";
 export class GalleryAPIService {
 
     private idParam: string;
+    private refNrParam: string;
     private formDataCreate: FormData;
     private formDataUpdate: FormData;
 
     private urlRefNrPreview: string;
     private urlGetOne: string;
+    private urlGetByRefNr: string;
     private urlGetAll: string;
     private urlCreate: string;
     private urlUpdate: string;
@@ -24,16 +26,19 @@ export class GalleryAPIService {
 
     constructor(private readonly http: HttpClient) {
         this.idParam = '';
+        this.refNrParam = '';
         this.formDataCreate = new FormData();
         this.formDataUpdate = new FormData();
 
         // this.urlGetOne = `/api/v1/gallery${GalleryRoute.findOne}`;
+        // this.urlGetByRefNr = `/api/v1/gallery${GalleryRoute.FINDBYREFNR}`;
         // this.urlGetAll = `/api/v1/gallery${GalleryRoute.findAll}`;
         // this.urlCreate = `/api/v1/gallery${GalleryRoute.create}`;
         // this.urlUpdate = `/api/v1/gallery${GalleryRoute.update}`;
         // this.urlDelete = `/api/v1/gallery${GalleryRoute.delete}`;
         // this.urlRefNr = `/api/v1/gallery${GalleryRoute.refNrPreview}`;
         this.urlGetOne = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.FINDONE}`;
+        this.urlGetByRefNr = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.FINDBYREFNR}`;
         this.urlGetAll = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.FINDALL}`;
         this.urlCreate = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.CREATE}`;
         this.urlUpdate = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.UPDATE}`;
@@ -43,6 +48,10 @@ export class GalleryAPIService {
 
     setIdParam(id: string) {
         this.idParam = id;
+    }
+
+    setRefNrParam(refNr: string) {
+        this.refNrParam = refNr;
     }
 
     setCreatePayload(data: any) {
@@ -89,6 +98,10 @@ export class GalleryAPIService {
 
     sendGetOneRequest(): Observable<HttpResponse<GalleryResponse.GalleryItemResponse>> {
         return this.http.get<GalleryResponse.GalleryItemResponse>(`${this.urlGetOne}/${this.idParam}`, { observe: 'response'});
+    }
+
+    sendGetByRefNrRequest(): Observable<HttpResponse<GalleryResponse.GalleryListResponse>> {
+        return this.http.get<GalleryResponse.GalleryListResponse>(`${this.urlGetByRefNr}/${this.refNrParam}`, { observe: 'response'});
     }
 
     sendGetAllRequest(): Observable<HttpResponse<GalleryResponse.GalleryListResponse>> {

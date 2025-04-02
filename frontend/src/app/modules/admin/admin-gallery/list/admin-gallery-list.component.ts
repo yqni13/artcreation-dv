@@ -160,7 +160,6 @@ export class AdminGalleryListComponent implements OnInit, OnDestroy {
     }
 
     filterListBySearchText(searchText: string) {
-        console.log("call list search")
         searchText = searchText.toLowerCase();
         this.modifiedList = this.galleryList.filter((data) => 
             (data.reference_nr).toLowerCase().includes(searchText) ||

@@ -1,12 +1,18 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
-import { ReferenceCheckService } from "../../shared/services/reference-check.service";
+import { GalleryItem } from "../../api/models/gallery-response.interface";
+import { SaleStatus } from "../../shared/enums/sale-status.enum";
+import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 
-export const invalidRefNrValidator = (refCheckService: ReferenceCheckService): ValidatorFn => {
+export const invalidRefNrValidator = (artwork: GalleryItem, subject: SubjectOptions): ValidatorFn => {
     return (control: AbstractControl): ValidationErrors | null => {
-        if(control?.value.length === 6) {
-            return !refCheckService.checkReferenceValidity(control.value)
-            ? {invalidRefNr: true}
-            : null;
+        if(control?.value.length === 6 && artwork) {
+            if(!artwork.reference_nr) {
+                return { invalidRefNr: true }
+            } else if(artwork.sale_status === SaleStatus.UNAVAILABLE) {
+                return { unavailableArtwork: true }
+            } else if(subject === SubjectOptions.artOrder && artwork.price === null) {
+                return { invalidPurchaseArtwork: true }
+            }
         }
         return null;
     }

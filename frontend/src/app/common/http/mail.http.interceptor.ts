@@ -31,11 +31,11 @@ export class MailHttpInterceptor {
             this.httpObservationService.setEmailStatus(true);
             this.snackbarService.notify({
                 title: this.translate.currentLang === 'en'
-                ? this.staticTranslate.getTranslationEN('validation.frontend.email.title')
-                : this.staticTranslate.getTranslationDE('validation.frontend.email.title'),
+                ? this.staticTranslate.getValidationEN('validation.frontend.email.title')
+                : this.staticTranslate.getValidationDE('validation.frontend.email.title'),
             text: this.translate.currentLang === 'en'
-                ? this.staticTranslate.getTranslationEN('validation.frontend.email.text') + httpBody.body.body.response.sender
-                : this.staticTranslate.getTranslationDE('validation.frontend.email.text') + httpBody.body.body.response.sender,
+                ? this.staticTranslate.getValidationEN('validation.frontend.email.text')
+                : this.staticTranslate.getValidationDE('validation.frontend.email.text'),
                 autoClose: false,
                 type: SnackbarOption.success,
             });

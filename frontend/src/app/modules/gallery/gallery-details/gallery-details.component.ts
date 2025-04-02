@@ -104,7 +104,7 @@ export class GalleryDetailsComponent implements OnInit {
         const data = {
             'referenceNr': this.artwork?.reference_nr, 
             'subject': subject,
-            'requestPrice': this.artwork.price === 0 ? true : false
+            'requestPrice': this.artwork?.price !== null ? `EUR ${this.artwork?.price}` : null
         };
         
         this.dataShareService.setSharedData(data);
