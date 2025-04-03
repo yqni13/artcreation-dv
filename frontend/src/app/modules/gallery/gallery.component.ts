@@ -39,6 +39,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
     private currentNavigation: any;
     private subscriptionHttpObservationFindAll$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
+    private imgPreloadDetailsBg: any;
     private delay: any;
 
     constructor(
@@ -56,6 +57,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.subscriptionHttpObservationFindAll$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();
+        this.imgPreloadDetailsBg = new Image();
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
         this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;
@@ -93,6 +95,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
             this.reuseGallery();
         }
+        this.imgPreloadDetailsBg.src = '/assets/background/art-wall.jpg';
     }
     
     ngAfterViewInit() {

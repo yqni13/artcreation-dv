@@ -5,28 +5,31 @@ header {
     flex-direction: column;
     text-align: center;
     align-items: center;
+    height: 100vh;
 
-    background-image: url("/assets/background/home_bg_01.webp");
+    background-image: url("/assets/background/home_bg_01.jpg");
     background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
     color: sass.$color-ice-white;
 
     .artdv-home-header-wrapper {
-        border-radius: 5px;
-        backdrop-filter: blur(1px);
+        border-radius: 50px;
     }
     
     h1 {
-        font-size: clamp(35px, 7vw, 90px);
+        font-size: clamp(35px, 7vw, 110px);
+        font-weight: 600;
         margin-bottom: 0;
         color: sass.$color-ice-white;
+        text-shadow: 1px 1px sass.$color-rich-black;
     }
-
+    
     span {
         font-family: 'Custom-RonySiswadi', Fallback, sans-serif;
-        font-size: clamp(28px, 6vw, 80px);
+        font-size: clamp(28px, 6vw, 90px);
+        font-weight: 600;
+        text-shadow: 1px 1px sass.$color-rich-black;
     }
 }
 

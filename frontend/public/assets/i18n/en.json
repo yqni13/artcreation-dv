@@ -77,7 +77,8 @@
         },
         "archive": {
             "message": "Hover your mouse over the image to read more on the article.",
-            "title": "News Archive"
+            "title": "News Archive",
+            "nav": "to archive..."
         },
         "contact": {
             "form": {
@@ -96,13 +97,12 @@
                 "placeholders": {
                     "email": "Email",
                     "firstName": "First name",
-                    "honorifics": "Select honorifics",
+                    "honorifics": "Title",
                     "lastName": "Last name",
                     "message": "Message",
                     "referenceNr": "Reference number",
-                    "subject": "Select subject",
-                    "title": "Academic title",
-                    "type": "Select type"
+                    "subject": "Subject",
+                    "title": "Academic title"
                 }
             },
             "message": "Most common questions are listed and answered in the ",
@@ -150,9 +150,9 @@
         "prints": {
             "canvas": {
                 "img-desc": {
-                    "img1": "Canvas print",
+                    "img1": "Canvas print\nFront",
                     "img2": "Original",
-                    "img3": "Stretcher frame"
+                    "img3": "Stretcher frame\nBack"
                 },
                 "subtitle": "Information on canvas prints",
                 "text0": "If you choose to order your desired artwork as a canvas print, we offer the option to have it stretched onto a wooden stretcher frame and additionally framed in a high-quality floating frame.",
@@ -164,7 +164,7 @@
             "overview": {
                 "info": "depending on the desired print size",
                 "link": "request here",
-                "text": "All available artworks are also available as art prints. You can choose your preferred format from a variety of purchase options. Art prints can be ordered in various sizes, but the maximum size is the original size of the artwork.",
+                "text": "All available artworks are also available as art prints in form of canvas or paper print. You can choose your preferred format from a variety of purchase options. Art prints can be ordered in various sizes, but the maximum size is the original size of the artwork.",
                 "title": "Price information"
             },
             "paper": {
@@ -176,7 +176,7 @@
                     "li4": "ISO9706 compliant / museum quality for maximum ageing resistance"
                 },
                 "subtitle": "Information on paper prints",
-                "text0": "If you choose to order your desired artwork as a paper print, we offer the option to have it framed and/or glazed. The paper print comes in a matt paper style.",
+                "text0": "If you choose to order your desired artwork as a paper print, we offer the option to have it framed and glazed. The paper print comes in a matt paper style.",
                 "text1": "Hahnemühle Photo Rag® is one of the world's most popular papers and a sophisticated all-rounder for creating high-quality Fine Art inkjet prints. This white cotton artist paper, with its characteristic, pleasantly soft feel, impresses with its gently pronounced felt texture, lending every work of art a three-dimensional quality and impressive image depth.",
                 "text2": "Combined with the matte premium inkjet coating, this creates outstanding prints with brilliant colors, deep blacks, impressive contrasts, and perfect detail reproduction. This acid- and lignin-free classic meets the highest standards for aging resistance and is specifically designed for fine art applications.",
                 "text3": "Whether FineArt photography or art reproduction, the ideal combination of structure, print quality and weight makes Photo Rag® the most versatile fine art inkjet paper.",

@@ -75,9 +75,7 @@
 
     .artdv-home {
         header {
-            min-height: 500px;
-            max-height: 700px;
-            height: 80vh;
+            background-position: 50%;
         }
     }
 
@@ -295,6 +293,7 @@
             }
             a {
                 padding-left: calc(sass.$comp-padding-big + 3.5px);
+                
             }
             i {
                 top: 4px;
@@ -434,9 +433,7 @@
 
     .artdv-home {
         header {
-            min-height: 500px;
-            max-height: 700px;
-            height: 80vh;
+            background-position: 27.5%;
         }
         .artdv-home-top-img {
             img {
@@ -740,7 +737,6 @@
     }
 }
 
-
 // 768px > width < 1024px
 @media screen and (width <= sass.$device-tablet-landscape) {
     .artdv-scroll-wrapper {
@@ -803,13 +799,6 @@
     }
 
     .artdv-home {
-        header {
-            min-height: 450px;
-            max-height: 600px;
-            height: 70vh;
-            background-size: calc(110%);
-        }
-
         .artdv-home-top-img {
             img {
                 width: 75vw!important;
@@ -896,7 +885,7 @@
 
             .artdv-gallerydetails-img-wrapper {
                 border-width: 10px;
-                top: 18%;
+                top: calc(18% + (100vh - 700px) * 0.15);
             }
         }
         .artdv-gallerydetails-divider {
@@ -1093,6 +1082,9 @@
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
                 background-position-y: calc(80% - 8vh)!important;
+                .artdv-gallerydetails-img-wrapper {
+                    top: calc(18% + (700px - 100vh) * 0.15);
+                }
             }
         }
     }
@@ -1147,6 +1139,9 @@
     }
 
     .artdv-home {
+        header {
+            background-position: 33%;
+        }
         .artdv-home-top-img {
             padding: sass.$comp-padding-small 0!important;
             justify-content: center!important;
@@ -1453,12 +1448,6 @@
     }
 
     .artdv-home {
-        header {
-            min-height: 350px;
-            max-height: 450px;
-            height: 60vh;
-        }
-
         .artdv-home-top-img {
             padding: sass.$comp-padding-small 0!important;
             justify-content: center!important;

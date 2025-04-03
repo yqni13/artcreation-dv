@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private subscriptionHttpObservationLogin$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
+    private imgPreloadAdmin: any;
     private delay: any;
 
     constructor(
@@ -54,6 +55,11 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.subscriptionHttpObservationLogin$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();
+        this.imgPreloadAdmin = {
+            gallery: new Image(),
+            news: new Image(),
+            logout: new Image()
+        }
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     }
 
@@ -82,6 +88,9 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
         ).subscribe();
 
         this.initEdit();
+        this.imgPreloadAdmin.gallery.src = '/assets/admin/admin-gallery.jpg';
+        this.imgPreloadAdmin.news.src = '/assets/admin/admin-news.jpg';
+        this.imgPreloadAdmin.logout.src = '/assets/admin/admin-logout.jpg';
     }
 
     ngAfterViewInit() {

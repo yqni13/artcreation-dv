@@ -37,6 +37,7 @@
         height: 25vw;
         padding: 3px;
         filter: drop-shadow(0px 0px 20px var(--theme-submenu-route));
+        cursor: pointer;
     }
 }
 
@@ -48,7 +49,7 @@
 .artdv-carousel-default-text-header {
     h3 {
         font-size: sass.$home-news-header-size;
-        color: var(--theme-contrast-anchor);
+        color: var(--theme-secondary-color);
         margin-bottom: 0;
     }
     span {
@@ -63,6 +64,9 @@
         text-align: justify;
         font-size: sass.$home-news-content-size;
         margin: sass.$comp-padding-small 0 sass.$comp-padding-medium 0;
+    }
+    a {
+        text-decoration: none;
     }
 }
 
