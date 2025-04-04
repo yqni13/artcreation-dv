@@ -4,6 +4,13 @@
 
 <br>
 
+### 2024/04/04 - $\textsf{update\ 1.0.0-beta.15\ >>\ {\color{pink}1.0.0}}$
+
+- $\textsf{\color{green}Change:}$ Add fullsize artwork as landing page background image.
+- $\textsf{\color{green}Change:}$ Add secondary color for better highlighting.
+- $\textsf{\color{green}Change:}$ Add image-preload to 'home', 'gallery', 'login' and 'admin' component (images with bigger size).
+- $\textsf{\color{green}Change:}$ Exchanged .jpg with .webp format images on components with the added preload.
+
 ### 2024/03/31 - $\textsf{update\ 1.0.0-beta.14\ >>\ {\color{pink}1.0.0-beta.15}}$
 
 - $\textsf{\color{green}Change:}$ Implement 'prints' and 'shipping' component including content and translations.

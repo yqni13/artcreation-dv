@@ -7,15 +7,11 @@ header {
     align-items: center;
     height: 100vh;
 
-    background-image: url("/assets/background/home_bg_01.jpg");
+    background-image: url("/assets/background/home_bg_01.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
     color: sass.$color-ice-white;
-
-    .artdv-home-header-wrapper {
-        border-radius: 50px;
-    }
     
     h1 {
         font-size: clamp(35px, 7vw, 110px);

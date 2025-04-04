@@ -57,13 +57,14 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.subscriptionHttpObservationFindAll$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();
-        this.imgPreloadDetailsBg = new Image();
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
         this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;
     }
     
     ngOnInit() {
+        this.preloadImgTargetComp();
+
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.galleryFindAllStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
@@ -95,7 +96,6 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
             this.reuseGallery();
         }
-        this.imgPreloadDetailsBg.src = '/assets/background/art-wall.jpg';
     }
     
     ngAfterViewInit() {
@@ -109,6 +109,11 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.cdRef.detectChanges();
 
         // TODO(yqni13): scrolling via custom scrollbar inside gallery component does not work on lazy/pre loads
+    }
+
+    preloadImgTargetComp() {
+        this.imgPreloadDetailsBg = new Image();
+        this.imgPreloadDetailsBg.src = '/assets/background/art-wall.webp';
     }
 
     initGallery() {

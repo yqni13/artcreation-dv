@@ -1,6 +1,6 @@
 
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.0.0-beta.14}}$
+$\texttt{\color{teal}{v1.0.0}}$
 
 
 
@@ -144,11 +144,12 @@ Most of the images are linked with logic to either displaying more details or sc
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.0.0-beta.14\ >>\ {\color{pink}1.0.0-beta.15}}$
+### $\textsf{last\ update\ 1.0.0-beta.15\ >>\ {\color{pink}1.0.0}}$
 
-- $\textsf{\color{green}Change:}$ Implement 'prints' and 'shipping' component including content and translations.
-- $\textsf{\color{green}Change:}$ Add translations to 'imprint' and 'privacy' component.
-- $\textsf{\color{green}Change:}$ Add content to 'about' component.
+- $\textsf{\color{green}Change:}$ Add fullsize artwork as landing page background image.
+- $\textsf{\color{green}Change:}$ Add secondary color for better highlighting.
+- $\textsf{\color{green}Change:}$ Add image-preload to 'home', 'gallery', 'login' and 'admin' component (images with bigger size).
+- $\textsf{\color{green}Change:}$ Exchanged .jpg with .webp format images on components with the added preload.
 
 <br>
 
