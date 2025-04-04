@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
@@ -11,15 +11,17 @@ import { TranslateModule } from "@ngx-translate/core";
         TranslateModule
     ]
 })
-export class ImprintComponent {
+export class ImprintComponent implements OnInit {
 
     protected ownerData: any;
     protected devData: any;
 
+    private imgPreloadLogin: any;
+
     constructor() {
         this. devData = {
             project: 'artcreation-dv',
-            version: 'v1.0.0-beta.15',
+            version: 'v1.0.0',
             github: 'https://github.com/yqni13/artcreation-dv/tree/production',
             portfolio: 'https://yqni13.com',
             email: 'lukas.varga@yqni13.com'
@@ -31,6 +33,11 @@ export class ImprintComponent {
             email: 'artcreation-dv@gmx.at',
             phone: '+436643445935'
         };
+
+        this.imgPreloadLogin = new Image();
     }
 
+    ngOnInit() {
+        this.imgPreloadLogin.src = '/assets/admin/login_bg_smaller_01.jpg';
+    }
 }

@@ -100,7 +100,7 @@ class GalleryRepository {
 
     findAll = async () => {
         const table = 'gallery';
-        const orderProperty = 'last_modified'
+        const orderProperty = 'publication_year';
 
         const sql = `SELECT * FROM ${table} ORDER BY ${orderProperty} DESC`;
         let connection;

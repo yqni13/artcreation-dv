@@ -6,6 +6,7 @@ import { Router, RouterModule } from '@angular/router';
 import { FilterGalleryService } from '../../../shared/services/filter-gallery.service';
 import { NewsUpdateStorage } from '../../../shared/interfaces/NewsUpdateStorage';
 import { TranslateModule } from '@ngx-translate/core';
+import { BaseRoute } from '../../../api/routes/base.route.enum';
 
 @Component({
     selector: 'artdv-carousel',
@@ -32,6 +33,8 @@ export class CarouselComponent {
     @Input() slides: NewsUpdateStorage[];
     @Input() slideTemplate?: TemplateRef<any>;
 
+    protected baseRoute = BaseRoute;
+
     currentIndex: number;
 
     constructor(
@@ -43,10 +46,13 @@ export class CarouselComponent {
     }
 
     navigateToDetails(id: string | null) {
-        if(id && !id.includes('-')) {
-            const genre = this.filterGalleryService.filterByRefNrForGenre(id);
-            this.router.navigate(['gallery/detail', id], { state: { genre: genre}});
-        }
+        // if(id && !id.includes('-')) {
+        //     const genre = this.filterGalleryService.filterByRefNrForGenre(id);
+        //     this.router.navigate(['gallery/detail', id], { state: { genre: genre}});
+        // }
+        // TODO(yqni13): reuse after re-implementing news logic
+
+        this.router.navigate([BaseRoute.ARCHIVE]);
     }
 
     getTransform() {

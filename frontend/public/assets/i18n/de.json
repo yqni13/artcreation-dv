@@ -77,7 +77,8 @@
         },
         "archive": {
             "message": "Zum Lesen des Textes, den Mauszeiger über den jeweiligen Artikel halten.",
-            "title": "News Archiv"
+            "title": "News Archiv",
+            "nav": "zum Archiv..."
         },
         "contact": {
             "form": {
@@ -96,13 +97,12 @@
                 "placeholders": {
                     "email": "E-Mail Adresse",
                     "firstName": "Vorname",
-                    "honorifics": "Geschlecht auswählen",
+                    "honorifics": "Anrede",
                     "lastName": "Nachname",
                     "message": "Nachricht",
                     "referenceNr": "Referenz-Nummer",
-                    "subject": "Betreff auswählen",
-                    "title": "Akademische(r) Titel",
-                    "type": "Form auswählen"
+                    "subject": "Betreff",
+                    "title": "Akademische(r) Titel"
                 }
             },
             "message": "Antworten zu den gängisten Fragen finden Sie hier: ",
@@ -150,9 +150,9 @@
         "prints": {
             "canvas": {
                 "img-desc": {
-                    "img1": "Leinwanddruck",
+                    "img1": "Leinwanddruck\nVorderseite",
                     "img2": "Original",
-                    "img3": "Keilrahmen"
+                    "img3": "Keilrahmen\nRückseite"
                 },
                 "subtitle": "Informationen zum Leinwanddruck",
                 "text0": "Falls Sie Ihr gewünschtes Kunstwerk als Leinwanddruck bestellen, bieten wir Ihnen die Möglichkeit, diesen auf einen Keilrahmen aufzuspannen und zusätzlich in einem hochwertigen Schattenfugenrahmen einrahmen zu lassen.",
@@ -164,7 +164,7 @@
             "overview": {
                 "info": "abhängig von der gewünschten Druck-Größe",
                 "link": "hier anfragen",
-                "text": "Alle verfügbaren Kunstwerke können bei uns auch als Kunstdruck erworben werden. Für den Erwerb können Sie aus verschiedenen Optionen Ihr gewünschtes Format wählen. Ein Kunstdruck ist in unterschiedlichen Größen bestellbar, maximal aber in der Originalgröße des Kunstwerkes.",
+                "text": "Alle verfügbaren Kunstwerke können bei uns auch als Kunstdruck, d.h. als Leinwanddruck oder Papierdruc erworben werden. Für den Erwerb können Sie aus verschiedenen Optionen Ihr gewünschtes Format wählen. Der Kunstdruck ist in unterschiedlichen Größen bestellbar, maximal aber in der Originalgröße des Kunstwerkes.",
                 "title": "Preisinformation"
             },
             "paper": {
@@ -176,7 +176,7 @@
                     "li4": "ISO9706 konform / Museumsqualität für höchste Alterungsbeständigkeit"
                 },
                 "subtitle": "Informationen zum Papierdruck",
-                "text0": "Falls Sie Ihr gewünschtes Kunstwerk als Papierdruck bestellen, bieten wir Ihnen die Möglichkeit, dieses optional mit Rahmen und/oder Verglasung zu bekommen. Der Papierdruck wird mit mattem Papier ausgeliefert.",
+                "text0": "Falls Sie Ihr gewünschtes Kunstwerk als Papierdruck bestellen, bieten wir Ihnen die Möglichkeit, diesen optional mit Rahmen und Verglasung zu gestalten. Der Papierdruck wird mit mattem Papier ausgeliefert.",
                 "text1": "Hahnemühle Photo Rag® ist eins der weltweit beliebtesten Papiere und der edle Allrounder für die Erstellung von hochwertigen FineArt Inkjet Drucken. Das weiße Baumwoll-Künstlerpapier mit seiner charakteristischen, angenehm weichen Haptik überzeugt mit einer sanft ausgeprägten Filzstruktur und verleiht jedem Kunstwerk eine Dreidimensionalität und beeindruckende Bildtiefe.",
                 "text2": "In Kombination mit der matten Premium-Inkjet-Beschichtung entstehen herausragende Drucke in brillanten Farben, tiefem Schwarz, bestechenden Kontrasten und perfekter Detailwiedergabe. Der säure- und ligninfreie Klassiker erfüllt höchste Anforderungen an die Alterungsbeständigkeit und ist speziell für die FineArt Anwendung konzipiert.",
                 "text3": "Egal ob FineArt Fotografie oder Kunstreproduktion, die ideale Kombination aus Struktur, Druckqualität und Gewicht macht Photo Rag® zu dem am vielseitigsten einsetzbaren FineArt Inkjet Papier.",
