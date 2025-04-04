@@ -2,7 +2,7 @@
     "faq-content": {
         "element1": {
             "question": "Where can I find details about an artwork?",
-            "answer": "In the navigation bar, you can find the collection of all artworks under the \"Gallery\" tab. Clicking on the preview image opens the detail view of the selected artwork, which first presents the artwork in an exhibition setting.\nScrolling down, you will find all further details about the artwork: reference number, availability status, genre, dimensions, technique, material, and year of creation. Title and price may also be displayed, but they are not available for every artwork."
+            "answer": "In the navigation bar, you can find the collection of all artworks under the \"Gallery\" tab. Clicking on the preview image opens the detail view of the selected artwork, which first presents the artwork in an exhibition setting.\nScrolling down, you will find all further details about the artwork: reference number, availability status, genre, dimensions, technique, material, and year of creation."
         },
         "element2": {
             "question": "Can I purchase an artwork?",
@@ -14,11 +14,11 @@
         },
         "element4": {
             "question": "How do I know whether I can purchase an original or a print of a particular artwork?",
-            "answer": "In general, the availability status in the gallery detail view indicates whether an artwork is available or not. Since prints (copies) are made upon request, we do not keep any prints in stock. For some artworks where the original is no longer available, a professional scan is available, allowing prints to be created.\nTo find out if an artwork is available in your desired format, please send us a request via the contact form with the subject \"Specific Request\"."
+            "answer": "In general, the availability status in the gallery detail view indicates whether an artwork is available or not. Since prints (copies) are made upon request, we do not keep any prints in stock.\nTo find out if an artwork is available in your desired format, please send us a request via the contact form with the subject \"Specific Request\"."
         },
         "element5": {
             "question": "Can artworks be customized upon customer request?",
-            "answer": "Custom artworks are not created, and such requests will be ignored."
+            "answer": "If a specific artwork is requested, the decision will depend on the subject."
         },
         "element6": {
             "question": "How do I place an order for an artwork?",

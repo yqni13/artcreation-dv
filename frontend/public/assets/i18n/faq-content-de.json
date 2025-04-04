@@ -2,7 +2,7 @@
     "faq-content": {
         "element1": {
             "question": "Wo finde ich Details zu einem Kunstwerk?",
-            "answer": "In der Navigationsleiste kann unter dem Reiter \"Galerie\" die Sammlung aller Kunstwerke gefunden werden. Mit dem Klick auf das Vorschau-Bild öffnet sich die Detail-Anzeige des gewählten Kunstwerkes, welches zuerst das Kunstwerk im Licht einer Ausstellung zeigt.\nScrollen Sie nun hinunter, finden Sie alle weiteren Informationen zum Kunstwerk: Referenz-Nummer, Status zur Verfügbarkeit, Genre, Abmessungen, Technik, Material und Erscheinungsjahr. Titel und Preis können ebenfalls angezeigt werden, sind aber nicht bei jedem Kunstwerk vorhanden."
+            "answer": "In der Navigationsleiste kann unter dem Reiter \"Galerie\" die Sammlung aller Kunstwerke gefunden werden. Mit dem Klick auf das Vorschau-Bild öffnet sich die Detail-Anzeige des gewählten Kunstwerkes, welches zuerst das Kunstwerk im Licht einer Ausstellung zeigt.\nScrollen Sie nun hinunter, finden Sie alle weiteren Informationen zum Kunstwerk: Referenz-Nummer, Status zur Verfügbarkeit, Genre, Abmessungen, Technik, Material und Erscheinungsjahr."
         },
         "element2": {
             "question": "Kann ich ein Kunstwerk erwerben?",
@@ -14,11 +14,11 @@
         },
         "element4": {
             "question": "Woher weiß ich, ob ich ein Original oder einen Kunstdruck von einem bestimmten Kunstwerk erwerben kann?",
-            "answer": "Grundsätzlich zeigt der Status der Verfügbarkeit, in der Galerie-Detailansicht, ob ein Kunstwerk erhältlich ist oder nicht. Da ein Kunstdruck (Kopie) auf Anfrage angefertigt wird, haben wir zu keinem Zeitpunkt Kunstdrucke vorrätig. Für manche Kunstwerke, bei denen ein Original nicht mehr erhältlich ist, steht ein professionller Scan zur Verfügung, anhand dessen Kunstdrucke angefertigt werden können.\nUm zu erfahren, ob ein Kunstwerk in Ihrem gewünschten Format erhältlich ist, senden Sie uns über das Kontaktformular, mit dem Betreff \"Spezifische Anfrage\", eine Anfrage."
+            "answer": "Grundsätzlich zeigt der Status der Verfügbarkeit, in der Galerie-Detailansicht, ob ein Kunstwerk erhältlich ist oder nicht. Da ein Kunstdruck (Kopie) auf Anfrage angefertigt wird, haben wir zu keinem Zeitpunkt Kunstdrucke vorrätig.\nUm zu erfahren, ob ein Kunstwerk in Ihrem gewünschten Format erhältlich ist, senden Sie uns über das Kontaktformular, mit dem Betreff \"Spezifische Anfrage\", eine Anfrage."
         },
         "element5": {
             "question": "Können Kunstwerke auf Kundenwunsch angepasst bestellt werden?",
-            "answer": "Kundenspezifische Kunstwerke werden nicht erstellt und entsprechende Anfragen ignoriert."
+            "answer": "Sollte ein bestimmtes Kunstwerk gewünscht werden, so wird vom Motiv abhängig entschieden."
         },
         "element6": {
             "question": "Wie erfolgt die Bestellung eines Kunstwerkes?",
