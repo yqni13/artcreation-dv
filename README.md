@@ -1,6 +1,6 @@
 
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.0.0}}$
+$\texttt{\color{teal}{v1.0.1}}$
 
 
 
@@ -144,12 +144,10 @@ Most of the images are linked with logic to either displaying more details or sc
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.0.0-beta.15\ >>\ {\color{pink}1.0.0}}$
+### $\textsf{last\ update\ 1.0.0\ >>\ {\color{pink}1.0.1}}$
 
-- $\textsf{\color{green}Change:}$ Add fullsize artwork as landing page background image.
-- $\textsf{\color{green}Change:}$ Add secondary color for better highlighting.
-- $\textsf{\color{green}Change:}$ Add image-preload to 'home', 'gallery', 'login' and 'admin' component (images with bigger size).
-- $\textsf{\color{green}Change:}$ Exchanged .jpg with .webp format images on components with the added preload.
+- $\textsf{\color{green}Change:}$ Change database host (NEON) setting to use server close to Austria for increase of loading speed.
+- $\textsf{\color{green}Change:}$ Change setting to order results of listing all gallery entries by publication year and then on creation timestamp.
 
 <br>
 
