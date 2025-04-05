@@ -1070,10 +1070,13 @@
         }
     }
     
-    @media screen and (height >= 1000px) {
+    @media screen and (height > 700px) {
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
                 background-position-y: -50px!important;
+                .artdv-gallerydetails-img-wrapper {
+                    top: calc(20% + (100vh - 700px) * 0.15);
+                }
             }
         }
     }
@@ -1142,7 +1145,7 @@
             background-position: 33%;
         }
         .artdv-home-top-img {
-            padding: sass.$comp-padding-small 0!important;
+            padding: 0 0!important;
             justify-content: center!important;
             
             img {
@@ -1448,7 +1451,7 @@
 
     .artdv-home {
         .artdv-home-top-img {
-            padding: sass.$comp-padding-small 0!important;
+            padding: 0 0!important;
             justify-content: center!important;
             
             img {
@@ -1610,7 +1613,7 @@
 
     artdv-carousel {
         .artdv-carousel-wrapper {
-            padding: sass.$comp-padding-small 0 0 0;
+            padding: sass.$space25 0;
         }
         .artdv-carousel-default-wrapper {
             display: flex!important;
