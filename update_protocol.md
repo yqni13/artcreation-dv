@@ -4,6 +4,11 @@
 
 <br>
 
+### 2024/04/05 - $\textsf{update\ 1.0.0\ >>\ {\color{pink}1.0.1}}$
+
+- $\textsf{\color{green}Change:}$ Change database host (NEON) setting to use server close to Austria for increase of loading speed.
+- $\textsf{\color{green}Change:}$ Change setting to order results of listing all gallery entries by publication year and then on creation timestamp.
+
 ### 2024/04/04 - $\textsf{update\ 1.0.0-beta.15\ >>\ {\color{pink}1.0.0}}$
 
 - $\textsf{\color{green}Change:}$ Add fullsize artwork as landing page background image.
