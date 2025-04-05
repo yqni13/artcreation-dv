@@ -7,6 +7,7 @@ import { HttpResponse } from "@angular/common/http";
 import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
 import { AdminRoute } from "../../api/routes/admin.route.enum";
 import { MailRoute } from "../../api/routes/mail.route.enum";
+import { SnackbarInput } from "../../shared/enums/snackbar-input.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -31,11 +32,11 @@ export class MailHttpInterceptor {
             this.httpObservationService.setEmailStatus(true);
             this.snackbarService.notify({
                 title: this.translate.currentLang === 'en'
-                ? this.staticTranslate.getValidationEN('validation.frontend.email.title')
-                : this.staticTranslate.getValidationDE('validation.frontend.email.title'),
+                ? this.staticTranslate.getValidationEN('validation.frontend.email.title', SnackbarInput.TITLE)
+                : this.staticTranslate.getValidationDE('validation.frontend.email.title', SnackbarInput.TITLE),
             text: this.translate.currentLang === 'en'
-                ? this.staticTranslate.getValidationEN('validation.frontend.email.text')
-                : this.staticTranslate.getValidationDE('validation.frontend.email.text'),
+                ? this.staticTranslate.getValidationEN('validation.frontend.email.text', SnackbarInput.TEXT)
+                : this.staticTranslate.getValidationDE('validation.frontend.email.text', SnackbarInput.TEXT),
                 autoClose: false,
                 type: SnackbarOption.success,
             });

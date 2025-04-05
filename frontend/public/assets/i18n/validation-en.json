@@ -23,7 +23,8 @@
                 "server-500-connection": "Connection with the server is not possible at the moment. Please try again later or contact support.",
                 "server-500-routes": "The api endpoint is not available at the moment. Please try again later or contact support.",
                 "server-535-auth": "Authentication with the \"{{VAL}}\" failed. Please try again later or contact support.",
-                "server-max-email": "Email service exceeded request limit and is temporary blocked. Please try again in 24h."
+                "server-max-email": "Email service exceeded request limit and is temporary blocked. Please try again in 24h.",
+                "unknown-error": "An unknown error has occurred. Please try again later or contact support."
             },
             "header": {
                 "AuthenticationException": "Connection failed",
@@ -37,7 +38,8 @@
                 "JWTExpirationException": "Expired session",
                 "RequestExceedMaxException": "Capacity exceeded",
                 "TokenMissingException": "Session token missing",
-                "UnexpectedApiResponseException": "Server failed"
+                "UnexpectedApiResponseException": "Server failed",
+                "UnknownException": "Unknown error"
             }
         },
         "frontend": {

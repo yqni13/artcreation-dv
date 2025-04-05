@@ -23,7 +23,8 @@
                 "server-500-connection": "Die Verbindung mit dem Server ist im Moment nicht möglich. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
                 "server-500-routes": "Der passende API Zugang/Endpunkt ist im Moment nicht verfügbar. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
                 "server-535-auth": "Die Authentifizierung bei \"{{VAL}}\" ist im Moment nicht möglich. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
-                "server-max-email": "Email Service hat das Anfragen-Limit überschritten und ist temporär blockiert. Bitte versuchen Sie es in 24h erneut."
+                "server-max-email": "Email Service hat das Anfragen-Limit überschritten und ist temporär blockiert. Bitte versuchen Sie es in 24h erneut.",
+                "unknown-error": "Es ist ein unbekannter Fehler aufgetreten. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support."
             },
             "header": {
                 "AuthenticationException": "Verbindung fehlgeschlagen",
@@ -37,7 +38,8 @@
                 "JWTExpirationException": "Sitzung abgelaufen",
                 "RequestExceedMaxException": "Kapazität überschritten",
                 "TokenMissingException": "Sitzungs-Token fehlt",
-                "UnexpectedApiResponseException": "Server fehlgeschlagen"
+                "UnexpectedApiResponseException": "Server fehlgeschlagen",
+                "UnknownException": "Unbekannter Fehler"
             }
         },
         "frontend": {
