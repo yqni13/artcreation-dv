@@ -3,6 +3,7 @@ import { SnackbarMessage, SnackbarParameter } from "../interfaces/SnackbarMessag
 import { SnackbarOption } from "../enums/snackbar-option.enum";
 import { Subject } from "rxjs";
 import { StaticTranslateService } from "./static-translation.service";
+import { SnackbarInput } from "../enums/snackbar-input.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -45,6 +46,7 @@ export class SnackbarMessageService {
 
     notifyOnInterceptorError(response: any, lang: string, message: string, closeMode: boolean, closeTime?: number) {        
         const path = 'validation.backend';
+        const error = response.error.headers.error;
         const params: SnackbarParameter = {
             val: null,
             len: null,
@@ -77,11 +79,11 @@ export class SnackbarMessageService {
         // display backend validation in UI
         this.notify({
             title: lang === 'en'
-                ? this.staticTranslate.getValidationEN(`${path}.header.${response.error.headers.error}`)
-                : this.staticTranslate.getValidationDE(`${path}.header.${response.error.headers.error}`),
+                ? this.staticTranslate.getValidationEN(`${path}.header.${error}`, SnackbarInput.TITLE)
+                : this.staticTranslate.getValidationDE(`${path}.header.${error}`, SnackbarInput.TITLE),
             text: lang === 'en'
-                ? this.staticTranslate.getValidationEN(`${path}.data.${message}`, params.val ? params : null)
-                : this.staticTranslate.getValidationDE(`${path}.data.${message}`, params.val ? params : null),
+                ? this.staticTranslate.getValidationEN(`${path}.data.${message}`, SnackbarInput.TEXT, params.val ? params : null)
+                : this.staticTranslate.getValidationDE(`${path}.data.${message}`, SnackbarInput.TEXT, params.val ? params : null),
             autoClose: closeMode,
             type: SnackbarOption.error,
             displayTime: closeTime
@@ -91,8 +93,8 @@ export class SnackbarMessageService {
     notifyOnInterceptorSuccess(path: string, lang: string, closeAuto: boolean, closeTimer?: number) {
         this.notify({
             title: lang === 'en'
-                ? this.staticTranslate.getValidationEN(path)
-                : this.staticTranslate.getValidationDE(path),
+                ? this.staticTranslate.getValidationEN(path, SnackbarInput.TITLE)
+                : this.staticTranslate.getValidationDE(path, SnackbarInput.TITLE),
             text: '',
             autoClose: closeAuto,
             type: SnackbarOption.success,

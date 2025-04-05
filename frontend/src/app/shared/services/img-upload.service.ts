@@ -4,6 +4,7 @@ import { SnackbarParameter } from "../interfaces/SnackbarMessage";
 import { TranslateService } from "@ngx-translate/core";
 import { StaticTranslateService } from "./static-translation.service";
 import { SnackbarOption } from "../enums/snackbar-option.enum";
+import { SnackbarInput } from "../enums/snackbar-input.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -45,11 +46,11 @@ export class ImgUploadService {
             const textPath = 'validation.frontend.img-upload.text-size-max';
             this.snackbar.notify({
                 title: this.translate.currentLang === 'de'
-                    ? this.staticTranslate.getValidationDE(titlePath)
-                    : this.staticTranslate.getValidationEN(titlePath),
+                    ? this.staticTranslate.getValidationDE(titlePath, SnackbarInput.TITLE)
+                    : this.staticTranslate.getValidationEN(titlePath, SnackbarInput.TITLE),
                 text: this.translate.currentLang === 'de'
-                    ? this.staticTranslate.getValidationDE(textPath, params)
-                    : this.staticTranslate.getValidationEN(textPath, params),
+                    ? this.staticTranslate.getValidationDE(textPath, SnackbarInput.TEXT, params)
+                    : this.staticTranslate.getValidationEN(textPath, SnackbarInput.TEXT, params),
                 autoClose: true,
                 type: SnackbarOption.warning,
                 displayTime: 5000
@@ -68,11 +69,11 @@ export class ImgUploadService {
             const textPath = 'validation.frontend.img-upload.text-type-allowed';
             this.snackbar.notify({
                 title: this.translate.currentLang === 'de'
-                    ? this.staticTranslate.getValidationDE(titlePath)
-                    : this.staticTranslate.getValidationEN(titlePath),
+                    ? this.staticTranslate.getValidationDE(titlePath, SnackbarInput.TITLE)
+                    : this.staticTranslate.getValidationEN(titlePath, SnackbarInput.TITLE),
                 text: this.translate.currentLang === 'de'
-                    ? this.staticTranslate.getValidationDE(textPath)
-                    : this.staticTranslate.getValidationEN(textPath),
+                    ? this.staticTranslate.getValidationDE(textPath, SnackbarInput.TEXT)
+                    : this.staticTranslate.getValidationEN(textPath, SnackbarInput.TEXT),
                 autoClose: true,
                 type: SnackbarOption.warning,
                 displayTime: 5000
