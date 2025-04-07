@@ -4,6 +4,8 @@ import { default as langEN } from "../../../../public/assets/i18n/en.json";
 import { default as langDE } from "../../../../public/assets/i18n/de.json";
 import { default as validLangEN } from "../../../../public/assets/i18n/validation-en.json";
 import { default as validLangDE } from "../../../../public/assets/i18n/validation-de.json";
+import { TranslateService } from "@ngx-translate/core";
+import { SnackbarInput } from "../enums/snackbar-input.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +17,7 @@ export class StaticTranslateService {
     private dataDE: any;
     private validDE: any;
 
-    constructor() {
+    constructor(private readonly translate: TranslateService) {
         try {
             this.dataEN = langEN;
             this.validEN = validLangEN;
@@ -46,23 +48,23 @@ export class StaticTranslateService {
         return this.getTranslationByStringPath(path, this.dataDE);
     }
 
-    getValidationEN(path: string, params?: any): string {
+    getValidationEN(path: string, mode: SnackbarInput, params?: any): string {
         if(path === '' || path.includes('undefined')) {
-            return '[TRANSLATION PATH NOT FOUND]';
+            return mode === SnackbarInput.TITLE ? this.getDefaultExceptionTitle() : this.getDefaultExceptionText();
         }
 
-        return this.getTranslationByStringPath(path, this.validEN, params || null);
+        return this.getTranslationByStringPath(path, this.validEN, mode, params || null);
     }
 
-    getValidationDE(path: string, params?: any): string {
+    getValidationDE(path: string, mode: SnackbarInput, params?: any): string {
         if(path === '' || path.includes('undefined')) {
-            return '[TRANSLATION PATH NOT FOUND]';
+            return mode === SnackbarInput.TITLE ? this.getDefaultExceptionTitle() : this.getDefaultExceptionText();
         }
 
-        return this.getTranslationByStringPath(path, this.validDE, params || null);
+        return this.getTranslationByStringPath(path, this.validDE, mode, params || null);
     }
 
-    getTranslationByStringPath(path: string, dataLang: any, params?: any): string {
+    private getTranslationByStringPath(path: string, dataLang: any, mode?: SnackbarInput, params?: any): string {
         const accessKeys: string[] = [];
         let start = 0;
         
@@ -88,7 +90,20 @@ export class StaticTranslateService {
         if(params && params.max && result.includes('{{MAX}}')) {
             result = result.replace('{{MAX}}', params.max);
         }
-        return result !== undefined ? result : 'TRANSLATION PATH INVALID';
+        let unknownTranslation = '';
+        if(result === undefined && mode !== undefined) {
+            unknownTranslation = mode === SnackbarInput.TITLE 
+                ? this.getDefaultExceptionTitle() 
+                : this.getDefaultExceptionText();
+        }
+        return result !== undefined ? result : unknownTranslation;
     }
 
+    private getDefaultExceptionTitle(): string {
+        return this.translate.instant('validation.backend.header.UnknownException');
+    }
+
+    private getDefaultExceptionText(): string {
+        return this.translate.instant('validation.backend.data.unknown-error');
+    }
 }
