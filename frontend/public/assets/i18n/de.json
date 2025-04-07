@@ -76,7 +76,7 @@
             }
         },
         "archive": {
-            "message": "Zum Lesen des Textes, den Mauszeiger über den jeweiligen Artikel halten.",
+            "message": "Zum Lesen des Textes, den Mauszeiger über den jeweiligen Artikel halten (auf mobilen Geräten in die obere Hälfte des Artikels klicken).",
             "title": "News Archiv",
             "nav": "zum Archiv..."
         },
