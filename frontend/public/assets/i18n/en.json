@@ -76,7 +76,7 @@
             }
         },
         "archive": {
-            "message": "Hover your mouse over the image to read more on the article.",
+            "message": "Hover your mouse over the image to read more on the article (on mobile device click in upper half of article).",
             "title": "News Archive",
             "nav": "to archive..."
         },
