@@ -43,10 +43,12 @@ exports.getEntryImagePaths = async (repository, params) => {
     const data = await repository.findOne(params);
     return data.body.error
         ? data.body
-        : {
-            imagePath: data.body.data.image_path,
-            thumbnailPath: data.body.data.thumbnail_path
-        }
+        : data.body.data === null
+            ? null
+            : {
+                imagePath: data.body.data.image_path,
+                thumbnailPath: data.body.data.thumbnail_path
+            }
 }
 
 exports.parseReqBody = (req, res, next) => {
