@@ -22,6 +22,8 @@ class Secrets {
     CLOUDSTORAGE_ENDPOINT = '';
     CLOUDSTORAGE_ACCESS_KEY_ID = '';
     CLOUDSTORAGE_SECRET_KEY = '';
+    BETTERSTACK_LOGGING_KEY = '';
+    BETTERSTACK_HOST = '';
 
     constructor() {
         this.MODE = this.#setMode();
@@ -42,6 +44,8 @@ class Secrets {
         this.CLOUDSTORAGE_ENDPOINT = this.#setCloudStorageEndpoint();
         this.CLOUDSTORAGE_ACCESS_KEY_ID = this.#setCloudStorageAccessKeyID();
         this.CLOUDSTORAGE_SECRET_KEY = this.#setCloudStorageSecretKey();
+        this.BETTERSTACK_LOGGING_KEY = this.#setBetterStackLoggingKey();
+        this.BETTERSTACK_HOST = this.#setBetterStackHost();
     }
 
     #setMode = () => {
@@ -182,6 +186,20 @@ class Secrets {
             throw new AuthSecretNotFoundException('secret-404-env#CLOUDSTORAGE_SECRET_KEY');
         }
         return Config.CLOUDSTORAGE_SECRET_KEY;
+    }
+
+    #setBetterStackLoggingKey = () => {
+        if(!Config.BETTERSTACK_LOGGING_KEY) {
+            throw new AuthSecretNotFoundException('secret-404-env#BETTERSTACK_LOGGING_KEY');
+        }
+        return Config.BETTERSTACK_LOGGING_KEY;
+    }
+
+    #setBetterStackHost = () => {
+        if(!Config.BETTERSTACK_HOST) {
+            throw new AuthSecretNotFoundException('secret-404-env#BETTERSTACK_HOST');
+        }
+        return Config.BETTERSTACK_HOST;
     }
 }
 

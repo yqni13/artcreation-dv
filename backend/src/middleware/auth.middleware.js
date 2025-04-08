@@ -4,6 +4,7 @@ const {
     TokenMissingException
 } = require('../utils/exceptions/auth.exception');
 const Secrets = require('../utils/secrets.utils');
+const logger = require('../logger/config.logger').getLogger();
 
 
 const auth = () => {
@@ -26,7 +27,13 @@ const auth = () => {
             next();
 
         } catch(error) {
-            console.log('AUTH ERROR ON VERIFICATION (Auth Model): ', error.message);
+            logger.error("AUTH ERROR ON VERIFICATION (Auth Model)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_middleware_Auth'
+                }
+            });
             error.status = 401;
             next(error);
         }

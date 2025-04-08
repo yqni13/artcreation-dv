@@ -2,6 +2,7 @@ const sharp = require('sharp');
 const CloudStorageAPI = require('../services/external/cloud-storage.api');
 const { UnexpectedApiResponseException } = require('../utils/exceptions/api.exception');
 const Utils = require('../utils/common.utils');
+const logger = require('../logger/config.logger').getLogger();
 
 class ImageUpload {
     msg0 = '';
@@ -12,7 +13,7 @@ class ImageUpload {
         this.msg1 = 'Success';
     }
 
-    #convertImageSize = async (imageBuffer, meta, target) => {
+    #convertImage = async (imageBuffer, meta, target) => {
         if(imageBuffer.error) {
             return imageBuffer;
         }
@@ -33,29 +34,14 @@ class ImageUpload {
                     width: newWidth,
                     height: newHeight
                 })
+                .webp()
                 .toBuffer()
         } catch(err) {
-            console.log("CONVERT IMAGE SIZE ERROR: ", err);
+            console.log("CONVERT IMAGE SIZE & TYPE ERROR: ", err);
             throw {
                 error: err.message,
-                location: 'failed at func() convertImageSize, image-upload.model.js'
+                location: 'failed at func() convertImage, image-upload.model.js'
             }
-        }
-    }
-
-    #convertImageType = async (imageBuffer, meta) => {
-        if(imageBuffer.error) {
-            return imageBuffer;
-        }
-
-        try {
-            return meta.format === 'webp' ? imageBuffer : await sharp(imageBuffer, {failOn: 'none', unlimited: true}).webp().toBuffer();
-        } catch(err) {
-            console.log("CONVERT IMAGE TYPE ERROR: ", err);
-            throw {
-                error: err.message, 
-                location: 'failed at func() convertImageType, image-upload.model.js'
-            };
         }
     }
 
@@ -73,16 +59,20 @@ class ImageUpload {
         };
 
         try {
-            image = await this.#convertImageType(image, imageData.meta);
-            image = await this.#convertImageSize(image, imageData.meta, 'image');
-    
-            thumbnail = await this.#convertImageType(thumbnail, thumbnailData.meta);
-            thumbnail = await this.#convertImageSize(thumbnail, thumbnailData.meta, 'thumbnail');
+            image = await this.#convertImage(image, imageData.meta, 'image');
+            thumbnail = await this.#convertImage(thumbnail, thumbnailData.meta, 'thumbnail');
             
             await CloudStorageAPI.uploadImageOnCDN(image, imageData.path);
             await CloudStorageAPI.uploadImageOnCDN(thumbnail, thumbnailData.path)
         } catch(err) {
-            console.log("ERROR handleImageUploads: ", err);
+            logger.error("ERROR handleImageUploads", {
+                error: err.message,
+                stack: err.stack,
+                context: {
+                    method: 'artdv_image_handleImageUploads',
+                    params
+                }
+            });
             throw new UnexpectedApiResponseException();
         }
     }
@@ -92,7 +82,14 @@ class ImageUpload {
             await CloudStorageAPI.deleteImageOnCDN(params['imagePath']);
             await CloudStorageAPI.deleteImageOnCDN(params['thumbnailPath']);
         } catch(err) {
-            console.log("ERROR handleImageRemoval: ", err);
+            logger.error("ERROR handleImageRemoval", {
+                error: err.message,
+                stack: err.stack,
+                context: {
+                    method: 'artdv_image_handleImageRemoval',
+                    params
+                }
+            });
             throw new UnexpectedApiResponseException();
         }
     }
@@ -110,7 +107,14 @@ class ImageUpload {
             await this.handleImageRemoval({imagePath: existDbEntry.image_path, thumbnailPath: existDbEntry.thumbnail_path});
             return await this.handleImageUploads(params, files);
         } catch(err) {
-            console.log("ERROR handleImageUpdate: ", err);
+            logger.error("ERROR handleImageUpdate", {
+                error: err.message,
+                stack: err.stack,
+                context: {
+                    method: 'artdv_image_handleImageUpdate',
+                    params
+                }
+            });
             throw new UnexpectedApiResponseException();
         }
     }

@@ -3,7 +3,7 @@ const GalleryModel = require('../models/gallery.model');
 const GalleryRepository = require('../repositories/gallery.repository');
 const ImgUploadModel = require('../models/image-upload.model');
 const NewsModel = require('../models/news.model');
-const { createID, getEntryImagePaths } = require('../utils/common.utils');
+const Utils = require('../utils/common.utils');
 
 class GalleryService {
     findOne = async (params) => {
@@ -26,7 +26,7 @@ class GalleryService {
     
     create = async (params, files) => {
         const hasParams = Object.keys(params).length !== 0;
-        Object.assign(params, await createID(GalleryRepository, 'gallery')); // params['id']
+        Object.assign(params, await Utils.createID(GalleryRepository, 'gallery')); // params['id']
         Object.assign(params, await GalleryModel.createRefNr(params)); // params['referenceNr']
         await ImgUploadModel.handleImageUploads(params, files);
         const result = await GalleryRepository.create(hasParams ? params : {});
@@ -46,7 +46,7 @@ class GalleryService {
         const constrain = await NewsModel.checkUseOfForeignKey(params);
 
         if(constrain.body.proceedDeletion) {
-            const pathData = await getEntryImagePaths(GalleryRepository, params);
+            const pathData = await Utils.getEntryImagePaths(GalleryRepository, params);
             await ImgUploadModel.handleImageRemoval(pathData);
             const result = await GalleryRepository.delete(hasParams ? params : {});
             return basicResponse(result.body, result.code, result.msg);

@@ -1,5 +1,6 @@
 const DBConnect = require("../db/connect.db");
 const Utils = require('../utils/common.utils');
+const logger = require('../logger/config.logger').getLogger();
 
 class NewsRepository {
 
@@ -35,7 +36,14 @@ class NewsRepository {
                 msg: this.msg1
             };
         } catch (error) {
-            console.log("DB ERROR ON SELECT (News Repository, FindOne): ", error.message);
+            logger.error("DB ERROR ON SELECT (News Repository, FindOne)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_news_FindOne',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {
@@ -88,7 +96,14 @@ class NewsRepository {
                 data: result['rows'] || null,
             };
         } catch(error) {
-            console.log("DB ERROR ON SELECT (News Repository, FindAllFiltered): ", error.message);
+            logger.error("DB ERROR ON SELECT (News Repository, FindAllFiltered)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_news_FindAllFiltered',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 db_operation: 'select',
@@ -116,7 +131,13 @@ class NewsRepository {
                 msg: this.msg1
             }
         } catch(error) {
-            console.log("DB ERROR ON SELECT (News Repository, FindAll): ", error.message);
+            logger.error("DB ERROR ON SELECT (News Repository, FindAll)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_news_FindAll'
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {
@@ -158,7 +179,14 @@ class NewsRepository {
                 msg: this.msg1
             };
         } catch(error) {
-            console.log("DB ERROR ON INSERT (News Repository): ", error.message);
+            logger.error("DB ERROR ON INSERT (News Repository)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_news_Create',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {
@@ -200,7 +228,14 @@ class NewsRepository {
                 msg: this.msg1
             };
         } catch(error) {
-            console.log("DB ERROR ON UPDATE (News Repository): ", error.message);
+            logger.error("DB ERROR ON UPDATE (News Repository)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_news_Update',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {
@@ -235,7 +270,14 @@ class NewsRepository {
                 msg: this.msg1
             };
         } catch(error) {
-            console.log("DB ERROR ON DELETE (News Repository): ", error.message);
+            logger.error("DB ERROR ON DELETE (News Repository)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_news_Delete',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {
