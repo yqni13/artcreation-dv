@@ -1,5 +1,6 @@
 const DBConnect = require('../db/connect.db')
 const Utils = require('../utils/common.utils');
+const logger = require('../logger/config.logger').getLogger()
 
 class GalleryRepository {
 
@@ -35,7 +36,14 @@ class GalleryRepository {
                 msg: this.msg1
             };
         } catch (error) {
-            console.log("DB ERROR ON SELECT (Gallery Repository, FindOne): ", error.message);
+            logger.error("DB ERROR ON SELECT (Gallery Repository, FindOne)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_gallery_FindOne',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {
@@ -89,7 +97,14 @@ class GalleryRepository {
                 data: result['rows'] || null,
             };
         } catch(error) {
-            console.log("DB ERROR ON SELECT (Gallery Repository, FindAllFiltered): ", error.message);
+            logger.error("DB ERROR ON SELECT (Gallery Repository, FindAllFiltered)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_gallery_FindAllFiltered',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 db_operation: 'select',
@@ -119,7 +134,13 @@ class GalleryRepository {
                 msg: this.msg1
             }
         } catch(error) {
-            console.log("DB ERROR ON SELECT (Gallery Repository, FindAll): ", error.message);
+            logger.error("DB ERROR ON SELECT (Gallery Repository, FindAll)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_gallery_FindAllFiltered'
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {
@@ -162,7 +183,14 @@ class GalleryRepository {
                 msg: this.msg1
             };
         } catch (error) {
-            console.log("DB ERROR ON INSERT (Gallery Repository): ", error.message);
+            logger.error("DB ERROR ON INSERT (Gallery Repository)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_gallery_Create',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {
@@ -206,7 +234,14 @@ class GalleryRepository {
                 msg: this.msg1
             }
         } catch(error) {
-            console.log("DB ERROR ON UPDATE (Gallery Repository): ", error.message);
+            logger.error("DB ERROR ON UPDATE (Gallery Repository)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_gallery_Update',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {
@@ -242,7 +277,14 @@ class GalleryRepository {
                 msg: this.msg1
             }
         } catch(error) {
-            console.log("DB ERROR ON DELETE (Gallery Repository): ", error.message);
+            logger.error("DB ERROR ON DELETE (Gallery Repository)", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_gallery_Delete',
+                    params
+                }
+            });
             await DBConnect.close(connection);
             return {
                 body: {

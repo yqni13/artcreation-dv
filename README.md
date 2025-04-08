@@ -1,6 +1,6 @@
 
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.0.1}}$
+$\texttt{\color{teal}{v1.0.2}}$
 
 
 
@@ -144,10 +144,10 @@ Most of the images are linked with logic to either displaying more details or sc
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.0.0\ >>\ {\color{pink}1.0.1}}$
+### $\textsf{last\ update\ 1.0.1\ >>\ {\color{pink}1.0.2}}$
 
-- $\textsf{\color{green}Change:}$ Change database host (NEON) setting to use server close to Austria for increase of loading speed.
-- $\textsf{\color{green}Change:}$ Change setting to order results of listing all gallery entries by publication year and then on creation timestamp.
+- $\textsf{\color{green}Change:}$ Add logging service (framework winston) including BetterStack (Logtail => logs monitoring).
+- $\textsf{\color{green}Change:}$ Add default snackbar message data for undefined exceptions.
 
 <br>
 

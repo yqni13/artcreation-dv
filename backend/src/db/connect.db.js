@@ -7,6 +7,7 @@ const {
     DBConnectionException,
     DBSyntaxSQLException
 } = require('../utils/exceptions/db.exception');
+const logger = require('../logger/config.logger').getLogger();
 
 class DBConnect {
 
@@ -29,7 +30,14 @@ class DBConnect {
             if(error && error.code === '42P01') {
                 await this.#initTables(client);
             } else if(error) {
-                console.log("DB REQUEST ERROR: ", error);
+                logger.error("DB ERROR CONNECTION INIT", {
+                    error: error.message,
+                    stack: error.stack,
+                    context: {
+                        method: 'artdv_db-connect_Init'
+                    }
+                });
+                throw new DBConnectionException(error);
             }
         }
         console.log("DB COMMUNICATION: SUCCESS")
@@ -42,7 +50,13 @@ class DBConnect {
             await client.query(sql);
             console.log(`db successfully initiated;`)
         } catch(error) {
-            console.log("DB INIT ERROR: ", error);
+            logger.error("DB ERROR CONNECTION INITTABLES", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_db-connect_InitTables'
+                }
+            });
             throw new DBSyntaxSQLException(error);
         }
     }
@@ -70,7 +84,13 @@ class DBConnect {
             const client = await this.#pool.connect()
             return client;
         } catch(error) {
-            console.log("DB CONNECT ERROR: ", error);
+            logger.error("DB ERROR CONNECTION CONNECT", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_db-connect_Connection'
+                }
+            });
             throw new DBConnectionException('server-535-auth#database');
         }
     }
@@ -79,7 +99,13 @@ class DBConnect {
         try {
             await client.release(true);
         } catch(error) {
-            console.log("DB CLOSE ERROR: ", error);
+            logger.error("DB ERROR CONNECTION CLOSE", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_db-connect_Close'
+                }
+            });
             throw new DBConnectionException('server-535-auth#database');
         }
     }

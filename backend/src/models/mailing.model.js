@@ -2,6 +2,7 @@ const { AuthenticationException, UnexpectedException } = require("../utils/excep
 const nodemailer = require('nodemailer');
 const Secrets = require('../utils/secrets.utils');
 const { decryptRSA } = require('../utils/crypto.utils');
+const logger = require('../logger/config.logger').getLogger();
 
 class MailingModel {
     sendMail = async (params) => {
@@ -25,7 +26,14 @@ class MailingModel {
             const success = await this.wrapedSendMail(mailOptions);
             return { response: { success, sender } };
         } catch (error) {
-            console.error("ERROR sendMail: ", error);
+            logger.error("ERROR ON SENDMAIL", {
+                error: error.message,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_mailing_sendMail',
+                    params
+                }
+            });
             if(error.status === 535) {
                 throw new AuthenticationException('server-535-auth#email-service', { data: error.message});
             } else {

@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
+const logger = require('../logger/config.logger').getLogger();
 
 exports.basicResponse = (body, success, message) => {
     return {
@@ -43,10 +44,12 @@ exports.getEntryImagePaths = async (repository, params) => {
     const data = await repository.findOne(params);
     return data.body.error
         ? data.body
-        : {
-            imagePath: data.body.data.image_path,
-            thumbnailPath: data.body.data.thumbnail_path
-        }
+        : data.body.data === null
+            ? null
+            : {
+                imagePath: data.body.data.image_path,
+                thumbnailPath: data.body.data.thumbnail_path
+            }
 }
 
 exports.parseReqBody = (req, res, next) => {
@@ -55,6 +58,13 @@ exports.parseReqBody = (req, res, next) => {
             req.body = JSON.parse(req.body.data);
         }
     } catch(err) {
+        logger.error("ERROR PARSE REQ BODY", {
+            error: err.message,
+            stack: err.stack,
+            context: {
+                method: 'artdv_common_ParseReqBody'
+            }
+        });
         return res.status(400).json({ message: 'Invalid JSON data in request body' });
     }
     next();

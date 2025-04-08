@@ -1,6 +1,7 @@
 const Secrets = require('../../utils/secrets.utils');
 const { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3')
 const { UnexpectedApiResponseException } = require('../../utils/exceptions/api.exception');
+const logger = require('../../logger/config.logger').getLogger();
 
 class CloudStorageAPI {
     #getS3Client = () => {
@@ -45,7 +46,14 @@ class CloudStorageAPI {
             const result = await storageClient.send(command);
             return result;
         } catch(err) {
-            console.log("readImageFromCDN ERROR: ", err);
+            logger.error("ERROR SELECT IMAGE", {
+                error: err.message,
+                stack: err.stack,
+                context: {
+                    method: 'artdv_cloud-storage_readImageFromCDN',
+                    path
+                }
+            });
             throw new UnexpectedApiResponseException('error-readImageFromCDN');
         }
     }
@@ -57,7 +65,14 @@ class CloudStorageAPI {
             const command = new PutObjectCommand(uploadParams);
             await storageClient.send(command);
         } catch(err) {
-            console.log("UPLOAD IMAGE ERROR: ", err);
+            logger.error("ERROR UPDATE IMAGE", {
+                error: err.message,
+                stack: err.stack,
+                context: {
+                    method: 'artdv_cloud-storage_uploadImageOnCDN',
+                    path
+                }
+            });
             throw new UnexpectedApiResponseException('error-uploadImageOnCDN');
         }
     }
@@ -69,7 +84,14 @@ class CloudStorageAPI {
             const command = new DeleteObjectCommand(deleteParams);
             await storageClient.send(command);
         } catch(err) {
-            console.log("DELETE IMAGE ERROR: ", err);
+            logger.error("ERROR DELETE IMAGE", {
+                error: err.message,
+                stack: err.stack,
+                context: {
+                    method: 'artdv_cloud-storage_deleteImageOnCDN',
+                    path
+                }
+            });
             throw new UnexpectedApiResponseException('error-deleteImageOnCDN');
         }
     }

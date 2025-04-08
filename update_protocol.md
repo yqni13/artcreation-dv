@@ -4,6 +4,11 @@
 
 <br>
 
+### 2024/04/09 - $\textsf{update\ 1.0.1\ >>\ {\color{pink}1.0.2}}$
+
+- $\textsf{\color{green}Change:}$ Add logging service (framework winston) including BetterStack (Logtail => logs monitoring).
+- $\textsf{\color{green}Change:}$ Add default snackbar message data for undefined exceptions.
+
 ### 2024/04/05 - $\textsf{update\ 1.0.0\ >>\ {\color{pink}1.0.1}}$
 
 - $\textsf{\color{green}Change:}$ Change database host (NEON) setting to use server close to Austria for increase of loading speed.
