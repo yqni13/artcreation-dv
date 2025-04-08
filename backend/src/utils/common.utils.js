@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
+const logger = require('../logger/config.logger').getLogger();
 
 exports.basicResponse = (body, success, message) => {
     return {
@@ -57,6 +58,13 @@ exports.parseReqBody = (req, res, next) => {
             req.body = JSON.parse(req.body.data);
         }
     } catch(err) {
+        logger.error("ERROR PARSE REQ BODY", {
+            error: err.message,
+            stack: err.stack,
+            context: {
+                method: 'artdv_common_ParseReqBody'
+            }
+        });
         return res.status(400).json({ message: 'Invalid JSON data in request body' });
     }
     next();

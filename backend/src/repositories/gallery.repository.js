@@ -40,7 +40,7 @@ class GalleryRepository {
                 error: error.message,
                 stack: error.stack,
                 context: {
-                    method: 'artdv_gallery_findOne',
+                    method: 'artdv_gallery_FindOne',
                     params
                 }
             });
@@ -101,7 +101,7 @@ class GalleryRepository {
                 error: error.message,
                 stack: error.stack,
                 context: {
-                    method: 'artdv_gallery_findAllFiltered',
+                    method: 'artdv_gallery_FindAllFiltered',
                     params
                 }
             });
@@ -138,7 +138,7 @@ class GalleryRepository {
                 error: error.message,
                 stack: error.stack,
                 context: {
-                    method: 'artdv_gallery_findAllFiltered'
+                    method: 'artdv_gallery_FindAllFiltered'
                 }
             });
             await DBConnect.close(connection);
