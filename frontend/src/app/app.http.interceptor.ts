@@ -9,6 +9,8 @@ import { MailHttpInterceptor } from './common/http/mail.http.interceptor';
 import { AdminRoute } from './api/routes/admin.route.enum';
 import { AuthHttpInterceptor } from './common/http/auth.http.interceptor';
 import { AuthRoute } from './api/routes/auth.route.enum';
+import { Router } from '@angular/router';
+import { BaseRoute } from './api/routes/base.route.enum';
 
 
 export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
@@ -18,6 +20,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     const authIntercept = inject(AuthHttpInterceptor);
     const galleryIntercept = inject(GalleryHttpInterceptor);
     const mailIntercept = inject(MailHttpInterceptor);
+    const router = inject(Router);
 
     return next(req).pipe(
         tap(async (httpEvent) => {
@@ -37,7 +40,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
         })
         ,
         catchError((response) => {
-            handleError(response, httpObservationService, snackbarService, translate, authIntercept, galleryIntercept, mailIntercept).catch((err) => {
+            handleError(response, httpObservationService, snackbarService, translate, authIntercept, galleryIntercept, mailIntercept, router).catch((err) => {
                 console.log("Error handling failed", err);
             })
             
@@ -46,7 +49,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     );
 }
 
-export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, authIntercept: AuthHttpInterceptor, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor) {
+export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, authIntercept: AuthHttpInterceptor, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor, router: Router) {
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     if(response.url.includes(AdminRoute.AUTH)) {
         authIntercept.handleAuthError(response);
@@ -112,8 +115,14 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
         const message = response.error.headers.message ? response.error.headers.message : 'error-unknown';
         snackbarService.notifyOnInterceptorError(response, translate.currentLang, message, false);
     }
-
+    
     // browser response log
     console.log("response error: ", response);
     httpObserve.setErrorStatus(response);
+    
+    // NAVIGATE TO LOGIN IF TOKEN EXPIRED
+    if(response.error.headers.error.includes('TokenMissingException')
+    && response.error.headers.message.includes('auth-jwt-missing')) {
+        router.navigate([BaseRoute.LOGIN]);
+    }
 }
