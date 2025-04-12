@@ -32,7 +32,7 @@ export class FooterComponent implements OnInit {
     protected showLanguageList: boolean;
     protected infoRoutes: Route[];
     protected connectRoutes: Route[];
-    protected socialmediaURL: string;
+    protected socialmediaURL: any;
     protected creatorURL: string;
     protected yearStamp: string;
 
@@ -51,7 +51,11 @@ export class FooterComponent implements OnInit {
         this.showLanguageList = false;
         this.infoRoutes = [];
         this.connectRoutes = [];
-        this.socialmediaURL = 'https://instagram.com/vargarella_';
+        this.socialmediaURL = {
+            instagram: 'https://instagram.com/vargarella_',
+            facebook: 'https://www.facebook.com/profile.php?id=61564886574397',
+            publicartists: 'https://publicartists.online/artists/artcreation/'
+        }
         this.creatorURL = 'https://yqni13.com';
         this.yearStamp = new Date().getFullYear().toString();
     }
