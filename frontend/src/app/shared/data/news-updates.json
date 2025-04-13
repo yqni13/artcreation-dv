@@ -62,5 +62,13 @@
         "text": "My first art exhibition starting (officially) with the opening event on Friday, 11.04.2025, 17:00 o'clock, at Mahlerstraße 11, 1010 Vienna, publicartists city gallery Vienna!",
         "image": "/assets/news/first_vernissage.jpg",
         "imageResized": "/assets/news_resized/first_vernissage.jpg"
+    },
+    {
+        "date": "2025-04-12T12:50:00",
+        "referenceNr": "A-0009",
+        "title": "Opening event Vienna",
+        "text": "--",
+        "image": "/assets/news/first_exhibition.jpg",
+        "imageResized": "/assets/news_resized/first_exhibition.jpg"
     }
 ]
