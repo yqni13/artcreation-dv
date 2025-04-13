@@ -434,11 +434,6 @@
         header {
             background-position: 27.5%;
         }
-        .artdv-home-top-img {
-            img {
-                width: calc(100% - (sass.$comp-padding-big * 2))!important;
-            }
-        }
     }
 
     .artdv-admin {
@@ -797,18 +792,6 @@
         }
     }
 
-    .artdv-home {
-        .artdv-home-top-img {
-            img {
-                width: 75vw!important;
-            }
-
-            .artdv-author {
-                width: 100%!important;
-            }
-        }
-    }
-
     .artdv-admin {
         .artdv-author {
             width: 100%;
@@ -1144,15 +1127,6 @@
         header {
             background-position: 33%;
         }
-        .artdv-home-top-img {
-            padding: 0 0!important;
-            justify-content: center!important;
-            
-            img {
-                width: 85vw!important;
-                margin-right: 0!important;
-            }
-        }
     }
 
     .artdv-admin {
@@ -1445,18 +1419,6 @@
                         padding: 10px;
                     }
                 }
-            }
-        }
-    }
-
-    .artdv-home {
-        .artdv-home-top-img {
-            padding: 0 0!important;
-            justify-content: center!important;
-            
-            img {
-                width: 85vw!important;
-                margin-right: 0!important;
             }
         }
     }
