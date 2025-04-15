@@ -66,7 +66,7 @@ class ImageUpload {
             await CloudStorageAPI.uploadImageOnCDN(thumbnail, thumbnailData.path)
         } catch(err) {
             logger.error("ERROR handleImageUploads", {
-                error: err.message,
+                error: err.code,
                 stack: err.stack,
                 context: {
                     method: 'artdv_image_handleImageUploads',
@@ -83,7 +83,7 @@ class ImageUpload {
             await CloudStorageAPI.deleteImageOnCDN(params['thumbnailPath']);
         } catch(err) {
             logger.error("ERROR handleImageRemoval", {
-                error: err.message,
+                error: err.code,
                 stack: err.stack,
                 context: {
                     method: 'artdv_image_handleImageRemoval',
@@ -108,7 +108,7 @@ class ImageUpload {
             return await this.handleImageUploads(params, files);
         } catch(err) {
             logger.error("ERROR handleImageUpdate", {
-                error: err.message,
+                error: err.code,
                 stack: err.stack,
                 context: {
                     method: 'artdv_image_handleImageUpdate',

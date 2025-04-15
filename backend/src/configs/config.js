@@ -4,6 +4,8 @@ module.exports.Config = {
     EMAIL_RECEIVER: process.env.SECRET_EMAIL_RECEIVER || null,
     EMAIL_SENDER: process.env.SECRET_EMAIL_SENDER || null,
     EMAIL_PASS: process.env.SECRET_EMAIL_PASS || null,
+    IV_POSITION: process.env.SECRET_IV_POS || null,
+    AES_PASSPHRASE: process.env.SECRET_AES_PASSPHRASE || null,
     ADMIN_ID: process.env.SECRET_ADMIN_ID || null,
     ADMIN_USER: process.env.SECRET_ADMIN_USER || null,
     ADMIN_PASS: process.env.SECRET_ADMIN_PASS || null,

@@ -12,6 +12,8 @@ export const environment: Environment = {
     production: true,
     STORAGE_URL: '${process.env['CLOUDSTORAGE_TRAFFIC_URL']}',
     API_BASE_URL: '${process.env['API_URL']}',
+    IV_POSITION: '${process.env['IVPOSITION']},
+    AES_PASSPHRASE: '${process.env['AESPASSPHRASE']},
     PUBLIC_KEY: \`${modifiedPublicKey}\`
 };
 `;

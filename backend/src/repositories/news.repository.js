@@ -37,7 +37,7 @@ class NewsRepository {
             };
         } catch (error) {
             logger.error("DB ERROR ON SELECT (News Repository, FindOne)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_news_FindOne',
@@ -97,7 +97,7 @@ class NewsRepository {
             };
         } catch(error) {
             logger.error("DB ERROR ON SELECT (News Repository, FindAllFiltered)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_news_FindAllFiltered',
@@ -132,7 +132,7 @@ class NewsRepository {
             }
         } catch(error) {
             logger.error("DB ERROR ON SELECT (News Repository, FindAll)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_news_FindAll'
@@ -180,7 +180,7 @@ class NewsRepository {
             };
         } catch(error) {
             logger.error("DB ERROR ON INSERT (News Repository)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_news_Create',
@@ -229,7 +229,7 @@ class NewsRepository {
             };
         } catch(error) {
             logger.error("DB ERROR ON UPDATE (News Repository)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_news_Update',
@@ -271,7 +271,7 @@ class NewsRepository {
             };
         } catch(error) {
             logger.error("DB ERROR ON DELETE (News Repository)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_news_Delete',

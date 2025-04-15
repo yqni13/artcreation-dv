@@ -28,7 +28,7 @@ const auth = () => {
 
         } catch(error) {
             logger.error("AUTH ERROR ON VERIFICATION (Auth Model)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_middleware_Auth'
