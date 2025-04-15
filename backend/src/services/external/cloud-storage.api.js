@@ -47,7 +47,7 @@ class CloudStorageAPI {
             return result;
         } catch(err) {
             logger.error("ERROR SELECT IMAGE", {
-                error: err.message,
+                error: err.code,
                 stack: err.stack,
                 context: {
                     method: 'artdv_cloud-storage_readImageFromCDN',
@@ -66,7 +66,7 @@ class CloudStorageAPI {
             await storageClient.send(command);
         } catch(err) {
             logger.error("ERROR UPDATE IMAGE", {
-                error: err.message,
+                error: err.code,
                 stack: err.stack,
                 context: {
                     method: 'artdv_cloud-storage_uploadImageOnCDN',
@@ -85,7 +85,7 @@ class CloudStorageAPI {
             await storageClient.send(command);
         } catch(err) {
             logger.error("ERROR DELETE IMAGE", {
-                error: err.message,
+                error: err.code,
                 stack: err.stack,
                 context: {
                     method: 'artdv_cloud-storage_deleteImageOnCDN',

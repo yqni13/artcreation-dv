@@ -27,7 +27,7 @@ class MailingModel {
             return { response: { success, sender } };
         } catch (error) {
             logger.error("ERROR ON SENDMAIL", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_mailing_sendMail',

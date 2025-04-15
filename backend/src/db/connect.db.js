@@ -31,7 +31,7 @@ class DBConnect {
                 await this.#initTables(client);
             } else if(error) {
                 logger.error("DB ERROR CONNECTION INIT", {
-                    error: error.message,
+                    error: error.code,
                     stack: error.stack,
                     context: {
                         method: 'artdv_db-connect_Init'
@@ -51,7 +51,7 @@ class DBConnect {
             console.log(`db successfully initiated;`)
         } catch(error) {
             logger.error("DB ERROR CONNECTION INITTABLES", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_db-connect_InitTables'
@@ -85,7 +85,7 @@ class DBConnect {
             return client;
         } catch(error) {
             logger.error("DB ERROR CONNECTION CONNECT", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_db-connect_Connection'
@@ -100,7 +100,7 @@ class DBConnect {
             await client.release(true);
         } catch(error) {
             logger.error("DB ERROR CONNECTION CLOSE", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_db-connect_Close'

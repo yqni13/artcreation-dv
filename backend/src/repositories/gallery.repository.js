@@ -37,7 +37,7 @@ class GalleryRepository {
             };
         } catch (error) {
             logger.error("DB ERROR ON SELECT (Gallery Repository, FindOne)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_gallery_FindOne',
@@ -98,7 +98,7 @@ class GalleryRepository {
             };
         } catch(error) {
             logger.error("DB ERROR ON SELECT (Gallery Repository, FindAllFiltered)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_gallery_FindAllFiltered',
@@ -135,7 +135,7 @@ class GalleryRepository {
             }
         } catch(error) {
             logger.error("DB ERROR ON SELECT (Gallery Repository, FindAll)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_gallery_FindAllFiltered'
@@ -184,7 +184,7 @@ class GalleryRepository {
             };
         } catch (error) {
             logger.error("DB ERROR ON INSERT (Gallery Repository)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_gallery_Create',
@@ -235,7 +235,7 @@ class GalleryRepository {
             }
         } catch(error) {
             logger.error("DB ERROR ON UPDATE (Gallery Repository)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_gallery_Update',
@@ -278,7 +278,7 @@ class GalleryRepository {
             }
         } catch(error) {
             logger.error("DB ERROR ON DELETE (Gallery Repository)", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_gallery_Delete',
