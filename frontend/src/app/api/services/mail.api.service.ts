@@ -73,7 +73,7 @@ export class MailAPIService {
             this.mailParams = {
                 sender: await this.crypto.encryptRSA(this.mailData.to),
                 subject: await this.crypto.encryptRSA(this.mailData.subject),
-                body: this.mailData.body
+                body: await this.crypto.encryptAES(this.mailData.body)
             }
         } catch(err) {
             console.log("Mail could not be send due to loading error: ", err);

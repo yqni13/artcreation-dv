@@ -8,6 +8,8 @@ class Secrets {
     EMAIL_RECEIVER = '';
     EMAIL_SENDER = '';
     EMAIL_PASS = '';
+    IV_POSITION = 0;
+    AES_PASSPHRASE = '';
     ADMIN_ID = 0;
     ADMIN_USER = '';
     ADMIN_PASS = '';
@@ -30,6 +32,8 @@ class Secrets {
         this.EMAIL_RECEIVER = this.#setEmailReceiver();
         this.EMAIL_SENDER = this.#setEmailSender();
         this.EMAIL_PASS = this.#setEmailPass();
+        this.IV_POSITION = this.#setIVPosition();
+        this.AES_PASSPHRASE = this.#setAESPassphrase();
         this.ADMIN_ID = this.#setAdminID();
         this.ADMIN_USER = this.#setAdminUser();
         this.ADMIN_PASS = this.#setAdminPass();
@@ -74,6 +78,20 @@ class Secrets {
             throw new AuthSecretNotFoundException('secret-404-env#EMAIL_PASS');
         }
         return Config.EMAIL_PASS;
+    }
+
+    #setIVPosition = () => {
+        if(!Config.IV_POSITION) {
+            throw new AuthSecretNotFoundException('secret-404-env#IV_POSITION');
+        }
+        return Number(Config.IV_POSITION);
+    }
+
+    #setAESPassphrase = () => {
+        if(!Config.AES_PASSPHRASE) {
+            throw new AuthSecretNotFoundException('secret-404-env#AES_PASSPHRASE');
+        }
+        return Config.AES_PASSPHRASE;
     }
 
     #setAdminID = () => {
