@@ -1,6 +1,6 @@
 
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.0.2}}$
+$\texttt{\color{teal}{v1.0.3}}$
 
 
 
@@ -13,17 +13,21 @@ $\texttt{\color{teal}{v1.0.2}}$
 ### Technology
 
 <div style="display:flex; align-items:center;">    
-      <img src="https://img.shields.io/badge/Angular-%23DD0031.svg?logo=angular&logoColor=white">
-      <img alt="Google Fonts" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-world.net%2Fwp-content%2Fuploads%2F2021%2F03%2FGoogle-Fonts-Logo.png&f=1&nofb=1&ipt=570b1eadbf10850285149faa90b47496e415ec5daf70efb973248c194025a6a5&ipo=images" style="height:auto; width:5%">
-      <img src="frontend/public/assets/logo_ico/rxjs_logo32.ico" alt="RxJS">&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/json_logo28.ico" alt="JSON">&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/nodejs_logo32.ico" alt="NodeJS">&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/i18n_logo32.ico" alt="i18n">&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/docker_logo32.ico" alt="Docker">
+      <img src="frontend/public/assets/logo_ico/angular_logo.ico" alt="Angular">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/nodejs_logo32.ico" alt="NodeJS">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/postgresql_logo.ico" alt="PostgreSQL">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/neon_logo.ico" alt="Neon">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/cloudflare_logo.ico" alt="Cloudflare">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/rxjs_logo32.ico" alt="RxJS">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/express_logo.ico" alt="ExpressJS">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/json_logo28.ico" alt="JSON">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/i18n_logo32.ico" alt="i18n">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/eslint_logo.ico" alt="ESLint">&nbsp;&nbsp;&nbsp;
+      <img src="frontend/public/assets/logo_ico/betterstack_logo.ico" alt="BetterStack">&nbsp;&nbsp;&nbsp;
 </div>
 <br>
 
-### <a href="https://artcreation-dv.netlify.app/">TRY LIVE DEMO</a> (contact form sends request to your 'from' email for demo)
+### visit the <a href="https://artcreation-dv.at">WEBSITE</a>
 
 <br>
 
@@ -31,42 +35,28 @@ $\texttt{\color{teal}{v1.0.2}}$
 
 ### Start
 
-Get startet with `npm install` (/frontend and /backend) to create necessary modules and run `ng serve` to start on local dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files. To activate the backend (to use email service for the contact form) run command `node server-custom.js` on port 3000.
+Get startet with `npm install` (/frontend and /backend) to create necessary modules. Fill env variables for Frontend and Backend with the necessary data/paths. Run command `npm run start` to autofill environment file with env data and to start on local dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files. To activate the backend (to use email service for the contact form) run command `node server-custom.js` to start on port 3000.
 
 ### Build & Deploy
-This project is currently hosted by 2 different hosting services. Frontend is hosted by <a href="https://app.netlify.com/">Netlify</a> and for the backend part <a href="https://vercel.com/">Vercel</a> is used to deploy and host.
+This project is currently hosted by 4 different hosting services. Frontend is hosted by <a href="https://app.netlify.com/">Netlify</a> and for the backend part <a href="https://vercel.com/">Vercel</a> is used to deploy and host serverless. Data and images are managed via database on <a href="https://neon.tech">Neon</a> and CDN by <a href="https://cloudflare.com">Cloudflare</a>.
 
-### Docker CMD
-
-Docker-ready to create images and containers on different ways in *Powershell*: #1 manual for FE/BE<br>
-[frontend]<br>
-yourpath/artcreation-dv/frontend> $env:API_URL="http://localhost:3000"<br>
-yourpath/artcreation-dv/frontend> `docker build -t artcreation-dv_frontend .`<br>
-yourpath/artcreation-dv/frontend> `docker run --name artcreation-dv -p 4200:4200 frontend`<br>
-[backend]<br>
-yourpath/artcreation-dv/backend> `docker build -t artcreation-dv_backend .`<br>
-yourpath/artcreation-dv/backend> `docker run --name artcreation-dv -it -p 3000:3000 backend`<br>
-or #2 in one go via docker-compose.yaml<br>
-yourpath/artcreation-dv> `docker compose up -d`<br>
-Remove containers and images via command:<br>
-`docker compose down --rmi=all`
-<br><br>
+<br>
 
 ## Overview
 
 ### $\textsf{\color{teal}Features}$
 
 <dl>
-      <dd>:diamond_shape_with_a_dot_inside: Angular v18 standalone with routing + nested routes on id</dd>
+      <dd>:diamond_shape_with_a_dot_inside: Angular v19 standalone with routing + nested routes on id</dd>
       <dd>:turtle: Custom preload/lazy loading on viewport/scroll for gallery previews</dd>
       <dd>:clipboard: Custom form components (text-, textarea- & select-input)</dd>
       <dd>:newspaper: Custom carousel component</dd>
       <dd>:new_moon_with_face:/:sun_with_face: Custom color theme (dark/light mode)</dd>
       <dd>:wrench: Custom validation + service & pipes</dd>
       <dd>:e-mail: Mail service with node.js & nodemailer for Backend</dd>
-      <dd>:signal_strength: Http interception + custom snackbar modal</dd>
-      <dd>:globe_with_meridians: i18n (internationalization) - translate to german or english</dd>
-      <dd>:closed_lock_with_key: Different protection layers for certain images (disabling right click; watermarks)</dd>
+      <dd>:signal_strength: custom interception + custom snackbar modal</dd>
+      <dd>:globe_with_meridians: i18n (internationalization) - translate de/en</dd>
+      <dd>:floppy_disk: serverless database + CDN to manage data & images</dd>
       <dd>:iphone: Responsive design 400px > width < 1800px via flexbox & media queries</dd>
 </dl>
 
@@ -138,16 +128,51 @@ Most of the images are linked with logic to either displaying more details or sc
       Figure 7
 </div>
 
+<br>
+
+### $\textsf{\color{teal}Database layer}$
+
+For the database layer, PostgreSQL is used as the relational database management system to store all necessary data. The free-tier plan from Neon hosting service suffices in handling all data in this case (see figure 8 for basic findAll request). Furthermore, image files for gallery and news elements are NOT stored in the database. Only paths are stored within the entries (also to be seen in figure 8, response part). Additionally to the paths, file input from users (gallery or news elements) is processed (format and size) and uploaded to a cloud object storage - in my case, R2 Bucket from Cloudflare. Once the requested data is loaded from the db, the path selected from the response gets concatenated with the cloud-account specific traffic-url (see figure 9, red highlight) and the image loaded from the cloud.
+
+<div align="center">
+      <img src="frontend/public/assets/readme/loading_data.jpg" alt="&nbsp;no picture found">
+      Figure 8
+</div>
+
+<br>
+
+<div align="center">
+      <img src="frontend/public/assets/readme/loading_image.jpg" alt="&nbsp;no picture found">
+      Figure 9
+</div>
+
+<br>
+
+### $\textsf{\color{teal}Logging}$
+
+For the UI currently only console logs and snackbar modals inform about errors and warnings. But for the backend layers, the logging framework Winston is used in combination with Logtail from BetterStack to have easy access and long-term storage (see figure 10).
+
+<div align="center">
+      <img src="frontend/public/assets/readme/loading_logs.jpg" alt="&nbsp;no picture found">
+      Figure 10
+</div>
+
+<br><br>
+
+## Testing
+
+
+
 <br><br>
 
 
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.0.1\ >>\ {\color{pink}1.0.2}}$
+### $\textsf{last\ update\ 1.0.2\ >>\ {\color{pink}1.0.3}}$
 
-- $\textsf{\color{green}Change:}$ Add logging service (framework winston) including BetterStack (Logtail => logs monitoring).
-- $\textsf{\color{green}Change:}$ Add default snackbar message data for undefined exceptions.
+- $\textsf{\color{green}Change:}$ Update email security by encrypting all payload data on mail request.
+- $\textsf{\color{green}Change:}$ Update documentation from beta to current version status.
 
 <br>
 
