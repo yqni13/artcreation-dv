@@ -23,7 +23,10 @@ class Logger {
                 winston.format.json()
             ),
             transports: [
-                new winston.transports.Console(),
+                new winston.transports.Console({
+                    level: 'info',
+                    format: winston.format.prettyPrint()
+                }),
                 new LogtailTransport(logtail)
             ]
         });
