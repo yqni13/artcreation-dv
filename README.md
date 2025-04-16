@@ -38,7 +38,7 @@ $\texttt{\color{teal}{v1.0.3}}$
 Get startet with `npm install` (/frontend and /backend) to create necessary modules. Fill env variables for Frontend and Backend with the necessary data/paths. Run command `npm run start` to autofill environment file with env data and to start on local dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files. To activate the backend (to use email service for the contact form) run command `node server-custom.js` to start on port 3000.
 
 ### Build & Deploy
-This project is currently hosted by 4 different hosting services. Frontend is hosted by <a href="https://app.netlify.com/">Netlify</a> and for the backend part <a href="https://vercel.com/">Vercel</a> is used to deploy and host serverless. Data and images are managed via database on <a href="https://neon.tech">Neon</a> and CDN by <a href="https://cloudflare.com">Cloudflare</a>.
+This project is currently hosted by 4 different hosting services. Frontend is hosted by <a href="https://app.netlify.com/">Netlify</a> and for the backend part <a href="https://vercel.com/">Vercel</a> is used to deploy and host serverless. Data and images are managed via PostgreSQL database on <a href="https://neon.tech">Neon</a> and cloud-storage (R2 Bucket) by <a href="https://cloudflare.com">Cloudflare</a>.
 
 <br>
 
@@ -56,7 +56,7 @@ This project is currently hosted by 4 different hosting services. Frontend is ho
       <dd>:e-mail: Mail service with node.js & nodemailer for Backend</dd>
       <dd>:signal_strength: custom interception + custom snackbar modal</dd>
       <dd>:globe_with_meridians: i18n (internationalization) - translate de/en</dd>
-      <dd>:floppy_disk: serverless database + CDN to manage data & images</dd>
+      <dd>:floppy_disk: PostgreSQL database + cloud-storage to manage data & images</dd>
       <dd>:iphone: Responsive design 400px > width < 1800px via flexbox & media queries</dd>
 </dl>
 
@@ -162,8 +162,29 @@ For the UI currently only console logs and snackbar modals inform about errors a
 ## Testing
 
 
+### Cross-browser testing
 
-<br><br>
+<img src="frontend/public/assets/logo_ico/firefox_logo50.ico"> | <img src="frontend/public/assets/logo_ico/chrome_logo50.ico"> | <img src="frontend/public/assets/logo_ico/opera_logo50.ico"> | <img src="frontend/public/assets/logo_ico/edge_logo50.ico"> | <img src="frontend/public/assets/logo_ico/duckduckgo_logo50.ico"> | <img src="frontend/public/assets/logo_ico/brave_logo50.ico">
+|:------:|:------:|:------:|:------:|:------:|:------:|
+|Firefox | Chrome | Opera  | Edge   | DuckGo | Brave  |
+|Yes*    | Yes    | Yes    | Yes    | Yes    | Yes    |
+
+
+<br>
+
+*This browser has problems with some functionality.
+
+<br>
+
+### Angular ESLint
+
+Added angular-eslint to project for next step of testing.<br>
+Install ESLint global via node package manager: ```npm install -g eslint```<br>
+Install ESLint local for angular project: ```ng add @angular-eslint/schematics```<br>
+Run ESLint to list all current lint errors: ```npm run lint```<br>
+To optimize work I use the VS Code extension 'ESLint' from Microsoft.
+
+<br>
 
 
 ## Updates
