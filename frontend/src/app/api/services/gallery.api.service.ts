@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { environment } from "../../../environments/environment";
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
 import * as GalleryResponse from "../models/gallery-response.interface";
 import { GalleryRoute } from "../routes/gallery.route.enum";
 import { ArtGenre } from "../../shared/enums/art-genre.enum";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -30,13 +30,13 @@ export class GalleryAPIService {
         this.formDataCreate = new FormData();
         this.formDataUpdate = new FormData();
 
-        // this.urlGetOne = `/api/v1/gallery${GalleryRoute.findOne}`;
+        // this.urlGetOne = `/api/v1/gallery${GalleryRoute.FINDONE}`;
         // this.urlGetByRefNr = `/api/v1/gallery${GalleryRoute.FINDBYREFNR}`;
-        // this.urlGetAll = `/api/v1/gallery${GalleryRoute.findAll}`;
-        // this.urlCreate = `/api/v1/gallery${GalleryRoute.create}`;
-        // this.urlUpdate = `/api/v1/gallery${GalleryRoute.update}`;
-        // this.urlDelete = `/api/v1/gallery${GalleryRoute.delete}`;
-        // this.urlRefNr = `/api/v1/gallery${GalleryRoute.refNrPreview}`;
+        // this.urlGetAll = `/api/v1/gallery${GalleryRoute.FINDALL}`;
+        // this.urlCreate = `/api/v1/gallery${GalleryRoute.CREATE}`;
+        // this.urlUpdate = `/api/v1/gallery${GalleryRoute.UPDATE}`;
+        // this.urlDelete = `/api/v1/gallery${GalleryRoute.DELETE}`;
+        // this.urlRefNrPreview = `/api/v1/gallery${GalleryRoute.REFNRPREVIEW}`;
         this.urlGetOne = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.FINDONE}`;
         this.urlGetByRefNr = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.FINDBYREFNR}`;
         this.urlGetAll = `${environment.API_BASE_URL}/api/v1/gallery${GalleryRoute.FINDALL}`;

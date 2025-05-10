@@ -11,6 +11,7 @@ import { AuthHttpInterceptor } from './common/http/auth.http.interceptor';
 import { AuthRoute } from './api/routes/auth.route.enum';
 import { Router } from '@angular/router';
 import { BaseRoute } from './api/routes/base.route.enum';
+import { NewsHttpInterceptor } from './common/http/news.http.interceptor';
 
 
 export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
@@ -20,6 +21,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     const authIntercept = inject(AuthHttpInterceptor);
     const galleryIntercept = inject(GalleryHttpInterceptor);
     const mailIntercept = inject(MailHttpInterceptor);
+    const newsIntercept = inject(NewsHttpInterceptor);
     const router = inject(Router);
 
     return next(req).pipe(
@@ -33,6 +35,9 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
                 if(httpbody.url?.includes(AdminRoute.GALLERY)) {
                     galleryIntercept.handleGalleryResponse(httpEvent as HttpResponse<any>);
                 }
+                if(httpbody.url?.includes(AdminRoute.NEWS)) {
+                    newsIntercept.handleNewsResponse(httpEvent as HttpResponse<any>);
+                }
                 if(httpbody.url?.includes(AdminRoute.MAILING)) {
                     mailIntercept.handleMailResponse(httpEvent as HttpResponse<any>);
                 }
@@ -40,7 +45,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
         })
         ,
         catchError((response) => {
-            handleError(response, httpObservationService, snackbarService, translate, authIntercept, galleryIntercept, mailIntercept, router).catch((err) => {
+            handleError(response, httpObservationService, snackbarService, translate, authIntercept, galleryIntercept, mailIntercept, newsIntercept, router).catch((err) => {
                 console.log("Error handling failed", err);
             })
             
@@ -49,13 +54,16 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     );
 }
 
-export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, authIntercept: AuthHttpInterceptor, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor, router: Router) {
+export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, authIntercept: AuthHttpInterceptor, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor, newsIntercept: NewsHttpInterceptor, router: Router) {
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     if(response.url.includes(AdminRoute.AUTH)) {
         authIntercept.handleAuthError(response);
     }
     if(response.url.includes(AdminRoute.GALLERY)) {
         galleryIntercept.handleGalleryError(response);
+    }
+    if(response.url.includes(AdminRoute.NEWS)) {
+        newsIntercept.handleNewsError(response);
     }
     if(response.url.includes(AdminRoute.MAILING)) {
         mailIntercept.handleMailError(response);

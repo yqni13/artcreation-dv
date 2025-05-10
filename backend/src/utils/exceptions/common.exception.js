@@ -32,7 +32,7 @@ class InternalServerException extends CommonException {
 
 class RequestExceedMaxException extends CommonException {
     constructor(message = 'server-max-email', data) {
-        super(ErrorCodes.RequestExceedMaxException, message, data, ErrorStatusCodes.RequestExceedMaxException);
+        super(ErrorCodes.RequestExceedMaxException, message, data);
     }
 }
 
