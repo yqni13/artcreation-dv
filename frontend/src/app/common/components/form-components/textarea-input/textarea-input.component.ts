@@ -2,7 +2,7 @@ import { Component, forwardRef, Input } from "@angular/core";
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
-import { AbstractInputComponent } from "../abstract-input.component";
+import { AbstractInputComponent } from "../../abstracts/form-input.abstract.component";
 
 @Component({
     selector: 'artdv-textareainput',
