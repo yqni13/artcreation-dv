@@ -5,6 +5,7 @@ import * as GalleryResponse from "../models/gallery-response.interface";
 import { GalleryRoute } from "../routes/gallery.route.enum";
 import { ArtGenre } from "../../shared/enums/art-genre.enum";
 import { environment } from "../../../environments/environment";
+import { GalleryCreateRequest, GalleryUpdateRequest } from "../models/gallery-request.interface";
 
 @Injectable({
     providedIn: 'root'
@@ -56,7 +57,7 @@ export class GalleryAPIService {
 
     setCreatePayload(data: any) {
         const imageFile = data.imageFile;
-        const payloadCreate = {
+        const payloadCreate: GalleryCreateRequest = {
             imagePath: data.imagePath,
             thumbnailPath: data.thumbnailPath,
             title: data.title === '' ? null : data.title,
@@ -74,7 +75,7 @@ export class GalleryAPIService {
     }
 
     setUpdatePayload(data: any) {
-        const payloadUpdate = {
+        const payloadUpdate: GalleryUpdateRequest = {
             id: data.id,
             referenceNr: data.referenceNr,
             imagePath: data.imagePath,

@@ -12,8 +12,7 @@ import { Router } from '@angular/router';
 import { AdminRoute } from '../../../api/routes/admin.route.enum';
 
 @Component({
-    template: '',
-    standalone: true
+    template: ''
 })
 export abstract class AbstractAdminListComponent implements OnInit, OnDestroy {
 
@@ -76,7 +75,7 @@ export abstract class AbstractAdminListComponent implements OnInit, OnDestroy {
         this.hasSearchText = event !== '' ? true : false;
     }
 
-    removeKeyword() {
+    removeSearchText() {
         this.searchForm.get('searchText')?.setValue('');
         this.hasSearchText = false;
         this.onSearchSubmit(false);

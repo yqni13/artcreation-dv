@@ -9,6 +9,7 @@ import {
     NewsDeleteResponse
 } from "../models/news-response.interface"
 import { Observable } from "rxjs";
+import { NewsCreateRequest, NewsUpdateRequest } from "../models/news-request.interface";
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +20,7 @@ export class NewsAPIService {
     private formDataCreate: FormData;
     private formDataUpdate: FormData;
 
-    private urlPathV1: string;
+    private domainPathV1: string;
     private urlGetOne: string;
     private urlGetAll: string;
     private urlCreate: string;
@@ -31,12 +32,12 @@ export class NewsAPIService {
         this.formDataCreate = new FormData();
         this.formDataUpdate = new FormData();
 
-        this.urlPathV1 = '/api/v1/news';
-        this.urlGetOne = `${environment.API_BASE_URL}${this.urlPathV1}${NewsRoute.FINDONE}`;
-        this.urlGetAll = `${environment.API_BASE_URL}${this.urlPathV1}${NewsRoute.FINDALL}`;
-        this.urlCreate = `${environment.API_BASE_URL}${this.urlPathV1}${NewsRoute.CREATE}`;
-        this.urlUpdate = `${environment.API_BASE_URL}${this.urlPathV1}${NewsRoute.UPDATE}`;
-        this.urlDelete = `${environment.API_BASE_URL}${this.urlPathV1}${NewsRoute.DELETE}`;
+        this.domainPathV1 = '/api/v1/news';
+        this.urlGetOne = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDONE}`;
+        this.urlGetAll = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDALL}`;
+        this.urlCreate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.CREATE}`;
+        this.urlUpdate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.UPDATE}`;
+        this.urlDelete = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.DELETE}`;
     }
 
     setIdParam(id: string) {
@@ -45,8 +46,12 @@ export class NewsAPIService {
 
     setCreatePayload(data: any) {
         const imageFile = data.imageFile;
-        const payloadCreate = {
-
+        const payloadCreate: NewsCreateRequest = {
+            gallery_id: data.gallery_id === '' ? null : data.gallery_id,
+            imagePath: data.imagePath === '' ? null : data.imagePath,
+            thumbnailPath: data.thumbnailPath === '' ? null : data.thumbnailPath,
+            title: data.title,
+            text: data.text
         };
         this.formDataCreate = new FormData();
         this.formDataCreate.append('file', imageFile);
@@ -54,8 +59,13 @@ export class NewsAPIService {
     }
 
     setUpdatePayload(data: any) {
-        const payloadUpdate = {
-            
+        const payloadUpdate: NewsUpdateRequest = {
+            news_id: data.news_id,
+            gallery_id: data.gallery_id === '' ? null : data.gallery_id,
+            imagePath: data.imagePath === '' ? null : data.imagePath,
+            thumbnailPath: data.thumbnailPath === '' ? null : data.thumbnailPath,
+            title: data.title,
+            text: data.text
         };
         this.formDataUpdate = new FormData();
         if(data.imageFile) {

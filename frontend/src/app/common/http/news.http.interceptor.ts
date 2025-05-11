@@ -20,19 +20,19 @@ export class NewsHttpInterceptor {
     }
 
     async handleNewsResponse(httpBody: HttpResponse<any>) {
-        if(httpBody.url?.includes(`${AdminRoute.NEWS}${NewsRoute.FINDALL}`)) {
+        if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALL}`)) {
             this.httpObservationService.setNewsFindAllStatus(true);
             return;
         }
-        if(httpBody.url?.includes(`${AdminRoute.NEWS}${NewsRoute.CREATE}`)) {
+        if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.CREATE}`)) {
             this.httpObservationService.setNewsCreateStatus(true);
             const path = 'validation.frontend.interceptor.news-create-confirm';
             this.snackbarService.notifyOnInterceptorSuccess(path, this.translate.currentLang, true, 1500);
-        } else if(httpBody.url?.includes(`${AdminRoute.NEWS}${NewsRoute.UPDATE}`)) {
+        } else if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.UPDATE}`)) {
             this.httpObservationService.setNewsUpdateStatus(true);
             const path = 'validation.frontend.interceptor.news-update-confirm';
             this.snackbarService.notifyOnInterceptorSuccess(path, this.translate.currentLang, true, 1500);
-        } else if(httpBody.url?.includes(`${AdminRoute.NEWS}${NewsRoute.DELETE}`)) {
+        } else if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.DELETE}`)) {
             this.httpObservationService.setNewsDeleteStatus(true);
             const path = 'validation.frontend.interceptor.news-delete-confirm';
             this.snackbarService.notifyOnInterceptorSuccess(path, this.translate.currentLang, true, 1500);
@@ -40,15 +40,15 @@ export class NewsHttpInterceptor {
     }
 
     async handleNewsError(response: any) {
-        if(response.url.includes(`${AdminRoute.NEWS}${NewsRoute.FINDONE}`)) {
+        if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDONE}`)) {
             this.httpObservationService.setNewsFindOneStatus(false);
-        } else if(response.url.includes(`${AdminRoute.NEWS}${NewsRoute.FINDALL}`)) {
+        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALL}`)) {
             this.httpObservationService.setNewsFindAllStatus(false);
-        } else if(response.url.includes(`${AdminRoute.NEWS}${NewsRoute.CREATE}`)) {
+        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.CREATE}`)) {
             this.httpObservationService.setNewsCreateStatus(false);
-        } else if(response.url.includes(`${AdminRoute.NEWS}${NewsRoute.UPDATE}`)) {
+        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.UPDATE}`)) {
             this.httpObservationService.setNewsUpdateStatus(false);
-        } else if(response.url.includes(`${AdminRoute.NEWS}${NewsRoute.DELETE}`)) {
+        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.DELETE}`)) {
             this.httpObservationService.setNewsDeleteStatus(false);
         }
     }
