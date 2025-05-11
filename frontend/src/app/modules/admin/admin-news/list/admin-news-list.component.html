@@ -1,6 +1,6 @@
-<section class="artdv-admingallerylist">
+<section class="artdv-adminnewslist">
     <header>
-        <h1>{{'modules.admin.gallery.title.list' | translate}}</h1>
+        <h1>{{'modules.admin.news.title.list' | translate}}</h1>
     </header>
     <div class="artdv-admin-specific-list-content">
         <div class="artdv-admin-specific-list-filterbar">
@@ -8,21 +8,23 @@
                 <artdv-selectinput
                     class="artdv-admin-specific-list-select"
                     [ngStyle]="{'width': '100%'}"
-                    [placeholder]="'modules.admin.gallery.placeholder-genre' | translate"
-                    [options]="GenreOptionEnum"
-                    [optionsTranslateRoot]="'shared.enum.art-genre.'"
-                    [formControl]="searchForm.get('genre') | controlCast"
+                    [placeholder]="'modules.admin.news.placeholder.sorting' | translate"
+                    [options]="SortingOptionEnum"
+                    [optionsTranslateRoot]="'shared.enum.sorting-option.'"
+                    [formControl]="searchForm.get('sorting') | controlCast"
                     [hasAutoFocus]="true"
                     [attr.disabled]="!isLoadingResponse"
-                    (byChange)="onGenreChange($event)"
+                    (byChange)="onDateTimeChange($event)"
                 ></artdv-selectinput>
-                <span class="artdv-admin-specific-list-filter-label">Genre</span>
+                <span class="artdv-admin-specific-list-filter-label">
+                    {{'modules.admin.news.other.sort' | translate}}
+                </span>
             </div>
             <div class="artdv-admin-specific-list-media-wrapper">
                 <div class="artdv-admin-specific-list-search-wrapper">
                     <artdv-textinput
                         class="artdv-admin-specific-list-search-input"
-                        [placeholder]="'modules.admin.gallery.placeholder-search' | translate"
+                        [placeholder]="'modules.admin.news.placeholder.search' | translate"
                         [ngStyle]="{'width': '100%'}"
                         [inputType]="'text'"
                         [formControl]="searchForm.get('searchText') | controlCast"
@@ -56,8 +58,8 @@
                 </div>
                 <div class="artdv-admin-specific-list-btn-wrapper btn-add">
                     <a
-                        (click)="navigateToCreateItem(AdminRouteEnum.GALLERY)"
-                        (keydown.enter)="navigateToCreateItem(AdminRouteEnum.GALLERY)"
+                        (click)="navigateToCreateItem(AdminRouteEnum.NEWS)"
+                        (keydown.enter)="navigateToCreateItem(AdminRouteEnum.NEWS)"
                         [attr.tabindex]="0"
                     ><i class="icon-Add"></i></a>
                 </div>
@@ -74,10 +76,10 @@
             <ng-container *ngFor="let item of modifiedList">
                 <img 
                     class="artdv-admin-specific-list-list-element"
-                    alt="{{item.reference_nr}}"
+                    alt="{{item.title}}"
                     src="{{storageDomain + '/' + item.thumbnail_path}}"
-                    (click)="navigateToUpdateItem(item.gallery_id)"
-                    (keydown.enter)="navigateToUpdateItem(item.gallery_id)"
+                    (click)="navigateToUpdateItem(item.news_id)"
+                    (keydown.enter)="navigateToUpdateItem(item.news_id)"
                     [attr.aria-disabled]="true"
                 >
             </ng-container>

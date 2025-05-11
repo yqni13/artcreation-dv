@@ -67,7 +67,10 @@
             "interceptor": {
                 "gallery-create-confirm": "Kunstwerk erstellt!",
                 "gallery-delete-confirm": "Kunstwerk gelöscht!",
-                "gallery-update-confirm": "Kunstwerk aktualisiert!"
+                "gallery-update-confirm": "Kunstwerk aktualisiert!",
+                "news-create-confirm": "News-Artikel erstellt!",
+                "news-delete-confirm": "News-Artikel gelöscht!",
+                "news-update-confirm": "News-Artikel aktualisiert!"
             }
         }
     }

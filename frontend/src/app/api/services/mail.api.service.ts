@@ -3,9 +3,9 @@ import { Injectable } from "@angular/core";
 import { ContactFormItem } from "../../shared/interfaces/ContactMailItems";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { HttpClient, HttpResponse } from "@angular/common/http";
-import { environment } from "../../../environments/environment";
 import { EncryptionService } from "../../shared/services/encryption.service";
 import { Observable } from "rxjs";
+import { environment } from "../../../environments/environment";
 
 
 @Injectable({

@@ -68,7 +68,23 @@
             "info": {
                 "last-update": "letzte Änderung:"
             },
-            "news": {},
+            "news": {
+                "details": {},
+                "other": {
+                    "created": "erstellt",
+                    "sort": "Sortieren",
+                    "updated": "bearbeitet"
+                },
+                "placeholder": {
+                    "search": "in den News suchen",
+                    "sorting": "Sortiere nach"
+                },
+                "title": {
+                    "create": "News-Artikel hinzufügen",
+                    "list": "News Management",
+                    "update": "News-Artikel bearbeiten"
+                }
+            },
             "options": {
                 "gallery": "Galerie",
                 "logout": "Abmelden",
@@ -77,8 +93,8 @@
         },
         "archive": {
             "message": "Zum Lesen des Textes, den Mauszeiger über den jeweiligen Artikel halten (auf mobilen Geräten in die obere Hälfte des Artikels klicken).",
-            "title": "News Archiv",
-            "nav": "zum Archiv..."
+            "nav": "zum Archiv...",
+            "title": "News Archiv"
         },
         "contact": {
             "form": {
@@ -273,6 +289,10 @@
             "sale-status": {
                 "AVAILABLE": "Verfügbar",
                 "UNAVAILABLE": "Nicht verfügbar"
+            },
+            "sorting-option": {
+                "ASC": "aufsteigend",
+                "DESC": "absteigend"
             }
         }
     }

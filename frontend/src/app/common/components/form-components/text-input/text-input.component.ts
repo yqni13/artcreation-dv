@@ -1,9 +1,10 @@
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output, ViewChild } from "@angular/core";
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
-import { AbstractInputComponent } from "../abstract-input.component";
+import { AbstractInputComponent } from "../../abstracts/form-input.abstract.component";
 import { Subscription } from "rxjs";
 import { TextCaseOption } from "../../../../shared/enums/text-case.enum";
 

@@ -11,5 +11,6 @@ module.exports.ErrorStatusCodes = {
     DBNotExistingException: 404,
     DBSyntaxSQLException: 429,
     AuthSecretNotFoundException: 404,
-    UnexpectedApiResponseException: 502
+    UnexpectedApiResponseException: 502,
+    UnimplementedException: 501
 }

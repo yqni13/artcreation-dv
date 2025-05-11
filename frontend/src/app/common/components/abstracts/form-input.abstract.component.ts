@@ -3,8 +3,7 @@ import { Component } from "@angular/core";
 import { ControlValueAccessor } from "@angular/forms";
 
 @Component({
-    template: '',
-    standalone: false
+    template: ''
 })
 export class AbstractInputComponent implements ControlValueAccessor {
 

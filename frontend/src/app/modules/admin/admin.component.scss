@@ -1,9 +1,15 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-header {
+/* ADMIN OVERVIEW STYLING --- ADMIN OVERVIEW STYLING */
+
+.artdv-admin header {
     background-color: var(--theme-highlight-body);
     color: var(--theme-highlight-text);
+}
+
+div {
+    display: flex;
 }
 
 .artdv-admin-content {
@@ -74,3 +80,121 @@ header {
         }
     }
 }
+
+/* ADMIN OVERVIEW STYLING --- ADMIN OVERVIEW STYLING */
+/* ##################################################### */
+/* ADMIN SPECIFIC STYLING --- ADMIN SPECIFIC STYLING */
+
+.artdv-admin-specific-list-content {
+    flex-direction: column;
+    height: 100%;
+
+    .artdv-admin-specific-list-filterbar {
+        justify-content: center;
+        width: 100%;
+        margin: 0 0 sass.$space50 0;
+
+        .artdv-admin-specific-list-select-wrapper {
+            margin-right: sass.$space25;
+        }
+
+        .artdv-admin-specific-list-media-wrapper {
+            flex-direction: row;
+        }
+
+        .artdv-admin-specific-list-search-wrapper {
+            display: grid;
+
+            #artdv-admin-specific-list-search-icon {
+                display: flex;
+                position: absolute;
+                justify-self: end;
+                padding: 2.2px 0;
+                margin-right: sass.$space5;
+                cursor: pointer;
+
+                i {
+                    color: var(--theme-contrast-anchor);
+                }
+            }
+        }
+
+        .artdv-admin-specific-list-filter-label {
+            display: flex;
+            position: absolute;
+            align-self: end;
+            justify-content: left;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--theme-contrast-anchor);
+            background-color: var(--theme-body-bg);
+            padding: calc(sass.$space5 / 2);
+            padding-bottom: 0;
+            border-radius: sass.$space5;
+            margin: 0 0 calc(sass.$space25 + sass.$space5) sass.$space5;
+        }
+
+        .artdv-admin-specific-list-btn-wrapper {
+            justify-content: center;
+            margin-left: sass.$space25;
+            padding: 0 sass.$space5;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(1.5);
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .btn-close {
+            border: 2px solid var(--theme-snackbar-error);
+            a {
+                color: var(--theme-snackbar-error);
+                i {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+
+        .btn-add {
+            border: 2px solid var(--theme-snackbar-success);
+            a {
+                color: var(--theme-snackbar-success);
+            }
+        }
+
+        .btn-return {
+            border: 2px solid var(--theme-snackbar-warning);
+            a {
+                color: var(--theme-snackbar-warning);
+            }
+        }
+    }
+
+    .artdv-admin-specific-list-list {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .artdv-admin-specific-list-list-element {
+            $border-width: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border: $border-width solid var(--theme-contrast-anchor);
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(1.5);
+            }
+        }
+    }
+}
+
+/* ADMIN SPECIFIC STYLING --- ADMIN SPECIFIC STYLING */

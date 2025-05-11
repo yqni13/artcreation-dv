@@ -1,60 +1,56 @@
+import { CRUDMode } from './../../../../shared/enums/crud-mode.enum';
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
-import { GalleryItem } from "../../../../api/models/gallery-response.interface";
-import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
-import { DataShareService } from "../../../../shared/services/data-share.service";
-import { Router } from "@angular/router";
 import { FormBuilder, FormControl } from "@angular/forms";
-import { ArtGenre } from "../../../../shared/enums/art-genre.enum";
-import { AdminRoute } from "../../../../api/routes/admin.route.enum";
 import { filter, Subscription, tap } from "rxjs";
+import { NewsItem } from "../../../../api/models/news-response.interface";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
+import { Router } from "@angular/router";
 import { AuthService } from "../../../../shared/services/auth.service";
-import { AdminListImportsModule } from "../../../../common/helper/admin-list.imports.helper";
-import { AbstractAdminListComponent } from "../../../../common/components/abstracts/admin-list.abstract.component";
+import { DataShareService } from "../../../../shared/services/data-share.service";
+import { NewsAPIService } from "../../../../api/services/news.api.service";
+import { SortingOption } from '../../../../shared/enums/sorting-option.enum';
+import { AbstractAdminListComponent } from '../../../../common/components/abstracts/admin-list.abstract.component';
+import { AdminListImportsModule } from '../../../../common/helper/admin-list.imports.helper';
+import { AdminRoute } from '../../../../api/routes/admin.route.enum';
 
 @Component({
-    selector: 'app-admin-gallery-list',
-    templateUrl: './admin-gallery-list.component.html',
+    selector: 'app-admin-news-list',
+    templateUrl: './admin-news-list.component.html',
     styleUrl: '../../admin.component.scss',
     imports: [
         ...AdminListImportsModule
     ]
 })
-export class AdminGalleryListComponent extends AbstractAdminListComponent implements OnInit, OnDestroy {
+export class AdminNewsListComponent extends AbstractAdminListComponent implements OnInit, OnDestroy {
 
-    protected galleryList: GalleryItem[];
-    protected modifiedList: GalleryItem[];
-    protected GenreOptionEnum: any;
+    protected newsList: NewsItem[];
+    protected modifiedList: NewsItem[];
+    protected SortingOptionEnum = SortingOption;
 
     private subscriptionHttpObservationFindAll$: Subscription;
-    
+
     constructor(
         router: Router,
         fb: FormBuilder,
         auth: AuthService,
         dataSharing: DataShareService,
         httpObservation: HttpObservationService,
-        private readonly galleryApi: GalleryAPIService,
+        private readonly newsApi: NewsAPIService,
     ) {
         super(router, fb, auth, dataSharing, httpObservation);
-        this.galleryList = [];
+        this.newsList = [];
         this.modifiedList = [];
-        this.GenreOptionEnum = {
-            ...ArtGenre,
-            ALL: 'all'
-        };
 
         this.subscriptionHttpObservationFindAll$ = new Subscription();
     }
 
     override ngOnInit() {
         super.ngOnInit();
-        this.subscriptionHttpObservationFindAll$ = this.httpObservation.galleryFindAllStatus$.pipe(
+        this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
                 if(isStatus200) {
-                    this.httpObservation.setGalleryFindAllStatus(false);
+                    this.httpObservation.setNewsFindAllStatus(false);
                     this.isLoadingResponse = false;
                 }
             })
@@ -67,7 +63,7 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
     private initForm() {
         this.searchForm = this.fb.group({
             searchText: new FormControl(''),
-            genre: new FormControl('')
+            sorting: new FormControl('')
         });
     }
 
@@ -75,22 +71,26 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
         this.initForm();
         this.searchForm.patchValue({
             searchText: '',
-            genre: 'all'
+            sorting: SortingOption.DESC
         })
     }
 
-    onGenreChange(event: any) {
+    onDateTimeChange(event: any) {
         const searchText = this.searchForm.get('searchText')?.value;
         if(searchText !== '') {
             this.filterListBySearchText(searchText);
         } else {
-            this.modifiedList = this.galleryList;
+            this.modifiedList = this.newsList;
         }
-        
-        const genre = event.target?.value ?? 'all';
-        if(genre !== this.GenreOptionEnum.ALL) {
-            this.modifiedList = this.modifiedList.filter(data => data.art_genre === genre)
-        }
+
+        const sorting = event.target?.value ?? SortingOption.DESC;
+        this.modifiedList = this.modifiedList.sort(
+            (a,b) => {
+                return sorting === SortingOption.DESC
+                    ? new Date(a.created_on).getTime() - new Date(b.created_on).getTime()
+                    : new Date(b.created_on).getTime() - new Date(a.created_on).getTime()
+            }
+        );
     }
 
     onSearchSubmit(initial: boolean = false) {
@@ -99,12 +99,12 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
             if(initial) {
                 // need db call only at initialization
                 this.isLoadingResponse = true;
-                this.galleryApi.sendGetAllRequest().subscribe(data => {
-                    this.galleryList = data.body?.body.data ?? [];
-                    this.modifiedList = this.galleryList;
+                this.newsApi.sendGetAllRequest().subscribe(data => {
+                    this.newsList = data.body?.body.data ?? [];
+                    this.modifiedList = this.newsList;
                 });
             } else {
-                this.modifiedList = this.galleryList;
+                this.modifiedList = this.newsList;
                 return;
             }
         } else {
@@ -114,13 +114,11 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
 
     filterListBySearchText(searchText: string) {
         searchText = searchText.toLowerCase();
-        this.modifiedList = this.galleryList.filter((data) => 
-            (data.reference_nr).toLowerCase().includes(searchText) ||
+        this.modifiedList = this.newsList.filter((data) => 
+            data.created_on.toString().includes(searchText) ||
+            data.last_modified.toString().includes(searchText) ||
             data.title?.toLowerCase().includes(searchText) ||
-            data.dimensions.toLowerCase().includes(searchText) ||
-            data.art_medium.toLowerCase().includes(searchText) ||
-            data.art_technique.toLowerCase().includes(searchText) ||
-            String(data.publication_year).toLowerCase().includes(searchText)
+            data.text?.toLowerCase().includes(searchText)            
         );
     }
 
@@ -128,10 +126,9 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
         const data = {
             mode: CRUDMode.UPDATE,
             entryId: id,
-            refNr: (this.galleryList.find(data => data.gallery_id === id))?.reference_nr
         }
         this.dataSharing.setSharedData(data);
-        this.router.navigate([`admin${AdminRoute.GALLERY}/${data.refNr}`])
+        this.router.navigate([`admin${AdminRoute.NEWS}/${data.entryId}`])
     }
 
     override ngOnDestroy() {

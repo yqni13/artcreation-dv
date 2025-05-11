@@ -112,23 +112,24 @@
         }
     }
 
+    .artdv-adminnewslist,
     .artdv-admingallerylist {
-        .artdv-admingallerylist-filterbar {
+        .artdv-admin-specific-list-filterbar {
             flex-direction: row;
-            .artdv-admingallerylist-select-wrapper {
+            .artdv-admin-specific-list-select-wrapper {
                 width: 250px;
             }
-            .artdv-admingallerylist-search-wrapper {
+            .artdv-admin-specific-list-search-wrapper {
                 min-width: 400px;
                 width: 20%;
             }
         }
 
-        .artdv-admingallerylist-list {
+        .artdv-admin-specific-list-list {
             $margin-list: sass.$space50;
             margin: 0 $margin-list sass.$space50 $margin-list;
             
-            .artdv-admingallerylist-list-element {
+            .artdv-admin-specific-list-list-element {
                 $border-width: 2px;
                 $width-limit: calc($border-width * 2);
                 $margin-element: sass.$space15;
@@ -472,22 +473,23 @@
         }
     }
 
+    .artdv-adminnewslist,
     .artdv-admingallerylist {
-        .artdv-admingallerylist-filterbar {
+        .artdv-admin-specific-list-filterbar {
             flex-direction: row;
-            .artdv-admingallerylist-select-wrapper {
+            .artdv-admin-specific-list-select-wrapper {
                 width: 200px;
             }
-            .artdv-admingallerylist-search-wrapper {
+            .artdv-admin-specific-list-search-wrapper {
                 min-width: 300px;
                 width: 20%;
             }
         }
-        .artdv-admingallerylist-list {
+        .artdv-admin-specific-list-list {
             $margin-list: sass.$space50;
             margin: 0 $margin-list sass.$space50 $margin-list;
             
-            .artdv-admingallerylist-list-element {
+            .artdv-admin-specific-list-list-element {
                 $border-width: 2px;
                 $width-limit: calc($border-width * 2);
                 $margin-element: sass.$space5;
@@ -815,20 +817,21 @@
         }
     }
 
+    .artdv-adminnewslist,
     .artdv-admingallerylist {
-        .artdv-admingallerylist-filterbar {
-            .artdv-admingallerylist-select-wrapper {
+        .artdv-admin-specific-list-filterbar {
+            .artdv-admin-specific-list-select-wrapper {
                 width: 200px;
             }
-            .artdv-admingallerylist-search-wrapper {
+            .artdv-admin-specific-list-search-wrapper {
                 min-width: 300px;
             }
         }
-        .artdv-admingallerylist-list {
+        .artdv-admin-specific-list-list {
             $margin-list: sass.$space50;
             margin: 0 $margin-list sass.$space50 $margin-list;
             
-            .artdv-admingallerylist-list-element {
+            .artdv-admin-specific-list-list-element {
                 $border-width: 2px;
                 $width-limit: calc($border-width * 2);
                 $margin-element: sass.$space5;
@@ -1158,39 +1161,40 @@
         }
     }
 
+    .artdv-adminnewslist,
     .artdv-admingallerylist {
-        .artdv-admingallerylist-filterbar {
+        .artdv-admin-specific-list-filterbar {
             flex-direction: column;
             justify-content: none;
             align-items: center;
-            .artdv-admingallerylist-select-wrapper {
+            .artdv-admin-specific-list-select-wrapper {
                 width: 150px;
                 margin-bottom: sass.$space15;
                 margin-right: 0!important;
             }
-            .artdv-admingallerylist-search-wrapper {
+            .artdv-admin-specific-list-search-wrapper {
                 width: 100%;
                 min-width: 0;
                 max-width: 350px;
                 margin-bottom: sass.$space15;
             }
-            .artdv-admingallerylist-media-wrapper {
+            .artdv-admin-specific-list-media-wrapper {
                 justify-content: center;
                 margin: 0 sass.$space50;
                 width: calc(100% - (sass.$space50 * 2));
             }
-            .artdv-admingallerylist-btn-wrapper {
+            .artdv-admin-specific-list-btn-wrapper {
                 margin-left: 0!important;
             }
             .btn-close, .btn-add {
                 margin-right: sass.$space15;
             }
         }
-        .artdv-admingallerylist-list {
+        .artdv-admin-specific-list-list {
             $margin-list: sass.$space50;
             margin: 0 $margin-list sass.$space50 $margin-list;
             
-            .artdv-admingallerylist-list-element {
+            .artdv-admin-specific-list-list-element {
                 $border-width: 2px;
                 $width-limit: calc($border-width * 2);
                 $margin-element: sass.$space5;
@@ -1438,12 +1442,13 @@
         }
     }
 
+    .artdv-adminnewslist,
     .artdv-admingallerylist {
-        .artdv-admingallerylist-list {
+        .artdv-admin-specific-list-list {
             $margin-list: sass.$space15;
             margin: 0 $margin-list sass.$space50 $margin-list;
             
-            .artdv-admingallerylist-list-element {
+            .artdv-admin-specific-list-list-element {
                 $border-width: 2px;
                 $width-limit: calc($border-width * 2);
                 $margin-element: sass.$space5;
