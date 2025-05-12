@@ -4,7 +4,7 @@ export declare interface NewsItem {
     image_path?: string,
     thumbnail_path?: string,
     title: string,
-    text: string,
+    content: string,
     edited: boolean,
     created_on: string,
     last_modified: string

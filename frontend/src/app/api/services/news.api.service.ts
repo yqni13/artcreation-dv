@@ -51,7 +51,7 @@ export class NewsAPIService {
             imagePath: data.imagePath === '' ? null : data.imagePath,
             thumbnailPath: data.thumbnailPath === '' ? null : data.thumbnailPath,
             title: data.title,
-            text: data.text
+            content: data.content
         };
         this.formDataCreate = new FormData();
         this.formDataCreate.append('file', imageFile);
@@ -65,7 +65,7 @@ export class NewsAPIService {
             imagePath: data.imagePath === '' ? null : data.imagePath,
             thumbnailPath: data.thumbnailPath === '' ? null : data.thumbnailPath,
             title: data.title,
-            text: data.text
+            content: data.content
         };
         this.formDataUpdate = new FormData();
         if(data.imageFile) {

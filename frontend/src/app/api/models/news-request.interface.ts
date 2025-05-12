@@ -3,7 +3,7 @@ export declare interface NewsCreateRequest {
     imagePath?: string,
     thumbnailPath?: string,
     title: string,
-    text: string
+    content: string
 }
 
 export declare interface NewsUpdateRequest {
@@ -12,5 +12,5 @@ export declare interface NewsUpdateRequest {
     imagePath?: string,
     thumbnailPath?: string,
     title: string,
-    text: string
+    content: string
 }

@@ -163,7 +163,7 @@ class NewsRepository {
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
 
         const values = [params['id'], params['galleryId'], params['imagePath'], params['thumbnailPath'], 
-        params['datetime'], params['title'], params['text'], timestamp, timestamp];
+        params['datetime'], params['title'], params['content'], timestamp, timestamp];
 
         let connection;
         try {
@@ -212,7 +212,7 @@ class NewsRepository {
         WHERE news_id = $8`;
 
         const values = [params['galleryId'], params['imagePath'], params['thumbnailPath'], 
-        params['datetime'], params['title'], params['text'], timestamp, params['id']];
+        params['datetime'], params['title'], params['content'], timestamp, params['id']];
 
         let connection;
         try {

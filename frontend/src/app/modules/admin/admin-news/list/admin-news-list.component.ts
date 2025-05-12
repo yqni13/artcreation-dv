@@ -118,7 +118,7 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
             data.created_on.toString().includes(searchText) ||
             data.last_modified.toString().includes(searchText) ||
             data.title?.toLowerCase().includes(searchText) ||
-            data.text?.toLowerCase().includes(searchText)            
+            data.content?.toLowerCase().includes(searchText)            
         );
     }
 

@@ -69,15 +69,20 @@
                 "last-update": "last update:"
             },
             "news": {
-                "details": {},
+                "details": {
+                    "content": "Content",
+                    "title": "Title"
+                },
                 "other": {
                     "created": "created",
                     "sort": "sort",
                     "updated": "edited"
                 },
                 "placeholder": {
+                    "content": "add a text",
                     "search": "search in news",
-                    "sorting": "sort by"
+                    "sorting": "sort by",
+                    "title": "select a title"
                 },
                 "title": {
                     "create": "add news item",

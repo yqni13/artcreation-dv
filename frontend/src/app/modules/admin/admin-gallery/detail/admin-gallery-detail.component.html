@@ -1,24 +1,24 @@
 <section class="artdv-admingallerydetail">
     <header>
-        <h1>{{'modules.admin.gallery.title.' + (mode === modeOptions.CREATE ? 'create' : 'update') | translate}}</h1>
+        <h1>{{'modules.admin.gallery.title.' + (mode === ModeOptionEnum.CREATE ? 'create' : 'update') | translate}}</h1>
     </header>
-    <div class="artdv-admingallerydetail-content" *ngIf="!isLoadingInit">
+    <div class="artdv-admin-specific-detail-content" *ngIf="!isLoadingInit">
         <form [formGroup]="artworkForm">
-            <div class="artdv-admingallerydetail-form artdv-form-genre">
-                <div class="artdv-admingallerydetail-form-wrapper">
+            <div class="artdv-admin-specific-detail-form artdv-form-genre">
+                <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.gallery.details.genre' | translate) + ':*'}}</span>
                     <artdv-selectinput
-                        class="artdv-admingallerydetail-select"
+                        class="artdv-admin-specific-detail-select"
                         [placeholder]="'modules.admin.gallery.placeholder-genre' | translate"
                         [fieldName]="'modules.admin.gallery.details.genre' | translate"
-                        [options]="genreOptions"
+                        [options]="GenreOptionEnum"
                         [optionsTranslateRoot]="'shared.enum.art-genre.'"
                         [formControl]="artworkForm.get('artGenre') | controlCast"
                         (byChange)="onGenreChange($event)"
                     ></artdv-selectinput>
                 </div>
             </div>
-            <div class="artdv-admingallerydetail-form artdv-form-image" *ngIf="hasGenre">
+            <div class="artdv-admin-specific-detail-form artdv-form-image" *ngIf="hasGenre">
                 <artdv-imgupload
                     [existingImgPath]="pathFromExistingImg"
                     [isSubmitTriggered]="onSubmitTrigger"
@@ -26,32 +26,32 @@
                     (byRemove)="readRemovalInfo($event)"
                 ></artdv-imgupload>
             </div>
-            <div class="artdv-admingallerydetail-form artdv-form-details" *ngIf="hasGenre">
-                <div class="artdv-admingallerydetail-form-wrapper">
+            <div class="artdv-admin-specific-detail-form artdv-form-details" *ngIf="hasGenre">
+                <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.gallery.details.title' | translate) + ':'}}</span>
                     <artdv-textinput
-                        class="artdv-admingallerydetail-text"
+                        class="artdv-admin-specific-detail-text"
                         [placeholder]="'modules.admin.gallery.placeholder-title' | translate"
                         [inputType]="'text'"
                         [formControl]="artworkForm.get('title') | controlCast"
                         [fieldName]="'modules.admin.gallery.details.title' | translate"
                     ></artdv-textinput>
                 </div>
-                <div class="artdv-admingallerydetail-form-wrapper">
+                <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.gallery.details.sale-status' | translate) + ':*'}}</span>
                     <artdv-selectinput
-                        class="artdv-admingallerydetail-select"
+                        class="artdv-admin-specific-detail-select"
                         [placeholder]="'modules.admin.gallery.placeholder-sale-status' | translate"
                         [fieldName]="'modules.admin.gallery.details.sale-status' | translate"
-                        [options]="saleStatusOptions"
+                        [options]="SaleStatusOptionEnum"
                         [optionsTranslateRoot]="'shared.enum.sale-status.'"
                         [formControl]="artworkForm.get('saleStatus') | controlCast"
                     ></artdv-selectinput>
                 </div>
-                <div class="artdv-admingallerydetail-form-wrapper">
+                <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.gallery.details.price' | translate) + ':'}}</span>
                     <artdv-textinput
-                        class="artdv-admingallerydetail-text"
+                        class="artdv-admin-specific-detail-text"
                         [inputType]="'text'"
                         [placeholder]="artworkForm.get('price')?.value === null 
                             ? ('modules.admin.gallery.placeholder-price' | translate) 
@@ -60,42 +60,42 @@
                         [fieldName]="'modules.admin.gallery.details.price' | translate"
                     ></artdv-textinput>
                 </div>
-                <div class="artdv-admingallerydetail-form-wrapper">
+                <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.gallery.details.dimensions' | translate) + ':*'}}</span>
                     <artdv-textinput
-                        class="artdv-admingallerydetail-text"
+                        class="artdv-admin-specific-detail-text"
                         [inputType]="'text'"
                         [placeholder]="'modules.admin.gallery.placeholder-dimensions' | translate"
                         [formControl]="artworkForm.get('dimensions') | controlCast"
                         [fieldName]="'modules.admin.gallery.details.dimensions' | translate"
                     ></artdv-textinput>
                 </div>                
-                <div class="artdv-admingallerydetail-form-wrapper">
+                <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.gallery.details.medium' | translate) + ':*'}}</span>
                     <artdv-selectinput
-                        class="artdv-admingallerydetail-select"
+                        class="artdv-admin-specific-detail-select"
                         [placeholder]="'modules.admin.gallery.placeholder-medium' | translate"
                         [fieldName]="'modules.admin.gallery.details.medium' | translate"
-                        [options]="mediumOptions"
+                        [options]="MediumOptionEnum"
                         [optionsTranslateRoot]="'shared.enum.art-medium.'"
                         [formControl]="artworkForm.get('artMedium') | controlCast"
                     ></artdv-selectinput>
                 </div>
-                <div class="artdv-admingallerydetail-form-wrapper">
+                <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.gallery.details.technique' | translate) + ':*'}}</span>
                     <artdv-selectinput
-                        class="artdv-admingallerydetail-select"
+                        class="artdv-admin-specific-detail-select"
                         [placeholder]="'modules.admin.gallery.placeholder-technique' | translate"
                         [fieldName]="'modules.admin.gallery.details.technique.' | translate"
-                        [options]="techniqueOptions"
+                        [options]="TechniqueOptionEnum"
                         [optionsTranslateRoot]="'shared.enum.art-technique.'"
                         [formControl]="artworkForm.get('artTechnique') | controlCast"
                     ></artdv-selectinput>
                 </div>
-                <div class="artdv-admingallerydetail-form-wrapper">
+                <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.gallery.details.publication' | translate) + ':*'}}</span>
                     <artdv-textinput
-                        class="artdv-admingallerydetail-text"
+                        class="artdv-admin-specific-detail-text"
                         [inputType]="'text'"
                         [placeholder]="getPublicationYearPlaceholder()"
                         [formControl]="artworkForm.get('publication') | controlCast"
@@ -103,30 +103,34 @@
                     ></artdv-textinput>
                 </div>
             </div>
-            <div class="artdv-admingallerydetail-update-wrapper" *ngIf="lastModified">
-                <span id="artdv-admingallerydetail-update-label">{{'modules.admin.info.last-update' | translate}}</span>
-                <span id="artdv-admingallerydetail-update-value">{{lastModified}}</span>
+            <div class="artdv-admin-specific-detail-update-wrapper" *ngIf="lastModifiedDateTime">
+                <span id="artdv-admin-specific-detail-update-label">
+                    {{'modules.admin.info.last-update' | translate}}
+                </span>
+                <span id="artdv-admin-specific-detail-update-value">
+                    {{lastModifiedDateTime}}
+                </span>
             </div>
         </form>
-        <div class="artdv-admingallerydetail-form-btn">
+        <div class="artdv-admin-specific-detail-form-btn">
             <button
-                class="artdv-admingallerydetail-form-btn-wrapper btn-confirm"
-                (click)="onSubmit()"
+                class="artdv-admin-specific-detail-form-btn-wrapper btn-confirm"
+                (click)="onSubmit(artworkForm, galleryApi)"
                 [attr.aria-disabled]="true"
             >
                 <i class="icon-Save"></i>
             </button>
             <button
-                class="artdv-admingallerydetail-form-btn-wrapper btn-cancel"
-                (click)="cancel()"
+                class="artdv-admin-specific-detail-form-btn-wrapper btn-cancel"
+                (click)="cancel(AdminRouteEnum.GALLERY)"
                 [attr.aria-disabled]="true"
             >
                 <i class="icon-Return"></i>
             </button>
             <button
-                class="artdv-admingallerydetail-form-btn-wrapper btn-delete"
-                *ngIf="mode === modeOptions.UPDATE"
-                (click)="remove()"
+                class="artdv-admin-specific-detail-form-btn-wrapper btn-delete"
+                *ngIf="mode === ModeOptionEnum.UPDATE"
+                (click)="remove(AdminRouteEnum.GALLERY, galleryApi)"
                 [attr.aria-disabled]="true"
             >
                 <i class="icon-Delete"></i>

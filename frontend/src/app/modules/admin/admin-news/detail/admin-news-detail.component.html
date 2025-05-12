@@ -1,0 +1,69 @@
+<section class="artdv-adminnewsdetail">
+    <header>
+        <h1>{{'' + (mode === ModeOptionEnum.CREATE ? 'create' : 'update') | translate}}</h1>
+    </header>
+    <div class="artdv-admin-specific-detail-content" *ngIf="!isLoadingInit">
+        <form [formGroup]="newsForm">
+            <div class="artdv-admin-specific-detail-form artdv-form-image">
+                <artdv-imgupload
+                    [existingImgPath]="pathFromExistingImg"
+                    [isSubmitTriggered]="onSubmitTrigger"
+                    [attr.tabindex]="0"
+                    (byChange)="readFileUpload($event)"
+                    (byRemove)="readRemovalInfo($event)"
+                ></artdv-imgupload>
+            </div>
+            <div class="artdv-admin-specific-detail-form artdv-form-details">
+                <div class="artdv-admin-specific-detail-form-wrapper">
+                    <span>{{('modules.admin.news.details.title' | translate) + ':'}}</span>
+                    <artdv-textinput
+                        class="artdv-admin-specific-detail-text"
+                        [placeholder]="'modules.admin.news.placeholder.title' | translate"
+                        [inputType]="'text'"
+                        [formControl]="newsForm.get('title') | controlCast"
+                        [fieldName]="'modules.admin.news.details.title' | translate"
+                    ></artdv-textinput>
+                </div>
+                <div class="artdv-admin-specific-detail-form-wrapper">
+                    <span>{{('modules.admin.news.details.content' | translate) + ':'}}</span>
+                    <artdv-textareainput
+                        class="artdv-admin-specific-detail-text"
+                        [rows]="10"
+                        [placeholder]="'modules.admin.news.placeholder.content' | translate"
+                        [formControl]="newsForm.get('content') | controlCast"
+                        [fieldName]="'modules.admin.news.details.content' | translate"
+                    ></artdv-textareainput>
+                </div>
+            </div>
+            <div class="artdv-admin-specific-detail-update-wrapper" *ngIf="lastModifiedDateTime">
+                <span id="artdv-admin-specific-detail-update-label">{{'modules.admin.info.last-update' | translate}}</span>
+                <span id="artdv-admin-specific-detail-update-value">{{lastModifiedDateTime}}</span>
+            </div>
+        </form>
+        <div class="artdv-admin-specific-detail-form-btn">
+            <button
+                class="artdv-admin-specific-detail-form-btn-wrapper btn-confirm"
+                (click)="onSubmit(newsForm, newsApi)"
+                [attr.tabindex]="0"
+            >
+                <i class="icon-Save"></i>
+            </button>
+            <button
+                class="artdv-admin-specific-detail-form-btn-wrapper btn-cancel"
+                (click)="cancel(AdminRouteEnum.NEWS)"
+                [attr.tabindex]="0"
+            >
+                <i class="icon-Return"></i>
+            </button>
+            <button
+                class="artdv-admin-specific-detail-form-btn-wrapper btn-delete"
+                *ngIf="mode === ModeOptionEnum.UPDATE"
+                (click)="remove(AdminRouteEnum.NEWS, newsApi)"
+                [attr.tabindex]="0"
+            >
+                <i class="icon-Delete"></i>
+            </button>
+        </div>
+    </div>
+    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
+</section>

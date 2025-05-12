@@ -69,15 +69,20 @@
                 "last-update": "letzte Änderung:"
             },
             "news": {
-                "details": {},
+                "details": {
+                    "content": "Inhalt",
+                    "title": "Titel"
+                },
                 "other": {
                     "created": "erstellt",
                     "sort": "Sortieren",
                     "updated": "bearbeitet"
                 },
                 "placeholder": {
+                    "content": "Fügen Sie einen Text ein",
                     "search": "in den News suchen",
-                    "sorting": "Sortiere nach"
+                    "sorting": "Sortiere nach",
+                    "title": "Wählen Sie einen Titel"
                 },
                 "title": {
                     "create": "News-Artikel hinzufügen",

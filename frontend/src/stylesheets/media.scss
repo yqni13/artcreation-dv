@@ -99,11 +99,12 @@
         }
     }
 
-    .artdv-admingallerydetail {
+    .artdv-admingallerydetail,
+    .artdv-adminnewsdetail {
         form {
             width: calc(60vw - var(--view-nav-width));
-            .artdv-admingallerydetail-form {
-                .artdv-admingallerydetail-form-wrapper {
+            .artdv-admin-specific-detail-form {
+                .artdv-admin-specific-detail-form-wrapper {
                     width: 70%;
                 }
             } artdv-imgupload {
@@ -458,12 +459,13 @@
         }
     }
 
-    .artdv-admingallerydetail {
+    .artdv-admingallerydetail,
+    .artdv-adminnewsdetail {
         form {
             width: calc(70vw - var(--view-nav-width));
             min-width: 700px;
-            .artdv-admingallerydetail-form {
-                .artdv-admingallerydetail-form-wrapper {
+            .artdv-admin-specific-detail-form {
+                .artdv-admin-specific-detail-form-wrapper {
                     width: 70%;
                 }
             }
@@ -800,14 +802,15 @@
         }
     }
 
-    .artdv-admingallerydetail {
+    .artdv-admingallerydetail,
+    .artdv-adminnewsdetail {
         form {
             $margin-form: calc(sass.$space100);
             margin: 0 $margin-form;
             width: calc(100% - ($margin-form * 2));
             min-width: 0;
-            .artdv-admingallerydetail-form {
-                .artdv-admingallerydetail-form-wrapper {
+            .artdv-admin-specific-detail-form {
+                .artdv-admin-specific-detail-form-wrapper {
                     width: 75%;
                 }
             }
@@ -1144,14 +1147,15 @@
         }
     }
 
-    .artdv-admingallerydetail {
+    .artdv-admingallerydetail,
+    .artdv-adminnewsdetail {
         form {
             $margin-form: 75px;
             margin: 0 $margin-form;
             width: calc(100% - ($margin-form * 2));
             min-width: 0;
-            .artdv-admingallerydetail-form {
-                .artdv-admingallerydetail-form-wrapper {
+            .artdv-admin-specific-detail-form {
+                .artdv-admin-specific-detail-form-wrapper {
                     width: 100%;
                 }
             }
@@ -1427,8 +1431,9 @@
         }
     }
 
-    .artdv-admingallerydetail {
-        .artdv-admingallerydetail-form-wrapper {
+    .artdv-admingallerydetail,
+    .artdv-adminnewsdetail {
+        .artdv-admin-specific-detail-form-wrapper {
             flex-direction: column!important;
             margin-bottom: sass.$space15!important;
             span {
@@ -1436,7 +1441,8 @@
                 margin-bottom: sass.$space5;
             }
             artdv-textinput,
-            artdv-selectinput {
+            artdv-selectinput,
+            artdv-textareainput {
                 width: 100%!important;
             }
         }
