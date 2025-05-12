@@ -28,23 +28,26 @@ exports.newsCreateSchema = [
         .notEmpty()
         .withMessage('data-required')
         .bail()
-        .isLength({max: 100})
-        .withMessage('data-invalid-max#title!100'),
-    body('text')
+        .isLength({max: 75})
+        .withMessage('data-invalid-max#title!75'),
+    body('content')
         .trim()
         .notEmpty()
         .withMessage('data-required')
+        .bail()
+        .isLength({max: 450})
+        .withMessage('data-invalid-max#content!450')
 ];
 
 exports.newsUpdateSchema = [
     body('id')
-            .trim()
-            .notEmpty()
-            .withMessage('data-required')
-            .bail()
-            .custom((value) => CustomValidator.validateUUID(value))
-            .bail()
-            .custom((id, {req}) => CustomValidator.validateExistingEntry(id, NewsRepository, req)),
+        .trim()
+        .notEmpty()
+        .withMessage('data-required')
+        .bail()
+        .custom((value) => CustomValidator.validateUUID(value))
+        .bail()
+        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, NewsRepository, req)),
     body('galleryId')
         .custom((foreignKey) => CustomValidator.validateNewsFK(foreignKey)),
     body('imagePath')
@@ -61,12 +64,15 @@ exports.newsUpdateSchema = [
         .notEmpty()
         .withMessage('data-required')
         .bail()
-        .isLength({max: 100})
-        .withMessage('data-invalid-max#title!100'),
-    body('text')
+        .isLength({max: 75})
+        .withMessage('data-invalid-max#title!75'),
+    body('content')
         .trim()
         .notEmpty()
         .withMessage('data-required')
+        .bail()
+        .isLength({max: 450})
+        .withMessage('data-invalid-max#content!450')
 ];
 
 exports.newsDeleteSchema = [

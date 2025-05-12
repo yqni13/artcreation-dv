@@ -78,7 +78,6 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
 
     override ngAfterViewInit() {
         super.ngAfterViewInit();
-
         this.subscriptionHttpObservationCreate$ = this.httpObservation.newsCreateStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
@@ -109,8 +108,8 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
             imageFile: new FormControl(null, Validators.required),
             imagePath: new FormControl(null),
             thumbnailPath: new FormControl(null),
-            title: new FormControl(null, Validators.required),
-            content: new FormControl(null, Validators.required)
+            title: new FormControl(null, [Validators.required, Validators.maxLength(75)]),
+            content: new FormControl(null, [Validators.required, Validators.maxLength(450)])
         })
     }
 

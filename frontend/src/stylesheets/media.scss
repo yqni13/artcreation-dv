@@ -177,6 +177,12 @@
                 max-width: 350px;
                 aspect-ratio: 1 / 1;
             }
+            h3 {
+                font-size: 18px;
+            }
+            p {
+                font-size: 13px;
+            }
         }
     }
 
@@ -535,6 +541,12 @@
             img {
                 max-width: 300px;
                 aspect-ratio: 1 / 1;
+            }
+            h3 {
+                font-size: 16px;
+            }
+            p {
+                font-size: 11px;
             }
         }
     }
@@ -1239,6 +1251,12 @@
                 max-width: 500px;
                 aspect-ratio: 1 / 1;
             }
+            h3 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 15px;
+            }
         }
     }
 
@@ -1504,6 +1522,12 @@
             img {
                 width: 70vw!important;
                 height: 70vw!important;
+            }
+            h3 {
+                font-size: clamp(14px, 3.4vw, 18px)
+            }
+            p {
+                font-size: clamp(11px, 2.6vw, 16px);
             }
         }
     }

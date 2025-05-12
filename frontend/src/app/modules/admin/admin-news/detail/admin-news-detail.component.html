@@ -16,13 +16,13 @@
             <div class="artdv-admin-specific-detail-form artdv-form-details">
                 <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.news.details.title' | translate) + ':'}}</span>
-                    <artdv-textinput
+                    <artdv-textareainput
                         class="artdv-admin-specific-detail-text"
+                        [rows]="3"
                         [placeholder]="'modules.admin.news.placeholder.title' | translate"
-                        [inputType]="'text'"
                         [formControl]="newsForm.get('title') | controlCast"
                         [fieldName]="'modules.admin.news.details.title' | translate"
-                    ></artdv-textinput>
+                    ></artdv-textareainput>
                 </div>
                 <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.news.details.content' | translate) + ':'}}</span>

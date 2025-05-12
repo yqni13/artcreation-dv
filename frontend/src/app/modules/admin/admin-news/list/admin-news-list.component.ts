@@ -1,7 +1,7 @@
 import { CRUDMode } from './../../../../shared/enums/crud-mode.enum';
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl } from "@angular/forms";
-import { filter, Subscription, tap } from "rxjs";
+import { filter, tap } from "rxjs";
 import { NewsItem } from "../../../../api/models/news-response.interface";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
 import { Router } from "@angular/router";
@@ -27,8 +27,6 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
     protected modifiedList: NewsItem[];
     protected SortingOptionEnum = SortingOption;
 
-    private subscriptionHttpObservationFindAll$: Subscription;
-
     constructor(
         router: Router,
         fb: FormBuilder,
@@ -40,12 +38,9 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         super(router, fb, auth, dataSharing, httpObservation);
         this.newsList = [];
         this.modifiedList = [];
-
-        this.subscriptionHttpObservationFindAll$ = new Subscription();
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
+    ngOnInit() {
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
@@ -129,10 +124,5 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         }
         this.dataSharing.setSharedData(data);
         this.router.navigate([`admin${AdminRoute.NEWS}/${data.entryId}`])
-    }
-
-    override ngOnDestroy() {
-        super.ngOnDestroy();
-        this.subscriptionHttpObservationFindAll$.unsubscribe();
     }
 }

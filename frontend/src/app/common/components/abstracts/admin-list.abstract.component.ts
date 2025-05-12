@@ -2,7 +2,7 @@ import { environment } from './../../../../environments/environment';
 import { GalleryRoute } from './../../../api/routes/gallery.route.enum';
 import { BaseRoute } from './../../../api/routes/base.route.enum';
 import { CRUDMode } from './../../../shared/enums/crud-mode.enum';
-import { Component, HostListener, OnDestroy, OnInit } from "@angular/core";
+import { AfterViewInit, Component, HostListener, OnDestroy } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { filter, Subscription, tap } from "rxjs";
 import { HttpObservationService } from '../../../shared/services/http-observation.service';
@@ -14,7 +14,7 @@ import { AdminRoute } from '../../../api/routes/admin.route.enum';
 @Component({
     template: ''
 })
-export abstract class AbstractAdminListComponent implements OnInit, OnDestroy {
+export abstract class AbstractAdminListComponent implements AfterViewInit, OnDestroy {
 
     @HostListener('window:keydown', ['$event'])
     navigateSearchByKey(event: KeyboardEvent) {
@@ -33,6 +33,7 @@ export abstract class AbstractAdminListComponent implements OnInit, OnDestroy {
     protected storageDomain: string;
     protected AdminRouteEnum = AdminRoute;
 
+    protected subscriptionHttpObservationFindAll$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
     private delay: any;
 
@@ -48,11 +49,20 @@ export abstract class AbstractAdminListComponent implements OnInit, OnDestroy {
         this.isLoadingResponse = false;
         this.storageDomain = environment.STORAGE_URL;
 
+        this.subscriptionHttpObservationFindAll$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     }
 
-    ngOnInit() {
+    // ABSTRACTS
+    abstract onSearchSubmit(initial: boolean): void;
+
+    abstract filterListBySearchText(searchText: string): void;
+
+    abstract navigateToUpdateItem(id: string): void;
+
+    // DEFINITIONS
+    ngAfterViewInit() {
         this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
             filter((x) => x),
             tap(async (response: any) => {
@@ -64,12 +74,6 @@ export abstract class AbstractAdminListComponent implements OnInit, OnDestroy {
             })
         ).subscribe();
     }
-
-    abstract onSearchSubmit(initial: boolean): void
-
-    abstract filterListBySearchText(searchText: string): void
-
-    abstract navigateToUpdateItem(id: string): void
 
     onSearchTextChange(event: string) {
         this.hasSearchText = event !== '' ? true : false;
@@ -94,6 +98,7 @@ export abstract class AbstractAdminListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.subscriptionHttpObservationFindAll$.unsubscribe();
         this.subscriptionHttpObservationError$.unsubscribe();
     }
 }
