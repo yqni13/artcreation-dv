@@ -114,8 +114,9 @@ class NewsRepository {
 
     findAll = async () => {
         const table = 'news';
+        const orderPrio1 = 'created_on';
 
-        const sql = `SELECT * FROM ${table}`;
+        const sql = `SELECT * FROM ${table} ORDER BY ${orderPrio1} DESC`;
         let connection;
         try {
             connection = await DBConnect.connection();
@@ -163,7 +164,7 @@ class NewsRepository {
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
 
         const values = [params['id'], params['galleryId'], params['imagePath'], params['thumbnailPath'], 
-        params['datetime'], params['title'], params['content'], timestamp, timestamp];
+        timestamp, params['title'], params['content'], timestamp, timestamp];
 
         let connection;
         try {
@@ -212,7 +213,7 @@ class NewsRepository {
         WHERE news_id = $8`;
 
         const values = [params['galleryId'], params['imagePath'], params['thumbnailPath'], 
-        params['datetime'], params['title'], params['content'], timestamp, params['id']];
+        timestamp, params['title'], params['content'], timestamp, params['id']];
 
         let connection;
         try {

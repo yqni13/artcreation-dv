@@ -15,13 +15,13 @@ class NewsController {
 
     create = async (req, res, next) => {
         checkValidation(req);
-        const response = await NewsService.create(req.body);
+        const response = await NewsService.create(req.body, req.files);
         res.send(response);
     }
 
     update = async (req, res, next) => {
         checkValidation(req);
-        const response = await NewsService.update(req.body);
+        const response = await NewsService.update(req.body, req.files, req.validatedEntry);
         res.send(response);
     }
 

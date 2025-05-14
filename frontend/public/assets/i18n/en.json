@@ -1,5 +1,10 @@
 {
     "common": {
+        "component": {
+            "select-galleryitem": {
+                "select": "open list"
+            }
+        },
         "footer": {
             "content": {
                 "archive": "Archive",
@@ -71,6 +76,7 @@
             "news": {
                 "details": {
                     "content": "Content",
+                    "source": "Source",
                     "title": "Title"
                 },
                 "other": {
@@ -82,6 +88,7 @@
                     "content": "add a text",
                     "search": "search in news",
                     "sorting": "sort by",
+                    "source": "select a source",
                     "title": "select a title"
                 },
                 "title": {
@@ -298,6 +305,10 @@
             "sorting-option": {
                 "ASC": "ascending",
                 "DESC": "descending"
+            },
+            "source-option": {
+                "EXIST": "an existing artwork",
+                "NEW": "a new image"
             }
         }
     }

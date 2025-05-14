@@ -107,7 +107,9 @@
                 .artdv-admin-specific-detail-form-wrapper {
                     width: 70%;
                 }
-            } artdv-imgupload {
+            } 
+            artdv-imgupload,
+            artdv-select-galleryitem {
                 width: 70%;
             }
         }
@@ -475,7 +477,8 @@
                     width: 70%;
                 }
             }
-            artdv-imgupload {
+            artdv-imgupload,
+            artdv-select-galleryitem {
                 width: 70%;
             }
         }
@@ -826,7 +829,8 @@
                     width: 75%;
                 }
             }
-            artdv-imgupload {
+            artdv-imgupload,
+            artdv-select-galleryitem {
                 width: 75%;
             }
         }
@@ -1171,7 +1175,8 @@
                     width: 100%;
                 }
             }
-            artdv-imgupload {
+            artdv-imgupload,
+            artdv-select-galleryitem {
                 width: calc(100% - 5px) // 5px as visual buffer
             }
         }

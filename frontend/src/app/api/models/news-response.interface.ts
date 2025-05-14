@@ -1,6 +1,6 @@
 export declare interface NewsItem {
     news_id: string,
-    gallery_id?: string,
+    gallery?: string,
     image_path?: string,
     thumbnail_path?: string,
     title: string,

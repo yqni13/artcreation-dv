@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { NewsItem } from "../../../../api/models/news-response.interface";
 import { AbstractAdminDetailComponent } from "../../../../common/components/abstracts/admin-detail.abstract.component";
@@ -9,27 +9,39 @@ import { NavigationService } from "../../../../shared/services/navigation.servic
 import { DataShareService } from "../../../../shared/services/data-share.service";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
 import { NewsAPIService } from "../../../../api/services/news.api.service";
-import { filter, tap } from "rxjs";
+import { filter, Subscription, tap } from "rxjs";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
 import { StorageRoute } from "../../../../api/routes/storage.route.enum";
 import { AdminDetailImportsModule } from "../../../../common/helper/admin-detail.imports.helper";
 import { TextareaInputComponent } from "../../../../common/components/form-components/textarea-input/textarea-input.component";
+import { SelectInputComponent } from "../../../../common/components/form-components/select-input/select-input.component";
+import { SourceOption } from "../../../../shared/enums/source-option.enum";
+import { GalleryItem } from "../../../../api/models/gallery-response.interface";
+import { SelectGalleryItemComponent } from "../../../../common/components/select-galleryitem/select-galleryitem.component";
+import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
 
 @Component({
     selector: 'app-admin-news-detail',
     templateUrl: './admin-news-detail.component.html',
     styleUrl: '../../admin.component.scss',
     imports: [
+        SelectGalleryItemComponent,
+        SelectInputComponent,
         TextareaInputComponent,
     ...AdminDetailImportsModule
 ]
 })
-
-export class AdminNewsDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit {
+export class AdminNewsDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
     protected newsForm: FormGroup;
     protected newsEntry: NewsItem | null;
+    protected SourceOptionEnum = SourceOption;
+    protected CRUDModeEnum = CRUDMode;
+    protected galleryList: GalleryItem[];
+    protected hasSourceOption: boolean;
+
+    private subscriptionHttpObservationFindOne$: Subscription;
 
     constructor(
         router: Router,
@@ -39,11 +51,16 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
         navigate: NavigationService,
         dataSharing: DataShareService,
         httpObservation: HttpObservationService,
-        protected newsApi: NewsAPIService
+        protected newsApi: NewsAPIService,
+        private readonly galleryApi: GalleryAPIService
     ) {
         super(router, fb, auth, datetime, navigate, dataSharing, httpObservation);
         this.newsForm = new FormGroup({});
         this.newsEntry = null;
+        this.galleryList = [];
+        this.hasSourceOption = false;
+
+        this.subscriptionHttpObservationFindOne$ = new Subscription();
     }
 
     ngOnInit() {
@@ -58,7 +75,16 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
                     this.newsApi.setIdParam(this.entryId);
                     this.newsApi.sendGetOneRequest().subscribe(async data => {
                         (this.newsEntry as any) = data.body?.body.data;
-                        // Object.assign((this.newsEntry as any), {imageFile: data.body?.body.data.reference_nr});
+                        if(data.body?.body.data.image_path) {
+                            Object.assign((this.newsEntry as any), {imageFile: data.body?.body.data.news_id});
+                        } else if(data.body?.body.data.gallery && data.body?.body.data.news_id) {
+                            this.galleryApi.setIdParam(data.body?.body.data.news_id);
+                            this.galleryApi.sendGetOneRequest().subscribe(async data => {
+                                Object.assign(
+                                    (this.newsEntry as any), {gallery_path: data.body?.body.data.thumbnail_path}
+                                );
+                            })
+                        }
                         this.lastModifiedDateTime = this.datetime.convertTimestamp(this.newsEntry?.last_modified ?? null);
                         this.initEdit();
                         this.pathFromExistingImg = this.configPathFromExistingImg(this.newsEntry?.thumbnail_path);
@@ -99,13 +125,24 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
                 }
             })
         ).subscribe();
+
+        this.subscriptionHttpObservationFindOne$ = this.httpObservation.galleryFindOneStatus$.pipe(
+            filter((x) => x !== null && x !== undefined),
+            tap((isStatus200: boolean) => {
+                if(isStatus200) {
+                    this.httpObservation.setGalleryFindOneStatus(false);
+                    this.isLoadingResponse = false;
+                }
+            })
+        ).subscribe();
     }
 
     private initForm() {
         this.newsForm = this.fb.group({
             news_id: new FormControl(null),
+            source: new FormControl(null),
             gallery_id: new FormControl(null),
-            imageFile: new FormControl(null, Validators.required),
+            imageFile: new FormControl(null), // only required if no gallery id linked
             imagePath: new FormControl(null),
             thumbnailPath: new FormControl(null),
             title: new FormControl(null, [Validators.required, Validators.maxLength(75)]),
@@ -118,25 +155,68 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
         this.initForm();
         this.newsForm.patchValue({
             news_id: this.newsEntry?.news_id ?? null,
-            gallery_id: this.newsEntry?.gallery_id ?? null,
+            source: '',
+            gallery_id: this.newsEntry?.gallery ?? null,
             imageFile: (this.newsEntry as any)?.imageFile ?? null,
-            imagePath: this.newsEntry?.image_path ?? '',
-            thumbnailPath: this.newsEntry?.thumbnail_path ?? '',
-            title: this.newsEntry?.title ?? '',
-            content: this.newsEntry?.content ?? ''
+            imagePath: this.newsEntry?.image_path ?? null,
+            thumbnailPath: this.newsEntry?.thumbnail_path ?? null,
+            title: this.newsEntry?.title ?? null,
+            content: this.newsEntry?.content ?? null
         })
     }
 
     readFileUpload(event: any) {
         this.pathFromExistingImg = null;
         this.newsForm.get('imageFile')?.setValue(event);
-        this.configPathByData(this.newsForm.get('??')?.value); // TODO(yqni13): which reference?
+        this.configPathByData('placeholder');
     }
 
     readRemovalInfo(event: any) {
         if(event && !event.existingImgPath) {
             this.pathFromExistingImg = null;
             this.newsForm.get('imageFile')?.setValue(null);
+            this.newsForm.get('imagePath')?.setValue(null);
+            this.newsForm.get('thumbnailPath')?.setValue(null);
+        }
+    }
+
+    onSourceChange(event: any) {
+        const val = event.target?.value ?? null;
+        if(val === SourceOption.NEW || val === SourceOption.EXIST) {
+            this.hasSourceOption = true;
+        }
+    }
+
+    onGalleryItemSelect(event: any) {
+        if(typeof event === 'string') {
+            this.newsForm.get('gallery_id')?.setValue(event);
+            this.newsForm.get('imageFile')?.setValue(null);
+            this.newsForm.get('imagePath')?.setValue(null);
+            this.newsForm.get('thumbnailPath')?.setValue(null);
+        } else if(event === null) {
+            this.newsForm.get('gallery_id')?.setValue(null);
+        }
+    }
+
+    override onSubmit() {
+        this.newsForm.markAllAsTouched();
+        if(this.newsForm.get('source')?.value === SourceOption.EXIST) {
+            this.onSubmitTrigger.next(this.newsForm.get('gallery_id')?.value !== null);
+        } else {
+            this.onSubmitTrigger.next(this.newsForm.get('imagePath')?.value !== null);
+        }
+
+        if(this.newsForm.invalid) {
+            return;
+        }
+
+        this.isLoadingResponse = true;
+        if(this.mode === CRUDMode.CREATE) {
+            this.newsApi.setCreatePayload(this.newsForm.getRawValue());
+            this.newsApi.sendCreateRequest().subscribe();
+        } else if(this.mode === CRUDMode.UPDATE) {
+            this.newsApi.setUpdatePayload(this.newsForm.getRawValue());
+            this.newsApi.sendUpdateRequest().subscribe();
         }
     }
 
@@ -144,7 +224,12 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
         if(!data) {
             return;
         }
-        this.newsForm.get('imagePath')?.setValue(`${StorageRoute.ART_ORIGINAL}/${data}.webp`);
-        this.newsForm.get('thumbnailPath')?.setValue(`${StorageRoute.ART_RESIZED}/${data}.webp`);
+        this.newsForm.get('imagePath')?.setValue(`${StorageRoute.NEWS_ORIGINAL}/${data}.webp`);
+        this.newsForm.get('thumbnailPath')?.setValue(`${StorageRoute.NEWS_RESIZED}/${data}.webp`);
+    }
+
+    override ngOnDestroy() {
+        super.ngOnDestroy();
+        this.subscriptionHttpObservationFindOne$.unsubscribe();
     }
 }

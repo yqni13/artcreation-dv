@@ -4,7 +4,28 @@
     </header>
     <div class="artdv-admin-specific-detail-content" *ngIf="!isLoadingInit">
         <form [formGroup]="newsForm">
-            <div class="artdv-admin-specific-detail-form artdv-form-image">
+            <div class="artdv-admin-specific-detail-form artdv-form-genre">
+                <div
+                    class="artdv-admin-specific-detail-form-wrapper"
+                    *ngIf="(newsForm.get('gallery_id')?.value === null && newsForm.get('imagePath')?.value === null)
+                    || mode === CRUDModeEnum.CREATE"
+                >
+                    <span>{{('modules.admin.news.details.source' | translate) + ':*'}}</span>
+                    <artdv-selectinput
+                        class="artdv-admin-specific-detail-select"
+                        [placeholder]="'modules.admin.news.placeholder.source' | translate"
+                        [fieldName]="'modules.admin.news.details.source' | translate"
+                        [options]="SourceOptionEnum"
+                        [optionsTranslateRoot]="'shared.enum.source-option.'"
+                        [formControl]="newsForm.get('source') | controlCast"
+                        (byChange)="onSourceChange($event)"
+                    ></artdv-selectinput>
+                </div>
+            </div>
+            <div
+                class="artdv-admin-specific-detail-form artdv-form-image-upload"
+                *ngIf="(mode === CRUDModeEnum.CREATE && hasSourceOption && newsForm.get('source')?.value === SourceOptionEnum.NEW) || (mode === CRUDModeEnum.UPDATE && (newsForm.get('imagePath')?.value !== null || newsForm.get('source')?.value === SourceOptionEnum.NEW))"
+            >
                 <artdv-imgupload
                     [existingImgPath]="pathFromExistingImg"
                     [isSubmitTriggered]="onSubmitTrigger"
@@ -13,7 +34,19 @@
                     (byRemove)="readRemovalInfo($event)"
                 ></artdv-imgupload>
             </div>
-            <div class="artdv-admin-specific-detail-form artdv-form-details">
+            <div
+                class="artdv-admin-specific-detail-form artdv-form-image-select"
+                *ngIf="(mode === CRUDModeEnum.CREATE && hasSourceOption && newsForm.get('source')?.value === SourceOptionEnum.EXIST) || (mode === CRUDModeEnum.UPDATE && (newsForm.get('gallery_id')?.value !== null || newsForm.get('source')?.value === SourceOptionEnum.EXIST))"
+            >
+                <artdv-select-galleryitem
+                    [isSubmitTriggered]="onSubmitTrigger"
+                    (byChange)="onGalleryItemSelect($event)"
+                ></artdv-select-galleryitem>
+            </div>
+            <div
+                class="artdv-admin-specific-detail-form artdv-form-details"
+                *ngIf="hasSourceOption || mode === CRUDModeEnum.UPDATE"
+            >
                 <div class="artdv-admin-specific-detail-form-wrapper">
                     <span>{{('modules.admin.news.details.title' | translate) + ':'}}</span>
                     <artdv-textareainput
@@ -43,7 +76,7 @@
         <div class="artdv-admin-specific-detail-form-btn">
             <button
                 class="artdv-admin-specific-detail-form-btn-wrapper btn-confirm"
-                (click)="onSubmit(newsForm, newsApi)"
+                (click)="onSubmit()"
                 [attr.tabindex]="0"
             >
                 <i class="icon-Save"></i>

@@ -12,17 +12,13 @@ exports.newsFindOneSchema = [
 ];
 
 exports.newsCreateSchema = [
+    CustomValidator.validateImageFileInput,
     body('galleryId')
         .custom((foreignKey) => CustomValidator.validateNewsFK(foreignKey)),
     body('imagePath')
         .custom((imagePath, { req }) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
     body('thumbnailPath')
         .custom((thumbnailPath, { req }) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
-    body('datetime')
-        .trim()
-        .notEmpty()
-        .withMessage('data-required')
-        .custom((datetime) => CustomValidator.validateDateTime(datetime)),
     body('title')
         .trim()
         .notEmpty()
@@ -40,6 +36,7 @@ exports.newsCreateSchema = [
 ];
 
 exports.newsUpdateSchema = [
+    CustomValidator.validateImageFileInput,
     body('id')
         .trim()
         .notEmpty()
@@ -54,11 +51,6 @@ exports.newsUpdateSchema = [
         .custom((imagePath, { req }) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
     body('thumbnailPath')
         .custom((thumbnailPath, { req }) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
-    body('datetime')
-        .trim()
-        .notEmpty()
-        .withMessage('data-required')
-        .custom((datetime) => CustomValidator.validateDateTime(datetime)),
     body('title')
         .trim()
         .notEmpty()

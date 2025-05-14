@@ -84,9 +84,9 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
         return dbPath ? `${environment.STORAGE_URL}/${dbPath}` : null;
     }
 
-    onSubmit(formGroup: FormGroup, api: GalleryAPIService | NewsAPIService) {
+    onSubmit(formGroup: FormGroup, imgSource: string | null, api: GalleryAPIService | NewsAPIService) {
         formGroup.markAllAsTouched();
-        this.onSubmitTrigger.next(formGroup.get('imageFile')?.value !== null);
+        this.onSubmitTrigger.next(imgSource !== null);
         if(formGroup.invalid) {
             return;
         }

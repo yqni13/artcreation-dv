@@ -10,6 +10,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { DataShareService } from '../../../shared/services/data-share.service';
 import { Router } from '@angular/router';
 import { AdminRoute } from '../../../api/routes/admin.route.enum';
+import { NewsRoute } from '../../../api/routes/news.route.enum';
 
 @Component({
     template: ''
@@ -32,6 +33,8 @@ export abstract class AbstractAdminListComponent implements AfterViewInit, OnDes
     protected isLoadingResponse: boolean;
     protected storageDomain: string;
     protected AdminRouteEnum = AdminRoute;
+    protected GalleryRouteEnum = GalleryRoute;
+    protected NewsRouteEnum = NewsRoute;
 
     protected subscriptionHttpObservationFindAll$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
@@ -85,12 +88,12 @@ export abstract class AbstractAdminListComponent implements AfterViewInit, OnDes
         this.onSearchSubmit(false);
     }
 
-    navigateToCreateItem(adminRoute: AdminRoute) {
+    navigateToCreateItem(adminRoute: AdminRoute, specificRoute: GalleryRoute | NewsRoute) {
         const data = {
             mode: CRUDMode.CREATE
         }
         this.dataSharing.setSharedData(data);
-        this.router.navigate([`${BaseRoute.ADMIN}${adminRoute}${GalleryRoute.CREATE}`]);
+        this.router.navigate([`${BaseRoute.ADMIN}${adminRoute}/${specificRoute}`]);
     }
 
     navigateToDashboard() {

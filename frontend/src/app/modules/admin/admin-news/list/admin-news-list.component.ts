@@ -82,8 +82,8 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         this.modifiedList = this.modifiedList.sort(
             (a,b) => {
                 return sorting === SortingOption.DESC
-                    ? new Date(a.created_on).getTime() - new Date(b.created_on).getTime()
-                    : new Date(b.created_on).getTime() - new Date(a.created_on).getTime()
+                ? new Date(b.created_on).getTime() - new Date(a.created_on).getTime()
+                : new Date(a.created_on).getTime() - new Date(b.created_on).getTime();
             }
         );
     }

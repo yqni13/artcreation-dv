@@ -115,7 +115,7 @@
         <div class="artdv-admin-specific-detail-form-btn">
             <button
                 class="artdv-admin-specific-detail-form-btn-wrapper btn-confirm"
-                (click)="onSubmit(artworkForm, galleryApi)"
+                (click)="onSubmit(artworkForm, artworkForm.get('imagePath')?.value, galleryApi)"
                 [attr.aria-disabled]="true"
             >
                 <i class="icon-Save"></i>

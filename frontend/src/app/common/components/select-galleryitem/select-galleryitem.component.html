@@ -1,0 +1,44 @@
+<div class="artdv-selectgalleryitem" [ngClass]="showGalleryList ? 'artdv-selectgalleryitem-fullsize' : ''">
+    <a
+        class="artdv-selectgalleryitem-preselect"
+        (click)="openGalleryList()"
+        (keydown.enter)="openGalleryList()"
+        [attr.tabindex]="0"
+        *ngIf="!showGalleryList && !hasSelectedItem"
+    >
+        {{'common.component.select-galleryitem.select' | translate}}
+    </a>
+    <span id="artdv-select-valid-msg" *ngIf="showValidationMessage">
+        {{'validation.frontend.img-upload.required' | translate}}
+    </span>
+    <div class="artdv-selectgalleryitem-modal" *ngIf="showGalleryList && galleryList !== null">
+        <div class="artdv-selectgalleryitem-modal-container">
+            <div class="artdv-selectgalleryitem-modal-wrapper" *ngFor="let item of galleryList">
+                <img
+                    src="{{storageDomain + '/' + item.image_path}}"
+                    alt="{{item.reference_nr}}"
+                    (click)="selectArtwork(item.gallery_id)"
+                    (keydown.enter)="selectArtwork(item.gallery_id)"
+                    [attr.tabindex]="0"
+                >
+            </div>
+        </div>
+    </div>
+    <div class="artdv-selectgalleryitem-preview" *ngIf="!showGalleryList && hasSelectedItem">
+        <div class="artdv-selectgalleryitem-preview-container">
+            <img
+                src="{{storageDomain + '/' + selectedArtwork?.thumbnail_path}}"
+                alt="{{selectedArtwork?.reference_nr}}"
+            >
+            <div
+                class="artdv-selectgalleryitem-close-wrapper"
+                (click)="removeImage()"
+                (keydown.enter)="removeImage()"
+                [attr.tabindex]="0"
+            >
+                <i class="icon-CloseX"></i>
+            </div>
+        </div>
+    </div>
+    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
+</div>

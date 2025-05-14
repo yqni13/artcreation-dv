@@ -1,3 +1,4 @@
+
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
@@ -47,7 +48,7 @@ export class NewsAPIService {
     setCreatePayload(data: any) {
         const imageFile = data.imageFile;
         const payloadCreate: NewsCreateRequest = {
-            gallery_id: data.gallery_id === '' ? null : data.gallery_id,
+            galleryId: data.gallery_id === '' ? null : data.gallery_id,
             imagePath: data.imagePath === '' ? null : data.imagePath,
             thumbnailPath: data.thumbnailPath === '' ? null : data.thumbnailPath,
             title: data.title,
@@ -60,8 +61,8 @@ export class NewsAPIService {
 
     setUpdatePayload(data: any) {
         const payloadUpdate: NewsUpdateRequest = {
-            news_id: data.news_id,
-            gallery_id: data.gallery_id === '' ? null : data.gallery_id,
+            id: data.news_id,
+            galleryId: data.gallery_id === '' ? null : data.gallery_id,
             imagePath: data.imagePath === '' ? null : data.imagePath,
             thumbnailPath: data.thumbnailPath === '' ? null : data.thumbnailPath,
             title: data.title,

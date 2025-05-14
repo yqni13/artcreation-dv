@@ -1,5 +1,10 @@
 {
     "common": {
+        "component": {
+            "select-galleryitem": {
+                "select": "Liste öffnen"
+            }
+        },
         "footer": {
             "content": {
                 "archive": "Archiv",
@@ -71,6 +76,7 @@
             "news": {
                 "details": {
                     "content": "Inhalt",
+                    "source": "Quelle",
                     "title": "Titel"
                 },
                 "other": {
@@ -82,6 +88,7 @@
                     "content": "Fügen Sie einen Text ein",
                     "search": "in den News suchen",
                     "sorting": "Sortiere nach",
+                    "source": "Wählen Sie die Quelle",
                     "title": "Wählen Sie einen Titel"
                 },
                 "title": {
@@ -298,6 +305,10 @@
             "sorting-option": {
                 "ASC": "aufsteigend",
                 "DESC": "absteigend"
+            },
+            "source-option": {
+                "EXIST": "ein bestehendes Kunstwerk",
+                "NEW": "ein neues Bild"
             }
         }
     }

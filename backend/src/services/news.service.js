@@ -1,6 +1,8 @@
 const { basicResponse } = require('../utils/common.utils');
-const { createID } = require('../utils/common.utils');
+const Utils = require('../utils/common.utils');
+const NewsModel = require('../models/news.model');
 const NewsRepository = require('../repositories/news.repository');
+const ImgUploadModel = require('../models/image-upload.model');
 
 class NewsService {
     findOne = async (params) => {
@@ -14,15 +16,21 @@ class NewsService {
         return basicResponse(result.body, result.code, result.msg);
     }
     
-    create = async (params) => {
+    create = async (params, files) => {
         const hasParams = Object.keys(params).length !== 0;
-        Object.assign(params, await createID(NewsRepository, 'news')); // params['id']
+        Object.assign(params, await Utils.createID(NewsRepository, 'news')); // params['id']
+        params = NewsModel.renamePathName(params, 'placeholder', params.id);
+        files = NewsModel.renameFileName(files, 'placeholder', params.id);
+        await ImgUploadModel.handleImageUploads(params, files);
         const result = await NewsRepository.create(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }
     
-    update = async (params) => {
+    update = async (params, files, compareData) => {
         const hasParams = Object.keys(params).length !== 0;
+        params = NewsModel.renamePathName(params, 'placeholder', params.id);
+        files = NewsModel.renameFileName(files, 'placeholder', params.id);
+        await ImgUploadModel.handleImageUpdate(params, files, compareData);
         const result = await NewsRepository.update(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }
