@@ -100,6 +100,11 @@ export abstract class AbstractAdminListComponent implements AfterViewInit, OnDes
         this.router.navigate([BaseRoute.ADMIN]);
     }
 
+    controlImgCache(timestamp: string): string {
+        const alteredPath = new Date(timestamp).getTime();
+        return `?v=${alteredPath}`;
+    }
+
     ngOnDestroy() {
         this.subscriptionHttpObservationFindAll$.unsubscribe();
         this.subscriptionHttpObservationError$.unsubscribe();

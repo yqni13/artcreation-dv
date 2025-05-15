@@ -11,7 +11,7 @@ import { Component, EventEmitter, HostListener, Input, Output } from "@angular/c
             (click)="closeFullscale(false)"
             (keydown.enter)="closeFullscale(false)" 
         >
-            <img src="{{imgPath}}" alt="404-picture-not-found">
+            <img src="{{imgPath + controlImgCache()}}" alt="404-picture-not-found">
         </div>
     `,
     styleUrl: "./img-fullscale.component.scss",
@@ -35,6 +35,11 @@ export class ImgFullscaleComponent {
     constructor() {
         this.imgPath = '';
         this.isActive = false;
+    }
+
+    controlImgCache(): string {
+        const alteredPath = new Date().getTime();
+        return `?v=${alteredPath}`;
     }
 
     closeFullscale(flag: boolean) {
