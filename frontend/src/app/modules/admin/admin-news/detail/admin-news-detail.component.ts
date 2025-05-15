@@ -78,11 +78,9 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
                         if(data.body?.body.data.image_path) {
                             Object.assign((this.newsEntry as any), {imageFile: data.body?.body.data.news_id});
                         } else if(data.body?.body.data.gallery && data.body?.body.data.news_id) {
-                            this.galleryApi.setIdParam(data.body?.body.data.news_id);
+                            this.galleryApi.setIdParam(data.body?.body.data.gallery);
                             this.galleryApi.sendGetOneRequest().subscribe(async data => {
-                                Object.assign(
-                                    (this.newsEntry as any), {gallery_path: data.body?.body.data.thumbnail_path}
-                                );
+                                this.pathFromExistingImg = data.body?.body.data.thumbnail_path ?? null;
                             })
                         }
                         this.lastModifiedDateTime = this.datetime.convertTimestamp(this.newsEntry?.last_modified ?? null);
@@ -195,6 +193,7 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
             this.newsForm.get('thumbnailPath')?.setValue(null);
         } else if(event === null) {
             this.newsForm.get('gallery_id')?.setValue(null);
+            this.pathFromExistingImg = null;
         }
     }
 

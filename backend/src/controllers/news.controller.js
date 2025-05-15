@@ -8,6 +8,11 @@ class NewsController {
         res.send(response);
     }
 
+    findAllLeftJoin = async (req, res, next) => {
+        const response = await NewsService.findAllLeftJoin();
+        res.send(response);
+    }
+
     findAll = async (req, res, next) => {
         const response = await NewsService.findAll();
         res.send(response);
@@ -27,7 +32,7 @@ class NewsController {
 
     delete = async (req, res, next) => {
         checkValidation(req);
-        const response = await NewsService.delete(req.body);
+        const response = await NewsService.delete({id: req.params.id});
         res.send(response);
     }
 }

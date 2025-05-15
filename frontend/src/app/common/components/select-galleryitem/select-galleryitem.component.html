@@ -4,7 +4,7 @@
         (click)="openGalleryList()"
         (keydown.enter)="openGalleryList()"
         [attr.tabindex]="0"
-        *ngIf="!showGalleryList && !hasSelectedItem"
+        *ngIf="!showGalleryList && !hasSelectedItem && !showInUpdateMode"
     >
         {{'common.component.select-galleryitem.select' | translate}}
     </a>
@@ -24,10 +24,10 @@
             </div>
         </div>
     </div>
-    <div class="artdv-selectgalleryitem-preview" *ngIf="!showGalleryList && hasSelectedItem">
+    <div class="artdv-selectgalleryitem-preview" *ngIf="showInUpdateMode || (!showGalleryList && hasSelectedItem)">
         <div class="artdv-selectgalleryitem-preview-container">
             <img
-                src="{{storageDomain + '/' + selectedArtwork?.thumbnail_path}}"
+                src="{{storageDomain + '/' + (!showInUpdateMode ? selectedArtwork?.thumbnail_path : showInUpdateMode)}}"
                 alt="{{selectedArtwork?.reference_nr}}"
             >
             <div

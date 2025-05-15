@@ -12,9 +12,10 @@ const {
 const awaitHandlerFactory = require('../middleware/awaitHandlerFactory.middleware');
 
 router.get('/findOne/:id', newsFindOneSchema, awaitHandlerFactory(NewsController.findOne));
+router.get('/findAllLeftJoin', awaitHandlerFactory(NewsController.findAllLeftJoin));
 router.get('/findAll', awaitHandlerFactory(NewsController.findAll));
 router.post('/create', auth(), Utils.parseReqBody, newsCreateSchema, awaitHandlerFactory(NewsController.create));
 router.put('/update', auth(), Utils.parseReqBody, newsUpdateSchema, awaitHandlerFactory(NewsController.update));
-router.delete('/delete', auth(), newsDeleteSchema, awaitHandlerFactory(NewsController.delete));
+router.delete('/delete/:id', auth(), newsDeleteSchema, awaitHandlerFactory(NewsController.delete));
 
 module.exports = router;

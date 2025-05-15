@@ -40,6 +40,7 @@
             >
                 <artdv-select-galleryitem
                     [isSubmitTriggered]="onSubmitTrigger"
+                    [showInUpdateMode]="pathFromExistingImg"
                     (byChange)="onGalleryItemSelect($event)"
                 ></artdv-select-galleryitem>
             </div>

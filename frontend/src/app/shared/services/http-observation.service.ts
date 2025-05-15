@@ -12,6 +12,7 @@ export class HttpObservationService {
     private galleryUpdateStatusSubject = new BehaviorSubject<boolean>(false);
     private galleryDeleteStatusSubject = new BehaviorSubject<boolean>(false);
     private newsFindOneStatusSubject = new BehaviorSubject<boolean>(false);
+    private newsFindAllLeftJoinStatusSubject = new BehaviorSubject<boolean>(false);
     private newsFindAllStatusSubject = new BehaviorSubject<boolean>(false);
     private newsCreateStatusSubject = new BehaviorSubject<boolean>(false);
     private newsUpdateStatusSubject = new BehaviorSubject<boolean>(false);
@@ -26,6 +27,7 @@ export class HttpObservationService {
     galleryUpdateStatus$ = this.galleryUpdateStatusSubject.asObservable();
     galleryDeleteStatus$ = this.galleryDeleteStatusSubject.asObservable();
     newsFindOneStatus$ = this.newsFindOneStatusSubject.asObservable();
+    newsFindAllLeftJoinStatus$ = this.newsFindAllLeftJoinStatusSubject.asObservable();
     newsFindAllStatus$ = this.newsFindAllStatusSubject.asObservable();
     newsCreateStatus$ = this.newsCreateStatusSubject.asObservable();
     newsUpdateStatus$ = this.newsUpdateStatusSubject.asObservable();
@@ -55,6 +57,10 @@ export class HttpObservationService {
     }
     setNewsFindOneStatus(isStatus200: boolean) {
         this.newsFindOneStatusSubject.next(isStatus200);
+    }
+
+    setNewsFindAllLeftJoinStatus(isStatus200: boolean) {
+        this.newsFindAllLeftJoinStatusSubject.next(isStatus200);
     }
 
     setNewsFindAllStatus(isStatus200: boolean) {

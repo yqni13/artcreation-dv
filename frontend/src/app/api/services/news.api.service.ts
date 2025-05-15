@@ -1,4 +1,3 @@
-
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
@@ -23,6 +22,7 @@ export class NewsAPIService {
 
     private domainPathV1: string;
     private urlGetOne: string;
+    private urlGetAllLeftJoin: string;
     private urlGetAll: string;
     private urlCreate: string;
     private urlUpdate: string;
@@ -35,6 +35,7 @@ export class NewsAPIService {
 
         this.domainPathV1 = '/api/v1/news';
         this.urlGetOne = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDONE}`;
+        this.urlGetAllLeftJoin = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FALEFTJOIN}`;
         this.urlGetAll = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDALL}`;
         this.urlCreate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.CREATE}`;
         this.urlUpdate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.UPDATE}`;
@@ -78,6 +79,10 @@ export class NewsAPIService {
 
     sendGetOneRequest(): Observable<HttpResponse<NewsItemResponse>> {
         return this.http.get<NewsItemResponse>(`${this.urlGetOne}/${this.idParam}`, { observe: 'response'});
+    }
+
+    sendGetAllLeftJoinRequest(): Observable<HttpResponse<NewsListResponse>> {
+        return this.http.get<NewsListResponse>(this.urlGetAllLeftJoin, { observe: 'response' });
     }
 
     sendGetAllRequest(): Observable<HttpResponse<NewsListResponse>> {

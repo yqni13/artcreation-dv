@@ -103,8 +103,12 @@ class ImageUpload {
             }
             if(files.length === 0 && existDbEntry.art_genre === params.artGenre) {
                 return;
-            }            
-            await this.handleImageRemoval({imagePath: existDbEntry.image_path, thumbnailPath: existDbEntry.thumbnail_path});
+            }
+
+            // prevent removal on news if update from linked artwork to new uploaded image
+            if(existDbEntry.image_path !== null && existDbEntry.thumbnail_path !== null) {
+                await this.handleImageRemoval({imagePath: existDbEntry.image_path, thumbnailPath: existDbEntry.thumbnail_path});
+            }
             return await this.handleImageUploads(params, files);
         } catch(err) {
             logger.error("ERROR handleImageUpdate", {

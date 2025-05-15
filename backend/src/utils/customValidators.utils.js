@@ -117,8 +117,9 @@ exports.validateImageFileInput = (req, res, next) => {
         }];
         throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
     }
-
-    this.validateImageType(req.files[0]);
+    if(req.files.length > 0) {
+        this.validateImageType(req.files[0]);
+    }
 
     next();
 }

@@ -32,6 +32,7 @@ export class SelectGalleryItemComponent implements OnInit, OnDestroy {
     }
 
     @Input() isSubmitTriggered: Subject<boolean>;
+    @Input() showInUpdateMode: string | null;
 
     @Output() byChange: EventEmitter<any>;
 
@@ -54,6 +55,7 @@ export class SelectGalleryItemComponent implements OnInit, OnDestroy {
         private readonly httpObservation: HttpObservationService
     ) {
         this.isSubmitTriggered = new Subject<boolean>();
+        this.showInUpdateMode = null;
         this.byChange = new EventEmitter<string>();
 
         this.galleryList = null;
@@ -123,6 +125,7 @@ export class SelectGalleryItemComponent implements OnInit, OnDestroy {
         this.byChange.emit(null);
         this.hasSelectedItem = false;
         this.showValidationMessage = false;
+        this.showInUpdateMode = null;
     }
 
     ngOnDestroy() {

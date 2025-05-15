@@ -112,6 +112,60 @@ class NewsRepository {
         }
     }
 
+    findAllLeftJoin = async () => {
+        const tableNews = 'news';
+        const tableGallery = 'gallery';
+        const orderPrio1 = `${tableNews}.created_on`;
+
+        const sql = `SELECT
+        ${tableNews}.news_id,
+        ${tableNews}.gallery,
+        ${tableNews}.image_path,
+        ${tableNews}.thumbnail_path,
+        ${tableNews}.visual_timestamp,
+        ${tableNews}.title,
+        ${tableNews}.content,
+        ${tableNews}.created_on,
+        ${tableNews}.last_modified,
+        ${tableGallery}.image_path image_path_${tableGallery},
+        ${tableGallery}.thumbnail_path thumbnail_path_${tableGallery}
+        FROM ${tableNews}
+        LEFT JOIN ${tableGallery} ON ${tableNews}.gallery = ${tableGallery}.gallery_id
+        ORDER BY ${orderPrio1} DESC`;
+        let connection;
+        try {
+            connection = await DBConnect.connection();
+            const result = await connection.query(sql);
+            await DBConnect.close(connection);
+            return {
+                body: {
+                    db_operation: 'left_join',
+                    number_of_entries: result['rows'].length,
+                    data: result['rows'] || null,
+                },
+                code: 1,
+                msg: this.msg1
+            }
+        } catch(error) {
+            logger.error("DB ERROR ON SELECT (News Repository, FindAllLeftJoin)", {
+                error: error.code,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_news_FindAllLeftJoin'
+                }
+            });
+            await DBConnect.close(connection);
+            return {
+                body: {
+                    db_operation: 'left_join',
+                    error: error,
+                },
+                code: 0,
+                msg: this.msg0
+            }
+        }
+    }
+
     findAll = async () => {
         const table = 'news';
         const orderPrio1 = 'created_on';
@@ -266,6 +320,7 @@ class NewsRepository {
             return {
                 body: {
                     db_operation: 'delete',
+                    deleted: true
                 },
                 code: 1,
                 msg: this.msg1

@@ -20,6 +20,10 @@ export class NewsHttpInterceptor {
     }
 
     async handleNewsResponse(httpBody: HttpResponse<any>) {
+        if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FALEFTJOIN}`)) {
+            this.httpObservationService.setNewsFindAllLeftJoinStatus(true);
+            return;
+        }
         if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALL}`)) {
             this.httpObservationService.setNewsFindAllStatus(true);
             return;
@@ -42,6 +46,8 @@ export class NewsHttpInterceptor {
     async handleNewsError(response: any) {
         if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDONE}`)) {
             this.httpObservationService.setNewsFindOneStatus(false);
+        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FALEFTJOIN}`)) {
+            this.httpObservationService.setNewsFindAllLeftJoinStatus(false);
         } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALL}`)) {
             this.httpObservationService.setNewsFindAllStatus(false);
         } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.CREATE}`)) {

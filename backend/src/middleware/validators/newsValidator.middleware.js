@@ -68,7 +68,7 @@ exports.newsUpdateSchema = [
 ];
 
 exports.newsDeleteSchema = [
-    body('id')
+    param('id')
         .trim()
         .notEmpty()
         .withMessage('data-require')

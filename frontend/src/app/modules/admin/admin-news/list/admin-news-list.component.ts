@@ -2,7 +2,7 @@ import { CRUDMode } from './../../../../shared/enums/crud-mode.enum';
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl } from "@angular/forms";
 import { filter, tap } from "rxjs";
-import { NewsItem } from "../../../../api/models/news-response.interface";
+import { NewsLeftJoin } from "../../../../api/models/news-response.interface";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
 import { Router } from "@angular/router";
 import { AuthService } from "../../../../shared/services/auth.service";
@@ -23,8 +23,8 @@ import { AdminRoute } from '../../../../api/routes/admin.route.enum';
 })
 export class AdminNewsListComponent extends AbstractAdminListComponent implements OnInit, OnDestroy {
 
-    protected newsList: NewsItem[];
-    protected modifiedList: NewsItem[];
+    protected newsList: NewsLeftJoin[];
+    protected modifiedList: NewsLeftJoin[];
     protected SortingOptionEnum = SortingOption;
 
     constructor(
@@ -33,7 +33,7 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         auth: AuthService,
         dataSharing: DataShareService,
         httpObservation: HttpObservationService,
-        private readonly newsApi: NewsAPIService,
+        private readonly newsApi: NewsAPIService
     ) {
         super(router, fb, auth, dataSharing, httpObservation);
         this.newsList = [];
@@ -41,11 +41,11 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
     }
 
     ngOnInit() {
-        this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllStatus$.pipe(
+        this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllLeftJoinStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
                 if(isStatus200) {
-                    this.httpObservation.setNewsFindAllStatus(false);
+                    this.httpObservation.setNewsFindAllLeftJoinStatus(false);
                     this.isLoadingResponse = false;
                 }
             })
@@ -94,7 +94,7 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
             if(initial) {
                 // need db call only at initialization
                 this.isLoadingResponse = true;
-                this.newsApi.sendGetAllRequest().subscribe(data => {
+                this.newsApi.sendGetAllLeftJoinRequest().subscribe(data => {
                     this.newsList = data.body?.body.data ?? [];
                     this.modifiedList = this.newsList;
                 });
