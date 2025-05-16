@@ -21,7 +21,7 @@ class NewsService {
         Object.assign(params, await Utils.createID(NewsRepository, 'news')); // params['id']
         if(files.length > 0) {
             params = NewsModel.renamePathName(params, 'placeholder', params.id);
-            files = NewsModel.renameFileNames(files, 'placeholder', params.id);
+            files = NewsModel.renameFileNames(files, ['placeholder'], [params.id]);
             await ImgUploadModel.handleImageUploads(params, files);
         }
         const result = await NewsRepository.create(hasParams ? params : {});
@@ -32,7 +32,7 @@ class NewsService {
         const hasParams = Object.keys(params).length !== 0;
         if(files.length > 0) {
             params = NewsModel.renamePathName(params, 'placeholder', params.id);
-            files = NewsModel.renameFileNames(files, 'placeholder', params.id);
+            files = NewsModel.renameFileNames(files, ['placeholder'], [params.id]);
             await ImgUploadModel.handleImageUpdate(params, files, compareData);
         } else if(files.length === 0 && compareData.image_path !== null && compareData.thumbnail_path !== null && compareData.image_path !== params.imagePath) {
             await ImgUploadModel.handleImageRemoval({

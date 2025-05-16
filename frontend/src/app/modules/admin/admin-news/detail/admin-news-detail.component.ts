@@ -126,7 +126,6 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
             tap((isStatus200: boolean) => {
                 if(isStatus200) {
                     this.httpObservation.setNewsFindOneWithGalleryPathsStatus(false);
-                    this.isLoadingResponse = false;
                 }
             })
         ).subscribe();
@@ -202,7 +201,8 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
             this.onSubmitTrigger.next(this.newsForm.get('imagePath')?.value !== null);
         }
 
-        if(this.newsForm.invalid) {
+        if(this.newsForm.invalid || 
+            (this.newsForm.get('gallery_id')?.value === null && this.newsForm.get('imagePath')?.value === null)) {
             return;
         }
 
