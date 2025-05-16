@@ -10,7 +10,10 @@ export declare interface NewsItem {
     last_modified: string
 }
 
-export declare interface NewsLeftJoin {
+/**
+ * @description Full name: NewsItemWithGalleryPaths.
+ */
+export declare interface NewsItemWGP {
     news_id: string,
     gallery?: string,
     image_path?: string,
@@ -26,7 +29,7 @@ export declare interface NewsLeftJoin {
 
 export declare interface NewsItemResponse {
     body: {
-        data: NewsItem
+        data: NewsItem | NewsItemWGP
     }
 }
 
@@ -34,7 +37,7 @@ export declare interface NewsListResponse {
     body: {
         db_operation: string,
         number_of_entries: number,
-        data: NewsItem[] | NewsLeftJoin[]
+        data: NewsItem[] | NewsItemWGP[]
     }
 }
 

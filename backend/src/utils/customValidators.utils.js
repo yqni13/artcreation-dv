@@ -107,7 +107,7 @@ exports.validateImageFileUpdate = (req, res, next) => {
 
 exports.validateImageFileInput = (req, res, next) => {
     // custom solution file input => express-validator does not handle files
-    if(req.body.galleryId === null && req.files.length === 0) {
+    if(req.body.galleryId === null && req.body.imagePath === null && req.files.length === 0) {
         const data = [{
             type: 'input',
             value: null,
@@ -117,6 +117,8 @@ exports.validateImageFileInput = (req, res, next) => {
         }];
         throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
     }
+
+    // validation not possible in case of news create/update with gallery link instead image
     if(req.files.length > 0) {
         this.validateImageType(req.files[0]);
     }

@@ -11,8 +11,9 @@ export class HttpObservationService {
     private galleryCreateStatusSubject = new BehaviorSubject<boolean>(false);
     private galleryUpdateStatusSubject = new BehaviorSubject<boolean>(false);
     private galleryDeleteStatusSubject = new BehaviorSubject<boolean>(false);
+    private newsFindOneWithGalleryPathsStatusSubject = new BehaviorSubject<boolean>(false);
     private newsFindOneStatusSubject = new BehaviorSubject<boolean>(false);
-    private newsFindAllLeftJoinStatusSubject = new BehaviorSubject<boolean>(false);
+    private newsFindAllWithGalleryPathsStatusSubject = new BehaviorSubject<boolean>(false);
     private newsFindAllStatusSubject = new BehaviorSubject<boolean>(false);
     private newsCreateStatusSubject = new BehaviorSubject<boolean>(false);
     private newsUpdateStatusSubject = new BehaviorSubject<boolean>(false);
@@ -26,8 +27,9 @@ export class HttpObservationService {
     galleryCreateStatus$ = this.galleryCreateStatusSubject.asObservable();
     galleryUpdateStatus$ = this.galleryUpdateStatusSubject.asObservable();
     galleryDeleteStatus$ = this.galleryDeleteStatusSubject.asObservable();
+    newsFindOneWithGalleryPathsStatus$ = this.newsFindOneWithGalleryPathsStatusSubject.asObservable();
     newsFindOneStatus$ = this.newsFindOneStatusSubject.asObservable();
-    newsFindAllLeftJoinStatus$ = this.newsFindAllLeftJoinStatusSubject.asObservable();
+    newsFindAllWithGalleryPathsStatus$ = this.newsFindAllWithGalleryPathsStatusSubject.asObservable();
     newsFindAllStatus$ = this.newsFindAllStatusSubject.asObservable();
     newsCreateStatus$ = this.newsCreateStatusSubject.asObservable();
     newsUpdateStatus$ = this.newsUpdateStatusSubject.asObservable();
@@ -55,12 +57,17 @@ export class HttpObservationService {
     setGalleryDeleteStatus(isStatus200: boolean) {
         this.galleryDeleteStatusSubject.next(isStatus200);
     }
+
+    setNewsFindOneWithGalleryPathsStatus(isStatus200: boolean) {
+        this.newsFindOneWithGalleryPathsStatusSubject.next(isStatus200);
+    }
+
     setNewsFindOneStatus(isStatus200: boolean) {
         this.newsFindOneStatusSubject.next(isStatus200);
     }
 
-    setNewsFindAllLeftJoinStatus(isStatus200: boolean) {
-        this.newsFindAllLeftJoinStatusSubject.next(isStatus200);
+    setNewsFindAllWithGalleryPathsStatus(isStatus200: boolean) {
+        this.newsFindAllWithGalleryPathsStatusSubject.next(isStatus200);
     }
 
     setNewsFindAllStatus(isStatus200: boolean) {

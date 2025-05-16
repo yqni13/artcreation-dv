@@ -17,7 +17,7 @@ import { environment } from "../../../../environments/environment";
             <img 
                 *ngIf="loaded"
                 class="artdv-img-preview"
-                src="{{storageDomain + '/' + entry.thumbnail_path + controlImgCache(entry.last_modified)}}" 
+                src="{{storageDomain + '/' + entry.thumbnail_path + updateCachedPath(entry.last_modified)}}" 
                 alt="404-picture-not-found"
                 (click)="navigateToDetails(entry.reference_nr)"
                 (keydown.enter)="navigateToDetails(entry.reference_nr)"
@@ -62,7 +62,7 @@ export class ImgPreloadComponent {
         this.router.navigate(['gallery/detail', refNr], { state: stateData });
     }
 
-    controlImgCache(timestamp: string): string {
+    updateCachedPath(timestamp: string): string {
         const alteredPath = new Date(timestamp).getTime();
         return `?v=${alteredPath}`;
     }

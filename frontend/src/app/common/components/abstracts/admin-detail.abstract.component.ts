@@ -66,7 +66,7 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
 
     abstract configPathByData(data: string | null): void;
 
-    // DEFINITIONS
+    // METHODS
     ngAfterViewInit() {
         this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
             filter((x) => x),
@@ -103,7 +103,7 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
 
     async cancel(route: AdminRoute) {
         this.isLoadingResponse = true;
-        await this.delay(500);
+        await this.delay(500); // UX purpose
         this.isLoadingResponse = false;
         this.navigateToListView(route);
     }

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { NewsItem } from "../../../../api/models/news-response.interface";
+import { NewsItemWGP } from "../../../../api/models/news-response.interface";
 import { AbstractAdminDetailComponent } from "../../../../common/components/abstracts/admin-detail.abstract.component";
 import { Router } from "@angular/router";
 import { AuthService } from "../../../../shared/services/auth.service";
@@ -19,7 +19,6 @@ import { SelectInputComponent } from "../../../../common/components/form-compone
 import { SourceOption } from "../../../../shared/enums/source-option.enum";
 import { GalleryItem } from "../../../../api/models/gallery-response.interface";
 import { SelectGalleryItemComponent } from "../../../../common/components/select-galleryitem/select-galleryitem.component";
-import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
 
 @Component({
     selector: 'app-admin-news-detail',
@@ -35,7 +34,7 @@ import { GalleryAPIService } from "../../../../api/services/gallery.api.service"
 export class AdminNewsDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
     protected newsForm: FormGroup;
-    protected newsEntry: NewsItem | null;
+    protected newsEntry: NewsItemWGP | null;
     protected SourceOptionEnum = SourceOption;
     protected CRUDModeEnum = CRUDMode;
     protected galleryList: GalleryItem[];
@@ -51,8 +50,7 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
         navigate: NavigationService,
         dataSharing: DataShareService,
         httpObservation: HttpObservationService,
-        protected newsApi: NewsAPIService,
-        private readonly galleryApi: GalleryAPIService
+        protected newsApi: NewsAPIService
     ) {
         super(router, fb, auth, datetime, navigate, dataSharing, httpObservation);
         this.newsForm = new FormGroup({});
@@ -73,19 +71,18 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
                 this.entryId = data.entryId ?? '';
                 if(this.mode === CRUDMode.UPDATE && this.entryId !== '') {
                     this.newsApi.setIdParam(this.entryId);
-                    this.newsApi.sendGetOneRequest().subscribe(async data => {
+                    this.newsApi.sendGetOneWithGalleryPathsRequest().subscribe(async data => {
                         (this.newsEntry as any) = data.body?.body.data;
+                        this.pathFromExistingImg = data.body?.body.data.gallery === null 
+                            ? this.configPathFromExistingImg(this.newsEntry?.thumbnail_path)
+                            : !this.newsEntry?.thumbnail_path_gallery
+                                ? null 
+                                : this.newsEntry?.thumbnail_path_gallery;
                         if(data.body?.body.data.image_path) {
                             Object.assign((this.newsEntry as any), {imageFile: data.body?.body.data.news_id});
-                        } else if(data.body?.body.data.gallery && data.body?.body.data.news_id) {
-                            this.galleryApi.setIdParam(data.body?.body.data.gallery);
-                            this.galleryApi.sendGetOneRequest().subscribe(async data => {
-                                this.pathFromExistingImg = data.body?.body.data.thumbnail_path ?? null;
-                            })
                         }
                         this.lastModifiedDateTime = this.datetime.convertTimestamp(this.newsEntry?.last_modified ?? null);
                         this.initEdit();
-                        this.pathFromExistingImg = this.configPathFromExistingImg(this.newsEntry?.thumbnail_path);
                         await this.delay(500);
                         this.isLoadingInit = false;
                         this.isLoadingResponse = false;
@@ -124,11 +121,11 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
             })
         ).subscribe();
 
-        this.subscriptionHttpObservationFindOne$ = this.httpObservation.galleryFindOneStatus$.pipe(
+        this.subscriptionHttpObservationFindOne$ = this.httpObservation.newsFindOneWithGalleryPathsStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
                 if(isStatus200) {
-                    this.httpObservation.setGalleryFindOneStatus(false);
+                    this.httpObservation.setNewsFindOneWithGalleryPathsStatus(false);
                     this.isLoadingResponse = false;
                 }
             })

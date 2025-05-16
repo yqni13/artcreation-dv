@@ -64,7 +64,7 @@ export abstract class AbstractAdminListComponent implements AfterViewInit, OnDes
 
     abstract navigateToUpdateItem(id: string): void;
 
-    // DEFINITIONS
+    // METHODS
     ngAfterViewInit() {
         this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
             filter((x) => x),
@@ -100,7 +100,7 @@ export abstract class AbstractAdminListComponent implements AfterViewInit, OnDes
         this.router.navigate([BaseRoute.ADMIN]);
     }
 
-    controlImgCache(timestamp: string): string {
+    updateCachedPath(timestamp: string): string {
         const alteredPath = new Date(timestamp).getTime();
         return `?v=${alteredPath}`;
     }

@@ -2,19 +2,14 @@ const { checkValidation } = require('../middleware/validation.middleware');
 const NewsService = require('../services/news.service');
 
 class NewsController {
-    findOne = async (req, res, next) => {
+    findOneWithGalleryPaths = async (req, res, next) => {
         checkValidation(req);
-        const response = await NewsService.findOne({id: req.params.id});
+        const response = await NewsService.findOneWithGalleryPaths({id: req.params.id});
         res.send(response);
     }
 
-    findAllLeftJoin = async (req, res, next) => {
-        const response = await NewsService.findAllLeftJoin();
-        res.send(response);
-    }
-
-    findAll = async (req, res, next) => {
-        const response = await NewsService.findAll();
+    findAllWithGalleryPaths = async (req, res, next) => {
+        const response = await NewsService.findAllWithGalleryPaths();
         res.send(response);
     }
 
@@ -33,6 +28,25 @@ class NewsController {
     delete = async (req, res, next) => {
         checkValidation(req);
         const response = await NewsService.delete({id: req.params.id});
+        res.send(response);
+    }
+
+    /**
+     * 
+     * @deprecated Use findOneWithGalleryPaths instead. 
+     */
+    findOne = async (req, res, next) => {
+        checkValidation(req);
+        const response = await NewsService.findOne({id: req.params.id});
+        res.send(response);
+    }
+
+    /**
+     * 
+     * @deprecated Use findAllWithGalleryPaths instead. 
+     */
+    findAll = async (req, res, next) => {
+        const response = await NewsService.findAll();
         res.send(response);
     }
 }

@@ -20,14 +20,14 @@ export class NewsHttpInterceptor {
     }
 
     async handleNewsResponse(httpBody: HttpResponse<any>) {
-        if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FALEFTJOIN}`)) {
-            this.httpObservationService.setNewsFindAllLeftJoinStatus(true);
+        if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDONEWGP}`)) {
+            this.httpObservationService.setNewsFindOneWithGalleryPathsStatus(true);
             return;
-        }
-        if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALL}`)) {
-            this.httpObservationService.setNewsFindAllStatus(true);
+        }        
+        if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALLWGP}`)) {
+            this.httpObservationService.setNewsFindAllWithGalleryPathsStatus(true);
             return;
-        }
+        }        
         if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.CREATE}`)) {
             this.httpObservationService.setNewsCreateStatus(true);
             const path = 'validation.frontend.interceptor.news-create-confirm';
@@ -41,21 +41,33 @@ export class NewsHttpInterceptor {
             const path = 'validation.frontend.interceptor.news-delete-confirm';
             this.snackbarService.notifyOnInterceptorSuccess(path, this.translate.currentLang, true, 1500);
         }
+
+        // DEPRECATED
+        if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDONE_Deprecated}`)) {
+            this.httpObservationService.setNewsFindOneStatus(true);
+            return;
+        }
+        if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALL_Deprecated}`)) {
+            this.httpObservationService.setNewsFindAllStatus(true);
+            return;
+        }
     }
 
     async handleNewsError(response: any) {
-        if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDONE}`)) {
-            this.httpObservationService.setNewsFindOneStatus(false);
-        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FALEFTJOIN}`)) {
-            this.httpObservationService.setNewsFindAllLeftJoinStatus(false);
-        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALL}`)) {
-            this.httpObservationService.setNewsFindAllStatus(false);
+        if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDONEWGP}`)) {
+            this.httpObservationService.setNewsFindOneWithGalleryPathsStatus(false);
+        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALLWGP}`)) {
+            this.httpObservationService.setNewsFindAllWithGalleryPathsStatus(false);
         } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.CREATE}`)) {
             this.httpObservationService.setNewsCreateStatus(false);
         } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.UPDATE}`)) {
             this.httpObservationService.setNewsUpdateStatus(false);
         } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.DELETE}`)) {
             this.httpObservationService.setNewsDeleteStatus(false);
+        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDONE_Deprecated}`)) {
+            this.httpObservationService.setNewsFindOneStatus(false);
+        } else if(response.url.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDALL_Deprecated}`)) {
+            this.httpObservationService.setNewsFindAllStatus(false);
         }
     }
 }

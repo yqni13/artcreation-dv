@@ -55,9 +55,18 @@ class NewsModel {
         return params;
     }
 
-    renameFileName = (files, replaceValue, newValue) => {
-        if(files[0] && files[0]['originalname'].includes(replaceValue)) {
-            files[0]['originalname'] = files[0]['originalname'].replace(replaceValue, newValue);
+    /**
+     * 
+     * @param {file[]} files 
+     * @param {string[]} replaceValue 
+     * @param {string[]} newValue 
+     * @returns {file[]}
+     */
+    renameFileNames = (files, replaceValue, newValue) => {
+        for (let i = 0; i < files.length; i++) {
+            if(files[i] && files[i]['originalname'].includes(replaceValue[i])) {
+                files[i]['originalname'] = files[i]['originalname'].replace(replaceValue[i], newValue[i]);
+            }
         }
         return files;
     }
