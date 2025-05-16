@@ -16,17 +16,15 @@
                 (change)="onFileSelect($event)"
                 #fileInput
             >
-            
             <span id="artdv-upload-size-limit">limit: {{sizeFactorInMB}}MB</span>
         </label>
     </div>
     <span id="artdv-upload-valid-msg" *ngIf="showValidationMessage">
         {{'validation.frontend.img-upload.required' | translate}}
     </span>
-
     <div class="artdv-imgupload-preview-wrapper" *ngIf="fileInformation.hasFile || existingImgPath">
         <div class="artdv-imgupload-preview-container">
-            <img src="{{existingImgPath ? existingImgPath : fileInformation.imagePreview()}}" alt="404 not found">
+            <img src="{{existingImgPath ? (existingImgPath + updateCachedPath()) : fileInformation.imagePreview()}}" alt="404 not found">
             <div
                 class="artdv-imgupload-close-wrapper"
                 (click)="removeImage()"

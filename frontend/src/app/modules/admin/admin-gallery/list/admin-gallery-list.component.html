@@ -56,8 +56,8 @@
                 </div>
                 <div class="artdv-admin-specific-list-btn-wrapper btn-add">
                     <a
-                        (click)="navigateToCreateItem(AdminRouteEnum.GALLERY)"
-                        (keydown.enter)="navigateToCreateItem(AdminRouteEnum.GALLERY)"
+                        (click)="navigateToCreateItem(AdminRouteEnum.GALLERY, GalleryRouteEnum.CREATE)"
+                        (keydown.enter)="navigateToCreateItem(AdminRouteEnum.GALLERY, GalleryRouteEnum.CREATE)"
                         [attr.tabindex]="0"
                     ><i class="icon-Add"></i></a>
                 </div>
@@ -75,7 +75,7 @@
                 <img 
                     class="artdv-admin-specific-list-list-element"
                     alt="{{item.reference_nr}}"
-                    src="{{storageDomain + '/' + item.thumbnail_path}}"
+                    src="{{storageDomain + '/' + item.thumbnail_path + updateCachedPath(item.last_modified)}}"
                     (click)="navigateToUpdateItem(item.gallery_id)"
                     (keydown.enter)="navigateToUpdateItem(item.gallery_id)"
                     [attr.aria-disabled]="true"

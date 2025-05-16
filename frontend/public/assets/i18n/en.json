@@ -1,5 +1,10 @@
 {
     "common": {
+        "component": {
+            "select-galleryitem": {
+                "select": "open list"
+            }
+        },
         "footer": {
             "content": {
                 "archive": "Archive",
@@ -69,15 +74,22 @@
                 "last-update": "last update:"
             },
             "news": {
-                "details": {},
+                "details": {
+                    "content": "Content",
+                    "source": "Source",
+                    "title": "Title"
+                },
                 "other": {
                     "created": "created",
                     "sort": "sort",
                     "updated": "edited"
                 },
                 "placeholder": {
+                    "content": "add a text",
                     "search": "search in news",
-                    "sorting": "sort by"
+                    "sorting": "sort by",
+                    "source": "select a source",
+                    "title": "select a title"
                 },
                 "title": {
                     "create": "add news item",
@@ -293,6 +305,10 @@
             "sorting-option": {
                 "ASC": "ascending",
                 "DESC": "descending"
+            },
+            "source-option": {
+                "EXIST": "an existing artwork",
+                "NEW": "a new image"
             }
         }
     }

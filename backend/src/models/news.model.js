@@ -45,6 +45,31 @@ class NewsModel {
             msg: 'Success'
         }
     }
+
+    renamePathName = (params, replaceValue, newValue) => {
+        if((Object.keys(params).length > 0 && params.id && params.imagePath !== null) 
+            && params.imagePath.includes(replaceValue)) {
+            params['imagePath'] = params['imagePath'].replace(replaceValue, newValue);
+            params['thumbnailPath'] = params['thumbnailPath'].replace(replaceValue, newValue);
+        }
+        return params;
+    }
+
+    /**
+     * 
+     * @param {file[]} files 
+     * @param {string[]} replaceValue 
+     * @param {string[]} newValue 
+     * @returns {file[]}
+     */
+    renameFileNames = (files, replaceValue, newValue) => {
+        for (let i = 0; i < files.length; i++) {
+            if(files[i] && files[i]['originalname'].includes(replaceValue[i])) {
+                files[i]['originalname'] = files[i]['originalname'].replace(replaceValue[i], newValue[i]);
+            }
+        }
+        return files;
+    }
 }
 
 module.exports = new NewsModel();

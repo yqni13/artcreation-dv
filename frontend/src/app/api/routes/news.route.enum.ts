@@ -1,9 +1,12 @@
-export type NewsRoute = 'findOne' | 'findAll' | 'create' | 'update' | 'delete';
+export type NewsRoute = 'findOne' | 'findOneWithGalleryPaths' | 'findAll' | 'findAllWithGalleryPaths' | 'create' | 'update' | 'delete';
 
 export const NewsRoute = {
-    FINDONE: 'findOne' as NewsRoute,
-    FINDALL: 'findAll' as NewsRoute,
+    FINDONEWGP: 'findOneWithGalleryPaths' as NewsRoute,
+    FINDALLWGP: 'findAllWithGalleryPaths' as NewsRoute,
     CREATE: 'create' as NewsRoute,
     UPDATE: 'update' as NewsRoute,
     DELETE: 'delete' as NewsRoute,
+    
+    FINDONE_Deprecated: 'findOne' as NewsRoute,
+    FINDALL_Deprecated: 'findAll' as NewsRoute,
 }

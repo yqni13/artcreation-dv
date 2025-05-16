@@ -1,8 +1,8 @@
 import { CRUDMode } from './../../../../shared/enums/crud-mode.enum';
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl } from "@angular/forms";
-import { filter, Subscription, tap } from "rxjs";
-import { NewsItem } from "../../../../api/models/news-response.interface";
+import { filter, tap } from "rxjs";
+import { NewsItemWGP } from "../../../../api/models/news-response.interface";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
 import { Router } from "@angular/router";
 import { AuthService } from "../../../../shared/services/auth.service";
@@ -23,11 +23,9 @@ import { AdminRoute } from '../../../../api/routes/admin.route.enum';
 })
 export class AdminNewsListComponent extends AbstractAdminListComponent implements OnInit, OnDestroy {
 
-    protected newsList: NewsItem[];
-    protected modifiedList: NewsItem[];
+    protected newsList: NewsItemWGP[];
+    protected modifiedList: NewsItemWGP[];
     protected SortingOptionEnum = SortingOption;
-
-    private subscriptionHttpObservationFindAll$: Subscription;
 
     constructor(
         router: Router,
@@ -35,22 +33,19 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         auth: AuthService,
         dataSharing: DataShareService,
         httpObservation: HttpObservationService,
-        private readonly newsApi: NewsAPIService,
+        private readonly newsApi: NewsAPIService
     ) {
         super(router, fb, auth, dataSharing, httpObservation);
         this.newsList = [];
         this.modifiedList = [];
-
-        this.subscriptionHttpObservationFindAll$ = new Subscription();
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllStatus$.pipe(
+    ngOnInit() {
+        this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllWithGalleryPathsStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
                 if(isStatus200) {
-                    this.httpObservation.setNewsFindAllStatus(false);
+                    this.httpObservation.setNewsFindAllWithGalleryPathsStatus(false);
                     this.isLoadingResponse = false;
                 }
             })
@@ -85,10 +80,10 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
 
         const sorting = event.target?.value ?? SortingOption.DESC;
         this.modifiedList = this.modifiedList.sort(
-            (a,b) => {
+            (old, young) => {
                 return sorting === SortingOption.DESC
-                    ? new Date(a.created_on).getTime() - new Date(b.created_on).getTime()
-                    : new Date(b.created_on).getTime() - new Date(a.created_on).getTime()
+                ? new Date(young.created_on).getTime() - new Date(old.created_on).getTime()
+                : new Date(old.created_on).getTime() - new Date(young.created_on).getTime();
             }
         );
     }
@@ -99,7 +94,7 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
             if(initial) {
                 // need db call only at initialization
                 this.isLoadingResponse = true;
-                this.newsApi.sendGetAllRequest().subscribe(data => {
+                this.newsApi.sendGetAllWithGalleryPathsRequest().subscribe(data => {
                     this.newsList = data.body?.body.data ?? [];
                     this.modifiedList = this.newsList;
                 });
@@ -118,7 +113,7 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
             data.created_on.toString().includes(searchText) ||
             data.last_modified.toString().includes(searchText) ||
             data.title?.toLowerCase().includes(searchText) ||
-            data.text?.toLowerCase().includes(searchText)            
+            data.content?.toLowerCase().includes(searchText)            
         );
     }
 
@@ -129,10 +124,5 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         }
         this.dataSharing.setSharedData(data);
         this.router.navigate([`admin${AdminRoute.NEWS}/${data.entryId}`])
-    }
-
-    override ngOnDestroy() {
-        super.ngOnDestroy();
-        this.subscriptionHttpObservationFindAll$.unsubscribe();
     }
 }

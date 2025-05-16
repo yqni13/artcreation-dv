@@ -21,11 +21,14 @@ export class NewsAPIService {
     private formDataUpdate: FormData;
 
     private domainPathV1: string;
-    private urlGetOne: string;
-    private urlGetAll: string;
+    private urlGetOneWithGalleryPaths: string;
+    private urlGetAllWithGalleryPaths: string;
     private urlCreate: string;
     private urlUpdate: string;
     private urlDelete: string;
+
+    private urlGetOne: string;
+    private urlGetAll: string;
 
     constructor(private readonly http: HttpClient) {
         this.idParam = '';
@@ -33,11 +36,14 @@ export class NewsAPIService {
         this.formDataUpdate = new FormData();
 
         this.domainPathV1 = '/api/v1/news';
-        this.urlGetOne = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDONE}`;
-        this.urlGetAll = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDALL}`;
+        this.urlGetOneWithGalleryPaths = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDONEWGP}`;
+        this.urlGetAllWithGalleryPaths = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDALLWGP}`;
         this.urlCreate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.CREATE}`;
         this.urlUpdate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.UPDATE}`;
         this.urlDelete = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.DELETE}`;
+        
+        this.urlGetOne = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDONE_Deprecated}`;
+        this.urlGetAll = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDALL_Deprecated}`;
     }
 
     setIdParam(id: string) {
@@ -47,11 +53,11 @@ export class NewsAPIService {
     setCreatePayload(data: any) {
         const imageFile = data.imageFile;
         const payloadCreate: NewsCreateRequest = {
-            gallery_id: data.gallery_id === '' ? null : data.gallery_id,
+            galleryId: data.gallery_id === '' ? null : data.gallery_id,
             imagePath: data.imagePath === '' ? null : data.imagePath,
             thumbnailPath: data.thumbnailPath === '' ? null : data.thumbnailPath,
             title: data.title,
-            text: data.text
+            content: data.content
         };
         this.formDataCreate = new FormData();
         this.formDataCreate.append('file', imageFile);
@@ -60,12 +66,12 @@ export class NewsAPIService {
 
     setUpdatePayload(data: any) {
         const payloadUpdate: NewsUpdateRequest = {
-            news_id: data.news_id,
-            gallery_id: data.gallery_id === '' ? null : data.gallery_id,
+            id: data.news_id,
+            galleryId: data.gallery_id === '' ? null : data.gallery_id,
             imagePath: data.imagePath === '' ? null : data.imagePath,
             thumbnailPath: data.thumbnailPath === '' ? null : data.thumbnailPath,
             title: data.title,
-            text: data.text
+            content: data.content
         };
         this.formDataUpdate = new FormData();
         if(data.imageFile) {
@@ -75,12 +81,12 @@ export class NewsAPIService {
         this.formDataUpdate.append('data', JSON.stringify(payloadUpdate));
     }
 
-    sendGetOneRequest(): Observable<HttpResponse<NewsItemResponse>> {
-        return this.http.get<NewsItemResponse>(`${this.urlGetOne}/${this.idParam}`, { observe: 'response'});
+    sendGetOneWithGalleryPathsRequest(): Observable<HttpResponse<NewsItemResponse>> {
+        return this.http.get<NewsItemResponse>(`${this.urlGetOneWithGalleryPaths}/${this.idParam}`, { observe: 'response'});
     }
 
-    sendGetAllRequest(): Observable<HttpResponse<NewsListResponse>> {
-        return this.http.get<NewsListResponse>(this.urlGetAll, { observe: 'response' });
+    sendGetAllWithGalleryPathsRequest(): Observable<HttpResponse<NewsListResponse>> {
+        return this.http.get<NewsListResponse>(this.urlGetAllWithGalleryPaths, { observe: 'response' });
     }
 
     sendCreateRequest(): Observable<HttpResponse<NewsCreateUpdateResponse>> {
@@ -93,5 +99,23 @@ export class NewsAPIService {
 
     sendDeleteRequest(): Observable<HttpResponse<NewsDeleteResponse>> {
         return this.http.delete<NewsDeleteResponse>(`${this.urlDelete}/${this.idParam}`, { observe: 'response'});
+    }
+
+    // TODO(yqni13): keep deprecated methods until 12/2025
+
+    /**
+     * 
+     * @deprecated Use sendGetOneWithGalleryPaths instead.
+     */
+    sendGetOneRequest(): Observable<HttpResponse<NewsItemResponse>> {
+        return this.http.get<NewsItemResponse>(`${this.urlGetOne}/${this.idParam}`, { observe: 'response'});
+    }
+
+    /**
+     * 
+     * @deprecated Use sendGetAllWithGalleryPaths instead.
+     */
+    sendGetAllRequest(): Observable<HttpResponse<NewsListResponse>> {
+        return this.http.get<NewsListResponse>(this.urlGetAll, { observe: 'response' });
     }
 }

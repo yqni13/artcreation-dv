@@ -35,7 +35,7 @@ export class ArchiveComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.newsCollection = this.filterNewsService.filterByKeyValue(NewsKeys.dateAscending);
+        this.newsCollection = this.filterNewsService.filterByKeyValueDEPRECATED(NewsKeys.dateAscending);
     }
 
     navigateFullscale(flag: boolean, path?: string) {

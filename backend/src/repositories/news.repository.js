@@ -12,14 +12,29 @@ class NewsRepository {
         this.msg1 = 'Success';
     }
 
-    findOne = async (params) => {
+    findOneWithGalleryPaths = async (params) => {
         if(!Object.keys(params).length) {
             return {error: 'no params found'};
         }
 
-        const table = 'news';
+        const tableNews = 'news';
+        const tableGallery = 'gallery';
         const idColumn = 'news_id';
-        const sql = `SELECT * FROM ${table} WHERE ${idColumn} = $1;`;
+        const sql = `SELECT
+        ${tableNews}.news_id,
+        ${tableNews}.gallery,
+        ${tableNews}.image_path,
+        ${tableNews}.thumbnail_path,
+        ${tableNews}.visual_timestamp,
+        ${tableNews}.title,
+        ${tableNews}.content,
+        ${tableNews}.created_on,
+        ${tableNews}.last_modified,
+        ${tableGallery}.image_path image_path_${tableGallery},
+        ${tableGallery}.thumbnail_path thumbnail_path_${tableGallery}
+        FROM ${tableNews}
+        LEFT JOIN ${tableGallery} ON ${tableNews}.gallery = ${tableGallery}.gallery_id
+        WHERE ${idColumn} = $1`;
         const values = [params['id']];
 
         let connection;
@@ -29,14 +44,14 @@ class NewsRepository {
             await DBConnect.close(connection);
             return {
                 body: {
-                    db_operation: 'select',
+                    db_operation: 'select_single_left_join',
                     data: result['rows'][0] || null,
                 },
                 code: 1,
                 msg: this.msg1
             };
         } catch (error) {
-            logger.error("DB ERROR ON SELECT (News Repository, FindOne)", {
+            logger.error("DB ERROR ON SELECT (News Repository, FindOneWithGalleryPaths)", {
                 error: error.code,
                 stack: error.stack,
                 context: {
@@ -47,7 +62,7 @@ class NewsRepository {
             await DBConnect.close(connection);
             return {
                 body: {
-                    db_operation: 'select',
+                    db_operation: 'select_single_left_join',
                     error: error,
                 },
                 code: 0,
@@ -112,10 +127,28 @@ class NewsRepository {
         }
     }
 
-    findAll = async () => {
-        const table = 'news';
-
-        const sql = `SELECT * FROM ${table}`;
+    findAllWithGalleryPaths = async () => {
+        const tableNews = 'news';
+        const tableGallery = 'gallery';
+        
+        // tables 'gallery' and 'news' both have created_on column 
+        // => explicit table declaration for sorting
+        const orderPrio1 = `${tableNews}.created_on`;
+        const sql = `SELECT
+        ${tableNews}.news_id,
+        ${tableNews}.gallery,
+        ${tableNews}.image_path,
+        ${tableNews}.thumbnail_path,
+        ${tableNews}.visual_timestamp,
+        ${tableNews}.title,
+        ${tableNews}.content,
+        ${tableNews}.created_on,
+        ${tableNews}.last_modified,
+        ${tableGallery}.image_path image_path_${tableGallery},
+        ${tableGallery}.thumbnail_path thumbnail_path_${tableGallery}
+        FROM ${tableNews}
+        LEFT JOIN ${tableGallery} ON ${tableNews}.gallery = ${tableGallery}.gallery_id
+        ORDER BY ${orderPrio1} DESC`;
         let connection;
         try {
             connection = await DBConnect.connection();
@@ -123,7 +156,7 @@ class NewsRepository {
             await DBConnect.close(connection);
             return {
                 body: {
-                    db_operation: 'select',
+                    db_operation: 'select_multiple_left_join',
                     number_of_entries: result['rows'].length,
                     data: result['rows'] || null,
                 },
@@ -131,17 +164,17 @@ class NewsRepository {
                 msg: this.msg1
             }
         } catch(error) {
-            logger.error("DB ERROR ON SELECT (News Repository, FindAll)", {
+            logger.error("DB ERROR ON SELECT (News Repository, FindAllWithGalleryPaths)", {
                 error: error.code,
                 stack: error.stack,
                 context: {
-                    method: 'artdv_news_FindAll'
+                    method: 'artdv_news_FindAllWithGalleryPaths'
                 }
             });
             await DBConnect.close(connection);
             return {
                 body: {
-                    db_operation: 'select',
+                    db_operation: 'select_multiple_left_join',
                     error: error,
                 },
                 code: 0,
@@ -163,7 +196,7 @@ class NewsRepository {
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
 
         const values = [params['id'], params['galleryId'], params['imagePath'], params['thumbnailPath'], 
-        params['datetime'], params['title'], params['text'], timestamp, timestamp];
+        timestamp, params['title'], params['content'], timestamp, timestamp];
 
         let connection;
         try {
@@ -212,7 +245,7 @@ class NewsRepository {
         WHERE news_id = $8`;
 
         const values = [params['galleryId'], params['imagePath'], params['thumbnailPath'], 
-        params['datetime'], params['title'], params['text'], timestamp, params['id']];
+        timestamp, params['title'], params['content'], timestamp, params['id']];
 
         let connection;
         try {
@@ -265,6 +298,7 @@ class NewsRepository {
             return {
                 body: {
                     db_operation: 'delete',
+                    deleted: true
                 },
                 code: 1,
                 msg: this.msg1
@@ -282,6 +316,99 @@ class NewsRepository {
             return {
                 body: {
                     db_operation: 'delete',
+                    error: error,
+                },
+                code: 0,
+                msg: this.msg0
+            }
+        }
+    }
+
+    // TODO(yqni13): keep deprecated methods until 12/2025
+
+    /**
+     * 
+     * @deprecated Use findOneWithGalleryPaths instead. 
+     */
+    findOne = async (params) => {
+        if(!Object.keys(params).length) {
+            return {error: 'no params found'};
+        }
+
+        const table = 'news';
+        const idColumn = 'news_id';
+        const sql = `SELECT * FROM ${table} WHERE ${idColumn} = $1;`;
+        const values = [params['id']];
+
+        let connection;
+        try {
+            connection = await DBConnect.connection();
+            const result = await connection.query(sql, values);
+            await DBConnect.close(connection);
+            return {
+                body: {
+                    db_operation: 'select',
+                    data: result['rows'][0] || null,
+                },
+                code: 1,
+                msg: this.msg1
+            };
+        } catch (error) {
+            logger.error("DB ERROR ON SELECT (News Repository, FindOne)", {
+                error: error.code,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_news_FindOne',
+                    params
+                }
+            });
+            await DBConnect.close(connection);
+            return {
+                body: {
+                    db_operation: 'select',
+                    error: error,
+                },
+                code: 0,
+                msg: this.msg0
+            };
+        }
+    }
+
+    /**
+     * 
+     * @deprecated Use findAllWithGalleryPaths instead. 
+     */
+    findAll = async () => {
+        const table = 'news';
+        const orderPrio1 = 'created_on';
+
+        const sql = `SELECT * FROM ${table} ORDER BY ${orderPrio1} DESC`;
+        let connection;
+        try {
+            connection = await DBConnect.connection();
+            const result = await connection.query(sql);
+            await DBConnect.close(connection);
+            return {
+                body: {
+                    db_operation: 'select',
+                    number_of_entries: result['rows'].length,
+                    data: result['rows'] || null,
+                },
+                code: 1,
+                msg: this.msg1
+            }
+        } catch(error) {
+            logger.error("DB ERROR ON SELECT (News Repository, FindAll)", {
+                error: error.code,
+                stack: error.stack,
+                context: {
+                    method: 'artdv_news_FindAll'
+                }
+            });
+            await DBConnect.close(connection);
+            return {
+                body: {
+                    db_operation: 'select',
                     error: error,
                 },
                 code: 0,

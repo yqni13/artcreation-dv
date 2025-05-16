@@ -4,6 +4,7 @@ import { AdminGalleryListComponent } from "./admin-gallery/list/admin-gallery-li
 import { AdminGalleryDetailComponent } from "./admin-gallery/detail/admin-gallery-detail.component";
 import { AuthGuardARTDV } from "../../shared/services/auth-guard.service";
 import { AdminNewsListComponent } from "./admin-news/list/admin-news-list.component";
+import { AdminNewsDetailComponent } from "./admin-news/detail/admin-news-detail.component";
 
 export const adminRoutes: Routes = [
     {
@@ -29,6 +30,16 @@ export const adminRoutes: Routes = [
     {
         path: 'news',
         component: AdminNewsListComponent,
+        canActivate: [AuthGuardARTDV]
+    },
+    {
+        path: 'news/create',
+        component: AdminNewsDetailComponent,
+        canActivate: [AuthGuardARTDV]
+    },
+    {
+        path: 'news/:id',
+        component: AdminNewsDetailComponent,
         canActivate: [AuthGuardARTDV]
     },
 ]

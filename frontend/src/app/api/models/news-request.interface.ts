@@ -1,16 +1,16 @@
 export declare interface NewsCreateRequest {
-    gallery_id?: string,
+    galleryId?: string,
     imagePath?: string,
     thumbnailPath?: string,
     title: string,
-    text: string
+    content: string
 }
 
 export declare interface NewsUpdateRequest {
-    news_id: string,
-    gallery_id?: string,
+    id: string,
+    galleryId?: string,
     imagePath?: string,
     thumbnailPath?: string,
     title: string,
-    text: string
+    content: string
 }

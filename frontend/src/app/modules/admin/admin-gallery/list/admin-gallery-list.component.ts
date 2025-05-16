@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
 import { GalleryItem } from "../../../../api/models/gallery-response.interface";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 import { FormBuilder, FormControl } from "@angular/forms";
 import { ArtGenre } from "../../../../shared/enums/art-genre.enum";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
-import { filter, Subscription, tap } from "rxjs";
+import { filter, tap } from "rxjs";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
 import { AuthService } from "../../../../shared/services/auth.service";
 import { AdminListImportsModule } from "../../../../common/helper/admin-list.imports.helper";
@@ -21,13 +21,11 @@ import { AbstractAdminListComponent } from "../../../../common/components/abstra
         ...AdminListImportsModule
     ]
 })
-export class AdminGalleryListComponent extends AbstractAdminListComponent implements OnInit, OnDestroy {
+export class AdminGalleryListComponent extends AbstractAdminListComponent implements OnInit {
 
     protected galleryList: GalleryItem[];
     protected modifiedList: GalleryItem[];
     protected GenreOptionEnum: any;
-
-    private subscriptionHttpObservationFindAll$: Subscription;
     
     constructor(
         router: Router,
@@ -44,12 +42,9 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
             ...ArtGenre,
             ALL: 'all'
         };
-
-        this.subscriptionHttpObservationFindAll$ = new Subscription();
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
+    ngOnInit() {
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.galleryFindAllStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
@@ -132,10 +127,5 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
         }
         this.dataSharing.setSharedData(data);
         this.router.navigate([`admin${AdminRoute.GALLERY}/${data.refNr}`])
-    }
-
-    override ngOnDestroy() {
-        super.ngOnDestroy();
-        this.subscriptionHttpObservationFindAll$.unsubscribe();
     }
 }
