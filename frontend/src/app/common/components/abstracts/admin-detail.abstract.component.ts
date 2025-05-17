@@ -114,10 +114,10 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
             api.setIdParam(this.entryId);
             api.sendDeleteRequest().subscribe(async (response) => {
                 await this.delay(500);
-                this.isLoadingResponse = false;
                 if(response.body?.body.deleted) {
                     this.navigateToListView(route);
                 }
+                this.isLoadingResponse = false;
             });
         }
     }

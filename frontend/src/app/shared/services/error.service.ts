@@ -7,6 +7,12 @@ export class ErrorService {
     
     private message = '';
 
+    // TODO(yqni13): Implement new efficient error handling (ticket reference: ARTDV-45)
+
+    /**
+     * 
+     * @description Simple console log of error messages.
+     */
     handle(e: unknown) {
         if (e instanceof Error) {
             this.message = e.message;

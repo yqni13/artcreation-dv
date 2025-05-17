@@ -144,7 +144,6 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
         })
     }
 
-
     private initEdit() {
         this.initForm();
         this.newsForm.patchValue({
