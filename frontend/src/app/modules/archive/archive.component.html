@@ -1,5 +1,5 @@
 <artdv-imgfullscale 
-    [imgPath]="currentPath" 
+    [imgPath]="storageDomain + '/' + currentPath" 
     [isActive]="isFullscale"
     (fullscaleChanged)="navigateFullscale($event)"
 ></artdv-imgfullscale>
@@ -14,16 +14,16 @@
     </div>
     <div class="artdv-archive-content">
         <div class="artdv-archive-entry" *ngFor="let news of newsCollection">
-            @defer(on viewport) { <img src="{{ news.imageResized }}" alt="404-picture-not-found">
+            @defer(on viewport) { <img src="{{storageDomain + '/' + (news.gallery !== null ? news.thumbnail_path_gallery : news.thumbnail_path) }}" alt="404-picture-not-found">
             <div class="artdv-archive-wrapper">                
                 <div class="artdv-archive-text">
-                    <h3 *ngIf="news.title">{{ 'archive-content.' + news.referenceNr + '.title' | translate }}</h3>
-                    <span>{{news.date | dateFormat:'dd.mm.yyyy'}}</span>
-                    <p *ngIf="news.text">{{ 'archive-content.' + news.referenceNr + '.text' | translate }}</p>
+                    <h3 *ngIf="news.title">{{news.title}}</h3>
+                    <span>{{('modules.archive.creation' | translate) + ': ' + (news.created_on | dateFormat:'dd.mm.yyyy')}}</span>
+                    <p *ngIf="news.content">{{news.content}}</p>
                     <i class="icon-Zoom"
                         [attr.aria-disabled]="true"
-                        (click)="navigateFullscale(true, news.image)"
-                        (keydown.enter)="navigateFullscale(true, news.image)"
+                        (click)="navigateFullscale(true, news)"
+                        (keydown.enter)="navigateFullscale(true, news)"
                     ></i>
                 </div>
             </div> } 
@@ -32,4 +32,5 @@
             }
         </div>
     </div>
+    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
 </section>

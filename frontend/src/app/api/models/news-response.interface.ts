@@ -1,3 +1,5 @@
+import { ArtGenre } from "../../shared/enums/art-genre.enum"
+
 export declare interface NewsItem {
     news_id: string,
     gallery?: string,
@@ -25,6 +27,8 @@ export declare interface NewsItemWGP {
     last_modified: string,
     image_path_gallery?: string,
     thumbnail_path_gallery?: string,
+    reference_nr_gallery?: string,
+    art_genre_gallery?: ArtGenre
 }
 
 export declare interface NewsItemResponse {

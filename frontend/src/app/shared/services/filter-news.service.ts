@@ -5,7 +5,7 @@ import { NewsUpdateStorage } from "../interfaces/NewsUpdateStorage";
 import { NewsKeys } from "../enums/news-keys.enum";
 import { default as newsData } from "../data/news-updates.json";
 import { ErrorService } from "./error.service";
-import { NewsItem } from '../../api/models/news-response.interface';
+import { NewsItem, NewsItemWGP } from '../../api/models/news-response.interface';
 import { SortingOption } from '../enums/sorting-option.enum';
 
 @Injectable({
@@ -31,6 +31,10 @@ export class FilterNewsService {
         this.source = data;
     }    
 
+    /**
+     * 
+     * @deprecated Use filterByKeyValue instead.
+     */
     filterByKeyValueDEPRECATED(filterKey: NewsKeys | null): NewsUpdateStorage[] {
         const data = [...this.source];
         switch(filterKey) {
@@ -50,26 +54,23 @@ export class FilterNewsService {
         }
     }
 
-    filterByKeyValue(filterKey: SortingOption | null, source: NewsItem[]): NewsItem[] {
-        switch(filterKey) {
-            case SortingOption.ASC: {
-                return source.sort((old, young) => {
-                    return new Date(young.created_on).getTime() - new Date(old.created_on).getTime();
-                })
+    filterByKeyValue(filterKey: SortingOption | null, source: NewsItem[] | NewsItemWGP[]): NewsItem[] | NewsItemWGP[] {
+        filterKey = filterKey === null ? SortingOption.DESC : filterKey;
+        source = source.sort(
+            (old, young) => {
+                return filterKey === SortingOption.DESC
+                ? new Date(young.created_on).getTime() - new Date(old.created_on).getTime()
+                : new Date(old.created_on).getTime() - new Date(young.created_on).getTime();
             }
-            case SortingOption.DESC: {
-                return source.sort((old, young) => {
-                    return new Date(old.created_on).getTime() - new Date(young.created_on).getTime();
-                })
-            }
-            default: {
-                return source;
-            }
-        }
+        );
+        return source;
     }
 
-    filterByCount(count: number, filterKey?: NewsKeys): NewsUpdateStorage[] {
-        const data = [...this.filterByKeyValueDEPRECATED(filterKey || null)]
+    filterByCount(count: number, source: NewsItem[] | NewsItemWGP[], filterKey?: SortingOption): NewsItem[] | NewsItemWGP[] {
+        if(source.length === 0) {
+            return source;
+        }
+        const data = [...this.filterByKeyValue(filterKey || null, source)]
         if(count < data.length) {
             data.splice(count, data.length-1);
         }

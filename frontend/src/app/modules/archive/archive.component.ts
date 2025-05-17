@@ -1,11 +1,15 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { DateFormatPipe } from "../../common/pipes/date-format.pipe";
-import { NewsUpdateStorage } from "../../shared/interfaces/NewsUpdateStorage";
-import { FilterNewsService } from "../../shared/services/filter-news.service";
-import { NewsKeys } from "../../shared/enums/news-keys.enum";
 import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img-fullscale.component";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
+import { filter, Subscription, tap } from "rxjs";
+import { HttpObservationService } from "../../shared/services/http-observation.service";
+import { AuthService } from "../../shared/services/auth.service";
+import { NewsItemWGP } from "../../api/models/news-response.interface";
+import { NewsAPIService } from "../../api/services/news.api.service";
+import { environment } from "../../../environments/environment";
+import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
 
 
 @Component({
@@ -16,30 +20,86 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
         CommonModule,
         DateFormatPipe,
         ImgFullscaleComponent,
+        LoadingAnimationComponent,
         TranslateModule
     ]
 })
-export class ArchiveComponent implements OnInit {
+export class ArchiveComponent implements OnInit, OnDestroy {
 
-    protected newsCollection: NewsUpdateStorage[]
+    protected newsCollection: NewsItemWGP[]
     protected isFullscale: boolean;
-    protected currentPath: string;
+    protected currentPath?: string;
+    protected isLoadingResponse: boolean;
+    protected storageDomain: string;
+
+    private subscriptionHttpObservationFindAll$: Subscription;
+    private subscriptionHttpObservationError$: Subscription;
+    private delay: any;
 
     constructor(
-        private filterNewsService: FilterNewsService,
-        private translate: TranslateService
+        private readonly auth: AuthService,
+        private readonly newsApi: NewsAPIService,
+        private readonly httpObservation: HttpObservationService
     ) {
         this.newsCollection = [];
         this.isFullscale = false;
         this.currentPath = '';
+        this.isLoadingResponse = false;
+        this.storageDomain = environment.STORAGE_URL;
+
+        this.subscriptionHttpObservationFindAll$ = new Subscription();
+        this.subscriptionHttpObservationError$ = new Subscription();
+        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     ngOnInit() {
-        this.newsCollection = this.filterNewsService.filterByKeyValueDEPRECATED(NewsKeys.dateAscending);
+        this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllWithGalleryPathsStatus$.pipe(
+            filter((x) => x !== null && x !== undefined),
+            tap((isStatus200: boolean) => {
+                if(isStatus200) {
+                    this.httpObservation.setGalleryFindAllStatus(false);
+                    this.isLoadingResponse = false;
+                }
+            })
+        ).subscribe();
+
+        this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
+            filter((x) => x),
+            tap(async (response: any) => {
+                if(this.auth.getExceptionList().includes(response.error.headers.error)) {
+                    await this.delay(500); // delay after snackbar displays
+                    this.httpObservation.setErrorStatus(false);
+                    this.isLoadingResponse = false;
+                }
+            })
+        ).subscribe();
+
+        this.loadNewsList();
     }
 
-    navigateFullscale(flag: boolean, path?: string) {
+    navigateFullscale(flag: boolean, entry?: NewsItemWGP) {
         this.isFullscale = flag;
-        this.currentPath = path ?? this.currentPath;
+        if(entry) {
+            this.currentPath = entry?.gallery !== null ? entry?.image_path_gallery : entry?.image_path;
+        } else {
+            this.currentPath = this.currentPath;
+        }
+    }
+
+    loadNewsList() {
+        this.isLoadingResponse = true;
+        this.newsApi.sendGetAllWithGalleryPathsRequest().subscribe(data => {
+            this.newsCollection = data.body?.body.data ?? [];
+        })
+    }
+
+    updateCachedPath(timestamp: string): string {
+        const alteredPath = new Date(timestamp).getTime();
+        return `?v=${alteredPath}`;
+    }
+
+    ngOnDestroy() {
+        this.subscriptionHttpObservationFindAll$.unsubscribe();
+        this.subscriptionHttpObservationError$.unsubscribe();
     }
 }

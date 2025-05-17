@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, Input, TemplateRef } from '@angular/core';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
 import { Router, RouterModule } from '@angular/router';
-import { FilterGalleryService } from '../../../shared/services/filter-gallery.service';
-import { NewsUpdateStorage } from '../../../shared/interfaces/NewsUpdateStorage';
 import { TranslateModule } from '@ngx-translate/core';
 import { BaseRoute } from '../../../api/routes/base.route.enum';
+import { NewsItemWGP } from '../../../api/models/news-response.interface';
+import { environment } from '../../../../environments/environment';
+import { LoadingAnimationComponent } from '../animation/loading/loading-animation.component';
+import { SizeOption } from '../../../shared/enums/size-option.enum';
 
 @Component({
     selector: 'artdv-carousel',
@@ -16,6 +18,7 @@ import { BaseRoute } from '../../../api/routes/base.route.enum';
         CommonModule,
         DateFormatPipe,
         RouterModule,
+        LoadingAnimationComponent,
         TranslateModule
     ]
 })
@@ -30,29 +33,34 @@ export class CarouselComponent {
         }
     }
 
-    @Input() slides: NewsUpdateStorage[];
+    @Input() entries: NewsItemWGP[];
+    @Input() isLoadingResponse!: boolean;
     @Input() slideTemplate?: TemplateRef<any>;
 
     protected baseRoute = BaseRoute;
+    protected storageDomain: string;
+    protected SizeOptionEnum = SizeOption;
 
     currentIndex: number;
 
     constructor(
-        private router: Router,
-        private filterGalleryService: FilterGalleryService
+        private router: Router
     ) {
-        this.slides = [];
+        this.entries = [];
         this.currentIndex = 0;
+        this.storageDomain = environment.STORAGE_URL;
     }
 
-    navigateToDetails(id: string | null) {
-        // if(id && !id.includes('-')) {
-        //     const genre = this.filterGalleryService.filterByRefNrForGenre(id);
-        //     this.router.navigate(['gallery/detail', id], { state: { genre: genre}});
-        // }
-        // TODO(yqni13): reuse after re-implementing news logic
+    navigateToDetails(entry: NewsItemWGP | null) {
+        if(entry) {
+            this.router.navigate(['gallery/detail', entry.reference_nr_gallery], { state: {
+                refNr: entry.reference_nr_gallery,
+                genre: entry.art_genre_gallery
+            }});
+        } else {
+            this.router.navigate([BaseRoute.ARCHIVE]);
+        }
 
-        this.router.navigate([BaseRoute.ARCHIVE]);
     }
 
     getTransform() {
@@ -60,10 +68,10 @@ export class CarouselComponent {
     }
 
     next() {
-        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+        this.currentIndex = (this.currentIndex + 1) % this.entries.length;
     }
 
     prev() {
-        this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+        this.currentIndex = (this.currentIndex - 1 + this.entries.length) % this.entries.length;
     }
 }

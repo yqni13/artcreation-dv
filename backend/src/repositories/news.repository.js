@@ -31,7 +31,9 @@ class NewsRepository {
         ${tableNews}.created_on,
         ${tableNews}.last_modified,
         ${tableGallery}.image_path image_path_${tableGallery},
-        ${tableGallery}.thumbnail_path thumbnail_path_${tableGallery}
+        ${tableGallery}.thumbnail_path thumbnail_path_${tableGallery},
+        ${tableGallery}.reference_nr reference_nr_${tableGallery},
+        ${tableGallery}.art_genre art_genre_${tableGallery}
         FROM ${tableNews}
         LEFT JOIN ${tableGallery} ON ${tableNews}.gallery = ${tableGallery}.gallery_id
         WHERE ${idColumn} = $1`;
@@ -145,7 +147,9 @@ class NewsRepository {
         ${tableNews}.created_on,
         ${tableNews}.last_modified,
         ${tableGallery}.image_path image_path_${tableGallery},
-        ${tableGallery}.thumbnail_path thumbnail_path_${tableGallery}
+        ${tableGallery}.thumbnail_path thumbnail_path_${tableGallery},
+        ${tableGallery}.reference_nr reference_nr_${tableGallery},
+        ${tableGallery}.art_genre art_genre_${tableGallery}
         FROM ${tableNews}
         LEFT JOIN ${tableGallery} ON ${tableNews}.gallery = ${tableGallery}.gallery_id
         ORDER BY ${orderPrio1} DESC`;
