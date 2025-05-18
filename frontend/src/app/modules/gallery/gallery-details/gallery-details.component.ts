@@ -121,11 +121,16 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
             })
         ).subscribe();
         
-        if(!this.currentNavigation?.artwork) {
+        if(!this.currentNavigation || !this.currentNavigation?.artwork) {
             this.isLoadingResponse = true;
             this.galleryApi.sendGetAllRequest().subscribe(data => {
                 this.artworkList = data.body?.body.data ?? [];
-                this.artwork = this.artworkList.find(entry => entry.reference_nr === this.currentNavigation.refNr) ?? this.artwork;
+                // cover case of direct url navigation 
+                // f.e.: /gallery/detail/refNr doesnt hold data for currentNavigation at all
+                const filteredArtwork =  !this.currentNavigation
+                    ? this.artworkList.find(entry => entry.reference_nr === (this.router.url.substring(this.router.url.length - 6, this.router.url.length)))
+                    : this.artworkList.find(entry => entry.reference_nr === this.currentNavigation.refNr);
+                this.artwork = filteredArtwork ?? this.artwork;
                 this.galleryGenre = this.currentNavigation.genre ?? 'all';
             });
         } else if(this.currentNavigation !== undefined && this.currentNavigation !== null) {

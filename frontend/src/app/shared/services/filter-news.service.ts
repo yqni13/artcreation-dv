@@ -31,7 +31,6 @@ export class FilterNewsService {
         if(count < data.length) {
             data.splice(count, data.length-1);
         }
-
         return data;
     }
 }

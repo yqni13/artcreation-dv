@@ -23,7 +23,6 @@ import { SortingOption } from "../../shared/enums/sorting-option.enum";
 export class HomeComponent implements OnInit {
 
     protected newsCollection: NewsItemWGP[];
-    protected authorLink: string;
     protected imgPreloadCollection: any;
     protected isLoadingResponse: boolean;
 
@@ -38,7 +37,6 @@ export class HomeComponent implements OnInit {
         private readonly httpObservation: HttpObservationService,
     ) {
         this.newsCollection = [];
-        this.authorLink = 'https://pixabay.com/de/users/alexey_marcov-8003626/';
         this.isLoadingResponse = true;
 
         this.subscriptionHttpObservationFindAll$ = new Subscription();

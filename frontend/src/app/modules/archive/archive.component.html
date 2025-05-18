@@ -17,9 +17,9 @@
             @defer(on viewport) { <img src="{{storageDomain + '/' + (news.gallery !== null ? news.thumbnail_path_gallery : news.thumbnail_path) }}" alt="404-picture-not-found">
             <div class="artdv-archive-wrapper">                
                 <div class="artdv-archive-text">
-                    <h3 *ngIf="news.title">{{news.title}}</h3>
+                    <h3>{{news.title}}</h3>
                     <span>{{('modules.archive.creation' | translate) + ': ' + (news.created_on | dateFormat:'dd.mm.yyyy')}}</span>
-                    <p *ngIf="news.content">{{news.content}}</p>
+                    <p>{{news.content}}</p>
                     <i class="icon-Zoom"
                         [attr.aria-disabled]="true"
                         (click)="navigateFullscale(true, news)"

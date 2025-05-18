@@ -9,6 +9,7 @@ import { NewsItemWGP } from '../../../api/models/news-response.interface';
 import { environment } from '../../../../environments/environment';
 import { LoadingAnimationComponent } from '../animation/loading/loading-animation.component';
 import { SizeOption } from '../../../shared/enums/size-option.enum';
+import { GalleryRoute } from '../../../api/routes/gallery.route.enum';
 
 @Component({
     selector: 'artdv-carousel',
@@ -53,14 +54,13 @@ export class CarouselComponent {
 
     navigateToDetails(entry: NewsItemWGP | null) {
         if(entry) {
-            this.router.navigate(['gallery/detail', entry.reference_nr_gallery], { state: {
+            this.router.navigate([`${BaseRoute.GALLERY}/detail`, entry.reference_nr_gallery], { state: {
                 refNr: entry.reference_nr_gallery,
                 genre: entry.art_genre_gallery
             }});
         } else {
             this.router.navigate([BaseRoute.ARCHIVE]);
         }
-
     }
 
     getTransform() {
@@ -68,10 +68,14 @@ export class CarouselComponent {
     }
 
     next() {
-        this.currentIndex = (this.currentIndex + 1) % this.entries.length;
+        this.currentIndex = !this.isLoadingResponse
+            ? ((this.currentIndex + 1) % this.entries.length)
+            : this.currentIndex;
     }
 
     prev() {
-        this.currentIndex = (this.currentIndex - 1 + this.entries.length) % this.entries.length;
+        this.currentIndex = !this.isLoadingResponse 
+            ? ((this.currentIndex - 1 + this.entries.length) % this.entries.length)
+            : this.currentIndex;
     }
 }

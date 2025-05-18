@@ -18,11 +18,11 @@
                     </div>
                     <div class="artdv-carousel-default-text-wrapper">
                         <div class="artdv-carousel-default-text-header">
-                            <h3 *ngIf="entry.title">{{entry.title}}</h3>
+                            <h3>{{entry.title}}</h3>
                             <span>{{('modules.archive.creation' | translate) + ': ' + (entry.created_on | dateFormat:'dd.mm.yyyy')}}</span>
                         </div>
                         <div class="artdv-carousel-default-text-content">
-                            <p *ngIf="entry.content">{{entry.content}}</p>
+                            <p>{{entry.content}}</p>
                             <a class="artdv-anchor" href="{{baseRoute.ARCHIVE}}">{{'modules.archive.nav' | translate}}</a>
                         </div>
                     </div>
@@ -32,13 +32,13 @@
     </div>
     <div class="artdv-carousel-arrows">
         <i 
-            [attr.aria-disabled]="true"
+            [attr.tabindex]="0"
             class="icon-Arrow artdv-arrow-left"
             (click)="prev()"
             (keydown.enter)="prev()"
         ></i>
         <i 
-            [attr.aria-disabled]="true"
+            [attr.tabindex]="0"
             class="icon-Arrow artdv-arrow-right"
             (click)="next()"
             (keydown.enter)="next()"
