@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './common/components/navigation/navigation.component';
 import { FooterComponent } from './common/components/footer/footer.component';
 import { SnackbarComponent } from './common/components/snackbar/snackbar.component';
@@ -38,17 +38,14 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
     this.scrollbarRoutes = [
       '/imprint',
       '/privacy'
-    ];    
-    
-    router.events.subscribe(e => {
-      if(e instanceof NavigationStart) {
-        this.scrollToTop();
+    ];
 
-        if(this.scrollbarRoutes.includes(e.url)) {
-          this.scrollbarActive = true;
-        } else {
-          this.scrollbarActive = false;
-        }
+    this.router.events.subscribe(e => {
+      if(e instanceof NavigationEnd) {
+        setTimeout(() => {
+          this.scrollToTop();
+          this.scrollbarActive = this.scrollbarRoutes.includes(e.urlAfterRedirects);
+        })
       }
     })
   }

@@ -12,6 +12,7 @@ import { SortingOption } from '../../../../shared/enums/sorting-option.enum';
 import { AbstractAdminListComponent } from '../../../../common/components/abstracts/admin-list.abstract.component';
 import { AdminListImportsModule } from '../../../../common/helper/admin-list.imports.helper';
 import { AdminRoute } from '../../../../api/routes/admin.route.enum';
+import { FilterNewsService } from '../../../../shared/services/filter-news.service';
 
 @Component({
     selector: 'app-admin-news-list',
@@ -33,7 +34,8 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         auth: AuthService,
         dataSharing: DataShareService,
         httpObservation: HttpObservationService,
-        private readonly newsApi: NewsAPIService
+        private readonly newsApi: NewsAPIService,
+        private readonly newsFilter: FilterNewsService
     ) {
         super(router, fb, auth, dataSharing, httpObservation);
         this.newsList = [];
@@ -79,13 +81,7 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         }
 
         const sorting = event.target?.value ?? SortingOption.DESC;
-        this.modifiedList = this.modifiedList.sort(
-            (old, young) => {
-                return sorting === SortingOption.DESC
-                ? new Date(young.created_on).getTime() - new Date(old.created_on).getTime()
-                : new Date(old.created_on).getTime() - new Date(young.created_on).getTime();
-            }
-        );
+        this.modifiedList = this.newsFilter.filterByKeyValue(sorting, this.modifiedList);
     }
 
     onSearchSubmit(initial: boolean = false) {

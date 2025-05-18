@@ -104,6 +104,7 @@
             }
         },
         "archive": {
+            "creation": "Created on",
             "message": "Hover your mouse over the image to read more on the article (on mobile device click in upper half of article).",
             "nav": "to archive...",
             "title": "News Archive"

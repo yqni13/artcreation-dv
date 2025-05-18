@@ -104,6 +104,7 @@
             }
         },
         "archive": {
+            "creation": "Erstellt am",
             "message": "Zum Lesen des Textes, den Mauszeiger über den jeweiligen Artikel halten (auf mobilen Geräten in die obere Hälfte des Artikels klicken).",
             "nav": "zum Archiv...",
             "title": "News Archiv"
