@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs');
+require('dotenv').config();
 const targetPath = "./src/environments/environment.prod.ts";
 const public_key = process.env['PUBLIC_KEY'];
 
@@ -12,8 +13,8 @@ export const environment: Environment = {
     production: true,
     STORAGE_URL: '${process.env['CLOUDSTORAGE_TRAFFIC_URL']}',
     API_BASE_URL: '${process.env['API_URL']}',
-    IV_POSITION: '${process.env['IVPOSITION']},
-    AES_PASSPHRASE: '${process.env['AESPASSPHRASE']},
+    IV_POSITION: ${process.env['IVPOSITION']},
+    AES_PASSPHRASE: '${process.env['AESPASSPHRASE']}',
     PUBLIC_KEY: \`${modifiedPublicKey}\`
 };
 `;
