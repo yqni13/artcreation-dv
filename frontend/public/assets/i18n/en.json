@@ -1,5 +1,10 @@
 {
     "common": {
+        "component": {
+            "select-galleryitem": {
+                "select": "open list"
+            }
+        },
         "footer": {
             "content": {
                 "archive": "Archive",
@@ -68,7 +73,30 @@
             "info": {
                 "last-update": "last update:"
             },
-            "news": {},
+            "news": {
+                "details": {
+                    "content": "Content",
+                    "source": "Source",
+                    "title": "Title"
+                },
+                "other": {
+                    "created": "created",
+                    "sort": "sort",
+                    "updated": "edited"
+                },
+                "placeholder": {
+                    "content": "add a text",
+                    "search": "search in news",
+                    "sorting": "sort by",
+                    "source": "select a source",
+                    "title": "select a title"
+                },
+                "title": {
+                    "create": "add news item",
+                    "list": "news administration",
+                    "update": "edit news item"
+                }
+            },
             "options": {
                 "gallery": "gallery",
                 "logout": "logout",
@@ -76,9 +104,10 @@
             }
         },
         "archive": {
+            "creation": "Created on",
             "message": "Hover your mouse over the image to read more on the article (on mobile device click in upper half of article).",
-            "title": "News Archive",
-            "nav": "to archive..."
+            "nav": "to archive...",
+            "title": "News Archive"
         },
         "contact": {
             "form": {
@@ -273,6 +302,14 @@
             "sale-status": {
                 "AVAILABLE": "Available",
                 "UNAVAILABLE": "Unavailable"
+            },
+            "sorting-option": {
+                "ASC": "ascending",
+                "DESC": "descending"
+            },
+            "source-option": {
+                "EXIST": "an existing artwork",
+                "NEW": "a new image"
             }
         }
     }

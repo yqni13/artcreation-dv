@@ -4,6 +4,11 @@
 
 <br>
 
+### 2024/04/16 - $\textsf{update\ 1.0.2\ >>\ {\color{pink}1.0.3}}$
+
+- $\textsf{\color{green}Change:}$ Update email security by encrypting all payload data on mail request.
+- $\textsf{\color{green}Change:}$ Update documentation from beta to current version status.
+
 ### 2024/04/09 - $\textsf{update\ 1.0.1\ >>\ {\color{pink}1.0.2}}$
 
 - $\textsf{\color{green}Change:}$ Add logging service (framework winston) including BetterStack (Logtail => logs monitoring).

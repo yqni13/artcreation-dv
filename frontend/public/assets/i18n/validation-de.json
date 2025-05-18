@@ -51,6 +51,7 @@
                 "artwork-invalid-purchase": "Kein Preis verfügbar. Nutzen Sie den Betreff \"Spezifische Anfrage\".",
                 "artwork-unavailable": "Dieses Kunstwerk ist nicht mehr verfügbar.",
                 "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
+                "maxlength": "Der Inhalt ({{fieldValue}}) darf eine Länge von {{fieldMax}} Zeichen nicht überschreiten.",
                 "publication-invalid": "Das Erstellungsjahr muss eine gültige Zahl sein.",
                 "publication-length": "Das Erstellungsjahr muss zwischen 1000 und 2100 liegen.",
                 "refnr-length": "Die Referenz-Nummer muss 6 Zeichen lang sein.",
@@ -67,7 +68,10 @@
             "interceptor": {
                 "gallery-create-confirm": "Kunstwerk erstellt!",
                 "gallery-delete-confirm": "Kunstwerk gelöscht!",
-                "gallery-update-confirm": "Kunstwerk aktualisiert!"
+                "gallery-update-confirm": "Kunstwerk aktualisiert!",
+                "news-create-confirm": "News-Artikel erstellt!",
+                "news-delete-confirm": "News-Artikel gelöscht!",
+                "news-update-confirm": "News-Artikel aktualisiert!"
             }
         }
     }

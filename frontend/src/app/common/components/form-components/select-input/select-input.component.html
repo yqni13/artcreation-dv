@@ -2,6 +2,7 @@
     <select 
         [formControl]="formControl" 
         (change)="selectOption($event)"
+        #isAutoFocus
     >
         <option value="" disabled>{{placeholder}}</option>
         <hr>

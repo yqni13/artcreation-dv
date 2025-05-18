@@ -2,7 +2,6 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-    standalone: true,
     name: 'floatPrecision'
 })
 export class FloatPrecisionPipe implements PipeTransform{

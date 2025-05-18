@@ -2,8 +2,7 @@
 import { Directive, ElementRef, EventEmitter, HostListener, OnInit, Output } from "@angular/core";
 
 @Directive({
-    selector: '[artdvGalleryScroll]',
-    standalone: true
+    selector: '[artdvGalleryScroll]'
 })
 export class GalleryScrollDirective implements OnInit {
 

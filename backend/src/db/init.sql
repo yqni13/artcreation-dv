@@ -36,7 +36,7 @@ VALUES ('53b7f35f-68e6-475d-b5c3-eba472ee8770','PUR001','artwork_original/PUR001
 
 INSERT INTO news
 (news_id, gallery, image_path, thumbnail_path, visual_timestamp, title, content, created_on, last_modified)
-VALUES ('338f27bb-ef82-4cb6-8b53-6226cf6274da',NULL,'news_original/domain_purchase.webp','news_resized/domain_purchase.webp','2024-09-24 13:00:00','Domain purchased!','With this day my domain was officially purchased and activated :) For now, only a placeholder will be displayed, but when the first version (v1.0.0) will be finished, my webpage will be accessable by https://artcreation-dv.at!!','2025-03-02 00:49:01','2025-03-02 00:49:01');
+VALUES ('338f27bb-ef82-4cb6-8b53-6226cf6274da',NULL,'news_original/338f27bb-ef82-4cb6-8b53-6226cf6274da.webp','news_resized/338f27bb-ef82-4cb6-8b53-6226cf6274da.webp','2024-07-20 17:01:00','Offizieller Homepage Entwicklungsstart','Heute startete endlich die Entwicklung meiner Webseite zur Präsentation all meiner Kunst- und Handwerke. Ich bin gespannt, wie die finale Version und alle Schritte bis dahin aussehen werden :)','2024-07-20 17:01:00','2024-07-20 17:01:00');
 
 
 -- use only for local database, NEON does not give privilege for COPY FROM command

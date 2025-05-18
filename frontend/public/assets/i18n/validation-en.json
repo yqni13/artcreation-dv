@@ -51,6 +51,7 @@
                 "artwork-invalid-purchase": "No price available. Use subject \"specific request\".",
                 "artwork-unavailable": "This artwork is no longer available.",
                 "email-invalid": "Field \"{{fieldName}}\" has invalid format.",
+                "maxlength": "Content ({{fieldValue}}) must not be longer than {{fieldMax}} characters.",
                 "publication-invalid": "Publication year must be a valid number.",
                 "publication-length": "Publication year must be between 1000 and 2100.",
                 "refnr-length": "Reference number must be 6 characters.",
@@ -67,7 +68,10 @@
             "interceptor": {
                 "gallery-create-confirm": "Artwork created!",
                 "gallery-delete-confirm": "Artwork deleted!",
-                "gallery-update-confirm": "Artwork updated!"
+                "gallery-update-confirm": "Artwork updated!",
+                "news-create-confirm": "News item created!",
+                "news-delete-confirm": "News item deleted!",
+                "news-update-confirm": "News item updated!"
             }
         }
     }

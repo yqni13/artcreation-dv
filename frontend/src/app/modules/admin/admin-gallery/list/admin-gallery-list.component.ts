@@ -1,84 +1,47 @@
-import { CommonModule } from "@angular/common";
-import { Component, HostListener, OnDestroy, OnInit } from "@angular/core";
-import { TranslateModule } from "@ngx-translate/core";
-import { TextInputComponent } from "../../../../common/components/form-components/text-input/text-input.component";
+import { Component, OnInit } from "@angular/core";
 import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
 import { GalleryItem } from "../../../../api/models/gallery-response.interface";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
 import { DataShareService } from "../../../../shared/services/data-share.service";
 import { Router } from "@angular/router";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import { CastAbstractToFormControlPipe } from "../../../../common/pipes/cast-abstracttoform-control.pipe";
-import { SelectInputComponent } from "../../../../common/components/form-components/select-input/select-input.component";
+import { FormBuilder, FormControl } from "@angular/forms";
 import { ArtGenre } from "../../../../shared/enums/art-genre.enum";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
-import { GalleryRoute } from "../../../../api/routes/gallery.route.enum";
-import { filter, Subscription, tap } from "rxjs";
+import { filter, tap } from "rxjs";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
 import { AuthService } from "../../../../shared/services/auth.service";
-import { LoadingAnimationComponent } from "../../../../common/components/animation/loading/loading-animation.component";
-import { BaseRoute } from "../../../../api/routes/base.route.enum";
-import { environment } from "../../../../../environments/environment";
+import { AdminListImportsModule } from "../../../../common/helper/admin-list.imports.helper";
+import { AbstractAdminListComponent } from "../../../../common/components/abstracts/admin-list.abstract.component";
 
 @Component({
     selector: 'app-admin-gallery-list',
     templateUrl: './admin-gallery-list.component.html',
-    styleUrl: './admin-gallery-list.component.scss',
+    styleUrl: '../../admin.component.scss',
     imports: [
-        CastAbstractToFormControlPipe,
-        CommonModule,
-        LoadingAnimationComponent,
-        SelectInputComponent,
-        TextInputComponent,
-        TranslateModule
+        ...AdminListImportsModule
     ]
 })
-export class AdminGalleryListComponent implements OnInit, OnDestroy {
-    @HostListener('window:keydown', ['$event'])
-    navigateSearchByKey(event: KeyboardEvent) {
-        if(event.key === 'Enter') {
-            this.onSearchSubmit();
-        } else if(event.key === 'Escape') {
-            this.hasSearchText = false;
-            this.searchForm.get('searchText')?.setValue('');
-            this.onSearchSubmit();
-        }
-    }
+export class AdminGalleryListComponent extends AbstractAdminListComponent implements OnInit {
 
     protected galleryList: GalleryItem[];
     protected modifiedList: GalleryItem[];
-    protected searchForm: FormGroup;
-    protected hasSearchText: boolean;
-    protected genreOptions: any;
-    protected isLoadingResponse: boolean;
-    protected storageDomain: string;
-
-    private subscriptionHttpObservationFindAll$: Subscription;
-    private subscriptionHttpObservationError$: Subscription;
-    private delay: any;
+    protected GenreOptionEnum: any;
     
     constructor(
-        private readonly router: Router,
-        private readonly fb: FormBuilder,
-        private readonly auth: AuthService,
+        router: Router,
+        fb: FormBuilder,
+        auth: AuthService,
+        dataSharing: DataShareService,
+        httpObservation: HttpObservationService,
         private readonly galleryApi: GalleryAPIService,
-        private readonly dataSharing: DataShareService,
-        private readonly httpObservation: HttpObservationService
     ) {
+        super(router, fb, auth, dataSharing, httpObservation);
         this.galleryList = [];
         this.modifiedList = [];
-        this.searchForm = new FormGroup({});
-        this.hasSearchText = false;
-        this.genreOptions = {
+        this.GenreOptionEnum = {
             ...ArtGenre,
             ALL: 'all'
         };
-        this.isLoadingResponse = false;
-        this.storageDomain = environment.STORAGE_URL;
-
-        this.subscriptionHttpObservationFindAll$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     ngOnInit() {
@@ -87,17 +50,6 @@ export class AdminGalleryListComponent implements OnInit, OnDestroy {
             tap((isStatus200: boolean) => {
                 if(isStatus200) {
                     this.httpObservation.setGalleryFindAllStatus(false);
-                    this.isLoadingResponse = false;
-                }
-            })
-        ).subscribe();
-
-        this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
-            filter((x) => x),
-            tap(async (response: any) => {
-                if(this.auth.getExceptionList().includes(response.error.headers.error)) {
-                    await this.delay(500); // delay after snackbar displays
-                    this.httpObservation.setErrorStatus(false);
                     this.isLoadingResponse = false;
                 }
             })
@@ -122,20 +74,16 @@ export class AdminGalleryListComponent implements OnInit, OnDestroy {
         })
     }
 
-    onSearchTextChange(event: string) {
-        this.hasSearchText = event !== '' ? true : false;
-    }
-
     onGenreChange(event: any) {
         const searchText = this.searchForm.get('searchText')?.value;
         if(searchText !== '') {
-            this.filterListBySearchText(searchText)
+            this.filterListBySearchText(searchText);
         } else {
             this.modifiedList = this.galleryList;
         }
         
         const genre = event.target?.value ?? 'all';
-        if(genre !== this.genreOptions.ALL) {
+        if(genre !== this.GenreOptionEnum.ALL) {
             this.modifiedList = this.modifiedList.filter(data => data.art_genre === genre)
         }
     }
@@ -171,20 +119,6 @@ export class AdminGalleryListComponent implements OnInit, OnDestroy {
         );
     }
 
-    removeKeyword() {
-        this.searchForm.get('searchText')?.setValue('');
-        this.hasSearchText = false;
-        this.onSearchSubmit();
-    }
-
-    navigateToCreateItem() {
-        const data = {
-            mode: CRUDMode.CREATE
-        }
-        this.dataSharing.setSharedData(data);
-        this.router.navigate([`${BaseRoute.ADMIN}${AdminRoute.GALLERY}${GalleryRoute.CREATE}`]);
-    }
-
     navigateToUpdateItem(id: string) {
         const data = {
             mode: CRUDMode.UPDATE,
@@ -193,14 +127,5 @@ export class AdminGalleryListComponent implements OnInit, OnDestroy {
         }
         this.dataSharing.setSharedData(data);
         this.router.navigate([`admin${AdminRoute.GALLERY}/${data.refNr}`])
-    }
-
-    navigateToDashboard() {
-        this.router.navigate([BaseRoute.ADMIN]);
-    }
-
-    ngOnDestroy() {
-        this.subscriptionHttpObservationFindAll$.unsubscribe();
-        this.subscriptionHttpObservationError$.unsubscribe();
     }
 }

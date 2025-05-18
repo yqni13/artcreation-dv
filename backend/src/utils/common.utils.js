@@ -59,7 +59,7 @@ exports.parseReqBody = (req, res, next) => {
         }
     } catch(err) {
         logger.error("ERROR PARSE REQ BODY", {
-            error: err.message,
+            error: err.code,
             stack: err.stack,
             context: {
                 method: 'artdv_common_ParseReqBody'

@@ -128,6 +128,11 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
         this.byRemove.emit(removeInfo);
     }
 
+    updateCachedPath(): string {
+        const alteredPath = new Date().getTime();
+        return `?v=${alteredPath}`;
+    }
+
     ngOnDestroy() {
         this.subscriptionSubmitTrigger$.unsubscribe();
     }

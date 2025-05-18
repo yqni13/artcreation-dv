@@ -13,7 +13,8 @@
             animation-duration: 1s;
             animation-timing-function: ease-out;
             animation-fill-mode: forwards;
-            border: solid 2px var(--theme-contrast-anchor);
+            border: solid 5px var(--theme-contrast-anchor);
+            width: calc(300px - 6px);
         }
     }         
 }
@@ -31,6 +32,6 @@
 }
 
 @keyframes brighten-up {
-    from {filter: brightness(1)}
-    to {filter: brightness(1.3)}
+    from {filter: contrast(100%)}
+    to {filter: contrast(130%)}
 }

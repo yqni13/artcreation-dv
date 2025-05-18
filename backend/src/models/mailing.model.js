@@ -1,7 +1,7 @@
 const { AuthenticationException, UnexpectedException } = require("../utils/exceptions/common.exception");
 const nodemailer = require('nodemailer');
 const Secrets = require('../utils/secrets.utils');
-const { decryptRSA } = require('../utils/crypto.utils');
+const { decryptRSA, decryptAES } = require('../utils/crypto.utils');
 const logger = require('../logger/config.logger').getLogger();
 
 class MailingModel {
@@ -12,7 +12,7 @@ class MailingModel {
 
         const sender = decryptRSA(params['sender'], Secrets.PRIVATE_KEY);
         const subject = decryptRSA(params['subject'], Secrets.PRIVATE_KEY);
-        const message = params['body'];
+        const message = await decryptAES(params['body'], Secrets.IV_POSITION, Secrets.AES_PASSPHRASE);
 
         const mailOptions = {
             from: Secrets.EMAIL_SENDER,
@@ -27,7 +27,7 @@ class MailingModel {
             return { response: { success, sender } };
         } catch (error) {
             logger.error("ERROR ON SENDMAIL", {
-                error: error.message,
+                error: error.code,
                 stack: error.stack,
                 context: {
                     method: 'artdv_mailing_sendMail',

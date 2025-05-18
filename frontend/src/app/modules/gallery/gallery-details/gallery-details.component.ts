@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from "@angular/core";
+import { Component, HostListener, OnDestroy, OnInit } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
 import { DataShareService } from "../../../shared/services/data-share.service";
 import { CommonModule } from "@angular/common";
@@ -13,6 +13,11 @@ import { ArtMedium } from "../../../shared/enums/art-medium.enum";
 import { ArtTechnique } from "../../../shared/enums/art-technique.enum";
 import { SaleStatus } from "../../../shared/enums/sale-status.enum";
 import { ArtGenre } from "../../../shared/enums/art-genre.enum";
+import { filter, Subscription, tap } from "rxjs";
+import { HttpObservationService } from "../../../shared/services/http-observation.service";
+import { AuthService } from "../../../shared/services/auth.service";
+import { GalleryAPIService } from "../../../api/services/gallery.api.service";
+import { LoadingAnimationComponent } from "../../../common/components/animation/loading/loading-animation.component";
 
 @Component({
     selector: 'app-gallery-details',
@@ -22,12 +27,13 @@ import { ArtGenre } from "../../../shared/enums/art-genre.enum";
         CommonModule,
         FloatPrecisionPipe,
         ImgFullscaleComponent,
+        LoadingAnimationComponent,
         LowerUpperTextPipe,
         RouterModule,
         TranslateModule,
     ]
 })
-export class GalleryDetailsComponent implements OnInit {
+export class GalleryDetailsComponent implements OnInit, OnDestroy {
 
     @HostListener('window:keydown', ['$event'])
     closeOnEscape(event: KeyboardEvent) {
@@ -51,10 +57,16 @@ export class GalleryDetailsComponent implements OnInit {
     protected storageDomain: string;
 
     private currentNavigation: any;
+    private subscriptionHttpObservationError$: Subscription;
+    private subscriptionHttpObservationFindAll$: Subscription;
+    private delay: any;
 
     constructor(
-        private dataShareService: DataShareService,
-        private router: Router,
+        private readonly router: Router,
+        private readonly auth: AuthService,
+        private readonly galleryApi: GalleryAPIService,
+        private readonly dataShareService: DataShareService,
+        private readonly httpObservation: HttpObservationService,
     ) {
         this.artwork = {
             gallery_id: '',
@@ -82,10 +94,46 @@ export class GalleryDetailsComponent implements OnInit {
         // to get routing state, result only returns in constructor
         this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as {activeGenre: string, artwork: GalleryItem};
         
+        this.subscriptionHttpObservationFindAll$ = new Subscription();
+        this.subscriptionHttpObservationError$ = new Subscription();
+        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     ngOnInit() {
-        if(this.currentNavigation !== undefined && this.currentNavigation !== null) {
+        this.subscriptionHttpObservationFindAll$ = this.httpObservation.galleryFindAllStatus$.pipe(
+            filter((x) => x !== null && x !== undefined),
+            tap((isStatus200: boolean) => {
+                if(isStatus200) {
+                    this.httpObservation.setGalleryFindAllStatus(false);
+                    this.isLoadingResponse = false;
+                }
+            })
+        ).subscribe();
+
+        this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
+            filter((x) => x),
+            tap(async (response: any) => {
+                if(this.auth.getExceptionList().includes(response.error.headers.error)) {
+                    await this.delay(500); // delay after snackbar displays
+                    this.httpObservation.setErrorStatus(false);
+                    this.isLoadingResponse = false;
+                }
+            })
+        ).subscribe();
+        
+        if(!this.currentNavigation || !this.currentNavigation?.artwork) {
+            this.isLoadingResponse = true;
+            this.galleryApi.sendGetAllRequest().subscribe(data => {
+                this.artworkList = data.body?.body.data ?? [];
+                // cover case of direct url navigation 
+                // f.e.: /gallery/detail/refNr doesnt hold data for currentNavigation at all
+                const filteredArtwork =  !this.currentNavigation
+                    ? this.artworkList.find(entry => entry.reference_nr === (this.router.url.substring(this.router.url.length - 6, this.router.url.length)))
+                    : this.artworkList.find(entry => entry.reference_nr === this.currentNavigation.refNr);
+                this.artwork = filteredArtwork ?? this.artwork;
+                this.galleryGenre = this.currentNavigation.genre ?? 'all';
+            });
+        } else if(this.currentNavigation !== undefined && this.currentNavigation !== null) {
             this.galleryGenre = this.currentNavigation.activeGenre;
             this.artwork = this.currentNavigation.artwork;
             this.artworkList = this.currentNavigation.artworkList;
@@ -108,5 +156,10 @@ export class GalleryDetailsComponent implements OnInit {
         };
         
         this.dataShareService.setSharedData(data);
+    }
+
+    ngOnDestroy() {
+        this.subscriptionHttpObservationFindAll$.unsubscribe();
+        this.subscriptionHttpObservationError$.unsubscribe();
     }
 }

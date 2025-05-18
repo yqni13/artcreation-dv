@@ -40,13 +40,14 @@
         pointer-events:all; /* block hover brightness when hovering inbetween */
     }
 
-    &:hover .artdv-gallery-cards:not(:hover) {
-        filter: brightness(45%);
-    }
+    // temp disabled
+    // &:hover .artdv-gallery-cards:not(:hover) {
+    //     filter: brightness(45%);
+    // }
 
-    .artdv-gallery-cards:hover {
-        filter: drop-shadow(0px 0px 15px var(--theme-contrast-anchor));
-    }
+    // .artdv-gallery-cards:hover {
+    //     filter: drop-shadow(0px 0px 15px var(--theme-contrast-anchor));
+    // }
 }
 
 .artdv-gallery-nodata {

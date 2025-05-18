@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, EventEmitter, forwardRef, Input, Output } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild } from "@angular/core";
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
-import { AbstractInputComponent } from "../abstract-input.component";
+import { AbstractInputComponent } from "../../abstracts/form-input.abstract.component";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
@@ -24,7 +24,9 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
         }
     ]
 })
-export class SelectInputComponent extends AbstractInputComponent {
+export class SelectInputComponent extends AbstractInputComponent implements AfterViewInit {
+
+    @ViewChild('isAutoFocus') isAutoFocus!: ElementRef;
 
     @Input() fieldName: string;
     @Input() formControl: FormControl;
@@ -33,6 +35,7 @@ export class SelectInputComponent extends AbstractInputComponent {
     @Input() className: string;
     @Input() options: any;
     @Input() optionsTranslateRoot: string;
+    @Input() hasAutoFocus: boolean;
 
     @Output() byChange: EventEmitter<any>;
 
@@ -46,7 +49,14 @@ export class SelectInputComponent extends AbstractInputComponent {
         this.className = '';
         this.options = [];
         this.optionsTranslateRoot = '';
+        this.hasAutoFocus = false;
         this.byChange = new EventEmitter<any>();
+    }
+
+    ngAfterViewInit() {
+        if(this.hasAutoFocus) {
+            this.isAutoFocus.nativeElement.focus();
+        }
     }
 
     selectOption(option: Event) {

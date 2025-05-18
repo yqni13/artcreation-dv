@@ -5,7 +5,9 @@
             <span>Daniela Varga</span>
         </div>
     </header>
-    <artdv-carousel [slides]="slides"></artdv-carousel>
+    <ng-container>
+        <artdv-carousel [isLoadingResponse]="isLoadingResponse" [entries]="newsCollection"></artdv-carousel>
+    </ng-container>
     <div class="artdv-home-top-img">
         <img src="assets/background/home_bg_03.webp" alt="404-picture-not-found">
     </div>

@@ -36,6 +36,7 @@ section {
 
 .artdv-active-route {
     color: var(--theme-active-route)!important;
+    font-weight: bold;
     &:hover {
         opacity: 1!important;
     }
@@ -51,6 +52,13 @@ header {
     width: 100%;
     text-align: center; // needed for multiple lines on smaller device resolution
     justify-content: center;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    text-wrap: balance;
 }
 
 h1 {
@@ -219,4 +227,16 @@ textarea {
         color: sass.$color-rich-black;
         backdrop-filter: blur(1px);
     }
+}
+
+@starting-style {
+    button {
+        scale: 0.75;
+    }
+}
+button {
+    transition: scale 0.3s ease-in-out;
+}
+button:hover {
+    scale: 1;
 }

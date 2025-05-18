@@ -1,29 +1,28 @@
 <div class="artdv-carousel-wrapper">
     <div class="artdv-carousel-slides" [style.transform]="getTransform()">
-        <div class="artdv-carousel-slide" *ngFor="let slide of slides">
+        <div class="artdv-carousel-slide" *ngFor="let entry of entries">
             <ng-container *ngIf="slideTemplate; else defaultTemplate">
-                <ng-container *ngTemplateOutlet="slideTemplate; context: { $implicit: slide }"></ng-container>
+                <ng-container *ngTemplateOutlet="slideTemplate; context: { $implicit: entry }"></ng-container>
             </ng-container>
             <ng-template #defaultTemplate>
                 <div class="artdv-carousel-default-wrapper">
                     <div class="artdv-carousel-default-img">
                         <img
-                            [ngClass]="(slide.referenceNr !== null && !slide.referenceNr.includes('-')) ? 'artdv-anchor' : ''"
-                            *ngIf="slide.imageResized" 
-                            src="{{ slide.imageResized }}" 
+                            [ngClass]="entry.gallery !== null ? 'artdv-anchor' : ''"
+                            src="{{storageDomain + '/' + (entry.gallery !== null ? entry.thumbnail_path_gallery : entry.thumbnail_path) }}" 
                             alt="404-picture-not-found"
                             [attr.aria-disabled]="true"
-                            (click)="navigateToDetails(slide.referenceNr)"
-                            (keydown.enter)="navigateToDetails(slide.referenceNr)"
+                            (click)="navigateToDetails(entry.gallery !== null ? entry : null)"
+                            (keydown.enter)="navigateToDetails(entry.gallery !== null ? entry : null)"
                         >
                     </div>
                     <div class="artdv-carousel-default-text-wrapper">
                         <div class="artdv-carousel-default-text-header">
-                            <h3 *ngIf="slide.title">{{ 'archive-content.' + slide.referenceNr + '.title' | translate }}</h3>
-                            <span>{{slide.date | dateFormat:'dd.mm.yyyy'}}</span>
+                            <h3>{{entry.title}}</h3>
+                            <span>{{('modules.archive.creation' | translate) + ': ' + (entry.created_on | dateFormat:'dd.mm.yyyy')}}</span>
                         </div>
                         <div class="artdv-carousel-default-text-content">
-                            <p *ngIf="slide.text">{{ 'archive-content.' + slide.referenceNr + '.text' | translate }}</p>
+                            <p>{{entry.content}}</p>
                             <a class="artdv-anchor" href="{{baseRoute.ARCHIVE}}">{{'modules.archive.nav' | translate}}</a>
                         </div>
                     </div>
@@ -33,16 +32,17 @@
     </div>
     <div class="artdv-carousel-arrows">
         <i 
-            [attr.aria-disabled]="true"
+            [attr.tabindex]="0"
             class="icon-Arrow artdv-arrow-left"
             (click)="prev()"
             (keydown.enter)="prev()"
         ></i>
         <i 
-            [attr.aria-disabled]="true"
+            [attr.tabindex]="0"
             class="icon-Arrow artdv-arrow-right"
             (click)="next()"
             (keydown.enter)="next()"
         ></i>
     </div>
+    <artdv-loading-animation [sizeMode]="SizeOptionEnum.COMP" [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
 </div>

@@ -2,24 +2,26 @@
     <header>
         <h1>{{'modules.admin.gallery.title.list' | translate}}</h1>
     </header>
-    <div class="artdv-admingallerylist-content">
-        <div class="artdv-admingallerylist-filterbar">
-            <div class="artdv-admingallerylist-select-wrapper">
+    <div class="artdv-admin-specific-list-content">
+        <div class="artdv-admin-specific-list-filterbar">
+            <div class="artdv-admin-specific-list-select-wrapper">
                 <artdv-selectinput
-                    class="artdv-admingallerylist-select"
+                    class="artdv-admin-specific-list-select"
                     [ngStyle]="{'width': '100%'}"
                     [placeholder]="'modules.admin.gallery.placeholder-genre' | translate"
-                    [options]="genreOptions"
+                    [options]="GenreOptionEnum"
                     [optionsTranslateRoot]="'shared.enum.art-genre.'"
                     [formControl]="searchForm.get('genre') | controlCast"
+                    [hasAutoFocus]="true"
+                    [attr.disabled]="!isLoadingResponse"
                     (byChange)="onGenreChange($event)"
                 ></artdv-selectinput>
-                <span class="artdv-admingallerylist-filter-label">Genre</span>
+                <span class="artdv-admin-specific-list-filter-label">Genre</span>
             </div>
-            <div class="artdv-admingallerylist-media-wrapper">
-                <div class="artdv-admingallerylist-search-wrapper">
+            <div class="artdv-admin-specific-list-media-wrapper">
+                <div class="artdv-admin-specific-list-search-wrapper">
                     <artdv-textinput
-                        class="artdv-admingallerylist-search-input"
+                        class="artdv-admin-specific-list-search-input"
                         [placeholder]="'modules.admin.gallery.placeholder-search' | translate"
                         [ngStyle]="{'width': '100%'}"
                         [inputType]="'text'"
@@ -27,53 +29,53 @@
                         (byChange)="onSearchTextChange($event)"
                         #keywordInputField
                     ></artdv-textinput>
-                    <span class="artdv-admingallerylist-filter-label">Filter</span>
+                    <span class="artdv-admin-specific-list-filter-label">Filter</span>
                     <a
-                        id="artdv-admingallerylist-search-icon"
+                        id="artdv-admin-specific-list-search-icon"
                         (click)="onSearchSubmit()"
                         (keydown.enter)="onSearchSubmit()"
-                        [attr.aria-disabled]="true"
-                        >
+                        [attr.tabindex]="0"
+                    >
                         <i class="icon-Search"></i>
                     </a>
                 </div>
             </div>
-            <div class="artdv-admingallerylist-media-wrapper">
+            <div class="artdv-admin-specific-list-media-wrapper">
                 <div 
-                    class="artdv-admingallerylist-btn-wrapper btn-close"
+                    class="artdv-admin-specific-list-btn-wrapper btn-close"
                     *ngIf="hasSearchText"
                 >
                     <a
-                        id="artdv-admingallerylist-search-close"
-                        (click)="removeKeyword()"
-                        (keydown.enter)="removeKeyword()"
-                        [attr.aria-disabled]="true"
+                        id="artdv-admin-specific-list-search-close"
+                        (click)="removeSearchText()"
+                        (keydown.enter)="removeSearchText()"
+                        [attr.tabindex]="hasSearchText ? 0 : ''"
                     >
                         <i class="icon-CloseX"></i>
                     </a>
                 </div>
-                <div class="artdv-admingallerylist-btn-wrapper btn-add">
+                <div class="artdv-admin-specific-list-btn-wrapper btn-add">
                     <a
-                        (click)="navigateToCreateItem()"
-                        (keydown.enter)="navigateToCreateItem()"
-                        [attr.aria-disabled]="true"
+                        (click)="navigateToCreateItem(AdminRouteEnum.GALLERY, GalleryRouteEnum.CREATE)"
+                        (keydown.enter)="navigateToCreateItem(AdminRouteEnum.GALLERY, GalleryRouteEnum.CREATE)"
+                        [attr.tabindex]="0"
                     ><i class="icon-Add"></i></a>
                 </div>
-                <div class="artdv-admingallerylist-btn-wrapper btn-return">
+                <div class="artdv-admin-specific-list-btn-wrapper btn-return">
                     <a
                         (click)="navigateToDashboard()"
                         (keydown.enter)="navigateToDashboard()"
-                        [attr.aria-disabled]="true"
+                        [attr.tabindex]="0"
                     ><i class="icon-Return"></i></a>
                 </div>
             </div>
         </div>
-        <div class="artdv-admingallerylist-list">
+        <div class="artdv-admin-specific-list-list">
             <ng-container *ngFor="let item of modifiedList">
                 <img 
-                    class="artdv-admingallerylist-list-element"
+                    class="artdv-admin-specific-list-list-element"
                     alt="{{item.reference_nr}}"
-                    src="{{storageDomain + '/' + item.thumbnail_path}}"
+                    src="{{storageDomain + '/' + item.thumbnail_path + updateCachedPath(item.last_modified)}}"
                     (click)="navigateToUpdateItem(item.gallery_id)"
                     (keydown.enter)="navigateToUpdateItem(item.gallery_id)"
                     [attr.aria-disabled]="true"

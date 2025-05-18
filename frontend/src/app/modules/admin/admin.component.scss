@@ -1,9 +1,15 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
-header {
+/* ADMIN OVERVIEW STYLING --- ADMIN OVERVIEW STYLING */
+
+.artdv-admin header {
     background-color: var(--theme-highlight-body);
     color: var(--theme-highlight-text);
+}
+
+div {
+    display: flex;
 }
 
 .artdv-admin-content {
@@ -74,3 +80,239 @@ header {
         }
     }
 }
+
+/* ADMIN OVERVIEW STYLING --- ADMIN OVERVIEW STYLING */
+/* ##################################################### */
+/* ADMIN SPECIFIC LIST STYLING --- ADMIN SPECIFIC LIST STYLING */
+
+.artdv-admin-specific-list-content {
+    flex-direction: column;
+    height: 100%;
+
+    .artdv-admin-specific-list-filterbar {
+        justify-content: center;
+        width: 100%;
+        margin: 0 0 sass.$space50 0;
+
+        .artdv-admin-specific-list-select-wrapper {
+            margin-right: sass.$space25;
+        }
+
+        .artdv-admin-specific-list-media-wrapper {
+            flex-direction: row;
+        }
+
+        .artdv-admin-specific-list-search-wrapper {
+            display: grid;
+
+            #artdv-admin-specific-list-search-icon {
+                display: flex;
+                position: absolute;
+                justify-self: end;
+                padding: 2.2px 0;
+                margin-right: sass.$space5;
+                cursor: pointer;
+
+                i {
+                    color: var(--theme-contrast-anchor);
+                }
+            }
+        }
+
+        .artdv-admin-specific-list-filter-label {
+            display: flex;
+            position: absolute;
+            align-self: end;
+            justify-content: left;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--theme-contrast-anchor);
+            background-color: var(--theme-body-bg);
+            padding: calc(sass.$space5 / 2);
+            padding-bottom: 0;
+            border-radius: sass.$space5;
+            margin: 0 0 calc(sass.$space25 + sass.$space5) sass.$space5;
+        }
+
+        .artdv-admin-specific-list-btn-wrapper {
+            justify-content: center;
+            margin-left: sass.$space25;
+            padding: 0 sass.$space5;
+            border-radius: sass.$space5;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(1.5);
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .btn-close {
+            border: 2px solid var(--theme-snackbar-error);
+            a {
+                color: var(--theme-snackbar-error);
+                i {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+
+        .btn-add {
+            border: 2px solid var(--theme-snackbar-success);
+            a {
+                color: var(--theme-snackbar-success);
+            }
+        }
+
+        .btn-return {
+            border: 2px solid var(--theme-snackbar-warning);
+            a {
+                color: var(--theme-snackbar-warning);
+            }
+        }
+    }
+
+    .artdv-admin-specific-list-list {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .artdv-admin-specific-list-list-element {
+            $border-width: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border: $border-width solid var(--theme-contrast-anchor);
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(1.5);
+            }
+        }
+    }
+}
+
+/* ADMIN SPECIFIC LIST STYLING --- ADMIN SPECIFIC LIST STYLING */
+/* ##################################################### */
+/* ADMIN SPECIFIC DETAIL STYLING --- ADMIN SPECIFIC DETAIL STYLING */
+
+.artdv-admin-specific-detail-content {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid var(--theme-body-text);
+        border-radius: sass.$space5;
+        padding: sass.$space25;
+
+        .artdv-admin-specific-detail-form {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .artdv-form-image-upload,
+        .artdv-form-image-select {
+            margin: sass.$space15 0;
+        }
+
+        .artdv-admin-specific-detail-form-wrapper {
+            flex-direction: row;
+            justify-content: center;
+            margin: sass.$space5 0;
+            align-items: center;
+
+            span {
+                margin-right: auto;
+                font-weight: bold;
+            }
+
+            artdv-selectinput,
+            artdv-textinput,
+            artdv-textareainput {
+                margin-left: auto;
+                width: 55%;
+            }
+        }
+
+        .artdv-admin-specific-detail-update-wrapper {
+            flex-direction: row;
+            justify-content: center;
+            margin-top: sass.$space15;
+
+            span {
+                font-size: 10px;
+                opacity: 0.7;
+            }
+
+            span:nth-of-type(1) {
+                margin-right: sass.$space5;
+            }
+        }
+    }
+
+    .artdv-admin-specific-detail-form-btn {
+        flex-direction: row;
+        margin: sass.$space50 0;
+
+        button {
+            background-color: transparent;
+        }
+
+        .artdv-admin-specific-detail-form-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: sass.$space15 sass.$space25;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: sass.$space5;
+            cursor: pointer;
+    
+            &:hover {
+                filter: brightness(1.5);
+            }
+    
+            a {
+                display: flex;
+                align-items: center;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        }
+    
+        .btn-confirm {
+            border-color: var(--theme-snackbar-success);
+            margin-right: sass.$space50;
+            i {
+                color: var(--theme-snackbar-success);
+            }
+        }
+    
+        .btn-cancel {
+            border-color: var(--theme-snackbar-warning);
+            i {
+                color: var(--theme-snackbar-warning);
+            }
+        }
+
+        .btn-delete {
+            border-color: var(--theme-snackbar-error);
+            margin-left: sass.$space50;
+            i {
+                color: var(--theme-snackbar-error);
+            }
+        }
+    }
+}
+
+/* ADMIN SPECIFIC DETAIL STYLING --- ADMIN SPECIFIC DETAIL STYLING */
