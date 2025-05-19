@@ -21,19 +21,11 @@ class NewsRepository {
         const tableGallery = 'gallery';
         const idColumn = 'news_id';
         const sql = `SELECT
-        ${tableNews}.news_id,
-        ${tableNews}.gallery,
-        ${tableNews}.image_path,
-        ${tableNews}.thumbnail_path,
-        ${tableNews}.visual_timestamp,
-        ${tableNews}.title,
-        ${tableNews}.content,
-        ${tableNews}.created_on,
-        ${tableNews}.last_modified,
-        ${tableGallery}.image_path image_path_${tableGallery},
-        ${tableGallery}.thumbnail_path thumbnail_path_${tableGallery},
-        ${tableGallery}.reference_nr reference_nr_${tableGallery},
-        ${tableGallery}.art_genre art_genre_${tableGallery}
+        ${tableNews}.*,
+        ${tableGallery}.image_path AS image_path_${tableGallery},
+        ${tableGallery}.thumbnail_path AS thumbnail_path_${tableGallery},
+        ${tableGallery}.reference_nr AS reference_nr_${tableGallery},
+        ${tableGallery}.art_genre AS art_genre_${tableGallery}
         FROM ${tableNews}
         LEFT JOIN ${tableGallery} ON ${tableNews}.gallery = ${tableGallery}.gallery_id
         WHERE ${idColumn} = $1`;
@@ -137,19 +129,11 @@ class NewsRepository {
         // => explicit table declaration for sorting
         const orderPrio1 = `${tableNews}.created_on`;
         const sql = `SELECT
-        ${tableNews}.news_id,
-        ${tableNews}.gallery,
-        ${tableNews}.image_path,
-        ${tableNews}.thumbnail_path,
-        ${tableNews}.visual_timestamp,
-        ${tableNews}.title,
-        ${tableNews}.content,
-        ${tableNews}.created_on,
-        ${tableNews}.last_modified,
-        ${tableGallery}.image_path image_path_${tableGallery},
-        ${tableGallery}.thumbnail_path thumbnail_path_${tableGallery},
-        ${tableGallery}.reference_nr reference_nr_${tableGallery},
-        ${tableGallery}.art_genre art_genre_${tableGallery}
+        ${tableNews}.*,
+        ${tableGallery}.image_path AS image_path_${tableGallery},
+        ${tableGallery}.thumbnail_path AS thumbnail_path_${tableGallery},
+        ${tableGallery}.reference_nr AS reference_nr_${tableGallery},
+        ${tableGallery}.art_genre AS art_genre_${tableGallery}
         FROM ${tableNews}
         LEFT JOIN ${tableGallery} ON ${tableNews}.gallery = ${tableGallery}.gallery_id
         ORDER BY ${orderPrio1} DESC`;
