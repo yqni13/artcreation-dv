@@ -81,12 +81,12 @@
                 },
                 "other": {
                     "created": "created",
-                    "sort": "sort",
+                    "sort": "Order",
                     "updated": "edited"
                 },
                 "placeholder": {
                     "content": "add a text",
-                    "search": "search in news",
+                    "search": "search by text",
                     "sorting": "sort by",
                     "source": "select a source",
                     "title": "select a title"
