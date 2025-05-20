@@ -4,6 +4,7 @@ import { ImgUploadData, ImgUploadInformation } from "../../../shared/interfaces/
 import { ImgUploadService } from "../../../shared/services/img-upload.service";
 import { TranslateModule } from "@ngx-translate/core";
 import { Subject, Subscription } from "rxjs";
+import { templateUtils } from "../../helper/common.helper";
 
 @Component({
     selector: 'artdv-imgupload',
@@ -26,6 +27,7 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
     protected fileInformation: ImgUploadInformation;
     protected sizeFactorInMB: number;
     protected showValidationMessage: boolean;
+    protected utils = templateUtils;
     
     private subscriptionSubmitTrigger$: Subscription;
 
@@ -126,11 +128,6 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
             existingImgPath: false
         }
         this.byRemove.emit(removeInfo);
-    }
-
-    updateCachedPath(): string {
-        const alteredPath = new Date().getTime();
-        return `?v=${alteredPath}`;
     }
 
     ngOnDestroy() {

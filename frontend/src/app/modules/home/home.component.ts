@@ -9,6 +9,7 @@ import { AuthService } from "../../shared/services/auth.service";
 import { NewsAPIService } from "../../api/services/news.api.service";
 import { NewsItemWGP } from "../../api/models/news-response.interface";
 import { SortingOption } from "../../shared/enums/sorting-option.enum";
+import { ImgPreloadService } from "../../shared/services/img-preload.service";
 
 @Component({
     selector: 'app-home',
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
     constructor(
         private readonly auth: AuthService,
         private readonly newsApi: NewsAPIService,
+        private readonly imgPreload: ImgPreloadService,
         private readonly filterNewsService: FilterNewsService,
         private readonly httpObservation: HttpObservationService,
     ) {
@@ -45,7 +47,11 @@ export class HomeComponent implements OnInit {
     }
     
     ngOnInit() {
-        this.preloadImgOnDirectAccess();
+        // Image for starting background preloaded in template (index.html).
+        this.imgPreload.preloadMultiple([
+            'assets/background/home_bg_03.webp'
+        ]);
+
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllWithGalleryPathsStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap(async (isStatus200: boolean) => {
@@ -69,17 +75,6 @@ export class HomeComponent implements OnInit {
         ).subscribe();
 
         this.loadNewsList();
-    }
-
-    preloadImgOnDirectAccess() {
-        this.imgPreloadCollection = {
-            about1: new Image(),
-            about2: new Image(),
-            about3: new Image()
-        }
-        this.imgPreloadCollection.about1.src = '/assets/about/about_01.webp';
-        this.imgPreloadCollection.about2.src = '/assets/about/about_02.webp';
-        this.imgPreloadCollection.about3.src = '/assets/about/about_03.webp';
     }
 
     loadNewsList() {

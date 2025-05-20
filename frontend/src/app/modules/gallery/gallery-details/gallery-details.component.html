@@ -1,6 +1,7 @@
 <artdv-imgfullscale 
     [imgPath]="(storageDomain + '/' + artwork.image_path) || ''" 
     [isActive]="isFullscale"
+    [lastModifiedParam]="artwork.last_modified"
     (fullscaleChanged)="navigateFullscale($event)"
 ></artdv-imgfullscale>
 <section class="artdv-gallerydetails">

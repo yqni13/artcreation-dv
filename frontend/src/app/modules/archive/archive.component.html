@@ -14,7 +14,7 @@
     </div>
     <div class="artdv-archive-content">
         <div class="artdv-archive-entry" *ngFor="let news of newsCollection">
-            @defer(on viewport) { <img src="{{storageDomain + '/' + (news.gallery !== null ? news.thumbnail_path_gallery : news.thumbnail_path) }}" alt="404-picture-not-found">
+            @defer(on viewport) { <img src="{{storageDomain + '/' + (news.gallery !== null ? news.thumbnail_path_gallery : news.thumbnail_path) + utils.addUrlCacheCheckParam() }}" alt="404-picture-not-found">
             <div class="artdv-archive-wrapper">                
                 <div class="artdv-archive-text">
                     <h3>{{news.title}}</h3>

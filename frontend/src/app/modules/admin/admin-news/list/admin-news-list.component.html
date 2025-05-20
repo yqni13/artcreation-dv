@@ -77,7 +77,7 @@
                 <img 
                     class="artdv-admin-specific-list-list-element"
                     alt="{{item.title}}"
-                    src="{{storageDomain + '/' + (item.gallery === null ? item.thumbnail_path : item.thumbnail_path_gallery) + updateCachedPath(item.last_modified)}}"
+                    src="{{storageDomain + '/' + (item.gallery === null ? item.thumbnail_path : item.thumbnail_path_gallery) + utils.addUrlCacheCheckParam(item.last_modified)}}"
                     (click)="navigateToUpdateItem(item.news_id)"
                     (keydown.enter)="navigateToUpdateItem(item.news_id)"
                     [attr.aria-disabled]="true"

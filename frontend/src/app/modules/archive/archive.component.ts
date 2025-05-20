@@ -10,7 +10,7 @@ import { NewsItemWGP } from "../../api/models/news-response.interface";
 import { NewsAPIService } from "../../api/services/news.api.service";
 import { environment } from "../../../environments/environment";
 import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
-
+import { templateUtils } from "../../common/helper/common.helper";
 
 @Component({
     selector: 'app-archive',
@@ -31,6 +31,7 @@ export class ArchiveComponent implements OnInit, OnDestroy {
     protected currentPath?: string;
     protected isLoadingResponse: boolean;
     protected storageDomain: string;
+    protected utils = templateUtils;
 
     private subscriptionHttpObservationFindAll$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
@@ -91,11 +92,6 @@ export class ArchiveComponent implements OnInit, OnDestroy {
         this.newsApi.sendGetAllWithGalleryPathsRequest().subscribe(data => {
             this.newsCollection = data.body?.body.data ?? [];
         })
-    }
-
-    updateCachedPath(timestamp: string): string {
-        const alteredPath = new Date(timestamp).getTime();
-        return `?v=${alteredPath}`;
     }
 
     ngOnDestroy() {

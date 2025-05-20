@@ -11,6 +11,7 @@ import { ShippingComponent } from './modules/shipping/shipping.component';
 import { PrintsComponent } from './modules/prints/prints.component';
 import { GalleryDetailsComponent } from './modules/gallery/gallery-details/gallery-details.component';
 import { LoginComponent } from './modules/login/login.component';
+import { ImgPreloadGuard } from './shared/services/img-preload-guard.service';
 
 export const routes: Routes = [
     {
@@ -31,11 +32,24 @@ export const routes: Routes = [
     {
         path: 'about',
         component: AboutComponent,
-        data: { title: 'about', showInNavbar: true, icon: 'icon-About', showInFooterConnect: false, showInFooterInfo: false }
+        canActivate: [ImgPreloadGuard],
+        data: { 
+            title: 'about',
+            showInNavbar: true,
+            icon: 'icon-About',
+            showInFooterConnect: false,
+            showInFooterInfo: false,
+            preloadImages: [
+                '/assets/about/about_01.webp',
+                '/assets/about/about_02.webp',
+                '/assets/about/about_03.webp'
+            ]
+        }
     },
     {
         path: 'gallery',
         component: GalleryComponent,
+        canActivate: [ImgPreloadGuard],
         data: { title: 'gallery', showInNavbar: true, icon: 'icon-Gallery', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
@@ -46,41 +60,58 @@ export const routes: Routes = [
     {
         path: 'prints',
         component: PrintsComponent,
+        canActivate: [ImgPreloadGuard],
         data: { title: 'prints', showInNavbar: true, icon:'icon-Prints', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'faq',
         component: FAQComponent,
+        canActivate: [ImgPreloadGuard],
         data: { title: 'faq', showInNavbar: true, icon: 'icon-FAQ', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'contact',
         component: ContactComponent,
+        canActivate: [ImgPreloadGuard],
         data: { title: 'contact', showInNavbar: false, showInFooterConnect: true, showInFooterInfo: false }
     },
     {
         path: 'archive',
         component: ArchiveComponent,
+        canActivate: [ImgPreloadGuard],
         data: { title: 'archive', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
         path: 'imprint',
         component: ImprintComponent,
+        canActivate: [ImgPreloadGuard],
         data: { title: 'imprint', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
         path: 'login',
         component: LoginComponent,
-        data: { title: 'login', onAuth: false, showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+        canActivate: [ImgPreloadGuard],
+        data: {
+            title: 'login',
+            onAuth: false,
+            showInNavbar: false,
+            showInFooterConnect: false,
+            showInFooterInfo: false,
+            preloadImages: [
+                'assets/admin/login_bg_smaller_01.jpg'
+            ]
+        }
     },
     {
         path: 'privacy',
         component: PrivacyComponent,
+        canActivate: [ImgPreloadGuard],
         data: { title: 'privacy', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
         path: 'shipping',
         component: ShippingComponent,
+        canActivate: [ImgPreloadGuard],
         data: { title: 'shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
