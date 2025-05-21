@@ -22,6 +22,7 @@ import { AdminDetailImportsModule } from '../../../../common/helper/admin-detail
 import { AbstractAdminDetailComponent } from '../../../../common/components/abstracts/admin-detail.abstract.component';
 import { TextInputComponent } from "../../../../common/components/form-components/text-input/text-input.component";
 import { SelectInputComponent } from "../../../../common/components/form-components/select-input/select-input.component";
+import { CacheCheckPipe } from "../../../../common/pipes/cache-check.pipe";
 
 @Component({
     selector: 'app-admin-gallery-detail',
@@ -31,7 +32,8 @@ import { SelectInputComponent } from "../../../../common/components/form-compone
         TextInputComponent,
         SelectInputComponent,
         ...AdminDetailImportsModule
-    ]
+    ],
+    providers: [CacheCheckPipe]
 })
 export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit {
 
@@ -74,7 +76,10 @@ export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent im
                         this.hasGenre = this.artworkEntry?.art_genre ? true : false;
                         this.lastModifiedDateTime = this.datetime.convertTimestamp(this.artworkEntry?.last_modified ?? null);
                         this.initEdit();
-                        this.pathFromExistingImg = this.configPathFromExistingImg(this.artworkEntry?.thumbnail_path);
+                        this.pathFromExistingImg = this.configPathFromExistingEntry(
+                            this.artworkEntry?.last_modified ?? '',
+                            this.artworkEntry?.thumbnail_path
+                        );
                         await this.delay(500);
                         this.isLoadingInit = false;
                         this.isLoadingResponse = false;

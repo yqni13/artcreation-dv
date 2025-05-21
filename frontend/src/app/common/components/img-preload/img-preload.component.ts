@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { GalleryItem } from "../../../api/models/gallery-response.interface";
 import { environment } from "../../../../environments/environment";
+import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 
 @Component({
     selector: "artdv-imgpreload",
@@ -17,7 +18,7 @@ import { environment } from "../../../../environments/environment";
             <img 
                 *ngIf="loaded"
                 class="artdv-img-preview"
-                src="{{storageDomain + '/' + entry.thumbnail_path + updateCachedPath(entry.last_modified)}}" 
+                src="{{(storageDomain + '/' + entry.thumbnail_path) | cacheCheck: entry.last_modified}}" 
                 alt="404-picture-not-found"
                 (click)="navigateToDetails(entry.reference_nr)"
                 (keydown.enter)="navigateToDetails(entry.reference_nr)"
@@ -29,6 +30,7 @@ import { environment } from "../../../../environments/environment";
     `,
     styleUrl: "./img-preload.component.scss",
     imports: [
+        CacheCheckPipe,
         CommonModule,
         GalleryScrollDirective
     ]
@@ -60,10 +62,5 @@ export class ImgPreloadComponent {
             artworkList: this.artworkList
         }
         this.router.navigate(['gallery/detail', refNr], { state: stateData });
-    }
-
-    updateCachedPath(timestamp: string): string {
-        const alteredPath = new Date(timestamp).getTime();
-        return `?v=${alteredPath}`;
     }
 }

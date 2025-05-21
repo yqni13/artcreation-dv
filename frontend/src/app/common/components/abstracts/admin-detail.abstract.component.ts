@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy } from "@angular/core";
+import { AfterViewInit, Component, inject, OnDestroy } from "@angular/core";
 import { filter, Subject, Subscription, tap } from "rxjs";
 import { CRUDMode } from "../../../shared/enums/crud-mode.enum";
 import { Router } from "@angular/router";
@@ -13,9 +13,11 @@ import { environment } from "../../../../environments/environment";
 import { BaseRoute } from "../../../api/routes/base.route.enum";
 import { NewsAPIService } from "../../../api/services/news.api.service";
 import { GalleryAPIService } from "../../../api/services/gallery.api.service";
+import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 
 @Component({
-    template: ''
+    template: '',
+    providers: [CacheCheckPipe]
 })
 export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnDestroy{
 
@@ -35,6 +37,8 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
     protected entryId: string;
     protected delay: any;
 
+    private cacheCheck: any;
+
     constructor(
         protected router: Router,
         protected fb: FormBuilder,
@@ -44,6 +48,7 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
         protected dataSharing: DataShareService,
         protected httpObservation: HttpObservationService
     ) {
+        this.cacheCheck = inject(CacheCheckPipe);
         this.mode = CRUDMode.UPDATE;
         this.isLoadingResponse = true;
         this.isLoadingInit = true;
@@ -80,8 +85,9 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
         ).subscribe();
     }
 
-    configPathFromExistingImg(dbPath?: string): string | null {
-        return dbPath ? `${environment.STORAGE_URL}/${dbPath}` : null;
+    configPathFromExistingEntry(lastModified: string, dbPath?: string): string | null {
+        const storageDomain = this.mode === CRUDMode.CREATE ? `${environment.STORAGE_URL}/` : '';
+        return dbPath ? this.cacheCheck.transform(`${storageDomain}${dbPath}`, lastModified) : null;
     }
 
     onSubmit(formGroup: FormGroup, imgSource: string | null, api: GalleryAPIService | NewsAPIService) {

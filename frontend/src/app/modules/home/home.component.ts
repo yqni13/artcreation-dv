@@ -43,9 +43,10 @@ export class HomeComponent implements OnInit {
         this.subscriptionHttpObservationError$ = new Subscription();
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     }
-    
+
     ngOnInit() {
-        this.preloadImgOnDirectAccess();
+        // Images are preloaded via ImgPreloadGuard (admin.routes.ts).
+
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllWithGalleryPathsStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap(async (isStatus200: boolean) => {
@@ -56,7 +57,7 @@ export class HomeComponent implements OnInit {
                 }
             })
         ).subscribe();
-        
+
         this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
             filter((x) => x),
             tap(async (response: any) => {
@@ -69,17 +70,6 @@ export class HomeComponent implements OnInit {
         ).subscribe();
 
         this.loadNewsList();
-    }
-
-    preloadImgOnDirectAccess() {
-        this.imgPreloadCollection = {
-            about1: new Image(),
-            about2: new Image(),
-            about3: new Image()
-        }
-        this.imgPreloadCollection.about1.src = '/assets/about/about_01.webp';
-        this.imgPreloadCollection.about2.src = '/assets/about/about_02.webp';
-        this.imgPreloadCollection.about3.src = '/assets/about/about_03.webp';
     }
 
     loadNewsList() {

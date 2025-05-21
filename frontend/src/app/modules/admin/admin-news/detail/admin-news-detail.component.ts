@@ -19,6 +19,7 @@ import { SelectInputComponent } from "../../../../common/components/form-compone
 import { SourceOption } from "../../../../shared/enums/source-option.enum";
 import { GalleryItem } from "../../../../api/models/gallery-response.interface";
 import { SelectGalleryItemComponent } from "../../../../common/components/select-galleryitem/select-galleryitem.component";
+import { CacheCheckPipe } from "../../../../common/pipes/cache-check.pipe";
 
 @Component({
     selector: 'app-admin-news-detail',
@@ -29,7 +30,8 @@ import { SelectGalleryItemComponent } from "../../../../common/components/select
         SelectInputComponent,
         TextareaInputComponent,
     ...AdminDetailImportsModule
-]
+    ],
+    providers: [CacheCheckPipe]
 })
 export class AdminNewsDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -73,15 +75,18 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
                     this.newsApi.setIdParam(this.entryId);
                     this.newsApi.sendGetOneWithGalleryPathsRequest().subscribe(async data => {
                         (this.newsEntry as any) = data.body?.body.data;
-                        this.pathFromExistingImg = data.body?.body.data.gallery === null 
-                            ? this.configPathFromExistingImg(this.newsEntry?.thumbnail_path)
-                            : !this.newsEntry?.thumbnail_path_gallery
-                                ? null 
-                                : this.newsEntry?.thumbnail_path_gallery;
-                        if(data.body?.body.data.image_path) {
+                        if(data.body?.body.data.gallery === null) {
                             Object.assign((this.newsEntry as any), {imageFile: data.body?.body.data.news_id});
                         }
-                        this.lastModifiedDateTime = this.datetime.convertTimestamp(this.newsEntry?.last_modified ?? null);
+                        this.pathFromExistingImg = this.configPathFromExistingEntry(
+                            this.newsEntry?.last_modified ?? '',
+                            this.newsEntry?.gallery 
+                                ? this.newsEntry?.thumbnail_path_gallery 
+                                : this.newsEntry?.thumbnail_path
+                        )
+                        this.lastModifiedDateTime = this.datetime.convertTimestamp(
+                            this.newsEntry?.last_modified ?? null
+                        );
                         this.initEdit();
                         await this.delay(500);
                         this.isLoadingInit = false;

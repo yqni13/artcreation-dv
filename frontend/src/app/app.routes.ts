@@ -11,6 +11,7 @@ import { ShippingComponent } from './modules/shipping/shipping.component';
 import { PrintsComponent } from './modules/prints/prints.component';
 import { GalleryDetailsComponent } from './modules/gallery/gallery-details/gallery-details.component';
 import { LoginComponent } from './modules/login/login.component';
+import { ImgPreloadGuard } from './shared/services/img-preload-guard.service';
 
 export const routes: Routes = [
     {
@@ -21,7 +22,18 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-        data: { title: 'home', showInNavbar: true, icon:'icon-Home', showInFooterConnect: false, showInFooterInfo: false }
+        canActivate: [ImgPreloadGuard],
+        data: {
+            title: 'home',
+            showInNavbar: true,
+            icon:'icon-Home',
+            showInFooterConnect: false,
+            showInFooterInfo: false,
+            preloadImages: [
+                '/assets/background/home_bg_01.webp',
+                '/assets/background/home_bg_03.webp'
+            ]
+        }
     },
     {
         path: 'admin',
@@ -31,7 +43,19 @@ export const routes: Routes = [
     {
         path: 'about',
         component: AboutComponent,
-        data: { title: 'about', showInNavbar: true, icon: 'icon-About', showInFooterConnect: false, showInFooterInfo: false }
+        canActivate: [ImgPreloadGuard],
+        data: { 
+            title: 'about',
+            showInNavbar: true,
+            icon: 'icon-About',
+            showInFooterConnect: false,
+            showInFooterInfo: false,
+            preloadImages: [
+                '/assets/about/about_01.webp',
+                '/assets/about/about_02.webp',
+                '/assets/about/about_03.webp'
+            ]
+        }
     },
     {
         path: 'gallery',
@@ -41,7 +65,16 @@ export const routes: Routes = [
     {
         path: 'gallery/detail/:refNr',
         component: GalleryDetailsComponent,
-        data: { title: 'Details', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+        canActivate: [ImgPreloadGuard],
+        data: { 
+            title: 'Details',
+            showInNavbar: false,
+            showInFooterConnect: false,
+            showInFooterInfo: false,
+            preloadImages: [
+                '/assets/background/art-wall.webp'
+            ]
+        }
     },    
     {
         path: 'prints',
@@ -71,7 +104,17 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
-        data: { title: 'login', onAuth: false, showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+        canActivate: [ImgPreloadGuard],
+        data: {
+            title: 'login',
+            onAuth: false,
+            showInNavbar: false,
+            showInFooterConnect: false,
+            showInFooterInfo: false,
+            preloadImages: [
+                'assets/admin/login_bg_smaller_01.jpg'
+            ]
+        }
     },
     {
         path: 'privacy',
