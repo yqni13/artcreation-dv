@@ -4,7 +4,7 @@ import { ImgUploadData, ImgUploadInformation } from "../../../shared/interfaces/
 import { ImgUploadService } from "../../../shared/services/img-upload.service";
 import { TranslateModule } from "@ngx-translate/core";
 import { Subject, Subscription } from "rxjs";
-import { templateUtils } from "../../helper/common.helper";
+import { environment } from "../../../../environments/environment";
 
 @Component({
     selector: 'artdv-imgupload',
@@ -27,7 +27,7 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
     protected fileInformation: ImgUploadInformation;
     protected sizeFactorInMB: number;
     protected showValidationMessage: boolean;
-    protected utils = templateUtils;
+    protected storageDomain: string;
     
     private subscriptionSubmitTrigger$: Subscription;
 
@@ -53,6 +53,8 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
         };
         this.sizeFactorInMB = 10;
         this.showValidationMessage = false;
+        this.storageDomain = environment.STORAGE_URL;
+
         this.subscriptionSubmitTrigger$ = new Subscription();
 
         this.byChange = new EventEmitter<any>();

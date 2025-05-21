@@ -22,7 +22,18 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-        data: { title: 'home', showInNavbar: true, icon:'icon-Home', showInFooterConnect: false, showInFooterInfo: false }
+        canActivate: [ImgPreloadGuard],
+        data: {
+            title: 'home',
+            showInNavbar: true,
+            icon:'icon-Home',
+            showInFooterConnect: false,
+            showInFooterInfo: false,
+            preloadImages: [
+                '/assets/background/home_bg_01.webp',
+                '/assets/background/home_bg_03.webp'
+            ]
+        }
     },
     {
         path: 'admin',
@@ -49,42 +60,45 @@ export const routes: Routes = [
     {
         path: 'gallery',
         component: GalleryComponent,
-        canActivate: [ImgPreloadGuard],
         data: { title: 'gallery', showInNavbar: true, icon: 'icon-Gallery', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'gallery/detail/:refNr',
         component: GalleryDetailsComponent,
-        data: { title: 'Details', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: false }
+        canActivate: [ImgPreloadGuard],
+        data: { 
+            title: 'Details',
+            showInNavbar: false,
+            showInFooterConnect: false,
+            showInFooterInfo: false,
+            preloadImages: [
+                '/assets/background/art-wall.webp'
+            ]
+        }
     },    
     {
         path: 'prints',
         component: PrintsComponent,
-        canActivate: [ImgPreloadGuard],
         data: { title: 'prints', showInNavbar: true, icon:'icon-Prints', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'faq',
         component: FAQComponent,
-        canActivate: [ImgPreloadGuard],
         data: { title: 'faq', showInNavbar: true, icon: 'icon-FAQ', showInFooterConnect: false, showInFooterInfo: false }
     },
     {
         path: 'contact',
         component: ContactComponent,
-        canActivate: [ImgPreloadGuard],
         data: { title: 'contact', showInNavbar: false, showInFooterConnect: true, showInFooterInfo: false }
     },
     {
         path: 'archive',
         component: ArchiveComponent,
-        canActivate: [ImgPreloadGuard],
         data: { title: 'archive', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
         path: 'imprint',
         component: ImprintComponent,
-        canActivate: [ImgPreloadGuard],
         data: { title: 'imprint', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
@@ -105,13 +119,11 @@ export const routes: Routes = [
     {
         path: 'privacy',
         component: PrivacyComponent,
-        canActivate: [ImgPreloadGuard],
         data: { title: 'privacy', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {
         path: 'shipping',
         component: ShippingComponent,
-        canActivate: [ImgPreloadGuard],
         data: { title: 'shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
     {

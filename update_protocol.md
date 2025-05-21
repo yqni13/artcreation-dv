@@ -4,6 +4,10 @@
 
 <br>
 
+### 2024/05/21 - $\textsf{update\ 1.1.0\ >>\ {\color{pink}1.1.1}}$
+
+- $\textsf{\color{red}Patch:}$ Added image preload service/guard to provide loaded images before showing page.
+
 ### 2024/05/19 - $\textsf{update\ 1.0.3\ >>\ {\color{pink}1.1.0}}$
 
 - $\textsf{\color{green}Change:}$ Added administration of 'news' elements (create/update/delete).

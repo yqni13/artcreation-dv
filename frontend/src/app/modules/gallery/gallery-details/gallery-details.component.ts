@@ -18,12 +18,14 @@ import { HttpObservationService } from "../../../shared/services/http-observatio
 import { AuthService } from "../../../shared/services/auth.service";
 import { GalleryAPIService } from "../../../api/services/gallery.api.service";
 import { LoadingAnimationComponent } from "../../../common/components/animation/loading/loading-animation.component";
+import { CacheCheckPipe } from "../../../common/pipes/cache-check.pipe";
 
 @Component({
     selector: 'app-gallery-details',
     templateUrl: './gallery-details.component.html',
     styleUrl: './gallery-details.component.scss',
     imports: [
+        CacheCheckPipe,
         CommonModule,
         FloatPrecisionPipe,
         ImgFullscaleComponent,

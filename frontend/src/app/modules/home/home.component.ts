@@ -9,7 +9,6 @@ import { AuthService } from "../../shared/services/auth.service";
 import { NewsAPIService } from "../../api/services/news.api.service";
 import { NewsItemWGP } from "../../api/models/news-response.interface";
 import { SortingOption } from "../../shared/enums/sorting-option.enum";
-import { ImgPreloadService } from "../../shared/services/img-preload.service";
 
 @Component({
     selector: 'app-home',
@@ -34,7 +33,6 @@ export class HomeComponent implements OnInit {
     constructor(
         private readonly auth: AuthService,
         private readonly newsApi: NewsAPIService,
-        private readonly imgPreload: ImgPreloadService,
         private readonly filterNewsService: FilterNewsService,
         private readonly httpObservation: HttpObservationService,
     ) {
@@ -45,12 +43,9 @@ export class HomeComponent implements OnInit {
         this.subscriptionHttpObservationError$ = new Subscription();
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     }
-    
+
     ngOnInit() {
-        // Image for starting background preloaded in template (index.html).
-        this.imgPreload.preloadMultiple([
-            'assets/background/home_bg_03.webp'
-        ]);
+        // Images are preloaded via ImgPreloadGuard (admin.routes.ts).
 
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllWithGalleryPathsStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
@@ -62,7 +57,7 @@ export class HomeComponent implements OnInit {
                 }
             })
         ).subscribe();
-        
+
         this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
             filter((x) => x),
             tap(async (response: any) => {

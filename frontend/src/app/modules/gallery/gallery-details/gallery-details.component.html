@@ -17,7 +17,7 @@
     <div class="artdv-gallerydetails-img">
         <div class="artdv-gallerydetails-img-wrapper">
             <img 
-                src="{{storageDomain + '/' + artwork.thumbnail_path}}" 
+                src="{{(storageDomain + '/' + artwork.thumbnail_path) | cacheCheck: artwork.last_modified}}" 
                 alt="404-picture-not-found"
                 [attr.aria-disabled]="true"
                 (click)="navigateFullscale(true)"

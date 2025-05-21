@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.1.0}}$
+$\texttt{\color{teal}{v1.1.1}}$
 
 
 <br><br>
@@ -267,12 +267,9 @@ $ npm run lint
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.0.3\ >>\ {\color{pink}1.1.0}}$
+### $\textsf{last\ update\ 1.1.0\ >>\ {\color{pink}1.1.1}}$
 
-- $\textsf{\color{green}Change:}$ Added administration of 'news' elements (create/update/delete).
-- $\textsf{\color{green}Change:}$ Removed static json data to load 'news' elements.
-- $\textsf{\color{green}Change:}$ Updated route highlighting (active navigation route has bolder font in navbar).
-- $\textsf{\color{green}Change:}$ Added version check of image load (load from cache if possible or from cloud if outdated).
+- $\textsf{\color{red}Patch:}$ Added image preload service/guard to provide loaded images before showing page.
 
 <br>
 
