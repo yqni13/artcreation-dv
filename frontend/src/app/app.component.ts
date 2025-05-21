@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './common/components/navigation/navigation.component';
 import { FooterComponent } from './common/components/footer/footer.component';
 import { SnackbarComponent } from './common/components/snackbar/snackbar.component';
 import { SnackbarMessageService } from './shared/services/snackbar.service';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { LoadingAnimationComponent } from './common/components/animation/loading/loading-animation.component';
 
 @Component({
     selector: 'app-root',
@@ -13,6 +14,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
     imports: [
         CommonModule,
         RouterOutlet,
+        LoadingAnimationComponent,
         NavigationComponent,
         SnackbarComponent,
         FooterComponent
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
 
   protected title = 'artcreation-dv';
   protected scrollbarActive: boolean;
+  protected isNavigating: boolean;
 
   private scrollbarRoutes: string[];
   private listenerDefault!: () => void;
@@ -39,13 +42,15 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
       '/imprint',
       '/privacy'
     ];
+    this.isNavigating = false;
 
     this.router.events.subscribe(e => {
-      if(e instanceof NavigationEnd) {
-        setTimeout(() => {
-          this.scrollToTop();
-          this.scrollbarActive = this.scrollbarRoutes.includes(e.urlAfterRedirects);
-        })
+      if(e instanceof NavigationStart) {
+        this.isNavigating = true;
+        this.scrollToTop();
+        this.scrollbarActive = this.scrollbarRoutes.includes(e.url);
+      } else if(e instanceof NavigationEnd || e instanceof NavigationCancel || e instanceof NavigationError) {
+        this.isNavigating = false;
       }
     })
   }

@@ -1,6 +1,7 @@
 <artdv-imgfullscale 
-    [imgPath]="storageDomain + '/' + currentPath" 
+    [imgPath]="currentPath !== '' ? (storageDomain + '/' + currentPath) : ''" 
     [isActive]="isFullscale"
+    [lastModifiedParam]="activeEntry ? activeEntry.last_modified : ''"
     (fullscaleChanged)="navigateFullscale($event)"
 ></artdv-imgfullscale>
 <section class="artdv-archive">
@@ -14,7 +15,7 @@
     </div>
     <div class="artdv-archive-content">
         <div class="artdv-archive-entry" *ngFor="let news of newsCollection">
-            @defer(on viewport) { <img src="{{storageDomain + '/' + (news.gallery !== null ? news.thumbnail_path_gallery : news.thumbnail_path) }}" alt="404-picture-not-found">
+            @defer(on viewport) { <img src="{{(storageDomain + '/' + (news.gallery !== null ? news.thumbnail_path_gallery : news.thumbnail_path)) | cacheCheck }}" alt="404-picture-not-found">
             <div class="artdv-archive-wrapper">                
                 <div class="artdv-archive-text">
                     <h3>{{news.title}}</h3>

@@ -35,6 +35,8 @@ export class AdminComponent {
         this.authorNewsImg = 'https://pixabay.com/de/photos/news-tageszeitung-presse-1172463/';
         this.authorLogoutImg = 'https://pixabay.com/de/users/tama66-1032521/';
         this.editLabel = 'edit: ';
+
+        // Images are preloaded via ImgPreloadGuard (admin.routes.ts).
     }
 
     notAvailableInfo() {

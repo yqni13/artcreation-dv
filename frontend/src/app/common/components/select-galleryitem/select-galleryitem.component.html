@@ -15,7 +15,7 @@
         <div class="artdv-selectgalleryitem-modal-container">
             <div class="artdv-selectgalleryitem-modal-wrapper" *ngFor="let item of galleryList">
                 <img
-                    src="{{storageDomain + '/' + item.image_path}}"
+                    src="{{storageDomain + '/' + item.thumbnail_path}}"
                     alt="{{item.reference_nr}}"
                     (click)="selectArtwork(item.gallery_id)"
                     (keydown.enter)="selectArtwork(item.gallery_id)"

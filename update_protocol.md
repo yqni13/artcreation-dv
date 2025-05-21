@@ -4,6 +4,17 @@
 
 <br>
 
+### 2024/05/21 - $\textsf{update\ 1.1.0\ >>\ {\color{pink}1.1.1}}$
+
+- $\textsf{\color{red}Patch:}$ Added image preload service/guard to provide loaded images before showing page.
+
+### 2024/05/19 - $\textsf{update\ 1.0.3\ >>\ {\color{pink}1.1.0}}$
+
+- $\textsf{\color{green}Change:}$ Added administration of 'news' elements (create/update/delete).
+- $\textsf{\color{green}Change:}$ Removed static json data to load 'news' elements.
+- $\textsf{\color{green}Change:}$ Updated route highlighting (active navigation route has bolder font in navbar).
+- $\textsf{\color{green}Change:}$ Added version check of image load (load from cache if possible or from cloud if outdated).
+
 ### 2024/04/16 - $\textsf{update\ 1.0.2\ >>\ {\color{pink}1.0.3}}$
 
 - $\textsf{\color{green}Change:}$ Update email security by encrypting all payload data on mail request.

@@ -81,12 +81,12 @@
                 },
                 "other": {
                     "created": "erstellt",
-                    "sort": "Sortieren",
+                    "sort": "Sortierung",
                     "updated": "bearbeitet"
                 },
                 "placeholder": {
                     "content": "Fügen Sie einen Text ein",
-                    "search": "in den News suchen",
+                    "search": "nach Text suchen",
                     "sorting": "Sortiere nach",
                     "source": "Wählen Sie die Quelle",
                     "title": "Wählen Sie einen Titel"

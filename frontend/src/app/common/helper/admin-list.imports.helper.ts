@@ -4,8 +4,10 @@ import { LoadingAnimationComponent } from './../components/animation/loading/loa
 import { CommonModule } from '@angular/common';
 import { CastAbstractToFormControlPipe } from './../pipes/cast-abstracttoform-control.pipe';
 import { TextInputComponent } from '../components/form-components/text-input/text-input.component';
+import { CacheCheckPipe } from '../pipes/cache-check.pipe';
 
 export const AdminListImportsModule = [
+    CacheCheckPipe,
     CastAbstractToFormControlPipe,
     CommonModule,
     LoadingAnimationComponent,
