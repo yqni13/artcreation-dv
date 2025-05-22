@@ -165,8 +165,8 @@
             }
         },
         "home": {
-            "title": "Kunst & Kreatives",
-            "placeholder": "keine News abrufbar"
+            "placeholder": "keine News abrufbar",
+            "title": "Kunst & Kreatives"
         },
         "imprint": {
             "message": "null",
