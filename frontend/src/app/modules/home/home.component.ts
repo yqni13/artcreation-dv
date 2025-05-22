@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
     protected newsCollection: NewsItemWGP[];
     protected imgPreloadCollection: any;
     protected isLoadingResponse: boolean;
+    protected authorLink: string;
 
     private subscriptionHttpObservationFindAll$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit {
     ) {
         this.newsCollection = [];
         this.isLoadingResponse = true;
+        this.authorLink = 'https://pixabay.com/de/users/ds_30-1795490/';
 
         this.subscriptionHttpObservationFindAll$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();
@@ -62,7 +64,6 @@ export class HomeComponent implements OnInit {
             filter((x) => x),
             tap(async (response: any) => {
                 if(this.auth.getExceptionList().includes(response.error.headers.error)) {
-                    await this.delay(500); // delay after snackbar displays
                     this.httpObservation.setErrorStatus(false);
                     this.isLoadingResponse = false;
                 }

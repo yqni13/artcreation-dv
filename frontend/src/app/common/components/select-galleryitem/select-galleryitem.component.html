@@ -12,6 +12,14 @@
         {{'validation.frontend.img-upload.required' | translate}}
     </span>
     <div class="artdv-selectgalleryitem-modal" *ngIf="showGalleryList && galleryList !== null">
+        <div
+            class="artdv-selectgalleryitem-modal-close"
+            (click)="closeGalleryList()"
+            (keydown.enter)="closeGalleryList()"
+            [attr.tabindex]="0"
+        >
+            <i class="icon-CloseX"></i>
+        </div>
         <div class="artdv-selectgalleryitem-modal-container">
             <div class="artdv-selectgalleryitem-modal-wrapper" *ngFor="let item of galleryList">
                 <img

@@ -9,7 +9,6 @@ import { NewsItemWGP } from '../../../api/models/news-response.interface';
 import { environment } from '../../../../environments/environment';
 import { LoadingAnimationComponent } from '../animation/loading/loading-animation.component';
 import { SizeOption } from '../../../shared/enums/size-option.enum';
-import { GalleryRoute } from '../../../api/routes/gallery.route.enum';
 
 @Component({
     selector: 'artdv-carousel',
