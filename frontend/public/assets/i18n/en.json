@@ -165,7 +165,8 @@
             }
         },
         "home": {
-            "title": "art & creative"
+            "title": "art & creative",
+            "placeholder": "no news available"
         },
         "imprint": {
             "message": "The textual content is currently only in german language available. We will provide the translations as soon as possible.",

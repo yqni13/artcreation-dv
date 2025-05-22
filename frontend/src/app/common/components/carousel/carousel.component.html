@@ -28,9 +28,10 @@
                     </div>
                 </div>
             </ng-template>
+
         </div>
     </div>
-    <div class="artdv-carousel-arrows">
+    <div *ngIf="entries.length > 0" class="artdv-carousel-arrows">
         <i 
             [attr.tabindex]="0"
             class="icon-Arrow artdv-arrow-left"

@@ -33,7 +33,7 @@ div {
         font-size: 10px;
         font-weight: bold;
         margin-top: calc(sass.$space5 / 2);
-        width: calc(100% + (sass.$space15 * 2) + 4px);
+        width: auto;
         text-align: center;
     }
 
@@ -42,16 +42,46 @@ div {
         scrollbar-width: none;
         width: 100%;
         height: 100%;
+
+        .artdv-selectgalleryitem-modal-close {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            border: 2px solid sass.$color-ice-white;
+            border-radius: 5px;
+            background-color: sass.$color-snackbar-bg;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &:hover > i {
+                color: var(--theme-snackbar-error);
+            }
+
+            i {
+                /* alternative responsiveness*/
+                max-width: 35px;
+                max-height: 35px;
+                min-width: 20px;
+                min-height: 20px;
+                width: 5vw;
+                height: 5vw;
+
+                color: sass.$color-ice-white;
+                margin: sass.$space5;
+            }
+        }
+
         .artdv-selectgalleryitem-modal-container {
             $img-border: 2px;
             $img-margin: sass.$space5;
             flex-wrap: wrap;
             justify-content: center;
-            
+
             .artdv-selectgalleryitem-modal-wrapper {
                 flex-wrap: wrap;
                 overflow: hidden;
-                width: calc(((100vw - ($modal-border * 2)) / 7) - ($img-border * 2) - ($img-margin * 2));
                 aspect-ratio: 1 / 1;
                 margin: $img-margin;
                 border: $img-border solid var(--theme-contrast-anchor);
@@ -117,11 +147,11 @@ div {
 
 .artdv-selectgalleryitem-fullsize {
     width: calc(100vw - ($modal-border * 2));
-    height: calc(100vh - ($modal-border * 2));
+    height: auto;
     border: 3px solid var(--theme-body-text);
     top: 0;
     left: 0;
     position: absolute;
     z-index: 1000;
-    backdrop-filter: contrast(0);
+    background-color: sass.$color-snackbar-bg;
 }

@@ -77,6 +77,9 @@
         header {
             background-position: 50%;
         }
+        .artdv-home-news-placeholder {
+            height: 80vh;
+        }
     }
 
     .artdv-admin {
@@ -239,6 +242,12 @@
             justify-content: center;
             margin: 0 auto;
             max-width: 700px;
+        }
+    }
+
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 7) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
         }
     }
 
@@ -444,6 +453,9 @@
         header {
             background-position: 27.5%;
         }
+        .artdv-home-news-placeholder {
+            height: 70vh;
+        }
     }
 
     .artdv-admin {
@@ -606,6 +618,12 @@
             justify-content: center;
             margin: 0 auto;
             max-width: 700px;
+        }
+    }
+
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 6) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
         }
     }
 
@@ -811,6 +829,12 @@
         }
     }
 
+    .artdv-home {
+        .artdv-home-news-placeholder {
+            height: 60vh;
+        }
+    }
+
     .artdv-admin {
         .artdv-author {
             width: 100%;
@@ -969,6 +993,12 @@
     .artdv-privacy {
         .artdv-privacy-content {
             margin: sass.$space25 calc(sass.$space50 * 2);
+        }
+    }
+
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 5) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
         }
     }
 
@@ -1149,6 +1179,9 @@
         header {
             background-position: 33%;
         }
+        .artdv-home-news-placeholder {
+            height: 50vh;
+        }
     }
 
     .artdv-admin {
@@ -1313,6 +1346,12 @@
         }
     }
 
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 4) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
+        }
+    }
+
     .artdv-shipping {
         p,
         li {
@@ -1454,6 +1493,12 @@
         }
     }
 
+    .artdv-home {
+        .artdv-home-news-placeholder {
+            height: 40vh;
+        }
+    }
+
     .artdv-admingallerydetail,
     .artdv-adminnewsdetail {
         .artdv-admin-specific-detail-form-wrapper {
@@ -1582,6 +1627,12 @@
     .artdv-privacy {
         .artdv-privacy-content {
             margin: 0 calc(sass.$space25 * 2) sass.$space25 calc(sass.$space25 * 2);
+        }
+    }
+
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 3) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
         }
     }
 
