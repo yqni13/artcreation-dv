@@ -165,6 +165,7 @@
             }
         },
         "home": {
+            "placeholder": "no news available",
             "title": "art & creative"
         },
         "imprint": {

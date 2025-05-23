@@ -1,19 +1,21 @@
-<div class="artdv-snackbar-container" [ngClass]="'snackbar-' + snackbarClass">
-    <div class="artdv-snackbar-content" [ngClass]="!!snackbarMsg.text ? 'artdv-multiline' : 'artdv-singleline'">
-        <div class="artdv-snackbar-title">
-            <div><i class="{{snackbarIcon}}"></i></div>
-            <h4>{{snackbarMsg.title}}</h4>
+<div id="artdv-snackbar-container-wrapper">
+    <div class="artdv-snackbar-container" [ngClass]="'snackbar-' + snackbarClass">
+        <div class="artdv-snackbar-content" [ngClass]="!!snackbarMsg.text ? 'artdv-multiline' : 'artdv-singleline'">
+            <div class="artdv-snackbar-title">
+                <div><i class="{{snackbarIcon}}"></i></div>
+                <h4>{{snackbarMsg.title}}</h4>
+            </div>
+            <div class="artdv-snackbar-text" *ngIf="!!snackbarMsg.text">
+                {{snackbarMsg.text}}
+            </div>
         </div>
-        <div class="artdv-snackbar-text" *ngIf="!!snackbarMsg.text">
-            {{snackbarMsg.text}}
+        <div class="artdv-snackbar-btn" *ngIf="!snackbarMsg.autoClose">
+            <i 
+                class="icon-CloseX" 
+                (click)="close()" 
+                (keydown.enter)="close()"
+                [attr.aria-disabled]="true"
+            ></i>
         </div>
-    </div>
-    <div class="artdv-snackbar-btn" *ngIf="!snackbarMsg.autoClose">
-        <i 
-            class="icon-CloseX" 
-            (click)="close()" 
-            (keydown.enter)="close()"
-            [attr.aria-disabled]="true"
-        ></i>
     </div>
 </div>

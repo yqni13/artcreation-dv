@@ -77,6 +77,9 @@
         header {
             background-position: 50%;
         }
+        .artdv-home-news-placeholder {
+            height: 80vh;
+        }
     }
 
     .artdv-admin {
@@ -242,6 +245,12 @@
         }
     }
 
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 7) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
+        }
+    }
+
     .artdv-shipping {
         .artdv-shipping-block {
             h2 {
@@ -273,7 +282,11 @@
             padding: sass.$comp-padding-big 0;
         }
     }
-    
+
+    #artdv-snackbar-container-wrapper {
+        margin: sass.$space25;
+    }
+
     .artdv-nav-bar {
         height: 100vh;
         width: var(--view-nav-width);
@@ -444,6 +457,9 @@
         header {
             background-position: 27.5%;
         }
+        .artdv-home-news-placeholder {
+            height: 70vh;
+        }
     }
 
     .artdv-admin {
@@ -609,6 +625,12 @@
         }
     }
 
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 6) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
+        }
+    }
+
     .artdv-shipping {
         .artdv-shipping-block {
             h2 {
@@ -655,6 +677,10 @@
                 padding: calc(sass.$comp-padding-small / 2) 0;
             }
         }
+    }
+
+    #artdv-snackbar-container-wrapper {
+        margin: sass.$space25;
     }
 
     footer {
@@ -808,6 +834,12 @@
                     }
                 }
             }
+        }
+    }
+
+    .artdv-home {
+        .artdv-home-news-placeholder {
+            height: 60vh;
         }
     }
 
@@ -969,6 +1001,12 @@
     .artdv-privacy {
         .artdv-privacy-content {
             margin: sass.$space25 calc(sass.$space50 * 2);
+        }
+    }
+
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 5) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
         }
     }
 
@@ -1149,6 +1187,9 @@
         header {
             background-position: 33%;
         }
+        .artdv-home-news-placeholder {
+            height: 50vh;
+        }
     }
 
     .artdv-admin {
@@ -1313,6 +1354,12 @@
         }
     }
 
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 4) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
+        }
+    }
+
     .artdv-shipping {
         p,
         li {
@@ -1363,13 +1410,12 @@
         align-items: center!important;
     }
 
-    .artdv-snackbar-container {
-        margin: sass.$space15 0 0 0!important;
+    #artdv-snackbar-container-wrapper {
+        margin: sass.$space15 0 0 0;
     }
 
     footer {
         flex-direction: column-reverse!important;
-        height: 350px!important;
         .artdv-footer-credits {
             width: 100%!important;
             text-align: center;
@@ -1386,12 +1432,10 @@
         }
 
         .artdv-footer-links {
-            margin-top: sass.$comp-padding-small;
+            margin-top: sass.$space50;
             width: 100%!important;
             ul {
                 li {
-                    padding: 2px 0!important;
-
                     .artdv-footer-language-select {
                         max-height: 25px;
                     }
@@ -1451,6 +1495,12 @@
                     }
                 }
             }
+        }
+    }
+
+    .artdv-home {
+        .artdv-home-news-placeholder {
+            height: 40vh;
         }
     }
 
@@ -1585,6 +1635,12 @@
         }
     }
 
+    .artdv-selectgalleryitem {
+        .artdv-selectgalleryitem-modal-wrapper {
+            width: calc(((100vw - (sass.$border-width3 * 2)) / 3) - (sass.$border-width2 * 2) - (sass.$space5 * 2));
+        }
+    }
+
     .artdv-shipping {
         $responsive-margin: sass.$space25;
         .artdv-shipping-block {
@@ -1665,8 +1721,8 @@
     .artdv-component-snackbar {
         top: var(--view-nav-width)!important;
         left: 0!important;
-        .artdv-snackbar-container {
-            margin: 15px auto!important;
+        #artdv-snackbar-container-wrapper {
+            margin: sass.$space15;
         }
     }
 }

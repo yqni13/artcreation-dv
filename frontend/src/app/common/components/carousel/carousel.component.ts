@@ -9,13 +9,14 @@ import { NewsItemWGP } from '../../../api/models/news-response.interface';
 import { environment } from '../../../../environments/environment';
 import { LoadingAnimationComponent } from '../animation/loading/loading-animation.component';
 import { SizeOption } from '../../../shared/enums/size-option.enum';
-import { GalleryRoute } from '../../../api/routes/gallery.route.enum';
+import { CacheCheckPipe } from '../../pipes/cache-check.pipe';
 
 @Component({
     selector: 'artdv-carousel',
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss'],
     imports: [
+        CacheCheckPipe,
         CommonModule,
         DateFormatPipe,
         RouterModule,

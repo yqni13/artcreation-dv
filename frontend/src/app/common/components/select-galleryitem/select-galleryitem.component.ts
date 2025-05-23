@@ -23,11 +23,8 @@ export class SelectGalleryItemComponent implements OnInit, OnDestroy {
 
     @HostListener('window:keydown', ['$event'])
     closeOnEscape(event: KeyboardEvent) {
-        if(event.key === 'Escape') {
-            this.showGalleryList = false;
-            this.isLoadingResponse = false;
-            this.hasSelectedItem = false;
-            this.selectedArtwork = null;
+        if(event.key === 'Escape' && this.showGalleryList) {
+            this.closeGalleryList();
         }
     }
 
@@ -110,6 +107,13 @@ export class SelectGalleryItemComponent implements OnInit, OnDestroy {
         } else {
             this.showGalleryList = true;
         }
+    }
+
+    closeGalleryList() {
+        this.showGalleryList = false;
+        this.isLoadingResponse = false;
+        this.hasSelectedItem = false;
+        this.selectedArtwork = null;
     }
 
     selectArtwork(id: string) {
