@@ -120,6 +120,7 @@ export class ArchiveComponent implements OnInit, OnDestroy {
                     this.cacheCheckPipe.transform(`${this.storageDomain}/${path}`, value.last_modified)
                 );
             })
+            this.imgPreload.preloadMultiple(imgPathList);
         })
     }
 
