@@ -6,6 +6,8 @@
     top: 25px;
     left: calc(var(--view-nav-width) + 25px);
     width: 60px;
+    backdrop-filter: blur(2px);
+    z-index: 1000;
 
     .artdv-detail-tools {
         width: 100%;
@@ -19,13 +21,12 @@
         align-items: center;
     }
 
-    .back {
+    .goback {
         height: 40px;
         line-height: 40px;
-        margin-bottom: 5px;
         background-color: transparent;
 
-        .artdv-back-arrow {
+        .artdv-goback-arrow {
             color: sass.$color-rich-black;
             text-transform: uppercase;
             text-decoration: none;

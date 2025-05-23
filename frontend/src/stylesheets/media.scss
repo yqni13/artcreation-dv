@@ -1408,7 +1408,6 @@
 
     footer {
         flex-direction: column-reverse!important;
-        height: 350px!important;
         .artdv-footer-credits {
             width: 100%!important;
             text-align: center;
@@ -1425,12 +1424,10 @@
         }
 
         .artdv-footer-links {
-            margin-top: sass.$comp-padding-small;
+            margin-top: sass.$space50;
             width: 100%!important;
             ul {
                 li {
-                    padding: 2px 0!important;
-
                     .artdv-footer-language-select {
                         max-height: 25px;
                     }

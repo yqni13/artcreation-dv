@@ -8,68 +8,70 @@
         </div>
     </div>
     <div class="artdv-footer-links">
-        <div class="artdv-footer-links-connection">
-            <h4>{{'common.footer.titles.connection' | translate}}</h4>
-            <ul>
-                <li *ngFor="let route of connectRoutes">
-                    <span
-                        [attr.aria-disabled]="true"
-                        routerLink="{{ route.path }}"
-                    >{{ 'common.footer.content.' + route.data?.['title'] | translate}}</span>
-                </li>
-                <li>
-                    <a
-                        href="{{ socialmediaURL.instagram }}"
-                        target="_blank"
-                    >Instagram</a>
-                </li>
-                <li>
-                    <a
-                        href="{{ socialmediaURL.facebook }}"
-                        target="_blank"
-                    >Facebook</a>
-                </li>
-                <li>
-                    <a
-                        href="{{ socialmediaURL.publicartists }}"
-                        target="_blank"
-                    >publicartists</a>
-                </li>
-                <li class="artdv-footer-language artdv-language-element">
-                    <div class="artdv-footer-language-select artdv-language-element">
+        <div class="artdv-footer-links-wrapper">
+            <div class="artdv-footer-links-connection">
+                <h4>{{'common.footer.titles.connection' | translate}}</h4>
+                <ul>
+                    <li *ngFor="let route of connectRoutes">
                         <span
-                            class="artdv-language-element"
                             [attr.aria-disabled]="true"
-                            (click)="openLanguageList()"
-                            (keydown.enter)="openLanguageList()"
-                        >{{'shared.enum.language.' + this.selectedLanguage | translate}}</span>
-                        <i class="icon-Language artdv-language-element"></i>
-                    </div>
-                    <div *ngIf="showLanguageList" class="artdv-footer-language-list artdv-language-element">
-                        <span 
-                            class="artdv-language-option-select artdv-language-element"
-                        >{{'common.footer.content.language' | translate}}</span>
+                            routerLink="{{ route.path }}"
+                        >{{ 'common.footer.content.' + route.data?.['title'] | translate}}</span>
+                    </li>
+                    <li>
+                        <a
+                            href="{{ socialmediaURL.instagram }}"
+                            target="_blank"
+                        >Instagram</a>
+                    </li>
+                    <li>
+                        <a
+                            href="{{ socialmediaURL.facebook }}"
+                            target="_blank"
+                        >Facebook</a>
+                    </li>
+                    <li>
+                        <a
+                            href="{{ socialmediaURL.publicartists }}"
+                            target="_blank"
+                        >publicartists</a>
+                    </li>
+                    <li class="artdv-footer-language artdv-language-element">
+                        <div class="artdv-footer-language-select artdv-language-element">
+                            <span
+                                class="artdv-language-element"
+                                [attr.aria-disabled]="true"
+                                (click)="openLanguageList()"
+                                (keydown.enter)="openLanguageList()"
+                            >{{'shared.enum.language.' + this.selectedLanguage | translate}}</span>
+                            <i class="icon-Language artdv-language-element"></i>
+                        </div>
+                        <div *ngIf="showLanguageList" class="artdv-footer-language-list artdv-language-element">
+                            <span 
+                                class="artdv-language-option-select artdv-language-element"
+                            >{{'common.footer.content.language' | translate}}</span>
+                            <span
+                                *ngFor="let option of language | keyvalue"
+                                class="artdv-language-options"
+                                [attr.aria-disabled]="true"
+                                (click)="setLanguageData(language[option.value])"
+                                (keydown.enter)="setLanguageData(language[option.value])"
+                            >{{'shared.enum.language.' + option.key | translate}}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="artdv-footer-links-information">
+                <h4>{{'common.footer.titles.information' | translate}}</h4>
+                <ul>
+                    <li *ngFor="let route of infoRoutes">
                         <span
-                            *ngFor="let option of language | keyvalue"
-                            class="artdv-language-options"
                             [attr.aria-disabled]="true"
-                            (click)="setLanguageData(language[option.value])"
-                            (keydown.enter)="setLanguageData(language[option.value])"
-                        >{{'shared.enum.language.' + option.key | translate}}</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="artdv-footer-links-information">
-            <h4>{{'common.footer.titles.information' | translate}}</h4>
-            <ul>
-                <li *ngFor="let route of infoRoutes">
-                    <span
-                        [attr.aria-disabled]="true"
-                        routerLink="{{ route.path }}"
-                    >{{ 'common.footer.content.' + route.data?.['title'] | translate }}</span>
-                </li>
-            </ul>
+                            routerLink="{{ route.path }}"
+                        >{{ 'common.footer.content.' + route.data?.['title'] | translate }}</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </footer>
