@@ -33,6 +33,12 @@ footer {
     justify-content: center;
     align-items: center;
 
+    .artdv-footer-links-wrapper {
+        /* height automatically realigns on 'longest' content */
+        display: flex;
+        flex-direction: row;
+    }
+
     h4 {
         color: var(--theme-contrast-anchor);
         text-transform: uppercase;
@@ -127,7 +133,6 @@ footer {
     .artdv-footer-links-connection,
     .artdv-footer-links-information {
         margin: 0 sass.$comp-padding-small;
-        height: 150px;
     }
 }
 

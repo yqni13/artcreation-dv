@@ -282,7 +282,11 @@
             padding: sass.$comp-padding-big 0;
         }
     }
-    
+
+    #artdv-snackbar-container-wrapper {
+        margin: sass.$space25;
+    }
+
     .artdv-nav-bar {
         height: 100vh;
         width: var(--view-nav-width);
@@ -673,6 +677,10 @@
                 padding: calc(sass.$comp-padding-small / 2) 0;
             }
         }
+    }
+
+    #artdv-snackbar-container-wrapper {
+        margin: sass.$space25;
     }
 
     footer {
@@ -1402,13 +1410,12 @@
         align-items: center!important;
     }
 
-    .artdv-snackbar-container {
-        margin: sass.$space15 0 0 0!important;
+    #artdv-snackbar-container-wrapper {
+        margin: sass.$space15 0 0 0;
     }
 
     footer {
         flex-direction: column-reverse!important;
-        height: 350px!important;
         .artdv-footer-credits {
             width: 100%!important;
             text-align: center;
@@ -1425,12 +1432,10 @@
         }
 
         .artdv-footer-links {
-            margin-top: sass.$comp-padding-small;
+            margin-top: sass.$space50;
             width: 100%!important;
             ul {
                 li {
-                    padding: 2px 0!important;
-
                     .artdv-footer-language-select {
                         max-height: 25px;
                     }
@@ -1716,8 +1721,8 @@
     .artdv-component-snackbar {
         top: var(--view-nav-width)!important;
         left: 0!important;
-        .artdv-snackbar-container {
-            margin: 15px auto!important;
+        #artdv-snackbar-container-wrapper {
+            margin: sass.$space15;
         }
     }
 }

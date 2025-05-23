@@ -9,7 +9,7 @@
                     <div class="artdv-carousel-default-img">
                         <img
                             [ngClass]="entry.gallery !== null ? 'artdv-anchor' : ''"
-                            src="{{storageDomain + '/' + (entry.gallery !== null ? entry.thumbnail_path_gallery : entry.thumbnail_path) }}" 
+                            src="{{(storageDomain + '/' + (entry.gallery !== null ? entry.thumbnail_path_gallery : entry.thumbnail_path)) | cacheCheck: entry.last_modified }}" 
                             alt="404-picture-not-found"
                             [attr.aria-disabled]="true"
                             (click)="navigateToDetails(entry.gallery !== null ? entry : null)"
