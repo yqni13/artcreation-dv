@@ -1,13 +1,25 @@
 @use '../../../../stylesheets/utilities' as sass;
 
 
+#artdv-snackbar-container-wrapper {
+    border: 5px solid var(--theme-snackbar-bg);
+    border-radius: 25px;
+    // margin: 25px;
+}
+
 .artdv-snackbar-container {
     width: fit-content;
     max-width: 400px;
     display: flex;
     flex-direction: row;
-    background-color: var(--theme-nav-bg);
-    margin: 25px;
+    background-color: var(--theme-snackbar-bg);
+    border-radius: 20px;
+    border-color: var(--theme-snackbar-divider);
+    border-width: 1px;
+    border-top-style: inset;
+    border-left-style: inset;
+    border-right-style: outset;
+    border-bottom-style: outset;
 }
 
 .snackbar-error {
