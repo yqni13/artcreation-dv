@@ -1,11 +1,13 @@
-.artdv-gallery-cards-wrapper {
+@use '../../../../stylesheets/utilities' as sass;
 
+
+.artdv-gallery-cards-wrapper {
     img {
-        width: 300px;
         aspect-ratio: 1 / 1;
         object-fit: cover;
         padding: 2px;
         border: solid 2px var(--theme-submenu-route);
+        max-width: 300px;
 
         &:hover {
             cursor: pointer;
@@ -13,8 +15,7 @@
             animation-duration: 1s;
             animation-timing-function: ease-out;
             animation-fill-mode: forwards;
-            border: solid 5px var(--theme-contrast-anchor);
-            width: calc(300px - 6px);
+            border: sass.$space5 solid var(--theme-contrast-anchor);
         }
     }         
 }

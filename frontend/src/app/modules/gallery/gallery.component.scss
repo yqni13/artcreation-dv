@@ -1,6 +1,10 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
+section {
+    align-items: center;
+}
+
 .artdv-gallery-nav {
     display: flex;
     justify-content: center;
@@ -34,6 +38,7 @@
     flex-wrap: wrap;
     margin: sass.$comp-padding-medium calc(sass.$comp-padding-small + sass.$top-reset-size);
     pointer-events: none;
+    max-width: 1500px; /* prevent displaying too many elements in row on higher device width */
 
     .artdv-gallery-cards {
         margin: 0 6px 6px 6px;
