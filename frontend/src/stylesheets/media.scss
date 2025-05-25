@@ -279,7 +279,7 @@
 
     artdv-carousel {
         .artdv-carousel-wrapper {
-            padding: sass.$comp-padding-big 0;
+            padding: sass.$space50 0;
         }
     }
 
@@ -1051,6 +1051,10 @@
                 $img-preload-border: 4px;
                 $gap: calc($gallery-cards-margin + $img-preload-padding + $img-preload-border);
                 width: calc(((100vw - 10px) / 3) - $gap)!important;
+                &:hover {
+                    $gap: calc($gallery-cards-margin + $img-preload-padding + 10px);
+                    width: calc(((100vw - (sass.$space5 * 2)) / 3) - $gap)!important;
+                }
             }
         }
     }
@@ -1705,6 +1709,10 @@
                 $img-preload-border: 4px;
                 $gap: calc($gallery-cards-margin + $img-preload-padding + $img-preload-border);
                 width: calc(((100vw - 10px) / 3) - $gap)!important;
+                &:hover {
+                    $gap: calc($gallery-cards-margin + $img-preload-padding + 10px);
+                    width: calc(((100vw - (sass.$space5 * 2)) / 3) - $gap)!important;
+                }
             }
         }
     }
