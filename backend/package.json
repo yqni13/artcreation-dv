@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "migrate": "node-pg-migrate",
+    "migrate-up": "node-pg-migrate up",
+    "migrate-down": "node-pg-migrate down",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -28,6 +31,7 @@
   },
   "devDependencies": {
     "multer": "^2.0.0",
+    "node-pg-migrate": "^8.0.0",
     "nodemon": "^3.1.9",
     "pg": "^8.13.1"
   }
