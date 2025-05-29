@@ -77,7 +77,7 @@ class NewsRepository {
             Object.assign(filter, {[k]: v});
         });
 
-        const orderClause = ' ORDER BY visual_timestamp ASC';
+        const orderClause = ' ORDER BY created_on ASC';
         let whereClause = '';
         if(Object.keys(filter).length === 1) {
             whereClause += `${Object.keys(filter)[0]} = $1`
@@ -180,11 +180,11 @@ class NewsRepository {
         const timestamp = Utils.getCustomLocaleTimestamp();
 
         const sql = `INSERT INTO ${table}
-        (news_id, gallery, image_path, thumbnail_path, visual_timestamp, title, content, created_on, last_modified)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+        (news_id, gallery, image_path, thumbnail_path, title, content, created_on, last_modified)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
 
         const values = [params['id'], params['galleryId'], params['imagePath'], params['thumbnailPath'], 
-        timestamp, params['title'], params['content'], timestamp, timestamp];
+        params['title'], params['content'], timestamp, timestamp];
 
         let connection;
         try {
@@ -229,11 +229,11 @@ class NewsRepository {
         const timestamp = Utils.getCustomLocaleTimestamp();
 
         const sql = `UPDATE ${table}
-        SET gallery = $1, image_path = $2, thumbnail_path = $3, visual_timestamp = $4, title = $5, content = $6, last_modified = $7
-        WHERE news_id = $8`;
+        SET gallery = $1, image_path = $2, thumbnail_path = $3, title = $4, content = $5, last_modified = $6
+        WHERE news_id = $7`;
 
         const values = [params['galleryId'], params['imagePath'], params['thumbnailPath'], 
-        timestamp, params['title'], params['content'], timestamp, params['id']];
+        params['title'], params['content'], timestamp, params['id']];
 
         let connection;
         try {

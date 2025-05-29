@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS gallery (
     gallery_id UUID PRIMARY KEY NOT NULL,
-    reference_nr VARCHAR(6) NOT NULL,
+    reference_nr CHAR(6) NOT NULL,
     image_path TEXT NOT NULL,
     thumbnail_path TEXT NOT NULL,
     title VARCHAR(100),
@@ -20,9 +20,8 @@ CREATE TABLE IF NOT EXISTS news (
     gallery UUID REFERENCES gallery(gallery_id),
     image_path TEXT,
     thumbnail_path TEXT,
-    visual_timestamp TIMESTAMP NOT NULL,
-    title VARCHAR(100) NOT NULL,
-    content TEXT NOT NULL,
+    title VARCHAR(75) NOT NULL,
+    content VARCHAR(450) NOT NULL,
     created_on TIMESTAMP NOT NULL,
     last_modified TIMESTAMP NOT NULL
 );
