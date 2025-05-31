@@ -97,11 +97,11 @@ class ImageUpload {
     handleImageUpdate = async (params, files, existDbEntry) => {
         // change on file and/or genre needs to delete old/upload new images (new file or changed name => path + refNr)
         try {
-            if(files.length === 0 && existDbEntry.art_genre !== params.artGenre) {
+            if(files.length === 0 && params.artGenre && existDbEntry.art_genre !== params.artGenre) {
                 const response = await CloudStorageAPI.readImageFromCDN(existDbEntry.image_path);
                 files = await Utils.streamToBuffer(response.Body);
             }
-            if(files.length === 0 && existDbEntry.art_genre === params.artGenre) {
+            if(files.length === 0 && params.artGenre && existDbEntry.art_genre === params.artGenre) {
                 return;
             }
 

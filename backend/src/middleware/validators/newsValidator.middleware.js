@@ -14,11 +14,11 @@ exports.newsFindOneSchema = [
 exports.newsCreateSchema = [
     CustomValidator.validateImageFileInput,
     body('galleryId')
-        .custom((foreignKey) => CustomValidator.validateNewsFK(foreignKey)),
+        .custom(async (foreignKey, {req}) => await CustomValidator.validateNewsFK(foreignKey, NewsRepository, req)),
     body('imagePath')
-        .custom((imagePath, { req }) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
+        .custom((imagePath, {req}) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
     body('thumbnailPath')
-        .custom((thumbnailPath, { req }) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
+        .custom((thumbnailPath, {req}) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
     body('title')
         .trim()
         .notEmpty()
@@ -44,13 +44,13 @@ exports.newsUpdateSchema = [
         .bail()
         .custom((value) => CustomValidator.validateUUID(value))
         .bail()
-        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, NewsRepository, req)),
+        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, NewsRepository, req)),
     body('galleryId')
-        .custom((foreignKey) => CustomValidator.validateNewsFK(foreignKey)),
+        .custom(async (foreignKey, {req}) => await CustomValidator.validateNewsFK(foreignKey, NewsRepository, req)),
     body('imagePath')
-        .custom((imagePath, { req }) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
+        .custom((imagePath, {req}) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
     body('thumbnailPath')
-        .custom((thumbnailPath, { req }) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
+        .custom((thumbnailPath, {req}) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
     body('title')
         .trim()
         .notEmpty()
@@ -75,5 +75,5 @@ exports.newsDeleteSchema = [
         .bail()
         .custom((id) => CustomValidator.validateUUID(id))
         .bail()
-        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, NewsRepository, req))
+        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, NewsRepository, req))
 ];

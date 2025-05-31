@@ -77,3 +77,19 @@ exports.streamToBuffer = async (stream) => {
     }
     return Buffer.concat(chunks);
 }
+
+/**
+ * 
+ * @param {file[]} files 
+ * @param {string[]} replaceValue 
+ * @param {string[]} newValue 
+ * @returns {file[]}
+ */
+exports.renameFileNames = (files, replaceValue, newValue) => {
+    for (let i = 0; i < files.length; i++) {
+        if(files[i] && files[i]['originalname'].includes(replaceValue[i])) {
+            files[i]['originalname'] = files[i]['originalname'].replace(replaceValue[i], newValue[i]);
+        }
+    }
+    return files;
+}

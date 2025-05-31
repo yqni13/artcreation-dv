@@ -1,42 +1,15 @@
-const { SaleStatus } = require('./enums/sale-status.enum');
-const { ArtGenre } = require('./enums/art-genre.enum');
-const { ArtMedium } = require('./enums/art-medium.enum');
-const { ArtTechnique } = require('./enums/art-technique.enum');
+const { RoutesEnum } = require('./enums/routes.enum');
 const Secrets = require('../utils/secrets.utils');
 const { decryptRSA } = require('../utils/crypto.utils');
 const { InvalidPropertiesException } = require('./exceptions/validation.exception');
 
-exports.validateSaleStatus = (value) => {
-    const statusCollection = Object.values(SaleStatus);
-    if(!statusCollection.includes(value)) {
-        throw new Error('data-invalid-entry#saleStatus');
+exports.validateEnum = (value, enumObj, enumName) => {
+    const enumValues = Object.values(enumObj);
+    if(!enumValues.includes(value)) {
+        throw new Error(`data-invalid-entry#${enumName}`);
     }
     return true;
 }
-
-exports.validateArtGenre = (value) => {
-    const genres = Object.values(ArtGenre);
-    if(!genres.includes(value)) {
-        throw new Error('data-invalid-entry#artGenre');
-    }
-    return true;
-};
-
-exports.validateArtMedium = (value) => {
-    const genres = Object.values(ArtMedium);
-    if(!genres.includes(value)) {
-        throw new Error('data-invalid-entry#artMedium');
-    }
-    return true;
-};
-
-exports.validateArtTechnique = (value) => {
-    const genres = Object.values(ArtTechnique);
-    if(!genres.includes(value)) {
-        throw new Error('data-invalid-entry#artTechnique');
-    }
-    return true;
-};
 
 exports.validateUUID = (value) => {
     const pureValue = value.replaceAll('-', '');
@@ -62,11 +35,12 @@ exports.validateRefNrNoManualChange = async (refNr, req) => {
     return true;
 }
 
-exports.validateNewsFK = (fk) => {
+exports.validateNewsFK = async (fk, repository, req) => {
     if(fk === null) {
         return true;
     }
     this.validateUUID(fk);
+    await this.validateExistingEntry(fk, repository, req);
     return true;
 }
 
@@ -107,7 +81,7 @@ exports.validateImageFileUpdate = (req, res, next) => {
 
 exports.validateImageFileInput = (req, res, next) => {
     // custom solution file input => express-validator does not handle files
-    if(req.body.galleryId === null && req.body.imagePath === null && req.files.length === 0) {
+    const alarmMissingFileInput = function() {
         const data = [{
             type: 'input',
             value: null,
@@ -118,7 +92,16 @@ exports.validateImageFileInput = (req, res, next) => {
         throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
     }
 
-    // validation not possible in case of news create/update with gallery link instead image
+    // Isolate the string '/api/<version>/' to get route from baseUrl.
+    const route = req.baseUrl.replace(req.baseUrl.substring(-1, req.baseUrl.lastIndexOf('/')+1), '');
+    
+    if((route === RoutesEnum.ASSETS || route === RoutesEnum.GALLERY) && req.files.length === 0) {
+        alarmMissingFileInput();
+    } else if(route === RoutesEnum.NEWS && req.body.galleryId === null && req.files.length === 0) {
+        alarmMissingFileInput();
+    }
+
+    // validate type only in case of new image input (create/input img upload)
     if(req.files.length > 0) {
         this.validateImageType(req.files[0]);
     }
