@@ -138,7 +138,7 @@ class GalleryRepository {
                 error: error.code,
                 stack: error.stack,
                 context: {
-                    method: 'artdv_gallery_FindAllFiltered'
+                    method: 'artdv_gallery_FindAll'
                 }
             });
             await DBConnect.close(connection);

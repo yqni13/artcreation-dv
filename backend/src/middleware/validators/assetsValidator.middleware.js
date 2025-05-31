@@ -33,6 +33,8 @@ exports.assetsCreateSchema = [
         .withMessage('data-required'),
     body('location')
         .trim()
+        .isLength({max: 100})
+        .withMessage('data-invalid-max#location!100')
         .optional({values: 'null'}),
     body('datetime')
         .trim()
@@ -69,6 +71,8 @@ exports.assetsUpdateSchema = [
         .withMessage('data-required'),
     body('location')
         .trim()
+        .isLength({max: 100})
+        .withMessage('data-invalid-max#location!100')
         .optional({values: 'null'}),
     body('datetime')
         .trim()

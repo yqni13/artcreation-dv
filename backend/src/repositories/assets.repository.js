@@ -57,10 +57,9 @@ class AssetsRepository {
 
     findAll = async () => {
         const table = 'assets';
-        const orderPrio1 = 'publication_year';
-        const orderPrio2 = 'created_on';
+        const orderPrio1 = 'created_on';
 
-        const sql = `SELECT * FROM ${table} ORDER BY ${orderPrio1} DESC, ${orderPrio2} DESC`;
+        const sql = `SELECT * FROM ${table} ORDER BY ${orderPrio1} DESC`;
         let connection;
         try {
             connection = await DBConnect.connection();
@@ -80,7 +79,7 @@ class AssetsRepository {
                 error: error.code,
                 stack: error.stack,
                 context: {
-                    method: 'artdv_assets_FindAllFiltered'
+                    method: 'artdv_assets_FindAll'
                 }
             });
             await DBConnect.close(connection);
@@ -104,7 +103,7 @@ class AssetsRepository {
         const timeStamp = Utils.getCustomLocaleTimestamp();
 
         const sql = `INSERT INTO ${table} 
-        (gallery_id, category, image_path, thumbnail_path, location, datetime, created_on, last_modified)
+        (assets_id, category, image_path, thumbnail_path, location, datetime, created_on, last_modified)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
 
         const values = [params['id'], params['category'], params['imagePath'], params['thumbnailPath'],
@@ -155,7 +154,7 @@ class AssetsRepository {
         const sql = `UPDATE ${table} 
         SET category = $1, image_path = $2, thumbnail_path = $3, location = $4, datetime = $5,
         last_modified = $6
-        WHERE gallery_id = $7`;
+        WHERE assets_id = $7`;
 
         const values = [params['category'], params['imagePath'], params['thumbnailPath'], params['location'],
         params['datetime'], timeStamp, params['id']];

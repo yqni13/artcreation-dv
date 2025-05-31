@@ -92,7 +92,9 @@ exports.validateImageFileInput = (req, res, next) => {
         throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
     }
 
+    // Isolate the string '/api/<version>/' to get route from baseUrl.
     const route = req.baseUrl.replace(req.baseUrl.substring(-1, req.baseUrl.lastIndexOf('/')+1), '');
+    
     if((route === RoutesEnum.ASSETS || route === RoutesEnum.GALLERY) && req.files.length === 0) {
         alarmMissingFileInput();
     } else if(route === RoutesEnum.NEWS && req.body.galleryId === null && req.files.length === 0) {

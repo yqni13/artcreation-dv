@@ -1,5 +1,6 @@
 const { basicResponse } = require('../utils/common.utils');
 const AssetsRepository = require('../repositories/assets.repository');
+const AssetsModel = require('../models/assets.model');
 const ImgUploadModel = require('../models/image-upload.model');
 const Utils = require('../utils/common.utils');
 
@@ -18,6 +19,8 @@ class AssetsService {
     create = async (params, files) => {
         const hasParams = Object.keys(params).length !== 0;
         Object.assign(params, await Utils.createID(AssetsRepository, 'assets'))
+        params = AssetsModel.renamePathNames(params, 'placeholder', params.id);
+        files = Utils.renameFileNames(files, ['placeholder'], [params.id]);
         await ImgUploadModel.handleImageUploads(params, files);
         const result = await AssetsRepository.create(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
