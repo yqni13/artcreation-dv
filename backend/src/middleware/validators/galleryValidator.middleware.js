@@ -23,11 +23,12 @@ exports.galleryFindByRefNrSchema = [
 ];
 
 exports.galleryCreateSchema = [
-    CustomValidator.validateImageFileInput,
     body('imagePath')
         .trim()
         .notEmpty()
-        .withMessage('data-required'),
+        .withMessage('data-required')
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('thumbnailPath')
         .trim()
         .notEmpty()
@@ -91,7 +92,6 @@ exports.galleryCreateSchema = [
 ];
 
 exports.galleryUpdateSchema = [
-    CustomValidator.validateImageFileUpdate,
     body('id')
         .trim()
         .notEmpty()
@@ -99,7 +99,9 @@ exports.galleryUpdateSchema = [
         .bail()
         .custom((value) => CustomValidator.validateUUID(value))
         .bail()
-        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, GalleryRepository, req)),
+        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, GalleryRepository, req))
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('referenceNr')
         .trim()
         .notEmpty()

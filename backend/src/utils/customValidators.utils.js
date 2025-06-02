@@ -1,7 +1,7 @@
 const { RoutesEnum } = require('./enums/routes.enum');
 const Secrets = require('../utils/secrets.utils');
 const { decryptRSA } = require('../utils/crypto.utils');
-const { InvalidPropertiesException } = require('./exceptions/validation.exception');
+const Utils = require('./common.utils');
 
 exports.validateEnum = (value, enumObj, enumName) => {
     const enumValues = Object.values(enumObj);
@@ -35,19 +35,19 @@ exports.validateRefNrNoManualChange = async (refNr, req) => {
     return true;
 }
 
-exports.validateNewsFK = async (fk, repository, req) => {
-    if(fk === null) {
+exports.validateNewsFK = async (fk, repositorySK, req) => {
+    if(fk === null || fk === undefined) {
         return true;
     }
     this.validateUUID(fk);
-    await this.validateExistingEntry(fk, repository, req);
+    await this.validateExistingEntry(fk, repositorySK, req);
     return true;
 }
 
 exports.validateNewsImages = (img, fk) => {
     if(fk === null && (img === null || img === undefined)) {
         throw new Error('data-required');
-    } else if(fk !== null && img !== null && img !== undefined) {
+    } else if((fk !== null && fk !== undefined) && img !== null && img !== undefined) {
         throw new Error('data-invalid-entry#path')
     }
     return true;
@@ -71,56 +71,45 @@ exports.validateEncryptedSender = (encryptedSender) => {
     return true;
 }
 
-exports.validateImageFileUpdate = (req, res, next) => {
-    if(req.files.length > 0) {
-        this.validateImageType(req.files[0]);
-    }
-
-    next();
-}
-
-exports.validateImageFileInput = (req, res, next) => {
-    // custom solution file input => express-validator does not handle files
-    const alarmMissingFileInput = function() {
-        const data = [{
-            type: 'input',
-            value: null,
-            msg: 'image-required',
-            path: 'imageFile',
-            location: 'files'
-        }];
-        throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
-    }
+exports.validateImageFileInput = (req) => {
+    // custom error to handle file validation => express-validator does not validate files
+    const customError = [{
+        type: 'input',
+        value: null,
+        msg: 'image-required',
+        path: 'imageFile',
+        location: 'files'
+    }];
 
     // Isolate the string '/api/<version>/' to get route from baseUrl.
     const route = req.baseUrl.replace(req.baseUrl.substring(-1, req.baseUrl.lastIndexOf('/')+1), '');
-    
-    if((route === RoutesEnum.ASSETS || route === RoutesEnum.GALLERY) && req.files.length === 0) {
-        alarmMissingFileInput();
-    } else if(route === RoutesEnum.NEWS && req.body.galleryId === null && req.files.length === 0) {
-        alarmMissingFileInput();
+    const hasImgChange = req.validatedEntry && req.validatedEntry.image_path !== req.body.imagePath && (req.body.imagePath !== null && req.body.imagePath !== undefined);
+    if(route === RoutesEnum.NEWS && (req.body.galleryId === null || req.body.galleryId === undefined) && req.files.length <= 0 && hasImgChange) {
+        req = Utils.alarmCustomError(req, customError);
+    } else if(req.files.length <= 0 && (!req.validatedEntry || hasImgChange)) {
+        req = Utils.alarmCustomError(req, customError);
     }
 
     // validate type only in case of new image input (create/input img upload)
     if(req.files.length > 0) {
-        this.validateImageType(req.files[0]);
+        req = this.validateImageType(req.files[0], req);
     }
 
-    next();
+    return true;
 }
 
-exports.validateImageType = (image) => {
+exports.validateImageType = (image, req) => {
     const type = image.mimetype.replace('image/', '');
     const validTypes = ['jpeg', 'jpg', 'webp', 'png']
     if(!validTypes.includes(type)) {
-        const data = [{
+        const customError = [{
             type: 'input',
             value: image.mimetype,
             msg: 'image-invalid-type',
             path: 'imageFile',
             location: 'files'
         }];
-        throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
+        req = Utils.alarmCustomError(req, customError);
     }
     return true;
 }

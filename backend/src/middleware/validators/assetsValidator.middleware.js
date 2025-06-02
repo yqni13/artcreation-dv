@@ -13,7 +13,6 @@ exports.assetsFindOneSchema = [
 ];
 
 exports.assetsCreateSchema = [
-    CustomValidator.validateImageFileInput,
     body('category')
         .trim()
         .notEmpty()
@@ -22,7 +21,9 @@ exports.assetsCreateSchema = [
         .isLength({max: 30})
         .withMessage('data-invalid-max#category!30')
         .bail()
-        .custom((value) => CustomValidator.validateEnum(value, AssetsCategory, 'category')),
+        .custom((value) => CustomValidator.validateEnum(value, AssetsCategory, 'category'))
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('imagePath')
         .trim()
         .notEmpty()
@@ -43,7 +44,6 @@ exports.assetsCreateSchema = [
 ];
 
 exports.assetsUpdateSchema = [
-    CustomValidator.validateImageFileUpdate,
     body('id')
         .trim()
         .notEmpty()
@@ -51,7 +51,9 @@ exports.assetsUpdateSchema = [
         .bail()
         .custom((value) => CustomValidator.validateUUID(value))
         .bail()
-        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, AssetsRepository, req)),
+        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, AssetsRepository, req))
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('category')
         .trim()
         .notEmpty()

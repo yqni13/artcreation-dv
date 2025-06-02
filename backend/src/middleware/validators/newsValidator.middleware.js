@@ -1,6 +1,7 @@
 const { body, param } = require('express-validator');
 const CustomValidator = require('../../utils/customValidators.utils');
 const NewsRepository = require('../../repositories/news.repository');
+const GalleryRepository = require('../../repositories/gallery.repository');
 
 exports.newsFindOneSchema = [
     param('id')
@@ -12,9 +13,10 @@ exports.newsFindOneSchema = [
 ];
 
 exports.newsCreateSchema = [
-    CustomValidator.validateImageFileInput,
     body('galleryId')
-        .custom(async (foreignKey, {req}) => await CustomValidator.validateNewsFK(foreignKey, NewsRepository, req)),
+        .custom(async (foreignKey, {req}) => await CustomValidator.validateNewsFK(foreignKey, GalleryRepository, req))
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('imagePath')
         .custom((imagePath, {req}) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
     body('thumbnailPath')
@@ -36,7 +38,6 @@ exports.newsCreateSchema = [
 ];
 
 exports.newsUpdateSchema = [
-    CustomValidator.validateImageFileInput,
     body('id')
         .trim()
         .notEmpty()
@@ -44,9 +45,11 @@ exports.newsUpdateSchema = [
         .bail()
         .custom((value) => CustomValidator.validateUUID(value))
         .bail()
-        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, NewsRepository, req)),
+        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, NewsRepository, req))
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('galleryId')
-        .custom(async (foreignKey, {req}) => await CustomValidator.validateNewsFK(foreignKey, NewsRepository, req)),
+        .custom(async (foreignKey, {req}) => await CustomValidator.validateNewsFK(foreignKey, GalleryRepository, req)),
     body('imagePath')
         .custom((imagePath, {req}) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
     body('thumbnailPath')

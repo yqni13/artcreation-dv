@@ -93,3 +93,12 @@ exports.renameFileNames = (files, replaceValue, newValue) => {
     }
     return files;
 }
+
+exports.alarmCustomError = (req, customError) => {
+    if(!req.customValidationErrors) {
+        req.customValidationErrors = [];
+    }
+    req.customValidationErrors.push(...customError);
+
+    return req;
+}
