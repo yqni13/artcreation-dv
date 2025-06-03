@@ -45,6 +45,17 @@
             "title": "the artist"
         },
         "admin": {
+            "assets": {
+                "placeholder": {
+                    "category": "select a category",
+                    "search": "search by text"
+                },
+                "title": {
+                    "create": "add asset",
+                    "list": "assets administration",
+                    "update": "edit asset"
+                }
+            },
             "gallery": {
                 "details": {
                     "dimensions": "Dimensions",
@@ -98,6 +109,7 @@
                 }
             },
             "options": {
+                "assets": "assets",
                 "gallery": "gallery",
                 "logout": "logout",
                 "news": "news"
@@ -286,6 +298,11 @@
                 "original": "original",
                 "originalORprint": "original / print",
                 "print": "print"
+            },
+            "assets-category": {
+                "ABOUT": "About",
+                "ALL": "All",
+                "EXH": "Art exhibition"
             },
             "contact-subject": {
                 "artOrder": "art order",

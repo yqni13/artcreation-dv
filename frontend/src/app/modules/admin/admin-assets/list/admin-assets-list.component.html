@@ -1,0 +1,90 @@
+<section class="artdv-adminassetslist">
+    <header>
+        <h1>{{'modules.admin.assets.title.list' | translate}}</h1>
+    </header>
+    <div class="artdv-admin-specific-list-content">
+        <div class="artdv-admin-specific-list-filterbar">
+            <div class="artdv-admin-specific-list-select-wrapper">
+                <artdv-selectinput
+                    class="artdv-admin-specific-list-select"
+                    [ngStyle]="{'width': '100%'}"
+                    [placeholder]="'modules.admin.assets.placeholder.category' | translate"
+                    [options]="AssetsCategoryEnum"
+                    [optionsTranslateRoot]="'shared.enum.assets-category.'"
+                    [formControl]="searchForm.get('category') | controlCast"
+                    [hasAutoFocus]="true"
+                    [attr.disabled]="!isLoadingResponse"
+                    (byChange)="onCategoryChange($event)"
+                ></artdv-selectinput>
+                <span class="artdv-admin-specific-list-filter-label">Category</span>
+            </div>
+            <div class="artdv-admin-specific-list-media-wrapper">
+                <div class="artdv-admin-specific-list-search-wrapper">
+                    <artdv-textinput
+                        class="artdv-admin-specific-list-search-input"
+                        [placeholder]="'modules.admin.assets.placeholder.search' | translate"
+                        [ngStyle]="{'width': '100%'}"
+                        [inputType]="'text'"
+                        [formControl]="searchForm.get('searchText') | controlCast"
+                        (byChange)="onSearchTextChange($event)"
+                        #keywordInputField
+                    ></artdv-textinput>
+                    <span class="artdv-admin-specific-list-filter-label">Filter</span>
+                    <a
+                        id="artdv-admin-specific-list-search-icon"
+                        (click)="onSearchSubmit()"
+                        (keydown.enter)="onSearchSubmit()"
+                        [attr.tabindex]="0"
+                    >
+                        <i class="icon-Search"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="artdv-admin-specific-list-media-wrapper">
+                <div 
+                    class="artdv-admin-specific-list-btn-wrapper btn-close"
+                    *ngIf="hasSearchText"
+                >
+                    <a
+                        id="artdv-admin-specific-list-search-close"
+                        (click)="removeSearchText()"
+                        (keydown.enter)="removeSearchText()"
+                        [attr.tabindex]="hasSearchText ? 0 : ''"
+                    >
+                        <i class="icon-CloseX"></i>
+                    </a>
+                </div>
+                <div class="artdv-admin-specific-list-btn-wrapper btn-add">
+                    <a
+                        (click)="navigateToCreateItem(AdminRouteEnum.ASSETS, AssetsRouteEnum.CREATE)"
+                        (keydown.enter)="navigateToCreateItem(AdminRouteEnum.ASSETS, AssetsRouteEnum.CREATE)"
+                        [attr.tabindex]="0"
+                    ><i class="icon-Add"></i></a>
+                </div>
+                <div class="artdv-admin-specific-list-btn-wrapper btn-return">
+                    <a
+                        (click)="navigateToDashboard()"
+                        (keydown.enter)="navigateToDashboard()"
+                        [attr.tabindex]="0"
+                    ><i class="icon-Return"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="artdv-admin-specific-list-list">
+            <ng-container *ngFor="let item of modifiedList">
+                <img 
+                    class="artdv-admin-specific-list-list-element"
+                    alt="{{item.assets_id}}"
+                    src="{{(storageDomain + '/' + item.thumbnail_path) | cacheCheck: item.last_modified}}"
+                    (click)="navigateToUpdateItem(item.assets_id)"
+                    (keydown.enter)="navigateToUpdateItem(item.assets_id)"
+                    [attr.aria-disabled]="true"
+                >
+            </ng-container>
+            <div class="artdv-query-placeholder" *ngIf="!isLoadingResponse && modifiedList.length === 0">
+                <span>no data found</span>
+            </div>
+        </div>
+    </div>
+    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
+</section>

@@ -6,6 +6,7 @@ import { AuthGuardARTDV } from "../../shared/services/auth-guard.service";
 import { AdminNewsListComponent } from "./admin-news/list/admin-news-list.component";
 import { AdminNewsDetailComponent } from "./admin-news/detail/admin-news-detail.component";
 import { ImgPreloadGuard } from "../../shared/services/img-preload-guard.service";
+import { AdminAssetsListComponent } from "./admin-assets/list/admin-assets-list.component";
 
 export const adminRoutes: Routes = [
     {
@@ -16,7 +17,7 @@ export const adminRoutes: Routes = [
             preloadImages: [
                 '/assets/admin/admin-gallery.jpg',
                 '/assets/admin/admin-news.jpg',
-                '/assets/admin/admin-logout.jpg'
+                '/assets/admin/admin-assets.jpg'
             ]
         }
     },
@@ -50,4 +51,9 @@ export const adminRoutes: Routes = [
         component: AdminNewsDetailComponent,
         canActivate: [AuthGuardARTDV]
     },
+    {
+        path: 'assets',
+        component: AdminAssetsListComponent,
+        canActivate: [AuthGuardARTDV]
+    }
 ]

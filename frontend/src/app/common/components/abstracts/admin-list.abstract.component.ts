@@ -11,6 +11,7 @@ import { DataShareService } from '../../../shared/services/data-share.service';
 import { Router } from '@angular/router';
 import { AdminRoute } from '../../../api/routes/admin.route.enum';
 import { NewsRoute } from '../../../api/routes/news.route.enum';
+import { AssetsRoute } from '../../../api/routes/assets.route.enum';
 
 @Component({
     template: ''
@@ -33,6 +34,7 @@ export abstract class AbstractAdminListComponent implements AfterViewInit, OnDes
     protected isLoadingResponse: boolean;
     protected storageDomain: string;
     protected AdminRouteEnum = AdminRoute;
+    protected AssetsRouteEnum = AssetsRoute;
     protected GalleryRouteEnum = GalleryRoute;
     protected NewsRouteEnum = NewsRoute;
 

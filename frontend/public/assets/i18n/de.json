@@ -45,6 +45,17 @@
             "title": "die Künstlerin"
         },
         "admin": {
+            "assets": {
+                "placeholder": {
+                    "category": "Wählen Sie eine Kategorie",
+                    "search": "nach Text suchen"
+                },
+                "title": {
+                    "create": "Ressource hinzufügen",
+                    "list": "Ressourcen Management",
+                    "update": "Ressource bearbeiten"
+                }
+            },
             "gallery": {
                 "details": {
                     "dimensions": "Abmessungen",
@@ -98,6 +109,7 @@
                 }
             },
             "options": {
+                "assets": "Ressourcen",
                 "gallery": "Galerie",
                 "logout": "Abmelden",
                 "news": "News"
@@ -286,6 +298,11 @@
                 "original": "Original",
                 "originalORprint": "Original / Kunstdruck",
                 "print": "Kunstdruck"
+            },
+            "assets-category": {
+                "ABOUT": "Profil",
+                "ALL": "Alle",
+                "EXH": "Ausstellung"
             },
             "contact-subject": {
                 "artOrder": "Bestellung",
