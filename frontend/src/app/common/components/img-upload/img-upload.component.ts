@@ -78,6 +78,8 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
                 target: event
             }
             this.uploadImage(file);
+        } else {
+            this.removeImage();
         }
     }
 
@@ -94,6 +96,8 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
                 target: event.target
             }
             this.uploadImage(file);
+        } else {
+            this.removeImage();
         }
     }
 

@@ -1,4 +1,5 @@
 const NewsRepository = require('../repositories/news.repository');
+const ImgUploadModel = require('../models/image-upload.model');
 
 class NewsModel {
     checkUseOfForeignKey = async (params) => {
@@ -53,6 +54,33 @@ class NewsModel {
             params['thumbnailPath'] = params['thumbnailPath'].replace(replaceValue, newValue);
         }
         return params;
+    }
+
+    checkForImageUpdate = async (params, files, existDbEntry) => {        
+        // case #1: no new file && no link
+        // case #2:  no new file && only link changed
+        if(files.length <= 0 && ((!params.gallery && existDbEntry.image_path) 
+            || (params.gallery && !existDbEntry.image_path))) {
+            return;
+        }
+
+        // case #3: no new file && from img to link
+        if(files.length <= 0 && existDbEntry.image_path && params.gallery) {
+            await ImgUploadModel.handleImageRemoval(params);
+            return;
+        }
+
+        if(files.length <= 0) {
+            return;
+        }
+        
+        // case #4: new file && from old img to new img
+        if(files.length > 0 && params.gallery === null && existDbEntry.image_path !== params.imagePath) {
+            await ImgUploadModel.handleImageUploads(params, files, existDbEntry, true);
+            return;
+        }
+
+        await ImgUploadModel.handleImageUploads(params, files, existDbEntry, false);
     }
 }
 

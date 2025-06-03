@@ -1,4 +1,7 @@
 const GalleryRepository = require('../repositories/gallery.repository');
+const ImgUploadModel = require('../models/image-upload.model');
+const CloudStorageAPI = require('../services/external/cloud-storage.api');
+const Utils = require('../utils/common.utils');
 const { ArtGenreCode } = require('../utils/enums/art-genre.enum');
 
 class GalleryModel {
@@ -47,6 +50,23 @@ class GalleryModel {
                 reference_nr: refNr['reference_nr']
             }
         }
+    }
+
+    checkForImageUpdate = async (params, files, existDbEntry) => {
+        // case #1: no genre change + no img change
+        if(files.length <= 0 && existDbEntry.art_genre === params.artGenre) {
+            return;
+        }
+
+        // case #2: genre change + no img change
+        if(files.length <= 0 && existDbEntry.art_genre !== params.artGenre) {
+            const response = await CloudStorageAPI.readImageFromCDN(existDbEntry.image_path);
+            files = await Utils.streamToBuffer(response.Body);
+        }
+
+        // case #3: no genre change + img change
+        // case #4: genre change + img change
+        await ImgUploadModel.handleImageUpdate(params, files, existDbEntry, true);
     }
 }
 

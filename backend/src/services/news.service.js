@@ -30,16 +30,9 @@ class NewsService {
 
     update = async (params, files, compareData) => {
         const hasParams = Object.keys(params).length !== 0;
-        if(files.length > 0) {
-            params = NewsModel.renamePathNames(params, 'placeholder', params.id);
-            files = Utils.renameFileNames(files, ['placeholder'], [params.id]);
-            await ImgUploadModel.handleImageUpdate(params, files, compareData);
-        } else if(files.length === 0 && compareData.image_path !== null && compareData.thumbnail_path !== null && compareData.image_path !== params.imagePath) {
-            await ImgUploadModel.handleImageRemoval({
-                imagePath: compareData.image_path,
-                thumbnailPath: compareData.thumbnail_path
-            });
-        }
+        params = NewsModel.renamePathNames(params, 'placeholder', params.id);
+        files = Utils.renameFileNames(files, ['placeholder'], [params.id]);
+        await NewsModel.checkForImageUpdate(params, files, compareData);
         const result = await NewsRepository.update(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }

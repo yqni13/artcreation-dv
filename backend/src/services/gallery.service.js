@@ -36,7 +36,7 @@ class GalleryService {
     update = async (params, files, compareData) => {
         const hasParams = Object.keys(params).length !== 0;
         params['referenceNr'] = await GalleryModel.checkGenreChange(params);
-        await ImgUploadModel.handleImageUpdate(params, files, compareData);
+        await GalleryModel.checkForImageUpdate(params, files, compareData);
         const result = await GalleryRepository.update(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }
