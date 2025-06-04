@@ -46,11 +46,18 @@
         },
         "admin": {
             "assets": {
+                "details": {
+                    "category": "Category",
+                    "datetime": "Datetime",
+                    "location": "Address"
+                },
                 "placeholder": {
                     "category": "select a category",
+                    "location": "enter your address...",
                     "search": "search by text"
                 },
                 "title": {
+                    "category": "Category",
                     "create": "add asset",
                     "list": "assets administration",
                     "update": "edit asset"
@@ -300,9 +307,9 @@
                 "print": "print"
             },
             "assets-category": {
-                "ABOUT": "About",
                 "ALL": "All",
-                "EXH": "Art exhibition"
+                "EXH": "Art exhibition",
+                "PROFILE": "About"
             },
             "contact-subject": {
                 "artOrder": "art order",

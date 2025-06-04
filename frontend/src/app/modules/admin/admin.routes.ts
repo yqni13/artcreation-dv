@@ -7,6 +7,7 @@ import { AdminNewsListComponent } from "./admin-news/list/admin-news-list.compon
 import { AdminNewsDetailComponent } from "./admin-news/detail/admin-news-detail.component";
 import { ImgPreloadGuard } from "../../shared/services/img-preload-guard.service";
 import { AdminAssetsListComponent } from "./admin-assets/list/admin-assets-list.component";
+import { AdminAssetsDetailComponent } from "./admin-assets/detail/admin-assets-detail.component";
 
 export const adminRoutes: Routes = [
     {
@@ -54,6 +55,16 @@ export const adminRoutes: Routes = [
     {
         path: 'assets',
         component: AdminAssetsListComponent,
+        canActivate: [AuthGuardARTDV]
+    },
+    {
+        path: 'assets/create',
+        component: AdminAssetsDetailComponent,
+        canActivate: [AuthGuardARTDV]
+    },
+    {
+        path: 'assets/:id',
+        component: AdminAssetsDetailComponent,
         canActivate: [AuthGuardARTDV]
     }
 ]

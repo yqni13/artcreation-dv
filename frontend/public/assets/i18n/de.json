@@ -46,11 +46,18 @@
         },
         "admin": {
             "assets": {
+                "details": {
+                    "category": "Kategorie",
+                    "datetime": "Zeitpunkt",
+                    "location": "Adresse"
+                },
                 "placeholder": {
                     "category": "Wählen Sie eine Kategorie",
+                    "location": "Adresse angeben...",
                     "search": "nach Text suchen"
                 },
                 "title": {
+                    "category": "Kategorie",
                     "create": "Ressource hinzufügen",
                     "list": "Ressourcen Management",
                     "update": "Ressource bearbeiten"
@@ -300,9 +307,9 @@
                 "print": "Kunstdruck"
             },
             "assets-category": {
-                "ABOUT": "Profil",
                 "ALL": "Alle",
-                "EXH": "Ausstellung"
+                "EXH": "Ausstellung",
+                "PROFILE": "Profil"
             },
             "contact-subject": {
                 "artOrder": "Bestellung",

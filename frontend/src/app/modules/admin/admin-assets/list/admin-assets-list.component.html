@@ -16,7 +16,9 @@
                     [attr.disabled]="!isLoadingResponse"
                     (byChange)="onCategoryChange($event)"
                 ></artdv-selectinput>
-                <span class="artdv-admin-specific-list-filter-label">Category</span>
+                <span class="artdv-admin-specific-list-filter-label">
+                    {{'modules.admin.assets.title.category' | translate}}
+                </span>
             </div>
             <div class="artdv-admin-specific-list-media-wrapper">
                 <div class="artdv-admin-specific-list-search-wrapper">

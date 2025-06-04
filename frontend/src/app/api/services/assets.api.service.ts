@@ -56,7 +56,7 @@ export class AssetsAPIService {
 
     setUpdatePayload(data: any) {
         const payloadUpdate: AssetsUpdateRequest = {
-            id: data.assets_id,
+            id: data.id,
             category: data.category,
             imagePath: data.imagePath === '' ? null : data.imagePath,
             thumbnailPath: data.thumbnailPath === '' ? null : data.thumbnailPath,
