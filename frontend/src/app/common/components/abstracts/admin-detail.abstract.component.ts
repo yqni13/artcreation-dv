@@ -1,3 +1,4 @@
+import { AssetsAPIService } from './../../../api/services/assets.api.service';
 import { AfterViewInit, Component, inject, OnDestroy } from "@angular/core";
 import { filter, Subject, Subscription, tap } from "rxjs";
 import { CRUDMode } from "../../../shared/enums/crud-mode.enum";
@@ -90,9 +91,9 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
         return dbPath ? this.cacheCheck.transform(`${storageDomain}${dbPath}`, lastModified) : null;
     }
 
-    onSubmit(formGroup: FormGroup, imgSource: string | null, api: GalleryAPIService | NewsAPIService) {
+    onSubmit(formGroup: FormGroup, api: AssetsAPIService | GalleryAPIService | NewsAPIService) {
         formGroup.markAllAsTouched();
-        this.onSubmitTrigger.next(imgSource !== null);
+        this.onSubmitTrigger.next(formGroup.get('imageFile')?.value !== null);
         if(formGroup.invalid) {
             return;
         }
@@ -114,7 +115,7 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
         this.navigateToListView(route);
     }
 
-    remove(route: AdminRoute, api: GalleryAPIService | NewsAPIService) {
+    remove(route: AdminRoute, api: AssetsAPIService | GalleryAPIService | NewsAPIService) {
         if(this.mode === CRUDMode.UPDATE && this.entryId !== '') {
             this.isLoadingResponse = true;
             api.setIdParam(this.entryId);

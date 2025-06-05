@@ -100,8 +100,13 @@
                 }
             }
         }
+        .artdv-admin-option-image {
+            height: calc(100vh - var(--view-footer-height));
+            aspect-ratio: none;
+        }
     }
 
+    .artdv-adminassetsdetail,
     .artdv-admingallerydetail,
     .artdv-adminnewsdetail {
         form {
@@ -118,6 +123,7 @@
         }
     }
 
+    .artdv-adminassetslist,
     .artdv-adminnewslist,
     .artdv-admingallerylist {
         .artdv-admin-specific-list-filterbar {
@@ -282,6 +288,26 @@
             padding: sass.$space50 0;
         }
     }
+    artdv-carouselmedia {
+        .artdv-carouselmedia {
+            .artdv-carouselmedia-images {
+                img {
+                    max-width: calc(100% - 170px);
+                }
+            }
+            .artdv-carouselmedia-navigation {
+                i {
+                    padding: sass.$space25 sass.$space15;
+                }
+                .arrow-left {
+                    left: sass.$space15;
+                }
+                .arrow-right {
+                    right: sass.$space15;
+                }
+            }
+        }
+    }
 
     #artdv-snackbar-container-wrapper {
         margin: sass.$space25;
@@ -365,6 +391,7 @@
                 .triple-inner {
                     width: 100%;
                     border: none;
+                    border-top: 2px solid var(--theme-contrast-anchor);
 
                     .artdv-admin-option-description {
                         padding: calc(sass.$space25 + sass.$space5)!important;
@@ -485,10 +512,12 @@
 
             .triple-outer {
                 width: 33%;
+                border-top: 2px solid var(--theme-contrast-anchor);
             }
 
             .triple-inner {
                 width: 34%;
+                border-top: 2px solid var(--theme-contrast-anchor);
             }
 
             .artdv-admin-option {
@@ -498,8 +527,13 @@
                 }
             }
         }
+        .artdv-admin-option-image {
+            height: auto;
+            aspect-ratio: 16/10;
+        }
     }
 
+    .artdv-adminassetsdetail,
     .artdv-admingallerydetail,
     .artdv-adminnewsdetail {
         form {
@@ -517,6 +551,7 @@
         }
     }
 
+    .artdv-adminassetslist,
     .artdv-adminnewslist,
     .artdv-admingallerylist {
         .artdv-admin-specific-list-filterbar {
@@ -679,6 +714,26 @@
             padding: sass.$comp-padding-medium 0;
         }
     }
+    artdv-carouselmedia {
+        .artdv-carouselmedia {
+            .artdv-carouselmedia-images {
+                img {
+                    max-width: calc(100% - 20px);
+                }
+            }
+            .artdv-carouselmedia-navigation {
+                i {
+                    padding: sass.$space25 sass.$space15;
+                }
+                .arrow-left {
+                    left: sass.$space15;
+                }
+                .arrow-right {
+                    right: sass.$space15;
+                }
+            }
+        }
+    }
 
     .artdv-nav-bar {
         height: 100vh;
@@ -755,17 +810,14 @@
                 .triple-inner {
                     width: 100%;
                     border: none;
+                    border-top: 2px solid var(--theme-contrast-anchor);
 
                     .artdv-admin-option-description {
                         padding: calc(sass.$space25 + sass.$space5)!important;
-                        .artdv-anchor {
-                            font-size: 28px;
-                        }
                     }
                 }
                 
                 .artdv-admin-option {
-                    
                     .artdv-author {
                         width: calc(100% - var(--view-nav-width));
                         a {
@@ -883,6 +935,7 @@
         }
     }
 
+    .artdv-adminassetsdetail,
     .artdv-admingallerydetail,
     .artdv-adminnewsdetail {
         form {
@@ -902,6 +955,7 @@
         }
     }
 
+    .artdv-adminassetslist,
     .artdv-adminnewslist,
     .artdv-admingallerylist {
         .artdv-admin-specific-list-filterbar {
@@ -1060,6 +1114,26 @@
     artdv-carousel {
         .artdv-carousel-wrapper {
             padding: sass.$comp-padding-small 0;
+        }
+    }
+    artdv-carouselmedia {
+        .artdv-carouselmedia {
+            .artdv-carouselmedia-images {
+                img {
+                    max-width: calc(100% - 20px);
+                }
+            }
+            .artdv-carouselmedia-navigation {
+                i {
+                    padding: sass.$space25 sass.$space15;
+                }
+                .arrow-left {
+                    left: sass.$space15;
+                }
+                .arrow-right {
+                    right: sass.$space15;
+                }
+            }
         }
     }
 
@@ -1237,11 +1311,13 @@
             .triple-outer,
             .triple-inner {
                 width: 100%;
-                border: none!important;
+                border: none;
+                border-top: 2px solid var(--theme-contrast-anchor);
             }
         }
     }
 
+    .artdv-adminassetsdetail,
     .artdv-admingallerydetail,
     .artdv-adminnewsdetail {
         form {
@@ -1261,6 +1337,7 @@
         }
     }
 
+    .artdv-adminassetslist,
     .artdv-adminnewslist,
     .artdv-admingallerylist {
         .artdv-admin-specific-list-filterbar {
@@ -1542,6 +1619,7 @@
         }
     }
 
+    .artdv-adminassetsdetail,
     .artdv-admingallerydetail,
     .artdv-adminnewsdetail {
         .artdv-admin-specific-detail-form-wrapper {
@@ -1559,6 +1637,7 @@
         }
     }
 
+    .artdv-adminassetslist,
     .artdv-adminnewslist,
     .artdv-admingallerylist {
         .artdv-admin-specific-list-list {

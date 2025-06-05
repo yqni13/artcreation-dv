@@ -42,23 +42,34 @@
         <div class="artdv-admin-option triple-outer">
             <img 
                 class="artdv-admin-option-image"
-                src="assets/admin/admin-logout.jpg"
+                src="assets/admin/admin-assets.jpg"
                 alt="404 image not found"
-                (click)="logout()"
-                (keydown.enter)="logout()"
-                [attr.aria-disabled]="true"
+                [routerLink]="'assets'"
             >
             <div 
                 class="artdv-admin-option-description"
-                (click)="logout()"
-                (keydown.enter)="logout()"
-                [attr.aria-disabled]="true"
+                [routerLink]="'assets'"
             >
-                <span class="artdv-anchor">{{'modules.admin.options.logout' | translate}}</span>
+                <span class="artdv-anchor">{{editLabel + ('modules.admin.options.assets' | translate)}}</span>
             </div>
             <span class="artdv-author">
-                <a href="{{authorLogoutImg}}" target="_blank">{{'shared.assets.author' | translate}}</a>
+                <a href="{{authorAssetsImg}}" target="_blank">{{'shared.assets.author' | translate}}</a>
             </span>
+        </div>
+    </div>
+    <div
+        class="artdv-admin-logout bg-pattern-grid-01"
+        (click)="logout()"
+        (keydown.enter)="logout()"
+        [attr.aria-disabled]="true"
+    >
+        <div class="artdv-admin-logout-wrapper">
+            <div class="artdv-admin-logout-icon">
+                <i class="icon-Logout"></i>
+            </div>
+            <div class="artdv-admin-logout-label">
+                <span>{{'modules.admin.options.logout' | translate}}</span>
+            </div>
         </div>
     </div>
 </section>

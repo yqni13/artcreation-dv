@@ -1,4 +1,4 @@
 exports.AssetsCategory = Object.freeze({
-    ABOUT: 'about',
-    ART: 'artExhibition'
+    PROFILE: 'about',
+    EXH: 'artExhibition'
 })

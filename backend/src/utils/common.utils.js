@@ -93,3 +93,26 @@ exports.renameFileNames = (files, replaceValue, newValue) => {
     }
     return files;
 }
+
+/**
+ * @param {*} req 
+ * @param {
+ *  {
+    *  type: string,
+    *  value: any,
+    *  msg: string,
+    *  path: string,
+    *  location: string
+ *  }
+ * } customError 
+ * @returns 
+ * @description Add customized error block and update req to not overwrite validation blocks.
+ */
+exports.alarmCustomError = (req, customError) => {
+    if(!req.customValidationErrors) {
+        req.customValidationErrors = [];
+    }
+    req.customValidationErrors.push(...customError);
+
+    return req;
+}

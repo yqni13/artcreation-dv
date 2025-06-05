@@ -28,7 +28,7 @@ class AssetsService {
 
     update = async (params, files, compareData) => {
         const hasParams = Object.keys(params).length !== 0;
-        await ImgUploadModel.handleImageUpdate(params, files, compareData);
+        await AssetsModel.checkForImageUpdate(params, files, compareData);
         const result = await AssetsRepository.update(hasParams ? params : {});
         return basicResponse(result.body, result.code, result.msg);
     }

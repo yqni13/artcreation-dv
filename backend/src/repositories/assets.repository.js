@@ -1,5 +1,6 @@
 const DBConnect = require('../db/connect.db');
 const logger = require('../logger/config.logger').getLogger();
+const Utils = require('../utils/common.utils');
 
 class AssetsRepository {
 
@@ -55,9 +56,65 @@ class AssetsRepository {
         }
     }
 
+    findAllFiltered = async (params) => {
+            // params must contain: {table: value, queryParams: {key: value, key: value, ...}}
+            if((params['queryParams'] === undefined || Object.keys(params['queryParams']).length === 0) 
+                || !Object.keys(params).length) {
+                return {error: 'no params found'};
+            }
+    
+            const table = 'assets';
+            const filter = {};
+            Object.entries(params['queryParams']).forEach(([k, v]) => {
+                Object.assign(filter, {[k]: v});
+            });
+    
+            let whereClause = '';
+            if(Object.keys(filter).length === 1) {
+                whereClause += `${Object.keys(filter)[0]} = $1`
+            } else if(Object.keys(filter).length > 1) {
+                for(let i = 0; i < filter.length; i++) {
+                    if(i === filter.length-1) {
+                        whereClause += `${Object.keys(filter)[i]} = $${i+1}`
+                    } else {
+                        whereClause += `${Object.keys(filter)[i]} = $${i+1} AND `
+                    }
+                }
+            }
+    
+            const sql = `SELECT * FROM ${table} WHERE ${whereClause}`;
+            const values = Object.values(params['queryParams']);
+    
+            let connection;
+            try {
+                connection = await DBConnect.connection();
+                const result = await connection.query(sql, values);
+                await DBConnect.close(connection);
+                return {
+                    db_operation: 'select',
+                    number_of_entries: result['rows'].length,
+                    data: result['rows'] || null,
+                };
+            } catch(error) {
+                logger.error("DB ERROR ON SELECT (Assets Repository, FindAllFiltered)", {
+                    error: error.code,
+                    stack: error.stack,
+                    context: {
+                        method: 'artdv_assets_FindAllFiltered',
+                        params
+                    }
+                });
+                await DBConnect.close(connection);
+                return {
+                    db_operation: 'select',
+                    error: error,
+                };
+            }
+        }
+
     findAll = async () => {
         const table = 'assets';
-        const orderPrio1 = 'created_on';
+        const orderPrio1 = 'datetime';
 
         const sql = `SELECT * FROM ${table} ORDER BY ${orderPrio1} DESC`;
         let connection;
