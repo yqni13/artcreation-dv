@@ -12,6 +12,7 @@ import { AuthRoute } from './api/routes/auth.route.enum';
 import { Router } from '@angular/router';
 import { BaseRoute } from './api/routes/base.route.enum';
 import { NewsHttpInterceptor } from './common/http/news.http.interceptor';
+import { AssetsHttpInterceptor } from './common/http/assets.http.interceptor';
 
 
 export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
@@ -19,6 +20,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     const snackbarService = inject(SnackbarMessageService);
     const httpObservationService = inject(HttpObservationService);
     const authIntercept = inject(AuthHttpInterceptor);
+    const assetsIntercept = inject(AssetsHttpInterceptor);
     const galleryIntercept = inject(GalleryHttpInterceptor);
     const mailIntercept = inject(MailHttpInterceptor);
     const newsIntercept = inject(NewsHttpInterceptor);
@@ -31,6 +33,9 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
 
                 if(httpbody.url?.includes(AdminRoute.AUTH)) {
                     authIntercept.handleAuthResponse(httpEvent as HttpResponse<any>);
+                }
+                if(httpbody.url?.includes(AdminRoute.ASSETS)) {
+                    assetsIntercept.handleAssetsResponse(httpEvent as HttpResponse<any>);
                 }
                 if(httpbody.url?.includes(AdminRoute.GALLERY)) {
                     galleryIntercept.handleGalleryResponse(httpEvent as HttpResponse<any>);
@@ -45,7 +50,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
         })
         ,
         catchError((response) => {
-            handleError(response, httpObservationService, snackbarService, translate, authIntercept, galleryIntercept, mailIntercept, newsIntercept, router).catch((err) => {
+            handleError(response, httpObservationService, snackbarService, translate, authIntercept, assetsIntercept, galleryIntercept, mailIntercept, newsIntercept, router).catch((err) => {
                 console.log("Error handling failed", err);
             })
             
@@ -54,10 +59,13 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     );
 }
 
-export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, authIntercept: AuthHttpInterceptor, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor, newsIntercept: NewsHttpInterceptor, router: Router) {
+export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, authIntercept: AuthHttpInterceptor, assetsIntercept: AssetsHttpInterceptor, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor, newsIntercept: NewsHttpInterceptor, router: Router) {
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     if(response.url.includes(AdminRoute.AUTH)) {
         authIntercept.handleAuthError(response);
+    }
+    if(response.url.includes(AdminRoute.ASSETS)) {
+        assetsIntercept.handleAssetsError(response);
     }
     if(response.url.includes(AdminRoute.GALLERY)) {
         galleryIntercept.handleGalleryError(response);
@@ -75,6 +83,7 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
     if(response.status === 0 &&
         !response.url.includes(AuthRoute.PRECONNECT) &&
         (response.url.includes(AdminRoute.AUTH)
+        || response.url.includes(AdminRoute.ASSETS)
         || response.url.includes(AdminRoute.GALLERY)
         || response.url.includes(AdminRoute.MAILING)
         || response.url.includes(AdminRoute.NEWS))) {

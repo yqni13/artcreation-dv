@@ -1,42 +1,15 @@
-const { SaleStatus } = require('./enums/sale-status.enum');
-const { ArtGenre } = require('./enums/art-genre.enum');
-const { ArtMedium } = require('./enums/art-medium.enum');
-const { ArtTechnique } = require('./enums/art-technique.enum');
+const { RoutesEnum } = require('./enums/routes.enum');
 const Secrets = require('../utils/secrets.utils');
 const { decryptRSA } = require('../utils/crypto.utils');
-const { InvalidPropertiesException } = require('./exceptions/validation.exception');
+const Utils = require('./common.utils');
 
-exports.validateSaleStatus = (value) => {
-    const statusCollection = Object.values(SaleStatus);
-    if(!statusCollection.includes(value)) {
-        throw new Error('data-invalid-entry#saleStatus');
+exports.validateEnum = (value, enumObj, enumName) => {
+    const enumValues = Object.values(enumObj);
+    if(!enumValues.includes(value)) {
+        throw new Error(`data-invalid-entry#${enumName}`);
     }
     return true;
 }
-
-exports.validateArtGenre = (value) => {
-    const genres = Object.values(ArtGenre);
-    if(!genres.includes(value)) {
-        throw new Error('data-invalid-entry#artGenre');
-    }
-    return true;
-};
-
-exports.validateArtMedium = (value) => {
-    const genres = Object.values(ArtMedium);
-    if(!genres.includes(value)) {
-        throw new Error('data-invalid-entry#artMedium');
-    }
-    return true;
-};
-
-exports.validateArtTechnique = (value) => {
-    const genres = Object.values(ArtTechnique);
-    if(!genres.includes(value)) {
-        throw new Error('data-invalid-entry#artTechnique');
-    }
-    return true;
-};
 
 exports.validateUUID = (value) => {
     const pureValue = value.replaceAll('-', '');
@@ -62,18 +35,19 @@ exports.validateRefNrNoManualChange = async (refNr, req) => {
     return true;
 }
 
-exports.validateNewsFK = (fk) => {
-    if(fk === null) {
+exports.validateNewsFK = async (fk, repositorySK, req) => {
+    if(fk === null || fk === undefined) {
         return true;
     }
     this.validateUUID(fk);
+    await this.validateExistingEntry(fk, repositorySK, req);
     return true;
 }
 
 exports.validateNewsImages = (img, fk) => {
     if(fk === null && (img === null || img === undefined)) {
         throw new Error('data-required');
-    } else if(fk !== null && img !== null && img !== undefined) {
+    } else if((fk !== null && fk !== undefined) && img !== null && img !== undefined) {
         throw new Error('data-invalid-entry#path')
     }
     return true;
@@ -97,47 +71,45 @@ exports.validateEncryptedSender = (encryptedSender) => {
     return true;
 }
 
-exports.validateImageFileUpdate = (req, res, next) => {
-    if(req.files.length > 0) {
-        this.validateImageType(req.files[0]);
+exports.validateImageFileInput = (req) => {
+    // custom error to handle file validation => express-validator does not validate files
+    const customError = [{
+        type: 'input',
+        value: null,
+        msg: 'image-required',
+        path: 'imageFile',
+        location: 'files'
+    }];
+
+    // Isolate the string '/api/<version>/' to get route from baseUrl.
+    const route = req.baseUrl.replace(req.baseUrl.substring(-1, req.baseUrl.lastIndexOf('/')+1), '');
+    const hasImgChange = req.validatedEntry && req.validatedEntry.image_path !== req.body.imagePath && (req.body.imagePath !== null && req.body.imagePath !== undefined);
+    if(route === RoutesEnum.NEWS && (req.body.galleryId === null || req.body.galleryId === undefined) && req.files.length <= 0 && hasImgChange) {
+        req = Utils.alarmCustomError(req, customError);
+    } else if(req.files.length <= 0 && (!req.validatedEntry || hasImgChange)) {
+        req = Utils.alarmCustomError(req, customError);
     }
 
-    next();
+    // validate type only in case of new image input (create/input img upload)
+    if(req.files.length > 0) {
+        req = this.validateImageType(req.files[0], req);
+    }
+
+    return true;
 }
 
-exports.validateImageFileInput = (req, res, next) => {
-    // custom solution file input => express-validator does not handle files
-    if(req.body.galleryId === null && req.body.imagePath === null && req.files.length === 0) {
-        const data = [{
-            type: 'input',
-            value: null,
-            msg: 'image-required',
-            path: 'imageFile',
-            location: 'files'
-        }];
-        throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
-    }
-
-    // validation not possible in case of news create/update with gallery link instead image
-    if(req.files.length > 0) {
-        this.validateImageType(req.files[0]);
-    }
-
-    next();
-}
-
-exports.validateImageType = (image) => {
+exports.validateImageType = (image, req) => {
     const type = image.mimetype.replace('image/', '');
     const validTypes = ['jpeg', 'jpg', 'webp', 'png']
     if(!validTypes.includes(type)) {
-        const data = [{
+        const customError = [{
             type: 'input',
             value: image.mimetype,
             msg: 'image-invalid-type',
             path: 'imageFile',
             location: 'files'
         }];
-        throw new InvalidPropertiesException('Missing or invalid properties', { data: data });
+        req = Utils.alarmCustomError(req, customError);
     }
     return true;
 }

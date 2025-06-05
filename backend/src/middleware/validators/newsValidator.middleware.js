@@ -1,6 +1,7 @@
 const { body, param } = require('express-validator');
 const CustomValidator = require('../../utils/customValidators.utils');
 const NewsRepository = require('../../repositories/news.repository');
+const GalleryRepository = require('../../repositories/gallery.repository');
 
 exports.newsFindOneSchema = [
     param('id')
@@ -12,13 +13,14 @@ exports.newsFindOneSchema = [
 ];
 
 exports.newsCreateSchema = [
-    CustomValidator.validateImageFileInput,
     body('galleryId')
-        .custom((foreignKey) => CustomValidator.validateNewsFK(foreignKey)),
+        .custom(async (foreignKey, {req}) => await CustomValidator.validateNewsFK(foreignKey, GalleryRepository, req))
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('imagePath')
-        .custom((imagePath, { req }) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
+        .custom((imagePath, {req}) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
     body('thumbnailPath')
-        .custom((thumbnailPath, { req }) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
+        .custom((thumbnailPath, {req}) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
     body('title')
         .trim()
         .notEmpty()
@@ -36,7 +38,6 @@ exports.newsCreateSchema = [
 ];
 
 exports.newsUpdateSchema = [
-    CustomValidator.validateImageFileInput,
     body('id')
         .trim()
         .notEmpty()
@@ -44,13 +45,15 @@ exports.newsUpdateSchema = [
         .bail()
         .custom((value) => CustomValidator.validateUUID(value))
         .bail()
-        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, NewsRepository, req)),
+        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, NewsRepository, req))
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('galleryId')
-        .custom((foreignKey) => CustomValidator.validateNewsFK(foreignKey)),
+        .custom(async (foreignKey, {req}) => await CustomValidator.validateNewsFK(foreignKey, GalleryRepository, req)),
     body('imagePath')
-        .custom((imagePath, { req }) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
+        .custom((imagePath, {req}) => CustomValidator.validateNewsImages(imagePath, req.body.galleryId)),
     body('thumbnailPath')
-        .custom((thumbnailPath, { req }) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
+        .custom((thumbnailPath, {req}) => CustomValidator.validateNewsImages(thumbnailPath, req.body.galleryId)),
     body('title')
         .trim()
         .notEmpty()
@@ -75,5 +78,5 @@ exports.newsDeleteSchema = [
         .bail()
         .custom((id) => CustomValidator.validateUUID(id))
         .bail()
-        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, NewsRepository, req))
+        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, NewsRepository, req))
 ];

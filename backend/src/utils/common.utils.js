@@ -77,3 +77,42 @@ exports.streamToBuffer = async (stream) => {
     }
     return Buffer.concat(chunks);
 }
+
+/**
+ * 
+ * @param {file[]} files 
+ * @param {string[]} replaceValue 
+ * @param {string[]} newValue 
+ * @returns {file[]}
+ */
+exports.renameFileNames = (files, replaceValue, newValue) => {
+    for (let i = 0; i < files.length; i++) {
+        if(files[i] && files[i]['originalname'].includes(replaceValue[i])) {
+            files[i]['originalname'] = files[i]['originalname'].replace(replaceValue[i], newValue[i]);
+        }
+    }
+    return files;
+}
+
+/**
+ * @param {*} req 
+ * @param {
+ *  {
+    *  type: string,
+    *  value: any,
+    *  msg: string,
+    *  path: string,
+    *  location: string
+ *  }
+ * } customError 
+ * @returns 
+ * @description Add customized error block and update req to not overwrite validation blocks.
+ */
+exports.alarmCustomError = (req, customError) => {
+    if(!req.customValidationErrors) {
+        req.customValidationErrors = [];
+    }
+    req.customValidationErrors.push(...customError);
+
+    return req;
+}

@@ -1,6 +1,10 @@
 const { body, param } = require('express-validator');
 const CustomValidator = require('../../utils/customValidators.utils');
 const GalleryRepository = require('../../repositories/gallery.repository');
+const { SaleStatus } = require('../../utils/enums/sale-status.enum');
+const { ArtGenre } = require('../../utils/enums/art-genre.enum');
+const { ArtMedium } = require('../../utils/enums/art-medium.enum');
+const { ArtTechnique } = require('../../utils/enums/art-technique.enum');
 
 exports.galleryFindOneSchema = [
     param('id')
@@ -19,11 +23,12 @@ exports.galleryFindByRefNrSchema = [
 ];
 
 exports.galleryCreateSchema = [
-    CustomValidator.validateImageFileInput,
     body('imagePath')
         .trim()
         .notEmpty()
-        .withMessage('data-required'),
+        .withMessage('data-required')
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('thumbnailPath')
         .trim()
         .notEmpty()
@@ -40,7 +45,7 @@ exports.galleryCreateSchema = [
         .isLength({max: 50})
         .withMessage('data-invalid-max#saleStatus!50')
         .bail()
-        .custom((value) => CustomValidator.validateSaleStatus(value)),
+        .custom((value) => CustomValidator.validateEnum(value, SaleStatus, 'saleStatus')),
     body('price')
         .isNumeric()
         .optional({values: 'null'}),
@@ -59,7 +64,7 @@ exports.galleryCreateSchema = [
         .isLength({max: 20})
         .withMessage('data-invalid-max#artGenre!20')
         .bail()
-        .custom((value) => CustomValidator.validateArtGenre(value)),
+        .custom((value) => CustomValidator.validateEnum(value, ArtGenre, 'artGenre')),
     body('artMedium')
         .trim()
         .notEmpty()
@@ -68,7 +73,7 @@ exports.galleryCreateSchema = [
         .isLength({max: 20})
         .withMessage('data-invalid-max#artMedium!20')
         .bail()
-        .custom((value) => CustomValidator.validateArtMedium(value)),
+        .custom((value) => CustomValidator.validateEnum(value, ArtMedium, 'artMedium')),
     body('artTechnique')
         .trim()
         .notEmpty()
@@ -77,7 +82,7 @@ exports.galleryCreateSchema = [
         .isLength({max: 20})
         .withMessage('data-invalid-max#artTechnique!20')
         .bail()
-        .custom((value) => CustomValidator.validateArtTechnique(value)),
+        .custom((value) => CustomValidator.validateEnum(value, ArtTechnique, 'artTechnique')),
     body('publication')
         .notEmpty()
         .withMessage('data-required')
@@ -87,7 +92,6 @@ exports.galleryCreateSchema = [
 ];
 
 exports.galleryUpdateSchema = [
-    CustomValidator.validateImageFileUpdate,
     body('id')
         .trim()
         .notEmpty()
@@ -95,7 +99,9 @@ exports.galleryUpdateSchema = [
         .bail()
         .custom((value) => CustomValidator.validateUUID(value))
         .bail()
-        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, GalleryRepository, req)),
+        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, GalleryRepository, req))
+        .bail()
+        .custom((_, {req}) => CustomValidator.validateImageFileInput(req)),
     body('referenceNr')
         .trim()
         .notEmpty()
@@ -122,7 +128,7 @@ exports.galleryUpdateSchema = [
         .isLength({max: 50})
         .withMessage('data-invalid-max#saleStatus!50')
         .bail()
-        .custom((value) => CustomValidator.validateSaleStatus(value)),
+        .custom((value) => CustomValidator.validateEnum(value, SaleStatus, 'saleStatus')),
     body('price')
         .isNumeric()
         .optional({values: 'null'}),
@@ -138,7 +144,7 @@ exports.galleryUpdateSchema = [
         .notEmpty()
         .withMessage('data-required')
         .bail()
-        .custom((value) => CustomValidator.validateArtGenre(value)),
+        .custom((value) => CustomValidator.validateEnum(value, ArtGenre, 'artGenre')),
     body('artMedium')
         .trim()
         .notEmpty()
@@ -147,7 +153,7 @@ exports.galleryUpdateSchema = [
         .isLength({max: 20})
         .withMessage('data-invalid-max#artMedium!20')
         .bail()
-        .custom((value) => CustomValidator.validateArtMedium(value)),
+        .custom((value) => CustomValidator.validateEnum(value, ArtMedium, 'artMedium')),
     body('artTechnique')
         .trim()
         .notEmpty()
@@ -156,7 +162,7 @@ exports.galleryUpdateSchema = [
         .isLength({max: 20})
         .withMessage('data-invalid-max#artTechnique!20')
         .bail()
-        .custom((value) => CustomValidator.validateArtTechnique(value)),
+        .custom((value) => CustomValidator.validateEnum(value, ArtTechnique, 'artTechnique')),
     body('publication')
         .notEmpty()
         .withMessage('data-required')
@@ -173,7 +179,7 @@ exports.galleryDeleteSchema = [
         .bail()
         .custom((id) => CustomValidator.validateUUID(id))
         .bail()
-        .custom((id, {req}) => CustomValidator.validateExistingEntry(id, GalleryRepository, req))
+        .custom(async (id, {req}) => await CustomValidator.validateExistingEntry(id, GalleryRepository, req))
 ];
 
 exports.galleryRefNrPreviewSchema = [
@@ -182,5 +188,5 @@ exports.galleryRefNrPreviewSchema = [
         .notEmpty()
         .withMessage('data-required')
         .bail()
-        .custom((value) => CustomValidator.validateArtGenre(value))
+        .custom((value) => CustomValidator.validateEnum(value, ArtGenre, 'artGenre'))
 ];

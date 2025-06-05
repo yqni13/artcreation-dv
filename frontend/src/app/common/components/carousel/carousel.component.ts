@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, Input, TemplateRef } from '@angular/core';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';

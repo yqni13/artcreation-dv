@@ -1,4 +1,5 @@
 const NewsRepository = require('../repositories/news.repository');
+const ImgUploadModel = require('../models/image-upload.model');
 
 class NewsModel {
     checkUseOfForeignKey = async (params) => {
@@ -46,7 +47,7 @@ class NewsModel {
         }
     }
 
-    renamePathName = (params, replaceValue, newValue) => {
+    renamePathNames = (params, replaceValue, newValue) => {
         if((Object.keys(params).length > 0 && params.id && params.imagePath !== null) 
             && params.imagePath.includes(replaceValue)) {
             params['imagePath'] = params['imagePath'].replace(replaceValue, newValue);
@@ -55,20 +56,31 @@ class NewsModel {
         return params;
     }
 
-    /**
-     * 
-     * @param {file[]} files 
-     * @param {string[]} replaceValue 
-     * @param {string[]} newValue 
-     * @returns {file[]}
-     */
-    renameFileNames = (files, replaceValue, newValue) => {
-        for (let i = 0; i < files.length; i++) {
-            if(files[i] && files[i]['originalname'].includes(replaceValue[i])) {
-                files[i]['originalname'] = files[i]['originalname'].replace(replaceValue[i], newValue[i]);
-            }
+    checkForImageUpdate = async (params, files, existDbEntry) => {        
+        // case #1: no new file && no link
+        // case #2:  no new file && only link changed
+        if(files.length <= 0 && ((!params.gallery && existDbEntry.image_path) 
+            || (params.gallery && !existDbEntry.image_path))) {
+            return;
         }
-        return files;
+
+        // case #3: no new file && from img to link
+        if(files.length <= 0 && existDbEntry.image_path && params.gallery) {
+            await ImgUploadModel.handleImageRemoval(params);
+            return;
+        }
+
+        if(files.length <= 0) {
+            return;
+        }
+        
+        // case #4: new file && from old img to new img
+        if(files.length > 0 && params.gallery === null && existDbEntry.image_path !== params.imagePath) {
+            await ImgUploadModel.handleImageUploads(params, files, existDbEntry, true);
+            return;
+        }
+
+        await ImgUploadModel.handleImageUploads(params, files, existDbEntry, false);
     }
 }
 

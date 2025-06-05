@@ -1,0 +1,73 @@
+@use '../../../../stylesheets/utilities' as sass;
+
+
+div {
+    display: flex;
+}
+
+.artdv-carouselmedia {
+    width: 100%;
+    justify-content: center;
+    
+    .artdv-carouselmedia-images {
+        $img-border: 5px;
+        $img-margin: 2px;
+        justify-content: center;
+
+        .artdv-carouselmedia-images-wrapper {
+            backdrop-filter: brightness(0.5);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            position: absolute;
+            top: calc($img-margin + $img-border - 1px);
+            margin: 0 auto;
+            span {
+                display: flex;
+                color: sass.$color-ice-white;
+                padding: sass.$space5 sass.$space15;
+            }
+        }
+
+        img {
+            display: flex;
+            padding: 2px;
+            margin: $img-margin 0;
+            $border_style: solid;
+            border-left: calc($img-border * 1.5) $border_style var(--theme-nav-bg);
+            border-right: calc($img-border * 1.5) $border_style var(--theme-highlight-body);
+            border-top: $img-border $border_style var(--theme-nav-bg);
+            border-bottom: $img-border $border_style var(--theme-highlight-body);            
+            max-height: 90vh;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+    }
+
+    .artdv-carouselmedia-navigation {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+
+        i {
+            display: flex;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            width: 30px;
+            height: 30px;
+            opacity: 0.15;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+        .arrow-left {
+            rotate: -90deg;
+        }
+        .arrow-right {
+            rotate: 90deg;
+        }
+    }
+}

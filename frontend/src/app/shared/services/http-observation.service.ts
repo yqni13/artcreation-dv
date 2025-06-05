@@ -6,6 +6,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HttpObservationService {
 
+    private assetsFindOneStatusSubject = new BehaviorSubject<boolean>(false);
+    private assetsFindAllStatusSubject = new BehaviorSubject<boolean>(false);
+    private assetsCreateStatusSubject = new BehaviorSubject<boolean>(false);
+    private assetsUpdateStatusSubject = new BehaviorSubject<boolean>(false);
+    private assetsDeleteStatusSubject = new BehaviorSubject<boolean>(false);
     private galleryFindOneStatusSubject = new BehaviorSubject<boolean>(false);
     private galleryFindAllStatusSubject = new BehaviorSubject<boolean>(false);
     private galleryCreateStatusSubject = new BehaviorSubject<boolean>(false);
@@ -22,6 +27,11 @@ export class HttpObservationService {
     private loginStatusSubject = new BehaviorSubject<boolean>(false);
     private errorStatusSubject = new BehaviorSubject<any>(null);
 
+    assetsFindOneStatus$ = this.assetsFindOneStatusSubject.asObservable();
+    assetsFindAllStatus$ = this.assetsFindAllStatusSubject.asObservable();
+    assetsCreateStatus$ = this.assetsCreateStatusSubject.asObservable();
+    assetsUpdateStatus$ = this.assetsUpdateStatusSubject.asObservable();
+    assetsDeleteStatus$ = this.assetsDeleteStatusSubject.asObservable();
     galleryFindOneStatus$ = this.galleryFindOneStatusSubject.asObservable();
     galleryFindAllStatus$ = this.galleryFindAllStatusSubject.asObservable();
     galleryCreateStatus$ = this.galleryCreateStatusSubject.asObservable();
@@ -38,6 +48,26 @@ export class HttpObservationService {
     loginStatus$ = this.loginStatusSubject.asObservable();
     errorStatus$ = this.errorStatusSubject.asObservable();
 
+    setAssetsFindOneStatus(isStatus200: boolean) {
+        this.assetsFindOneStatusSubject.next(isStatus200);
+    }
+
+    setAssetsFindAllStatus(isStatus200: boolean) {
+        this.assetsFindAllStatusSubject.next(isStatus200);
+    }
+
+    setAssetsCreateStatus(isStatus200: boolean) {
+        this.assetsCreateStatusSubject.next(isStatus200);
+    }
+
+    setAssetsUpdateStatus(isStatus200: boolean) {
+        this.assetsUpdateStatusSubject.next(isStatus200);
+    }
+
+    setAssetsDeleteStatus(isStatus200: boolean) {
+        this.assetsDeleteStatusSubject.next(isStatus200);
+    }
+    
     setGalleryFindOneStatus(isStatus200: boolean) {
         this.galleryFindOneStatusSubject.next(isStatus200);
     }

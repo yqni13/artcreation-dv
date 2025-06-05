@@ -66,6 +66,9 @@
                 "title-type-allowed": "Unsupported format!"
             },
             "interceptor": {
+                "assets-create-confirm": "Asset created!",
+                "assets-delete-confirm": "Asset deleted!",
+                "assets-update-confirm": "Asset updated!",
                 "gallery-create-confirm": "Artwork created!",
                 "gallery-delete-confirm": "Artwork deleted!",
                 "gallery-update-confirm": "Artwork updated!",
