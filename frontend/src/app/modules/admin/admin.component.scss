@@ -32,7 +32,6 @@ div {
 
     img {
         width: 100%;
-        height: calc(100vh - var(--view-footer-height));
         min-height: 300px;
         object-fit: cover;
         filter: grayscale(1) brightness(0.7);
@@ -51,7 +50,7 @@ div {
     }
 
     .artdv-anchor {
-        font-size: 22px;
+        font-size: clamp(19px, 3vw, 33px);
         text-transform: uppercase;
     }
 

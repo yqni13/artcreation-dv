@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.1.1}}$
+$\texttt{\color{teal}{v1.2.1}}$
 
 
 <br><br>
@@ -105,7 +105,7 @@ See [custom translate loader](frontend/public/assets/i18n/custom-translate-loade
 
 <div align="center">
       <img src="frontend/public/assets/readme/i18n.gif" alt="&nbsp;no picture found">
-      Figure 3
+      Figure 3, v1.0.0-beta.4
 </div>
 
 <br>
@@ -135,7 +135,7 @@ Figure 5 illustrates how 6 images inside the viewport, along with the next 3 row
 
 <div align="center">
       <img src="frontend/public/assets/readme/custom-preload.gif" alt="&nbsp;no picture found">
-      Figure 5
+      Figure 5, v1.0.0-beta.3
 </div>
 
 <br>
@@ -168,7 +168,7 @@ In the gallery section, preview thumbnails open in a museum-style view, showing 
 
 ### $\textsf{\color{teal}Database layer}$
 
-PostgreSQL is used as the relational database management system to store all necessary data. The free-tier plan from the Neon hosting service is sufficient for handling all data in this context (see Figure 8, basic findAll request).
+PostgreSQL is used as the relational database management system to store all necessary data. The free-tier plan from the Neon hosting service is sufficient for handling all data in this context (see Figure 8, basic findAll request).<br>Migrations are handled with the node package `node-pg-migrate` in the backend (see [help docs](/backend/src/db/migration.md)).
 <br><br>
 Image files for "gallery" and "news" elements are not stored in the database; only their paths are saved within the respective entries (see Figure 8, response). Additionally, file input from users (for "gallery" or "news" items) is processed (regarding format and size) and uploaded to a cloud object storage - in this case, an R2 Bucket from `Cloudflare`.
 <br><br>
@@ -176,14 +176,14 @@ Once data is retrieved from the database, the saved image path is concatenated w
 
 <div align="center">
       <img src="frontend/public/assets/readme/loading_data.jpg" alt="&nbsp;no picture found">
-      Figure 8
+      Figure 8, v1.0.0-beta.13
 </div>
 
 <br>
 
 <div align="center">
       <img src="frontend/public/assets/readme/loading_image.jpg" alt="&nbsp;no picture found">
-      Figure 9
+      Figure 9, v1.0.0-beta.13
 </div>
 
 <br>
@@ -194,7 +194,7 @@ For the UI currently only console logs and snackbar modals inform about errors a
 
 <div align="center">
       <img src="frontend/public/assets/readme/loading_logs.jpg" alt="&nbsp;no picture found">
-      Figure 10
+      Figure 10, v1.0.2
 </div>
 
 
@@ -222,7 +222,7 @@ The provided image paths allow images to be loaded without additional database q
 
 <div align="center">
       <img src="frontend/public/assets/readme/admin_and_news.gif" alt="&nbsp;no picture found">
-      Figure 11
+      Figure 11, v1.1.0
 </div>
 
 <br><br>
@@ -267,9 +267,10 @@ $ npm run lint
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.1.0\ >>\ {\color{pink}1.1.1}}$
+### $\textsf{last\ update\ 1.1.1\ >>\ {\color{pink}1.2.1}}$
 
-- $\textsf{\color{red}Patch:}$ Added image preload service/guard to provide loaded images before showing page.
+- $\textsf{\color{green}Change:}$ Added new service "assets" to handle media data by admin. Home page will display art exhibition images in carousel underneath news slider.
+- $\textsf{\color{red}Bugfix:}$ Hovering/scrolling in mobile mode does not change arrangement of artworks in gallery overview. [Before: Hovering/scrolling in mobile mode on certain viewport (artworks close to sides) changed total width of row and dropped one element into next row => every row x elements and in row of hovered element x - 1.]
 
 <br>
 

@@ -4,6 +4,9 @@ import { Pipe, PipeTransform } from "@angular/core";
     name: 'dtPicker'
 })
 export class DateTimePickerPipe implements PipeTransform {
+    /**
+     * @description Convert datetime string to enable datetime picker using assigned value to display.
+     */
     transform(value: string): string | null {
         const dt = new Date(value);
         if(isNaN(dt.getTime())) {

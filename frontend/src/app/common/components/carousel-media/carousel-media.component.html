@@ -2,7 +2,7 @@
     <div class="artdv-carouselmedia-images">
         <div class="artdv-carouselmedia-images-wrapper">
             <span>
-                {{(entries[index].location ? entries[index].location : '') + (entries[index].location && entries[index].location !== null ? ', ' : '') + (entries[index].datetime | dateFormat: 'dd.mm.yyyy')}}
+                {{(entries[index].location ? entries[index].location + ', ' : '') + (entries[index].datetime | dateFormat: 'dd.mm.yyyy')}}
             </span>
         </div>
         <img src="{{storageDomain + '/' + entries[index].image_path | cacheCheck: entries[index].last_modified}}" alt="404-picture-not-found">

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { AdminDetailImportsModule } from "../../../../common/helper/admin-detail.imports.helper";
 import { SelectInputComponent } from "../../../../common/components/form-components/select-input/select-input.component";
 import { TextInputComponent } from "../../../../common/components/form-components/text-input/text-input.component";
@@ -119,11 +119,11 @@ export class AdminAssetsDetailComponent extends AbstractAdminDetailComponent imp
     private initForm() {
         this.assetsForm = this.fb.group({
             id: new FormControl(null),
-            category: new FormControl(null, Validators.required),
+            category: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
             imageFile: new FormControl(null, Validators.required),
             imagePath: new FormControl(''),
             thumbnailPath: new FormControl(''),
-            location: new FormControl(null),
+            location: new FormControl(null, Validators.maxLength(100)),
             datetime: new FormControl('', Validators.required),
         })
     }

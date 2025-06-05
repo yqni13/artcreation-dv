@@ -4,6 +4,11 @@
 
 <br>
 
+### 2024/06/05 - $\textsf{update\ 1.1.1\ >>\ {\color{pink}1.2.1}}$
+
+- $\textsf{\color{green}Change:}$ Added new service "assets" to handle media data by admin. Home page will display art exhibition images in carousel underneath news slider.
+- $\textsf{\color{red}Bugfix:}$ Hovering/scrolling in mobile mode does not change arrangement of artworks in gallery overview. [Before: Hovering/scrolling in mobile mode on certain viewport (artworks close to sides) changed total width of row and dropped one element into next row => every row x elements and in row of hovered element x - 1.]
+
 ### 2024/05/21 - $\textsf{update\ 1.1.0\ >>\ {\color{pink}1.1.1}}$
 
 - $\textsf{\color{red}Patch:}$ Added image preload service/guard to provide loaded images before showing page.

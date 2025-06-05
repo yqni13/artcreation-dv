@@ -100,6 +100,10 @@
                 }
             }
         }
+        .artdv-admin-option-image {
+            height: calc(100vh - var(--view-footer-height));
+            aspect-ratio: none;
+        }
     }
 
     .artdv-adminassetsdetail,
@@ -387,6 +391,7 @@
                 .triple-inner {
                     width: 100%;
                     border: none;
+                    border-top: 2px solid var(--theme-contrast-anchor);
 
                     .artdv-admin-option-description {
                         padding: calc(sass.$space25 + sass.$space5)!important;
@@ -507,10 +512,12 @@
 
             .triple-outer {
                 width: 33%;
+                border-top: 2px solid var(--theme-contrast-anchor);
             }
 
             .triple-inner {
                 width: 34%;
+                border-top: 2px solid var(--theme-contrast-anchor);
             }
 
             .artdv-admin-option {
@@ -519,6 +526,10 @@
                     width: calc(33% - (var(--view-nav-width) / 3));
                 }
             }
+        }
+        .artdv-admin-option-image {
+            height: auto;
+            aspect-ratio: 16/10;
         }
     }
 
@@ -799,17 +810,14 @@
                 .triple-inner {
                     width: 100%;
                     border: none;
+                    border-top: 2px solid var(--theme-contrast-anchor);
 
                     .artdv-admin-option-description {
                         padding: calc(sass.$space25 + sass.$space5)!important;
-                        .artdv-anchor {
-                            font-size: 28px;
-                        }
                     }
                 }
                 
                 .artdv-admin-option {
-                    
                     .artdv-author {
                         width: calc(100% - var(--view-nav-width));
                         a {
@@ -1303,7 +1311,8 @@
             .triple-outer,
             .triple-inner {
                 width: 100%;
-                border: none!important;
+                border: none;
+                border-top: 2px solid var(--theme-contrast-anchor);
             }
         }
     }
