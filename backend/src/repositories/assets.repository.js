@@ -114,7 +114,7 @@ class AssetsRepository {
 
     findAll = async () => {
         const table = 'assets';
-        const orderPrio1 = 'created_on';
+        const orderPrio1 = 'datetime';
 
         const sql = `SELECT * FROM ${table} ORDER BY ${orderPrio1} DESC`;
         let connection;

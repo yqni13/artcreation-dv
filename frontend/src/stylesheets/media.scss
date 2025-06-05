@@ -284,6 +284,26 @@
             padding: sass.$space50 0;
         }
     }
+    artdv-carouselmedia {
+        .artdv-carouselmedia {
+            .artdv-carouselmedia-images {
+                img {
+                    max-width: calc(100% - 170px);
+                }
+            }
+            .artdv-carouselmedia-navigation {
+                i {
+                    padding: sass.$space25 sass.$space15;
+                }
+                .arrow-left {
+                    left: sass.$space15;
+                }
+                .arrow-right {
+                    right: sass.$space15;
+                }
+            }
+        }
+    }
 
     #artdv-snackbar-container-wrapper {
         margin: sass.$space25;
@@ -683,6 +703,26 @@
             padding: sass.$comp-padding-medium 0;
         }
     }
+    artdv-carouselmedia {
+        .artdv-carouselmedia {
+            .artdv-carouselmedia-images {
+                img {
+                    max-width: calc(100% - 20px);
+                }
+            }
+            .artdv-carouselmedia-navigation {
+                i {
+                    padding: sass.$space25 sass.$space15;
+                }
+                .arrow-left {
+                    left: sass.$space15;
+                }
+                .arrow-right {
+                    right: sass.$space15;
+                }
+            }
+        }
+    }
 
     .artdv-nav-bar {
         height: 100vh;
@@ -1066,6 +1106,26 @@
     artdv-carousel {
         .artdv-carousel-wrapper {
             padding: sass.$comp-padding-small 0;
+        }
+    }
+    artdv-carouselmedia {
+        .artdv-carouselmedia {
+            .artdv-carouselmedia-images {
+                img {
+                    max-width: calc(100% - 20px);
+                }
+            }
+            .artdv-carouselmedia-navigation {
+                i {
+                    padding: sass.$space25 sass.$space15;
+                }
+                .arrow-left {
+                    left: sass.$space15;
+                }
+                .arrow-right {
+                    right: sass.$space15;
+                }
+            }
         }
     }
 

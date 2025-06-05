@@ -1,0 +1,27 @@
+<div class="artdv-carouselmedia">
+    <div class="artdv-carouselmedia-images">
+        <div class="artdv-carouselmedia-images-wrapper">
+            <span>
+                {{(entries[index].location ? entries[index].location : '') + (entries[index].location && entries[index].location !== null ? ', ' : '') + (entries[index].datetime | dateFormat: 'dd.mm.yyyy')}}
+            </span>
+        </div>
+        <img src="{{storageDomain + '/' + entries[index].image_path | cacheCheck: entries[index].last_modified}}" alt="404-picture-not-found">
+    </div>
+    <div class="artdv-carouselmedia-navigation" *ngIf="entries.length > 0">
+        <i
+            class="icon-ArrowTriangularHollow arrow-left"
+            [attr.tabindex]="0"
+            (click)="prev()"
+            (keydown.enter)="prev()"
+            *ngIf="index > 0"
+        ></i>
+        <i
+            class="icon-ArrowTriangularHollow arrow-right"
+            [attr.tabindex]="0"
+            (click)="next()"
+            (keydown.enter)="next()"
+            *ngIf="index < entries.length-1"
+        ></i>
+    </div>
+    <artdv-loading-animation [sizeMode]="SizeOptionEnum.COMP" [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
+</div>

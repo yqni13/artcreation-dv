@@ -158,6 +158,9 @@ export class AdminAssetsDetailComponent extends AbstractAdminDetailComponent imp
         if(Object.values(AssetsCategory).includes(event.target?.value)) {
             this.hasCategory = true;
             this.assetsForm.get('category')?.setValue(event.target?.value);
+            if(event.target?.value === AssetsCategory.PROFILE) {
+                this.assetsForm.get('location')?.setValue(null);
+            }
         }
     }
 

@@ -27,7 +27,10 @@
                 ></artdv-imgupload>
             </div>
             <div class="artdv-admin-specific-detail-form artdv-form-details" *ngIf="hasCategory">
-                <div class="artdv-admin-specific-detail-form-wrapper">
+                <div
+                    class="artdv-admin-specific-detail-form-wrapper"
+                    *ngIf="assetsForm.get('category')?.value === AssetsCategoryEnum.EXH"
+                >
                     <span>{{('modules.admin.assets.details.location' | translate) + ':'}}</span>
                     <artdv-textinput
                         class="artdv-admin-specific-detail-text"

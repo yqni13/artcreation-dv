@@ -16,7 +16,10 @@
             </span>
         </div>
     </ng-container>
-    <div class="artdv-home-top-img">
-        <img src="assets/background/home_bg_03.webp" alt="404-picture-not-found">
+    <div class="artdv-home-top-img" *ngIf="mediaCollection.length > 0">
+        <artdv-carouselmedia
+            [entries]="mediaCollection"
+            [isLoadingResponse]="isLoadingMediaResponse"
+        ></artdv-carouselmedia>
     </div>
 </section>

@@ -76,9 +76,11 @@ artdv-carousel {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: #e5e5e5;
     
-    img {
+    artdv-carouselmedia {
+        display: flex;
         width: 100%;
+        position: relative;
     }
 }
+
