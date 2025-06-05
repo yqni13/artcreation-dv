@@ -2,8 +2,12 @@ const { validationResult } = require('express-validator');
 const { InvalidPropertiesException } = require('../utils/exceptions/validation.exception');
 
 exports.checkValidation = (req) => {
-    const data = validationResult(req);
-    if(!data.isEmpty()) {
-        throw new InvalidPropertiesException('Missing or invalid properties', { data: data.errors });
+    const errors = validationResult(req);
+    const allErrors = [
+        ...(req.customValidationErrors || []),
+        ...errors.array()
+    ];
+    if(allErrors.length > 0) {
+        throw new InvalidPropertiesException('Missing or invalid properties', { data: allErrors });
     }
 }

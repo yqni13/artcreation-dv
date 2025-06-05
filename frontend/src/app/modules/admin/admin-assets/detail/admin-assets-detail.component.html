@@ -1,0 +1,88 @@
+<section class="artdv-adminassetsdetail">
+    <header>
+        <h1>{{'modules.admin.assets.title.' + (mode === ModeOptionEnum.CREATE ? 'create' : 'update') | translate}}</h1>
+    </header>
+    <div class="artdv-admin-specific-detail-content" *ngIf="!isLoadingInit">
+        <form [formGroup]="assetsForm">
+            <div class="artdv-admin-specific-detail-form artdv-form-genre">
+                <div class="artdv-admin-specific-detail-form-wrapper">
+                    <span>{{('modules.admin.assets.details.category' | translate) + ':*'}}</span>
+                    <artdv-selectinput
+                        class="artdv-admin-specific-detail-select"
+                        [placeholder]="'modules.admin.assets.placeholder.category' | translate"
+                        [fieldName]="'modules.admin.assets.details.category' | translate"
+                        [options]="AssetsCategoryEnum"
+                        [optionsTranslateRoot]="'shared.enum.assets-category.'"
+                        [formControl]="assetsForm.get('category') | controlCast"
+                        (byChange)="onCategoryChange($event)"
+                    ></artdv-selectinput>
+                </div>
+            </div>
+            <div class="artdv-admin-specific-detail-form artdv-form-image" *ngIf="hasCategory">
+                <artdv-imgupload
+                    [existingImgPath]="pathFromExistingImg"
+                    [isSubmitTriggered]="onSubmitTrigger"
+                    (byChange)="readFileUpload($event)"
+                    (byRemove)="readRemovalInfo($event)"
+                ></artdv-imgupload>
+            </div>
+            <div class="artdv-admin-specific-detail-form artdv-form-details" *ngIf="hasCategory">
+                <div
+                    class="artdv-admin-specific-detail-form-wrapper"
+                    *ngIf="assetsForm.get('category')?.value === AssetsCategoryEnum.EXH"
+                >
+                    <span>{{('modules.admin.assets.details.location' | translate) + ':'}}</span>
+                    <artdv-textinput
+                        class="artdv-admin-specific-detail-text"
+                        [placeholder]="'modules.admin.assets.placeholder.location' | translate"
+                        [inputType]="'text'"
+                        [formControl]="assetsForm.get('location') | controlCast"
+                        [fieldName]="'modules.admin.assets.details.location' | translate"
+                    ></artdv-textinput>
+                </div>
+                <div class="artdv-admin-specific-detail-form-wrapper">
+                    <span>{{('modules.admin.assets.details.datetime' | translate) + ':*'}}</span>
+                    <artdv-textinput
+                        class="artdv-admin-specific-detail-select"
+                        [inputType]="'datetime-local'"
+                        [fieldName]="'modules.admin.assets.details.datetime' | translate"
+                        [formControl]="assetsForm.get('datetime') | controlCast"
+                    ></artdv-textinput>
+                </div>
+            </div>
+            <div class="artdv-admin-specific-detail-update-wrapper" *ngIf="lastModifiedDateTime">
+                <span id="artdv-admin-specific-detail-update-label">
+                    {{'modules.admin.info.last-update' | translate}}
+                </span>
+                <span id="artdv-admin-specific-detail-update-value">
+                    {{lastModifiedDateTime}}
+                </span>
+            </div>
+        </form>
+        <div class="artdv-admin-specific-detail-form-btn">
+            <button
+                class="artdv-admin-specific-detail-form-btn-wrapper btn-confirm"
+                (click)="onSubmit(assetsForm, assetsApi)"
+                [attr.aria-disabled]="true"
+            >
+                <i class="icon-Save"></i>
+            </button>
+            <button
+                class="artdv-admin-specific-detail-form-btn-wrapper btn-cancel"
+                (click)="cancel(AdminRouteEnum.ASSETS)"
+                [attr.aria-disabled]="true"
+            >
+                <i class="icon-Return"></i>
+            </button>
+            <button
+                class="artdv-admin-specific-detail-form-btn-wrapper btn-delete"
+                *ngIf="mode === ModeOptionEnum.UPDATE"
+                (click)="remove(AdminRouteEnum.ASSETS, assetsApi)"
+                [attr.aria-disabled]="true"
+            >
+                <i class="icon-Delete"></i>
+            </button>
+        </div>
+    </div>
+    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
+</section>

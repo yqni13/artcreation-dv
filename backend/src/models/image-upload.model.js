@@ -1,7 +1,6 @@
 const sharp = require('sharp');
 const CloudStorageAPI = require('../services/external/cloud-storage.api');
 const { UnexpectedApiResponseException } = require('../utils/exceptions/api.exception');
-const Utils = require('../utils/common.utils');
 const logger = require('../logger/config.logger').getLogger();
 
 class ImageUpload {
@@ -94,19 +93,9 @@ class ImageUpload {
         }
     }
 
-    handleImageUpdate = async (params, files, existDbEntry) => {
-        // change on file and/or genre needs to delete old/upload new images (new file or changed name => path + refNr)
+    handleImageUpdate = async (params, files, existDbEntry, removeExistingImages) => {
         try {
-            if(files.length === 0 && existDbEntry.art_genre !== params.artGenre) {
-                const response = await CloudStorageAPI.readImageFromCDN(existDbEntry.image_path);
-                files = await Utils.streamToBuffer(response.Body);
-            }
-            if(files.length === 0 && existDbEntry.art_genre === params.artGenre) {
-                return;
-            }
-
-            // prevent removal on news if update from linked artwork to new uploaded image
-            if(existDbEntry.image_path !== null && existDbEntry.thumbnail_path !== null) {
+            if(removeExistingImages) {
                 await this.handleImageRemoval({imagePath: existDbEntry.image_path, thumbnailPath: existDbEntry.thumbnail_path});
             }
             return await this.handleImageUploads(params, files);

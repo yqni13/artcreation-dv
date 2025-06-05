@@ -66,6 +66,9 @@
                 "title-type-allowed": "Format nicht unterstützt!"
             },
             "interceptor": {
+                "assets-create-confirm": "Ressource erstellt!",
+                "assets-delete-confirm": "Ressource gelöscht!",
+                "assets-update-confirm": "Ressource aktualisiert!",
                 "gallery-create-confirm": "Kunstwerk erstellt!",
                 "gallery-delete-confirm": "Kunstwerk gelöscht!",
                 "gallery-update-confirm": "Kunstwerk aktualisiert!",

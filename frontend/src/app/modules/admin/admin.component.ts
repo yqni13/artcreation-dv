@@ -21,7 +21,7 @@ export class AdminComponent {
 
     protected authorGalleryImg: string;
     protected authorNewsImg: string;
-    protected authorLogoutImg: string;
+    protected authorAssetsImg: string;
     protected editLabel: string;
 
     constructor(
@@ -33,7 +33,7 @@ export class AdminComponent {
     ) {
         this.authorGalleryImg = 'https://pixabay.com/de/users/stocksnap-894430/';
         this.authorNewsImg = 'https://pixabay.com/de/photos/news-tageszeitung-presse-1172463/';
-        this.authorLogoutImg = 'https://pixabay.com/de/users/tama66-1032521/';
+        this.authorAssetsImg = 'https://pixabay.com/de/users/tianya1223-4833799/';
         this.editLabel = 'edit: ';
 
         // Images are preloaded via ImgPreloadGuard (admin.routes.ts).
