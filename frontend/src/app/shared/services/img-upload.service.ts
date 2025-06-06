@@ -19,7 +19,7 @@ export class ImgUploadService {
         private readonly snackbar: SnackbarMessageService,
         private readonly staticTranslate: StaticTranslateService,
     ) {
-        this.sizeFactorInMB = 10;
+        this.sizeFactorInMB = 4; // default max size vercel
         this.maxFileSize = 1024 * 1024 * this.sizeFactorInMB;
     }
 
