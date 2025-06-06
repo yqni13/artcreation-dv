@@ -51,7 +51,7 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
             uploadSuccess: false,
             uploadError: false,
         };
-        this.sizeFactorInMB = 10;
+        this.sizeFactorInMB = 4;
         this.showValidationMessage = false;
         this.storageDomain = environment.STORAGE_URL;
 
