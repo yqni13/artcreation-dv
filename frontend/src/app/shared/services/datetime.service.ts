@@ -4,21 +4,6 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 export class DateTimeService {
-
-    getTimeInMillisecondsFromExpiration(time: string): number {
-        if(time.includes('d')) {
-            time = time.replace('d', '');
-            return Number(time) * 24 * 60 * 60 * 1000;
-        } else if(time.includes('h')) {
-            time = time.replace('h', '');
-            return Number(time) * 60 * 60 * 1000;
-        } else if(time.includes('m')) {
-            time = time.replace('m', '');
-            return Number(time) * 60 * 1000;
-        }
-        return 0;
-    }
-
     convertTimestamp(timestamp: string | null): string {
         if(!timestamp) {
             return 'no data';
@@ -36,9 +21,5 @@ export class DateTimeService {
     getTimeInMillisecondsFromHours(time: number): number {
         // time value in hours
         return time * 60 * 60 * 1000;
-    }
-
-    addTimestampWithCurrentMoment(time: number) {
-        return Date.now() + time;
     }
 }
