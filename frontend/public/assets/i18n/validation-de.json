@@ -76,6 +76,9 @@
                 "news-create-confirm": "News-Artikel erstellt!",
                 "news-delete-confirm": "News-Artikel gelöscht!",
                 "news-update-confirm": "News-Artikel aktualisiert!"
+            },
+            "other": {
+                "auto-logout": "Sie wurden automatisch abgemeldet, da Ihre Sitzung aus Sicherheitsgründen zeitlich begrenzt ist."
             }
         }
     }

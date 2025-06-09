@@ -6,6 +6,7 @@ import { SnackbarComponent } from './common/components/snackbar/snackbar.compone
 import { SnackbarMessageService } from './shared/services/snackbar.service';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { LoadingAnimationComponent } from './common/components/animation/loading/loading-animation.component';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -32,10 +33,11 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
 
   constructor(
     protected snackbarService: SnackbarMessageService,
-    @Inject(DOCUMENT) private document: Document,
-    private renderer2: Renderer2,
-    private elRef: ElementRef,
-    private router: Router
+    private readonly router: Router,
+    private readonly elRef: ElementRef,
+    private readonly renderer2: Renderer2,
+    private readonly authService: AuthService,
+    @Inject(DOCUMENT) private readonly document: Document,
   ) {
     this.scrollbarActive = false;
     this.scrollbarRoutes = [
@@ -57,6 +59,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
 
   ngOnInit() {
     this.scrollAnchor = this.elRef.nativeElement.querySelector(".artdv-scroll-anchor");
+    this.authService.restoreExpirationTimer();
   }
 
   scrollToTop() {

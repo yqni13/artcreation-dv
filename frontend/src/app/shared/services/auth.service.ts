@@ -7,6 +7,13 @@ import { EncryptionService } from "./encryption.service";
 import { TokenService } from "./token.service";
 import { TokenOption } from "../enums/token-option.enum";
 import { DateTimeService } from "./datetime.service";
+import { Router } from "@angular/router";
+import { BaseRoute } from "../../api/routes/base.route.enum";
+import { SnackbarMessageService } from "./snackbar.service";
+import { TranslateService } from "@ngx-translate/core";
+import { StaticTranslateService } from "./static-translation.service";
+import { SnackbarOption } from "../enums/snackbar-option.enum";
+import { SnackbarInput } from "../enums/snackbar-input.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -19,12 +26,17 @@ export class AuthService {
     private urlLoginAPI: string;
     private preConnection: boolean;
     private credentials: any;
+    private logoutTimer: ReturnType<typeof setTimeout> | null;
 
     constructor(
+        private readonly router: Router,
         private readonly http: HttpClient,
         private readonly token: TokenService,
         private readonly datetime: DateTimeService,
         private readonly encrypt: EncryptionService,
+        private readonly translate: TranslateService,
+        private readonly snackbar: SnackbarMessageService,
+        private readonly staticTranslate: StaticTranslateService
     ) {
         this.exceptionList = [
             'JWTExpirationException',
@@ -45,6 +57,7 @@ export class AuthService {
             user: '',
             pass: ''
         };
+        this.logoutTimer = null;
     }
 
     getExceptionList(): string[] {
@@ -71,27 +84,37 @@ export class AuthService {
     }
 
     login(): Observable<HttpResponse<any>> {
-        this.logout();
+        this.logout(false);
         return this.http.post<any>(this.urlLoginAPI, this.credentials, { observe: 'response' }).pipe(
             tap(response => {
                 this.setSession(response.body?.body);
+                this.setExpirationTimer(this.token.getToken(TokenOption.TOKEN) ?? '')
             })
         )
     }
 
-    logout() {
+    logout(nav2Login: boolean = true) {
         this.token.removeToken(TokenOption.TOKEN);
         this.token.removeToken(TokenOption.EXPIRATION);
+
+        if(this.logoutTimer) {
+            clearTimeout(this.logoutTimer);
+            this.logoutTimer = null;
+        }
+        if(nav2Login) {
+            this.router.navigate([BaseRoute.LOGIN]);
+        }
     }
 
     private setSession(authResponse: AuthResponse) {
         this.token.removeToken(TokenOption.TOKEN);
         this.token.removeToken(TokenOption.EXPIRATION);
-        const expiration = this.datetime.addTimestampWithCurrentMoment(
-            this.datetime.getTimeInMillisecondsFromExpiration(authResponse.expiresIn)
-        );
-        
-        this.token.setToken(TokenOption.TOKEN, authResponse.token.body.token);
+
+
+        const token = authResponse.token.body.token;
+        const expiration = JSON.parse(atob(token.split('.')[1])).exp * 1000;
+
+        this.token.setToken(TokenOption.TOKEN, token);
         this.token.setToken(TokenOption.EXPIRATION, JSON.stringify(expiration));
     }
 
@@ -100,7 +123,7 @@ export class AuthService {
         if(hasSessionToken && (this.getExpiration() - Date.now()) > 0) {
             return true;
         }
-        this.logout();
+        this.logout(false);
         return false;
     }
 
@@ -108,5 +131,48 @@ export class AuthService {
     getExpiration() {
         const expirationToken = this.token.getToken(TokenOption.EXPIRATION) as unknown;
         return expirationToken as number;
+    }
+
+    setExpirationTimer(token: string) {
+        if(token === '') {
+            return;
+        }
+
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const expInSeconds = payload.exp * 1000;
+        const timeout = expInSeconds - Date.now();
+
+        if(timeout <= 0) {
+            this.logout();
+            this.#notifyOnAutoLogout();
+        } else {
+            this.logoutTimer = setTimeout(() => {
+                this.logout();
+                this.#notifyOnAutoLogout();
+            }, timeout);
+        }
+    }
+
+    restoreExpirationTimer() {
+        const token = this.token.getToken(TokenOption.TOKEN);
+        if(token) {
+            this.setExpirationTimer(token);
+        }
+    }
+
+    #notifyOnAutoLogout() {
+        const titlePath = 'validation.backend.header.JWTExpirationException';
+        const textPath = 'validation.frontend.other.auto-logout';
+        this.snackbar.notify({
+            title: this.translate.currentLang === 'de'
+                ? this.staticTranslate.getValidationDE(titlePath, SnackbarInput.TITLE)
+                : this.staticTranslate.getValidationEN(titlePath, SnackbarInput.TITLE),
+            text: this.translate.currentLang === 'de'
+                ? this.staticTranslate.getValidationDE(textPath, SnackbarInput.TEXT)
+                : this.staticTranslate.getValidationEN(textPath, SnackbarInput.TEXT),
+            autoClose: true,
+            type: SnackbarOption.info,
+            displayTime: 6000
+        })
     }
 }

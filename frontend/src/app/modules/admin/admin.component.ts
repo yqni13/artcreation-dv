@@ -72,9 +72,6 @@ export class AdminComponent implements OnInit, OnDestroy {
 
     logout() {
         this.auth.logout();
-        if(!this.auth.isLoggedIn()) {
-            this.router.navigate(['login']);
-        }
     }
 
     ngOnDestroy() {

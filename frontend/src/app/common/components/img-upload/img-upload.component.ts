@@ -122,7 +122,7 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
     }
 
     resetFileInput() {
-        // Clean file infomration to enable validation for multiple use of same image in a row.
+        // Clean file information to enable validation for multiple uses of same image in a row.
         this.fileInput.nativeElement.value = null;
         this.fileInput.nativeElement.files = [];
     }
