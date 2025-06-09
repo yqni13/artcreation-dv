@@ -17,7 +17,7 @@ import { environment } from "../../../../environments/environment";
 })
 export class ImgUploadComponent implements OnInit, OnDestroy {
 
-    @ViewChild('fileInput') fileInput!: any;
+    @ViewChild('fileInput') fileInput!: ElementRef;
     @ViewChild('dropContainer') dropContainer!: any;
     @ViewChild('artworkImage', {static: false}) artworkImage: ElementRef<HTMLCanvasElement | null>
 
@@ -121,6 +121,12 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
         }
     }
 
+    resetFileInput() {
+        // Clean file infomration to enable validation for multiple use of same image in a row.
+        this.fileInput.nativeElement.value = null;
+        this.fileInput.nativeElement.files = [];
+    }
+
     removeImage() {
         this.fileInformation.hasFile = false;
         this.fileInformation.imageSize.set(0);
@@ -134,6 +140,7 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
             existingImgPath: false
         }
         this.byRemove.emit(removeInfo);
+        this.resetFileInput();
     }
 
     ngOnDestroy() {
