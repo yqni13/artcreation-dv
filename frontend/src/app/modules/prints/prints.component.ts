@@ -6,7 +6,6 @@ import { CommonModule } from "@angular/common";
 import { Subscription, tap } from "rxjs";
 import { ThemeObservationService } from "../../shared/services/theme-observation.service";
 import { ThemeOption } from "../../shared/enums/theme-option.enum";
-import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { BaseRoute } from "../../api/routes/base.route.enum";
 import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img-fullscale.component";
 
