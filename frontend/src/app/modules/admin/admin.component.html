@@ -58,7 +58,8 @@
         </div>
     </div>
     <div
-        class="artdv-admin-logout bg-pattern-grid-01"
+        class="artdv-admin-logout"
+        [ngClass]="currentTheme === ThemeOptionEnum.darkMode ? 'artdv-logout-darkMode' : 'artdv-logout-lightMode'"
         (click)="logout()"
         (keydown.enter)="logout()"
         [attr.aria-disabled]="true"

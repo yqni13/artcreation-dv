@@ -102,7 +102,7 @@ div {
         align-items: center;
         padding: sass.$space15 sass.$space25;
         border-radius: 5px;
-        backdrop-filter: brightness(0.3);
+        backdrop-filter: brightness(0.2);
 
         .artdv-admin-logout-icon {
             margin-right: sass.$space5;
@@ -117,9 +117,19 @@ div {
         
         i,
         span {
+            font-weight: bold;
             color: var(--theme-contrast-anchor);
+            text-transform: uppercase;
         }
     }
+}
+
+.artdv-logout-darkMode {
+    background-image: url('/assets/admin/logout_bg_darkMode.svg');
+}
+
+.artdv-logout-lightMode {
+    background-image: url('/assets/admin/logout_bg_lightMode.svg');
 }
 
 /* ADMIN OVERVIEW STYLING --- ADMIN OVERVIEW STYLING */
