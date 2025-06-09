@@ -278,7 +278,6 @@ $ npm run lint
 ### Aimed objectives for next $\textsf{\color{green}minor}$ update:
 <dl>
       <dd>- pagination in archive component</dd>
-
       <dd>- provide security standards: input sanitizations, content security policies & HttpOnly cookies</dd>
       <dd>- deploy a Web Application Manifest to make webpage into a progressive web app (PWA)</dd>
 </dl>

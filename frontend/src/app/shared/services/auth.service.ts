@@ -110,6 +110,7 @@ export class AuthService {
         this.token.removeToken(TokenOption.TOKEN);
         this.token.removeToken(TokenOption.EXPIRATION);
 
+
         const token = authResponse.token.body.token;
         const expiration = JSON.parse(atob(token.split('.')[1])).exp * 1000;
 
@@ -143,11 +144,11 @@ export class AuthService {
 
         if(timeout <= 0) {
             this.logout();
-            this.#automaticLogoutNotification();
+            this.#notifyOnAutoLogout();
         } else {
             this.logoutTimer = setTimeout(() => {
                 this.logout();
-                this.#automaticLogoutNotification();
+                this.#notifyOnAutoLogout();
             }, timeout);
         }
     }
@@ -159,7 +160,7 @@ export class AuthService {
         }
     }
 
-    #automaticLogoutNotification() {
+    #notifyOnAutoLogout() {
         const titlePath = 'validation.backend.header.JWTExpirationException';
         const textPath = 'validation.frontend.other.auto-logout';
         this.snackbar.notify({
