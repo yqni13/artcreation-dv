@@ -1,3 +1,4 @@
+
 import { Routes } from "@angular/router";
 import { AdminComponent } from "./admin.component";
 import { AdminGalleryListComponent } from "./admin-gallery/list/admin-gallery-list.component";
@@ -18,7 +19,9 @@ export const adminRoutes: Routes = [
             preloadImages: [
                 '/assets/admin/admin-gallery.jpg',
                 '/assets/admin/admin-news.jpg',
-                '/assets/admin/admin-assets.jpg'
+                '/assets/admin/admin-assets.jpg',
+                '/assets/admin/logout_bg_darkMode.svg',
+                '/assets/admin/logout_bg_lightMode.svg'
             ]
         }
     },
