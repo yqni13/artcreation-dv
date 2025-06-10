@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.2.1}}$
+$\texttt{\color{teal}{v1.2.4}}$
 
 
 <br><br>
@@ -267,10 +267,11 @@ $ npm run lint
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.1.1\ >>\ {\color{pink}1.2.1}}$
+### $\textsf{last\ update\ 1.2.1\ >>\ {\color{pink}1.2.4}}$
 
-- $\textsf{\color{green}Change:}$ Added new service "assets" to handle media data by admin. Home page will display art exhibition images in carousel underneath news slider.
-- $\textsf{\color{red}Bugfix:}$ Hovering/scrolling in mobile mode does not change arrangement of artworks in gallery overview. [Before: Hovering/scrolling in mobile mode on certain viewport (artworks close to sides) changed total width of row and dropped one element into next row => every row x elements and in row of hovered element x - 1.]
+- $\textsf{\color{red}Patch:}$ Updated logout background in administration dashboard by using .svg file instead SCSS code. Additionally, the background is set fitting to dark or light mode theme.
+- $\textsf{\color{red}Patch:}$ Added automatic logout by checking token expiration.
+- $\textsf{\color{red}Bugfix:}$ Image Upload of same image multiple times in a row is now correctly validated on each use. [Before: After first use, the same image was not validated anymore on image upload via explorer select (ElementRef did not trigger if value/files did not changed due to same image).]
 
 <br>
 

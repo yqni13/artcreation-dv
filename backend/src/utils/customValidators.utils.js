@@ -92,7 +92,8 @@ exports.validateImageFileInput = (req) => {
 
     // validate type only in case of new image input (create/input img upload)
     if(req.files.length > 0) {
-        req = this.validateImageType(req.files[0], req);
+        this.validateImageSize(req.files[0], req);
+        this.validateImageType(req.files[0], req);
     }
 
     return true;
@@ -106,6 +107,22 @@ exports.validateImageType = (image, req) => {
             type: 'input',
             value: image.mimetype,
             msg: 'image-invalid-type',
+            path: 'imageFile',
+            location: 'files'
+        }];
+        req = Utils.alarmCustomError(req, customError);
+    }
+    return true;
+}
+
+exports.validateImageSize = (image, req) => {
+    const limitFactor = 4;
+    const limitSize = 1024 * 1024 * limitFactor;
+    if(image.size >= limitSize) {
+        const customError = [{
+            type: 'input',
+            value: image.size,
+            msg: 'image-invalid-size',
             path: 'imageFile',
             location: 'files'
         }];
