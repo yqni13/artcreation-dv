@@ -17,6 +17,7 @@
                 "data-required": "Not all necessary data were transferred. Please check your input.",
                 "error-invalid-api": "A technical error on intern systems has occured. This service is not available in the moment.",
                 "error-unknown": "A technical error has occurred. Please try again later or contact support.",
+                "image-invalid-size": "The size for the record \"Image-Upload\" must be smaller than 4MB.",
                 "image-invalid-type": "The format for the record \"Image-Upload\" needs to be one of the following: \".jpg\", \".jpeg/.jfif\", \".webp\" or \".png\".",
                 "image-required": "The necessary image from upload was not transferred. Please check your input",
                 "secret-404-env": "Secret data \"{{VAL}}\" is missing. Please try again later or contact support.",
@@ -75,6 +76,9 @@
                 "news-create-confirm": "News item created!",
                 "news-delete-confirm": "News item deleted!",
                 "news-update-confirm": "News item updated!"
+            },
+            "other": {
+                "auto-logout": "You have been automatically logged out because your session is limited in time for safety reasons."
             }
         }
     }

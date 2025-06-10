@@ -21,7 +21,7 @@ export class ImprintComponent implements OnInit {
     constructor() {
         this. devData = {
             project: 'artcreation-dv',
-            version: 'v1.2.1',
+            version: 'v1.2.4',
             github: 'https://github.com/yqni13/artcreation-dv/tree/production',
             portfolio: 'https://yqni13.com',
             email: 'lukas.varga@yqni13.com'

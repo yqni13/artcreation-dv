@@ -17,6 +17,7 @@
                 "data-required": "Es wurden nicht alle notwendigen Daten übertragen. Bitte kontrollieren Sie Ihre Angaben.",
                 "error-invalid-api": "Ein technischer Fehler bei der internen Verarbeitung ist aufgetreten. Dieser Service ist vorübergehend nicht nutzbar.",
                 "error-unknown": "Ein technischer Fehler ist aufgetreten. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
+                "image-invalid-size": "Die Größe für den Datensatz \"Bild-Upload\" darf 4MB nicht übersteigen.",
                 "image-invalid-type": "Das Format für den Datensatz \"Bild-Upload\" muss einem der Folgenden gleichen: \".jpg\", \".jpeg/.jfif\", \".webp\" oder \".png\".",
                 "image-required": "Es wurde nicht das notwendige Bild vom Upload übertragen. Bitte kontrollieren Sie Ihre Angaben.",
                 "secret-404-env": "Umgebungsvariable \"{{VAL}}\" fehlt. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
@@ -75,6 +76,9 @@
                 "news-create-confirm": "News-Artikel erstellt!",
                 "news-delete-confirm": "News-Artikel gelöscht!",
                 "news-update-confirm": "News-Artikel aktualisiert!"
+            },
+            "other": {
+                "auto-logout": "Sie wurden automatisch abgemeldet, da Ihre Sitzung aus Sicherheitsgründen zeitlich begrenzt ist."
             }
         }
     }
