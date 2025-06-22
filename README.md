@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.2.4}}$
+$\texttt{\color{teal}{v1.2.5}}$
 
 
 <br><br>
@@ -267,11 +267,10 @@ $ npm run lint
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.2.1\ >>\ {\color{pink}1.2.4}}$
+### $\textsf{last\ update\ 1.2.4\ >>\ {\color{pink}1.2.5}}$
 
-- $\textsf{\color{red}Patch:}$ Updated logout background in administration dashboard by using .svg file instead SCSS code. Additionally, the background is set fitting to dark or light mode theme.
-- $\textsf{\color{red}Patch:}$ Added automatic logout by checking token expiration.
-- $\textsf{\color{red}Bugfix:}$ Image Upload of same image multiple times in a row is now correctly validated on each use. [Before: After first use, the same image was not validated anymore on image upload via explorer select (ElementRef did not trigger if value/files did not changed due to same image).]
+- $\textsf{\color{red}Patch:}$ Refactored html tags to better fit content.
+- $\textsf{\color{green}Change:}$ Added link of new exhibition partner to footer.
 
 <br>
 

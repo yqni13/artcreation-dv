@@ -13,6 +13,9 @@ import { CarouselMediaComponent } from "../../common/components/carousel-media/c
 import { AssetsItem } from "../../api/models/assets.response.interface";
 import { AssetsAPIService } from "../../api/services/assets.api.service";
 import { AssetsCategory } from "../../shared/enums/assets-category.enum";
+import { CacheCheckPipe } from "../../common/pipes/cache-check.pipe";
+import { ImgPreloadService } from "../../shared/services/img-preload.service";
+import { environment } from "../../../environments/environment";
 
 @Component({
     selector: 'app-home',
@@ -23,7 +26,8 @@ import { AssetsCategory } from "../../shared/enums/assets-category.enum";
         CarouselComponent,
         CarouselMediaComponent,
         TranslateModule
-    ]
+    ],
+    providers: [CacheCheckPipe]
 })
 export class HomeComponent implements OnInit {
 
@@ -38,11 +42,14 @@ export class HomeComponent implements OnInit {
     private subscriptionHttpObservationFindAllAssets$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
     private delay: any;
+    private storageDomain: string;
 
     constructor(
         private readonly auth: AuthService,
         private readonly newsApi: NewsAPIService,
         private readonly assetsApi: AssetsAPIService,
+        private readonly imgPreload: ImgPreloadService,
+        private readonly cacheCheckPipe: CacheCheckPipe,
         private readonly filterNewsService: FilterNewsService,
         private readonly httpObservation: HttpObservationService,
     ) {
@@ -56,6 +63,7 @@ export class HomeComponent implements OnInit {
         this.subscriptionHttpObservationFindAllAssets$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+        this.storageDomain = environment.STORAGE_URL;
     }
 
     ngOnInit() {
@@ -110,6 +118,13 @@ export class HomeComponent implements OnInit {
         this.assetsApi.sendGetAllRequest().subscribe(data => {
             this.mediaCollection = data.body?.body.data ?? [];
             this.mediaCollection = this.mediaCollection.filter(data => data.category === AssetsCategory.EXH);
+            const mediaPathList: string[] = [];
+            Object.values(this.mediaCollection).forEach((value) => {
+                mediaPathList.push(
+                    this.cacheCheckPipe.transform(`${this.storageDomain}/${value.image_path}`, value.last_modified)
+                );
+            })
+            this.imgPreload.preloadMultiple(mediaPathList);
         })
     }
 
