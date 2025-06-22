@@ -4,6 +4,11 @@
 
 <br>
 
+### 2024/06/22 - $\textsf{update\ 1.2.4\ >>\ {\color{pink}1.2.5}}$
+
+- $\textsf{\color{red}Patch:}$ Refactored html tags to better fit content.
+- $\textsf{\color{green}Change:}$ Added link of new exhibition partner to footer.
+
 ### 2024/06/09 - $\textsf{update\ 1.2.1\ >>\ {\color{pink}1.2.4}}$
 
 - $\textsf{\color{red}Patch:}$ Updated logout background in administration dashboard by using .svg file instead SCSS code. Additionally, the background is set fitting to dark or light mode theme.

@@ -6,7 +6,6 @@ import { AuthResponse } from "../interfaces/auth.interface";
 import { EncryptionService } from "./encryption.service";
 import { TokenService } from "./token.service";
 import { TokenOption } from "../enums/token-option.enum";
-import { DateTimeService } from "./datetime.service";
 import { Router } from "@angular/router";
 import { BaseRoute } from "../../api/routes/base.route.enum";
 import { SnackbarMessageService } from "./snackbar.service";
@@ -32,7 +31,6 @@ export class AuthService {
         private readonly router: Router,
         private readonly http: HttpClient,
         private readonly token: TokenService,
-        private readonly datetime: DateTimeService,
         private readonly encrypt: EncryptionService,
         private readonly translate: TranslateService,
         private readonly snackbar: SnackbarMessageService,
@@ -109,7 +107,6 @@ export class AuthService {
     private setSession(authResponse: AuthResponse) {
         this.token.removeToken(TokenOption.TOKEN);
         this.token.removeToken(TokenOption.EXPIRATION);
-
 
         const token = authResponse.token.body.token;
         const expiration = JSON.parse(atob(token.split('.')[1])).exp * 1000;
