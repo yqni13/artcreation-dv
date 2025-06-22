@@ -54,7 +54,8 @@ export class FooterComponent implements OnInit {
         this.socialmediaURL = {
             instagram: 'https://instagram.com/vargarella_',
             facebook: 'https://www.facebook.com/profile.php?id=61564886574397',
-            publicartists: 'https://publicartists.online/artists/artcreation/'
+            publicartists: 'https://publicartists.online/artists/artcreation/',
+            winstage: 'https://winstage.at/kunstler/daniela-varga/'
         }
         this.creatorURL = 'https://yqni13.com';
         this.yearStamp = new Date().getFullYear().toString();

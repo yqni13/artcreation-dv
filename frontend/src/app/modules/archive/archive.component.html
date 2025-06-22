@@ -8,12 +8,12 @@
     <header>
         <h1>{{'modules.archive.title' | translate}}</h1>
     </header>
-    <div class="artdv-head-message">
+    <aside class="artdv-head-message">
         <p>
             {{'modules.archive.message' | translate}}
         </p>
-    </div>
-    <div class="artdv-archive-content">
+    </aside>
+    <article class="artdv-archive-content">
         <div class="artdv-archive-entry" *ngFor="let news of newsCollection">
             @defer(on viewport) { <img src="{{(storageDomain + '/' + (news.gallery !== null ? news.thumbnail_path_gallery : news.thumbnail_path)) | cacheCheck }}" alt="404-picture-not-found">
             <div class="artdv-archive-wrapper">                
@@ -32,6 +32,6 @@
                 <img class="artdv-loading" src="/assets/loading.gif" alt="loading...">
             }
         </div>
-    </div>
+    </article>
     <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
 </section>
