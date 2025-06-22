@@ -1,4 +1,5 @@
-<div class="artdv-carousel-wrapper">
+
+<article class="artdv-carousel-wrapper">
     <div class="artdv-carousel-slides" [style.transform]="getTransform()">
         <div class="artdv-carousel-slide" *ngFor="let entry of entries">
             <ng-container *ngIf="slideTemplate; else defaultTemplate">
@@ -45,4 +46,4 @@
         ></i>
     </div>
     <artdv-loading-animation [sizeMode]="SizeOptionEnum.COMP" [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
-</div>
+</article>
