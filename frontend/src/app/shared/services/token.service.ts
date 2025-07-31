@@ -14,6 +14,7 @@ export class TokenService {
         this.identifier = 'artcreation-dv_';
     }
 
+    
     setToken(key: TokenOption, token: string) {
         if(this.checkSessionStorage()) {
             sessionStorage.setItem(this.identifier + key, token);

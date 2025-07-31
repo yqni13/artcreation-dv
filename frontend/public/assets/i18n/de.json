@@ -326,6 +326,7 @@
             },
             "sale-status": {
                 "AVAILABLE": "Verfügbar",
+                "RESERVED": "Reserviert",
                 "UNAVAILABLE": "Nicht verfügbar"
             },
             "sorting-option": {
