@@ -46,9 +46,12 @@
                 <label for="card-sale-status">{{'modules.gallery.details.header.sale-status' | translate}}:</label>
             </div>
             <div class="artdv-gallerydetails-value">
-                <span [ngClass]="artwork.sale_status === saleStatus.UNAVAILABLE 
-                    ? 'artdv-artwork-unavailable' 
-                    : 'artdv-artwork-available'"
+                <span 
+                    [ngClass]="artwork.sale_status === saleStatus.UNAVAILABLE 
+                        ? 'artdv-status-off artdv-artwork-unavailable' 
+                        : artwork.sale_status === saleStatus.RESERVED
+                            ? 'artdv-status-off artdv-artwork-reserved'
+                            : 'artdv-artwork-available'"
                 >
                     {{artwork.sale_status === null ? '--' : ('shared.enum.sale-status.' + (artwork.sale_status | lowerUpperText: 'toUpper') | translate)}}
                 </span>

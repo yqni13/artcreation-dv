@@ -175,7 +175,11 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         const subject = this.contactForm.get('subject')?.value;        
         if(subject === SubjectOptions.artOrder || subject === SubjectOptions.specificInformation) {
             this.contactForm.get('referenceNr')?.markAsUntouched();
-            this.contactForm.get('referenceNr')?.setValidators([Validators.required, CustomValidators.invalidRefNrValidator(this.selectedArtworkByRefNr, this.contactForm.get('subject')?.value), CustomValidators.invalidRefNrLengthValidator()]);
+            this.contactForm.get('referenceNr')?.setValidators([
+                Validators.required,
+                CustomValidators.invalidRefNrValidator(this.selectedArtworkByRefNr, this.contactForm.get('subject')?.value),
+                CustomValidators.invalidRefNrLengthValidator()
+            ]);
             this.contactForm.get('referenceNr')?.markAsPristine();            
             this.contactForm.get('referenceNr')?.setValue('');
             this.contactForm.get('price')?.setValue(null);

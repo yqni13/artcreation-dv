@@ -81,12 +81,20 @@
     margin: 15px 0;
 }
 
-.artdv-artwork-unavailable {
+.artdv-status-off {
     font-size: 14px;
-    color: var(--theme-snackbar-error);
     padding: 2px 8px;
-    border: solid 1px var(--theme-snackbar-error);
-    border-radius: 4px;
+    border-radius: 2.5px;
+}
+
+.artdv-artwork-reserved {
+    color: var(--theme-active-route);
+    border: 1px outset var(--theme-active-route);
+}
+
+.artdv-artwork-unavailable {
+    color: var(--theme-snackbar-error);
+    border: 1px outset var(--theme-snackbar-error);
 }
 
 .artdv-artwork-available {
