@@ -141,11 +141,11 @@ export class AuthService {
 
         if(timeout <= 0) {
             this.logout();
-            this.#notifyOnAutoLogout();
+            this.notifyOnAutoLogout();
         } else {
             this.logoutTimer = setTimeout(() => {
                 this.logout();
-                this.#notifyOnAutoLogout();
+                this.notifyOnAutoLogout();
             }, timeout);
         }
     }
@@ -157,7 +157,7 @@ export class AuthService {
         }
     }
 
-    #notifyOnAutoLogout() {
+    private notifyOnAutoLogout() {
         const titlePath = 'validation.backend.header.JWTExpirationException';
         const textPath = 'validation.frontend.other.auto-logout';
         this.snackbar.notify({
