@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.2.5}}$
+$\texttt{\color{teal}{v1.2.7}}$
 
 
 <br><br>
@@ -229,6 +229,33 @@ The provided image paths allow images to be loaded without additional database q
 
 ## Testing
 
+### $\textsf{\color{teal}Jest}$
+
+Added `jest` testing framework to project providing unit tests and integration tests for the `backend`.<br>
+Install the packages `@jest/globals`, `@types/jest`, `supertest` additional to `jest`:
+```sh
+npm install jest @jest/globals @types/jest supertest --save-dev
+```
+0 tests exist currently for models, utils, validators and workflows (integration tests) - see [tests](./backend/tests).<br>
+Run tests on local device by including setup for dotenv/config to provide environment variables:
+```sh
+set NODE_MODE=staging && jest --setupFiles dotenv/config
+```
+or simply save as script command in `package.json` to run `npm test`:
+```sh
+  "scripts": {
+    "start": "node server.js",
+    "test": "set NODE_MODE=staging && jest --setupFiles dotenv/config"
+  }
+```
+To automatically check tests before merging feature/development branch further up, a `GitHub Action` is set up, see [main.yml](.github/workflows/main.yml).<br>
+Preventing an unwanted merge with unfinished/failed test run, the project is set up to disable merging until all tests have passed (see Figure 12).
+
+<div align="center">
+    <img src="frontend/public/assets/readme/github-action-jest.jpg" alt="&nbsp;no picture found">
+    Figure 12, v1.2.7
+</div>
+
 
 ### Cross-browser testing
 
@@ -267,10 +294,9 @@ $ npm run lint
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.2.4\ >>\ {\color{pink}1.2.5}}$
+### $\textsf{last\ update\ 1.2.6\ >>\ {\color{pink}1.2.7}}$
 
-- $\textsf{\color{red}Patch:}$ Refactored html tags to better fit content.
-- $\textsf{\color{green}Change:}$ Added link of new exhibition partner to footer.
+- $\textsf{\color{teal}Addition:}$ Added staging environment & jest testing framework.
 
 <br>
 

@@ -4,6 +4,14 @@
 
 <br>
 
+### 2024/08/25 - $\textsf{update\ 1.2.6\ >>\ {\color{pink}1.2.7}}$
+
+- $\textsf{\color{teal}Addition:}$ Added staging environment & jest testing framework.
+
+### 2024/07/31 - $\textsf{update\ 1.2.5\ >>\ {\color{pink}1.2.6}}$
+
+- $\textsf{\color{teal}Addition:}$ Added new sale status 'reserved'.
+
 ### 2024/06/22 - $\textsf{update\ 1.2.4\ >>\ {\color{pink}1.2.5}}$
 
 - $\textsf{\color{red}Patch:}$ Refactored html tags to better fit content.
