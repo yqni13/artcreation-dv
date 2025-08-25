@@ -30,9 +30,13 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "@jest/globals": "^30.0.5",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.5",
     "multer": "^2.0.0",
     "node-pg-migrate": "^8.0.0",
     "nodemon": "^3.1.9",
-    "pg": "^8.13.1"
+    "pg": "^8.13.1",
+    "supertest": "^7.1.4"
   }
 }
