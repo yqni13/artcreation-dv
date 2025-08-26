@@ -8,6 +8,15 @@ exports.basicResponse = (body, success, message) => {
     };
 };
 
+exports.isObjEmpty = (obj) => {
+    for(var prop in obj) {
+        if(Object.hasOwn(obj, prop)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 exports.createID = async (repository, table) => {        
     const uuid = uuidv4();
     const key = `${table}_id`
