@@ -236,16 +236,16 @@ Install the packages `@jest/globals`, `@types/jest`, `supertest` additional to `
 ```sh
 npm install jest @jest/globals @types/jest supertest --save-dev
 ```
-0 tests exist currently for models, utils, validators and workflows (integration tests) - see [tests](./backend/tests).<br>
+Only some basic tests exist currently for utils - see [tests](./backend/tests).<br>
 Run tests on local device by including setup for dotenv/config to provide environment variables:
 ```sh
-set NODE_MODE=staging && jest --setupFiles dotenv/config
+set MODE=staging && jest --setupFiles dotenv/config
 ```
 or simply save as script command in `package.json` to run `npm test`:
 ```sh
   "scripts": {
     "start": "node server.js",
-    "test": "set NODE_MODE=staging && jest --setupFiles dotenv/config"
+    "test": "set MODE=staging && jest --setupFiles dotenv/config"
   }
 ```
 To automatically check tests before merging feature/development branch further up, a `GitHub Action` is set up, see [main.yml](.github/workflows/main.yml).<br>
