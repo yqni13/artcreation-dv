@@ -28,8 +28,23 @@ DBConnect.init();
 
 const port = Config.PORT;
 app.listen(port, () => {
-    const divider = '=================';
-    console.log(`${divider} ARTCREATION-DV SERVER ${divider}\n${divider} RUNNING ON PORT: ${port} ${divider}`);
+    switch(Config.MODE) {
+        case('staging'): {
+            const divider1 = '=========';
+            const divider2 = '=============';
+            console.log(`${divider1} STAGING ARTCREATION-DV SERVER ${divider1}\n${divider2} RUNNING ON PORT: ${port} ${divider2}`);
+            break;
+        }
+        case('development'): {
+            const divider1 = '============';
+            const divider2 = '===============';
+            console.log(`${divider1} LOCAL ARTCREATION-DV SERVER ${divider1}\n${divider2} RUNNING ON PORT: ${port} ${divider2}`);
+            break;
+        }
+        default: 
+        const divider = '=================';
+        console.log(`${divider} ARTCREATION-DV SERVER ${divider}\n${divider} RUNNING ON PORT: ${port} ${divider}`);
+    }
 });
 
 module.exports = app;

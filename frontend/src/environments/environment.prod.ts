@@ -1,7 +1,7 @@
 import { Environment } from "./environment.model";
 
 export const environment: Environment = {
-    production: true,
+    BUILD_MODE: '',
     STORAGE_URL: '',
     API_BASE_URL: '',
     IV_POSITION: 0,
