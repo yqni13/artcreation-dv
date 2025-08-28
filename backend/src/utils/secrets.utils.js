@@ -5,6 +5,7 @@ const fs = require('fs');
 class Secrets {
 
     MODE = '';
+    META_API_KEY = '';
     EMAIL_RECEIVER = '';
     EMAIL_SENDER = '';
     EMAIL_PASS = '';
@@ -29,6 +30,7 @@ class Secrets {
 
     constructor() {
         this.MODE = this.#setMode();
+        this.META_API_KEY = this.#setMetaApiKey();
         this.EMAIL_RECEIVER = this.#setEmailReceiver();
         this.EMAIL_SENDER = this.#setEmailSender();
         this.EMAIL_PASS = this.#setEmailPass();
@@ -57,6 +59,13 @@ class Secrets {
             throw new AuthSecretNotFoundException('secret-404-env#MODE');
         }
         return Config.MODE;
+    }
+
+    #setMetaApiKey = () => {
+        if(!Config.META_API_KEY) {
+            throw new AuthSecretNotFoundException('secret-404-env#META_API_KEY');
+        }
+        return Config.META_API_KEY;
     }
 
     #setEmailReceiver = () => {

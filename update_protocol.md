@@ -4,6 +4,10 @@
 
 <br>
 
+### 2024/08/27 - $\textsf{update\ 1.2.7\ >>\ {\color{pink}1.2.8}}$
+
+- $\textsf{\color{teal}Addition:}$ Added route to request meta data of application.
+
 ### 2024/08/25 - $\textsf{update\ 1.2.6\ >>\ {\color{pink}1.2.7}}$
 
 - $\textsf{\color{teal}Addition:}$ Added staging environment & jest testing framework.

@@ -1,6 +1,7 @@
 module.exports.Config = {
     MODE: process.env.MODE || 'development',
     PORT: process.env.SECRET_NODE_PORT || 3000,
+    META_API_KEY: process.env.SECRET_META_API_KEY || null,
     EMAIL_RECEIVER: process.env.SECRET_EMAIL_RECEIVER || null,
     EMAIL_SENDER: process.env.SECRET_EMAIL_SENDER || null,
     EMAIL_PASS: process.env.SECRET_EMAIL_PASS || null,
