@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.2.7}}$
+$\texttt{\color{teal}{v1.2.8}}$
 
 
 <br><br>
@@ -294,9 +294,9 @@ $ npm run lint
 ## Updates
 [list of all updates](update_protocol.md)
 
-### $\textsf{last\ update\ 1.2.6\ >>\ {\color{pink}1.2.7}}$
+### $\textsf{last\ update\ 1.2.7\ >>\ {\color{pink}1.2.8}}$
 
-- $\textsf{\color{teal}Addition:}$ Added staging environment & jest testing framework.
+- $\textsf{\color{teal}Addition:}$ Added route to request meta data of application.
 
 <br>
 
