@@ -4,6 +4,11 @@
 
 <br>
 
+### 2025/10/30 - $\textsf{update\ 1.2.8\ >>\ {\color{pink}1.2.10}}$
+
+- $\textsf{\color{red}Patch:}$ Updated admin search function to search on every change automatically and reset with empty input.
+- $\textsf{\color{red}Bugfix:}$ Admin search function works again as expected. [Before: Text search returned empty list every time due to syntax error.]
+
 ### 2024/08/27 - $\textsf{update\ 1.2.7\ >>\ {\color{pink}1.2.8}}$
 
 - $\textsf{\color{teal}Addition:}$ Added route to request meta data of application.

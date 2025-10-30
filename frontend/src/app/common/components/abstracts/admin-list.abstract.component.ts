@@ -82,6 +82,7 @@ export abstract class AbstractAdminListComponent implements AfterViewInit, OnDes
 
     onSearchTextChange(event: string) {
         this.hasSearchText = event !== '' ? true : false;
+        this.onSearchSubmit(false);
     }
 
     removeSearchText() {
