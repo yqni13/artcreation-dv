@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.2.8}}$
+$\texttt{\color{teal}{v1.2.10}}$
 
 
 <br><br>
@@ -292,11 +292,12 @@ $ npm run lint
 
 
 ## Updates
-[list of all updates](update_protocol.md)
+[see changelog for all updates](CHANGELOG.md)
 
-### $\textsf{last\ update\ 1.2.7\ >>\ {\color{pink}1.2.8}}$
+### $\textsf{last\ update\ 1.2.8\ >>\ {\color{pink}1.2.10}}$
 
-- $\textsf{\color{teal}Addition:}$ Added route to request meta data of application.
+- $\textsf{\color{red}Patch:}$ Updated admin search function to search on every change automatically and reset with empty input.
+- $\textsf{\color{red}Bugfix:}$ Admin search function works again as expected. [Before: Text search returned empty list every time due to syntax error.]
 
 <br>
 
