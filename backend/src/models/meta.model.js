@@ -11,8 +11,8 @@ class MetaModel {
             "app": "artcreation-dv",
             "author": "yqni13",
             "environment": Secrets.MODE,
-            "app_version": "1.2.10",
-            "db_version": "1.3.0"
+            "app_version": "1.2.11",
+            "db_version": "1.4.0"
         };
     }
 }
