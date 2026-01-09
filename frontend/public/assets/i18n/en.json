@@ -327,6 +327,7 @@
             "sale-status": {
                 "AVAILABLE": "Available",
                 "RESERVED": "Reserved",
+                "SOLD": "Sold",
                 "UNAVAILABLE": "Unavailable"
             },
             "sorting-option": {
