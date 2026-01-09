@@ -8,7 +8,7 @@ export const invalidRefNrValidator = (artwork: GalleryItem, subject: SubjectOpti
         if(control?.value.length === 6 && artwork) {
             if(!artwork.reference_nr) {
                 return { invalidRefNr: true }
-            } else if(artwork.sale_status === SaleStatus.UNAVAILABLE || artwork.sale_status === SaleStatus.RESERVED) {
+            } else if(artwork.sale_status === SaleStatus.UNAVAILABLE || artwork.sale_status === SaleStatus.RESERVED || artwork.sale_status === SaleStatus.SOLD) {
                 return { unavailableArtwork: true }
             } else if(subject === SubjectOptions.artOrder && artwork.price === null) {
                 return { invalidPurchaseArtwork: true }

@@ -4,9 +4,16 @@
 
 <br>
 
+### $\textsf{\color{skyblue}2026/01/09}$
+
+$\textsf{[v1.2.11\ =>\ {\textbf{\color{brown}v1.2.12}]}}$ app
+- $\textsf{\color{teal}Addition:}$ Added new sale status "sold" for gallery artworks.
+
+<br>
+
 ### $\textsf{\color{skyblue}2025/11/13}$
 
-$\textsf{[v1.2.10\ =>\ {\textbf{\color{brown}v1.2.11}]}}$ app
+$\textsf{[v1.2.10\ =>\ v1.2.11]}$ app
 - $\textsf{\color{orange}Patch:}$ Updated documentation formatting.
 
 <br>
