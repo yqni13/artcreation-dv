@@ -47,7 +47,7 @@
             </div>
             <div class="artdv-gallerydetails-value">
                 <span 
-                    [ngClass]="artwork.sale_status === saleStatus.UNAVAILABLE 
+                    [ngClass]="artwork.sale_status === saleStatus.UNAVAILABLE || artwork.sale_status === saleStatus.SOLD
                         ? 'artdv-status-off artdv-artwork-unavailable' 
                         : artwork.sale_status === saleStatus.RESERVED
                             ? 'artdv-status-off artdv-artwork-reserved'
