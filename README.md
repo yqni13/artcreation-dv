@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.2.12}}$
+$\texttt{\color{teal}{v1.2.13}}$
 
 
 <br><br>
@@ -296,8 +296,8 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v1.2.11\ =>\ {\textbf{\color{brown}v1.2.12}]}}$ app
-- $\textsf{\color{teal}Addition:}$ Added new sale status "sold" for gallery artworks.
+$\textsf{[v1.2.12\ =>\ {\textbf{\color{brown}v1.2.13}]}}$ app
+- $\textsf{\color{orange}patch:}$ Updated to display gallery first time without selected genre and no images. A selected genre will be stored in local storage of browser until end of the day.
 
 <br>
 

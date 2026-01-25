@@ -24,16 +24,21 @@
         </div>
     </nav>
     <div class="artdv-gallery-content" *ngIf="!isLoadingResponse">
-        <div class="artdv-gallery-cards" *ngFor="let artwork of modifiedList">
-            <artdv-imgpreload
-                *ngIf="reloadFlag"
-                [entry]="artwork"
-                [artworkList]="galleryList"
-                [activeGenre]="activeGenre"
-            ></artdv-imgpreload>
-        </div>
+        <ng-container *ngIf="activeGenre !== ''">
+            <div class="artdv-gallery-cards" *ngFor="let artwork of modifiedList">
+                <artdv-imgpreload
+                    *ngIf="reloadFlag"
+                    [entry]="artwork"
+                    [artworkList]="galleryList"
+                    [activeGenre]="activeGenre"
+                ></artdv-imgpreload>
+            </div>
+        </ng-container>
         <div class="artdv-gallery-nodata" *ngIf="modifiedList.length === 0">
             {{'common.unavailable.db-data-404' | translate}}
+        </div>
+        <div class="artdv-gallery-nofilter" *ngIf="modifiedList.length !== 0 && activeGenre === ''">
+            {{'common.unavailable.no-filter' | translate}}
         </div>
     </div>
     <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
