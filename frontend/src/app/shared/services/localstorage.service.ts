@@ -7,30 +7,31 @@ import { LocalStorageValue } from "../interfaces/localstorage.interface";
 export class LocalStorageService {
 
     private isLocalStorageAvailable: any;
-    private identifier: string;
+    private prefix: string;
 
     constructor() {
         this.isLocalStorageAvailable = typeof localStorage !== 'undefined';
-        this.identifier = 'artcreation-dv_';
+        this.prefix = 'artcreation-dv_';
     }
 
-    setItem(keyID: string, value: string) {
+    setItem<T>(postfix: string, value: T) {
         const expiration = new Date();
         expiration.setHours(23, 59, 59, 999);
 
-        const payload: LocalStorageValue<string> = {
+        const payload: LocalStorageValue<T> = {
             content: value,
             expiresAt: expiration.toISOString()
         };
 
         if(this.isLocalStorageAvailable) {
-            localStorage.setItem(`${this.identifier}${keyID}`, JSON.stringify(payload));
+            const key = `${this.prefix}${postfix}`;
+            localStorage.setItem(key, JSON.stringify(payload));
         }
     }
 
-    getItem(keyID: string): string | null {
-        let rawItem = null;
-        const key = `${this.identifier}${keyID}`;
+    getItem<T>(postfix: string): T | null {
+        let rawItem: string | null = null;
+        const key = `${this.prefix}${postfix}`;
         if(this.isLocalStorageAvailable) {
             rawItem = localStorage.getItem(key);
         }
@@ -38,7 +39,7 @@ export class LocalStorageService {
             return null;
         }
         try {
-            const parsedItem = JSON.parse(rawItem) as LocalStorageValue<string>;
+            const parsedItem = JSON.parse(rawItem) as LocalStorageValue<T>;
             if(new Date(parsedItem.expiresAt) < new Date()) {
                 this.removeItem(key);
                 return null;
@@ -51,9 +52,9 @@ export class LocalStorageService {
         }
     }
 
-    removeItem(key: string, hasPrefix: boolean = true) {
+    removeItem(postfix: string, hasPrefix: boolean = true) {
         if(this.isLocalStorageAvailable) {
-            key = hasPrefix ? key : this.identifier+key;
+            const key = hasPrefix ? postfix : this.prefix+postfix;
             localStorage.removeItem(key);
         }
     }

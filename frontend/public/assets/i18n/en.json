@@ -179,8 +179,8 @@
                     "title": "Title"
                 }
             },
+            "overview": "Overview",
             "preview": {
-                "gallery": "Gallery",
                 "title": "My Art"
             }
         },

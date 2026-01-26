@@ -117,9 +117,9 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.galleryApi.sendGetAllRequest().subscribe(data => {
             this.galleryList = data.body?.body.data ?? [];
             this.modifiedList = this.galleryList;
-            const token = this.localstorageService.getItem(this.tokenIdGalleryFilter);
+            const token = this.localstorageService.getItem<string>(this.tokenIdGalleryFilter);
             if(!token) {
-                this.localstorageService.setItem(this.tokenIdGalleryFilter, '');
+                this.localstorageService.setItem<string>(this.tokenIdGalleryFilter, '');
             } else {
                 this.onGenreChange(token);
             }
@@ -137,11 +137,11 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.activeGenre = '';
         this.reloadFlag = false;
         setTimeout(() => {
-            const tokenValueGalleryFilter = this.localstorageService.getItem(this.tokenIdGalleryFilter);
+            const tokenValueGalleryFilter = this.localstorageService.getItem<string>(this.tokenIdGalleryFilter);
             this.activeGenre = genre;
             if(!tokenValueGalleryFilter || tokenValueGalleryFilter !== genre) {
                 this.localstorageService.removeItem(this.tokenIdGalleryFilter, false);
-                this.localstorageService.setItem(this.tokenIdGalleryFilter, genre);
+                this.localstorageService.setItem<string>(this.tokenIdGalleryFilter, genre);
             }
             if(genre !== 'gallery') {
                 this.modifiedList = this.galleryList.filter(data => data.art_genre === genre);
