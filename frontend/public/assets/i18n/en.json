@@ -30,6 +30,7 @@
         },
         "unavailable": {
             "db-data-404": "No data found.",
+            "no-filter": "Select a genre to display artworks.",
             "text": "This component is currently a construction site and will be available as soon as possible.",
             "title": "Not available"
         }
@@ -178,8 +179,8 @@
                     "title": "Title"
                 }
             },
+            "overview": "Overview",
             "preview": {
-                "gallery": "Gallery",
                 "title": "My Art"
             }
         },
