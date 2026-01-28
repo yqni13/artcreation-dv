@@ -162,12 +162,12 @@ class GalleryRepository {
         const timeStamp = Utils.getCustomLocaleTimestamp();
 
         const sql = `INSERT INTO ${table} 
-        (gallery_id, image_path, thumbnail_path, title, reference_nr, sale_status, price, dimensions, art_genre,art_technique, art_medium, publication_year, created_on, last_modified) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)`;
+        (gallery_id, image_path, thumbnail_path, title, reference_nr, sale_status, price, dimensions, art_genre,art_technique, art_medium, art_frame_model, art_frame_color, publication_year, created_on, last_modified) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)`;
 
         const values = [params['id'], params['imagePath'], params['thumbnailPath'], params['title'],
         params['referenceNr'], params['saleStatus'], params['price'], params['dimensions'], params['artGenre'],
-        params['artTechnique'], params['artMedium'], params['publication'], timeStamp, timeStamp];
+        params['artTechnique'], params['artMedium'], params['artFrameModel'], params['artFrameColor'], params['publication'], timeStamp, timeStamp];
 
         let connection;
         try {
@@ -212,13 +212,14 @@ class GalleryRepository {
         const timeStamp = Utils.getCustomLocaleTimestamp();
 
         const sql = `UPDATE ${table} 
-        SET reference_nr = $1, image_path = $2, thumbnail_path = $3, sale_status = $4, title = $5, price = $6, dimensions = $7, art_genre = $8, art_technique = $9, art_medium = $10, publication_year = $11,
-        last_modified = $12
-        WHERE gallery_id = $13`;
+        SET reference_nr = $1, image_path = $2, thumbnail_path = $3, sale_status = $4, title = $5, price = $6, dimensions = $7, art_genre = $8, art_technique = $9, art_medium = $10, art_frame_model = $11,
+        art_frame_color = $12, publication_year = $13, last_modified = $14
+        WHERE gallery_id = $15`;
 
         const values = [params['referenceNr'], params['imagePath'], params['thumbnailPath'], params['saleStatus'],
         params['title'], params['price'], params['dimensions'], params['artGenre'], params['artTechnique'],
-        params['artMedium'], params['publication'], timeStamp, params['id']];
+        params['artMedium'], params['artFrameModel'], params['artFrameColor'], params['publication'], timeStamp,
+        params['id']];
 
         let connection;
         try {

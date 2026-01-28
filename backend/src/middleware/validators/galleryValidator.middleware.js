@@ -5,6 +5,7 @@ const { SaleStatus } = require('../../utils/enums/sale-status.enum');
 const { ArtGenre } = require('../../utils/enums/art-genre.enum');
 const { ArtMedium } = require('../../utils/enums/art-medium.enum');
 const { ArtTechnique } = require('../../utils/enums/art-technique.enum');
+const { ArtFrame } = require('../../utils/enums/art-frame.enum');
 
 exports.galleryFindOneSchema = [
     param('id')
@@ -83,6 +84,16 @@ exports.galleryCreateSchema = [
         .withMessage('data-invalid-max#artTechnique!20')
         .bail()
         .custom((value) => CustomValidator.validateEnum(value, ArtTechnique, 'artTechnique')),
+    body('artFrameModel')
+        .trim()
+        .notEmpty()
+        .withMessage('data-required')
+        .bail()
+        .custom(val => CustomValidator.validateEnum(val, ArtFrame, 'artFrame')),
+    body('artFrameColor')
+        .trim()    
+        .notEmpty()
+        .withMessage('data-required'),
     body('publication')
         .notEmpty()
         .withMessage('data-required')
@@ -163,6 +174,16 @@ exports.galleryUpdateSchema = [
         .withMessage('data-invalid-max#artTechnique!20')
         .bail()
         .custom((value) => CustomValidator.validateEnum(value, ArtTechnique, 'artTechnique')),
+    body('artFrameModel')
+        .trim()
+        .notEmpty()
+        .withMessage('data-required')
+        .bail()
+        .custom(val => CustomValidator.validateEnum(val, ArtFrame, 'artFrame')),
+    body('artFrameColor')
+        .trim()    
+        .notEmpty()
+        .withMessage('data-required'),
     body('publication')
         .notEmpty()
         .withMessage('data-required')
