@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     margin: sass.$space5 0;
-    
+
     .artdv-imgupload-upload-wrapper {
         display: flex;
         width: 100%;
@@ -29,12 +29,12 @@
             border: 2px dotted grey;
             border-radius: 5px;    
             cursor: pointer;
-    
+
             &:hover {
                 border: 2px solid sass.$color-ice-white;
                 filter: brightness(1.5);
             }
-    
+
             span {
                 color: var(--theme-body-text);
                 text-transform: uppercase;
@@ -57,7 +57,7 @@
                 font-size: 8px;
                 opacity: 0.5;
             }
-    
+
             input {
                 display: none;
             }
@@ -88,7 +88,12 @@
             border-radius: 5px;
             background-color: var(--theme-nav-bg);
             padding: sass.$space15;
-            
+
+            artdv-imgframe {
+                display: flex;
+                justify-content: center;
+            }
+
             img {
                 width: 100%;
                 display: grid;

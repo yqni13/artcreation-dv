@@ -1,0 +1,40 @@
+@use '../../../../stylesheets/utilities' as sass;
+
+
+div {
+    display: flex;
+}
+
+.artdv-img-frame-model-default {
+    border-style: solid;
+    border-radius: 3px;
+    border-width: 12px;
+}
+
+.artdv-img-frame-model-classic-outer {
+    border-radius: 3px;
+    border-width: 3px;
+    border-color: rgb(109,84,58) rgb(24,19,13) rgb(24,19,13) rgb(109,84,58);
+    border-style: solid;
+    .main {
+        border: 6px solid rgb(65,40,16);
+        .inner {
+            border-width: 4px;
+            border-style: solid;
+        }
+    }
+}
+
+.artdv-img-frame-model-modern {
+    border-radius: 3px;
+    border-width: 8px;
+    border-style: solid;
+}
+
+.artdv-img-frame-model-photo {
+    border-radius: 3px;
+    border-width: 10px;
+    border-style: solid;
+    padding: 20px;
+    background: #fff;
+}
