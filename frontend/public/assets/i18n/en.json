@@ -67,6 +67,8 @@
             "gallery": {
                 "details": {
                     "dimensions": "Dimensions",
+                    "frame-color": "Frame (color)",
+                    "frame-model": "Frame (model)",
                     "genre": "Genre",
                     "medium": "Medium",
                     "price": "Price",
@@ -75,13 +77,14 @@
                     "technique": "Technique",
                     "title": "Title"
                 },
-                "placeholder-dimensions": "height x width => e.g.: 80x60",
-                "placeholder-genre": "select a genre",
-                "placeholder-medium": "select a medium",
-                "placeholder-price": "price on request",
+                "placeholder-dimensions": "Height x width => e.g.: 80x60",
+                "placeholder-frame": "Select a frame",
+                "placeholder-genre": "Select a genre",
+                "placeholder-medium": "Select a medium",
+                "placeholder-price": "Price on request",
                 "placeholder-sale-status": "Select a status",
-                "placeholder-search": "search in gallery",
-                "placeholder-technique": "select a technique",
+                "placeholder-search": "Search in gallery",
+                "placeholder-technique": "Select a technique",
                 "placeholder-title": "\"What shall I represent?\"",
                 "title": {
                     "create": "add artwork",
@@ -282,6 +285,12 @@
             "author": "\u00a9 image"
         },
         "enum": {
+            "art-frame": {
+                "CLASSIC": "Classic",
+                "DEFAULT": "Default",
+                "MODERN": "Modern",
+                "PHOTO": "Photo"
+            },
             "art-genre": {
                 "ABSTRACT": "abstract",
                 "ALL": "all",
