@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node set-env.dev.ts && ng serve",
+    "start": "node set-env.dev.ts && ng serve --open",
     "start-local-ssl": "node set-env.dev.ts && ng serve --ssl true --ssl-cert D:/Dokumente/GitHub/artcreation-dv/local_ssl/localhost.crt --ssl-key D:/Dokumente/GitHub/artcreation-dv/local_ssl/localhost.key --open",
     "start:stag": "node set-env.ts && ng serve --configuration staging",
     "start:prod": "node set-env.ts && ng serve --configuration production",

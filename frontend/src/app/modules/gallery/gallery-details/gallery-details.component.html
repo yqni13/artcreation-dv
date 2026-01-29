@@ -15,7 +15,7 @@
         </button>
     </div>
     <div class="artdv-gallerydetails-img">
-        <div class="artdv-gallerydetails-img-wrapper">
+        <artdv-imgframe [model]="artwork.art_frame_model" [color]="artwork.art_frame_color">
             <img 
                 src="{{(storageDomain + '/' + artwork.thumbnail_path) | cacheCheck: artwork.last_modified}}" 
                 alt="404-picture-not-found"
@@ -23,7 +23,7 @@
                 (click)="navigateFullscale(true)"
                 (keydown.enter)="navigateFullscale(true)"
             >
-        </div>
+        </artdv-imgframe>
         <span class="artdv-author">
             <a href="{{authorLink}}" target="_blank">{{'shared.assets.author' | translate}}</a>
         </span>

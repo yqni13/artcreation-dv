@@ -122,20 +122,16 @@ $img-widthborder-wrapper: 15px;
 $img-widthborder-img: 2px;
 $img-widthpadding-img: 1px;
 
-.artdv-gallerydetails-img-wrapper {
+artdv-imgframe {
     overflow: hidden;
     position: absolute;
     padding: 0;
-    border-style: solid;
-    border-color: #482b0c; 
-    box-shadow:-3px -3px 12px #999;
 
     img {
         border:solid 70px white;
         box-shadow:-3px -3px 12px #999;
         display: block;
         background-color: transparent;
-        padding: $img-widthpadding-img;
         margin: 0;
         border-top: solid $img-widthborder-img #aaa;
         border-left: solid $img-widthborder-img #aaa;

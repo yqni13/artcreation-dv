@@ -55,7 +55,8 @@ section {
     // }
 }
 
-.artdv-gallery-nodata {
+.artdv-gallery-nodata,
+.artdv-gallery-nofilter {
     margin: sass.$comp-padding-big 0;
     color: sass.$color-light-grey;
     font-size: 30px;

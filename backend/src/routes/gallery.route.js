@@ -13,12 +13,58 @@ const {
 const awaitHandlerFactory = require('../middleware/awaitHandlerFactory.middleware');
 const Utils = require('../utils/common.utils');
 
-router.get('/findOne/:id', galleryFindOneSchema, awaitHandlerFactory(GalleryController.findOne));
-router.get('/findByRefNr/:refNr', galleryFindByRefNrSchema, awaitHandlerFactory(GalleryController.findByRefNr));
-router.get('/findAll', awaitHandlerFactory(GalleryController.findAll));
-router.post('/create', auth(), Utils.parseReqBody, galleryCreateSchema, awaitHandlerFactory(GalleryController.create));
-router.put('/update', auth(), Utils.parseReqBody, galleryUpdateSchema, awaitHandlerFactory(GalleryController.update));
-router.delete('/delete/:id', auth(), galleryDeleteSchema, awaitHandlerFactory(GalleryController.delete));
-router.get('/refNrPreview/:artGenre', auth(), galleryRefNrPreviewSchema, awaitHandlerFactory(GalleryController.refNrPreview));
+// findById
+router.get(
+    '/findOne/:id',
+    galleryFindOneSchema,
+    awaitHandlerFactory(GalleryController.findOne)
+);
+
+// findByRefNr
+router.get(
+    '/findByRefNr/:refNr',
+    galleryFindByRefNrSchema,
+    awaitHandlerFactory(GalleryController.findByRefNr)
+);
+
+// findAll
+router.get(
+    '/findAll',
+    awaitHandlerFactory(GalleryController.findAll)
+);
+
+// create
+router.post(
+    '/create',
+    auth(),
+    Utils.parseReqBody,
+    galleryCreateSchema,
+    awaitHandlerFactory(GalleryController.create)
+);
+
+// update
+router.put(
+    '/update',
+    auth(),
+    Utils.parseReqBody,
+    galleryUpdateSchema,
+    awaitHandlerFactory(GalleryController.update)
+);
+
+// delete
+router.delete(
+    '/delete/:id',
+    auth(),
+    galleryDeleteSchema,
+    awaitHandlerFactory(GalleryController.delete)
+);
+
+// getRefNrPreview
+router.get(
+    '/refNrPreview/:artGenre',
+    auth(),
+    galleryRefNrPreviewSchema,
+    awaitHandlerFactory(GalleryController.refNrPreview)
+);
 
 module.exports = router;

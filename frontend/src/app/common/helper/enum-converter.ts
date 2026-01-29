@@ -1,3 +1,4 @@
+import { ArtFrame } from "../../shared/enums/art-frame.enum";
 import { ArtGenre } from "../../shared/enums/art-genre.enum";
 import { ArtMedium } from "../../shared/enums/art-medium.enum";
 import { ArtTechnique } from "../../shared/enums/art-technique.enum";
@@ -18,7 +19,12 @@ export const isArtTechnique = (value: any): ArtTechnique | null => {
     return Object.values(ArtTechnique).includes(value) ? ArtTechnique[(enumVal as any) as keyof typeof ArtTechnique] : null;
 };
 
+export const isArtFrameModel = (value: any): ArtFrame | null => {
+    const enumVal = value ? (value as string).toUpperCase() : '';
+    return Object.values(ArtFrame).includes(value) ? ArtFrame[(enumVal as any) as keyof typeof ArtFrame] : null;
+};
+
 export const isSaleStatus = (value: any): SaleStatus | null => {
     const enumVal = value ? (value as string).toUpperCase() : '';
     return Object.values(SaleStatus).includes(value) ? SaleStatus[(enumVal as any) as keyof typeof SaleStatus] : null;
-}
+};
