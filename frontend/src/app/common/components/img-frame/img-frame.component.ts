@@ -31,6 +31,9 @@ export class ImgFrameComponent {
         return `rgb(${r}, ${g}, ${b})`;
     }
 
+    /**
+     * @description No lighten() via ngStyle => runs at runtime in browser => only finished colors (hex, rgb, hsl).
+     */
     get artFramePhotoBorderStyles() {
         return {
             'border-top-color': this.mapLightenHex2Rgb(this.color, 0.2),

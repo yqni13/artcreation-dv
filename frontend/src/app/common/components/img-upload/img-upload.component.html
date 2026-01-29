@@ -24,12 +24,17 @@
     </span>
     <div class="artdv-imgupload-preview-wrapper" *ngIf="fileInformation.hasFile || existingImgPath">
         <div class="artdv-imgupload-preview-container">
-            <artdv-imgframe [model]="frameModel" [color]="frameColor">
+            <artdv-imgframe [model]="frameModel" [color]="frameColor" *ngIf="adminTarget === AdminTargetEnum.GALLERY">
                 <img
                     src="{{existingImgPath ? (storageDomain + '/' + existingImgPath) : fileInformation.imagePreview()}}"
                     alt="404 not found"
                 >
             </artdv-imgframe>
+            <img
+                src="{{existingImgPath ? (storageDomain + '/' + existingImgPath) : fileInformation.imagePreview()}}"
+                alt="404 not found"
+                *ngIf="adminTarget !== AdminTargetEnum.GALLERY"
+            >
             <div
                 class="artdv-imgupload-close-wrapper"
                 (click)="removeImage()"

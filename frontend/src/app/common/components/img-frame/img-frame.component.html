@@ -5,41 +5,34 @@
 <div class="artdv-imgframe">
 
     <!-- ArtFrame DEFAULT -->
-    <div
-        *ngIf="model === ArtFrameEnum.DEFAULT"
-        class="artdv-img-frame-model-default" 
-        [ngStyle]="{'border-color': color}"
-    >
-        <ng-container *ngTemplateOutlet="content"></ng-container>
-    </div>
+    <ng-container *ngIf="model === ArtFrameEnum.DEFAULT">
+        <div class="artdv-img-frame-model-default" [ngStyle]="{'border-color': color}">
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </div>
+    </ng-container>
 
     <!-- ArtFrame CLASSIC -->
-    <div
-        *ngIf="model === ArtFrameEnum.CLASSIC"
-        class="artdv-img-frame-model-classic-outer"
-    >
-        <div class="main">
-            <div class="inner" [ngStyle]="{'border-color': color}">
-                <ng-container *ngTemplateOutlet="content"></ng-container>
+    <ng-container *ngIf="model === ArtFrameEnum.CLASSIC">
+        <div class="artdv-img-frame-model-classic-outer">
+            <div class="main">
+                <div class="inner" [ngStyle]="{'border-color': color}">
+                    <ng-container *ngTemplateOutlet="content"></ng-container>
+                </div>
             </div>
         </div>
-    </div>
+    </ng-container>
 
     <!-- ArtFrame MODERN -->
-    <div
-        *ngIf="model === ArtFrameEnum.MODERN"
-        class="artdv-img-frame-model-modern"
-        [ngStyle]="artFramePhotoBorderStyles"
-    >
-        <ng-container *ngTemplateOutlet="content"></ng-container>
-    </div>
+    <ng-container *ngIf="model === ArtFrameEnum.MODERN">
+        <div class="artdv-img-frame-model-modern" [ngStyle]="artFramePhotoBorderStyles">
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </div>
+    </ng-container>
 
     <!-- ArtFrame PHOTO -->
-    <div
-        *ngIf="model === ArtFrameEnum.PHOTO"
-        class="artdv-img-frame-model-photo"
-        [ngStyle]="artFramePhotoBorderStyles"
-    >
-        <ng-container *ngTemplateOutlet="content"></ng-container>
-    </div>
+    <ng-container *ngIf="model === ArtFrameEnum.PHOTO">
+        <div class="artdv-img-frame-model-photo" [ngStyle]="artFramePhotoBorderStyles">
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </div>
+    </ng-container>
 </div>

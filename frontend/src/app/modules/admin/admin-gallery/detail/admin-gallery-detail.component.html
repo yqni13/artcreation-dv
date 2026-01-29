@@ -24,6 +24,7 @@
                     [isSubmitTriggered]="onSubmitTrigger"
                     [frameModel]="artworkForm.get('artFrameModel')?.value"
                     [frameColor]="artworkForm.get('artFrameColor')?.value"
+                    [adminTarget]="AdminTargetEnum.GALLERY"
                     (byChange)="readFileUpload($event)"
                     (byRemove)="readRemovalInfo($event)"
                 ></artdv-imgupload>

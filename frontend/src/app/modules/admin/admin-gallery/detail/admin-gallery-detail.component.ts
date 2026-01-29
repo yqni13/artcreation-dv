@@ -44,6 +44,7 @@ export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent im
     protected MediumOptionEnum = ArtMedium;
     protected TechniqueOptionEnum = ArtTechnique;
     protected FrameModelOptionEnum = ArtFrame;
+    protected AdminTargetEnum = AdminRoute;
     protected artworkEntry: GalleryItem | null;
     protected hasGenre: boolean;
 

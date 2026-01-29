@@ -7,6 +7,7 @@ import { Subject, Subscription } from "rxjs";
 import { environment } from "../../../../environments/environment";
 import { ArtFrame } from "../../../shared/enums/art-frame.enum";
 import { ImgFrameComponent } from "../img-frame/img-frame.component";
+import { AdminRoute } from "../../../api/routes/admin.route.enum";
 
 @Component({
     selector: 'artdv-imgupload',
@@ -28,11 +29,13 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
     @Input() isSubmitTriggered: Subject<boolean>;
     @Input() frameModel: ArtFrame;
     @Input() frameColor: string;
+    @Input() adminTarget: AdminRoute;
 
     protected fileInformation: ImgUploadInformation;
     protected sizeFactorInMB: number;
     protected showValidationMessage: boolean;
     protected storageDomain: string;
+    protected AdminTargetEnum = AdminRoute;
     
     private subscriptionSubmitTrigger$: Subscription;
 
@@ -48,6 +51,7 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
         this.isSubmitTriggered = new Subject<boolean>();
         this.frameModel = ArtFrame.DEFAULT;
         this.frameColor = '#ffffff';
+        this.adminTarget = AdminRoute.GALLERY;
 
         this.fileInformation = {
             hasFile: false,

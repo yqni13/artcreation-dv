@@ -11,7 +11,9 @@
         border-radius: 2.5px;
     }
 
-    .class-type-text {
+    .class-type-text,
+    .class-type-password,
+    .class-type-datetime-local {
         cursor: text;
     }
 
