@@ -5,6 +5,9 @@ import { ImgUploadService } from "../../../shared/services/img-upload.service";
 import { TranslateModule } from "@ngx-translate/core";
 import { Subject, Subscription } from "rxjs";
 import { environment } from "../../../../environments/environment";
+import { ArtFrame } from "../../../shared/enums/art-frame.enum";
+import { ImgFrameComponent } from "../img-frame/img-frame.component";
+import { AdminRoute } from "../../../api/routes/admin.route.enum";
 
 @Component({
     selector: 'artdv-imgupload',
@@ -12,6 +15,7 @@ import { environment } from "../../../../environments/environment";
     styleUrl: './img-upload.component.scss',
     imports: [
         CommonModule,
+        ImgFrameComponent,
         TranslateModule
     ]
 })
@@ -23,11 +27,15 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
 
     @Input() existingImgPath: string | null;
     @Input() isSubmitTriggered: Subject<boolean>;
+    @Input() frameModel: ArtFrame;
+    @Input() frameColor: string;
+    @Input() adminTarget: AdminRoute;
 
     protected fileInformation: ImgUploadInformation;
     protected sizeFactorInMB: number;
     protected showValidationMessage: boolean;
     protected storageDomain: string;
+    protected AdminTargetEnum = AdminRoute;
     
     private subscriptionSubmitTrigger$: Subscription;
 
@@ -41,6 +49,9 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
 
         this.existingImgPath = null;
         this.isSubmitTriggered = new Subject<boolean>();
+        this.frameModel = ArtFrame.DEFAULT;
+        this.frameColor = '#ffffff';
+        this.adminTarget = AdminRoute.GALLERY;
 
         this.fileInformation = {
             hasFile: false,

@@ -1,0 +1,38 @@
+<ng-template #content>
+    <ng-content></ng-content>
+</ng-template>
+
+<div class="artdv-imgframe">
+
+    <!-- ArtFrame DEFAULT -->
+    <ng-container *ngIf="model === ArtFrameEnum.DEFAULT">
+        <div class="artdv-img-frame-model-default" [ngStyle]="{'border-color': color}">
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </div>
+    </ng-container>
+
+    <!-- ArtFrame CLASSIC -->
+    <ng-container *ngIf="model === ArtFrameEnum.CLASSIC">
+        <div class="artdv-img-frame-model-classic-outer">
+            <div class="main">
+                <div class="inner" [ngStyle]="{'border-color': color}">
+                    <ng-container *ngTemplateOutlet="content"></ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- ArtFrame MODERN -->
+    <ng-container *ngIf="model === ArtFrameEnum.MODERN">
+        <div class="artdv-img-frame-model-modern" [ngStyle]="artFramePhotoBorderStyles">
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </div>
+    </ng-container>
+
+    <!-- ArtFrame PHOTO -->
+    <ng-container *ngIf="model === ArtFrameEnum.PHOTO">
+        <div class="artdv-img-frame-model-photo" [ngStyle]="artFramePhotoBorderStyles">
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </div>
+    </ng-container>
+</div>

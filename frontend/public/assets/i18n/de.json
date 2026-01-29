@@ -67,6 +67,8 @@
             "gallery": {
                 "details": {
                     "dimensions": "Abmessungen",
+                    "frame-color": "Rahmen (Farbe)",
+                    "frame-model": "Rahmen (Modell)",
                     "genre": "Genre",
                     "medium": "Material",
                     "price": "Preis",
@@ -76,6 +78,7 @@
                     "title": "Titel"
                 },
                 "placeholder-dimensions": "Höhe x Breite => z.B.: 80x60",
+                "placeholder-frame": "Wählen Sie einen Rahmen",
                 "placeholder-genre": "wählen Sie ein Genre",
                 "placeholder-medium": "wählen Sie ein Material",
                 "placeholder-price": "Preis auf Anfrage",
@@ -282,6 +285,12 @@
             "author": "\u00a9 bild"
         },
         "enum": {
+            "art-frame": {
+                "CLASSIC": "Klassik",
+                "DEFAULT": "Standard",
+                "MODERN": "Modern",
+                "PHOTO": "Foto"
+            },
             "art-genre": {
                 "ABSTRACT": "Abstrakt",
                 "ALL": "Alle",

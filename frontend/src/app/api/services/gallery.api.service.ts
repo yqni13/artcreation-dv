@@ -67,6 +67,8 @@ export class GalleryAPIService {
             artGenre: data.artGenre,
             artMedium: data.artMedium,
             artTechnique: data.artTechnique,
+            artFrameModel: data.artFrameModel,
+            artFrameColor: data.artFrameColor,
             publication: data.publication
         };
         this.formDataCreate = new FormData(); // reset to avoid unwanted zombie data
@@ -87,6 +89,8 @@ export class GalleryAPIService {
             artGenre: data.artGenre,
             artMedium: data.artMedium,
             artTechnique: data.artTechnique,
+            artFrameModel: data.artFrameModel,
+            artFrameColor: data.artFrameColor,
             publication: data.publication
         };
         this.formDataUpdate = new FormData();
