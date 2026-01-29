@@ -38,6 +38,7 @@ export class AdminAssetsDetailComponent extends AbstractAdminDetailComponent imp
     
     protected assetsForm: FormGroup;
     protected AssetsCategoryEnum = AssetsCategory;
+    protected AdminTargetEnum = AdminRoute;
     protected assetsEntry: AssetsItem | null;
     protected hasCategory: boolean;
     

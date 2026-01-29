@@ -1,3 +1,8 @@
+import { ArtFrame } from "../../shared/enums/art-frame.enum"
+import { ArtGenre } from "../../shared/enums/art-genre.enum"
+import { ArtMedium } from "../../shared/enums/art-medium.enum"
+import { ArtTechnique } from "../../shared/enums/art-technique.enum"
+
 export declare interface GalleryItem {
     gallery_id: string,
     reference_nr: string,
@@ -7,9 +12,11 @@ export declare interface GalleryItem {
     sale_status: string,
     price?: number,
     dimensions: string,
-    art_genre: string,
-    art_medium: string,
-    art_technique: string,
+    art_genre: ArtGenre,
+    art_medium: ArtMedium,
+    art_technique: ArtTechnique,
+    art_frame_model: ArtFrame,
+    art_frame_color: string,
     publication_year: number,
     created_on: string,
     last_modified: string

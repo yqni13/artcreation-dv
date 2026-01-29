@@ -4,9 +4,29 @@
 
 <br>
 
+### $\textsf{\color{skyblue}2026/01/28}$
+
+$\textsf{[v1.2.13\ =>\ {\textbf{\color{brown}v1.3.0}]}}$ app<br>
+$\textsf{[v1.4.0\ =>\ {\textbf{\color{brown}v1.4.1}]}}$ database
+- $\textsf{\color{teal}Addition:}$ Added new feature:
+  + artworks are displayed in gallery (detail view) with different frames
+  + frames can be selected by admin from list of different models
+  + frames can be modified by admin via color-picker
+  + selected frames are visible on admin preview/detail view
+- $\textsf{\color{orange}Patch:}$ Added migration to update 'gallery' table by adding 'art_frame_model' and 'art_frame_color' properties.
+
+<br>
+
+### $\textsf{\color{skyblue}2026/01/25}$
+
+$\textsf{[v1.2.12\ =>\ v1.2.13]}$ app
+- $\textsf{\color{orange}patch:}$ Updated to display gallery first time without selected genre and no images. A selected genre will be stored in local storage of browser until end of the day.
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/01/09}$
 
-$\textsf{[v1.2.11\ =>\ {\textbf{\color{brown}v1.2.12}]}}$ app
+$\textsf{[v1.2.11\ =>\ v1.2.12]}$ app
 - $\textsf{\color{teal}Addition:}$ Added new sale status "sold" for gallery artworks.
 
 <br>
@@ -29,7 +49,7 @@ $\textsf{[v1.2.8\ =>\ v1.2.10]}$ app
 ### $\textsf{\color{skyblue}2025/08/27}$
 
 $\textsf{[v1.2.7\ =>\ v1.2.8]}$ app<br>
-$\textsf{[v1.3.1\ =>\ {\textbf{\color{brown}v1.4.0}]}}$ database
+$\textsf{[v1.3.1\ =>\ v1.4.0]}$ database
 - $\textsf{\color{teal}Addition:}$ Added route to request meta data of application.
 
 <br>
