@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { SnackbarMessage, SnackbarParameter } from "../interfaces/SnackbarMessage";
+import { SnackbarMessage, SnackbarParameter } from "../interfaces/snackbar.interface";
 import { SnackbarOption } from "../enums/snackbar-option.enum";
 import { Subject } from "rxjs";
 import { StaticTranslateService } from "./static-translation.service";
@@ -41,7 +41,10 @@ export class SnackbarMessageService {
             snackbar.displayHandler = setTimeout(() => this.close(snackbar), snackbar.displayTime);
         }
 
-        this.snackbarCollection.push(snackbar);
+        // Avoid redundant display of same error multiple times.
+        if(!this.snackbarCollection.find((entry) => entry.text === snackbar.text)) {
+            this.snackbarCollection.push(snackbar);
+        }
     }
 
     notifyOnInterceptorError(response: any, lang: string, message: string, closeMode: boolean, closeTime?: number) {        
