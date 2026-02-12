@@ -161,8 +161,7 @@
             background-position-x: center!important;
             background-position-y: 80%!important;
 
-            .artdv-gallerydetails-img-wrapper {
-                border-width: 15px;
+            artdv-imgframe {
                 top: 20%;
             }
         }
@@ -413,7 +412,7 @@
             }
         }
         .artdv-gallerydetails {
-            .artdv-gallerydetails-img-wrapper {
+            artdv-imgframe {
                 top: 20%;
             }
         }
@@ -422,9 +421,8 @@
     @media screen and (height <= 600px) {
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
-                .artdv-gallerydetails-img-wrapper {
+                artdv-imgframe {
                     top: 17%;
-                    border-width: 10px;
                 }
             }
         }
@@ -586,10 +584,6 @@
             height: 100vh!important;
             background-position-x: center!important;
             background-position-y: 80%!important;
-
-            .artdv-gallerydetails-img-wrapper {
-                border-width: 15px;
-            }
         }
         .artdv-gallerydetails-divider {
             width: 55%!important;
@@ -828,7 +822,7 @@
             }
         }
         .artdv-gallerydetails {
-            .artdv-gallerydetails-img-wrapper {
+            artdv-imgframe {
                 top: 20%;
             }
         }
@@ -843,9 +837,8 @@
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
                 background-position-y: 85%!important;
-                .artdv-gallerydetails-img-wrapper {
+                artdv-imgframe {
                     top: 17%;
-                    border-width: 10px;
                 }
             }
         }
@@ -1007,8 +1000,7 @@
                 margin-bottom: var(--view-nav-width);
             }
 
-            .artdv-gallerydetails-img-wrapper {
-                border-width: 10px;
+            artdv-imgframe {
                 top: calc(18% + (100vh - 700px) * 0.15);
             }
         }
@@ -1229,7 +1221,7 @@
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
                 background-position-y: -50px!important;
-                .artdv-gallerydetails-img-wrapper {
+                artdv-imgframe {
                     top: calc(20% + (100vh - 700px) * 0.15);
                 }
             }
@@ -1239,7 +1231,7 @@
         .artdv-gallerydetails {
             .artdv-gallerydetails-img {
                 background-position-y: calc(80% - 8vh)!important;
-                .artdv-gallerydetails-img-wrapper {
+                artdv-imgframe {
                     top: calc(18% + (700px - 100vh) * 0.15);
                 }
             }

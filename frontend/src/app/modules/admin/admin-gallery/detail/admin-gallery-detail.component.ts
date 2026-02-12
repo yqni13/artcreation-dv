@@ -23,6 +23,7 @@ import { AbstractAdminDetailComponent } from '../../../../common/components/abst
 import { TextInputComponent } from "../../../../common/components/form-components/text-input/text-input.component";
 import { SelectInputComponent } from "../../../../common/components/form-components/select-input/select-input.component";
 import { CacheCheckPipe } from "../../../../common/pipes/cache-check.pipe";
+import { ArtFrame } from "../../../../shared/enums/art-frame.enum";
 
 @Component({
     selector: 'app-admin-gallery-detail',
@@ -41,7 +42,9 @@ export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent im
     protected SaleStatusOptionEnum = SaleStatus;
     protected GenreOptionEnum = ArtGenre;
     protected MediumOptionEnum = ArtMedium;
-    protected TechniqueOptionEnum = ArtTechnique
+    protected TechniqueOptionEnum = ArtTechnique;
+    protected FrameModelOptionEnum = ArtFrame;
+    protected AdminTargetEnum = AdminRoute;
     protected artworkEntry: GalleryItem | null;
     protected hasGenre: boolean;
 
@@ -133,6 +136,8 @@ export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent im
             dimensions: new FormControl('', Validators.required),
             artMedium: new FormControl('', Validators.required),
             artTechnique: new FormControl('', Validators.required),
+            artFrameModel: new FormControl('', Validators.required),
+            artFrameColor: new FormControl('', Validators.required),
             publication: new FormControl('', [Validators.required, CustomValidator.invalidPublicationValidator()]),
         })
     }
@@ -152,6 +157,8 @@ export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent im
             dimensions: this.artworkEntry?.dimensions ?? '',
             artMedium: EnumValidators.isArtMedium(this.artworkEntry?.art_medium) ?? ArtMedium.CANVAS,
             artTechnique: EnumValidators.isArtTechnique(this.artworkEntry?.art_technique) ?? ArtTechnique.ACRYLIC,
+            artFrameModel: EnumValidators.isArtFrameModel(this.artworkEntry?.art_frame_model) ?? ArtFrame.DEFAULT,
+            artFrameColor: this.artworkEntry?.art_frame_color ?? '#ffffff',
             publication: this.artworkEntry?.publication_year ?? '',
         })
     }

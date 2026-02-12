@@ -19,6 +19,8 @@ import { AuthService } from "../../../shared/services/auth.service";
 import { GalleryAPIService } from "../../../api/services/gallery.api.service";
 import { LoadingAnimationComponent } from "../../../common/components/animation/loading/loading-animation.component";
 import { CacheCheckPipe } from "../../../common/pipes/cache-check.pipe";
+import { ArtFrame } from "../../../shared/enums/art-frame.enum";
+import { ImgFrameComponent } from "../../../common/components/img-frame/img-frame.component";
 
 @Component({
     selector: 'app-gallery-details',
@@ -28,6 +30,7 @@ import { CacheCheckPipe } from "../../../common/pipes/cache-check.pipe";
         CacheCheckPipe,
         CommonModule,
         FloatPrecisionPipe,
+        ImgFrameComponent,
         ImgFullscaleComponent,
         LoadingAnimationComponent,
         LowerUpperTextPipe,
@@ -79,9 +82,11 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
             sale_status: '',
             price: undefined,
             dimensions: '',
-            art_genre: '',
-            art_medium: '',
-            art_technique: '',
+            art_genre: ArtGenre.NATURE,
+            art_medium: ArtMedium.OTHER,
+            art_technique: ArtTechnique.OTHER,
+            art_frame_model: ArtFrame.DEFAULT,
+            art_frame_color: '#ffffff',
             publication_year: new Date().getFullYear(),
             created_on: '',
             last_modified: ''

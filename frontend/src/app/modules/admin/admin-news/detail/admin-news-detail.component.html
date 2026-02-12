@@ -29,6 +29,7 @@
                 <artdv-imgupload
                     [existingImgPath]="pathFromExistingImg"
                     [isSubmitTriggered]="onSubmitTrigger"
+                    [adminTarget]="AdminTargetEnum.NEWS"
                     [attr.tabindex]="0"
                     (byChange)="readFileUpload($event)"
                     (byRemove)="readRemovalInfo($event)"

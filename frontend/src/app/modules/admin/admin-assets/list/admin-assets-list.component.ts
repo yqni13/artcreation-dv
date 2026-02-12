@@ -109,12 +109,12 @@ export class AdminAssetsListComponent extends AbstractAdminListComponent impleme
 
     filterListBySearchText(searchText: string) {
         searchText = searchText.toLowerCase();
-        this.modifiedList = this.assetsList.filter((data) => {
-            data.location?.toString().includes(searchText) ||
+        this.modifiedList = this.assetsList.filter((data) => 
+            (data.location ?? '').toLowerCase().includes(searchText) ||
             data.datetime.toString().includes(searchText) ||
             data.created_on.toString().includes(searchText) ||
             data.last_modified.toString().includes(searchText)
-        });
+        );
     }
 
     navigateToUpdateItem(id: string) {

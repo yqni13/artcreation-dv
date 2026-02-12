@@ -2,6 +2,7 @@ const authRouter = require('../routes/auth.route');
 const assetsRouter = require('../routes/assets.route');
 const galleryRouter = require('../routes/gallery.route');
 const mailingRouter = require('../routes/mailing.route');
+const metaRouter = require('../routes/meta.route');
 const newsRouter = require('../routes/news.route');
 
 class RoutesLoader {
@@ -10,6 +11,7 @@ class RoutesLoader {
         app.use(`/api/${version}/assets`, assetsRouter);
         app.use(`/api/${version}/gallery`, galleryRouter);
         app.use(`/api/${version}/mailing`, mailingRouter);
+        app.use(`/api/${version}/meta`, metaRouter);
         app.use(`/api/${version}/news`, newsRouter);
     }
 }

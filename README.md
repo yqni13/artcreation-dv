@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.2.7}}$
+$\texttt{\color{teal}{v1.3.0}}$
 
 
 <br><br>
@@ -292,11 +292,18 @@ $ npm run lint
 
 
 ## Updates
-[list of all updates](update_protocol.md)
+[see changelog for all updates](CHANGELOG.md)
 
-### $\textsf{last\ update\ 1.2.6\ >>\ {\color{pink}1.2.7}}$
+### $\textsf{\color{forestgreen}last update:}$
 
-- $\textsf{\color{teal}Addition:}$ Added staging environment & jest testing framework.
+$\textsf{[v1.2.13\ =>\ {\textbf{\color{brown}v1.3.0}]}}$ app<br>
+$\textsf{[v1.4.0\ =>\ {\textbf{\color{brown}v1.4.1}]}}$ database
+- $\textsf{\color{teal}Addition:}$ Added new feature:
+  + artworks are displayed in gallery (detail view) with different frames
+  + frames can be selected by admin from list of different models
+  + frames can be modified by admin via color-picker
+  + selected frames are visible on admin preview/detail view
+- $\textsf{\color{orange}Patch:}$ Added migration to update 'gallery' table by adding 'art_frame_model' and 'art_frame_color' properties.
 
 <br>
 

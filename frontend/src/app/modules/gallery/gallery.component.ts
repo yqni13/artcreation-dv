@@ -11,6 +11,7 @@ import { HttpObservationService } from "../../shared/services/http-observation.s
 import { AuthService } from "../../shared/services/auth.service";
 import { GalleryItem } from "../../api/models/gallery-response.interface";
 import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
+import { LocalStorageService } from "../../shared/services/localstorage.service";
 
 
 @Component({
@@ -37,6 +38,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
     protected isLoadingResponse: boolean;
 
     private currentNavigation: any;
+    private tokenIdGalleryFilter: string;
     private subscriptionHttpObservationFindAll$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
     private delay: any;
@@ -46,11 +48,12 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         private cdRef: ChangeDetectorRef,
         private readonly auth: AuthService,
         private readonly galleryApi: GalleryAPIService,
-        private readonly httpObservation: HttpObservationService
+        private readonly httpObservation: HttpObservationService,
+        private readonly localstorageService: LocalStorageService
     ) {
         this.galleryList = [];
         this.modifiedList = [];
-        this.activeGenre = 'gallery';
+        this.activeGenre = '';
         this.reloadFlag = true;
         this.isLoadingResponse = true;
 
@@ -59,6 +62,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
         this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;
+        this.tokenIdGalleryFilter = 'local_gallery-filter';
     }
     
     ngOnInit() {
@@ -84,7 +88,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         ).subscribe();
 
         if(!this.currentNavigation || this.currentNavigation.artworkList.length === 0) {
-            // preconnect to avoid loading fail in server timeout (vercel wake-up problem)
+            // Preconnect to avoid loading fail in server timeout (vercel wake-up problem).
             this.auth.preConnect().subscribe({
                 complete: () => {
                     this.initGallery();
@@ -96,7 +100,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     
     ngAfterViewInit() {
-        // disable scrolling via mousewheel-(middle)click to prevent errors on img lazy/pre loads
+        // Disable scrolling via mousewheel-(middle)click to prevent errors on img lazy/pre loads.
         this.gallerySection.nativeElement.onmousedown = (e: any) => {
             if(e && (e.button === 1 || e.button === 4)) {
                 e.preventDefault();
@@ -112,7 +116,13 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isLoadingResponse = true;
         this.galleryApi.sendGetAllRequest().subscribe(data => {
             this.galleryList = data.body?.body.data ?? [];
-            this.modifiedList = this.galleryList;            
+            this.modifiedList = this.galleryList;
+            const token = this.localstorageService.getItem<string>(this.tokenIdGalleryFilter);
+            if(!token) {
+                this.localstorageService.setItem<string>(this.tokenIdGalleryFilter, '');
+            } else {
+                this.onGenreChange(token);
+            }
         })
     }
 
@@ -127,13 +137,18 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.activeGenre = '';
         this.reloadFlag = false;
         setTimeout(() => {
+            const tokenValueGalleryFilter = this.localstorageService.getItem<string>(this.tokenIdGalleryFilter);
             this.activeGenre = genre;
+            if(!tokenValueGalleryFilter || tokenValueGalleryFilter !== genre) {
+                this.localstorageService.removeItem(this.tokenIdGalleryFilter, false);
+                this.localstorageService.setItem<string>(this.tokenIdGalleryFilter, genre);
+            }
             if(genre !== 'gallery') {
                 this.modifiedList = this.galleryList.filter(data => data.art_genre === genre);
             } else {
                 this.modifiedList = this.galleryList;
             }
-            // necessary to destroy and rebuild img-preload comp, otherwise error of picture preload
+            // Necessary to destroy and rebuild img-preload comp, otherwise error of picture preload.
             this.reloadFlag = true;
         }, 0);
     }

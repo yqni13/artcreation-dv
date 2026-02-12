@@ -38,6 +38,7 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
     protected newsForm: FormGroup;
     protected newsEntry: NewsItemWGP | null;
     protected SourceOptionEnum = SourceOption;
+    protected AdminTargetEnum = AdminRoute;
     protected CRUDModeEnum = CRUDMode;
     protected galleryList: GalleryItem[];
     protected hasSourceOption: boolean;
