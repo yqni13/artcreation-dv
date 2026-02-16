@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { SnackbarMessageService } from "./snackbar.service";
-import { SnackbarParameter } from "../interfaces/SnackbarMessage";
+import { SnackbarParameter } from "../interfaces/snackbar.interface";
 import { TranslateService } from "@ngx-translate/core";
 import { StaticTranslateService } from "./static-translation.service";
 import { SnackbarOption } from "../enums/snackbar-option.enum";
