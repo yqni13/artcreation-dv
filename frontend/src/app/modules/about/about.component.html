@@ -1,3 +1,9 @@
+<ng-template #divider>
+    <div id="artdv-about-divider-wrapper">
+        <div id="artdv-about-divider"></div>
+    </div>
+</ng-template>
+
 <section class="artdv-about">
     <header>
         <h1>{{'modules.about.title' | translate}}</h1>
@@ -23,6 +29,7 @@
                 </div>
             </div>
         </div>
+        <ng-container *ngTemplateOutlet="divider"></ng-container>
         <div id="artdv-about-part2" class="artdv-about-indented">
             <div id="artdv-about-part2-text">
                 <div id="artdv-about-text2">
@@ -37,12 +44,19 @@
                 </div>
             </div>
         </div>
+        <ng-container *ngTemplateOutlet="divider"></ng-container>
         <div id="artdv-about-part3">
             <div id="artdv-about-part3-text">
                 <img src="/assets/about/about_03.webp" alt="404-not-found">
                 <p>
                     {{'modules.about.content.block4' | translate}}
                 </p>
+            </div>
+        </div>
+        <ng-container *ngTemplateOutlet="divider"></ng-container>
+        <div id="artdv-about-part4">
+            <div id="artdv-about-interview-wrapper">
+                <iframe [src]="safeUrl" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>

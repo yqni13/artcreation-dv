@@ -4,9 +4,16 @@
 
 <br>
 
+### $\textsf{\color{skyblue}2026/02/16}$
+
+$\textsf{[v1.3.1\ =>\ {\textbf{\color{brown}v1.3.2}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated 'about' page in styling and embedded youtube video link.
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/01/30}$
 
-$\textsf{[v1.3.0\ =>\ {\textbf{\color{brown}v1.3.1}]}}$ app
+$\textsf{[v1.3.0\ =>\ v1.3.1]}$ app
 - $\textsf{\color{orange}Patch:}$ Updated snackbar service avoid displaying same errors multiple times.
 
 <br>

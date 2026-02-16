@@ -1,6 +1,8 @@
 @use '../../../stylesheets/utilities' as sass;
 
 
+$border-color: var(--theme-contrast-anchor);
+
 img {
     border-radius: 15px;
     width: 100%;
@@ -11,12 +13,21 @@ p {
     line-height: 1.6;
 }
 
-$border-color: var(--theme-contrast-anchor);
+#artdv-about-divider-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: sass.$space50 0;
+    #artdv-about-divider {
+        width: calc(100% - (sass.$space50 * 2));
+        border-top: 3px double $border-color;
+    }
+}
 
 .artdv-about-content {
     display: flex;
     flex-direction: column;
-    
+
     div {
         display: flex;
     }
@@ -33,9 +44,6 @@ $border-color: var(--theme-contrast-anchor);
     }
 
     #artdv-about-part2 {
-        padding: sass.$space50 0;
-        border-top: 3px double $border-color;
-        border-bottom: 3px double $border-color;
         #artdv-about-image2 {
             #artdv-about-image2-wrapper {
                 background-color: var(--theme-faq-activeborder);
@@ -51,11 +59,13 @@ $border-color: var(--theme-contrast-anchor);
             width: 100%;
             justify-content: start;
             position: relative;
+            background-color: var(--theme-faq-activeborder);
+            border: 3px double $border-color;
+            border-radius: 10px;
+            padding: sass.$space5;
             img {
                 object-fit: cover;
-                border-radius: 0;
-                border-top-left-radius: 15px;
-                border-top-right-radius: 15px;
+                border-radius: 5px;
             }
             p {
                 font-size: clamp(8px, 1.6vw, 26px);
@@ -66,6 +76,21 @@ $border-color: var(--theme-contrast-anchor);
                 font-weight: bold;
                 white-space: pre-line;
                 margin: 0;
+            }
+        }
+    }
+
+    #artdv-about-part4 {
+        padding-bottom: sass.$space50;
+        justify-content: center;
+        #artdv-about-interview-wrapper {
+            background-color: var(--theme-faq-activeborder);
+            border: 3px double $border-color;
+            border-radius: 10px;
+            padding: sass.$space5;
+            iframe {
+                aspect-ratio: 16/9;
+                width: 100%;
             }
         }
     }
