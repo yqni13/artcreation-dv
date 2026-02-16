@@ -30,7 +30,6 @@
             }
             #artdv-about-part1 {
                 flex-direction: row;
-                margin-bottom: sass.$space50;
                 #artdv-about-image1 {
                     #artdv-about-image1-wrapper {
                         height: fit-content;
@@ -46,7 +45,6 @@
             }
             #artdv-about-part2 {
                 flex-direction: row;
-                margin-bottom: sass.$space50;
                 #artdv-about-part2-text {
                     align-self: center;
                 }
@@ -68,6 +66,11 @@
                         left: calc((100vw - 1440px) / 2 + $img-width-gap);
                         font-style: italic;
                     }
+                }
+            }
+            #artdv-about-part4 {
+                #artdv-about-interview-wrapper {
+                    width: 70%;
                 }
             }
         }
@@ -450,7 +453,6 @@
             }
             #artdv-about-part1 {
                 flex-direction: row;
-                margin-bottom: sass.$space50;
                 #artdv-about-image1 {
                     #artdv-about-image1-wrapper {
                         height: fit-content;
@@ -467,7 +469,6 @@
             }
             #artdv-about-part2 {
                 flex-direction: row;
-                margin-bottom: sass.$space50;
                 #artdv-about-part2-text {
                     margin-top: calc(sass.$space5 - 2px); // at same height as img
                     align-self: start;
@@ -490,6 +491,11 @@
                         left: calc(25vw - var(--view-nav-width));
                         font-style: italic;
                     }
+                }
+            }
+            #artdv-about-part4 {
+                #artdv-about-interview-wrapper {
+                    width: 70%;
                 }
             }
         }
@@ -1283,6 +1289,11 @@
             }
             #artdv-about-part3 {
                 height: 60vh;
+            }
+            #artdv-about-part4 {
+                #artdv-about-interview-wrapper {
+                    width: 100%;
+                }
             }
         }
     }
