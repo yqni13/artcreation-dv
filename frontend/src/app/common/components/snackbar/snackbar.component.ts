@@ -1,5 +1,5 @@
 import { Component, HostListener, Input, OnInit } from "@angular/core";
-import { SnackbarMessage } from "../../../shared/interfaces/SnackbarMessage";
+import { SnackbarMessage } from "../../../shared/interfaces/snackbar.interface";
 import { SnackbarMessageService } from "../../../shared/services/snackbar.service";
 import { CommonModule } from "@angular/common";
 import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";

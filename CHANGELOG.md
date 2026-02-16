@@ -4,9 +4,23 @@
 
 <br>
 
+### $\textsf{\color{skyblue}2026/02/16}$
+
+$\textsf{[v1.3.1\ =>\ {\textbf{\color{brown}v1.3.2}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated 'about' page in styling and embedded youtube video link.
+
+<br>
+
+### $\textsf{\color{skyblue}2026/01/30}$
+
+$\textsf{[v1.3.0\ =>\ v1.3.1]}$ app
+- $\textsf{\color{orange}Patch:}$ Updated snackbar service avoid displaying same errors multiple times.
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/01/28}$
 
-$\textsf{[v1.2.13\ =>\ {\textbf{\color{brown}v1.3.0}]}}$ app<br>
+$\textsf{[v1.2.13\ =>\ v1.3.0]}$ app<br>
 $\textsf{[v1.4.0\ =>\ {\textbf{\color{brown}v1.4.1}]}}$ database
 - $\textsf{\color{teal}Addition:}$ Added new feature:
   + artworks are displayed in gallery (detail view) with different frames
