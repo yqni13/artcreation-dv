@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.3.1}}$
+$\texttt{\color{teal}{v1.3.2}}$
 
 
 <br><br>
@@ -296,8 +296,8 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v1.3.0\ =>\ {\textbf{\color{brown}v1.3.1}]}}$ app
-- $\textsf{\color{orange}Patch:}$ Updated snackbar service avoid displaying same errors multiple times.
+$\textsf{[v1.3.1\ =>\ {\textbf{\color{brown}v1.3.2}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated 'about' page in styling and embedded youtube video link.
 
 <br>
 
