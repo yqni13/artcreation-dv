@@ -4,9 +4,17 @@
 
 <br>
 
+### $\textsf{\color{skyblue}2026/02/19}$
+
+$\textsf{[v1.3.2\ =>\ {\textbf{\color{brown}v1.3.4}]}}$ app
+- $\textsf{\color{teal}Addition:}$ Added translations, basic api service & UI component for upcoming new feature (support).
+- $\textsf{\color{orange}Patch:}$ Updated http interceptor & obersavation service for upcoming new feature (support).
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/02/16}$
 
-$\textsf{[v1.3.1\ =>\ {\textbf{\color{brown}v1.3.2}]}}$ app
+$\textsf{[v1.3.1\ =>\ v1.3.2]}$ app
 - $\textsf{\color{orange}Patch:}$ Updated 'about' page in styling and embedded youtube video link.
 
 <br>

@@ -1,0 +1,15 @@
+@use '../../../stylesheets/utilities' as sass;
+
+
+div {
+    display: flex;
+}
+
+.artdv-support-content {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    #artdv-support-test-wrapper {
+        flex-direction: column;
+    }
+}
