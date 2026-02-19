@@ -4,7 +4,7 @@ import { DateFormatPipe } from '../../pipes/date-format.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { BaseRoute } from '../../../api/routes/base.route.enum';
-import { NewsItemWGP } from '../../../api/models/news-response.interface';
+import { NewsItemWGP } from '../../../api/interfaces/news-response.interface';
 import { environment } from '../../../../environments/environment';
 import { LoadingAnimationComponent } from '../animation/loading/loading-animation.component';
 import { SizeOption } from '../../../shared/enums/size-option.enum';

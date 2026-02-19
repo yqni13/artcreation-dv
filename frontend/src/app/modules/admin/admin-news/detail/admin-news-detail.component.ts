@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { NewsItemWGP } from "../../../../api/models/news-response.interface";
+import { NewsItemWGP } from "../../../../api/interfaces/news-response.interface";
 import { AbstractAdminDetailComponent } from "../../../../common/components/abstracts/admin-detail.abstract.component";
 import { Router } from "@angular/router";
 import { AuthService } from "../../../../shared/services/auth.service";
@@ -17,7 +17,7 @@ import { AdminDetailImportsModule } from "../../../../common/helper/admin-detail
 import { TextareaInputComponent } from "../../../../common/components/form-components/textarea-input/textarea-input.component";
 import { SelectInputComponent } from "../../../../common/components/form-components/select-input/select-input.component";
 import { SourceOption } from "../../../../shared/enums/source-option.enum";
-import { GalleryItem } from "../../../../api/models/gallery-response.interface";
+import { GalleryItem } from "../../../../api/interfaces/gallery-response.interface";
 import { SelectGalleryItemComponent } from "../../../../common/components/select-galleryitem/select-galleryitem.component";
 import { CacheCheckPipe } from "../../../../common/pipes/cache-check.pipe";
 

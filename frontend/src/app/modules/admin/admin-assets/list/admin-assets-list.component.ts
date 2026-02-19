@@ -9,7 +9,7 @@ import { HttpObservationService } from "../../../../shared/services/http-observa
 import { filter, tap } from "rxjs";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
-import { AssetsItem } from "../../../../api/models/assets.response.interface";
+import { AssetsItem } from "../../../../api/interfaces/assets.response.interface";
 import { AssetsCategory } from "../../../../shared/enums/assets-category.enum";
 import { AssetsAPIService } from "../../../../api/services/assets.api.service";
 

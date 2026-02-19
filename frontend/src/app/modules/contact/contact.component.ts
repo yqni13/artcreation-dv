@@ -19,7 +19,7 @@ import { FloatPrecisionPipe } from "../../common/pipes/float-precision.pipe";
 import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
 import { AuthService } from "../../shared/services/auth.service";
 import { GalleryAPIService } from "../../api/services/gallery.api.service";
-import { GalleryItem } from "../../api/models/gallery-response.interface";
+import { GalleryItem } from "../../api/interfaces/gallery-response.interface";
 import { TextCaseOption } from '../../shared/enums/text-case.enum';
 
 @Component({

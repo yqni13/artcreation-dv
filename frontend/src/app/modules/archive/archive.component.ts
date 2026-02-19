@@ -6,7 +6,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { filter, Subscription, tap } from "rxjs";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
 import { AuthService } from "../../shared/services/auth.service";
-import { NewsItemWGP } from "../../api/models/news-response.interface";
+import { NewsItemWGP } from "../../api/interfaces/news-response.interface";
 import { NewsAPIService } from "../../api/services/news.api.service";
 import { environment } from "../../../environments/environment";
 import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";

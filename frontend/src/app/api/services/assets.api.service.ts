@@ -3,9 +3,9 @@ import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { AdminRoute } from "../routes/admin.route.enum";
 import { AssetsRoute } from "../routes/assets.route.enum";
-import { AssetsCreateRequest, AssetsUpdateRequest } from "../models/assets-request.interface";
+import { AssetsCreateRequest, AssetsUpdateRequest } from "../interfaces/assets-request.interface";
 import { Observable } from "rxjs";
-import { AssetsCreateUpdateResponse, AssetsDeleteResponse, AssetsItemResponse, AssetsListResponse } from "../models/assets.response.interface";
+import { AssetsCreateUpdateResponse, AssetsDeleteResponse, AssetsItemResponse, AssetsListResponse } from "../interfaces/assets.response.interface";
 
 @Injectable({
     providedIn: 'root'

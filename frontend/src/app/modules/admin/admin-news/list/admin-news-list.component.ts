@@ -2,7 +2,7 @@ import { CRUDMode } from './../../../../shared/enums/crud-mode.enum';
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl } from "@angular/forms";
 import { filter, tap } from "rxjs";
-import { NewsItemWGP } from "../../../../api/models/news-response.interface";
+import { NewsItemWGP } from "../../../../api/interfaces/news-response.interface";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
 import { Router } from "@angular/router";
 import { AuthService } from "../../../../shared/services/auth.service";
