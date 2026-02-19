@@ -13,7 +13,8 @@
                 "imprint": "Imprint",
                 "language": "Select your language:",
                 "privacy": "Privacy Policy",
-                "shipping": "Shipping & Return"
+                "shipping": "Shipping & Return",
+                "support": "Support"
             },
             "titles": {
                 "connection": "connection",
@@ -278,6 +279,9 @@
                 }
             },
             "title": "Shipping & Return"
+        },
+        "support": {
+            "title": "Support"
         }
     },
     "shared": {
