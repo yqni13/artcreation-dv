@@ -1,5 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
-import { GalleryItem } from "../../api/models/gallery-response.interface";
+import { GalleryItem } from "../../api/interfaces/gallery-response.interface";
 import { SaleStatus } from "../../shared/enums/sale-status.enum";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 

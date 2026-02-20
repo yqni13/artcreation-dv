@@ -10,9 +10,9 @@
                 "data-404-entry": "Kein Datensatz anhand von \"{{VAL}}\" gefunden. Bitte prüfen Sie Ihre Eingabe.",
                 "data-invalid-email": "Ihre Email-Adresse ist ungültig. Prüfen Sie bitte Schreibfehler und Aufbau:\nindividuelle Kennzeichnung + @ + Host + '.' + Top-Level-Domain.\nBeispiel: local@host.com",
                 "data-invalid-entry": "Die Eingabe für den Datensatz \"{{VAL}}\" ist fehlerhaft. Bitte überprüfen Sie Ihre Eingabe.",
-                "data-invalid-length": "Die Länge für den Datensatz \"{{VAL}}\" muss exakt {{LENGTH}} Zeichen sein. Bitte überprüfen Sie Ihre Eingabe.",
-                "data-invalid-max": "Die Länge für den Datensatz \"{{VAL}}\" darf nicht länger als {{MAX}} Zeichen sein. Bitte überprüfen Sie Ihre Eingabe.",
-                "data-invalid-min": "Die Länge für den Datensatz \"{{VAL}}\" darf nicht kürzer als {{MIN}} Zeichen lang sein. Bitte überprüfen Sie Ihre Eingabe.",
+                "data-invalid-length": "Die Länge/Anzahl für den Datensatz \"{{VAL}}\" muss exakt {{LENGTH}} Zeichen/Einheiten sein. Bitte überprüfen Sie Ihre Eingabe.",
+                "data-invalid-max": "Die Länge/Anzahl für den Datensatz \"{{VAL}}\" darf nicht länger als {{MAX}} Zeichen/Einheiten sein. Bitte überprüfen Sie Ihre Eingabe.",
+                "data-invalid-min": "Die Länge/Anzahl für den Datensatz \"{{VAL}}\" darf nicht kürzer als {{MIN}} Zeichen/Einheiten lang sein. Bitte überprüfen Sie Ihre Eingabe.",
                 "data-invalid-range": "Der Wert für den Datensatz \"{{VAL}}\" muss zwischen {{MIN}} und {{MAX}} liegen. Bitte prüfen Sie Ihre Eingabe.",
                 "data-required": "Es wurden nicht alle notwendigen Daten übertragen. Bitte kontrollieren Sie Ihre Angaben.",
                 "error-invalid-api": "Ein technischer Fehler bei der internen Verarbeitung ist aufgetreten. Dieser Service ist vorübergehend nicht nutzbar.",
@@ -25,28 +25,67 @@
                 "server-500-routes": "Der passende API Zugang/Endpunkt ist im Moment nicht verfügbar. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
                 "server-535-auth": "Die Authentifizierung bei \"{{VAL}}\" ist im Moment nicht möglich. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
                 "server-max-email": "Email Service hat das Anfragen-Limit überschritten und ist temporär blockiert. Bitte versuchen Sie es in 24h erneut.",
+                "support-arg-forbidden": "Ihre Anfrage enthält unerlaubte Daten. Bitte kontrollieren Sie Ihre Angaben.",
+                "support-arg-required": "Ihrer Anfrage fehlen erforderliche Daten. Bitte kontrollieren Sie Ihre Angaben.",
+                "support-blocked-users": "User mit dieser Email-Adresse sind vom Support ausgeschlossen. Es werden keine Anfragen mehr akzeptiert.",
+                "support-dbquery-error": "Aufgrund eines technischen Fehlers wurde Ihre Anfrage nicht durchgeführt. Bitte versuchen Sie es später erneut.",
+                "support-files-invalid-name": "Ungültiger Dateiname erkannt. Der Dateiname muss sich nach folgender Struktur richten: [Name] + \".\" + [Typ], da es sonst zu unerwarteten Fehlern kommen kann.",
+                "support-files-mimetype": "Ungültiger Dateityp erkannt. Unterstützt werden nur Dateien vom Typ: \".webp\", \".png\", \".jpeg\", \".jpg\", \".jpe\", \".pjpg\", \".jfif\", \".jfif-tbnl\", \".jif\" und \".png\"",
+                "support-files-size-each": "Ungültige Dateigröße erkannt. Unterstützt wird nur eine Größe bis max 1 MB pro Datei.",
+                "support-forbidden-clients-auth": "Der verwendete Zugangsschlüssel verfügt über keine aktiven Berechtigungen. Bitte versuchen Sie es später erneut.",
+                "support-invalid-admin-auth": "Dieser Vorgang ist nur für Administratoren gestattet. Sie verwenden keinen geeigneten Zugangsschlüssel.",
+                "support-invalid-api": "Aufgrund eines technischen Fehlers wurde Ihre Anfrage nicht durchgeführt. Bitte versuchen Sie es später erneut.",
+                "support-invalid-email": "Ihre Email-Adresse ist ungültig betreffend: \"{{VAL}}\". Es gelten die globalen Richtlinien. Bitte kontrollieren Sie Ihre Angaben.",
+                "support-invalid-entry": "Die Eingabe für den Datensatz \"{{VAL}}\" ist fehlerhaft. Bitte kontrollieren Sie Ihre Angaben.",
+                "support-invalid-length": "Die Länge/Anzahl für den Datensatz \"{{VAL}}\" muss exakt {{LENGTH}} Zeichen/Einheiten sein. Bitte kontrollieren Sie Ihre Angaben.",
+                "support-invalid-max": "Die Länge/Anzahl für den Datensatz \"{{VAL}}\" darf nicht länger als {{MAX}} Zeichen/Einheiten sein. Bitte kontrollieren Sie Ihre Angaben.",
+                "support-invalid-min": "Die Länge/Anzahl für den Datensatz \"{{VAL}}\" darf nicht kürzer als {{MIN}} Zeichen/Einheiten lang sein. Bitte kontrollieren Sie Ihre Angaben.",
+                "support-invalid-properties": "Ihre Anfrage enthält ungültige Daten. Bitte kontrollieren Sie Ihre Angaben.",
+                "support-invalid-users": "Aufgrund von verdächtigem Verhalten wurde Ihre Email-Adresse geflaggt und Anfragen werden vorläufig nicht akzeptiert.",
+                "support-maintenance-E-013": "Der Support-Dienst ist wegen technischen Problemen vorübergehend nicht verfügbar.",
+                "support-maintenance-M-008": "Der Support-Dienst ist wegen Wartungsarbeiten aktuell nicht verfügbar.",
+                "support-maintenance-T-011": "Der Support-Dienst ist wegen unerwarteter Überbelastung vorübergehend nicht verfügbar.",
+                "support-malformed-apikey": "Der Zugangsschlüssel ist ungültig und entspricht nicht den strukturellen Anforderungen.",
+                "support-missing-admin-auth": "Dieser Vorgang ist nur für Administratoren gestattet. Es wurde kein geeigneter Zugangsschlüssel gefunden.",
+                "support-missing-clients-auth": "Dieser Vorgang ist nur für berechtigte Webseiten gestattet. Es wurde kein geeigneter Zugangsschlüssel gefunden.",
+                "support-ratelimits-clients-burst": "Ihre Anfrage konnte aufgrund einer unerwarteten und kurzfristigen Überbelastung durch die Webseite nicht bearbeitet werden. Bitte versuchen Sie es später erneut.",
+                "support-ratelimits-clients-daily": "Ihre Anfrage konnte nicht bearbeitet werden, da das tagesbezogene Nutzungslimit dieser Webseite unerwartet überschritten wurde. Bitte versuchen Sie es später erneut.",
+                "support-ratelimits-total-daily": "Ihre Anfrage konnte nicht bearbeitet werden, da das tagesbezogene Nutzungslimit des Dienstes unerwartet überschritten wurde. Bitte versuchen Sie es später erneut.",
+                "support-ratelimits-users-burst": "Ihre Anfrage konnte aufgrund einer unerwarteten und kurzfristigen Überbelastung durch Ihre Email-Adresse nicht bearbeitet werden. Bitte versuchen Sie es später erneut.",
+                "support-ratelimits-users-daily": "Ihre Anfrage konnte nicht bearbeitet werden, da das tagesbezogene Nutzungslimit dieser Email-Adresse unerwartet überschritten wurde. Bitte versuchen Sie es später erneut.",
+                "support-unimplemented": "Das gewünschte Feature befindet sich in der Entwicklung und ist noch nicht abrufbar.",
                 "unknown-error": "Es ist ein unbekannter Fehler aufgetreten. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support."
             },
             "header": {
                 "AuthenticationException": "Verbindung fehlgeschlagen",
                 "AuthSecretNotFoundException": "Umgebungsvariable fehlt",
+                "BlockedUsersException": "User blockiert",
                 "DBConnectionException": "Verbindung fehlgeschlagen",
                 "DBSyntaxSQLException": "Datenbank Fehler",
+                "ExceedMaxEndpointException": "Ungewöhnliche Auslastung",
+                "ForbiddenApiKeyException": "Unerlaubter Zugang",
                 "InternalServerException": "Server Unerreichbar",
+                "InvalidApiKeyException": "Ungültiger API-Key",
                 "InvalidCredentialsException": "Ungültige Anmeldedaten",
+                "InvalidFilesException": "Fehler im Anhang",
                 "InvalidPropertiesException": "Ungültiger DatenSatz",
                 "InvalidTokenException": "Ungültiger Token",
+                "InvalidUsersException": "User ungültig",
                 "JWTExpirationException": "Sitzung abgelaufen",
+                "MaintenanceException": "Wartungszustand",
+                "MalformedApiKeyException": "Ungültiger API-Key",
+                "MissingApiKeyException": "API-Key nicht gefunden",
                 "RequestExceedMaxException": "Kapazität überschritten",
                 "TokenMissingException": "Sitzungs-Token fehlt",
                 "UnexpectedApiResponseException": "Server fehlgeschlagen",
+                "UnimplementedException": "Feature nicht verfügbar",
                 "UnknownException": "Unbekannter Fehler"
             }
         },
         "frontend": {
             "email": {
                 "text": "Ihre Anfrage wurde erfolgreich an uns weitergeleitet. Wir bemühen uns darum Ihr Anliegen so schnell wie möglich zu bearbeiten und Ihnen zu antworten.",
-                "title": "Danke für Ihre Anfrage"
+                "title": "Danke für Ihre Anfrage!"
             },
             "form": {
                 "artwork-invalid-purchase": "Kein Preis verfügbar. Nutzen Sie den Betreff \"Spezifische Anfrage\".",
@@ -79,6 +118,10 @@
             },
             "other": {
                 "auto-logout": "Sie wurden automatisch abgemeldet, da Ihre Sitzung aus Sicherheitsgründen zeitlich begrenzt ist."
+            },
+            "support": {
+                "text": "Ihre Anfrage wurde erfolgreich an uns weitergeleitet und als neues Ticket erstellt. Ihre Daten werden schnellstmöglich verarbeitet und bei Notwendigkeit via Email Rücksprache gehalten.",
+                "title": "Ticket erfolgreich erstellt!"
             }
         }
     }

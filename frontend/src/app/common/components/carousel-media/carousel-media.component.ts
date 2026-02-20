@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { environment } from "../../../../environments/environment";
 import { CommonModule } from "@angular/common";
-import { AssetsItem } from "../../../api/models/assets.response.interface";
+import { AssetsItem } from "../../../api/interfaces/assets.response.interface";
 import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 import { DateFormatPipe } from "../../pipes/date-format.pipe";
 import { SizeOption } from "../../../shared/enums/size-option.enum";

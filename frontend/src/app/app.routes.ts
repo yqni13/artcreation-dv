@@ -12,6 +12,7 @@ import { PrintsComponent } from './modules/prints/prints.component';
 import { GalleryDetailsComponent } from './modules/gallery/gallery-details/gallery-details.component';
 import { LoginComponent } from './modules/login/login.component';
 import { ImgPreloadGuard } from './shared/services/img-preload-guard.service';
+import { SupportComponent } from './modules/support/support.component';
 
 export const routes: Routes = [
     {
@@ -126,6 +127,12 @@ export const routes: Routes = [
         component: ShippingComponent,
         data: { title: 'shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
+    // TODO(yqni13): enable with full implementation (SUPPORT-77)
+    // {
+    //     path: 'support',
+    //     component: SupportComponent,
+    //     data: { title: 'support', showInNavbar: false, showInFooterConnect: true, showInFooterInfo: false }
+    // },
     {
         path: '**',
         redirectTo: '/home',

@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
-import { GalleryItem } from "../../../api/models/gallery-response.interface";
+import { GalleryItem } from "../../../api/interfaces/gallery-response.interface";
 import { filter, Subject, Subscription, tap } from "rxjs";
 import { GalleryAPIService } from "../../../api/services/gallery.api.service";
 import { HttpObservationService } from "../../../shared/services/http-observation.service";

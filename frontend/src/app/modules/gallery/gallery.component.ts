@@ -9,7 +9,7 @@ import { GalleryAPIService } from "../../api/services/gallery.api.service";
 import { filter, Subscription, tap } from "rxjs";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
 import { AuthService } from "../../shared/services/auth.service";
-import { GalleryItem } from "../../api/models/gallery-response.interface";
+import { GalleryItem } from "../../api/interfaces/gallery-response.interface";
 import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
 import { LocalStorageService } from "../../shared/services/localstorage.service";
 
