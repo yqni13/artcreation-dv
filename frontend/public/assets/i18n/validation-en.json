@@ -10,9 +10,9 @@
                 "data-404-entry": "No data found for \"{{VAL}}\".Please check your input.",
                 "data-invalid-email": "Your email address is invalid. Check spelling mistakes and structure:\nlocal-part + @ + host-name + '.' + top-level-domain.\nExample: local@host.com",
                 "data-invalid-entry": "The input for the record \"{{VAL}}\" is incorrect. Please check your input.",
-                "data-invalid-length": "The length for the record \"{{VAL}}\" must be exactly {{LENGTH}} characters long. Please check your input.",
-                "data-invalid-max": "The length for the record \"{{VAL}}\" must not be longer than {{MAX}} characters. Please check your input.",
-                "data-invalid-min": "The length for the record \"{{VAL}}\" must not be shorter than {{MIN}} characters. Please check your input.",
+                "data-invalid-length": "The length/number for the record \"{{VAL}}\" must be exactly {{LENGTH}} characters/entries long. Please check your input.",
+                "data-invalid-max": "The length/number for the record \"{{VAL}}\" must not be longer than {{MAX}} characters/entries. Please check your input.",
+                "data-invalid-min": "The length/number for the record \"{{VAL}}\" must not be shorter than {{MIN}} characters/entries. Please check your input.",
                 "data-invalid-range": "The value for the record \"{{VAL}}\" must be between {{MIN}} and {{MAX}}. Please check your input.",
                 "data-required": "Not all necessary data were transferred. Please check your input.",
                 "error-invalid-api": "A technical error on intern systems has occured. This service is not available in the moment.",
@@ -53,7 +53,7 @@
                 "support-ratelimits-total-daily": "Your request could not be processed because the daily usage limit of this service was unexpectedly exceeded. Please try again later.",
                 "support-ratelimits-users-burst": "Your request could not be processed due to an unexpected and short-term overload of your email address. Please try again later.",
                 "support-ratelimits-users-daily": "Your request could not be processed because the daily usage limit of your email address was unexpectedly exceeded. Please try again later.",
-                "support-unimplemented": "The requested feature is under development and is currently unavailable.",
+                "support-unimplemented": "The requested feature is under development and is not available yet.",
                 "unknown-error": "An unknown error has occurred. Please try again later or contact support."
             },
             "header": {
