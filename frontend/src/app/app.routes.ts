@@ -127,12 +127,11 @@ export const routes: Routes = [
         component: ShippingComponent,
         data: { title: 'shipping', showInNavbar: false, showInFooterConnect: false, showInFooterInfo: true }
     },
-    // TODO(yqni13): enable with full implementation (SUPPORT-77)
-    // {
-    //     path: 'support',
-    //     component: SupportComponent,
-    //     data: { title: 'support', showInNavbar: false, showInFooterConnect: true, showInFooterInfo: false }
-    // },
+    {
+        path: 'support',
+        component: SupportComponent,
+        data: { title: 'support', showInNavbar: false, showInFooterConnect: true, showInFooterInfo: false }
+    },
     {
         path: '**',
         redirectTo: '/home',

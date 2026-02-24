@@ -14,7 +14,7 @@
                 "language": "Wählen Sie Ihre Sprache:",
                 "privacy": "Datenschutz",
                 "shipping": "Versand & Rückgabe",
-                "support": "Support"
+                "support": "Support / Feedback"
             },
             "titles": {
                 "connection": "Kommunikation",
@@ -281,6 +281,35 @@
             "title": "Versand & Rückgabe"
         },
         "support": {
+            "buttons": {
+                "reset": "Reset",
+                "send": "Senden"
+            },
+            "form": {
+                "fieldNames": {
+                    "browser": "Internet-Browser",
+                    "device": "Gerät",
+                    "email": "E-Mail",
+                    "feedback": "Feedback",
+                    "message": "Beschreibung",
+                    "option": "Kategorie",
+                    "os": "Betriebssystem",
+                    "title": "Titel"
+                },
+                "placeholders": {
+                    "browser": "verwendeter Browser + Version",
+                    "device": "Wählen Sie die Kategorie Ihres Gerätes.",
+                    "email": "max.mustermann@demo.at",
+                    "feedback": "Wie bewerten Sie www.artcreation-dv.at?",
+                    "message-bug": "Beschreiben Sie bitte den von Ihnen entdeckten Fehler so genau wie möglich.",
+                    "message-feedback": "Beschreiben Sie hier bitte relevante Punkte für Ihr Feedback/Kritik.",
+                    "message-support": "Beschreiben Sie hier bitte Ihren Sachverhalt so genau wie möglich.",
+                    "option": "Was möchten Sie uns mitteilen?",
+                    "os": "verwendetes Betriebssystem",
+                    "term-feedback": "Ich erkläre mich dazu bereit, mein persönliches Feedback zur weiteren Verwendung freizugeben.",
+                    "title": "Kurze Beschreibung Ihres Anliegens."
+                }
+            },
             "title": "Support"
         }
     },
@@ -330,6 +359,11 @@
                 "generalRequest": "Generelle Anfrage",
                 "specificInformation": "Spezifische Anfrage"
             },
+            "device-option": {
+                "DESKTOP": "Computer (Laptop, Desktop PC)",
+                "MOBILE": "Mobiles Gerät (Smartphone, Tablet, ebook Reader)",
+                "OTHER": "Alternatives Gerät"
+            },
             "honorifics-option": {
                 "0": "Herr",
                 "1": "Frau"
@@ -351,6 +385,11 @@
             "source-option": {
                 "EXIST": "ein bestehendes Kunstwerk",
                 "NEW": "ein neues Bild"
+            },
+            "ticket-option": {
+                "BUG": "Fehler",
+                "FEEDBACK": "Feedback",
+                "SUPPORT": "Hilfe"
             }
         }
     }
