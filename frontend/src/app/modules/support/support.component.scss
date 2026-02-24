@@ -9,7 +9,70 @@ div {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    #artdv-support-test-wrapper {
+    margin-bottom: sass.$space50;
+    form {
+        display: flex;
         flex-direction: column;
+        span {
+            margin-bottom: sass.$space5;
+        }
+        .artdv-support-form-wrapper-mid,
+        .artdv-support-form-wrapper-big {
+            flex-direction: column;
+            margin: sass.$space5 0;
+        }
+        .artdv-support-form-wrapper-starrating {
+            align-items: center;
+            flex-direction: column;
+        }
+        #artdv-support-message-length {
+            font-size: 12px;
+            margin-left: 7px;
+        }
+        #artdv-support-checkbox {
+            flex-direction: row;
+            margin: sass.$space15 0;
+            input {
+                background: none;
+                cursor: pointer;
+                transform: scale(1.5);
+                padding: 0;
+                margin: 0 sass.$space15;
+            }
+            span {
+                margin: 0;
+            }
+        }
     }
+    .artdv-support-button-wrapper {
+        width: 100%;
+        justify-content: center;
+        margin: sass.$space15 0;
+        a {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        button {
+            cursor: pointer;
+        }
+        #artdv-support-attachment-input {
+            display: none;
+        }
+    }
+}
+
+.outer-border {
+    background-color: var(--theme-faq-activeborder);
+    border: 1px solid var(--theme-contrast-anchor);
+    border-radius: 7px;
+}
+
+.inner-border {
+    background-color: var(--theme-nav-bg);
+    width: 100%;
+    margin: 2px;
+    border: 1px solid transparent;
+    border-radius: 5px;
 }

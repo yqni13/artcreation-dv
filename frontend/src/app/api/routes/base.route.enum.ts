@@ -1,4 +1,4 @@
-export type BaseRoute = '/admin' | '/about' | '/home' | '/gallery' | '/prints' | '/faq' | '/contact' | '/archive' | '/imprint' | '/login' | '/privacy' | '/shipping';
+export type BaseRoute = '/admin' | '/about' | '/home' | '/gallery' | '/prints' | '/faq' | '/contact' | '/archive' | '/imprint' | '/login' | '/privacy' | '/shipping' | '/support';
 
 export const BaseRoute = {
     ABOUT: '/about' as BaseRoute,
@@ -12,5 +12,6 @@ export const BaseRoute = {
     LOGIN: '/login' as BaseRoute,
     PRINTS: '/prints' as BaseRoute,
     PRIVACY: '/privacy' as BaseRoute,
-    SHIPPING: '/shipping' as BaseRoute
+    SHIPPING: '/shipping' as BaseRoute,
+    SUPPORT: '/support' as BaseRoute
 }

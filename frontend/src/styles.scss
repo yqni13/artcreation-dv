@@ -178,7 +178,7 @@ textarea {
 }
 
 .artdv-readonly {
-    cursor: default;
+    filter: opacity(0.5);
     pointer-events: none;
 }
 

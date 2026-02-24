@@ -13,14 +13,13 @@ import { TranslateService } from "@ngx-translate/core";
 import { StaticTranslateService } from "./static-translation.service";
 import { SnackbarOption } from "../enums/snackbar-option.enum";
 import { SnackbarInput } from "../enums/snackbar-input.enum";
+import { default as validationJson } from "../../../../public/assets/i18n/validation-en.json";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    protected exceptionList: string[];
-    
     private urlPreConnect: string;
     private urlLoginAPI: string;
     private preConnection: boolean;
@@ -36,18 +35,6 @@ export class AuthService {
         private readonly snackbar: SnackbarMessageService,
         private readonly staticTranslate: StaticTranslateService
     ) {
-        this.exceptionList = [
-            'JWTExpirationException',
-            'TokenMissingException',
-            'InvalidCredentialsException',
-            'InternalServerException',
-            'InvalidPropertiesException',
-            'AuthSecretNotFoundException',
-            'RequestExceedMaxException',
-            'UnexpectedApiResponseException',
-            'AuthenticationException'
-        ];
-        
         this.urlPreConnect = environment.API_BASE_URL + '/api/v1/auth/pre-connect';
         this.urlLoginAPI = environment.API_BASE_URL + '/api/v1/auth/login';
         this.preConnection = false;
@@ -59,7 +46,7 @@ export class AuthService {
     }
 
     getExceptionList(): string[] {
-        return this.exceptionList;
+        return Object.keys(validationJson.validation.backend.header);
     }
 
     getPreConnectionStatus(): boolean {

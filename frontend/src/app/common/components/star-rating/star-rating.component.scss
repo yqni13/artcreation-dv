@@ -1,0 +1,51 @@
+@use '../../../../stylesheets/utilities' as sass;
+
+
+#artdv-starrating {
+    display: flex;
+
+    .artdv-starrating-wrapper {
+        display: inline-flex;
+        height: 30px;
+    }
+
+    .rating__icon {
+        pointer-events: none;
+    }
+
+    .rating__input { // Hide radio inputs.
+    position: absolute !important;
+    left: -9999px !important;
+    }
+
+    .rating__input--none { // Hide 'none' input from screenreaders.
+        display: none
+    }
+
+    .rating__label {
+        cursor: pointer;
+        padding: 0 sass.$space5;
+        font-size: 2rem;
+    }
+
+    .star-passive { // Default selected rating.
+        color: sass.$color-route-dark;
+    }
+
+    .star-active { // Active/manually selected rating.
+        color: sass.$color-route-light;
+    }
+
+    .rating__input:checked ~ .rating__label .rating__icon--star {
+        color: #ddd;
+    }
+
+    .artdv-starrating-wrapper:hover .rating__label .rating__icon--star { // Change color on hover like selection.
+        color: sass.$color-route-light;
+    }
+
+    .rating__input:hover ~ .rating__label .rating__icon--star { // Change non-selected stars grey on hover.
+        color: #ddd;
+    }
+}
+
