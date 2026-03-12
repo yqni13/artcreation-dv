@@ -42,6 +42,8 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
     protected CRUDModeEnum = CRUDMode;
     protected galleryList: GalleryItem[];
     protected hasSourceOption: boolean;
+    protected titleMaxLength: number;
+    protected contentMaxLength: number;
 
     private subscriptionHttpObservationFindOne$: Subscription;
 
@@ -60,6 +62,8 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
         this.newsEntry = null;
         this.galleryList = [];
         this.hasSourceOption = false;
+        this.titleMaxLength = 75;
+        this.contentMaxLength = 450;
 
         this.subscriptionHttpObservationFindOne$ = new Subscription();
     }
@@ -145,8 +149,8 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
             imageFile: new FormControl(null), // only required if no gallery id linked
             imagePath: new FormControl(null),
             thumbnailPath: new FormControl(null),
-            title: new FormControl(null, [Validators.required, Validators.maxLength(75)]),
-            content: new FormControl(null, [Validators.required, Validators.maxLength(450)])
+            title: new FormControl(null, [Validators.required, Validators.maxLength(this.titleMaxLength)]),
+            content: new FormControl(null, [Validators.required, Validators.maxLength(this.contentMaxLength)])
         })
     }
 

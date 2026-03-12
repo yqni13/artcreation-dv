@@ -24,6 +24,8 @@ export class HttpObservationService {
     private newsUpdateStatusSubject = new BehaviorSubject<boolean>(false);
     private newsDeleteStatusSubject = new BehaviorSubject<boolean>(false);
     private emailStatusSubject = new BehaviorSubject<boolean>(false);
+    private ratingStatusSubject = new BehaviorSubject<boolean>(false);
+    private feedbackStatusSubject = new BehaviorSubject<boolean>(false);
     private supportStatusSubject = new BehaviorSubject<boolean>(false);
     private loginStatusSubject = new BehaviorSubject<boolean>(false);
     private errorStatusSubject = new BehaviorSubject<any>(null);
@@ -46,6 +48,8 @@ export class HttpObservationService {
     newsUpdateStatus$ = this.newsUpdateStatusSubject.asObservable();
     newsDeleteStatus$ = this.newsDeleteStatusSubject.asObservable();
     emailStatus$ = this.emailStatusSubject.asObservable();
+    ratingStatus$ = this.ratingStatusSubject.asObservable();
+    feedbackStatus$ = this.feedbackStatusSubject.asObservable();
     supportStatus$ = this.supportStatusSubject.asObservable();
     loginStatus$ = this.loginStatusSubject.asObservable();
     errorStatus$ = this.errorStatusSubject.asObservable();
@@ -120,6 +124,14 @@ export class HttpObservationService {
 
     setEmailStatus(isStatus200: boolean) {
         this.emailStatusSubject.next(isStatus200);
+    }
+
+    setRatingStatus(isStatus200: boolean) {
+        this.ratingStatusSubject.next(isStatus200);
+    }
+
+    setFeedbackStatus(isStatus200: boolean) {
+        this.feedbackStatusSubject.next(isStatus200);
     }
 
     setSupportStatus(isStatus200: boolean) {

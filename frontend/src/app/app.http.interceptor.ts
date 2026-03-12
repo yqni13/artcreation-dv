@@ -48,7 +48,9 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
                 if(httpbody.url?.includes(AdminRoute.MAILING)) {
                     mailIntercept.handleMailResponse(httpEvent as HttpResponse<any>);
                 }
-                if(httpbody.url?.includes('/test')) {
+                if(httpbody.url?.includes('/tickets')
+                || httpbody.url?.includes('/feedback')
+                || httpbody.url?.includes('/feedback-rating')) {
                     supportIntercept.handleSupportResponse(httpEvent as HttpResponse<any>);
                 }
             }
@@ -81,7 +83,9 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
     if(response.url.includes(AdminRoute.MAILING)) {
         mailIntercept.handleMailError(response);
     }
-    if(response.url.includes('/test')) {
+    if(response.url.includes('/tickets')
+    || response.url.includes('/feedback')
+    || response.url.includes('/feedback-rating')) {
         supportIntercept.handleSupportError(response);
     }
 

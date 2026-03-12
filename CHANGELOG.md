@@ -4,9 +4,19 @@
 
 <br>
 
+### $\textsf{\color{skyblue}2026/02/24}$
+
+$\textsf{[v1.3.4\ =>\ {\textbf{\color{brown}v1.4.3}]}}$ app
+- $\textsf{\color{teal}Addition:}$ Added new 'support' component including selection of mode for bug/feedback/support.
+- $\textsf{\color{teal}Addition:}$ Added new 'star-rating' module for feedback rating purposes.
+- $\textsf{\color{orange}Patch:}$ Updated support api, interfaces as well as some styling and validation of other modules (textarea, button).
+- $\textsf{\color{orange}Patch:}$ Updated 'imprint' page linking to 'support' page instead showing email address.
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/02/19}$
 
-$\textsf{[v1.3.2\ =>\ {\textbf{\color{brown}v1.3.4}]}}$ app
+$\textsf{[v1.3.2\ =>\ v1.3.4]}$ app
 - $\textsf{\color{teal}Addition:}$ Added translations, basic api service & UI component for upcoming new feature (support).
 - $\textsf{\color{orange}Patch:}$ Updated http interceptor & obersavation service for upcoming new feature (support).
 

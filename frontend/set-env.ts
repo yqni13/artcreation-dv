@@ -24,6 +24,7 @@ export const environment: Environment = {
     STORAGE_URL: '${process.env['CLOUDSTORAGE_TRAFFIC_URL']}',
     API_BASE_URL: '${process.env['API_BASE_URL']}',
     API_SUPPORT_URL: '${process.env['API_SUPPORT_URL']}',
+    API_SUPPORT_KEY: '${process.env['API_SUPPORT_KEY']}',
     IV_POSITION: ${process.env['IVPOSITION']},
     AES_PASSPHRASE: '${process.env['AESPASSPHRASE']}',
     PUBLIC_KEY: \`${modifiedPublicKey}\`

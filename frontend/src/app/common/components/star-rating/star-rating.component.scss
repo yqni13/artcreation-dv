@@ -1,0 +1,84 @@
+@use '../../../../stylesheets/utilities' as sass;
+
+
+$rate-height: 30px;
+
+#artdv-starrating {
+    display: flex;
+
+    .artdv-starrating-wrapper {
+        display: inline-flex;
+        height: $rate-height;
+    }
+
+    .rating__icon {
+        pointer-events: none;
+    }
+
+    .rating__input { // Hide radio inputs.
+    position: absolute !important;
+    left: -9999px !important;
+    }
+
+    .rating__input--none { // Hide 'none' input from screenreaders.
+        display: none
+    }
+
+    .rating__label {
+        cursor: pointer;
+        padding: 0 sass.$space5;
+        font-size: 2rem;
+    }
+
+    .star-passive { // Default selected rating.
+        color: sass.$color-route-dark;
+    }
+
+    .star-active { // Active/manually selected rating.
+        color: sass.$color-route-light;
+    }
+
+    .rating__input:checked ~ .rating__label .rating__icon--star {
+        color: #ddd;
+        opacity: var(--theme-rating-passive-opacity);
+    }
+
+    .artdv-starrating-wrapper:hover .rating__label .rating__icon--star { // Change color on hover like selection.
+        color: sass.$color-route-light;
+    }
+
+    .artdv-starrating-wrapper:hover ~ #artdv-rating-value-wrapper #artdv-rating-value {
+        opacity: 0;
+    }
+
+    .artdv-starrating-wrapper:hover ~ #artdv-rating-value-wrapper #artdv-rating-text {
+        opacity: 1;
+    }
+
+    .rating__input:hover ~ .rating__label .rating__icon--star { // Change non-selected stars grey on hover.
+        color: #ddd;
+        opacity: var(--theme-rating-passive-opacity);
+    }
+
+    #artdv-rating-value-wrapper {
+        align-content: center;
+        height: $rate-height;
+        position: absolute;
+        margin-left: 205px;
+
+        #artdv-rating-value {
+            position: absolute;
+            font-size: 20px;
+            line-height: 20px;
+            color: var(--theme-body-text);
+            opacity: 0.5;
+        }
+
+        #artdv-rating-text {
+            opacity: 0;
+            font-size: clamp(14px, 1.8vw, 16px);
+            color: var(--theme-body-text);
+        }
+    }
+}
+

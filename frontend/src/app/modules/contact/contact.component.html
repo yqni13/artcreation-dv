@@ -138,6 +138,7 @@
                         [formControl]="contactForm.get('message') | controlCast"
                         [fieldName]="'modules.contact.form.fieldNames.message' | translate"
                         [rows]="6"
+                        [maxLength]="messageMaxLength+1"
                     ></artdv-textareainput>
                 </div>
             </form>

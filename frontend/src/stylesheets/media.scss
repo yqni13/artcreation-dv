@@ -285,6 +285,35 @@
         }
     }
 
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-hint {
+                width: calc((100% - 400px) * 0.75);
+            }
+            form {
+                width: calc(100% - 400px);
+                .artdv-support-form-wrapper-mid {
+                    width: 40%;
+                    padding: 0 30%;
+                }
+                .artdv-support-form-wrapper-starrating {
+                    width: 40%;
+                    padding: 0 30%;
+                    margin: sass.$space15 0;
+                }
+            }
+            #artdv-support-attachment-list {
+                width: calc(100% - 400px);
+            }
+            .artdv-support-button-wrapper {
+                a,
+                button {
+                    margin: 0 sass.$space25;
+                }
+            }
+        }
+    }
+
     artdv-carousel {
         .artdv-carousel-wrapper {
             padding: sass.$space50 0;
@@ -709,6 +738,35 @@
         }
     }
 
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-hint {
+                width: calc((100% - 200px) * 0.75);
+            }
+            form {
+                width: calc(100% - 200px);
+                .artdv-support-form-wrapper-mid {
+                    width: 50%;
+                    padding: 0 25%;
+                }
+                .artdv-support-form-wrapper-starrating {
+                    width: 50%;
+                    padding: 0 25%;
+                    margin: sass.$space15 0;
+                }
+            }
+            #artdv-support-attachment-list {
+                width: calc(100% - 200px);
+            }
+            .artdv-support-button-wrapper {
+                a,
+                button {
+                    margin: 0 sass.$space25;
+                }
+            }
+        }
+    }
+
     artdv-carousel {
         .artdv-carousel-wrapper {
             padding: sass.$comp-padding-medium 0;
@@ -1105,6 +1163,35 @@
             $shipping-padding: sass.$space15;
             .artdv-shipping-single {
                 width: calc(75% - ($shipping-padding * 2));
+            }
+        }
+    }
+
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-hint {
+                width: calc((100% - 200px) * 0.75);
+            }
+            form {
+                width: calc(100% - 200px);
+                .artdv-support-form-wrapper-mid {
+                    width: 100%;
+                    padding: 0;
+                }
+                .artdv-support-form-wrapper-starrating {
+                    width: 100%;
+                    padding: 0;
+                    margin: sass.$space15 0;
+                }
+            }
+            #artdv-support-attachment-list {
+                width: calc(100% - 20px);
+            }
+            .artdv-support-button-wrapper {
+                a,
+                button {
+                    margin: 0 sass.$space15;
+                }
             }
         }
     }
@@ -1507,6 +1594,17 @@
             }
             .artdv-shipping-triple {
                 width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
+            }
+        }
+    }
+
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-hint {
+                width: calc(100% - 20px);
+            }
+            form {
+                width: calc(100% - 20px);
             }
         }
     }

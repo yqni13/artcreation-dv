@@ -55,6 +55,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     protected selectedArtworkByRefNr: any;
     protected subjectOptions = SubjectOptions;
     protected textCaseOption = TextCaseOption;
+    protected messageMaxLength: number;
 
     private subscriptionDataShare$: Subscription;
     private subscriptionHttpObservationMailSend$: Subscription;
@@ -78,7 +79,8 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isLoadingResponse = false;
         this.readonly = true;
         this.artworkPrice = null;
-        this.selectedParams = {}
+        this.selectedParams = {};
+        this.messageMaxLength = 1000;
         this.subscriptionDataShare$ = new Subscription(); 
         this.subscriptionHttpObservationMailSend$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();
@@ -136,7 +138,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
             title: new FormControl(''),
             firstName: new FormControl('', Validators.required),
             lastName: new FormControl('', Validators.required),
-            message: new FormControl('', Validators.required)
+            message: new FormControl('', [Validators.required, Validators.maxLength(this.messageMaxLength)])
         })
     }
 

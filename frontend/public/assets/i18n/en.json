@@ -3,6 +3,9 @@
         "component": {
             "select-galleryitem": {
                 "select": "open list"
+            },
+            "star-rating": {
+                "select": "your rating"
             }
         },
         "footer": {
@@ -14,7 +17,7 @@
                 "language": "Select your language:",
                 "privacy": "Privacy Policy",
                 "shipping": "Shipping & Return",
-                "support": "Support"
+                "support": "Support / Feedback"
             },
             "titles": {
                 "connection": "connection",
@@ -281,7 +284,49 @@
             "title": "Shipping & Return"
         },
         "support": {
-            "title": "Support"
+            "buttons": {
+                "reset": "Reset",
+                "send": "Send"
+            },
+            "form": {
+                "fieldNames": {
+                    "browser": "Internet browser",
+                    "device": "Device",
+                    "email": "E-Mail",
+                    "feedback": "Feedback",
+                    "message": "Message",
+                    "option": "Category",
+                    "os": "Operational System",
+                    "title": "Title"
+                },
+                "placeholders": {
+                    "browser": "Internet browser in use + version",
+                    "device": "Select your device category.",
+                    "email": "demo.test@gmail.com",
+                    "feedback": "How do you rate www.artcreation-dv.at?",
+                    "message-bug": "Please describe the error you discovered as precisely as possible.",
+                    "message-feedback": "Please describe relevant points for your feedback/criticism here.",
+                    "message-support": "Please describe your situation here as precisely as possible.",
+                    "option": "What would you like to tell us?",
+                    "os": "operational system in use",
+                    "term-feedback": "I agree to release my personal feedback for further use.",
+                    "title": "Brief description of your request"
+                }
+            },
+            "title": "Support",
+            "warning": {
+                "list": [
+                    "Passwords and pins",
+                    "Bank account details or credit card details",
+                    "Data from driver's license, identity card or passport",
+                    "Social security numbers"
+                ],
+                "text": [
+                    "Please do NOT share any confidential information in your request, such as:",
+                    "To process your request, we only need your email address."
+                ],
+                "title": "Please protect your personal data."
+            }
         }
     },
     "shared": {
@@ -330,6 +375,11 @@
                 "generalRequest": "general request",
                 "specificInformation": "specific request"
             },
+            "device-option": {
+                "COMPUTER": "Computer (laptop, desktop pc)",
+                "MOBILE": "Mobile device (smartphone, tablet, ebook reader)",
+                "OTHER": "Alternative device"
+            },
             "honorifics-option": {
                 "0": "Mr",
                 "1": "Ms"
@@ -351,6 +401,11 @@
             "source-option": {
                 "EXIST": "an existing artwork",
                 "NEW": "a new image"
+            },
+            "ticket-option": {
+                "BUG": "Bug",
+                "FEEDBACK": "Feedback",
+                "SUPPORT": "Support"
             }
         }
     }
