@@ -10,6 +10,26 @@ div {
     align-items: center;
     width: 100%;
     margin-bottom: sass.$space50;
+    .artdv-support-hint {
+        justify-content: center;
+        margin: sass.$space25 0;
+        .artdv-support-hint-wrapper {
+            flex-direction: column;
+            padding: sass.$space15;
+            border: 1px outset var(--theme-body-text);
+            border-radius: 5px;
+            width: fit-content;
+            li {
+                padding: 2px 0;
+            }
+            span {
+                font-size: clamp(13px, 1.8vw, 18px);
+                color: var(--theme-body-text);
+                font-style: italic;
+                text-shadow: 1px 1px 5px var(--theme-highlight-text);
+            }
+        }
+    }
     form {
         display: flex;
         flex-direction: column;
@@ -41,6 +61,7 @@ div {
             }
             span {
                 margin: 0;
+                font-size: clamp(13px, 1.8vw, 16px);
             }
         }
     }

@@ -3,6 +3,9 @@
         "component": {
             "select-galleryitem": {
                 "select": "open list"
+            },
+            "star-rating": {
+                "select": "your rating"
             }
         },
         "footer": {
@@ -299,7 +302,7 @@
                 "placeholders": {
                     "browser": "Internet browser in use + version",
                     "device": "Select your device category.",
-                    "email": "max.mustermann@demo.at",
+                    "email": "demo.test@gmail.com",
                     "feedback": "How do you rate www.artcreation-dv.at?",
                     "message-bug": "Please describe the error you discovered as precisely as possible.",
                     "message-feedback": "Please describe relevant points for your feedback/criticism here.",
@@ -310,7 +313,20 @@
                     "title": "Brief description of your request"
                 }
             },
-            "title": "Support"
+            "title": "Support",
+            "warning": {
+                "list": [
+                    "Passwords and pins",
+                    "Bank account details or credit card details",
+                    "Data from driver's license, identity card or passport",
+                    "Social security numbers"
+                ],
+                "text": [
+                    "Please do NOT share any confidential information in your request, such as:",
+                    "To process your request, we only need your email address."
+                ],
+                "title": "Please protect your personal data."
+            }
         }
     },
     "shared": {
@@ -360,7 +376,7 @@
                 "specificInformation": "specific request"
             },
             "device-option": {
-                "DESKTOP": "Computer (laptop, desktop pc)",
+                "COMPUTER": "Computer (laptop, desktop pc)",
                 "MOBILE": "Mobile device (smartphone, tablet, ebook reader)",
                 "OTHER": "Alternative device"
             },

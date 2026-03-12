@@ -98,7 +98,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
             this.reuseGallery();
         }
     }
-    
+
     ngAfterViewInit() {
         // Disable scrolling via mousewheel-(middle)click to prevent errors on img lazy/pre loads.
         this.gallerySection.nativeElement.onmousedown = (e: any) => {

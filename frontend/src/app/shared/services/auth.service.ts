@@ -2,7 +2,7 @@ import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
 import { environment } from "../../../environments/environment";
-import { AuthResponse } from "../interfaces/auth.interface";
+import { AuthResponse } from "../../api/interfaces/auth.interface";
 import { EncryptionService } from "./encryption.service";
 import { TokenService } from "./token.service";
 import { TokenOption } from "../enums/token-option.enum";

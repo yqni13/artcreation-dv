@@ -287,6 +287,9 @@
 
     .artdv-support {
         .artdv-support-content {
+            .artdv-support-hint {
+                width: calc((100% - 400px) * 0.75);
+            }
             form {
                 width: calc(100% - 400px);
                 .artdv-support-form-wrapper-mid {
@@ -297,9 +300,6 @@
                     width: 40%;
                     padding: 0 30%;
                     margin: sass.$space15 0;
-                }
-                #artdv-support-checkbox span {
-                    font-size: 16px;
                 }
             }
             #artdv-support-attachment-list {
@@ -740,6 +740,9 @@
 
     .artdv-support {
         .artdv-support-content {
+            .artdv-support-hint {
+                width: calc((100% - 200px) * 0.75);
+            }
             form {
                 width: calc(100% - 200px);
                 .artdv-support-form-wrapper-mid {
@@ -750,9 +753,6 @@
                     width: 50%;
                     padding: 0 25%;
                     margin: sass.$space15 0;
-                }
-                #artdv-support-checkbox span {
-                    font-size: 15px;
                 }
             }
             #artdv-support-attachment-list {
@@ -1169,8 +1169,11 @@
 
     .artdv-support {
         .artdv-support-content {
+            .artdv-support-hint {
+                width: calc((100% - 200px) * 0.75);
+            }
             form {
-                width: calc(100% - 20px);
+                width: calc(100% - 200px);
                 .artdv-support-form-wrapper-mid {
                     width: 100%;
                     padding: 0;
@@ -1179,9 +1182,6 @@
                     width: 100%;
                     padding: 0;
                     margin: sass.$space15 0;
-                }
-                #artdv-support-checkbox span {
-                    font-size: 13px;
                 }
             }
             #artdv-support-attachment-list {
@@ -1594,6 +1594,17 @@
             }
             .artdv-shipping-triple {
                 width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
+            }
+        }
+    }
+
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-hint {
+                width: calc(100% - 20px);
+            }
+            form {
+                width: calc(100% - 20px);
             }
         }
     }

@@ -23,12 +23,12 @@
                     <!-- FEEDBACK -->
                     <div class="artdv-support-form-wrapper-starrating" *ngIf="opt === ticketOption.FEEDBACK">
                         <artdv-starrating
-                            [startValue]="defaultFeedbackValue"
-                            [resetValue]="resetFeedbackValue"
-                            (byChange)="getFeedbackInput($event)"
+                            [startValue]="defaultRatingValue"
+                            [resetValue]="resetRatingValue"
+                            (byChange)="getRatingInput($event)"
                         ></artdv-starrating>
                     </div>
-    
+
                     <!-- TITLE -->
                     <div class="artdv-support-form-wrapper-mid" *ngIf="opt !== ticketOption.FEEDBACK">
                         <span>{{('modules.support.form.fieldNames.title' | translate) + ':*'}}</span>
@@ -39,7 +39,7 @@
                             [fieldName]="'modules.support.form.fieldNames.title' | translate"
                         ></artdv-textinput>
                     </div>
-    
+
                     <!-- EMAIL -->
                     <div class="artdv-support-form-wrapper-mid">
                         <span>{{('modules.support.form.fieldNames.email' | translate) + ':*'}}</span>
@@ -50,7 +50,7 @@
                             [fieldName]="'modules.support.form.fieldNames.email' | translate"
                         ></artdv-textinput>
                     </div>
-    
+
                     <!-- DEVICE -->
                     <div class="artdv-support-form-wrapper-mid" *ngIf="opt !== ticketOption.FEEDBACK">
                         <span>{{('modules.support.form.fieldNames.device' | translate) + ':'}}</span>
@@ -62,7 +62,7 @@
                             [fieldName]="'modules.support.form.fieldNames.device' | translate"
                         ></artdv-selectinput>
                     </div>
-    
+
                     <!-- OS -->
                     <div class="artdv-support-form-wrapper-mid" *ngIf="opt !== ticketOption.FEEDBACK">
                         <span>{{('modules.support.form.fieldNames.os' | translate) + ':'}}</span>
@@ -73,7 +73,7 @@
                             [placeholder]="'modules.support.form.placeholders.os' | translate"
                         ></artdv-textinput>
                     </div>
-    
+
                     <!-- BROWSER -->
                     <div class="artdv-support-form-wrapper-mid" *ngIf="opt !== ticketOption.FEEDBACK">
                         <span>{{('modules.support.form.fieldNames.browser' | translate) + ':'}}</span>
@@ -84,7 +84,7 @@
                             [placeholder]="'modules.support.form.placeholders.browser' | translate"
                         ></artdv-textinput>
                     </div>
-    
+
                     <!-- MESSAGE -->
                     <div class="artdv-support-form-wrapper-big">
                         <span>{{('modules.support.form.fieldNames.message' | translate) + ':*'}}</span>
@@ -103,7 +103,7 @@
                             {{(messageLength - supportForm.get('message')?.value.length) + ' / ' + messageLength}}
                         </span>
                     </div>
-    
+
                     <!-- TERM (FEEDBACK)-->
                     <div
                         class="artdv-support-form-wrapper-mid"
@@ -120,17 +120,33 @@
                     </div>
                 </ng-container>
             </form>
-            <ng-container *ngIf="opt === 'demo'"> <!-- if condition: attachment.length > 0 -->
+
+            <!-- INFORMATION PANEL -->
+            <div class="artdv-support-hint" *ngIf="opt !== ''">
+                <div class="artdv-support-hint-wrapper">
+                    <ng-container *artdvVar="('modules.support.warning.text' | translate) as warningText">
+                        <span>{{warningText[0]}}</span>
+                        <ng-container *artdvVar="('modules.support.warning.list' | translate) as warningBullets">
+                            <ul>
+                                <li *ngFor="let bullet of warningBullets">
+                                    <span>{{bullet}}</span>
+                                </li>
+                            </ul>
+                        </ng-container>
+                        <span>{{warningText[1]}}</span>
+                    </ng-container>
+                </div>
+            </div>
+            <!-- <ng-container *ngIf="supportForm.get('attachment')?.value.length > 0">
                 <div
                     id="artdv-support-attachment-list"
                     class="outer-border"
                     *ngIf="opt !== ticketOption.FEEDBACK"
                 >
-                    <div class="inner-border">
-                        <!-- AREA TO DISPLAY ALL ATTACHED FILES -->
+                    <div class="inner-border DISPLAY-HERE-ATTACHED-FILES">
                     </div>
                 </div>
-            </ng-container>
+            </ng-container> -->
             <div class="artdv-support-button-wrapper" *ngIf="opt !== ''">
                 <a
                     [attr.tabindex]="0"
@@ -161,6 +177,6 @@
         </ng-container>
     </div>
     <artdv-loading-animation
-        [ngClass]="(isLoadingResponse) ? 'artdv-visible' : 'artdv-hidden'"
+        [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"
     ></artdv-loading-animation>
 </section>

@@ -12,21 +12,23 @@ import { SnackbarInput } from "../../shared/enums/snackbar-input.enum";
 })
 export class SupportHttpInterceptor {
 
-    private delay: any;
-
     constructor(
         private readonly translate: TranslateService,
         private readonly staticTranslate: StaticTranslateService,
         private readonly snackbarService: SnackbarMessageService,
         private readonly httpObservationService: HttpObservationService
     ) {
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+        //
     }
 
     async handleSupportResponse(httpBody: HttpResponse<any>) {
-        await this.delay(1000);
-
-        if(httpBody.url?.includes(`/test/xyz`)) {
+        if(httpBody.url?.includes(`/feedback-rating/name`)) {
+            this.httpObservationService.setRatingStatus(true);
+        } else if (httpBody.url?.includes(`/feedback/create`)) {
+            this.httpObservationService.setFeedbackStatus(true);
+            const path = 'validation.frontend.interceptor.support-feedback-confirm';
+            this.snackbarService.notifyOnInterceptorSuccess(path, this.translate.currentLang, true, 1500);
+        } else if(httpBody.url?.includes(`/tickets/create`)) {
             this.httpObservationService.setSupportStatus(true);
             this.snackbarService.notify({
                 title: this.translate.currentLang === 'en'
@@ -42,9 +44,11 @@ export class SupportHttpInterceptor {
     }
 
     async handleSupportError(response: any) {
-        await this.delay(1000);
-        
-        if(response.url.includes(`/test/xyz`)) {
+        if(response.url.includes(`/feedback-rating/name`)) {
+            this.httpObservationService.setRatingStatus(false);
+        } else if(response.url.includes(`/feedback/create`)) {
+            this.httpObservationService.setFeedbackStatus(false);
+        } else if(response.url.includes(`/tickets/create`)) {
             this.httpObservationService.setSupportStatus(false);
         }
     }

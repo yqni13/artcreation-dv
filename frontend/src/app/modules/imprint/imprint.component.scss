@@ -11,7 +11,7 @@
         flex-direction: column;
         white-space: pre-line;
         margin-bottom: sass.$space50;
-    
+
         h3 {
             font-size: 1.4em;
             margin-top: sass.$space50;
@@ -19,15 +19,15 @@
             margin-bottom: sass.$space15;
             color: var(--theme-secondary-color);
         }
-    
+
         a {
             text-decoration: none;
         }
-    
+
         .artdv-imprint-hint {
             display: flex;
             justify-content: center;
-    
+
             span {
                 width: fit-content;
                 color: var(--theme-body-text);
@@ -38,11 +38,11 @@
                 border-radius: 5px;
             }
         }
-    
+
         .artdv-imprint-content-p {
             display: flex;
             flex-direction: column;
-    
+
             span {
                 text-align: justify;
                 line-height: 26px;
@@ -53,12 +53,31 @@
                     opacity: 0.6;
                 }
             }
-    
+
             .artdv-imprint-content-break {
                 margin-bottom: sass.$space15;
             }
+
+            #artdv-imprint-dev-icon-wrapper {
+                display: flex;
+                flex-direction: row;
+                a {
+                    display: flex;
+                    align-items: center;
+                    margin: sass.$space5 sass.$space15 0 0;
+                }
+                .icon-GitHub {
+                    width: 45px;
+                    height: 45px;
+                    background-color: var(--theme-body-text);
+                }
+                img {
+                    width: 45px;
+                    height: 45px;
+                }
+            }
         }
-    
+
         p {
             text-align: justify;
             line-height: 26px;

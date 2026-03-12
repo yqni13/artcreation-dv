@@ -3,6 +3,9 @@
         "component": {
             "select-galleryitem": {
                 "select": "Liste öffnen"
+            },
+            "star-rating": {
+                "select": "bewerten Sie"
             }
         },
         "footer": {
@@ -299,7 +302,7 @@
                 "placeholders": {
                     "browser": "verwendeter Browser + Version",
                     "device": "Wählen Sie die Kategorie Ihres Gerätes.",
-                    "email": "max.mustermann@demo.at",
+                    "email": "demo.test@gmail.com",
                     "feedback": "Wie bewerten Sie www.artcreation-dv.at?",
                     "message-bug": "Beschreiben Sie bitte den von Ihnen entdeckten Fehler so genau wie möglich.",
                     "message-feedback": "Beschreiben Sie hier bitte relevante Punkte für Ihr Feedback/Kritik.",
@@ -310,7 +313,20 @@
                     "title": "Kurze Beschreibung Ihres Anliegens."
                 }
             },
-            "title": "Support"
+            "title": "Support",
+            "warning": {
+                "list": [
+                    "Passwörter oder PINs",
+                    "Bankverbindungen oder Kreditkartendaten",
+                    "Daten von Führerschein, Personalausweis oder Reisepass",
+                    "Sozialversicherungsnummern"
+                ],
+                "text": [
+                    "Teilen Sie in Ihrer Anfrage bitte KEINE vertraulichen Informationen wie:",
+                    "Für die Bearbeitung Ihrer Anfrage benötigen wir lediglich Ihre Email-Adresse."
+                ],
+                "title": "Bitte schützen Sie Ihre persönlichen Daten"
+            }
         }
     },
     "shared": {
@@ -360,7 +376,7 @@
                 "specificInformation": "Spezifische Anfrage"
             },
             "device-option": {
-                "DESKTOP": "Computer (Laptop, Desktop PC)",
+                "COMPUTER": "Computer (Laptop, Desktop PC)",
                 "MOBILE": "Mobiles Gerät (Smartphone, Tablet, ebook Reader)",
                 "OTHER": "Alternatives Gerät"
             },

@@ -114,7 +114,8 @@
                 "gallery-update-confirm": "Kunstwerk aktualisiert!",
                 "news-create-confirm": "News-Artikel erstellt!",
                 "news-delete-confirm": "News-Artikel gelöscht!",
-                "news-update-confirm": "News-Artikel aktualisiert!"
+                "news-update-confirm": "News-Artikel aktualisiert!",
+                "support-feedback-confirm": "Feedback verschickt!"
             },
             "other": {
                 "auto-logout": "Sie wurden automatisch abgemeldet, da Ihre Sitzung aus Sicherheitsgründen zeitlich begrenzt ist."

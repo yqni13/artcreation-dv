@@ -1,7 +1,7 @@
-export type SupportTicketOption = 'bug' | 'support' | 'feedback';
+export type SupportOption = 'bug' | 'support' | 'feedback';
 
-export const SupportTicketOption = {
-    BUG: 'bug' as SupportTicketOption,
-    SUPPORT: 'support' as SupportTicketOption,
-    FEEDBACK: 'feedback' as SupportTicketOption
-}
+export const SupportOption = {
+    BUG: 'bug' as SupportOption,
+    SUPPORT: 'support' as SupportOption,
+    FEEDBACK: 'feedback' as SupportOption
+};
