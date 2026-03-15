@@ -5,7 +5,7 @@
                 "select": "Liste öffnen"
             },
             "star-rating": {
-                "select": "bewerten Sie"
+                "select": "Ihre Bewertung"
             }
         },
         "footer": {
@@ -300,15 +300,15 @@
                     "title": "Titel"
                 },
                 "placeholders": {
-                    "browser": "verwendeter Browser + Version",
+                    "browser": "z.B.: Chrome 146.0.7680.80 (Offizieller Build) (64-Bit)",
                     "device": "Wählen Sie die Kategorie Ihres Gerätes.",
-                    "email": "demo.test@gmail.com",
+                    "email": "z.B.: demo.test@gmail.com",
                     "feedback": "Wie bewerten Sie www.artcreation-dv.at?",
                     "message-bug": "Beschreiben Sie bitte den von Ihnen entdeckten Fehler so genau wie möglich.",
-                    "message-feedback": "Beschreiben Sie hier bitte relevante Punkte für Ihr Feedback/Kritik.",
+                    "message-feedback": "Beschreiben Sie hier bitte relevante Punkte für Ihr Feedback / Ihre Kritik.",
                     "message-support": "Beschreiben Sie hier bitte Ihren Sachverhalt so genau wie möglich.",
                     "option": "Was möchten Sie uns mitteilen?",
-                    "os": "verwendetes Betriebssystem",
+                    "os": "z.B.: Windows 11, Android 15, ...",
                     "term-feedback": "Ich erkläre mich dazu bereit, mein persönliches Feedback zur weiteren Verwendung freizugeben.",
                     "title": "Kurze Beschreibung Ihres Anliegens."
                 }
@@ -403,7 +403,7 @@
                 "NEW": "ein neues Bild"
             },
             "ticket-option": {
-                "BUG": "Fehler",
+                "BUG": "Error",
                 "FEEDBACK": "Feedback",
                 "SUPPORT": "Hilfe"
             }

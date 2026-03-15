@@ -70,13 +70,18 @@ $rate-height: 30px;
         #artdv-rating-value {
             position: absolute;
             font-size: 20px;
-            line-height: 20px;
+            height: 100%;
+            top: 0;
+            align-content: center;
             color: var(--theme-body-text);
             opacity: 0.5;
         }
 
         #artdv-rating-text {
             opacity: 0;
+            height: 100%;
+            top: 0;
+            align-content: center;
             font-size: clamp(14px, 1.8vw, 16px);
             color: var(--theme-body-text);
         }

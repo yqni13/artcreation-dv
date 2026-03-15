@@ -1,6 +1,6 @@
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SupportAPIService } from "../../api/services/support.api.service";
 import { SupportOption } from "../../api/enums/ticket-option.support.enum";
@@ -19,6 +19,8 @@ import { SupportFeedbackData, SupportTicketData } from "./support-form.interface
 import { SupportRatingResponse } from "../../api/interfaces/support.interface";
 import { HttpResponse } from "@angular/common/http";
 import { FileUploadService } from "../../shared/services/file-upload.service";
+import { SnackbarMessageService } from "../../shared/services/snackbar.service";
+import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
 
 @Component({
     selector: 'app-support',
@@ -49,6 +51,8 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     protected messageLength: number;
     protected defaultRatingValue: number;
     protected resetRatingValue: EventEmitter<number>;
+    protected ticketOptionIcons: Record<string, string>;
+    protected ticketOptionStylings: Record<string, Record<string, any>>;
 
     private subscriptionHttpObservationSupport$: Subscription;
     private subscriptionHttpObservationFeedback$: Subscription;
@@ -61,15 +65,27 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         private readonly fb: FormBuilder,
         private readonly auth: AuthService,
         @Inject(DOCUMENT) private document: Document,
+        private readonly translate: TranslateService,
         private readonly supportApi: SupportAPIService,
+        private readonly snackbar: SnackbarMessageService,
         private readonly httpObservation: HttpObservationService,
         public fileUpload: FileUploadService
     ) {
         this.supportForm = new FormGroup({});
         this.isLoadingResponse = false;
-        this.messageLength = 5000;
+        this.messageLength = 0;
         this.defaultRatingValue = 5;
         this.resetRatingValue = new EventEmitter<number>();
+        this.ticketOptionIcons = {
+            bug: 'icon-bug',
+            feedback: 'icon-feedback',
+            support: 'icon-support'
+        };
+        this.ticketOptionStylings = {
+            bug: {'color': 'var(--theme-snackbar-error)'},
+            feedback: {'color': 'var(--theme-snackbar-warning)'},
+            support: {'color': 'var(--theme-snackbar-info)'},
+        }
 
         this.subscriptionHttpObservationSupport$ = new Subscription();
         this.subscriptionHttpObservationFeedback$ = new Subscription();
@@ -162,7 +178,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
             userEmail: '',
             option: '',
             rating: this.defaultRatingValue,
-            device: this.window.screen.width > 1024 ? SupportDeviceOption.COMPUTER : SupportDeviceOption.MOBILE,
+            device: this.getPlaceholderByDeviceSuggestion(),
             os: '',
             browser: '',
             title: '',
@@ -188,14 +204,16 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         this.supportForm.get('option')?.setValue(element.value as SupportOption);
         this.resetValidationsOnOptionChange(element.value as SupportOption);
         if(element.value === this.ticketOption.FEEDBACK) {
+            this.messageLength = 1000;
             this.resetRatingAutofill();
             await this.initRating();
         } else {
+            this.messageLength = 5000;
             this.supportForm.get('rating')?.setValue(undefined);
         }
     }
 
-    getPlaceholderByDeviceSuggestion(): string {
+    private getPlaceholderByDeviceSuggestion(): string {
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(this.window.navigator.userAgent)) {
             return this.deviceOption.MOBILE;
         } else if(/Chrome/i.test(this.window.navigator.userAgent)) {
@@ -227,6 +245,12 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     onSubmit() {
         this.supportForm.markAllAsTouched();
         if(this.supportForm.invalid) {
+            this.snackbar.notify({
+                title: this.translate.instant('validation.frontend.form.check-data'),
+                autoClose: true,
+                type: SnackbarOption.warning,
+                displayTime: 2000
+            });
             return;
         }
 
@@ -300,7 +324,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         } else {
             this.supportForm.get('message')?.clearValidators();
             this.supportForm.get('message')?.setValidators([Validators.required, Validators.maxLength(5000)]);
-            this.supportForm.get('title')?.setValidators(Validators.maxLength(100));
+            this.supportForm.get('title')?.setValidators([Validators.required, Validators.maxLength(100)]);
             this.supportForm.get('device')?.setValidators(Validators.maxLength(50));
             this.supportForm.get('os')?.setValidators(Validators.maxLength(100));
             this.supportForm.get('browser')?.setValidators(Validators.maxLength(100));

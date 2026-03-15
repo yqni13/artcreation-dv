@@ -16,6 +16,12 @@
     </header>
     <div class="artdv-support-content">
         <ng-container *artdvVar="supportForm.get('option')?.value as opt">
+            <div class="artdv-support-category" *ngIf="opt !== ''">
+                <i
+                    [ngClass]="ticketOptionIcons[opt]"
+                    [ngStyle]="ticketOptionStylings[opt]"
+                ></i>
+            </div>
             <form [formGroup]="supportForm">
 
                 <!-- OPTION -->
@@ -99,7 +105,7 @@
 
                     <!-- MESSAGE -->
                     <div class="artdv-support-form-wrapper-big">
-                        <span>{{('modules.support.form.fieldNames.message' | translate) + ':*'}}</span>
+                        <span>{{('modules.support.form.fieldNames.message' | translate) + ':' + (opt !== ticketOption.FEEDBACK ? '*' : '')}}</span>
                         <artdv-textareainput
                             [ngStyle]="{'width': '100%'}"
                             [formControl]="supportForm.get('message') | controlCast"

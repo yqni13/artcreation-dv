@@ -10,6 +10,14 @@ div {
     align-items: center;
     width: 100%;
     margin-bottom: sass.$space50;
+    .artdv-support-category {
+        width: 100%;
+        justify-content: center;
+        i {
+            width: 50px;
+            height: 50px;
+        }
+    }
     .artdv-support-hint {
         justify-content: center;
         margin: sass.$space25 0;
@@ -65,11 +73,14 @@ div {
             }
         }
     }
-    #artdv-support-attachment-list .inner-border {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 3px;
+    #artdv-support-attachment-list {
+        margin-bottom: sass.$space15;
+        .inner-border {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 3px;
+        }
     }
     .artdv-support-button-wrapper {
         width: 100%;
@@ -108,9 +119,9 @@ div {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid white;
+    border: 2px solid transparent;
     border-radius: 4px;
-    max-width: calc(50% - (2px * 2 + 6px));
+    max-width: calc(50% - (2px * 2 + 8px));
     padding: 2px;
     margin: 2px;
     span {
@@ -125,7 +136,14 @@ div {
         width: 20px;
         height: 20px;
         cursor: pointer;
-        color: red;
+        color: var(--theme-snackbar-error);
         padding-left: 2.5px;
+        &:hover {
+            filter: brightness(2);
+        }
     }
+}
+
+.artdv-attachmentref-wrapper:has(.icon-CloseX:hover) { // Visualize red border on X hover.
+    border: 2px solid sass.$color-validation-red;
 }

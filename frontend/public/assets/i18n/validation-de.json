@@ -23,6 +23,7 @@
                 "secret-404-env": "Umgebungsvariable \"{{VAL}}\" fehlt. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support.",
                 "server-500-connection": "Die Verbindung mit dem Server ist im Moment nicht möglich. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
                 "server-500-routes": "Der passende API Zugang/Endpunkt ist im Moment nicht verfügbar. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
+                "server-500-routes-support": "Der Support-API Zugang/Endpunkt ist im Moment nicht verfügbar. Bitte versuchen Sie es später erneut.",
                 "server-535-auth": "Die Authentifizierung bei \"{{VAL}}\" ist im Moment nicht möglich. Bitte versuchen Sie es später erneut, oder wenden Sie sich an den Support.",
                 "server-max-email": "Email Service hat das Anfragen-Limit überschritten und ist temporär blockiert. Bitte versuchen Sie es in 24h erneut.",
                 "support-arg-forbidden": "Ihre Anfrage enthält unerlaubte Daten. Bitte kontrollieren Sie Ihre Angaben.",
@@ -102,6 +103,7 @@
             "form": {
                 "artwork-invalid-purchase": "Kein Preis verfügbar. Nutzen Sie den Betreff \"Spezifische Anfrage\".",
                 "artwork-unavailable": "Dieses Kunstwerk ist nicht mehr verfügbar.",
+                "check-data": "Eingaben überprüfen!",
                 "email-invalid": "Das Feld \"{{fieldName}}\" hat das falsche Format.",
                 "maxlength": "Der Inhalt ({{fieldValue}}) darf eine Länge von {{fieldMax}} Zeichen nicht überschreiten.",
                 "publication-invalid": "Das Erstellungsjahr muss eine gültige Zahl sein.",
