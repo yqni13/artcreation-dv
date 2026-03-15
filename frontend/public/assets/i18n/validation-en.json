@@ -87,6 +87,18 @@
                 "text": "Your request has been successfully forwarded to us. We will endeavor to process your request and respond to you as quickly as possible.",
                 "title": "Thank you for requesting"
             },
+            "file-upload": {
+                "text": {
+                    "allowed-types": "Only files of the following types are allowed to upload: {{VAL}}.",
+                    "max-number-total": "The max. number of uploaded files is: {{MAX}}.",
+                    "max-size-each": "The max. size for each uploaded file is {{VAL}}."
+                },
+                "title": {
+                    "allowed-types": "Limited types",
+                    "max-number-total": "Limited number",
+                    "max-size-each": "Limited size"
+                }
+            },
             "form": {
                 "artwork-invalid-purchase": "No price available. Use subject \"specific request\".",
                 "artwork-unavailable": "This artwork is no longer available.",
@@ -122,7 +134,7 @@
             },
             "support": {
                 "text": "Your request has been successfully forwarded to us and created as a new ticket. Your data will be processed as quickly as possible and, if necessary, we will contact you via email.",
-                "title": "Ticket created successfully!"
+                "title": "Ticket created!"
             }
         }
     }

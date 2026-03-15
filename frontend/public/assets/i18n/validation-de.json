@@ -87,6 +87,18 @@
                 "text": "Ihre Anfrage wurde erfolgreich an uns weitergeleitet. Wir bemühen uns darum Ihr Anliegen so schnell wie möglich zu bearbeiten und Ihnen zu antworten.",
                 "title": "Danke für Ihre Anfrage!"
             },
+            "file-upload": {
+                "text": {
+                    "allowed-types": "Für den Upload sind nur die folgenden Formate erlaubt: {{VAL}}.",
+                    "max-number-total": "Die max Anzahl an hochzuladenden Dateien beträgt: {{MAX}}.",
+                    "max-size-each": "Die max. Größe für hochzuladende Dateien beträgt jeweils {{VAL}}."
+                },
+                "title": {
+                    "allowed-types": "Eingeschränkte Formate",
+                    "max-number-total": "Limitierte Anzahl",
+                    "max-size-each": "Limitierte Größe"
+                }
+            },
             "form": {
                 "artwork-invalid-purchase": "Kein Preis verfügbar. Nutzen Sie den Betreff \"Spezifische Anfrage\".",
                 "artwork-unavailable": "Dieses Kunstwerk ist nicht mehr verfügbar.",
@@ -122,7 +134,7 @@
             },
             "support": {
                 "text": "Ihre Anfrage wurde erfolgreich an uns weitergeleitet und als neues Ticket erstellt. Ihre Daten werden schnellstmöglich verarbeitet und bei Notwendigkeit via Email Rücksprache gehalten.",
-                "title": "Ticket erfolgreich erstellt!"
+                "title": "Ticket erstellt!"
             }
         }
     }

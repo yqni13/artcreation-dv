@@ -34,17 +34,17 @@ export class SupportAPIService {
         this.ticketData = new FormData(); // Reset to avoid zombie data.
 
         if(data.attachment && data.attachment.length > 0) {
-            data.attachment.forEach(file => this.ticketData.append('file', file));
+            data.attachment.forEach(file => this.ticketData.append('attachment', file));
         }
 
         const payloadForm: Partial<SupportTicketRequest> = {
             user_email: data.userEmail,
             option: data.option,
             title: data.title,
-            message: data.message!,
+            message: data.message,
             info_device: data.device,
-            info_os: data.os,
-            info_browser: data.browser
+            info_os: data.os === '' ? undefined : data.os,
+            info_browser: data.browser === '' ? undefined : data.browser
         };
 
         this.ticketData.append('data', JSON.stringify(payloadForm));
@@ -55,7 +55,7 @@ export class SupportAPIService {
             user_email: data.userEmail,
             rating: data.rating,
             term_accepted: data.termFeedback,
-            message: data.message
+            message: data.message === '' ? undefined : data.message
         };
     }
 

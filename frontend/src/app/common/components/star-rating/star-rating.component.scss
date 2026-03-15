@@ -45,6 +45,7 @@ $rate-height: 30px;
 
     .artdv-starrating-wrapper:hover .rating__label .rating__icon--star { // Change color on hover like selection.
         color: sass.$color-route-light;
+        opacity: 1; // Overwrite opacity from hover for non-selected stars
     }
 
     .artdv-starrating-wrapper:hover ~ #artdv-rating-value-wrapper #artdv-rating-value {

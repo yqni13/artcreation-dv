@@ -289,6 +289,7 @@
         .artdv-support-content {
             .artdv-support-hint {
                 width: calc((100% - 400px) * 0.75);
+                max-width: 750px;
             }
             form {
                 width: calc(100% - 400px);
@@ -303,7 +304,8 @@
                 }
             }
             #artdv-support-attachment-list {
-                width: calc(100% - 400px);
+                width: calc((100% - 400px) * 0.75);
+                max-width: 708px;
             }
             .artdv-support-button-wrapper {
                 a,
@@ -742,6 +744,7 @@
         .artdv-support-content {
             .artdv-support-hint {
                 width: calc((100% - 200px) * 0.75);
+                max-width: 750px;
             }
             form {
                 width: calc(100% - 200px);
@@ -756,7 +759,8 @@
                 }
             }
             #artdv-support-attachment-list {
-                width: calc(100% - 200px);
+                width: calc((100% - 200px) * 0.75);
+                max-width: 708px;
             }
             .artdv-support-button-wrapper {
                 a,
@@ -932,7 +936,7 @@
     section {
         width: 100vw;
         margin: var(--view-nav-width) 0 0 0;
-        min-height: calc(100% - (400px + var(--view-nav-width)))!important;
+        min-height: calc(100vh - (var(--view-footer-height) + var(--view-nav-width)))!important;
     }
 
     .artdv-author {
@@ -1185,7 +1189,7 @@
                 }
             }
             #artdv-support-attachment-list {
-                width: calc(100% - 20px);
+                width: calc((100% - 200px) * 0.75);
             }
             .artdv-support-button-wrapper {
                 a,
@@ -1335,7 +1339,8 @@
 // 500px > width < 768px
 @media screen and (width <= sass.$device-phone-landscape) {
     section {
-        $modified-nav-height: 350px;
+        $modified-nav-height: 450px;
+        // $modified-nav-height: 350px;
         min-height: calc(100vh - $modified-nav-height - var(--view-nav-width))!important;
     }
 
@@ -1606,6 +1611,9 @@
             form {
                 width: calc(100% - 20px);
             }
+            #artdv-support-attachment-list {
+                width: calc(100% - 20px);
+            }
         }
     }
 
@@ -1676,7 +1684,7 @@
 // 400px > width < 500px
 @media screen and (width <= sass.$device-phone-portrait) {
     section {
-        min-height: calc(100% - (300px + var(--view-nav-width)))!important;
+        min-height: calc(100vh - (var(--view-footer-height) + var(--view-nav-width)))!important;
     }
 
     .artdv-about {

@@ -18,6 +18,7 @@ import { LoadingAnimationComponent } from "../../common/components/animation/loa
 import { SupportFeedbackData, SupportTicketData } from "./support-form.interface";
 import { SupportRatingResponse } from "../../api/interfaces/support.interface";
 import { HttpResponse } from "@angular/common/http";
+import { FileUploadService } from "../../shared/services/file-upload.service";
 
 @Component({
     selector: 'app-support',
@@ -37,8 +38,7 @@ import { HttpResponse } from "@angular/common/http";
     ]
 })
 export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
-
-    @ViewChild('checkboxTermFeedback') checkboxTermFeedback!: ElementRef;
+    @ViewChild('fileInput') fileInput!: ElementRef;
     @ViewChild('sendBtn') sendBtn!: ElementRef;
     @ViewChild('resetBtn') resetBtn!: ElementRef;
 
@@ -63,6 +63,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         @Inject(DOCUMENT) private document: Document,
         private readonly supportApi: SupportAPIService,
         private readonly httpObservation: HttpObservationService,
+        public fileUpload: FileUploadService
     ) {
         this.supportForm = new FormGroup({});
         this.isLoadingResponse = false;
@@ -103,14 +104,15 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     }
 
     ngAfterViewInit() {
+        this.handleFileInput();
         this.subscriptionHttpObservationSupport$ = this.httpObservation.supportStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
-            tap((isStatus200: boolean) => {
+            tap(async (isStatus200: boolean) => {
                 if(isStatus200) {
-                    this.delay(750);
-                    this.reset();
-                    this.httpObservation.setSupportStatus(false);
+                    await this.delay(500);
                     this.isLoadingResponse = false;
+                    this.httpObservation.setSupportStatus(false);
+                    this.reset();
                 }
                 if(this.sendBtn) {
                     this.setButtonUseStatus(true);
@@ -120,18 +122,22 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
 
         this.subscriptionHttpObservationFeedback$ = this.httpObservation.feedbackStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
-            tap((isStatus200: boolean) => {
+            tap(async (isStatus200: boolean) => {
                 if(isStatus200) {
-                    this.delay(750);
-                    this.reset();
-                    this.httpObservation.setFeedbackStatus(false);
+                    await this.delay(500);
                     this.isLoadingResponse = false;
+                    this.httpObservation.setFeedbackStatus(false);
+                    this.reset();
                 }
                 if(this.sendBtn) {
                     this.setButtonUseStatus(true);
                 }
             })
         ).subscribe();
+
+        this.fileUpload.fileTransfer$.subscribe(data => {
+            this.supportForm.get('attachment')?.setValue(data);
+        })
     }
 
     private initForm() {
@@ -178,6 +184,8 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
 
     async updateFormOnOptionChange(option: Event) {
         const element = option.currentTarget as HTMLInputElement;
+        this.reset();
+        this.supportForm.get('option')?.setValue(element.value as SupportOption);
         this.resetValidationsOnOptionChange(element.value as SupportOption);
         if(element.value === this.ticketOption.FEEDBACK) {
             this.resetRatingAutofill();
@@ -259,13 +267,43 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         };
     }
 
+    private handleFileInput() {
+        this.fileUpload.setValidations({
+            maxNumberOfFiles: 5,
+            maxSizeEachFileInMB: 1,
+            allowedFileTypes: [
+                'application/pdf',
+                'image/webp',
+                'image/jpeg', // .jpe, .jpeg, .jpg, .pjpg, .jfif, .jfif-tbnl, .jif
+                'image/png'
+            ],
+            allowedFileTypeIndicators: [
+                'application/',
+                'image/'
+            ]
+        });
+    }
+
+    handleFileReset() {
+        // Needed to continue processing without stuck files interfering.
+        this.fileInput = this.fileUpload.resetInput(this.fileInput);
+    }
+
     private resetValidationsOnOptionChange(option: SupportOption) {
         if(option === SupportOption.FEEDBACK) {
             this.supportForm.get('message')?.clearValidators();
             this.supportForm.get('message')?.setValidators(Validators.maxLength(1000));
+            this.supportForm.get('title')?.clearValidators();
+            this.supportForm.get('device')?.clearValidators();
+            this.supportForm.get('os')?.clearValidators();
+            this.supportForm.get('browser')?.clearValidators();
         } else {
             this.supportForm.get('message')?.clearValidators();
             this.supportForm.get('message')?.setValidators([Validators.required, Validators.maxLength(5000)]);
+            this.supportForm.get('title')?.setValidators(Validators.maxLength(100));
+            this.supportForm.get('device')?.setValidators(Validators.maxLength(50));
+            this.supportForm.get('os')?.setValidators(Validators.maxLength(100));
+            this.supportForm.get('browser')?.setValidators(Validators.maxLength(100));
         }
     }
 
@@ -277,7 +315,6 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     reset() {
         this.initEdit();
         this.resetRatingValue.emit(this.defaultRatingValue);
-        this.checkboxTermFeedback.nativeElement.checked = true;
         this.supportForm.markAsUntouched();
     }
 
