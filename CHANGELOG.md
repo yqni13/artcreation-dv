@@ -4,9 +4,20 @@
 
 <br>
 
+### $\textsf{\color{skyblue}2026/03/15}$
+
+$\textsf{[v1.4.3\ =>\ {\textbf{\color{brown}v1.5.3}]}}$ app
+- $\textsf{\color{teal}Addition:}$ Added new service to validate and handle file attachments.
+- $\textsf{\color{orange}Patch:}$ Updated (support component):
+  + responsive design and detection for device suggestion.
+  + validations and notification on invalid send action.
+  + value change for optional data on request send.
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/02/24}$
 
-$\textsf{[v1.3.4\ =>\ {\textbf{\color{brown}v1.4.3}]}}$ app
+$\textsf{[v1.3.4\ =>\ v1.4.3]}$ app
 - $\textsf{\color{teal}Addition:}$ Added new 'support' component including selection of mode for bug/feedback/support.
 - $\textsf{\color{teal}Addition:}$ Added new 'star-rating' module for feedback rating purposes.
 - $\textsf{\color{orange}Patch:}$ Updated support api, interfaces as well as some styling and validation of other modules (textarea, button).
