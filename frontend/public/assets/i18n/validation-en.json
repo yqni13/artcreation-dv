@@ -90,9 +90,9 @@
             },
             "file-upload": {
                 "text": {
-                    "allowed-types": "Only files of the following types are allowed to upload: {{VAL}}.",
-                    "max-number-total": "The max. number of uploaded files is: {{MAX}}.",
-                    "max-size-each": "The max. size for each uploaded file is {{VAL}}."
+                    "allowed-types": "Only files of the following types are allowed to upload: {{VAL}}",
+                    "max-number-total": "The max. number of uploaded files is: {{MAX}}",
+                    "max-size-each": "The max. size for each uploaded file is: {{VAL}}"
                 },
                 "title": {
                     "allowed-types": "Limited types",

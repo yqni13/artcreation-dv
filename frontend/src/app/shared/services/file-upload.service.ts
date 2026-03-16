@@ -95,6 +95,7 @@ export class FileUploadService {
             }
         })
         if(checkedFiles.length !== uncheckedFiles.length) {
+            // Modify allowedTypes-string to show ".pdf" instead "application/pdf" for easier readability.
             let notificationVal: string = `${this.allowedTypes}`;
             this.allowedTypesIndicators.forEach((indicator: string) => {
                 notificationVal = notificationVal.replaceAll(indicator, " .");

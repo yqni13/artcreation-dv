@@ -42,7 +42,7 @@ export class SupportAPIService {
             option: data.option,
             title: data.title,
             message: data.message,
-            info_device: data.device,
+            info_device: !data.device ? undefined : data.device,
             info_os: data.os === '' ? undefined : data.os,
             info_browser: data.browser === '' ? undefined : data.browser
         };

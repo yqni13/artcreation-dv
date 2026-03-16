@@ -287,6 +287,10 @@
 
     .artdv-support {
         .artdv-support-content {
+            .artdv-support-category i {
+                width: 50px;
+                height: 50px;
+            }
             .artdv-support-hint {
                 width: calc((100% - 400px) * 0.75);
                 max-width: 750px;
@@ -742,6 +746,10 @@
 
     .artdv-support {
         .artdv-support-content {
+            .artdv-support-category i {
+                width: 50px;
+                height: 50px;
+            }
             .artdv-support-hint {
                 width: calc((100% - 200px) * 0.75);
                 max-width: 750px;
@@ -1173,6 +1181,10 @@
 
     .artdv-support {
         .artdv-support-content {
+            .artdv-support-category i {
+                width: 45px;
+                height: 45px;
+            }
             .artdv-support-hint {
                 width: calc((100% - 200px) * 0.75);
             }
@@ -1340,7 +1352,6 @@
 @media screen and (width <= sass.$device-phone-landscape) {
     section {
         $modified-nav-height: 450px;
-        // $modified-nav-height: 350px;
         min-height: calc(100vh - $modified-nav-height - var(--view-nav-width))!important;
     }
 
@@ -1605,6 +1616,10 @@
 
     .artdv-support {
         .artdv-support-content {
+            .artdv-support-category i {
+                width: 40px;
+                height: 40px;
+            }
             .artdv-support-hint {
                 width: calc(100% - 20px);
             }
@@ -1891,6 +1906,15 @@
             }
             .artdv-shipping-triple {
                 width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
+            }
+        }
+    }
+
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-category i {
+                width: 35px;
+                height: 35px;
             }
         }
     }

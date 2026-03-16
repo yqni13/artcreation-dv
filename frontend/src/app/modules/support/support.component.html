@@ -162,7 +162,7 @@
                     class="outer-border"
                     *ngIf="opt !== ticketOption.FEEDBACK && attachment && attachment?.length > 0"
                 >
-                    <div class="inner-border DISPLAY-HERE-ATTACHED-FILES">
+                    <div class="inner-border">
                         <ng-container *ngFor="let file of attachment; let i = index">
                             <ng-container
                                 *ngTemplateOutlet="attachmentRef; context: {i: i, file: file}"

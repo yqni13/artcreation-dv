@@ -77,14 +77,14 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         this.defaultRatingValue = 5;
         this.resetRatingValue = new EventEmitter<number>();
         this.ticketOptionIcons = {
-            bug: 'icon-bug',
-            feedback: 'icon-feedback',
-            support: 'icon-support'
+            [SupportOption.BUG]: 'icon-bug',
+            [SupportOption.FEEDBACK]: 'icon-feedback',
+            [SupportOption.SUPPORT]: 'icon-support'
         };
         this.ticketOptionStylings = {
-            bug: {'color': 'var(--theme-snackbar-error)'},
-            feedback: {'color': 'var(--theme-snackbar-warning)'},
-            support: {'color': 'var(--theme-snackbar-info)'},
+            [SupportOption.BUG]: {'color': 'var(--theme-snackbar-error)'},
+            [SupportOption.FEEDBACK]: {'color': 'var(--theme-snackbar-warning)'},
+            [SupportOption.SUPPORT]: {'color': 'var(--theme-snackbar-info)'},
         }
 
         this.subscriptionHttpObservationSupport$ = new Subscription();
