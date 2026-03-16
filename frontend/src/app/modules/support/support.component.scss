@@ -10,6 +10,10 @@ div {
     align-items: center;
     width: 100%;
     margin-bottom: sass.$space50;
+    .artdv-support-category {
+        width: 100%;
+        justify-content: center;
+    }
     .artdv-support-hint {
         justify-content: center;
         margin: sass.$space25 0;
@@ -65,6 +69,15 @@ div {
             }
         }
     }
+    #artdv-support-attachment-list {
+        margin-bottom: sass.$space15;
+        .inner-border {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 3px;
+        }
+    }
     .artdv-support-button-wrapper {
         width: 100%;
         justify-content: center;
@@ -92,8 +105,42 @@ div {
 
 .inner-border {
     background-color: var(--theme-nav-bg);
-    width: 100%;
+    width: calc(100% - 6px);
     margin: 2px;
     border: 1px solid transparent;
     border-radius: 5px;
+}
+
+$closeX-size: 20px;
+.artdv-attachmentref-wrapper  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    max-width: calc(50% - (2px * 2 + 8px));
+    padding: 2px;
+    margin: 2px;
+    span {
+        font-size: clamp(13px, 1.8vw, 16px);
+        width: calc(100% - ($closeX-size + 2.5px));
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    i {
+        width: $closeX-size;
+        height: $closeX-size;
+        cursor: pointer;
+        color: var(--theme-snackbar-error);
+        padding-left: 2.5px;
+        &:hover {
+            filter: brightness(2);
+        }
+    }
+}
+
+.artdv-attachmentref-wrapper:has(.icon-CloseX:hover) { // Visualize red border on X hover.
+    border: 2px solid sass.$color-validation-red;
 }

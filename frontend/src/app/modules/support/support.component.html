@@ -1,9 +1,27 @@
+<ng-template #attachmentRef let-i="i" let-file="file">
+    <div class="artdv-attachmentref-wrapper">
+        <span>{{file.name}}</span>
+        <i
+            class="icon-CloseX"
+            (click)="fileUpload.removeFile(i)"
+            (keydown.enter)="fileUpload.removeFile(i)"
+            [attr.tabindex]="0"
+        ></i>
+    </div>
+</ng-template>
+
 <section class="artdv-support">
     <header>
         <h1>{{'modules.support.title' | translate}}</h1>
     </header>
     <div class="artdv-support-content">
         <ng-container *artdvVar="supportForm.get('option')?.value as opt">
+            <div class="artdv-support-category" *ngIf="opt !== ''">
+                <i
+                    [ngClass]="ticketOptionIcons[opt]"
+                    [ngStyle]="ticketOptionStylings[opt]"
+                ></i>
+            </div>
             <form [formGroup]="supportForm">
 
                 <!-- OPTION -->
@@ -87,7 +105,7 @@
 
                     <!-- MESSAGE -->
                     <div class="artdv-support-form-wrapper-big">
-                        <span>{{('modules.support.form.fieldNames.message' | translate) + ':*'}}</span>
+                        <span>{{('modules.support.form.fieldNames.message' | translate) + ':' + (opt !== ticketOption.FEEDBACK ? '*' : '')}}</span>
                         <artdv-textareainput
                             [ngStyle]="{'width': '100%'}"
                             [formControl]="supportForm.get('message') | controlCast"
@@ -114,7 +132,6 @@
                             type="checkbox"
                             (change)="getFeedbackTerm($event)"
                             checked
-                            #checkboxTermFeedback
                         >
                         <span>{{'modules.support.form.placeholders.term-feedback' | translate}}</span>
                     </div>
@@ -137,24 +154,41 @@
                     </ng-container>
                 </div>
             </div>
-            <!-- <ng-container *ngIf="supportForm.get('attachment')?.value.length > 0">
+
+            <!-- ATTACHMENT PANEL -->
+            <ng-container *artdvVar="supportForm.get('attachment')?.value as attachment">
                 <div
                     id="artdv-support-attachment-list"
                     class="outer-border"
-                    *ngIf="opt !== ticketOption.FEEDBACK"
+                    *ngIf="opt !== ticketOption.FEEDBACK && attachment && attachment?.length > 0"
                 >
-                    <div class="inner-border DISPLAY-HERE-ATTACHED-FILES">
+                    <div class="inner-border">
+                        <ng-container *ngFor="let file of attachment; let i = index">
+                            <ng-container
+                                *ngTemplateOutlet="attachmentRef; context: {i: i, file: file}"
+                            ></ng-container>
+                        </ng-container>
                     </div>
                 </div>
-            </ng-container> -->
+            </ng-container>
+
+            <!-- BUTTON PANEL -->
             <div class="artdv-support-button-wrapper" *ngIf="opt !== ''">
                 <a
                     [attr.tabindex]="0"
                     *ngIf="opt !== ticketOption.FEEDBACK"
                     class="artdv-button-submit"
+                    (click)="fileInput.click()"
+                    (keydown.enter)="fileInput.click()"
                 >
                     <i class="icon-attachment">
-                        <input type="file" id="artdv-support-attachment-input">
+                        <input
+                            type="file"
+                            multiple="multiple"
+                            id="artdv-support-attachment-input"
+                            (change)="fileUpload.selectFiles($event);handleFileReset()"
+                            #fileInput
+                        >
                     </i>
                 </a>
                 <button

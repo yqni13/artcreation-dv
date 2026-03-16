@@ -1,6 +1,6 @@
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SupportAPIService } from "../../api/services/support.api.service";
 import { SupportOption } from "../../api/enums/ticket-option.support.enum";
@@ -18,6 +18,9 @@ import { LoadingAnimationComponent } from "../../common/components/animation/loa
 import { SupportFeedbackData, SupportTicketData } from "./support-form.interface";
 import { SupportRatingResponse } from "../../api/interfaces/support.interface";
 import { HttpResponse } from "@angular/common/http";
+import { FileUploadService } from "../../shared/services/file-upload.service";
+import { SnackbarMessageService } from "../../shared/services/snackbar.service";
+import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
 
 @Component({
     selector: 'app-support',
@@ -37,8 +40,7 @@ import { HttpResponse } from "@angular/common/http";
     ]
 })
 export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
-
-    @ViewChild('checkboxTermFeedback') checkboxTermFeedback!: ElementRef;
+    @ViewChild('fileInput') fileInput!: ElementRef;
     @ViewChild('sendBtn') sendBtn!: ElementRef;
     @ViewChild('resetBtn') resetBtn!: ElementRef;
 
@@ -49,6 +51,8 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     protected messageLength: number;
     protected defaultRatingValue: number;
     protected resetRatingValue: EventEmitter<number>;
+    protected ticketOptionIcons: Record<string, string>;
+    protected ticketOptionStylings: Record<string, Record<string, any>>;
 
     private subscriptionHttpObservationSupport$: Subscription;
     private subscriptionHttpObservationFeedback$: Subscription;
@@ -61,14 +65,27 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         private readonly fb: FormBuilder,
         private readonly auth: AuthService,
         @Inject(DOCUMENT) private document: Document,
+        private readonly translate: TranslateService,
         private readonly supportApi: SupportAPIService,
+        private readonly snackbar: SnackbarMessageService,
         private readonly httpObservation: HttpObservationService,
+        public fileUpload: FileUploadService
     ) {
         this.supportForm = new FormGroup({});
         this.isLoadingResponse = false;
-        this.messageLength = 5000;
+        this.messageLength = 0;
         this.defaultRatingValue = 5;
         this.resetRatingValue = new EventEmitter<number>();
+        this.ticketOptionIcons = {
+            [SupportOption.BUG]: 'icon-bug',
+            [SupportOption.FEEDBACK]: 'icon-feedback',
+            [SupportOption.SUPPORT]: 'icon-support'
+        };
+        this.ticketOptionStylings = {
+            [SupportOption.BUG]: {'color': 'var(--theme-snackbar-error)'},
+            [SupportOption.FEEDBACK]: {'color': 'var(--theme-snackbar-warning)'},
+            [SupportOption.SUPPORT]: {'color': 'var(--theme-snackbar-info)'},
+        }
 
         this.subscriptionHttpObservationSupport$ = new Subscription();
         this.subscriptionHttpObservationFeedback$ = new Subscription();
@@ -103,14 +120,15 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     }
 
     ngAfterViewInit() {
+        this.handleFileInput();
         this.subscriptionHttpObservationSupport$ = this.httpObservation.supportStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
-            tap((isStatus200: boolean) => {
+            tap(async (isStatus200: boolean) => {
                 if(isStatus200) {
-                    this.delay(750);
-                    this.reset();
-                    this.httpObservation.setSupportStatus(false);
+                    await this.delay(500);
                     this.isLoadingResponse = false;
+                    this.httpObservation.setSupportStatus(false);
+                    this.reset();
                 }
                 if(this.sendBtn) {
                     this.setButtonUseStatus(true);
@@ -120,18 +138,22 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
 
         this.subscriptionHttpObservationFeedback$ = this.httpObservation.feedbackStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
-            tap((isStatus200: boolean) => {
+            tap(async (isStatus200: boolean) => {
                 if(isStatus200) {
-                    this.delay(750);
-                    this.reset();
-                    this.httpObservation.setFeedbackStatus(false);
+                    await this.delay(500);
                     this.isLoadingResponse = false;
+                    this.httpObservation.setFeedbackStatus(false);
+                    this.reset();
                 }
                 if(this.sendBtn) {
                     this.setButtonUseStatus(true);
                 }
             })
         ).subscribe();
+
+        this.fileUpload.fileTransfer$.subscribe(data => {
+            this.supportForm.get('attachment')?.setValue(data);
+        })
     }
 
     private initForm() {
@@ -156,7 +178,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
             userEmail: '',
             option: '',
             rating: this.defaultRatingValue,
-            device: this.window.screen.width > 1024 ? SupportDeviceOption.COMPUTER : SupportDeviceOption.MOBILE,
+            device: this.getPlaceholderByDeviceSuggestion(),
             os: '',
             browser: '',
             title: '',
@@ -178,16 +200,20 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
 
     async updateFormOnOptionChange(option: Event) {
         const element = option.currentTarget as HTMLInputElement;
+        this.reset();
+        this.supportForm.get('option')?.setValue(element.value as SupportOption);
         this.resetValidationsOnOptionChange(element.value as SupportOption);
         if(element.value === this.ticketOption.FEEDBACK) {
+            this.messageLength = 1000;
             this.resetRatingAutofill();
             await this.initRating();
         } else {
+            this.messageLength = 5000;
             this.supportForm.get('rating')?.setValue(undefined);
         }
     }
 
-    getPlaceholderByDeviceSuggestion(): string {
+    private getPlaceholderByDeviceSuggestion(): string {
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(this.window.navigator.userAgent)) {
             return this.deviceOption.MOBILE;
         } else if(/Chrome/i.test(this.window.navigator.userAgent)) {
@@ -219,6 +245,12 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     onSubmit() {
         this.supportForm.markAllAsTouched();
         if(this.supportForm.invalid) {
+            this.snackbar.notify({
+                title: this.translate.instant('validation.frontend.form.check-data'),
+                autoClose: true,
+                type: SnackbarOption.warning,
+                displayTime: 2000
+            });
             return;
         }
 
@@ -259,13 +291,43 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         };
     }
 
+    private handleFileInput() {
+        this.fileUpload.setValidations({
+            maxNumberOfFiles: 5,
+            maxSizeEachFileInMB: 1,
+            allowedFileTypes: [
+                'application/pdf',
+                'image/webp',
+                'image/jpeg', // .jpe, .jpeg, .jpg, .pjpg, .jfif, .jfif-tbnl, .jif
+                'image/png'
+            ],
+            allowedFileTypeIndicators: [
+                'application/',
+                'image/'
+            ]
+        });
+    }
+
+    handleFileReset() {
+        // Needed to continue processing without stuck files interfering.
+        this.fileInput = this.fileUpload.resetInput(this.fileInput);
+    }
+
     private resetValidationsOnOptionChange(option: SupportOption) {
         if(option === SupportOption.FEEDBACK) {
             this.supportForm.get('message')?.clearValidators();
             this.supportForm.get('message')?.setValidators(Validators.maxLength(1000));
+            this.supportForm.get('title')?.clearValidators();
+            this.supportForm.get('device')?.clearValidators();
+            this.supportForm.get('os')?.clearValidators();
+            this.supportForm.get('browser')?.clearValidators();
         } else {
             this.supportForm.get('message')?.clearValidators();
             this.supportForm.get('message')?.setValidators([Validators.required, Validators.maxLength(5000)]);
+            this.supportForm.get('title')?.setValidators([Validators.required, Validators.maxLength(100)]);
+            this.supportForm.get('device')?.setValidators(Validators.maxLength(50));
+            this.supportForm.get('os')?.setValidators(Validators.maxLength(100));
+            this.supportForm.get('browser')?.setValidators(Validators.maxLength(100));
         }
     }
 
@@ -277,7 +339,6 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     reset() {
         this.initEdit();
         this.resetRatingValue.emit(this.defaultRatingValue);
-        this.checkboxTermFeedback.nativeElement.checked = true;
         this.supportForm.markAsUntouched();
     }
 

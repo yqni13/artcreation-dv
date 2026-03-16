@@ -98,12 +98,18 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
         || response.url.includes(AdminRoute.ASSETS)
         || response.url.includes(AdminRoute.GALLERY)
         || response.url.includes(AdminRoute.MAILING)
-        || response.url.includes(AdminRoute.NEWS))) {
+        || response.url.includes(AdminRoute.NEWS)
+        || response.url.includes('/tickets')
+        || response.url.includes('/feedback')
+        || response.url.includes('/feedback-rating'))) {
+        const errorText = response.url.includes('/tickets') || response.url.includes('/feedback') || response.url.includes('/feedback-rating')
+            ? 'server-500-routes-support'
+            : 'server-500-routes';
         Object.assign(response, {
             error: {
                 headers: {
                     error: 'InternalServerException',
-                    message: 'server-500-routes'
+                    message: errorText
                 }
             }
         })

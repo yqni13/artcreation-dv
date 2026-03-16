@@ -23,6 +23,7 @@
                 "secret-404-env": "Secret data \"{{VAL}}\" is missing. Please try again later or contact support.",
                 "server-500-connection": "Connection with the server is not possible at the moment. Please try again later or contact support.",
                 "server-500-routes": "The api endpoint is not available at the moment. Please try again later or contact support.",
+                "server-500-routes-support": "The support-api endpoint is not available at the moment. Please try again later.",
                 "server-535-auth": "Authentication with the \"{{VAL}}\" failed. Please try again later or contact support.",
                 "server-max-email": "Email service exceeded request limit and is temporary blocked. Please try again in 24h.",
                 "support-arg-forbidden": "Your request contains unauthorized data. Please check your input.",
@@ -87,9 +88,22 @@
                 "text": "Your request has been successfully forwarded to us. We will endeavor to process your request and respond to you as quickly as possible.",
                 "title": "Thank you for requesting"
             },
+            "file-upload": {
+                "text": {
+                    "allowed-types": "Only files of the following types are allowed to upload: {{VAL}}",
+                    "max-number-total": "The max. number of uploaded files is: {{MAX}}",
+                    "max-size-each": "The max. size for each uploaded file is: {{VAL}}"
+                },
+                "title": {
+                    "allowed-types": "Limited types",
+                    "max-number-total": "Limited number",
+                    "max-size-each": "Limited size"
+                }
+            },
             "form": {
                 "artwork-invalid-purchase": "No price available. Use subject \"specific request\".",
                 "artwork-unavailable": "This artwork is no longer available.",
+                "check-data": "Check input!",
                 "email-invalid": "Field \"{{fieldName}}\" has invalid format.",
                 "maxlength": "Content ({{fieldValue}}) must not be longer than {{fieldMax}} characters.",
                 "publication-invalid": "Publication year must be a valid number.",
@@ -122,7 +136,7 @@
             },
             "support": {
                 "text": "Your request has been successfully forwarded to us and created as a new ticket. Your data will be processed as quickly as possible and, if necessary, we will contact you via email.",
-                "title": "Ticket created successfully!"
+                "title": "Ticket created!"
             }
         }
     }

@@ -300,15 +300,15 @@
                     "title": "Title"
                 },
                 "placeholders": {
-                    "browser": "Internet browser in use + version",
+                    "browser": "e.g.: Chrome 146.0.7680.80 (Official Build) (64-Bit)",
                     "device": "Select your device category.",
-                    "email": "demo.test@gmail.com",
+                    "email": "e.g.: demo.test@gmail.com",
                     "feedback": "How do you rate www.artcreation-dv.at?",
                     "message-bug": "Please describe the error you discovered as precisely as possible.",
                     "message-feedback": "Please describe relevant points for your feedback/criticism here.",
                     "message-support": "Please describe your situation here as precisely as possible.",
                     "option": "What would you like to tell us?",
-                    "os": "operational system in use",
+                    "os": "e.g.: Windows 11, Android 15, ...",
                     "term-feedback": "I agree to release my personal feedback for further use.",
                     "title": "Brief description of your request"
                 }
