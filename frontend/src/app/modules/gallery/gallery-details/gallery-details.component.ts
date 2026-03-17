@@ -6,7 +6,7 @@ import { FloatPrecisionPipe } from "../../../common/pipes/float-precision.pipe";
 import { ImgFullscaleComponent } from "../../../common/components/img-fullscale/img-fullscale.component";
 import { SubjectOptions } from "../../../shared/enums/contact-subject.enum";
 import { TranslateModule } from "@ngx-translate/core";
-import { GalleryItem } from "../../../api/models/gallery-response.interface";
+import { GalleryItem } from "../../../api/interfaces/gallery-response.interface";
 import { LowerUpperTextPipe } from "../../../common/pipes/lower-upper.pipe";
 import { environment } from "../../../../environments/environment";
 import { ArtMedium } from "../../../shared/enums/art-medium.enum";

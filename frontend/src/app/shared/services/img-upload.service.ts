@@ -63,6 +63,7 @@ export class ImgUploadService {
         if(!type) {
             return false;
         }
+
         const allowedTypes = ['jpg', 'jpeg', 'png', 'webp'];
         if(!allowedTypes.includes(type.replace('image/', ''))) {
             const titlePath = 'validation.frontend.img-upload.title-type-allowed';
@@ -80,7 +81,7 @@ export class ImgUploadService {
             })
             return false;
         }
-        
+
         return true;
     }
 }

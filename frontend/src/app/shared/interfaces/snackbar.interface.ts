@@ -6,7 +6,7 @@ export declare interface SnackbarMessage {
     text?: string,
     autoClose?: boolean,
     type: SnackbarOption,
-    displayTime?: number,
+    displayTime?: number, // in milliseconds
     displayHandler?: any,
 }
 

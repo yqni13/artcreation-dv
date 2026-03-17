@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
-import * as GalleryResponse from "../models/gallery-response.interface";
+import * as GalleryResponse from "../interfaces/gallery-response.interface";
 import { GalleryRoute } from "../routes/gallery.route.enum";
 import { ArtGenre } from "../../shared/enums/art-genre.enum";
 import { environment } from "../../../environments/environment";
-import { GalleryCreateRequest, GalleryUpdateRequest } from "../models/gallery-request.interface";
+import { GalleryCreateRequest, GalleryUpdateRequest } from "../interfaces/gallery-request.interface";
 
 @Injectable({
     providedIn: 'root'

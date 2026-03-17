@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { NewsItem, NewsItemWGP } from '../../api/models/news-response.interface';
+import { NewsItem, NewsItemWGP } from '../../api/interfaces/news-response.interface';
 import { SortingOption } from '../enums/sorting-option.enum';
 
 @Injectable({

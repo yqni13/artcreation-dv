@@ -37,6 +37,7 @@
     --theme-secondary-color: #{sass.$color-light-secondary};
     --theme-icon-bg: transparent;
     --theme-signature-filter: none;
+    --theme-rating-passive-opacity: 0.9;
 }
 
 [data-theme='darkMode'] {
@@ -62,4 +63,5 @@
     --theme-secondary-color: #{sass.$color-dark-secondary};
     --theme-icon-bg: #fff; // better contrast than $color-ice-white
     --theme-signature-filter: #{sass.$color-signature-white};
+    --theme-rating-passive-opacity: 0.15;
 }

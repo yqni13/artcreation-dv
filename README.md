@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.3.2}}$
+$\texttt{\color{teal}{v1.5.3}}$
 
 
 <br><br>
@@ -296,8 +296,12 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v1.3.1\ =>\ {\textbf{\color{brown}v1.3.2}]}}$ app
-- $\textsf{\color{orange}Patch:}$ Updated 'about' page in styling and embedded youtube video link.
+$\textsf{[v1.4.3\ =>\ {\textbf{\color{brown}v1.5.3}]}}$ app
+- $\textsf{\color{teal}Addition:}$ Added new service to validate and handle file attachments.
+- $\textsf{\color{orange}Patch:}$ Updated (support component):
+  + responsive design and detection for device suggestion.
+  + validations and notification on invalid send action.
+  + value change for optional data on request send.
 
 <br>
 
