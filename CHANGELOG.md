@@ -4,9 +4,52 @@
 
 <br>
 
+### $\textsf{\color{skyblue}2026/03/15}$
+
+$\textsf{[v1.4.3\ =>\ {\textbf{\color{brown}v1.5.3}]}}$ app
+- $\textsf{\color{teal}Addition:}$ Added new service to validate and handle file attachments.
+- $\textsf{\color{orange}Patch:}$ Updated (support component):
+  + responsive design and detection for device suggestion.
+  + validations and notification on invalid send action.
+  + value change for optional data on request send.
+
+<br>
+
+### $\textsf{\color{skyblue}2026/02/24}$
+
+$\textsf{[v1.3.4\ =>\ v1.4.3]}$ app
+- $\textsf{\color{teal}Addition:}$ Added new 'support' component including selection of mode for bug/feedback/support.
+- $\textsf{\color{teal}Addition:}$ Added new 'star-rating' module for feedback rating purposes.
+- $\textsf{\color{orange}Patch:}$ Updated support api, interfaces as well as some styling and validation of other modules (textarea, button).
+- $\textsf{\color{orange}Patch:}$ Updated 'imprint' page linking to 'support' page instead showing email address.
+
+<br>
+
+### $\textsf{\color{skyblue}2026/02/19}$
+
+$\textsf{[v1.3.2\ =>\ v1.3.4]}$ app
+- $\textsf{\color{teal}Addition:}$ Added translations, basic api service & UI component for upcoming new feature (support).
+- $\textsf{\color{orange}Patch:}$ Updated http interceptor & obersavation service for upcoming new feature (support).
+
+<br>
+
+### $\textsf{\color{skyblue}2026/02/16}$
+
+$\textsf{[v1.3.1\ =>\ v1.3.2]}$ app
+- $\textsf{\color{orange}Patch:}$ Updated 'about' page in styling and embedded youtube video link.
+
+<br>
+
+### $\textsf{\color{skyblue}2026/01/30}$
+
+$\textsf{[v1.3.0\ =>\ v1.3.1]}$ app
+- $\textsf{\color{orange}Patch:}$ Updated snackbar service avoid displaying same errors multiple times.
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/01/28}$
 
-$\textsf{[v1.2.13\ =>\ {\textbf{\color{brown}v1.3.0}]}}$ app<br>
+$\textsf{[v1.2.13\ =>\ v1.3.0]}$ app<br>
 $\textsf{[v1.4.0\ =>\ {\textbf{\color{brown}v1.4.1}]}}$ database
 - $\textsf{\color{teal}Addition:}$ Added new feature:
   + artworks are displayed in gallery (detail view) with different frames

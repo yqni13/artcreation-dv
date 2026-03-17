@@ -1,4 +1,4 @@
-export declare interface AuthResponse {
+export interface AuthResponse {
     user: string,
     user_id: string,
     expiresIn: string,

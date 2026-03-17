@@ -57,6 +57,7 @@
                         [placeholder]="'modules.admin.news.placeholder.title' | translate"
                         [formControl]="newsForm.get('title') | controlCast"
                         [fieldName]="'modules.admin.news.details.title' | translate"
+                        [maxLength]="titleMaxLength+1"
                     ></artdv-textareainput>
                 </div>
                 <div class="artdv-admin-specific-detail-form-wrapper">
@@ -67,6 +68,7 @@
                         [placeholder]="'modules.admin.news.placeholder.content' | translate"
                         [formControl]="newsForm.get('content') | controlCast"
                         [fieldName]="'modules.admin.news.details.content' | translate"
+                        [maxLength]="contentMaxLength+1"
                     ></artdv-textareainput>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 # yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.3.0}}$
+$\texttt{\color{teal}{v1.5.3}}$
 
 
 <br><br>
@@ -296,14 +296,12 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v1.2.13\ =>\ {\textbf{\color{brown}v1.3.0}]}}$ app<br>
-$\textsf{[v1.4.0\ =>\ {\textbf{\color{brown}v1.4.1}]}}$ database
-- $\textsf{\color{teal}Addition:}$ Added new feature:
-  + artworks are displayed in gallery (detail view) with different frames
-  + frames can be selected by admin from list of different models
-  + frames can be modified by admin via color-picker
-  + selected frames are visible on admin preview/detail view
-- $\textsf{\color{orange}Patch:}$ Added migration to update 'gallery' table by adding 'art_frame_model' and 'art_frame_color' properties.
+$\textsf{[v1.4.3\ =>\ {\textbf{\color{brown}v1.5.3}]}}$ app
+- $\textsf{\color{teal}Addition:}$ Added new service to validate and handle file attachments.
+- $\textsf{\color{orange}Patch:}$ Updated (support component):
+  + responsive design and detection for device suggestion.
+  + validations and notification on invalid send action.
+  + value change for optional data on request send.
 
 <br>
 

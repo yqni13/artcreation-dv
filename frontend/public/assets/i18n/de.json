@@ -3,6 +3,9 @@
         "component": {
             "select-galleryitem": {
                 "select": "Liste öffnen"
+            },
+            "star-rating": {
+                "select": "Ihre Bewertung"
             }
         },
         "footer": {
@@ -13,7 +16,8 @@
                 "imprint": "Impressum",
                 "language": "Wählen Sie Ihre Sprache:",
                 "privacy": "Datenschutz",
-                "shipping": "Versand & Rückgabe"
+                "shipping": "Versand & Rückgabe",
+                "support": "Support / Feedback"
             },
             "titles": {
                 "connection": "Kommunikation",
@@ -278,6 +282,51 @@
                 }
             },
             "title": "Versand & Rückgabe"
+        },
+        "support": {
+            "buttons": {
+                "reset": "Reset",
+                "send": "Senden"
+            },
+            "form": {
+                "fieldNames": {
+                    "browser": "Internet-Browser",
+                    "device": "Gerät",
+                    "email": "E-Mail",
+                    "feedback": "Feedback",
+                    "message": "Beschreibung",
+                    "option": "Kategorie",
+                    "os": "Betriebssystem",
+                    "title": "Titel"
+                },
+                "placeholders": {
+                    "browser": "z.B.: Chrome 146.0.7680.80 (Offizieller Build) (64-Bit)",
+                    "device": "Wählen Sie die Kategorie Ihres Gerätes.",
+                    "email": "z.B.: demo.test@gmail.com",
+                    "feedback": "Wie bewerten Sie www.artcreation-dv.at?",
+                    "message-bug": "Beschreiben Sie bitte den von Ihnen entdeckten Fehler so genau wie möglich.",
+                    "message-feedback": "Beschreiben Sie hier bitte relevante Punkte für Ihr Feedback / Ihre Kritik.",
+                    "message-support": "Beschreiben Sie hier bitte Ihren Sachverhalt so genau wie möglich.",
+                    "option": "Was möchten Sie uns mitteilen?",
+                    "os": "z.B.: Windows 11, Android 15, ...",
+                    "term-feedback": "Ich erkläre mich dazu bereit, mein persönliches Feedback zur weiteren Verwendung freizugeben.",
+                    "title": "Kurze Beschreibung Ihres Anliegens."
+                }
+            },
+            "title": "Support",
+            "warning": {
+                "list": [
+                    "Passwörter oder PINs",
+                    "Bankverbindungen oder Kreditkartendaten",
+                    "Daten von Führerschein, Personalausweis oder Reisepass",
+                    "Sozialversicherungsnummern"
+                ],
+                "text": [
+                    "Teilen Sie in Ihrer Anfrage bitte KEINE vertraulichen Informationen wie:",
+                    "Für die Bearbeitung Ihrer Anfrage benötigen wir lediglich Ihre Email-Adresse."
+                ],
+                "title": "Bitte schützen Sie Ihre persönlichen Daten"
+            }
         }
     },
     "shared": {
@@ -326,6 +375,11 @@
                 "generalRequest": "Generelle Anfrage",
                 "specificInformation": "Spezifische Anfrage"
             },
+            "device-option": {
+                "COMPUTER": "Computer (Laptop, Desktop PC)",
+                "MOBILE": "Mobiles Gerät (Smartphone, Tablet, ebook Reader)",
+                "OTHER": "Alternatives Gerät"
+            },
             "honorifics-option": {
                 "0": "Herr",
                 "1": "Frau"
@@ -347,6 +401,11 @@
             "source-option": {
                 "EXIST": "ein bestehendes Kunstwerk",
                 "NEW": "ein neues Bild"
+            },
+            "ticket-option": {
+                "BUG": "Error",
+                "FEEDBACK": "Feedback",
+                "SUPPORT": "Hilfe"
             }
         }
     }

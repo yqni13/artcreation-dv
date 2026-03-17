@@ -30,7 +30,6 @@
             }
             #artdv-about-part1 {
                 flex-direction: row;
-                margin-bottom: sass.$space50;
                 #artdv-about-image1 {
                     #artdv-about-image1-wrapper {
                         height: fit-content;
@@ -46,7 +45,6 @@
             }
             #artdv-about-part2 {
                 flex-direction: row;
-                margin-bottom: sass.$space50;
                 #artdv-about-part2-text {
                     align-self: center;
                 }
@@ -68,6 +66,11 @@
                         left: calc((100vw - 1440px) / 2 + $img-width-gap);
                         font-style: italic;
                     }
+                }
+            }
+            #artdv-about-part4 {
+                #artdv-about-interview-wrapper {
+                    width: 70%;
                 }
             }
         }
@@ -282,6 +285,41 @@
         }
     }
 
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-category i {
+                width: 50px;
+                height: 50px;
+            }
+            .artdv-support-hint {
+                width: calc((100% - 400px) * 0.75);
+                max-width: 750px;
+            }
+            form {
+                width: calc(100% - 400px);
+                .artdv-support-form-wrapper-mid {
+                    width: 40%;
+                    padding: 0 30%;
+                }
+                .artdv-support-form-wrapper-starrating {
+                    width: 40%;
+                    padding: 0 30%;
+                    margin: sass.$space15 0;
+                }
+            }
+            #artdv-support-attachment-list {
+                width: calc((100% - 400px) * 0.75);
+                max-width: 708px;
+            }
+            .artdv-support-button-wrapper {
+                a,
+                button {
+                    margin: 0 sass.$space25;
+                }
+            }
+        }
+    }
+
     artdv-carousel {
         .artdv-carousel-wrapper {
             padding: sass.$space50 0;
@@ -450,7 +488,6 @@
             }
             #artdv-about-part1 {
                 flex-direction: row;
-                margin-bottom: sass.$space50;
                 #artdv-about-image1 {
                     #artdv-about-image1-wrapper {
                         height: fit-content;
@@ -467,7 +504,6 @@
             }
             #artdv-about-part2 {
                 flex-direction: row;
-                margin-bottom: sass.$space50;
                 #artdv-about-part2-text {
                     margin-top: calc(sass.$space5 - 2px); // at same height as img
                     align-self: start;
@@ -490,6 +526,11 @@
                         left: calc(25vw - var(--view-nav-width));
                         font-style: italic;
                     }
+                }
+            }
+            #artdv-about-part4 {
+                #artdv-about-interview-wrapper {
+                    width: 70%;
                 }
             }
         }
@@ -703,6 +744,41 @@
         }
     }
 
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-category i {
+                width: 50px;
+                height: 50px;
+            }
+            .artdv-support-hint {
+                width: calc((100% - 200px) * 0.75);
+                max-width: 750px;
+            }
+            form {
+                width: calc(100% - 200px);
+                .artdv-support-form-wrapper-mid {
+                    width: 50%;
+                    padding: 0 25%;
+                }
+                .artdv-support-form-wrapper-starrating {
+                    width: 50%;
+                    padding: 0 25%;
+                    margin: sass.$space15 0;
+                }
+            }
+            #artdv-support-attachment-list {
+                width: calc((100% - 200px) * 0.75);
+                max-width: 708px;
+            }
+            .artdv-support-button-wrapper {
+                a,
+                button {
+                    margin: 0 sass.$space25;
+                }
+            }
+        }
+    }
+
     artdv-carousel {
         .artdv-carousel-wrapper {
             padding: sass.$comp-padding-medium 0;
@@ -868,7 +944,7 @@
     section {
         width: 100vw;
         margin: var(--view-nav-width) 0 0 0;
-        min-height: calc(100% - (400px + var(--view-nav-width)))!important;
+        min-height: calc(100vh - (var(--view-footer-height) + var(--view-nav-width)))!important;
     }
 
     .artdv-author {
@@ -1103,6 +1179,39 @@
         }
     }
 
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-category i {
+                width: 45px;
+                height: 45px;
+            }
+            .artdv-support-hint {
+                width: calc((100% - 200px) * 0.75);
+            }
+            form {
+                width: calc(100% - 200px);
+                .artdv-support-form-wrapper-mid {
+                    width: 100%;
+                    padding: 0;
+                }
+                .artdv-support-form-wrapper-starrating {
+                    width: 100%;
+                    padding: 0;
+                    margin: sass.$space15 0;
+                }
+            }
+            #artdv-support-attachment-list {
+                width: calc((100% - 200px) * 0.75);
+            }
+            .artdv-support-button-wrapper {
+                a,
+                button {
+                    margin: 0 sass.$space15;
+                }
+            }
+        }
+    }
+
     artdv-carousel {
         .artdv-carousel-wrapper {
             padding: sass.$comp-padding-small 0;
@@ -1242,7 +1351,7 @@
 // 500px > width < 768px
 @media screen and (width <= sass.$device-phone-landscape) {
     section {
-        $modified-nav-height: 350px;
+        $modified-nav-height: 450px;
         min-height: calc(100vh - $modified-nav-height - var(--view-nav-width))!important;
     }
 
@@ -1283,6 +1392,11 @@
             }
             #artdv-about-part3 {
                 height: 60vh;
+            }
+            #artdv-about-part4 {
+                #artdv-about-interview-wrapper {
+                    width: 100%;
+                }
             }
         }
     }
@@ -1500,6 +1614,24 @@
         }
     }
 
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-category i {
+                width: 40px;
+                height: 40px;
+            }
+            .artdv-support-hint {
+                width: calc(100% - 20px);
+            }
+            form {
+                width: calc(100% - 20px);
+            }
+            #artdv-support-attachment-list {
+                width: calc(100% - 20px);
+            }
+        }
+    }
+
     artdv-carousel {
         .artdv-carousel-wrapper {
             padding: sass.$comp-padding-medium 0;
@@ -1567,7 +1699,7 @@
 // 400px > width < 500px
 @media screen and (width <= sass.$device-phone-portrait) {
     section {
-        min-height: calc(100% - (300px + var(--view-nav-width)))!important;
+        min-height: calc(100vh - (var(--view-footer-height) + var(--view-nav-width)))!important;
     }
 
     .artdv-about {
@@ -1774,6 +1906,15 @@
             }
             .artdv-shipping-triple {
                 width: calc(100% - ($shipping-padding * 2) - ($responsive-margin * 2));
+            }
+        }
+    }
+
+    .artdv-support {
+        .artdv-support-content {
+            .artdv-support-category i {
+                width: 35px;
+                height: 35px;
             }
         }
     }

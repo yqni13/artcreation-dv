@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
 import { filter, tap } from "rxjs";
 import { AssetsCategory } from "../../../../shared/enums/assets-category.enum";
-import { AssetsItem } from "../../../../api/models/assets.response.interface";
+import { AssetsItem } from "../../../../api/interfaces/assets.response.interface";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
 import { AssetsAPIService } from "../../../../api/services/assets.api.service";
 import { StorageRoute } from "../../../../api/routes/storage.route.enum";

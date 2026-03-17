@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
+import { BaseRoute } from "../../api/routes/base.route.enum";
 
 @Component({
     selector: 'app-imprint',
@@ -21,10 +22,10 @@ export class ImprintComponent implements OnInit {
     constructor() {
         this. devData = {
             project: 'artcreation-dv',
-            version: 'v1.3.0',
+            version: 'v1.5.3',
             github: 'https://github.com/yqni13/artcreation-dv/tree/production',
             portfolio: 'https://yqni13.com',
-            email: 'lukas.varga@yqni13.com'
+            contact: BaseRoute.SUPPORT
         };
 
         this. ownerData = {

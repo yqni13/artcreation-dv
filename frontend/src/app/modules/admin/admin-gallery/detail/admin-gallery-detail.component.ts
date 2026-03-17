@@ -8,7 +8,7 @@ import { NavigationService } from "../../../../shared/services/navigation.servic
 import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
 import { ArtTechnique } from "../../../../shared/enums/art-technique.enum";
 import { ArtMedium } from "../../../../shared/enums/art-medium.enum";
-import { GalleryItem } from "../../../../api/models/gallery-response.interface";
+import { GalleryItem } from "../../../../api/interfaces/gallery-response.interface";
 import * as EnumValidators from "../../../../common/helper/enum-converter";
 import { ArtGenre } from "../../../../shared/enums/art-genre.enum";
 import { HttpObservationService } from "../../../../shared/services/http-observation.service";
