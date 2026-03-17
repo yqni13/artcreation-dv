@@ -2,7 +2,7 @@ import { Component, Input } from "@angular/core";
 import { GalleryScrollDirective } from "../../directives/ng-scroll.directive";
 import { Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { GalleryItem } from "../../../api/models/gallery-response.interface";
+import { GalleryItem } from "../../../api/interfaces/gallery-response.interface";
 import { environment } from "../../../../environments/environment";
 import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 

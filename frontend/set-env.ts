@@ -22,7 +22,9 @@ const envConfigFile = `import { Environment } from "./environment.model";
 export const environment: Environment = {
     BUILD_MODE: '${process.env['BUILD_MODE']}',
     STORAGE_URL: '${process.env['CLOUDSTORAGE_TRAFFIC_URL']}',
-    API_BASE_URL: '${process.env['API_URL']}',
+    API_BASE_URL: '${process.env['API_BASE_URL']}',
+    API_SUPPORT_URL: '${process.env['API_SUPPORT_URL']}',
+    API_SUPPORT_KEY: '${process.env['API_SUPPORT_KEY']}',
     IV_POSITION: ${process.env['IVPOSITION']},
     AES_PASSPHRASE: '${process.env['AESPASSPHRASE']}',
     PUBLIC_KEY: \`${modifiedPublicKey}\`

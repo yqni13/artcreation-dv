@@ -7,9 +7,9 @@ import {
     NewsListResponse,
     NewsCreateUpdateResponse,
     NewsDeleteResponse
-} from "../models/news-response.interface"
+} from "../interfaces/news-response.interface"
 import { Observable } from "rxjs";
-import { NewsCreateRequest, NewsUpdateRequest } from "../models/news-request.interface";
+import { NewsCreateRequest, NewsUpdateRequest } from "../interfaces/news-request.interface";
 
 @Injectable({
     providedIn: 'root'

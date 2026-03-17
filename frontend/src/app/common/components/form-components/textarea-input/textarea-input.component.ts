@@ -29,6 +29,7 @@ export class TextareaInputComponent extends AbstractInputComponent {
     @Input() ngClass: string;
     @Input() className: string;
     @Input() rows: number;
+    @Input() maxLength: number;
 
     constructor() {
         super();
@@ -39,5 +40,6 @@ export class TextareaInputComponent extends AbstractInputComponent {
         this.ngClass = '';
         this.className = '';
         this.rows = 0;
+        this.maxLength = 0;
     }
 }

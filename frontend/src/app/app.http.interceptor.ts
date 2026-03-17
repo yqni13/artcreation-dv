@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { BaseRoute } from './api/routes/base.route.enum';
 import { NewsHttpInterceptor } from './common/http/news.http.interceptor';
 import { AssetsHttpInterceptor } from './common/http/assets.http.interceptor';
+import { SupportHttpInterceptor } from './common/http/support.http.interceptor';
 
 
 export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
@@ -24,6 +25,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     const galleryIntercept = inject(GalleryHttpInterceptor);
     const mailIntercept = inject(MailHttpInterceptor);
     const newsIntercept = inject(NewsHttpInterceptor);
+    const supportIntercept = inject(SupportHttpInterceptor);
     const router = inject(Router);
 
     return next(req).pipe(
@@ -46,11 +48,16 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
                 if(httpbody.url?.includes(AdminRoute.MAILING)) {
                     mailIntercept.handleMailResponse(httpEvent as HttpResponse<any>);
                 }
+                if(httpbody.url?.includes('/tickets')
+                || httpbody.url?.includes('/feedback')
+                || httpbody.url?.includes('/feedback-rating')) {
+                    supportIntercept.handleSupportResponse(httpEvent as HttpResponse<any>);
+                }
             }
         })
         ,
         catchError((response) => {
-            handleError(response, httpObservationService, snackbarService, translate, authIntercept, assetsIntercept, galleryIntercept, mailIntercept, newsIntercept, router).catch((err) => {
+            handleError(response, httpObservationService, snackbarService, translate, authIntercept, assetsIntercept, galleryIntercept, mailIntercept, newsIntercept, supportIntercept, router).catch((err) => {
                 console.log("Error handling failed", err);
             })
             
@@ -59,7 +66,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): 
     );
 }
 
-export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, authIntercept: AuthHttpInterceptor, assetsIntercept: AssetsHttpInterceptor, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor, newsIntercept: NewsHttpInterceptor, router: Router) {
+export async function handleError(response: any, httpObserve: HttpObservationService, snackbarService: SnackbarMessageService, translate: TranslateService, authIntercept: AuthHttpInterceptor, assetsIntercept: AssetsHttpInterceptor, galleryIntercept: GalleryHttpInterceptor, mailIntercept: MailHttpInterceptor, newsIntercept: NewsHttpInterceptor, supportIntercept: SupportHttpInterceptor, router: Router) {
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     if(response.url.includes(AdminRoute.AUTH)) {
         authIntercept.handleAuthError(response);
@@ -76,6 +83,11 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
     if(response.url.includes(AdminRoute.MAILING)) {
         mailIntercept.handleMailError(response);
     }
+    if(response.url.includes('/tickets')
+    || response.url.includes('/feedback')
+    || response.url.includes('/feedback-rating')) {
+        supportIntercept.handleSupportError(response);
+    }
 
     await delay(1500); // delay after response animation starts
     
@@ -86,12 +98,18 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
         || response.url.includes(AdminRoute.ASSETS)
         || response.url.includes(AdminRoute.GALLERY)
         || response.url.includes(AdminRoute.MAILING)
-        || response.url.includes(AdminRoute.NEWS))) {
+        || response.url.includes(AdminRoute.NEWS)
+        || response.url.includes('/tickets')
+        || response.url.includes('/feedback')
+        || response.url.includes('/feedback-rating'))) {
+        const errorText = response.url.includes('/tickets') || response.url.includes('/feedback') || response.url.includes('/feedback-rating')
+            ? 'server-500-routes-support'
+            : 'server-500-routes';
         Object.assign(response, {
             error: {
                 headers: {
                     error: 'InternalServerException',
-                    message: 'server-500-routes'
+                    message: errorText
                 }
             }
         })
@@ -113,30 +131,30 @@ export async function handleError(response: any, httpObserve: HttpObservationSer
     }
     // PROPERTY VALIDATION
     else if(response.status === 400) {
-        Object.entries(response.error.headers.data).forEach((entry: any) => {
-            const message = String(entry[1].msg);
-            snackbarService.notifyOnInterceptorError(response, translate.currentLang, message, false);
-        })
+        if(response.error.headers.data) {
+            Object.entries(response.error.headers.data).forEach((entry: any) => {
+                const message = String(entry[1].msg);
+                snackbarService.notifyOnInterceptorError(response, translate.currentLang, message, false);
+            })
+        } else {
+            snackbarService.notifyOnInterceptorError(response, translate.currentLang, response.error.headers.message, false);
+        }
     } 
     // AUTHENTICATION VALIDATION
     else if(response.status === 535) {
         const message = response.error.headers.message ? response.error.headers.message : 'server-535-auth#server';
         snackbarService.notifyOnInterceptorError(response, translate.currentLang, message, false);
     } 
-    else if(response.status === 502 || response.status === 504) {
-        const message = response.error.headers.message ? response.error.headers.message : 'error-unknown';
-        snackbarService.notifyOnInterceptorError(response, translate.currentLang, message, false);
-    }
     // OTHER VALIDATION
-    else if(response.status > 400 || response.status < 500 || response.status === 535) {
+    else if(response.status > 400 || response.status <= 599) {
         const message = response.error.headers.message ? response.error.headers.message : 'error-unknown';
         snackbarService.notifyOnInterceptorError(response, translate.currentLang, message, false);
     }
-    
+
     // browser response log
     console.log("response error: ", response);
     httpObserve.setErrorStatus(response);
-    
+
     // NAVIGATE TO LOGIN IF TOKEN EXPIRED
     if(response.error.headers.error.includes('TokenMissingException')
     && response.error.headers.message.includes('auth-jwt-missing')) {

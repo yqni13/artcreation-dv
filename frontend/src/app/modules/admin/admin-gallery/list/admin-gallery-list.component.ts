@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
-import { GalleryItem } from "../../../../api/models/gallery-response.interface";
+import { GalleryItem } from "../../../../api/interfaces/gallery-response.interface";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
 import { DataShareService } from "../../../../shared/services/data-share.service";
 import { Router } from "@angular/router";
