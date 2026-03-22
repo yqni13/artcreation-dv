@@ -15,12 +15,13 @@ import { filter, Subscription, tap } from "rxjs";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
 import { AuthService } from "../../shared/services/auth.service";
 import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
-import { SupportFeedbackData, SupportTicketData } from "./support-form.interface";
+import { SupportFeedbackData, SupportInitEditParams, SupportTicketData } from "./support-form.interface";
 import { SupportRatingResponse } from "../../api/interfaces/support.interface";
 import { HttpResponse } from "@angular/common/http";
 import { FileUploadService } from "../../shared/services/file-upload.service";
 import { SnackbarMessageService } from "../../shared/services/snackbar.service";
 import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
+import { NavigationService } from "../../shared/services/navigation.service";
 
 @Component({
     selector: 'app-support',
@@ -58,13 +59,16 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     private subscriptionHttpObservationFeedback$: Subscription;
     private subscriptionHttpObservationRating$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
+    private anchor!: HTMLElement;
     private window: any;
     private delay: any;
 
     constructor(
         private readonly fb: FormBuilder,
         private readonly auth: AuthService,
+        private readonly elRef: ElementRef,
         @Inject(DOCUMENT) private document: Document,
+        private readonly navigate: NavigationService,
         private readonly translate: TranslateService,
         private readonly supportApi: SupportAPIService,
         private readonly snackbar: SnackbarMessageService,
@@ -96,6 +100,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     }
 
     ngOnInit() {
+        this.anchor = this.elRef.nativeElement.querySelector(".artdv-support");
         this.subscriptionHttpObservationRating$ = this.httpObservation.ratingStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
@@ -171,12 +176,12 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         });
     }
 
-    private initEdit() {
+    private initEdit(params?: SupportInitEditParams) {
         this.initForm();
         this.supportForm.patchValue({
             attachment: null,
             userEmail: '',
-            option: '',
+            option: params?.option ? params.option : '',
             rating: this.defaultRatingValue,
             device: this.getPlaceholderByDeviceSuggestion(),
             os: '',
@@ -336,10 +341,20 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         this.supportForm.get('rating')?.setValue(this.defaultRatingValue);
     }
 
-    reset() {
-        this.initEdit();
-        this.resetRatingValue.emit(this.defaultRatingValue);
-        this.supportForm.markAsUntouched();
+    async reset(isManually: boolean = false) {
+        if(isManually) {
+            this.isLoadingResponse = true;
+            this.initEdit({ option: this.supportForm.get('option')?.value });
+            this.resetRatingValue.emit(this.defaultRatingValue);
+            this.supportForm.markAsUntouched();
+            this.navigate.scrollToTop(this.anchor, this.document);
+            await this.delay(750);
+            this.isLoadingResponse = false;
+        } else {
+            this.initEdit();
+            this.resetRatingValue.emit(this.defaultRatingValue);
+            this.supportForm.markAsUntouched();
+        }
     }
 
     ngOnDestroy() {

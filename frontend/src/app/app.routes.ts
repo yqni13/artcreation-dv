@@ -31,7 +31,7 @@ export const routes: Routes = [
             showInFooterConnect: false,
             showInFooterInfo: false,
             preloadImages: [
-                '/assets/background/home_bg_01.webp',
+                '/assets/background/home_bg_02.webp',
                 '/assets/background/no-content.webp'
             ]
         }
