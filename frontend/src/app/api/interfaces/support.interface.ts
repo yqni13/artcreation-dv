@@ -1,8 +1,6 @@
 import { SupportDeviceOption } from "../enums/device-option.support.enum";
 import { SupportOption } from "../enums/ticket-option.support.enum";
 
-export interface SupportForm {}
-
 export interface SupportTicketRequest {
     attachment?: any;
     user_email: string,
