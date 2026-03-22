@@ -1,6 +1,5 @@
-# yqni13 | artcreation-dv
-$\texttt{\color{teal}{v1.5.3}}$
-
+# yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
+### $\textsf{\color{brown}{v1.5.6}}$
 
 <br><br>
 
@@ -8,68 +7,77 @@ $\texttt{\color{teal}{v1.5.3}}$
       <img src="frontend/public/assets/readme/responsive_overview.png">
 </div>
 
-### Technology
 
-<div style="display:flex; align-items:center;">    
-      <img src="frontend/public/assets/logo_ico/angular_logo.ico" alt="Angular">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/nodejs_logo32.ico" alt="NodeJS">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/postgresql_logo.ico" alt="PostgreSQL">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/neon_logo.ico" alt="Neon">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/cloudflare_logo.ico" alt="Cloudflare">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/rxjs_logo32.ico" alt="RxJS">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/express_logo.ico" alt="ExpressJS">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/json_logo28.ico" alt="JSON">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/i18n_logo32.ico" alt="i18n">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/eslint_logo.ico" alt="ESLint">&nbsp;&nbsp;&nbsp;
-      <img src="frontend/public/assets/logo_ico/betterstack_logo.ico" alt="BetterStack">&nbsp;&nbsp;&nbsp;
+<div align="center">
+      <a href="https://v19.angular.dev/overview"><img src="frontend/public/assets/logo_ico/angular_logo.ico" alt="Angular"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://nodejs.org/en"><img src="frontend/public/assets/logo_ico/nodejs_logo32.ico" alt="NodeJS"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.postgresql.org/"><img src="frontend/public/assets/logo_ico/postgresql_logo.ico" alt="PostgreSQL"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://neon.com/"><img src="frontend/public/assets/logo_ico/neon_logo.ico" alt="Neon"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.cloudflare.com/developer-platform/products/r2/"><img src="frontend/public/assets/logo_ico/cloudflare_logo.ico" alt="Cloudflare"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://rxjs.dev/"><img src="frontend/public/assets/logo_ico/rxjs_logo32.ico" alt="RxJS"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://expressjs.com/"><img src="frontend/public/assets/logo_ico/express_logo.ico" alt="ExpressJS"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.i18next.com/"><img src="frontend/public/assets/logo_ico/i18n_logo32.ico" alt="i18n"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://betterstack.com/"><img src="frontend/public/assets/logo_ico/betterstack_logo.ico" alt="BetterStack"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 <br>
 
+### $\textsf{\color{teal}Hosting}$
+This project runs live (see link below). The frontend is hosted by <a href="https://app.netlify.com/">Netlify</a>, while the backend is hosted by <a href="https://vercel.com/">Vercel</a>.<br>
+Data and images are managed via PostgreSQL database on <a href="https://neon.tech">Neon</a> and cloudstorage by <a href="https://cloudflare.com">Cloudflare</a>.
+For testing purposes one instance runs on env:stag while the live version runs on env:prod.
 ### visit the <a href="https://artcreation-dv.at">WEBSITE</a>
 
 <br>
 
-## How to:
+## 🪄 $\textsf{\color{salmon}Getting started}$
 
-### Start
+### $\textsf{\color{teal}Prerequisites}$
 
-Create necessary modules (/frontend and /backend):
+- node: v20+
+- Cloudstorage (R2 Object Storage)
+- Betterstack Telemetry (logging)
+
+<br>
+
+### $\textsf{\color{teal}Local setup}$
+
+Download or clone project
+
 ```sh
-$ npm install
+git clone https://github.com/yqni13/artcreation-dv
 ```
 
-Fill env variables for Frontend/Backend with the necessary data/paths and run:
+Create new .env file and fill in your credentials/other env data [(see docs)](./docs/CONFIGURATION.md).
+<br>Navigate/cd into the root paths (/frontend and /backend) and install dependencies via npm:
+```sh
+$ npm ci
+```
+
+Additionally, the script to overwrite env data needs to be configured within set-env.ts (env:prod). Create a local copy [(see docs)](./docs/CONFIGURATION.md) for local development. Start application (frontend) in local environment:
 ```sh
 $ npm run start
 ```
-to autofill environment file with env data and to start on local dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.<br>
-To activate the backend (to use email service for the contact form) run command to start on selected port (default 3000):
+which will open automatically on `http://localhost:4200/`. To run backend, use:
 ```sh
 $ node server.js
 ```
 
-### Build & Deploy
-This project is currently hosted by 4 different hosting services. Frontend is hosted by <a href="https://app.netlify.com/">Netlify</a> and for the backend part <a href="https://vercel.com/">Vercel</a> is used to deploy and host serverless. Data and images are managed via PostgreSQL database on <a href="https://neon.tech">Neon</a> and cloud-storage (R2 Bucket) by <a href="https://cloudflare.com">Cloudflare</a>.
-
 <br>
 
-## Overview
+## 🧩 $\textsf{\color{salmon}Features}$
 
-### $\textsf{\color{teal}Features}$
-
-<dl>
-      <dd>:diamond_shape_with_a_dot_inside: Angular v19 standalone with routing + nested routes on id</dd>
-      <dd>:turtle: Custom preload/lazy loading on viewport/scroll for gallery previews</dd>
-      <dd>:clipboard: Custom form components (text-, textarea- & select-input)</dd>
-      <dd>:newspaper: Custom carousel component</dd>
-      <dd>:new_moon_with_face:/:sun_with_face: Custom color theme (dark/light mode)</dd>
-      <dd>:wrench: Custom validation + service & pipes</dd>
-      <dd>:e-mail: Mail service with node.js & nodemailer for Backend</dd>
-      <dd>:signal_strength: custom interception + custom snackbar modal</dd>
-      <dd>:globe_with_meridians: i18n (internationalization) - translate de/en</dd>
-      <dd>:floppy_disk: PostgreSQL database + cloud-storage to manage data & images</dd>
-      <dd>:iphone: Responsive design 400px > width < 1800px via flexbox & media queries</dd>
-</dl>
+| Feature | Description |
+|---------|-------------|
+| 🪁 Angular | Angular v19 standalone with routing + nested routes on id |
+| 📂 Cloud file handling | Upload/delete via Cloudflare R2 (S3-compatible) - supporting images up to 4MB |
+| 🖼️ Preload | Customized image/video preload on page loading + viewport/scroll |
+| ⌨ Input | Customized form components (text/textarea/select) |
+| 🎠 Carousel | Customized carousel component |
+| 🎨 Themes | Customized theme options (dark/light mode) |
+| ⚠️ Validation | Customized validation in combination with Angular + Express-Validator |
+| 📧 Email | Email service with node.js & nodemailer |
+| 🗯️ Notification | Customized snackbar + extended translation service |
+| 📱 Design | Responsive design 400px > width < 1800px supported via flexbox & media queries |
 
 <br>
 
@@ -93,7 +101,7 @@ Validation checks ensure all required fields are filled, that the reference numb
 
 ### $\textsf{\color{teal}Internationalization}$
 
-To reach an international audience of artists and art enthusiasts, the webpage was initially developed in English, with support for multiple languages implemented using `@ngx-translate/core` and `@ngx-translate/http-loader`.
+To reach an international audience of artists and art enthusiasts, the webpage was initially developed in English, with support for multiple languages implemented using the `ngx-translate` package (@ngx-translate/core + @ngx-translate/http-loader).
 <br><br>
 Currently, two languages are available: English and German (see Figure 3).
 <br><br>
@@ -101,6 +109,7 @@ Static and dynamic texts are translated based on the selection made in the foote
 <br><br>
 To simplify translation maintenance, the `TranslateHttpLoader` was customized to combine multiple `.json` files per language instead of the default single-file approach.
 <br><br>
+
 See [custom translate loader](frontend/public/assets/i18n/custom-translate-loader.ts) for implementation details.
 
 <div align="center">
@@ -168,7 +177,7 @@ In the gallery section, preview thumbnails open in a museum-style view, showing 
 
 ### $\textsf{\color{teal}Database layer}$
 
-PostgreSQL is used as the relational database management system to store all necessary data. The free-tier plan from the Neon hosting service is sufficient for handling all data in this context (see Figure 8, basic findAll request).<br>Migrations are handled with the node package `node-pg-migrate` in the backend (see [help docs](/backend/src/db/migration.md)).
+PostgreSQL is used as the relational database management system to store all necessary data. The free-tier plan from the Neon hosting service is sufficient for handling all data in this context (see Figure 8, basic findAll request).<br>Migrations are handled with the node package `node-pg-migrate` in the backend [(see docs)](/backend/src/db/migration.md)).
 <br><br>
 Image files for "gallery" and "news" elements are not stored in the database; only their paths are saved within the respective entries (see Figure 8, response). Additionally, file input from users (for "gallery" or "news" items) is processed (regarding format and size) and uploaded to a cloud object storage - in this case, an R2 Bucket from `Cloudflare`.
 <br><br>
@@ -185,18 +194,6 @@ Once data is retrieved from the database, the saved image path is concatenated w
       <img src="frontend/public/assets/readme/loading_image.jpg" alt="&nbsp;no picture found">
       Figure 9, v1.0.0-beta.13
 </div>
-
-<br>
-
-### $\textsf{\color{teal}Logging}$
-
-For the UI currently only console logs and snackbar modals inform about errors and warnings. But for the backend layers, the logging framework `Winston` is used in combination with Logtail from `BetterStack` to have easy access and long-term storage (see Figure 10, test phase).
-
-<div align="center">
-      <img src="frontend/public/assets/readme/loading_logs.jpg" alt="&nbsp;no picture found">
-      Figure 10, v1.0.2
-</div>
-
 
 <br>
 
@@ -218,16 +215,27 @@ FROM ${tableNews}
 LEFT JOIN ${tableGallery} ON ${tableNews}.gallery = ${tableGallery}.gallery_id
 ORDER BY ${orderPrio1} DESC
 ```
-The provided image paths allow images to be loaded without additional database queries. The reference number and art genre offer sufficient information to navigate directly from a news article to the corresponding artwork details (see Figure 11).
+The provided image paths allow images to be loaded without additional database queries. The reference number and art genre offer sufficient information to navigate directly from a news article to the corresponding artwork details (see Figure 10).
 
 <div align="center">
       <img src="frontend/public/assets/readme/admin_and_news.gif" alt="&nbsp;no picture found">
-      Figure 11, v1.1.0
+      Figure 10, v1.1.0
 </div>
 
-<br><br>
+<br>
 
-## Testing
+## 📝 $\textsf{\color{salmon}Logging}$
+
+For the UI currently only console logs and snackbar modals inform about errors and warnings. But for the backend layers, the logging framework `Winston` is used in combination with Logtail from `BetterStack` to have easy access and long-term storage (see Figure 11, test phase).
+
+<div align="center">
+      <img src="frontend/public/assets/readme/loading_logs.jpg" alt="&nbsp;no picture found">
+      Figure 11, v1.0.2
+</div>
+
+<br>
+
+## 🔧 $\textsf{\color{salmon}Testing}$
 
 ### $\textsf{\color{teal}Jest}$
 
@@ -236,7 +244,7 @@ Install the packages `@jest/globals`, `@types/jest`, `supertest` additional to `
 ```sh
 npm install jest @jest/globals @types/jest supertest --save-dev
 ```
-Only some basic tests exist currently for utils - see [tests](./backend/tests).<br>
+Only some basic tests exist currently for utils [(see tests)](./backend/tests).<br>
 Run tests on local device by including setup for dotenv/config to provide environment variables:
 ```sh
 set MODE=staging && jest --setupFiles dotenv/config
@@ -248,7 +256,7 @@ or simply save as script command in `package.json` to run `npm test`:
     "test": "set MODE=staging && jest --setupFiles dotenv/config"
   }
 ```
-To automatically check tests before merging feature/development branch further up, a `GitHub Action` is set up, see [main.yml](.github/workflows/main.yml).<br>
+To automatically check tests before merging feature/development branch further up, a `GitHub Action` is set up [(see main.yml)](.github/workflows/main.yml).<br>
 Preventing an unwanted merge with unfinished/failed test run, the project is set up to disable merging until all tests have passed (see Figure 12).
 
 <div align="center">
@@ -257,7 +265,7 @@ Preventing an unwanted merge with unfinished/failed test run, the project is set
 </div>
 
 
-### Cross-browser testing
+### $\textsf{\color{teal}Cross-browser testing}$
 
 <img src="frontend/public/assets/logo_ico/firefox_logo50.ico"> | <img src="frontend/public/assets/logo_ico/chrome_logo50.ico"> | <img src="frontend/public/assets/logo_ico/opera_logo50.ico"> | <img src="frontend/public/assets/logo_ico/edge_logo50.ico"> | <img src="frontend/public/assets/logo_ico/duckduckgo_logo50.ico"> | <img src="frontend/public/assets/logo_ico/brave_logo50.ico">
 |:------:|:------:|:------:|:------:|:------:|:------:|
@@ -271,7 +279,7 @@ Preventing an unwanted merge with unfinished/failed test run, the project is set
 
 <br>
 
-### Angular ESLint
+### $\textsf{\color{teal}Angular ESLint}$
 
 Added angular-eslint to project for next step of testing.<br>
 Install ESLint global via node package manager: 
@@ -291,17 +299,16 @@ $ npm run lint
 <br>
 
 
-## Updates
-[see changelog for all updates](CHANGELOG.md)
+## 📈 $\textsf{\color{salmon}Updates}$
+[see changelog for all updates](./docs/CHANGELOG.md)
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v1.4.3\ =>\ {\textbf{\color{brown}v1.5.3}]}}$ app
-- $\textsf{\color{teal}Addition:}$ Added new service to validate and handle file attachments.
-- $\textsf{\color{orange}Patch:}$ Updated (support component):
-  + responsive design and detection for device suggestion.
-  + validations and notification on invalid send action.
-  + value change for optional data on request send.
+$\textsf{[v1.5.3\ =>\ {\textbf{\color{brown}v1.5.6}]}}$ app
+- $\textsf{\color{black}Deletion:}$ Deleted files regarding docker structure.
+- $\textsf{\color{orange}Patch:}$ Updated:
+  + fn reset(...) (support component) does not change support option on manual reset.
+  + extracted fn scrollToTop(...) to navigation service.
 
 <br>
 
