@@ -22,7 +22,7 @@ export class ImprintComponent implements OnInit {
     constructor() {
         this. devData = {
             project: 'artcreation-dv',
-            version: 'v1.5.3',
+            version: 'v1.5.6',
             github: 'https://github.com/yqni13/artcreation-dv/tree/production',
             portfolio: 'https://yqni13.com',
             contact: BaseRoute.SUPPORT
