@@ -11,7 +11,8 @@ const auth = (isMetaAuth = false) => {
     return async function (req, res, next) {
         try {
             if(isMetaAuth) {
-                if(Secrets.MODE === 'production' && (!req.params.key || (req.params.key !== Secrets.META_API_KEY))) {
+                const key = req.headers('Artdv-Meta-Key');
+                if(Secrets.MODE === 'production' && (key || key !== Secrets.META_API_KEY)) {
                     throw new InvalidCredentialsException('backend-invalid-authkey');
                 }
             } else {

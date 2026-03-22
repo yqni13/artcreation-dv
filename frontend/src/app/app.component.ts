@@ -7,6 +7,7 @@ import { SnackbarMessageService } from './shared/services/snackbar.service';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { LoadingAnimationComponent } from './common/components/animation/loading/loading-animation.component';
 import { AuthService } from './shared/services/auth.service';
+import { NavigationService } from './shared/services/navigation.service';
 
 @Component({
     selector: 'app-root',
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
     private readonly elRef: ElementRef,
     private readonly renderer2: Renderer2,
     private readonly authService: AuthService,
+    private readonly navigate: NavigationService,
     @Inject(DOCUMENT) private readonly document: Document,
   ) {
     this.scrollbarActive = false;
@@ -49,7 +51,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
     this.router.events.subscribe(e => {
       if(e instanceof NavigationStart) {
         this.isNavigating = true;
-        this.scrollToTop();
+        this.navigateToTop();
         this.scrollbarActive = this.scrollbarRoutes.includes(e.url);
       } else if(e instanceof NavigationEnd || e instanceof NavigationCancel || e instanceof NavigationError) {
         this.isNavigating = false;
@@ -62,20 +64,16 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
     this.authService.restoreExpirationTimer();
   }
 
-  scrollToTop() {
-    if(this.scrollAnchor && this.document.scrollingElement !== null) {
-      this.scrollAnchor.scrollTo(0,0);
-      // need to kill the y-offset caused by navbar in mobile mode
-      this.document.scrollingElement.scrollTop = 0;
-    }
-  }
-
   ngAfterViewInit() {
     // disable right click event to prevent image copying
     // to disable right click for single element, use viewchild and this."viewchildname".nativeElement instead document
     this.listenerDefault = this.renderer2.listen(this.document, "contextmenu", function(e) {
       e.preventDefault();
     });
+  }
+
+  navigateToTop() {
+    this.navigate.scrollToTop(this.scrollAnchor, this.document);
   }
 
   ngOnDestroy() {
