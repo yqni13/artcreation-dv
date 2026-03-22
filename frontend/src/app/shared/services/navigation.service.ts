@@ -60,11 +60,11 @@ export class NavigationService {
             .filter((route: any) => route.data?.["showInFooterInfo"]);
     }
 
-    scrollToTop(anchor: HTMLElement, document: Document) {
-        if(anchor && document.scrollingElement !== null) {
+    scrollToTop(scrollAnchor: HTMLElement, document: Document) {
+        if(scrollAnchor && document.scrollingElement !== null) {
             // eslint-disable-next-line @typescript-eslint/no-empty-function
             HTMLElement.prototype.scrollTo = () => {};
-            anchor.scrollTo(0,0);
+            scrollAnchor.scrollTo(0,0);
             // Need to kill the y-offset caused by navbar in mobile mode.
             document.scrollingElement.scrollTop = 0;
         }

@@ -92,7 +92,7 @@
                 "text": {
                     "allowed-types": "Für den Upload sind nur die folgenden Formate erlaubt: {{VAL}}",
                     "max-number-total": "Die max. Anzahl an hochzuladenden Dateien beträgt: {{MAX}}",
-                    "max-size-each": "Die max. Größe für hochzuladende Dateien beträgt jeweils: {{VAL}}"
+                    "max-size-each": "Die max. Größe für hochzuladende Dateien beträgt jeweils: {{VAL}}MB"
                 },
                 "title": {
                     "allowed-types": "Eingeschränkte Formate",

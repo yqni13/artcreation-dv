@@ -3,7 +3,7 @@
 ### $\textsf{\color{skyblue}2026/03/22}$
 
 $\textsf{[v1.5.3\ =>\ {\textbf{\color{brown}v1.5.6}]}}$ app
-- $\textsf{\color{black}Deletion:}$ Deleted files regarding docker structure.
+- $\textsf{\color{black}Deletion:}$ Deleted files related to the docker configuration.
 - $\textsf{\color{orange}Patch:}$ Updated:
   + fn reset(...) (support component) does not change support option on manual reset.
   + extracted fn scrollToTop(...) to navigation service.

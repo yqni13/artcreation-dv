@@ -59,7 +59,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     private subscriptionHttpObservationFeedback$: Subscription;
     private subscriptionHttpObservationRating$: Subscription;
     private subscriptionHttpObservationError$: Subscription;
-    private anchor!: HTMLElement;
+    private scrollAnchor!: HTMLElement;
     private window: any;
     private delay: any;
 
@@ -100,7 +100,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     }
 
     ngOnInit() {
-        this.anchor = this.elRef.nativeElement.querySelector(".artdv-support");
+        this.scrollAnchor = this.elRef.nativeElement.querySelector(".artdv-support");
         this.subscriptionHttpObservationRating$ = this.httpObservation.ratingStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
@@ -341,13 +341,13 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         this.supportForm.get('rating')?.setValue(this.defaultRatingValue);
     }
 
-    async reset(isManually: boolean = false) {
-        if(isManually) {
+    async reset(isManuallyReset: boolean = false) {
+        if(isManuallyReset) {
             this.isLoadingResponse = true;
             this.initEdit({ option: this.supportForm.get('option')?.value });
             this.resetRatingValue.emit(this.defaultRatingValue);
             this.supportForm.markAsUntouched();
-            this.navigate.scrollToTop(this.anchor, this.document);
+            this.navigate.scrollToTop(this.scrollAnchor, this.document);
             await this.delay(750);
             this.isLoadingResponse = false;
         } else {

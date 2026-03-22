@@ -24,7 +24,7 @@
 ### $\textsf{\color{teal}Hosting}$
 This project runs live (see link below). The frontend is hosted by <a href="https://app.netlify.com/">Netlify</a>, while the backend is hosted by <a href="https://vercel.com/">Vercel</a>.<br>
 Data and images are managed via PostgreSQL database on <a href="https://neon.tech">Neon</a> and cloudstorage by <a href="https://cloudflare.com">Cloudflare</a>.
-For testing purposes one instance runs on env:stag while the live version runs on env:prod.
+For testing purposes, one instance runs on env:stag, while the live version runs on env:prod.
 ### visit the <a href="https://artcreation-dv.at">WEBSITE</a>
 
 <br>
@@ -53,7 +53,7 @@ Create new .env file and fill in your credentials/other env data [(see docs)](./
 $ npm ci
 ```
 
-Additionally, the script to overwrite env data needs to be configured within set-env.ts (env:prod). Create a local copy [(see docs)](./docs/CONFIGURATION.md) for local development. Start application (frontend) in local environment:
+Additionally, the script to overwrite env data needs to be configured within `set-env.ts` (env:prod). Create a local copy [(see docs)](./docs/CONFIGURATION.md) for local development. Start application (frontend) in local environment:
 ```sh
 $ npm run start
 ```
@@ -105,7 +105,7 @@ To reach an international audience of artists and art enthusiasts, the webpage w
 <br><br>
 Currently, two languages are available: English and German (see Figure 3).
 <br><br>
-Static and dynamic texts are translated based on the selection made in the footer. The selected language is saved in `localStorage`, similar to the color theme, and persists between visits.
+Static and dynamic texts are translated based on the selection made in the footer. The selected language is saved in `localstorage`, similar to the color theme, and persists between visits.
 <br><br>
 To simplify translation maintenance, the `TranslateHttpLoader` was customized to combine multiple `.json` files per language instead of the default single-file approach.
 <br><br>
@@ -123,7 +123,7 @@ See [custom translate loader](frontend/public/assets/i18n/custom-translate-loade
 
 In case of unexpected responses or to visually confirm actions, a custom snackbar appears at the top right (or centered on screens smaller than 500px). The snackbar can be triggered with just two required inputs (title + type), and optionally extended with up to five configuration parameters.
 <br><br>
-To enhance contrast, each of the four message types use a distinct color: $\textsf{\color{red}{error}}$, $\textsf{\color{royalblue}{info}}$, $\textsf{\color{green}{success}}$, $\textsf{\color{orange}{warning}}$.
+To enhance contrast, each of the four message types uses a distinct color: $\textsf{\color{red}{error}}$, $\textsf{\color{royalblue}{info}}$, $\textsf{\color{green}{success}}$, $\textsf{\color{orange}{warning}}$.
 
 Figure 4 shows an example error message indicating that the email could not be sent (highlighted in red), triggered by an HTTP interceptor when no backend is available.
 
@@ -151,7 +151,7 @@ Figure 5 illustrates how 6 images inside the viewport, along with the next 3 row
 
 ### $\textsf{\color{teal}Theme settings}$
 
-The webpage offeres two theme settings: $\textsf{\color{gray}{dark mode}}$ & $\textsf{\color{goldenrod}{light mode}}$. The information on the active setting is stored in the localstorage with dark mode as default setting at the beginning.
+The webpage offers two theme settings: $\textsf{\color{gray}{dark mode}}$ & $\textsf{\color{goldenrod}{light mode}}$. The active setting is stored in the localstorage with dark mode as the default.
 
 <div align="center">
       <img src="frontend/public/assets/readme/responsive_darkmode.jpg">
@@ -164,7 +164,7 @@ The webpage offeres two theme settings: $\textsf{\color{gray}{dark mode}}$ & $\t
 
 ### $\textsf{\color{teal}Reactive images}$
 
-Most images are linked with additional logic for either displaying more details or scaling up. In the news archive, text content is shown, and clicking the magnifier icon displays the image in full resolution.
+Most images have additional logic attached for either displaying more details or scaling them up. In the news archive, additional text content is shown; clicking the magnifier icon displays the image in full resolution.
 <br><br>
 In the gallery section, preview thumbnails open in a museum-style view, showing all available details about the artwork. Clicking the image again displays it at maximum resolution (see Figure 7).
 
@@ -177,11 +177,11 @@ In the gallery section, preview thumbnails open in a museum-style view, showing 
 
 ### $\textsf{\color{teal}Database layer}$
 
-PostgreSQL is used as the relational database management system to store all necessary data. The free-tier plan from the Neon hosting service is sufficient for handling all data in this context (see Figure 8, basic findAll request).<br>Migrations are handled with the node package `node-pg-migrate` in the backend [(see docs)](/backend/src/db/migration.md)).
+PostgreSQL is used as the relational database management system to store all necessary data. The free-tier plan from the Neon hosting service is sufficient to handle all data in this context (see Figure 8, basic findAll request).<br>Migrations are handled with the node package `node-pg-migrate` in the backend [(see docs)](/backend/src/db/migration.md)).
 <br><br>
-Image files for "gallery" and "news" elements are not stored in the database; only their paths are saved within the respective entries (see Figure 8, response). Additionally, file input from users (for "gallery" or "news" items) is processed (regarding format and size) and uploaded to a cloud object storage - in this case, an R2 Bucket from `Cloudflare`.
+Image files for "gallery" and "news" elements are not stored in the database; only their paths are saved within the respective entries (see Figure 8, response). Additionally, files submitted by users (for "gallery" or "news" items) are processed (regarding format and size) and uploaded to a cloud object storage, in this case an R2 bucket from `Cloudflare`.
 <br><br>
-Once data is retrieved from the database, the saved image path is concatenated with a cloud-specific access URL to form the full image URL (see Figure 9, red highlight). The images are then loaded from the cloud or cache.
+Once the data is retrieved from the database, the saved image path is concatenated with a cloud-specific access URL to form the full image URL (see Figure 9, red highlight). The images are then loaded from the cloud or cache.
 
 <div align="center">
       <img src="frontend/public/assets/readme/loading_data.jpg" alt="&nbsp;no picture found">
@@ -199,11 +199,11 @@ Once data is retrieved from the database, the saved image path is concatenated w
 
 ### $\textsf{\color{teal}Administration}$
 
-Data related to the "gallery" and "news" elements can be managed by the administrator via login and a dedicated administration area. While "gallery" data is accessible through the "gallery" section in the navigation bar, "news" items are displayed on the start page and in the archive. On the start page, the latest three "news" entries are presented using a carousel component.
+Data related to the "gallery" and "news" elements can be managed by the administrator via login and a dedicated administration area. While "gallery" data is accessible through the "gallery" section in the navigation bar, "news" items are displayed on the "home" page and in the archive. On the "home" page, the three latest "news" entries are presented using a carousel component.
 <br><br>
-The archive lists all "news" entries in descending chronological order. Features such as text-based search and sorting will be available in a later version.<br>
+The archive lists all "news" entries in descending chronological order. Features such as text-based search and sorting will be available in a future version.<br>
 
-The application supports single-file uploads (maximum 10MB) from the user’s local device to associate an image with a newly created item. Alternatively, a "news" item can be linked to an existing "gallery" entry (see Figure 11: select an existing artwork). Using a foreign key referencing the linked "gallery" item's ID, a `LEFT JOIN` SQL query is used to retrieve the necessary and up-to-date data.
+The application supports single-file uploads (maximum 4MB) from the user’s local device to associate an image with a newly created item. Alternatively, a "news" item can be linked to an existing "gallery" entry (see Figure 11: select an existing artwork). Using a foreign key referencing the linked "gallery" item's ID, a `LEFT JOIN` SQL query is used to retrieve the necessary and up-to-date data.
 ```sh
 SELECT
   ${tableNews}.*,
@@ -226,7 +226,7 @@ The provided image paths allow images to be loaded without additional database q
 
 ## 📝 $\textsf{\color{salmon}Logging}$
 
-For the UI currently only console logs and snackbar modals inform about errors and warnings. But for the backend layers, the logging framework `Winston` is used in combination with Logtail from `BetterStack` to have easy access and long-term storage (see Figure 11, test phase).
+Currently, for the UI, only console logs and snackbar notifications inform users about errors and warnings. For the backend, the logging framework `Winston` is used in combination with Logtail from `BetterStack` for easy access and long-term storage (see Figure 11, test phase).
 
 <div align="center">
       <img src="frontend/public/assets/readme/loading_logs.jpg" alt="&nbsp;no picture found">
@@ -239,8 +239,8 @@ For the UI currently only console logs and snackbar modals inform about errors a
 
 ### $\textsf{\color{teal}Jest}$
 
-Added `jest` testing framework to project providing unit tests and integration tests for the `backend`.<br>
-Install the packages `@jest/globals`, `@types/jest`, `supertest` additional to `jest`:
+The `jest` testing framework was added to the project, providing unit-tests and integration-tests for the backend.<br>
+Install the packages `@jest/globals`, `@types/jest` and `supertest` in addition to `jest`:
 ```sh
 npm install jest @jest/globals @types/jest supertest --save-dev
 ```
@@ -256,8 +256,8 @@ or simply save as script command in `package.json` to run `npm test`:
     "test": "set MODE=staging && jest --setupFiles dotenv/config"
   }
 ```
-To automatically check tests before merging feature/development branch further up, a `GitHub Action` is set up [(see main.yml)](.github/workflows/main.yml).<br>
-Preventing an unwanted merge with unfinished/failed test run, the project is set up to disable merging until all tests have passed (see Figure 12).
+To automatically run tests before merging a feature/development branch upstream, a `GitHub Action` is set up [(see main.yml)](.github/workflows/main.yml).<br>
+To prevent an unwanted merge due to an unfinished or failed test run, the project is set up to disable merging until all tests have passed (see Figure 12).
 
 <div align="center">
     <img src="frontend/public/assets/readme/github-action-jest.jpg" alt="&nbsp;no picture found">
@@ -281,7 +281,7 @@ Preventing an unwanted merge with unfinished/failed test run, the project is set
 
 ### $\textsf{\color{teal}Angular ESLint}$
 
-Added angular-eslint to project for next step of testing.<br>
+Angular ESLint was added to the project as the next step of testing.<br>
 Install ESLint global via node package manager: 
 ```sh 
 $ npm install -g eslint
@@ -305,7 +305,7 @@ $ npm run lint
 ### $\textsf{\color{forestgreen}last update:}$
 
 $\textsf{[v1.5.3\ =>\ {\textbf{\color{brown}v1.5.6}]}}$ app
-- $\textsf{\color{black}Deletion:}$ Deleted files regarding docker structure.
+- $\textsf{\color{black}Deletion:}$ Deleted files related to the docker configuration.
 - $\textsf{\color{orange}Patch:}$ Updated:
   + fn reset(...) (support component) does not change support option on manual reset.
   + extracted fn scrollToTop(...) to navigation service.

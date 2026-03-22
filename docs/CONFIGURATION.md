@@ -7,11 +7,11 @@
 | SECRET_META_API_KEY | create yourself |
 | SECRET_IV_POS | decide for yourself |
 | SECRET_AES_PASSPHRASE | decide for yourself |
-| SECRET_HOME_ADDRESS | central address to handle calculations from |
+| SECRET_HOME_ADDRESS | central address to handle routes from |
 | SECRET_ADMIN_... | decide for yourself |
 | SECRET_CRYPTO_KEY | decide for yourself |
 | SECRET_DB_..._NEON | can be renamed - use your hosted database credentials |
-| SECRET_EMAIL_PASS | password from EMAIL_SENDER |
+| SECRET_EMAIL_PASS | password for EMAIL_SENDER |
 | SECRET_CLOUDSTORAGE_... | get from your cloudstorage account |
 | SECRET_BETTERSTACK_... | get from your Betterstack account |
 
