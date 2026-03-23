@@ -69,7 +69,7 @@
                 "InvalidApiKeyException": "Ungültiger API-Key",
                 "InvalidCredentialsException": "Ungültige Anmeldedaten",
                 "InvalidFilesException": "Fehler im Anhang",
-                "InvalidPropertiesException": "Ungültiger DatenSatz",
+                "InvalidPropertiesException": "Ungültiger Datensatz",
                 "InvalidTokenException": "Ungültiger Token",
                 "InvalidUsersException": "User ungültig",
                 "JWTExpirationException": "Sitzung abgelaufen",
@@ -91,8 +91,8 @@
             "file-upload": {
                 "text": {
                     "allowed-types": "Für den Upload sind nur die folgenden Formate erlaubt: {{VAL}}",
-                    "max-number-total": "Die max Anzahl an hochzuladenden Dateien beträgt: {{MAX}}",
-                    "max-size-each": "Die max. Größe für hochzuladende Dateien beträgt jeweils: {{VAL}}"
+                    "max-number-total": "Die max. Anzahl an hochzuladenden Dateien beträgt: {{MAX}}",
+                    "max-size-each": "Die max. Größe für hochzuladende Dateien beträgt jeweils: {{VAL}}MB"
                 },
                 "title": {
                     "allowed-types": "Eingeschränkte Formate",
