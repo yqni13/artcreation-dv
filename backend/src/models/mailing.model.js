@@ -1,4 +1,4 @@
-const { AuthenticationException, UnexpectedException } = require("../utils/exceptions/common.exception");
+const { AuthenticationException, UnexpectedException, RequestExceedMaxException } = require("../utils/exceptions/common.exception");
 const nodemailer = require('nodemailer');
 const Secrets = require('../utils/secrets.utils');
 const { decryptRSA, decryptAES } = require('../utils/crypto.utils');
@@ -36,6 +36,8 @@ class MailingModel {
             });
             if(error.status === 535) {
                 throw new AuthenticationException('server-535-auth#email-service', { data: error.message});
+            } else if(error.status === 450) {
+                throw new RequestExceedMaxException();
             } else {
                 throw new UnexpectedException();
             }

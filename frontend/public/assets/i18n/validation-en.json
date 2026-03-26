@@ -29,6 +29,7 @@
                 "support-arg-forbidden": "Your request contains unauthorized data. Please check your input.",
                 "support-arg-required": "Your request is missing required data. Please check your input.",
                 "support-blocked-users": "Users with this email address are excluded from support. No further requests will be accepted.",
+                "support-constraint-feedback": "A rating with feedback already exists for your email address. This feedback has not been reviewed yet. Only after the review process is complete can a new rating be accepted. Please try again later.",
                 "support-dbquery-error": "Due to a technical error, your request could not be processed. Please try again later.",
                 "support-files-invalid-name": "Invalid file name detected. The file name has to follow a specific structure: [name] + \".\" + [type] - otherwise, unexpected errors may occur.",
                 "support-files-mimetype": "Invalid file type detected. Only files of the following types are supported: \".webp\", \".png\", \".jpeg\", \".jpg\", \".jpe\", \".pjpg\", \".jfif\", \".jfif-tbnl\", \".jif\" and \".png\"",
