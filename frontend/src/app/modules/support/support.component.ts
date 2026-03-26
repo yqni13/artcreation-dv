@@ -1,5 +1,5 @@
-import { CommonModule, DOCUMENT } from "@angular/common";
-import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, OnDestroy, OnInit, ViewChild, DOCUMENT } from "@angular/core";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SupportAPIService } from "../../api/services/support.api.service";

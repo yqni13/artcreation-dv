@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Inject, Injectable } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
+import { Inject, Injectable, DOCUMENT } from "@angular/core";
+
 import { ThemeOption } from "../enums/theme-option.enum";
 import { ThemeObservationService } from "./theme-observation.service";
 
