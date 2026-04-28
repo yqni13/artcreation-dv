@@ -61,7 +61,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.subscriptionHttpObservationError$ = new Subscription();
         this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-        this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as any;
+        this.currentNavigation = this.router.currentNavigation()?.extras.state as any;
         this.tokenIdGalleryFilter = 'local_gallery-filter';
     }
     

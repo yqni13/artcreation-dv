@@ -99,7 +99,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
         this.storageDomain = environment.STORAGE_URL;
 
         // to get routing state, result only returns in constructor
-        this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as {activeGenre: string, artwork: GalleryItem};
+        this.currentNavigation = this.router.currentNavigation()?.extras.state as {activeGenre: string, artwork: GalleryItem};
         
         this.subscriptionHttpObservationFindAll$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();

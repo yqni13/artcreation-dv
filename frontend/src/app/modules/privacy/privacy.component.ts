@@ -1,5 +1,5 @@
-import { CommonModule, DOCUMENT } from "@angular/common";
-import { Component, Inject } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Component, Inject, DOCUMENT } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import * as content from "../../../../public/assets/i18n/privacy-en.json";
 

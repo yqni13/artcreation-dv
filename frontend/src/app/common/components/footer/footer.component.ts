@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, HostListener, Inject, OnInit } from "@angular/core";
+import { Component, HostListener, Inject, OnInit, DOCUMENT } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
 import { Route, RouterModule } from "@angular/router";
-import { CommonModule, DOCUMENT } from "@angular/common";
+import { CommonModule } from "@angular/common";
 import { SnackbarMessageService } from "../../../shared/services/snackbar.service";
 import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
