@@ -1,29 +1,31 @@
 <div class="artdv-text-wrapper {{className}}" ngClass="{{ngClass}}">
-    <input 
-        type="{{inputType}}"
-        class="class-type-{{inputType}}"
-        placeholder="{{placeholder}}"
-        [readonly]="readonly"
-        [formControl]="formControl"
-        (input)="onInputChange($event)"
-        #isAutoFocus
-    >
-    <i
-        class="icon-EyeClosed"
-        *ngIf="ngClass === 'artdv-input-password' && !showPassword"
-        (click)="setPasswordVisibility(true)"
-        (keydown.enter)="setPasswordVisibility(true)"
-        [attr.aria-disabled]="true"
-    ></i>
-    <i
-        class="icon-EyeOpen"
-        *ngIf="ngClass === 'artdv-input-password' && showPassword"
-        (click)="setPasswordVisibility(false)"
-        (keydown.enter)="setPasswordVisibility(false)"
-        [attr.aria-disabled]="true"
-    ></i>
-    <artdv-validation
-        [ngControl]="formControl"
-        [fieldName]="fieldName"
-    ></artdv-validation>
+	<input
+		type="{{inputType}}"
+		class="class-type-{{inputType}}"
+		placeholder="{{placeholder}}"
+		[readonly]="readonly"
+		[formControl]="formControl"
+		(input)="onInputChange($event)"
+		#isAutoFocus
+	>
+	@if (ngClass === 'artdv-input-password' && !showPassword) {
+		<i
+			class="icon-EyeClosed"
+			(click)="setPasswordVisibility(true)"
+			(keydown.enter)="setPasswordVisibility(true)"
+			[attr.aria-disabled]="true"
+		></i>
+	}
+	@if (ngClass === 'artdv-input-password' && showPassword) {
+		<i
+			class="icon-EyeOpen"
+			(click)="setPasswordVisibility(false)"
+			(keydown.enter)="setPasswordVisibility(false)"
+			[attr.aria-disabled]="true"
+		></i>
+	}
+	<artdv-validation
+		[ngControl]="formControl"
+		[fieldName]="fieldName"
+	></artdv-validation>
 </div>

@@ -1,16 +1,14 @@
-import { CommonModule } from "@angular/common";
 import { Component, Inject, DOCUMENT } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import * as content from "../../../../public/assets/i18n/privacy-en.json";
 
 @Component({
     selector: 'app-privacy',
-    templateUrl: './privacy.component.html',
-    styleUrl: './privacy.component.scss',
     imports: [
-        CommonModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './privacy.component.html',
+    styleUrl: './privacy.component.scss'
 })
 export class PrivacyComponent {
 

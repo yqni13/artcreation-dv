@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FilterNewsService } from "../../shared/services/filter-news.service";
 import { CarouselComponent } from "../../common/components/carousel/carousel.component";
-import { CommonModule } from "@angular/common";
 import { TranslateModule } from "@ngx-translate/core";
 import { filter, Subscription, tap } from "rxjs";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
@@ -19,14 +18,13 @@ import { environment } from "../../../environments/environment";
 
 @Component({
     selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrl: './home.component.scss',
     imports: [
-        CommonModule,
         CarouselComponent,
         CarouselMediaComponent,
         TranslateModule
     ],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
     providers: [CacheCheckPipe]
 })
 export class HomeComponent implements OnInit {

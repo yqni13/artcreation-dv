@@ -1,16 +1,14 @@
-import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { BaseRoute } from "../../api/routes/base.route.enum";
 
 @Component({
     selector: 'app-imprint',
+    imports: [
+        TranslateModule
+    ],
     templateUrl: './imprint.component.html',
     styleUrl: './imprint.component.scss',
-    imports: [
-        CommonModule,
-        TranslateModule
-    ]
 })
 export class ImprintComponent implements OnInit {
 
