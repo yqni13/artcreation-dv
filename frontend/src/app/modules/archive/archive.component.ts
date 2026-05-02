@@ -16,8 +16,6 @@ import { ArtGenre } from "../../shared/enums/art-genre.enum";
 
 @Component({
     selector: 'app-archive',
-    templateUrl: './archive.component.html',
-    styleUrl: './archive.component.scss',
     imports: [
         CacheCheckPipe,
         CommonModule,
@@ -26,6 +24,8 @@ import { ArtGenre } from "../../shared/enums/art-genre.enum";
         LoadingAnimationComponent,
         TranslateModule
     ],
+    templateUrl: './archive.component.html',
+    styleUrl: './archive.component.scss',
     providers: [CacheCheckPipe]
 })
 export class ArchiveComponent implements OnInit, OnDestroy {

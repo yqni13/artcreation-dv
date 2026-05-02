@@ -16,11 +16,11 @@ import { FilterNewsService } from '../../../../shared/services/filter-news.servi
 
 @Component({
     selector: 'app-admin-news-list',
-    templateUrl: './admin-news-list.component.html',
-    styleUrl: '../../admin.component.scss',
     imports: [
         ...AdminListImportsModule
-    ]
+    ],
+    templateUrl: './admin-news-list.component.html',
+    styleUrl: '../../admin.component.scss'
 })
 export class AdminNewsListComponent extends AbstractAdminListComponent implements OnInit, OnDestroy {
 

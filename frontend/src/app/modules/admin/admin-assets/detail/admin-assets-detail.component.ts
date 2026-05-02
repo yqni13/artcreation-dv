@@ -22,13 +22,13 @@ import { DateTimePickerPipe } from "../../../../common/pipes/datetime-picker.pip
 
 @Component({
     selector: 'app-admin-assets-detail',
-    templateUrl: './admin-assets-detail.component.html',
-    styleUrl: '../../admin.component.scss',
     imports: [
         TextInputComponent,
         SelectInputComponent,
         ...AdminDetailImportsModule
     ],
+    templateUrl: './admin-assets-detail.component.html',
+    styleUrl: '../../admin.component.scss',
     providers: [
         CacheCheckPipe,
         DateTimePickerPipe

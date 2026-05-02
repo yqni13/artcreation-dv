@@ -1,7 +1,7 @@
 import { SnackbarOption } from "../enums/snackbar-option.enum";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export declare interface SnackbarMessage {
+export interface SnackbarMessage {
     title: string,
     text?: string,
     autoClose?: boolean,
@@ -10,7 +10,7 @@ export declare interface SnackbarMessage {
     displayHandler?: any,
 }
 
-export declare interface SnackbarParameter {
+export interface SnackbarParameter {
     val: string | null,
     len: string | null,
     min: string | null,

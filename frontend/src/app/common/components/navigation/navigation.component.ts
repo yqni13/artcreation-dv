@@ -12,13 +12,13 @@ import { ThemeHandlerService } from "../../../shared/services/theme-handler.serv
 
 @Component({
     selector: 'artdv-navigation',
-    templateUrl: './navigation.component.html',
-    styleUrl: './navigation.component.scss',
     imports: [
         CommonModule,
         RouterModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './navigation.component.html',
+    styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit, AfterViewInit {
 

@@ -15,7 +15,7 @@ import { AdminRoute } from "../../../api/routes/admin.route.enum";
         TranslateModule
     ],
     templateUrl: './img-upload.component.html',
-    styleUrl: './img-upload.component.scss',
+    styleUrl: './img-upload.component.scss'
 })
 export class ImgUploadComponent implements OnInit, OnDestroy {
 

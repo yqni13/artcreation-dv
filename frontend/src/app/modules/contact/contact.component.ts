@@ -24,8 +24,6 @@ import { TextCaseOption } from '../../shared/enums/text-case.enum';
 
 @Component({
     selector: 'app-contact',
-    templateUrl: './contact.component.html',
-    styleUrl: './contact.component.scss',
     imports: [
         CommonModule,
         CastAbstractToFormControlPipe,
@@ -38,6 +36,8 @@ import { TextCaseOption } from '../../shared/enums/text-case.enum';
         TextareaInputComponent,
         TranslateModule
     ],
+    templateUrl: './contact.component.html',
+    styleUrl: './contact.component.scss',
     providers: [FloatPrecisionPipe]
 })
 export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {

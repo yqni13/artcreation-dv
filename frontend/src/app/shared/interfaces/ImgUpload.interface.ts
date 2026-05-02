@@ -1,11 +1,11 @@
 import { WritableSignal } from "@angular/core"
 
-export declare interface ImgUploadData {
+export interface ImgUploadData {
     files: File,
     target: any
 }
 
-export declare interface ImgUploadInformation {
+export interface ImgUploadInformation {
     hasFile: boolean,
     imageSize: WritableSignal<number>,
     imageName: WritableSignal<string>,
