@@ -29,6 +29,7 @@
                 "support-arg-forbidden": "Ihre Anfrage enthält unerlaubte Daten. Bitte kontrollieren Sie Ihre Angaben.",
                 "support-arg-required": "Ihrer Anfrage fehlen erforderliche Daten. Bitte kontrollieren Sie Ihre Angaben.",
                 "support-blocked-users": "User mit dieser Email-Adresse sind vom Support ausgeschlossen. Es werden keine Anfragen mehr akzeptiert.",
+                "support-constraint-feedback": "Es existiert für Ihre Email-Adresse bereits eine Bewertung mit Feedback. Dieses Feedback wurde noch nicht überprüft. Erst wenn die Überprüfung durchgeführt wurde, kann eine neue Bewertung angenommen werden. Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.",
                 "support-dbquery-error": "Aufgrund eines technischen Fehlers wurde Ihre Anfrage nicht durchgeführt. Bitte versuchen Sie es später erneut.",
                 "support-files-invalid-name": "Ungültiger Dateiname erkannt. Der Dateiname muss sich nach folgender Struktur richten: [Name] + \".\" + [Typ], da es sonst zu unerwarteten Fehlern kommen kann.",
                 "support-files-mimetype": "Ungültiger Dateityp erkannt. Unterstützt werden nur Dateien vom Typ: \".webp\", \".png\", \".jpeg\", \".jpg\", \".jpe\", \".pjpg\", \".jfif\", \".jfif-tbnl\", \".jif\" und \".png\"",

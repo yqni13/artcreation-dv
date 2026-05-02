@@ -1,5 +1,5 @@
 # yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
-### $\textsf{\color{brown}{v2.0.0}}$
+### $\textsf{\color{brown}{v2.0.2}}$
 
 <br><br>
 
@@ -304,8 +304,10 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v1.5.6\ =>\ {\textbf{\color{brown}v2.0.0}]}}$ app
-- $\textsf{\color{green}Change:}$ Upgraded Angular framework from v19 to v21.
+$\textsf{[v2.0.0\ =>\ {\textbf{\color{brown}v2.0.2}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated:
+  + dependencies to solve vulnerabilities (frontend + backend)
+  + nodemailer settings due to config errors of updated api version
 
 <br>
 
