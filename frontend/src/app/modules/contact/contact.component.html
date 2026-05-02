@@ -1,158 +1,159 @@
 <section class="artdv-contact">
-    <header>
-        <h1>{{'modules.contact.title' | translate}}</h1>
-    </header>
-    <div class="artdv-head-message">
-        <p>
-            {{'modules.contact.message' | translate}}
-            <a
-                class="artdv-nav-routes artdv-anchor"
-                [attr.aria-disabled]="true"
-                routerLink="/faq"
-            >FAQ</a>
-        </p>
-    </div>
-    <div class="artdv-contact-content-wrapper">
-        <div class="artdv-contact-content">
-            <form [formGroup]="contactForm">
-                <div class="artdv-form-item artdv-form-multiple">
+	<header>
+		<h1>{{'modules.contact.title' | translate}}</h1>
+	</header>
+	<div class="artdv-head-message">
+		<p>
+			{{'modules.contact.message' | translate}}
+			<a
+				class="artdv-nav-routes artdv-anchor"
+				[attr.aria-disabled]="true"
+				routerLink="/faq"
+			>FAQ</a>
+		</p>
+	</div>
+	<div class="artdv-contact-content-wrapper">
+		<div class="artdv-contact-content">
+			<form [formGroup]="contactForm">
+				<div class="artdv-form-item artdv-form-multiple">
 
-                    <!-- SUBJECT -->
-                    <artdv-selectinput
-                        [ngStyle]="{'width': '50%'}"
-                        [className]="'artdv-form-left-select'"
-                        [placeholder]="('modules.contact.form.placeholders.subject' | translate) + '*'"
-                        [formControl]="contactForm.get('subject') | controlCast"
-                        [options]="subjectOptions"
-                        [optionsTranslateRoot]="'shared.enum.contact-subject.'"
-                        [fieldName]="'modules.contact.form.fieldNames.subject' | translate"
-                        (byChange)="configRefNrByType()"
-                        [ngClass]="selectedParams['subject'] === subjectOptions.artOrder ||
-                        selectedParams['subject'] === subjectOptions.specificInformation 
-                        ? 'artdv-query-value artdv-readonly' 
-                        : ''"
-                    ></artdv-selectinput>
+					<!-- SUBJECT -->
+					<artdv-selectinput
+						[ngStyle]="{'width': '50%'}"
+						[className]="'artdv-form-left-select'"
+						[placeholder]="('modules.contact.form.placeholders.subject' | translate) + '*'"
+						[formControl]="contactForm.get('subject') | controlCast"
+						[options]="subjectOptions"
+						[optionsTranslateRoot]="'shared.enum.contact-subject.'"
+						[fieldName]="'modules.contact.form.fieldNames.subject' | translate"
+						(byChange)="configRefNrByType()"
+						[ngClass]="selectedParams['subject'] === subjectOptions.artOrder ||
+						selectedParams['subject'] === subjectOptions.specificInformation 
+							? 'artdv-query-value artdv-readonly' 
+							: ''"
+					></artdv-selectinput>
 
-                    <!-- REFERENCE NUMBER -->
-                    <artdv-textinput
-                        [className]="'artdv-form-right'"
-                        [placeholder]="(contactForm.get('subject')?.value === subjectOptions.generalRequest || 
-                                        contactForm.get('subject')?.value === '') 
-                                        ? '--' 
-                                        : ('modules.contact.form.placeholders.referenceNr' | translate) + '*'"
-                        [inputType]="'text'"
-                        [ngStyle]="{'width': '50%'}"
-                        [readonly]="readonly"
-                        [ngClass]="hasReferenceFromParams 
-                            ? 'artdv-query-value artdv-readonly' 
-                            : (contactForm.get('subject')?.value === subjectOptions.generalRequest ||
-                        contactForm.get('subject')?.value === '')
-                            ? 'artdv-readonly'
-                            : ''"
-                        [formControl]="contactForm.get('referenceNr') | controlCast"
-                        [fieldName]="'modules.contact.form.fieldNames.referenceNr' | translate"
-                        [forceTextCase]="textCaseOption.FORCEUP"
-                        (byChange)="configRefNrByChanges()"
-                    ></artdv-textinput>
-                </div>
-                <div div class="artdv-form-item artdv-form-multiple">
+					<!-- REFERENCE NUMBER -->
+					<artdv-textinput
+						[className]="'artdv-form-right'"
+						[placeholder]="(contactForm.get('subject')?.value === subjectOptions.generalRequest || 
+						contactForm.get('subject')?.value === '') 
+							? '--' 
+							: ('modules.contact.form.placeholders.referenceNr' | translate) + '*'"
+						[inputType]="'text'"
+						[ngStyle]="{'width': '50%'}"
+						[readonly]="readonly"
+						[ngClass]="hasReferenceFromParams 
+							? 'artdv-query-value artdv-readonly' 
+							: (contactForm.get('subject')?.value === subjectOptions.generalRequest ||
+						contactForm.get('subject')?.value === '')
+								? 'artdv-readonly'
+								: ''"
+						[formControl]="contactForm.get('referenceNr') | controlCast"
+						[fieldName]="'modules.contact.form.fieldNames.referenceNr' | translate"
+						[forceTextCase]="textCaseOption.FORCEUP"
+						(byChange)="configRefNrByChanges()"
+					></artdv-textinput>
+				</div>
+				<div div class="artdv-form-item artdv-form-multiple">
 
-                    <!-- PRICE -->
-                    <artdv-textinput
-                        [ngClass]="'artdv-query-value artdv-readonly artdv-form-left-select'"
-                        [formControl]="contactForm.get('price') | controlCast"
-                        [placeholder]="''"
-                        [readonly]="true"
-                        [fieldName]="''"
-                        [ngStyle]="{'width': '40%'}"
-                        *ngIf="contactForm.get('subject')?.value === subjectOptions.artOrder && contactForm.get('price')?.value !== null && contactForm.get('referenceNr')?.value.length === 6"
-                    ></artdv-textinput>
+					<!-- PRICE -->
+					@if (contactForm.get('subject')?.value === subjectOptions.artOrder && contactForm.get('price')?.value !== null && contactForm.get('referenceNr')?.value.length === 6) {
+						<artdv-textinput
+							[ngClass]="'artdv-query-value artdv-readonly artdv-form-left-select'"
+							[formControl]="contactForm.get('price') | controlCast"
+							[placeholder]="''"
+							[readonly]="true"
+							[fieldName]="''"
+							[ngStyle]="{'width': '40%'}"
+						></artdv-textinput>
+					}
 
-                    <!-- EMAIL-->
-                    <artdv-textinput
-                        [className]="hasPriceValue ? 'artdv-form-right' : ''"
-                        [ngStyle]="contactForm.get('price')?.value !== null 
-                        && contactForm.get('price')?.value !== ''
-                        && contactForm.get('referenceNr')?.value.length === 6
-                        && contactForm.get('subject')?.value === subjectOptions.artOrder
-                            ? {'width': '60%'}
-                            : {'width': '100%'}"
-                        [inputType]="'email'"
-                        [placeholder]="('modules.contact.form.placeholders.email' | translate) + '*'"
-                        [formControl]="contactForm.get('email') | controlCast"
-                        [readonly]="false"
-                        [fieldName]="'modules.contact.form.fieldNames.email' | translate"
-                    ></artdv-textinput>
-                </div>
-                <div class="artdv-form-item artdv-form-multiple">
+					<!-- EMAIL-->
+					<artdv-textinput
+						[className]="hasPriceValue ? 'artdv-form-right' : ''"
+						[ngStyle]="contactForm.get('price')?.value !== null 
+						&& contactForm.get('price')?.value !== ''
+						&& contactForm.get('referenceNr')?.value.length === 6
+						&& contactForm.get('subject')?.value === subjectOptions.artOrder
+							? {'width': '60%'}
+							: {'width': '100%'}"
+						[inputType]="'email'"
+						[placeholder]="('modules.contact.form.placeholders.email' | translate) + '*'"
+						[formControl]="contactForm.get('email') | controlCast"
+						[readonly]="false"
+						[fieldName]="'modules.contact.form.fieldNames.email' | translate"
+					></artdv-textinput>
+				</div>
+				<div class="artdv-form-item artdv-form-multiple">
 
-                    <!-- HONORIFICS -->
-                    <artdv-selectinput
-                        [className]="'artdv-form-left-select'"
-                        [ngStyle]="{'width': '40%'}"
-                        [formControl]="contactForm.get('honorifics') | controlCast"
-                        [placeholder]="('modules.contact.form.placeholders.honorifics' | translate) + '*'"
-                        [options]="['Mr', 'Ms']"
-                        [optionsTranslateRoot]="'shared.enum.honorifics-option.'"
-                        [fieldName]="'modules.contact.form.fieldNames.honorifics' | translate"
-                    ></artdv-selectinput>
+					<!-- HONORIFICS -->
+					<artdv-selectinput
+						[className]="'artdv-form-left-select'"
+						[ngStyle]="{'width': '40%'}"
+						[formControl]="contactForm.get('honorifics') | controlCast"
+						[placeholder]="('modules.contact.form.placeholders.honorifics' | translate) + '*'"
+						[options]="['Mr', 'Ms']"
+						[optionsTranslateRoot]="'shared.enum.honorifics-option.'"
+						[fieldName]="'modules.contact.form.fieldNames.honorifics' | translate"
+					></artdv-selectinput>
 
-                    <!-- TITLE -->
-                    <artdv-textinput
-                        [className]="'artdv-form-right'"
-                        [ngStyle]="{'width': '60%'}"
-                        [placeholder]="'modules.contact.form.placeholders.title' | translate"
-                        [inputType]="'text'"
-                        [formControl]="contactForm.get('title') | controlCast"
-                        [fieldName]="'modules.contact.form.fieldNames.title' | translate"
-                    ></artdv-textinput>
-                </div>          
-                <div class="artdv-form-item artdv-form-multiple">
+					<!-- TITLE -->
+					<artdv-textinput
+						[className]="'artdv-form-right'"
+						[ngStyle]="{'width': '60%'}"
+						[placeholder]="'modules.contact.form.placeholders.title' | translate"
+						[inputType]="'text'"
+						[formControl]="contactForm.get('title') | controlCast"
+						[fieldName]="'modules.contact.form.fieldNames.title' | translate"
+					></artdv-textinput>
+				</div>
+				<div class="artdv-form-item artdv-form-multiple">
 
-                    <!-- FIRSTNAME -->
-                    <artdv-textinput
-                        [ngStyle]="{'width': '50%'}"
-                        [className]="'artdv-form-left'"
-                        [inputType]="'text'"
-                        [placeholder]="('modules.contact.form.placeholders.firstName' | translate) + '*'"
-                        [formControl]="contactForm.get('firstName') | controlCast"
-                        [fieldName]="'modules.contact.form.fieldNames.firstName' | translate"
-                        ></artdv-textinput>
+					<!-- FIRSTNAME -->
+					<artdv-textinput
+						[ngStyle]="{'width': '50%'}"
+						[className]="'artdv-form-left'"
+						[inputType]="'text'"
+						[placeholder]="('modules.contact.form.placeholders.firstName' | translate) + '*'"
+						[formControl]="contactForm.get('firstName') | controlCast"
+						[fieldName]="'modules.contact.form.fieldNames.firstName' | translate"
+					></artdv-textinput>
 
-                    <!-- LASTNAME -->
-                    <artdv-textinput
-                        [ngStyle]="{'width': '50%'}"
-                        [className]="'artdv-form-right'"
-                        [inputType]="'text'"
-                        [placeholder]="('modules.contact.form.placeholders.lastName' | translate) + '*'"
-                        [formControl]="contactForm.get('lastName') | controlCast"
-                        [fieldName]="'modules.contact.form.fieldNames.lastName' | translate"
-                    ></artdv-textinput>
-                </div>
-                <div class="artdv-form-item">
+					<!-- LASTNAME -->
+					<artdv-textinput
+						[ngStyle]="{'width': '50%'}"
+						[className]="'artdv-form-right'"
+						[inputType]="'text'"
+						[placeholder]="('modules.contact.form.placeholders.lastName' | translate) + '*'"
+						[formControl]="contactForm.get('lastName') | controlCast"
+						[fieldName]="'modules.contact.form.fieldNames.lastName' | translate"
+					></artdv-textinput>
+				</div>
+				<div class="artdv-form-item">
 
-                    <!-- MESSAGE -->
-                    <artdv-textareainput
-                        [ngStyle]="{'width': '100%'}"
-                        [placeholder]="('modules.contact.form.placeholders.message' | translate) + '*'"
-                        [formControl]="contactForm.get('message') | controlCast"
-                        [fieldName]="'modules.contact.form.fieldNames.message' | translate"
-                        [rows]="6"
-                        [maxLength]="messageMaxLength+1"
-                    ></artdv-textareainput>
-                </div>
-            </form>
-            <div class="artdv-contact-button-wrapper">
-                <button 
-                    type="submit"
-                    class="artdv-button-submit"                    
-                    (click)="onSubmit()"
-                    #submitButton
-                >{{'modules.contact.form.button' | translate}}</button>
-            </div>
-        </div>
-    </div>
-    <artdv-loading-animation
-        [ngClass]="(isLoadingResponse) ? 'artdv-visible' : 'artdv-hidden'"
-    ></artdv-loading-animation>
+					<!-- MESSAGE -->
+					<artdv-textareainput
+						[ngStyle]="{'width': '100%'}"
+						[placeholder]="('modules.contact.form.placeholders.message' | translate) + '*'"
+						[formControl]="contactForm.get('message') | controlCast"
+						[fieldName]="'modules.contact.form.fieldNames.message' | translate"
+						[rows]="6"
+						[maxLength]="messageMaxLength+1"
+					></artdv-textareainput>
+				</div>
+			</form>
+			<div class="artdv-contact-button-wrapper">
+				<button
+					type="submit"
+					class="artdv-button-submit"
+					(click)="onSubmit()"
+					#submitButton
+				>{{'modules.contact.form.button' | translate}}</button>
+			</div>
+		</div>
+	</div>
+	<artdv-loading-animation
+		[ngClass]="(isLoadingResponse) ? 'artdv-visible' : 'artdv-hidden'"
+	></artdv-loading-animation>
 </section>

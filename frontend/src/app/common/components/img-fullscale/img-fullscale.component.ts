@@ -1,26 +1,25 @@
-import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from "@angular/core";
 import { ImgPreloadService } from "../../../shared/services/img-preload.service";
 import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 
 @Component({
     selector: 'artdv-imgfullscale',
+    imports: [
+        CacheCheckPipe
+    ],
     template: `
-        <div 
-            *ngIf="isActive && isPreloaded"
-            class="artdv-imgfullscale-wrapper" 
-            [attr.aria-disabled]="true"
-            (click)="closeFullscale(false)"
-            (keydown.enter)="closeFullscale(false)" 
-        >
-            <img src="{{imgPath | cacheCheck: lastModifiedParam ?? ''}}" alt="404-picture-not-found">
-        </div>
+        @if (isActive && isPreloaded) {
+            <div
+                class="artdv-imgfullscale-wrapper"
+                [attr.aria-disabled]="true"
+                (click)="closeFullscale(false)"
+                (keydown.enter)="closeFullscale(false)"
+            >
+                <img src="{{imgPath | cacheCheck: lastModifiedParam ?? ''}}" alt="404-picture-not-found">
+            </div>
+        }
     `,
     styleUrl: "./img-fullscale.component.scss",
-    imports: [
-        CacheCheckPipe,
-        CommonModule
-    ],
     providers: [CacheCheckPipe]
 })
 export class ImgFullscaleComponent implements OnInit {

@@ -15,11 +15,11 @@ import { AssetsAPIService } from "../../../../api/services/assets.api.service";
 
 @Component({
     selector: 'app-admin-assets-list',
-    templateUrl: './admin-assets-list.component.html',
-    styleUrl: '../../admin.component.scss',
     imports: [
         ...AdminListImportsModule
-    ]
+    ],
+    templateUrl: './admin-assets-list.component.html',
+    styleUrl: '../../admin.component.scss'
 })
 export class AdminAssetsListComponent extends AbstractAdminListComponent implements OnInit {
     

@@ -1,31 +1,51 @@
 <ng-container *artdvVar="ngControl as control">
-    <div class="artdv-validation-errors" *ngIf="control.invalid && (control.dirty || control.touched)">
-        <div *ngIf="control.hasError('required')">
-            {{ 'validation.frontend.form.required' | translate: {fieldName: fieldName} }}
-        </div>
-        <div *ngIf="control.hasError('maxlength')">
-            {{ 'validation.frontend.form.maxlength' | translate: {fieldValue: control.value.length, fieldMax: control.errors.maxlength.requiredLength} }}
-        </div>
-        <div *ngIf="control.hasError('email')">
-            {{ 'validation.frontend.form.email-invalid' | translate: {fieldName: fieldName} }}
-        </div>
-        <div *ngIf="control.hasError('invalidRefNr')">
-            {{ 'validation.frontend.form.refnr-notexist' | translate: {fieldValue: control.value} }}
-        </div>
-        <div *ngIf="control.hasError('invalidRefNrLength')">
-            {{ 'validation.frontend.form.refnr-length' | translate }}
-        </div>
-        <div *ngIf="control.hasError('invalidPublicationContent')">
-            {{ 'validation.frontend.form.publication-invalid' | translate }}
-        </div>
-        <div *ngIf="control.hasError('invalidPublicationYear')">
-            {{ 'validation.frontend.form.publication-length' | translate }}
-        </div>
-        <div *ngIf="control.hasError('unavailableArtwork')">
-            {{ 'validation.frontend.form.artwork-unavailable' | translate }}
-        </div>
-        <div *ngIf="control.hasError('invalidPurchaseArtwork')">
-            {{ 'validation.frontend.form.artwork-invalid-purchase' | translate }}
-        </div>
-    </div>
+	@if (control.invalid && (control.dirty || control.touched)) {
+		<div class="artdv-validation-errors">
+			@if (control.hasError('required')) {
+				<div>
+					{{ 'validation.frontend.form.required' | translate: {fieldName: fieldName} }}
+				</div>
+			}
+			@if (control.hasError('maxlength')) {
+				<div>
+					{{ 'validation.frontend.form.maxlength' | translate: {fieldValue: control.value.length, fieldMax: control.errors.maxlength.requiredLength} }}
+				</div>
+			}
+			@if (control.hasError('email')) {
+				<div>
+					{{ 'validation.frontend.form.email-invalid' | translate: {fieldName: fieldName} }}
+				</div>
+			}
+			@if (control.hasError('invalidRefNr')) {
+				<div>
+					{{ 'validation.frontend.form.refnr-notexist' | translate: {fieldValue: control.value} }}
+				</div>
+			}
+			@if (control.hasError('invalidRefNrLength')) {
+				<div>
+					{{ 'validation.frontend.form.refnr-length' | translate }}
+				</div>
+			}
+			@if (control.hasError('invalidPublicationContent')) {
+				<div>
+					{{ 'validation.frontend.form.publication-invalid' | translate }}
+				</div>
+			}
+			@if (control.hasError('invalidPublicationYear')) {
+				<div>
+					{{ 'validation.frontend.form.publication-length' | translate }}
+				</div>
+			}
+			@if (control.hasError('unavailableArtwork')) {
+				<div>
+					{{ 'validation.frontend.form.artwork-unavailable' | translate }}
+				</div>
+			}
+			@if (control.hasError('invalidPurchaseArtwork')) {
+				<div>
+					{{ 'validation.frontend.form.artwork-invalid-purchase' | translate }}
+				</div>
+			}
+		</div>
+	}
 </ng-container>

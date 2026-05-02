@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild, DOCUMENT } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
 import { NavigationEnd, Route, Router, RouterModule } from "@angular/router";
-import { CommonModule, DOCUMENT } from "@angular/common";
+import { CommonModule } from "@angular/common";
 import { ThemeOption } from "../../../shared/enums/theme-option.enum";
 import _ from 'underscore';
 import { TranslateModule } from "@ngx-translate/core";
@@ -12,13 +12,13 @@ import { ThemeHandlerService } from "../../../shared/services/theme-handler.serv
 
 @Component({
     selector: 'artdv-navigation',
-    templateUrl: './navigation.component.html',
-    styleUrl: './navigation.component.scss',
     imports: [
         CommonModule,
         RouterModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './navigation.component.html',
+    styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit, AfterViewInit {
 

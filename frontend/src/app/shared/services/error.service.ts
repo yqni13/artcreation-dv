@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 export class ErrorService {
-    
+
     private message = '';
 
     // TODO(yqni13): Implement new efficient error handling (ticket reference: ARTDV-45)

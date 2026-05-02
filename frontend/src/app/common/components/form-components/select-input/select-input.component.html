@@ -1,18 +1,19 @@
 <div class="artdv-select-wrapper {{className}}" ngClass="{{ngClass}}">
-    <select 
-        [formControl]="formControl" 
-        (change)="selectOption($event)"
-        #isAutoFocus
-    >
-        <option value="" disabled>{{placeholder}}</option>
-        <hr>
-        <option 
-            *ngFor="let option of options | keyvalue" 
-            value="{{option.value}}"
-        >{{optionsTranslateRoot + option.key | translate}}</option>
-    </select>
-    <artdv-validation
-        [ngControl]="formControl"
-        [fieldName]="fieldName"
-    ></artdv-validation>
+	<select
+		[formControl]="formControl"
+		(change)="selectOption($event)"
+		#isAutoFocus
+	>
+		<option value="" disabled>{{placeholder}}</option>
+		<hr>
+		@for (option of options | keyvalue; track option) {
+			<option value="{{option.value}}">
+				{{optionsTranslateRoot + (option.key).toString() | translate}}
+			</option>
+		}
+	</select>
+	<artdv-validation
+		[ngControl]="formControl"
+		[fieldName]="fieldName"
+	></artdv-validation>
 </div>

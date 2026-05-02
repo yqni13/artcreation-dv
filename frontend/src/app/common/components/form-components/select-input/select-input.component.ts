@@ -8,14 +8,14 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'artdv-selectinput',
-    templateUrl: './select-input.component.html',
-    styleUrl: './select-input.component.scss',
     imports: [
         CommonModule,
         ReactiveFormsModule,
         TranslateModule,
         ValidationMessageComponent
     ],
+    templateUrl: './select-input.component.html',
+    styleUrl: './select-input.component.scss',
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

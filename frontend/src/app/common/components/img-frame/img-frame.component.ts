@@ -4,11 +4,11 @@ import { ArtFrame } from "../../../shared/enums/art-frame.enum";
 
 @Component({
     selector: 'artdv-imgframe',
-    templateUrl: './img-frame.component.html',
-    styleUrl: './img-frame.component.scss',
     imports: [
         CommonModule
-    ]
+    ],
+    templateUrl: './img-frame.component.html',
+    styleUrl: './img-frame.component.scss'
 })
 export class ImgFrameComponent {
 

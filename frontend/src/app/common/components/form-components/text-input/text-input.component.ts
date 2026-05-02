@@ -9,13 +9,13 @@ import { TextCaseOption } from "../../../../shared/enums/text-case.enum";
 
 @Component({
     selector: 'artdv-textinput',
-    templateUrl: './text-input.component.html',
-    styleUrl: './text-input.component.scss',
     imports: [
         CommonModule,
         ReactiveFormsModule,
         ValidationMessageComponent
     ],
+    templateUrl: './text-input.component.html',
+    styleUrl: './text-input.component.scss',
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

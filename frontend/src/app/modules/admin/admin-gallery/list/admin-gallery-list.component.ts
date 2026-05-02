@@ -15,11 +15,11 @@ import { AbstractAdminListComponent } from "../../../../common/components/abstra
 
 @Component({
     selector: 'app-admin-gallery-list',
-    templateUrl: './admin-gallery-list.component.html',
-    styleUrl: '../../admin.component.scss',
     imports: [
         ...AdminListImportsModule
-    ]
+    ],
+    templateUrl: './admin-gallery-list.component.html',
+    styleUrl: '../../admin.component.scss'
 })
 export class AdminGalleryListComponent extends AbstractAdminListComponent implements OnInit {
 

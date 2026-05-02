@@ -1,16 +1,14 @@
-import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { BaseRoute } from "../../api/routes/base.route.enum";
 
 @Component({
     selector: 'app-imprint',
+    imports: [
+        TranslateModule
+    ],
     templateUrl: './imprint.component.html',
     styleUrl: './imprint.component.scss',
-    imports: [
-        CommonModule,
-        TranslateModule
-    ]
 })
 export class ImprintComponent implements OnInit {
 
@@ -22,7 +20,7 @@ export class ImprintComponent implements OnInit {
     constructor() {
         this. devData = {
             project: 'artcreation-dv',
-            version: 'v1.5.6',
+            version: 'v2.0.0',
             github: 'https://github.com/yqni13/artcreation-dv/tree/production',
             portfolio: 'https://yqni13.com',
             contact: BaseRoute.SUPPORT
@@ -30,7 +28,7 @@ export class ImprintComponent implements OnInit {
 
         this. ownerData = {
             name: 'Daniela Varga',
-            address: 'Anton Bruckner-Gasse 11\n2544 Leobersdorf, Österreich',
+            address: 'Anton-Bruckner-Gasse 11,\n2544 Leobersdorf, Österreich',
             email: 'artcreation-dv@gmx.at',
             phone: '+436643445935'
         };
