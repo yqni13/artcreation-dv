@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Inject, Injectable, DOCUMENT } from "@angular/core";
+<<<<<<< HEAD
+
+=======
+>>>>>>> ARTDV-86-update-angular-v21
 import { ThemeOption } from "../enums/theme-option.enum";
 import { ThemeObservationService } from "./theme-observation.service";
 

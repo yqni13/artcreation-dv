@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+import { CommonModule } from "@angular/common";
+=======
+>>>>>>> ARTDV-86-update-angular-v21
 import { Component, Inject, DOCUMENT } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import * as content from "../../../../public/assets/i18n/privacy-en.json";

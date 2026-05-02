@@ -1,216 +1,225 @@
 <ng-template #attachmentRef let-i="i" let-file="file">
-    <div class="artdv-attachmentref-wrapper">
-        <span>{{file.name}}</span>
-        <i
-            class="icon-CloseX"
-            (click)="fileUpload.removeFile(i)"
-            (keydown.enter)="fileUpload.removeFile(i)"
-            [attr.tabindex]="0"
-        ></i>
-    </div>
+	<div class="artdv-attachmentref-wrapper">
+		<span>{{file.name}}</span>
+		<i
+			class="icon-CloseX"
+			(click)="fileUpload.removeFile(i)"
+			(keydown.enter)="fileUpload.removeFile(i)"
+			[attr.tabindex]="0"
+		></i>
+	</div>
 </ng-template>
 
 <section class="artdv-support">
-    <header>
-        <h1>{{'modules.support.title' | translate}}</h1>
-    </header>
-    <div class="artdv-support-content">
-        <ng-container *artdvVar="supportForm.get('option')?.value as opt">
-            <div class="artdv-support-category" *ngIf="opt !== ''">
-                <i
-                    [ngClass]="ticketOptionIcons[opt]"
-                    [ngStyle]="ticketOptionStylings[opt]"
-                ></i>
-            </div>
-            <form [formGroup]="supportForm">
+	<header>
+		<h1>{{'modules.support.title' | translate}}</h1>
+	</header>
+	<div class="artdv-support-content">
+		<ng-container *artdvVar="supportForm.get('option')?.value as opt">
+			@if (opt !== '') {
+				<div class="artdv-support-category">
+					<i
+						[ngClass]="ticketOptionIcons[opt]"
+						[ngStyle]="ticketOptionStylings[opt]"
+					></i>
+				</div>
+			}
+			<form [formGroup]="supportForm">
+				<!-- OPTION -->
+				<div class="artdv-support-form-wrapper-mid">
+					<span>{{('modules.support.form.fieldNames.option' | translate) + ':*'}}</span>
+					<artdv-selectinput
+						[formControl]="supportForm.get('option') | controlCast"
+						[placeholder]="'modules.support.form.placeholders.option' | translate"
+						[options]="ticketOption"
+						[optionsTranslateRoot]="'shared.enum.ticket-option.'"
+						[fieldName]="'modules.support.form.fieldNames.option' | translate"
+						(byChange)="updateFormOnOptionChange($event)"
+					></artdv-selectinput>
+				</div>
+				@if (opt !== '') {
+					<!-- FEEDBACK -->
+					@if (opt === ticketOption.FEEDBACK) {
+						<div class="artdv-support-form-wrapper-starrating">
+							<artdv-starrating
+								[startValue]="defaultRatingValue"
+								[resetValue]="resetRatingValue"
+								(byChange)="getRatingInput($event)"
+							></artdv-starrating>
+						</div>
+					}
+					<!-- TITLE -->
+					@if (opt !== ticketOption.FEEDBACK) {
+						<div class="artdv-support-form-wrapper-mid">
+							<span>{{('modules.support.form.fieldNames.title' | translate) + ':*'}}</span>
+							<artdv-textinput
+								[inputType]="'text'"
+								[placeholder]="'modules.support.form.placeholders.title' | translate"
+								[formControl]="supportForm.get('title') | controlCast"
+								[fieldName]="'modules.support.form.fieldNames.title' | translate"
+							></artdv-textinput>
+						</div>
+					}
+					<!-- EMAIL -->
+					<div class="artdv-support-form-wrapper-mid">
+						<span>{{('modules.support.form.fieldNames.email' | translate) + ':*'}}</span>
+						<artdv-textinput
+							[inputType]="'text'"
+							[placeholder]="'modules.support.form.placeholders.email' | translate"
+							[formControl]="supportForm.get('userEmail') | controlCast"
+							[fieldName]="'modules.support.form.fieldNames.email' | translate"
+						></artdv-textinput>
+					</div>
+					<!-- DEVICE -->
+					@if (opt !== ticketOption.FEEDBACK) {
+						<div class="artdv-support-form-wrapper-mid">
+							<span>{{('modules.support.form.fieldNames.device' | translate) + ':'}}</span>
+							<artdv-selectinput
+								[formControl]="supportForm.get('device') | controlCast"
+								[placeholder]="'modules.support.form.placeholders.device' | translate"
+								[options]="deviceOption"
+								[optionsTranslateRoot]="'shared.enum.device-option.'"
+								[fieldName]="'modules.support.form.fieldNames.device' | translate"
+							></artdv-selectinput>
+						</div>
+					}
+					<!-- OS -->
+					@if (opt !== ticketOption.FEEDBACK) {
+						<div class="artdv-support-form-wrapper-mid">
+							<span>{{('modules.support.form.fieldNames.os' | translate) + ':'}}</span>
+							<artdv-textinput
+								[inputType]="'text'"
+								[formControl]="supportForm.get('os') | controlCast"
+								[fieldName]="'modules.support.form.fieldNames.os' | translate"
+								[placeholder]="'modules.support.form.placeholders.os' | translate"
+							></artdv-textinput>
+						</div>
+					}
+					<!-- BROWSER -->
+					@if (opt !== ticketOption.FEEDBACK) {
+						<div class="artdv-support-form-wrapper-mid">
+							<span>{{('modules.support.form.fieldNames.browser' | translate) + ':'}}</span>
+							<artdv-textinput
+								[inputType]="'text'"
+								[formControl]="supportForm.get('browser') | controlCast"
+								[fieldName]="'modules.support.form.fieldNames.browser' | translate"
+								[placeholder]="'modules.support.form.placeholders.browser' | translate"
+							></artdv-textinput>
+						</div>
+					}
+					<!-- MESSAGE -->
+					<div class="artdv-support-form-wrapper-big">
+						<span>
+							{{('modules.support.form.fieldNames.message' | translate) + ':' + (opt !== ticketOption.FEEDBACK ? '*' : '')}}
+						</span>
+						<artdv-textareainput
+							[ngStyle]="{'width': '100%'}"
+							[formControl]="supportForm.get('message') | controlCast"
+							[fieldName]="'modules.support.form.fieldNames.message' | translate"
+							[placeholder]="'modules.support.form.placeholders.message-' + opt | translate"
+							[rows]="20"
+							[maxLength]="messageLength+1"
+						></artdv-textareainput>
+						@if (supportForm.get('message')?.value.length <= messageLength) {
+							<span id="artdv-support-message-length">
+								{{(messageLength - supportForm.get('message')?.value.length) + ' / ' + messageLength}}
+							</span>
+						}
+					</div>
+					<!-- TERM (FEEDBACK)-->
+					@if (opt === ticketOption.FEEDBACK) {
+						<div
+							class="artdv-support-form-wrapper-mid"
+							id="artdv-support-checkbox"
+						>
+							<input
+								type="checkbox"
+								(change)="getFeedbackTerm($event)"
+								checked
+							>
+							<span>{{'modules.support.form.placeholders.term-feedback' | translate}}</span>
+						</div>
+					}
+				}
+			</form>
+			<!-- INFORMATION PANEL -->
+			@if (opt !== '') {
+				<div class="artdv-support-hint">
+					<div class="artdv-support-hint-wrapper">
+						<ng-container *artdvVar="('modules.support.warning.text' | translate) as warningText">
+							<span>{{warningText[0]}}</span>
+							<ng-container *artdvVar="('modules.support.warning.list' | translate) as warningBullets">
+								<ul>
+									@for (bullet of warningBullets; track bullet) {
+										<li>
+											<span>{{bullet}}</span>
+										</li>
+									}
+								</ul>
+							</ng-container>
+							<span>{{warningText[1]}}</span>
+						</ng-container>
+					</div>
+				</div>
+			}
 
-                <!-- OPTION -->
-                <div class="artdv-support-form-wrapper-mid">
-                    <span>{{('modules.support.form.fieldNames.option' | translate) + ':*'}}</span>
-                    <artdv-selectinput
-                        [formControl]="supportForm.get('option') | controlCast"
-                        [placeholder]="'modules.support.form.placeholders.option' | translate"
-                        [options]="ticketOption"
-                        [optionsTranslateRoot]="'shared.enum.ticket-option.'"
-                        [fieldName]="'modules.support.form.fieldNames.option' | translate"
-                        (byChange)="updateFormOnOptionChange($event)"
-                    ></artdv-selectinput>
-                </div>
+			<!-- ATTACHMENT PANEL -->
+			<ng-container *artdvVar="supportForm.get('attachment')?.value as attachment">
+				@if (opt !== ticketOption.FEEDBACK && attachment && attachment?.length > 0) {
+					<div id="artdv-support-attachment-list" class="outer-border">
+						<div class="inner-border">
+							@for (file of attachment; track file; let i = $index) {
+								<ng-container
+									*ngTemplateOutlet="attachmentRef; context: {i: i, file: file}"
+								></ng-container>
+							}
+						</div>
+					</div>
+				}
+			</ng-container>
 
-                <ng-container *ngIf="opt !== ''">
-                    <!-- FEEDBACK -->
-                    <div class="artdv-support-form-wrapper-starrating" *ngIf="opt === ticketOption.FEEDBACK">
-                        <artdv-starrating
-                            [startValue]="defaultRatingValue"
-                            [resetValue]="resetRatingValue"
-                            (byChange)="getRatingInput($event)"
-                        ></artdv-starrating>
-                    </div>
-
-                    <!-- TITLE -->
-                    <div class="artdv-support-form-wrapper-mid" *ngIf="opt !== ticketOption.FEEDBACK">
-                        <span>{{('modules.support.form.fieldNames.title' | translate) + ':*'}}</span>
-                        <artdv-textinput
-                            [inputType]="'text'"
-                            [placeholder]="'modules.support.form.placeholders.title' | translate"
-                            [formControl]="supportForm.get('title') | controlCast"
-                            [fieldName]="'modules.support.form.fieldNames.title' | translate"
-                        ></artdv-textinput>
-                    </div>
-
-                    <!-- EMAIL -->
-                    <div class="artdv-support-form-wrapper-mid">
-                        <span>{{('modules.support.form.fieldNames.email' | translate) + ':*'}}</span>
-                        <artdv-textinput
-                            [inputType]="'text'"
-                            [placeholder]="'modules.support.form.placeholders.email' | translate"
-                            [formControl]="supportForm.get('userEmail') | controlCast"
-                            [fieldName]="'modules.support.form.fieldNames.email' | translate"
-                        ></artdv-textinput>
-                    </div>
-
-                    <!-- DEVICE -->
-                    <div class="artdv-support-form-wrapper-mid" *ngIf="opt !== ticketOption.FEEDBACK">
-                        <span>{{('modules.support.form.fieldNames.device' | translate) + ':'}}</span>
-                        <artdv-selectinput
-                            [formControl]="supportForm.get('device') | controlCast"
-                            [placeholder]="'modules.support.form.placeholders.device' | translate"
-                            [options]="deviceOption"
-                            [optionsTranslateRoot]="'shared.enum.device-option.'"
-                            [fieldName]="'modules.support.form.fieldNames.device' | translate"
-                        ></artdv-selectinput>
-                    </div>
-
-                    <!-- OS -->
-                    <div class="artdv-support-form-wrapper-mid" *ngIf="opt !== ticketOption.FEEDBACK">
-                        <span>{{('modules.support.form.fieldNames.os' | translate) + ':'}}</span>
-                        <artdv-textinput
-                            [inputType]="'text'"
-                            [formControl]="supportForm.get('os') | controlCast"
-                            [fieldName]="'modules.support.form.fieldNames.os' | translate"
-                            [placeholder]="'modules.support.form.placeholders.os' | translate"
-                        ></artdv-textinput>
-                    </div>
-
-                    <!-- BROWSER -->
-                    <div class="artdv-support-form-wrapper-mid" *ngIf="opt !== ticketOption.FEEDBACK">
-                        <span>{{('modules.support.form.fieldNames.browser' | translate) + ':'}}</span>
-                        <artdv-textinput
-                            [inputType]="'text'"
-                            [formControl]="supportForm.get('browser') | controlCast"
-                            [fieldName]="'modules.support.form.fieldNames.browser' | translate"
-                            [placeholder]="'modules.support.form.placeholders.browser' | translate"
-                        ></artdv-textinput>
-                    </div>
-
-                    <!-- MESSAGE -->
-                    <div class="artdv-support-form-wrapper-big">
-                        <span>{{('modules.support.form.fieldNames.message' | translate) + ':' + (opt !== ticketOption.FEEDBACK ? '*' : '')}}</span>
-                        <artdv-textareainput
-                            [ngStyle]="{'width': '100%'}"
-                            [formControl]="supportForm.get('message') | controlCast"
-                            [fieldName]="'modules.support.form.fieldNames.message' | translate"
-                            [placeholder]="'modules.support.form.placeholders.message-' + opt | translate"
-                            [rows]="20"
-                            [maxLength]="messageLength+1"
-                        ></artdv-textareainput>
-                        <span
-                            *ngIf="supportForm.get('message')?.value.length <= messageLength"
-                            id="artdv-support-message-length"
-                        >
-                            {{(messageLength - supportForm.get('message')?.value.length) + ' / ' + messageLength}}
-                        </span>
-                    </div>
-
-                    <!-- TERM (FEEDBACK)-->
-                    <div
-                        class="artdv-support-form-wrapper-mid"
-                        id="artdv-support-checkbox" 
-                        *ngIf="opt === ticketOption.FEEDBACK"
-                    >
-                        <input
-                            type="checkbox"
-                            (change)="getFeedbackTerm($event)"
-                            checked
-                        >
-                        <span>{{'modules.support.form.placeholders.term-feedback' | translate}}</span>
-                    </div>
-                </ng-container>
-            </form>
-
-            <!-- INFORMATION PANEL -->
-            <div class="artdv-support-hint" *ngIf="opt !== ''">
-                <div class="artdv-support-hint-wrapper">
-                    <ng-container *artdvVar="('modules.support.warning.text' | translate) as warningText">
-                        <span>{{warningText[0]}}</span>
-                        <ng-container *artdvVar="('modules.support.warning.list' | translate) as warningBullets">
-                            <ul>
-                                <li *ngFor="let bullet of warningBullets">
-                                    <span>{{bullet}}</span>
-                                </li>
-                            </ul>
-                        </ng-container>
-                        <span>{{warningText[1]}}</span>
-                    </ng-container>
-                </div>
-            </div>
-
-            <!-- ATTACHMENT PANEL -->
-            <ng-container *artdvVar="supportForm.get('attachment')?.value as attachment">
-                <div
-                    id="artdv-support-attachment-list"
-                    class="outer-border"
-                    *ngIf="opt !== ticketOption.FEEDBACK && attachment && attachment?.length > 0"
-                >
-                    <div class="inner-border">
-                        <ng-container *ngFor="let file of attachment; let i = index">
-                            <ng-container
-                                *ngTemplateOutlet="attachmentRef; context: {i: i, file: file}"
-                            ></ng-container>
-                        </ng-container>
-                    </div>
-                </div>
-            </ng-container>
-
-            <!-- BUTTON PANEL -->
-            <div class="artdv-support-button-wrapper" *ngIf="opt !== ''">
-                <a
-                    [attr.tabindex]="0"
-                    *ngIf="opt !== ticketOption.FEEDBACK"
-                    class="artdv-button-submit"
-                    (click)="fileInput.click()"
-                    (keydown.enter)="fileInput.click()"
-                >
-                    <i class="icon-attachment">
-                        <input
-                            type="file"
-                            multiple="multiple"
-                            id="artdv-support-attachment-input"
-                            (change)="fileUpload.selectFiles($event);handleFileReset()"
-                            #fileInput
-                        >
-                    </i>
-                </a>
-                <button
-                    type="submit"
-                    class="artdv-button-submit"
-                    (click)="onSubmit()"
-                    #sendBtn
-                >
-                    {{'modules.support.buttons.send' | translate}}
-                </button>
-                <button
-                    type="submit"
-                    class="artdv-button-submit"
-                    (click)="reset(true)"
-                    #resetBtn
-                >
-                    {{'modules.support.buttons.reset' | translate}}
-                </button>
-            </div>
-        </ng-container>
-    </div>
-    <artdv-loading-animation
-        [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"
-    ></artdv-loading-animation>
+			<!-- BUTTON PANEL -->
+			@if (opt !== '') {
+				<div class="artdv-support-button-wrapper">
+					@if (opt !== ticketOption.FEEDBACK) {
+						<a
+							[attr.tabindex]="0"
+							class="artdv-button-submit"
+							(click)="fileInput.click()"
+							(keydown.enter)="fileInput.click()"
+						>
+							<i class="icon-attachment">
+								<input
+									type="file"
+									multiple="multiple"
+									id="artdv-support-attachment-input"
+									(change)="fileUpload.selectFiles($event);handleFileReset()"
+									#fileInput
+								>
+							</i>
+						</a>
+					}
+					<button
+						type="submit"
+						class="artdv-button-submit"
+						(click)="onSubmit()"
+						#sendBtn
+					>
+						{{'modules.support.buttons.send' | translate}}
+					</button>
+					<button
+						type="submit"
+						class="artdv-button-submit"
+						(click)="reset(true)"
+						#resetBtn
+					>
+						{{'modules.support.buttons.reset' | translate}}
+					</button>
+				</div>
+			}
+		</ng-container>
+	</div>
+	<artdv-loading-animation
+		[ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"
+	></artdv-loading-animation>
 </section>

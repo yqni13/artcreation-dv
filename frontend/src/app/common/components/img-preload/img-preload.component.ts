@@ -1,39 +1,39 @@
 import { Component, Input } from "@angular/core";
 import { GalleryScrollDirective } from "../../directives/ng-scroll.directive";
 import { Router } from "@angular/router";
-import { CommonModule } from "@angular/common";
 import { GalleryItem } from "../../../api/interfaces/gallery-response.interface";
 import { environment } from "../../../../environments/environment";
 import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 
 @Component({
     selector: "artdv-imgpreload",
+    imports: [
+        CacheCheckPipe,
+        GalleryScrollDirective
+    ],
     template: `
-        <div 
-            class="artdv-gallery-cards-wrapper" 
+        <div
+            class="artdv-gallery-cards-wrapper"
             id="artdv-loading-wrapper-{{entry.reference_nr}}"
             artdvGalleryScroll
             (preload)="setLoaded($event)"
         >
-            <img 
-                *ngIf="loaded"
-                class="artdv-img-preview"
-                src="{{(storageDomain + '/' + entry.thumbnail_path) | cacheCheck: entry.last_modified}}" 
-                alt="404-picture-not-found"
-                (click)="navigateToDetails(entry.reference_nr)"
-                (keydown.enter)="navigateToDetails(entry.reference_nr)"
-                [attr.aria-disabled]="true"
-            >
-            <img *ngIf="!loaded" class="artdv-loading" src="/assets/loading.gif" alt="loading...">
-            
+            @if (loaded) {
+                <img
+                    class="artdv-img-preview"
+                    src="{{(storageDomain + '/' + entry.thumbnail_path) | cacheCheck: entry.last_modified}}"
+                    alt="404-picture-not-found"
+                    (click)="navigateToDetails(entry.reference_nr)"
+                    (keydown.enter)="navigateToDetails(entry.reference_nr)"
+                    [attr.aria-disabled]="true"
+                >
+            }
+            @if (!loaded) {
+                <img class="artdv-loading" src="/assets/loading.gif" alt="loading...">
+            }
         </div>
     `,
-    styleUrl: "./img-preload.component.scss",
-    imports: [
-        CacheCheckPipe,
-        CommonModule,
-        GalleryScrollDirective
-    ]
+    styleUrl: "./img-preload.component.scss"
 })
 export class ImgPreloadComponent {
 
