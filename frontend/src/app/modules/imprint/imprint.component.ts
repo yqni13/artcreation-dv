@@ -20,7 +20,7 @@ export class ImprintComponent implements OnInit {
     constructor() {
         this. devData = {
             project: 'artcreation-dv',
-            version: 'v1.5.6',
+            version: 'v2.0.0',
             github: 'https://github.com/yqni13/artcreation-dv/tree/production',
             portfolio: 'https://yqni13.com',
             contact: BaseRoute.SUPPORT
@@ -28,7 +28,7 @@ export class ImprintComponent implements OnInit {
 
         this. ownerData = {
             name: 'Daniela Varga',
-            address: 'Anton Bruckner-Gasse 11\n2544 Leobersdorf, Österreich',
+            address: 'Anton-Bruckner-Gasse 11,\n2544 Leobersdorf, Österreich',
             email: 'artcreation-dv@gmx.at',
             phone: '+436643445935'
         };

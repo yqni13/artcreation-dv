@@ -1,5 +1,5 @@
 # yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
-### $\textsf{\color{brown}{v1.5.6}}$
+### $\textsf{\color{brown}{v2.0.0}}$
 
 <br><br>
 
@@ -304,11 +304,8 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v1.5.3\ =>\ {\textbf{\color{brown}v1.5.6}]}}$ app
-- $\textsf{\color{black}Deletion:}$ Deleted files related to the docker configuration.
-- $\textsf{\color{orange}Patch:}$ Updated:
-  + fn reset(...) (support component) does not change support option on manual reset.
-  + extracted fn scrollToTop(...) to navigation service.
+$\textsf{[v1.5.6\ =>\ {\textbf{\color{brown}v2.0.0}]}}$ app
+- $\textsf{\color{green}Change:}$ Upgraded Angular framework from v19 to v21.
 
 <br>
 
