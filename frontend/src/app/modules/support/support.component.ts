@@ -25,8 +25,6 @@ import { NavigationService } from "../../shared/services/navigation.service";
 
 @Component({
     selector: 'app-support',
-    templateUrl: './support.component.html',
-    styleUrl: './support.component.scss',
     imports: [
         CommonModule,
         TranslateModule,
@@ -38,7 +36,9 @@ import { NavigationService } from "../../shared/services/navigation.service";
         VarDirective,
         StarRatingComponent,
         LoadingAnimationComponent
-    ]
+    ],
+    templateUrl: './support.component.html',
+    styleUrl: './support.component.scss'
 })
 export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     @ViewChild('fileInput') fileInput!: ElementRef;

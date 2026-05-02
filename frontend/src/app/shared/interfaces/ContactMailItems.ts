@@ -1,4 +1,4 @@
-export declare interface ContactFormItem {
+export interface ContactFormItem {
     subject: string,
     referenceNr?: string,
     to: string,

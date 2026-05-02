@@ -13,18 +13,17 @@ import { GalleryItem } from "../../api/interfaces/gallery-response.interface";
 import { LoadingAnimationComponent } from "../../common/components/animation/loading/loading-animation.component";
 import { LocalStorageService } from "../../shared/services/localstorage.service";
 
-
 @Component({
     selector: 'app-gallery',
-    templateUrl: './gallery.component.html',
-    styleUrl: './gallery.component.scss',
     imports: [
         CommonModule,
         ImgPreloadComponent,
         LoadingAnimationComponent,
         RouterModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './gallery.component.html',
+    styleUrl: './gallery.component.scss'
 })
 export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
 

@@ -11,7 +11,7 @@ export class ThemeHandlerService {
     private isLocalStorageAvailable: any;
     private identifier: string;
     private themeAttribute: string;
-    
+
     constructor(
         @Inject(DOCUMENT) private document: Document,
         private readonly themeObserve: ThemeObservationService

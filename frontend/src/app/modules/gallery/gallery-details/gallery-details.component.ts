@@ -24,8 +24,6 @@ import { ImgFrameComponent } from "../../../common/components/img-frame/img-fram
 
 @Component({
     selector: 'app-gallery-details',
-    templateUrl: './gallery-details.component.html',
-    styleUrl: './gallery-details.component.scss',
     imports: [
         CacheCheckPipe,
         CommonModule,
@@ -36,7 +34,9 @@ import { ImgFrameComponent } from "../../../common/components/img-frame/img-fram
         LowerUpperTextPipe,
         RouterModule,
         TranslateModule,
-    ]
+    ],
+    templateUrl: './gallery-details.component.html',
+    styleUrl: './gallery-details.component.scss'
 })
 export class GalleryDetailsComponent implements OnInit, OnDestroy {
 

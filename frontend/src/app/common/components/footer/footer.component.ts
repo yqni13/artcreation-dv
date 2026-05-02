@@ -10,13 +10,13 @@ import { LanguageOption } from "../../../shared/enums/language-option.enum";
 
 @Component({
     selector: 'artdv-footer',
-    templateUrl: './footer.component.html',
-    styleUrl: './footer.component.scss',
     imports: [
         CommonModule,
         RouterModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './footer.component.html',
+    styleUrl: './footer.component.scss'
 })
 export class FooterComponent implements OnInit {
 
