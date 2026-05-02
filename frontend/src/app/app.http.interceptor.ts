@@ -15,7 +15,6 @@ import { NewsHttpInterceptor } from './common/http/news.http.interceptor';
 import { AssetsHttpInterceptor } from './common/http/assets.http.interceptor';
 import { SupportHttpInterceptor } from './common/http/support.http.interceptor';
 
-
 export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
     const translate = inject(TranslateService);
     const snackbarService = inject(SnackbarMessageService);

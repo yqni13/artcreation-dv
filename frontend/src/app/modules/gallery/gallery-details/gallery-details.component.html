@@ -1,158 +1,163 @@
-<artdv-imgfullscale 
-    [imgPath]="(storageDomain + '/' + artwork.image_path) || ''" 
-    [isActive]="isFullscale"
-    [lastModifiedParam]="artwork.last_modified"
-    (fullscaleChanged)="navigateFullscale($event)"
+<artdv-imgfullscale
+	[imgPath]="(storageDomain + '/' + artwork.image_path) || ''"
+	[isActive]="isFullscale"
+	[lastModifiedParam]="artwork.last_modified"
+	(fullscaleChanged)="navigateFullscale($event)"
 ></artdv-imgfullscale>
 <section class="artdv-gallerydetails">
-    <div class="artdv-gallerydetails-tools">
-        <button
-            class="artdv-detail-tools goback"
-            [attr.aria-disabled]="true"
-            (click)="navigateToGallery()"
-        >
-            <i class="icon-GoBack artdv-goback-arrow">back</i>
-        </button>
-    </div>
-    <div class="artdv-gallerydetails-img">
-        <artdv-imgframe [model]="artwork.art_frame_model" [color]="artwork.art_frame_color">
-            <img 
-                src="{{(storageDomain + '/' + artwork.thumbnail_path) | cacheCheck: artwork.last_modified}}" 
-                alt="404-picture-not-found"
-                [attr.aria-disabled]="true"
-                (click)="navigateFullscale(true)"
-                (keydown.enter)="navigateFullscale(true)"
-            >
-        </artdv-imgframe>
-        <span class="artdv-author">
-            <a href="{{authorLink}}" target="_blank">{{'shared.assets.author' | translate}}</a>
-        </span>
-    </div>
-    <div class="artdv-gallerydetails-content">
+	<div class="artdv-gallerydetails-tools">
+		<button
+			class="artdv-detail-tools goback"
+			[attr.aria-disabled]="true"
+			(click)="navigateToGallery()"
+		>
+			<i class="icon-GoBack artdv-goback-arrow">back</i>
+		</button>
+	</div>
+	<div class="artdv-gallerydetails-img">
+		<artdv-imgframe [model]="artwork.art_frame_model" [color]="artwork.art_frame_color">
+			<img
+				src="{{(storageDomain + '/' + artwork.thumbnail_path) | cacheCheck: artwork.last_modified}}"
+				alt="404-picture-not-found"
+				[attr.aria-disabled]="true"
+				(click)="navigateFullscale(true)"
+				(keydown.enter)="navigateFullscale(true)"
+			>
+		</artdv-imgframe>
+		<span class="artdv-author">
+			<a href="{{authorLink}}" target="_blank">{{'shared.assets.author' | translate}}</a>
+		</span>
+	</div>
+	<div class="artdv-gallerydetails-content">
 
-        <!-- REFERENCE NUMBER -->
-        <div class="artdv-gallerydetails-property" id="card-referenceNr">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-referenceNr">{{'modules.gallery.details.header.reference' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value">
-                <span>{{artwork.reference_nr}}</span>
-            </div>
-        </div>
+		<!-- REFERENCE NUMBER -->
+		<div class="artdv-gallerydetails-property" id="card-referenceNr">
+			<div class="artdv-gallerydetails-key">
+				<label for="card-referenceNr">{{'modules.gallery.details.header.reference' | translate}}:</label>
+			</div>
+			<div class="artdv-gallerydetails-value">
+				<span>{{artwork.reference_nr}}</span>
+			</div>
+		</div>
 
-        <!-- SALE STATUS -->
-        <div class="artdv-gallerydetails-property" id="card-sale-status">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-sale-status">{{'modules.gallery.details.header.sale-status' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value">
-                <span 
-                    [ngClass]="artwork.sale_status === saleStatus.UNAVAILABLE || artwork.sale_status === saleStatus.SOLD
-                        ? 'artdv-status-off artdv-artwork-unavailable' 
-                        : artwork.sale_status === saleStatus.RESERVED
-                            ? 'artdv-status-off artdv-artwork-reserved'
-                            : 'artdv-artwork-available'"
-                >
-                    {{artwork.sale_status === null ? '--' : ('shared.enum.sale-status.' + (artwork.sale_status | lowerUpperText: 'toUpper') | translate)}}
-                </span>
-            </div>
-        </div>
+		<!-- SALE STATUS -->
+		<div class="artdv-gallerydetails-property" id="card-sale-status">
+			<div class="artdv-gallerydetails-key">
+				<label for="card-sale-status">{{'modules.gallery.details.header.sale-status' | translate}}:</label>
+			</div>
+			<div class="artdv-gallerydetails-value">
+				<span
+					[ngClass]="artwork.sale_status === saleStatus.UNAVAILABLE || artwork.sale_status === saleStatus.SOLD
+						? 'artdv-status-off artdv-artwork-unavailable' 
+						: artwork.sale_status === saleStatus.RESERVED
+							? 'artdv-status-off artdv-artwork-reserved'
+							: 'artdv-artwork-available'"
+				>
+					{{artwork.sale_status === null ? '--' : ('shared.enum.sale-status.' + (artwork.sale_status | lowerUpperText: 'toUpper') | translate)}}
+				</span>
+			</div>
+		</div>
 
-        <!-- PRICE -->
-        <div class="artdv-gallerydetails-property" id="card-price" *ngIf="artwork.sale_status === saleStatus.AVAILABLE">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-price">{{'modules.gallery.details.header.price' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value" *ngIf="artwork.price && artwork.price > 0">
-                <span>€ {{artwork.price | floatPrecision: 2}}</span>
-            </div>
-            <div
-                class="artdv-gallerydetails-value" 
-                *ngIf="artwork.price === null"
-            >
-                <a
-                    class="artdv-anchor"
-                    [routerLink]="'/contact'"
-                    [attr.aria-disabled]="true"
-                    (click)="navigateToContactWithData(subject.specificInformation)"
-                    (keydown.enter)="navigateToContactWithData(subject.specificInformation)"
-                >{{'modules.gallery.details.content.request-price' | translate}}</a>
-            </div>
-        </div>
+		<!-- PRICE -->
+		@if (artwork.sale_status === saleStatus.AVAILABLE) {
+			<div class="artdv-gallerydetails-property" id="card-price">
+				<div class="artdv-gallerydetails-key">
+					<label for="card-price">{{'modules.gallery.details.header.price' | translate}}:</label>
+				</div>
+				@if (artwork.price && artwork.price > 0) {
+					<div class="artdv-gallerydetails-value">
+						<span>€ {{artwork.price | floatPrecision: 2}}</span>
+					</div>
+				}
+				@if (artwork.price === null) {
+					<div class="artdv-gallerydetails-value">
+						<a
+							class="artdv-anchor"
+							[routerLink]="'/contact'"
+							[attr.aria-disabled]="true"
+							(click)="navigateToContactWithData(subject.specificInformation)"
+							(keydown.enter)="navigateToContactWithData(subject.specificInformation)"
+						>{{'modules.gallery.details.content.request-price' | translate}}</a>
+					</div>
+				}
+			</div>
+		}
 
-        <!-- DIVIDER -->
-        <div class="artdv-gallerydetails-divider"></div>
-        <!-- DIVIDER -->
+		<!-- DIVIDER -->
+		<div class="artdv-gallerydetails-divider"></div>
+		<!-- DIVIDER -->
 
-        <!-- TITLE -->
-        <div class="artdv-gallerydetails-property" id="card-title">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-title">{{'modules.gallery.details.header.title' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value">
-                <span>{{artwork.title === null ? '--' : artwork.title}}</span>
-            </div>
-        </div>
+		<!-- TITLE -->
+		<div class="artdv-gallerydetails-property" id="card-title">
+			<div class="artdv-gallerydetails-key">
+				<label for="card-title">{{'modules.gallery.details.header.title' | translate}}:</label>
+			</div>
+			<div class="artdv-gallerydetails-value">
+				<span>{{artwork.title === null ? '--' : artwork.title}}</span>
+			</div>
+		</div>
 
-        <!-- GENRE -->
-        <div class="artdv-gallerydetails-property" id="card-genre">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-genre">{{'modules.gallery.details.header.genre' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value">
-                <span>{{artwork.art_genre === null ? '--' : ('shared.enum.art-genre.' + (artwork.art_genre | lowerUpperText: 'toUpper') | translate)}}</span>
-            </div>
-        </div>
+		<!-- GENRE -->
+		<div class="artdv-gallerydetails-property" id="card-genre">
+			<div class="artdv-gallerydetails-key">
+				<label for="card-genre">{{'modules.gallery.details.header.genre' | translate}}:</label>
+			</div>
+			<div class="artdv-gallerydetails-value">
+				<span>{{artwork.art_genre === null ? '--' : ('shared.enum.art-genre.' + (artwork.art_genre | lowerUpperText: 'toUpper') | translate)}}</span>
+			</div>
+		</div>
 
-        <!-- DIMENSIONS -->
-        <div class="artdv-gallerydetails-property" id="card-measurements">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-measurements">{{'modules.gallery.details.header.dimensions' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value">
-                <span>{{artwork.dimensions}}</span>
-            </div>
-        </div>
+		<!-- DIMENSIONS -->
+		<div class="artdv-gallerydetails-property" id="card-measurements">
+			<div class="artdv-gallerydetails-key">
+				<label for="card-measurements">{{'modules.gallery.details.header.dimensions' | translate}}:</label>
+			</div>
+			<div class="artdv-gallerydetails-value">
+				<span>{{artwork.dimensions}}</span>
+			</div>
+		</div>
 
-        <!-- TECHNIQUE -->
-        <div class="artdv-gallerydetails-property" id="card-technique">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-technique">{{'modules.gallery.details.header.technique' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value">
-                <span>{{artwork.art_technique === null ? '--' : ('shared.enum.art-technique.' + (artwork.art_technique | lowerUpperText: 'toUpper') | translate)}}</span>
-            </div>
-        </div>
+		<!-- TECHNIQUE -->
+		<div class="artdv-gallerydetails-property" id="card-technique">
+			<div class="artdv-gallerydetails-key">
+				<label for="card-technique">{{'modules.gallery.details.header.technique' | translate}}:</label>
+			</div>
+			<div class="artdv-gallerydetails-value">
+				<span>{{artwork.art_technique === null ? '--' : ('shared.enum.art-technique.' + (artwork.art_technique | lowerUpperText: 'toUpper') | translate)}}</span>
+			</div>
+		</div>
 
-        <!-- MEDIUM -->
-        <div class="artdv-gallerydetails-property" id="card-medium">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-medium">{{'modules.gallery.details.header.medium' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value">
-                <span>{{artwork.art_medium === null ? '--' : ('shared.enum.art-medium.' + (artwork.art_medium | lowerUpperText: 'toUpper') | translate)}}</span>
-            </div>
-        </div>
+		<!-- MEDIUM -->
+		<div class="artdv-gallerydetails-property" id="card-medium">
+			<div class="artdv-gallerydetails-key">
+				<label for="card-medium">{{'modules.gallery.details.header.medium' | translate}}:</label>
+			</div>
+			<div class="artdv-gallerydetails-value">
+				<span>{{artwork.art_medium === null ? '--' : ('shared.enum.art-medium.' + (artwork.art_medium | lowerUpperText: 'toUpper') | translate)}}</span>
+			</div>
+		</div>
 
-        <!-- PUBLICATION YEAR -->
-        <div class="artdv-gallerydetails-property" id="card-year">
-            <div class="artdv-gallerydetails-key">
-                <label for="card-date">{{'modules.gallery.details.header.date' | translate}}:</label>
-            </div>
-            <div class="artdv-gallerydetails-value">
-                <span>{{artwork.publication_year === null ? '--' : artwork.publication_year}}</span>
-            </div>
-        </div>
-        
-        <div class="artdv-gallerydetails-order" *ngIf="artwork.price && artwork.price !== 0">
-            <button
-                class="artdv-button-submit"
-                [routerLink]="'/contact'"
-                [attr.aria-disabled]="true"
-                (click)="navigateToContactWithData(subject.artOrder)"
-                (keydown.enter)="navigateToContactWithData(subject.artOrder)"
-            >{{'modules.gallery.details.button' | translate}}</button>
-        </div>
-    </div>
-    <artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
+		<!-- PUBLICATION YEAR -->
+		<div class="artdv-gallerydetails-property" id="card-year">
+			<div class="artdv-gallerydetails-key">
+				<label for="card-date">{{'modules.gallery.details.header.date' | translate}}:</label>
+			</div>
+			<div class="artdv-gallerydetails-value">
+				<span>{{artwork.publication_year === null ? '--' : artwork.publication_year}}</span>
+			</div>
+		</div>
+
+		@if (artwork.price && artwork.price !== 0) {
+			<div class="artdv-gallerydetails-order">
+				<button
+					class="artdv-button-submit"
+					[routerLink]="'/contact'"
+					[attr.aria-disabled]="true"
+					(click)="navigateToContactWithData(subject.artOrder)"
+					(keydown.enter)="navigateToContactWithData(subject.artOrder)"
+				>{{'modules.gallery.details.button' | translate}}</button>
+			</div>
+		}
+	</div>
+	<artdv-loading-animation [ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"></artdv-loading-animation>
 </section>

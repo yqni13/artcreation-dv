@@ -1,4 +1,3 @@
-import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { VarDirective } from "../../directives/ng-var.directive";
@@ -6,13 +5,12 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'artdv-validation',
-    templateUrl: './validation-message.component.html',
-    styleUrl: './validation-message.component.scss',
     imports: [
-        CommonModule,
         TranslateModule,
         VarDirective
-    ]
+    ],
+    templateUrl: './validation-message.component.html',
+    styleUrl: './validation-message.component.scss',
 })
 export class ValidationMessageComponent {
 

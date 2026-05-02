@@ -24,8 +24,6 @@ import { ImgFrameComponent } from "../../../common/components/img-frame/img-fram
 
 @Component({
     selector: 'app-gallery-details',
-    templateUrl: './gallery-details.component.html',
-    styleUrl: './gallery-details.component.scss',
     imports: [
         CacheCheckPipe,
         CommonModule,
@@ -36,7 +34,9 @@ import { ImgFrameComponent } from "../../../common/components/img-frame/img-fram
         LowerUpperTextPipe,
         RouterModule,
         TranslateModule,
-    ]
+    ],
+    templateUrl: './gallery-details.component.html',
+    styleUrl: './gallery-details.component.scss'
 })
 export class GalleryDetailsComponent implements OnInit, OnDestroy {
 
@@ -99,7 +99,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
         this.storageDomain = environment.STORAGE_URL;
 
         // to get routing state, result only returns in constructor
-        this.currentNavigation = this.router.getCurrentNavigation()?.extras.state as {activeGenre: string, artwork: GalleryItem};
+        this.currentNavigation = this.router.currentNavigation()?.extras.state as {activeGenre: string, artwork: GalleryItem};
         
         this.subscriptionHttpObservationFindAll$ = new Subscription();
         this.subscriptionHttpObservationError$ = new Subscription();

@@ -1,49 +1,58 @@
 <div class="artdv-imgupload">
-    <div class="artdv-imgupload-upload-wrapper" *ngIf="!fileInformation.hasFile && !existingImgPath">
-        <label 
-            for="artdv-imgupload-fileInput"
-            (drop)="onFileDrop($event)"
-            (dragover)="onDragOver($event)"
-            #dropContainer        
-        >
-            <span id="artdv-upload-btn-desc-main">upload image</span>
-            <span id="artdv-upload-btn-desc-sub">drop/click here</span>
-            <input 
-                type="file"
-                accept="image/*"
-                class="artdv-file-input-btn"
-                id="artdv-imgupload-fileInput"
-                (change)="onFileSelect($event)"
-                #fileInput
-            >
-            <span id="artdv-upload-size-limit">limit: {{sizeFactorInMB}}MB</span>
-        </label>
-    </div>
-    <span id="artdv-upload-valid-msg" *ngIf="showValidationMessage">
-        {{'validation.frontend.img-upload.required' | translate}}
-    </span>
-    <div class="artdv-imgupload-preview-wrapper" *ngIf="fileInformation.hasFile || existingImgPath">
-        <div class="artdv-imgupload-preview-container">
-            <artdv-imgframe [model]="frameModel" [color]="frameColor" *ngIf="adminTarget === AdminTargetEnum.GALLERY">
-                <img
-                    src="{{existingImgPath ? (storageDomain + '/' + existingImgPath) : fileInformation.imagePreview()}}"
-                    alt="404 not found"
-                >
-            </artdv-imgframe>
-            <img
-                src="{{existingImgPath ? (storageDomain + '/' + existingImgPath) : fileInformation.imagePreview()}}"
-                alt="404 not found"
-                *ngIf="adminTarget !== AdminTargetEnum.GALLERY"
-            >
-            <div
-                class="artdv-imgupload-close-wrapper"
-                (click)="removeImage()"
-                (keydown.enter)="removeImage()"
-                [attr.aria-disabled]="true"
-            >
-                <i class="icon-CloseX"></i>
-            </div>
-            <canvas #artworkImage></canvas>
-        </div>
-    </div>
+	@if (!fileInformation.hasFile && !existingImgPath) {
+		<div class="artdv-imgupload-upload-wrapper">
+			<label
+				for="artdv-imgupload-fileInput"
+				(drop)="onFileDrop($event)"
+				(dragover)="onDragOver($event)"
+				#dropContainer
+			>
+			<span id="artdv-upload-btn-desc-main">upload image</span>
+			<span id="artdv-upload-btn-desc-sub">drop/click here</span>
+			<input
+				type="file"
+				accept="image/*"
+				class="artdv-file-input-btn"
+				id="artdv-imgupload-fileInput"
+				(change)="onFileSelect($event)"
+				#fileInput
+			>
+			<span id="artdv-upload-size-limit">limit: {{sizeFactorInMB}}MB</span>
+			</label>
+		</div>
+	}
+	@if (showValidationMessage) {
+		<span id="artdv-upload-valid-msg">
+			{{'validation.frontend.img-upload.required' | translate}}
+		</span>
+	}
+	@if (fileInformation.hasFile || existingImgPath) {
+		<div class="artdv-imgupload-preview-wrapper">
+			<div class="artdv-imgupload-preview-container">
+				@if (adminTarget === AdminTargetEnum.GALLERY) {
+					<artdv-imgframe [model]="frameModel" [color]="frameColor">
+						<img
+							src="{{existingImgPath ? (storageDomain + '/' + existingImgPath) : fileInformation.imagePreview()}}"
+							alt="404 not found"
+						>
+					</artdv-imgframe>
+				}
+				@if (adminTarget !== AdminTargetEnum.GALLERY) {
+					<img
+						src="{{existingImgPath ? (storageDomain + '/' + existingImgPath) : fileInformation.imagePreview()}}"
+						alt="404 not found"
+					>
+				}
+				<div
+					class="artdv-imgupload-close-wrapper"
+					(click)="removeImage()"
+					(keydown.enter)="removeImage()"
+					[attr.aria-disabled]="true"
+				>
+					<i class="icon-CloseX"></i>
+				</div>
+				<canvas #artworkImage></canvas>
+			</div>
+		</div>
+	}
 </div>

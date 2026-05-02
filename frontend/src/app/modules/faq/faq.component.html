@@ -1,34 +1,38 @@
 <section class="artdv-faq">
-    <header>
-        <h1>{{'modules.faq.title' | translate}}</h1>
-    </header>
-    <div class="artdv-head-message">
-        <p>
-            {{'modules.faq.message' | translate}} 
-            <a
-                class="artdv-faq-link artdv-anchor"
-                [attr.aria-disabled]="true"
-                href="/contact"
-            >{{'common.footer.content.contact' | translate}}</a>
-        </p>
-    </div>
-    <div class="artdv-faq-content">
-        <div class="artdv-faq-wrapper">
-            <div class="artdv-faq-coll-box faq-header">
-                <label for="artdv-faq-header-close">Q&A</label>
-            </div>
-            <div class="artdv-faq-coll" *ngFor="let entry of data; index as i">
-                <input type="radio" name="collapsable" id="artdv-faq-coll-{{i}}">
-                <div class="artdv-faq-coll-box">
-                    <label 
-                        class="artdv-faq-coll-title" 
-                        for="artdv-faq-coll-{{i}}"
-                    >{{'faq-content.' + entry + '.question' | translate}}</label>
-                    <label class="artdv-faq-coll-close" for="artdv-faq-header-close"></label>
-                    <div class="artdv-faq-coll-content">{{'faq-content.' + entry + '.answer' | translate}}</div>
-                </div>
-            </div>
-            <input type="radio" name="collapsable" id="artdv-faq-header-close">
-        </div>
-    </div>
+	<header>
+		<h1>{{'modules.faq.title' | translate}}</h1>
+	</header>
+	<div class="artdv-head-message">
+		<p>
+			{{'modules.faq.message' | translate}}
+			<a
+				class="artdv-faq-link artdv-anchor"
+				[attr.aria-disabled]="true"
+				href="/contact"
+			>{{'common.footer.content.contact' | translate}}</a>
+		</p>
+	</div>
+	<div class="artdv-faq-content">
+		<div class="artdv-faq-wrapper">
+			<div class="artdv-faq-coll-box faq-header">
+				<label for="artdv-faq-header-close">Q&A</label>
+			</div>
+			@for (entry of data; track entry; let i = $index) {
+				<div class="artdv-faq-coll">
+					<input type="radio" name="collapsable" id="artdv-faq-coll-{{i}}">
+					<div class="artdv-faq-coll-box">
+						<label
+							class="artdv-faq-coll-title"
+							for="artdv-faq-coll-{{i}}"
+						>{{'faq-content.' + entry + '.question' | translate}}</label>
+						<label class="artdv-faq-coll-close" for="artdv-faq-header-close"></label>
+						<div class="artdv-faq-coll-content">
+							{{'faq-content.' + entry + '.answer' | translate}}
+						</div>
+					</div>
+				</div>
+			}
+			<input type="radio" name="collapsable" id="artdv-faq-header-close">
+		</div>
+	</div>
 </section>

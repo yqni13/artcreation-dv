@@ -9,14 +9,14 @@ import { LoadingAnimationComponent } from "../animation/loading/loading-animatio
 
 @Component({
     selector: 'artdv-carouselmedia',
-    templateUrl: './carousel-media.component.html',
-    styleUrl: './carousel-media.component.scss',
     imports: [
         CacheCheckPipe,
         CommonModule,
         DateFormatPipe,
         LoadingAnimationComponent
-    ]
+    ],
+    templateUrl: './carousel-media.component.html',
+    styleUrl: './carousel-media.component.scss'
 })
 export class CarouselMediaComponent {
 

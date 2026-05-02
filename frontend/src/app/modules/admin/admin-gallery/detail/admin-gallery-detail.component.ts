@@ -27,13 +27,13 @@ import { ArtFrame } from "../../../../shared/enums/art-frame.enum";
 
 @Component({
     selector: 'app-admin-gallery-detail',
-    templateUrl: './admin-gallery-detail.component.html',
-    styleUrl: '../../admin.component.scss',
     imports: [
         TextInputComponent,
         SelectInputComponent,
         ...AdminDetailImportsModule
     ],
+    templateUrl: './admin-gallery-detail.component.html',
+    styleUrl: '../../admin.component.scss',
     providers: [CacheCheckPipe]
 })
 export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit {

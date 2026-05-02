@@ -1,17 +1,15 @@
 import { Component } from "@angular/core";
 import { ErrorService } from "../../shared/services/error.service";
-import { CommonModule } from "@angular/common";
 import { TranslateModule } from "@ngx-translate/core";
 import * as content from "../../../../public/assets/i18n/faq-content-en.json";
 
 @Component({
     selector: 'app-faq',
-    templateUrl: './faq.component.html',
-    styleUrl: './faq.component.scss',
     imports: [
-        CommonModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './faq.component.html',
+    styleUrl: './faq.component.scss'
 })
 export class FAQComponent {
 
