@@ -1,8 +1,24 @@
 ## 📜 $\textsf{\color{salmon}{List\ of\ updates}}$
 
+### $\textsf{\color{skyblue}2026/05/02}$
+
+$\textsf{[v2.0.0\ =>\ {\textbf{\color{brown}v2.0.2}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated:
+  + dependencies to solve vulnerabilities (frontend + backend)
+  + nodemailer settings due to config errors of updated api version
+
+<br>
+
+### $\textsf{\color{skyblue}2026/05/01}$
+
+$\textsf{[v1.5.6\ =>\ v2.0.0]}$ app
+- $\textsf{\color{green}Change:}$ Upgraded Angular framework from v19 to v21.
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/03/22}$
 
-$\textsf{[v1.5.3\ =>\ {\textbf{\color{brown}v1.5.6}]}}$ app
+$\textsf{[v1.5.3\ =>\ v1.5.6]}$ app
 - $\textsf{\color{black}Deletion:}$ Deleted files related to the docker configuration.
 - $\textsf{\color{orange}Patch:}$ Updated:
   + fn reset(...) (support component) does not change support option on manual reset.

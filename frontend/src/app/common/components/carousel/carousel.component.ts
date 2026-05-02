@@ -12,8 +12,6 @@ import { CacheCheckPipe } from '../../pipes/cache-check.pipe';
 
 @Component({
     selector: 'artdv-carousel',
-    templateUrl: './carousel.component.html',
-    styleUrls: ['./carousel.component.scss'],
     imports: [
         CacheCheckPipe,
         CommonModule,
@@ -21,7 +19,9 @@ import { CacheCheckPipe } from '../../pipes/cache-check.pipe';
         RouterModule,
         LoadingAnimationComponent,
         TranslateModule
-    ]
+    ],
+    templateUrl: './carousel.component.html',
+    styleUrl: './carousel.component.scss'
 })
 export class CarouselComponent {
 

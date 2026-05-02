@@ -1,4 +1,3 @@
-import { CommonModule } from "@angular/common";
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, signal, ViewChild } from "@angular/core";
 import { ImgUploadData, ImgUploadInformation } from "../../../shared/interfaces/ImgUpload.interface";
 import { ImgUploadService } from "../../../shared/services/img-upload.service";
@@ -11,13 +10,12 @@ import { AdminRoute } from "../../../api/routes/admin.route.enum";
 
 @Component({
     selector: 'artdv-imgupload',
-    templateUrl: './img-upload.component.html',
-    styleUrl: './img-upload.component.scss',
     imports: [
-        CommonModule,
         ImgFrameComponent,
         TranslateModule
-    ]
+    ],
+    templateUrl: './img-upload.component.html',
+    styleUrl: './img-upload.component.scss'
 })
 export class ImgUploadComponent implements OnInit, OnDestroy {
 

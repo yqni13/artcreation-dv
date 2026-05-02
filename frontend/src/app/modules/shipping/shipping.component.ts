@@ -3,16 +3,14 @@ import { TranslateModule } from "@ngx-translate/core";
 import { ThemeObservationService } from "../../shared/services/theme-observation.service";
 import { Subscription, tap } from "rxjs";
 import { ThemeOption } from "../../shared/enums/theme-option.enum";
-import { CommonModule } from "@angular/common";
 
 @Component({
     selector: 'app-shipping',
-    templateUrl: './shipping.component.html',
-    styleUrl: './shipping.component.scss',
     imports: [
-        CommonModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './shipping.component.html',
+    styleUrl: './shipping.component.scss'
 })
 export class ShippingComponent implements OnInit, OnDestroy {
 

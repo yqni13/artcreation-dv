@@ -6,13 +6,13 @@ import { AbstractInputComponent } from "../../abstracts/form-input.abstract.comp
 
 @Component({
     selector: 'artdv-textareainput',
-    templateUrl: './textarea-input.component.html',
-    styleUrl: './textarea-input.component.scss',
     imports: [
         CommonModule,
         ReactiveFormsModule,
         ValidationMessageComponent
     ],
+    templateUrl: './textarea-input.component.html',
+    styleUrl: './textarea-input.component.scss',
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

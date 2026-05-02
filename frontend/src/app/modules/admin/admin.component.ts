@@ -12,13 +12,13 @@ import { Subscription, tap } from "rxjs";
 
 @Component({
     selector: 'app-admin',
-    templateUrl: './admin.component.html',
-    styleUrl: './admin.component.scss',
     imports: [
         CommonModule,
         RouterModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './admin.component.html',
+    styleUrl: './admin.component.scss'
 })
 export class AdminComponent implements OnInit, OnDestroy {
 

@@ -1,25 +1,27 @@
 <section class="artdv-home">
-    <header>
-        <div class="artdv-home-header-wrapper">
-            <h1>{{'modules.home.title' | translate}}</h1>
-            <span>Daniela Varga</span>
-        </div>
-    </header>
-    <ng-container *ngIf="isLoadingResponse || newsCollection.length > 0">
-        <artdv-carousel [isLoadingResponse]="isLoadingResponse" [entries]="newsCollection"></artdv-carousel>
-    </ng-container>
-    <ng-container *ngIf="!isLoadingResponse && newsCollection.length === 0">
-        <div class="artdv-home-news-placeholder">
-            <span class="artdv-home-placeholder-span">{{'modules.home.placeholder' | translate}}</span>
-            <span class="artdv-author">
-                <a href="{{authorLink}}" target="_blank">{{'shared.assets.author' | translate}}</a>
-            </span>
-        </div>
-    </ng-container>
-    <div class="artdv-home-top-img" *ngIf="mediaCollection.length > 0">
-        <artdv-carouselmedia
-            [entries]="mediaCollection"
-            [isLoadingResponse]="isLoadingMediaResponse"
-        ></artdv-carouselmedia>
-    </div>
+	<header>
+		<div class="artdv-home-header-wrapper">
+			<h1>{{'modules.home.title' | translate}}</h1>
+			<span>Daniela Varga</span>
+		</div>
+	</header>
+	@if (isLoadingResponse || newsCollection.length > 0) {
+		<artdv-carousel [isLoadingResponse]="isLoadingResponse" [entries]="newsCollection"></artdv-carousel>
+	}
+	@if (!isLoadingResponse && newsCollection.length === 0) {
+		<div class="artdv-home-news-placeholder">
+			<span class="artdv-home-placeholder-span">{{'modules.home.placeholder' | translate}}</span>
+			<span class="artdv-author">
+				<a href="{{authorLink}}" target="_blank">{{'shared.assets.author' | translate}}</a>
+			</span>
+		</div>
+	}
+	@if (mediaCollection.length > 0) {
+		<div class="artdv-home-top-img">
+			<artdv-carouselmedia
+				[entries]="mediaCollection"
+				[isLoadingResponse]="isLoadingMediaResponse"
+			></artdv-carouselmedia>
+		</div>
+	}
 </section>

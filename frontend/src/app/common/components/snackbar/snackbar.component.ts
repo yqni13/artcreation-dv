@@ -6,11 +6,11 @@ import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
 
 @Component({
     selector: 'artdv-snackbar',
-    templateUrl: './snackbar.component.html',
-    styleUrl: './snackbar.component.scss',
     imports: [
         CommonModule
-    ]
+    ],
+    templateUrl: './snackbar.component.html',
+    styleUrl: './snackbar.component.scss'
 })
 export class SnackbarComponent implements OnInit {
 

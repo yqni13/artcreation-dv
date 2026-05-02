@@ -11,13 +11,13 @@ import { LoadingAnimationComponent } from "../animation/loading/loading-animatio
 
 @Component({
     selector: 'artdv-select-galleryitem',
-    templateUrl: './select-galleryitem.component.html',
-    styleUrl: './select-galleryitem.component.scss',
     imports: [
         CommonModule,
         LoadingAnimationComponent,
         TranslateModule
-    ]
+    ],
+    templateUrl: './select-galleryitem.component.html',
+    styleUrl: './select-galleryitem.component.scss'
 })
 export class SelectGalleryItemComponent implements OnInit, OnDestroy {
 
