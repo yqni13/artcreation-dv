@@ -47,13 +47,10 @@ class MailingModel {
     async wrapedSendMail(mailOptions) {
         return new Promise((resolve, reject) => {
             const transporter = nodemailer.createTransport({
-                service: 'gmx',
-                host: 'mail.gmx.net',
+                host: 'mail.gmx.com',
                 port: 465,
                 secure: true,
                 tls: {
-                    secure: true,
-                    ciphers: 'SSLv3',
                     rejectUnauthorized: false
                 },
                 auth: {

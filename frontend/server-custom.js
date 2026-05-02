@@ -17,12 +17,10 @@ app.post('/send-email', (req, res) => {
     const message = req.body.message;
 
     const transporter = nodemailer.createTransport({
-        service: 'gmx',
         host: 'mail.gmx.com',
         port: 465,
         secure: true,
         tls: {
-            ciphers: 'SSLv3',
             rejectUnauthorized: false
         },
         auth: {
