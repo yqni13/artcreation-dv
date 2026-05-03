@@ -6,13 +6,8 @@ import { LocalStorageValue } from "../interfaces/localstorage.interface";
 })
 export class LocalStorageService {
 
-    private isLocalStorageAvailable: any;
-    private prefix: string;
-
-    constructor() {
-        this.isLocalStorageAvailable = typeof localStorage !== 'undefined';
-        this.prefix = 'artcreation-dv_';
-    }
+    private isLocalStorageAvailable = typeof localStorage !== 'undefined';
+    private prefix = 'artcreation-dv_';
 
     setItem<T>(postfix: string, value: T) {
         const expiration = new Date();
@@ -52,7 +47,7 @@ export class LocalStorageService {
         }
     }
 
-    removeItem(postfix: string, hasPrefix: boolean = true) {
+    removeItem(postfix: string, hasPrefix = true) {
         if(this.isLocalStorageAvailable) {
             const key = hasPrefix ? postfix : this.prefix+postfix;
             localStorage.removeItem(key);

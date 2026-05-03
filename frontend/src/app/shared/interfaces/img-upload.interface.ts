@@ -2,7 +2,7 @@ import { WritableSignal } from "@angular/core"
 
 export interface ImgUploadData {
     files: File,
-    target: any
+    target: unknown
 }
 
 export interface ImgUploadInformation {
