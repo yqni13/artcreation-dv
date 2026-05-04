@@ -1,33 +1,43 @@
 <nav class="artdv-nav-bar">
-    <ul>        
-        <li *ngIf="!isMobileMode">
-            <img
-                [attr.aria-disabled]="true"
-                class="artdv-nav-logo"
-                src="logo.png" 
-                alt="logo to navigate home"
-                routerLink="home"
-                >
-        </li>
-        <ng-container *ngFor="let route of routes">
-            <li *ngIf="authRoute(route.data?.['onAuth'])">
-                <span
-                    class="artdv-nav-routes"
-                    [attr.aria-disabled]="true"
-                    routerLink="{{ route.path }}"
-                    routerLinkActive="artdv-active-route"
-                >{{!isMobileMode ? ('common.navigation.' + route.data?.['title'] | translate) : ''}} <i *ngIf="isMobileMode" class="{{route.data?.['icon']}}"></i></span>
-            </li>
-        </ng-container>
-        <li>
-            <span
-                [attr.aria-disabled]="true"
-                [ngClass]="selectedTheme"
-                (click)="setTheme()"
-                (keydown.enter)="setTheme()"
-                #themeModeIcon
-            ><i class="icon-ThemeOptions artdv-nav-theme-ico"></i>
-            </span>
-        </li>
-    </ul>
-</nav> 
+	<ul>
+		@if (!isMobileMode) {
+			<li>
+				<img
+					[attr.aria-disabled]="true"
+					class="artdv-nav-logo"
+					src="logo.png"
+					alt="logo to navigate home"
+					routerLink="home"
+				>
+			</li>
+		}
+		@for (route of routes; track route) {
+			@if (authRoute(route.data?.['onAuth'])) {
+				<li>
+					<span
+						class="artdv-nav-routes"
+						[attr.aria-disabled]="true"
+						routerLink="{{ route.path }}"
+						routerLinkActive="artdv-active-route"
+					>
+						{{!isMobileMode ? ('common.navigation.' + route.data?.['title'] | translate) : ''}}
+						@if (isMobileMode) {
+							<i class="{{route.data?.['icon']}}"></i>
+						}
+					</span>
+				</li>
+			}
+		}
+		<li>
+			<span
+				[attr.aria-disabled]="true"
+				[ngClass]="selectedTheme"
+				(click)="setTheme()"
+				(keydown.enter)="setTheme()"
+				#themeModeIcon
+			>
+				<i class="icon-ThemeOptions artdv-nav-theme-ico"></i>
+			</span>
+		</li>
+	</ul>
+</nav>

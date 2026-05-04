@@ -5,12 +5,12 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 
 @Component({
     selector: 'app-about',
-    templateUrl: './about.component.html',
-    styleUrl: './about.component.scss',
     imports: [
         CommonModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './about.component.html',
+    styleUrl: './about.component.scss'
 })
 export class AboutComponent {
 

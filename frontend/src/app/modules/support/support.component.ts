@@ -1,5 +1,5 @@
-import { CommonModule, DOCUMENT } from "@angular/common";
-import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, OnDestroy, OnInit, ViewChild, DOCUMENT } from "@angular/core";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SupportAPIService } from "../../api/services/support.api.service";
@@ -25,8 +25,6 @@ import { NavigationService } from "../../shared/services/navigation.service";
 
 @Component({
     selector: 'app-support',
-    templateUrl: './support.component.html',
-    styleUrl: './support.component.scss',
     imports: [
         CommonModule,
         TranslateModule,
@@ -38,7 +36,9 @@ import { NavigationService } from "../../shared/services/navigation.service";
         VarDirective,
         StarRatingComponent,
         LoadingAnimationComponent
-    ]
+    ],
+    templateUrl: './support.component.html',
+    styleUrl: './support.component.scss'
 })
 export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     @ViewChild('fileInput') fileInput!: ElementRef;

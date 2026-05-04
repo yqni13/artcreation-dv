@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 import * as content from "../../../../public/assets/i18n/en.json";
-import { CommonModule } from "@angular/common";
 import { Subscription, tap } from "rxjs";
 import { ThemeObservationService } from "../../shared/services/theme-observation.service";
 import { ThemeOption } from "../../shared/enums/theme-option.enum";
@@ -11,14 +10,13 @@ import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img
 
 @Component({
     selector: 'app-prints',
-    templateUrl: './prints.component.html',
-    styleUrl: './prints.component.scss',
     imports: [
-        CommonModule,
         ImgFullscaleComponent,
         RouterModule,
         TranslateModule
-    ]
+    ],
+    templateUrl: './prints.component.html',
+    styleUrl: './prints.component.scss',
 })
 export class PrintsComponent implements OnInit, OnDestroy {
 

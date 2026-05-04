@@ -3,7 +3,6 @@ import { GalleryItemDEPRECATED } from "../interfaces/GalleryItems";
 import { ErrorService } from "./error.service";
 import { ArtGenre } from "../enums/art-genre.enum";
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -29,7 +28,7 @@ export class FilterGalleryService {
     private setSource(data: GalleryItemDEPRECATED[]) {
         this.source = data;
     }
-    
+
     sortGenres(sorting: string): string[] {
         if(this.genres.length === 0) {
             return [];

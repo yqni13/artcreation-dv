@@ -23,14 +23,14 @@ import { CacheCheckPipe } from "../../../../common/pipes/cache-check.pipe";
 
 @Component({
     selector: 'app-admin-news-detail',
-    templateUrl: './admin-news-detail.component.html',
-    styleUrl: '../../admin.component.scss',
     imports: [
         SelectGalleryItemComponent,
         SelectInputComponent,
         TextareaInputComponent,
     ...AdminDetailImportsModule
     ],
+    templateUrl: './admin-news-detail.component.html',
+    styleUrl: '../../admin.component.scss',
     providers: [CacheCheckPipe]
 })
 export class AdminNewsDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit, OnDestroy {

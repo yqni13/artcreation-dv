@@ -5,12 +5,12 @@ import { Observable } from "rxjs";
 
 @Component({
     selector: 'artdv-starrating',
-    templateUrl: './star-rating.component.html',
-    styleUrl: './star-rating.component.scss',
     imports: [
         CommonModule,
         TranslateModule
     ],
+    templateUrl: './star-rating.component.html',
+    styleUrl: './star-rating.component.scss'
 })
 export class StarRatingComponent implements OnInit, OnChanges {
 

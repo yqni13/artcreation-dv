@@ -12,8 +12,6 @@ import { HttpObservationService } from "../../shared/services/http-observation.s
 
 @Component({
     selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss',
     imports: [
         CastAbstractToFormControlPipe,
         CommonModule,
@@ -21,7 +19,9 @@ import { HttpObservationService } from "../../shared/services/http-observation.s
         ReactiveFormsModule,
         TextInputComponent,
         TranslateModule
-    ]
+    ],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 

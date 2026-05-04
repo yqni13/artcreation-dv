@@ -1,73 +1,77 @@
 <section class="artdv-privacy artdv-scroll">
-    <header>
-        <h1>{{'modules.privacy.title' | translate}}</h1>
-    </header>
-    <div class="artdv-privacy-content">
-        <ol>
-            <li *ngFor="let head of privacyData">
-                <div class="artdv-privacy-content-li-wrapper">
-                    <a
-                        [attr.aria-disabled]="true"
-                        (click)="navigateToHeader('artdv-privacy-id-' + head)"
-                        (keydown.enter)="navigateToHeader('artdv-privacy-id-' + head)"
-                        class="artdv-anchor"
-                    >{{'privacy-content.headers.' + head | translate}}</a>
-                </div>
-            </li>
-            <li>
-                <div class="artdv-privacy-content-li-wrapper">
-                    <a
-                        [attr.aria-disabled]="true"
-                        (click)="navigateToHeader('artdv-privacy-id-complaint')"
-                        (keydown.enter)="navigateToHeader('artdv-privacy-id-complaint')"
-                        class="artdv-anchor"
-                    >{{'privacy-content.headers.complaint' | translate}}</a>
-                </div>
-            </li>
-        </ol>
-        <div class="artdv-privacy-content-wrapper" *ngFor="let item of privacyData">
-            <h3 id="{{'artdv-privacy-id-' + item}}">
-                {{'privacy-content.headers.' + item | translate}}
-            </h3>
-            <div class="artdv-privacy-content-p">
-                <span>
-                    {{'privacy-content.content.' + item | translate}}
-                </span>
-            </div>
-        </div>
-        <div class="artdv-privacy-content-wrapper">
-            <h3 id="artdv-privacy-id-complaint">
-                {{'privacy-content.headers.complaint' | translate}}
-            </h3>
-            <div class="artdv-privacy-content-p">
-                <span>
-                    {{'privacy-content.content.complaint.text' | translate }}
-                </span>
-                <span>
-                    {{'privacy-content.content.complaint.authority' | translate}}
-                </span>
-                <span>
-                    {{'privacy-content.content.complaint.address0' | translate}}
-                </span>
-                <span>
-                    {{'privacy-content.content.complaint.address1' | translate}}
-                </span>
-                <span>
-                    <a class="artdv-anchor" href="tel:{{'privacy-content.content.complaint.phone' | translate}}">
-                        {{'privacy-content.content.complaint.phone' | translate}}
-                    </a>
-                </span>
-                <span>
-                    <a class="artdv-anchor" href="mailto:{{'privacy-content.content.complaint.mail' | translate}}">
-                        {{'privacy-content.content.complaint.mail' | translate}}
-                    </a>
-                </span>
-                <span>
-                    <a class="artdv-anchor" href="{{'privacy-content.content.complaint.web' | translate}}" target="_blank">
-                        {{'privacy-content.content.complaint.web' | translate}}
-                    </a>
-                </span>
-            </div>
-        </div>
-    </div>
+	<header>
+		<h1>{{'modules.privacy.title' | translate}}</h1>
+	</header>
+	<div class="artdv-privacy-content">
+		<ol>
+			@for (head of privacyData; track head) {
+				<li>
+					<div class="artdv-privacy-content-li-wrapper">
+						<a
+							[attr.aria-disabled]="true"
+							(click)="navigateToHeader('artdv-privacy-id-' + head)"
+							(keydown.enter)="navigateToHeader('artdv-privacy-id-' + head)"
+							class="artdv-anchor"
+						>{{'privacy-content.headers.' + head | translate}}</a>
+					</div>
+				</li>
+			}
+			<li>
+				<div class="artdv-privacy-content-li-wrapper">
+					<a
+						[attr.aria-disabled]="true"
+						(click)="navigateToHeader('artdv-privacy-id-complaint')"
+						(keydown.enter)="navigateToHeader('artdv-privacy-id-complaint')"
+						class="artdv-anchor"
+					>{{'privacy-content.headers.complaint' | translate}}</a>
+				</div>
+			</li>
+		</ol>
+		@for (item of privacyData; track item) {
+			<div class="artdv-privacy-content-wrapper">
+				<h3 id="{{'artdv-privacy-id-' + item}}">
+					{{'privacy-content.headers.' + item | translate}}
+				</h3>
+				<div class="artdv-privacy-content-p">
+					<span>
+						{{'privacy-content.content.' + item | translate}}
+					</span>
+				</div>
+			</div>
+		}
+		<div class="artdv-privacy-content-wrapper">
+			<h3 id="artdv-privacy-id-complaint">
+				{{'privacy-content.headers.complaint' | translate}}
+			</h3>
+			<div class="artdv-privacy-content-p">
+				<span>
+					{{'privacy-content.content.complaint.text' | translate }}
+				</span>
+				<span>
+					{{'privacy-content.content.complaint.authority' | translate}}
+				</span>
+				<span>
+					{{'privacy-content.content.complaint.address0' | translate}}
+				</span>
+				<span>
+					{{'privacy-content.content.complaint.address1' | translate}}
+				</span>
+				<span>
+					<a class="artdv-anchor" href="tel:{{'privacy-content.content.complaint.phone' | translate}}">
+						{{'privacy-content.content.complaint.phone' | translate}}
+					</a>
+				</span>
+				<span>
+					<a class="artdv-anchor" href="mailto:{{'privacy-content.content.complaint.mail' | translate}}">
+						{{'privacy-content.content.complaint.mail' | translate}}
+					</a>
+				</span>
+				<span>
+					<a class="artdv-anchor" href="{{'privacy-content.content.complaint.web' | translate}}" target="_blank">
+						{{'privacy-content.content.complaint.web' | translate}}
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
 </section>

@@ -1,4 +1,4 @@
-const { AuthenticationException, UnexpectedException } = require("../utils/exceptions/common.exception");
+const { AuthenticationException, UnexpectedException, RequestExceedMaxException } = require("../utils/exceptions/common.exception");
 const nodemailer = require('nodemailer');
 const Secrets = require('../utils/secrets.utils');
 const { decryptRSA, decryptAES } = require('../utils/crypto.utils');
@@ -36,6 +36,8 @@ class MailingModel {
             });
             if(error.status === 535) {
                 throw new AuthenticationException('server-535-auth#email-service', { data: error.message});
+            } else if(error.status === 450) {
+                throw new RequestExceedMaxException();
             } else {
                 throw new UnexpectedException();
             }
@@ -45,15 +47,9 @@ class MailingModel {
     async wrapedSendMail(mailOptions) {
         return new Promise((resolve, reject) => {
             const transporter = nodemailer.createTransport({
-                service: 'gmx',
                 host: 'mail.gmx.net',
                 port: 465,
                 secure: true,
-                tls: {
-                    secure: true,
-                    ciphers: 'SSLv3',
-                    rejectUnauthorized: false
-                },
                 auth: {
                     user: Secrets.EMAIL_SENDER,
                     pass: Secrets.EMAIL_PASS

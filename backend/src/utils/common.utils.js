@@ -1,4 +1,3 @@
-const { v4: uuidv4 } = require('uuid');
 const logger = require('../logger/config.logger').getLogger();
 
 exports.basicResponse = (body, success, message) => {
@@ -18,7 +17,7 @@ exports.isObjEmpty = (obj) => {
 }
 
 exports.createID = async (repository, table) => {        
-    const uuid = uuidv4();
+    const uuid = crypto.randomUUID();
     const key = `${table}_id`
     const refParams = {
         table: table,
