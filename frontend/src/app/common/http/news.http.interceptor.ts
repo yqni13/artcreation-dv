@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpObservationService } from './../../shared/services/http-observation.service';
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { SnackbarMessageService } from "../../shared/services/snackbar.service";
 import { HttpResponse } from '@angular/common/http';
@@ -11,13 +12,9 @@ import { NewsRoute } from '../../api/routes/news.route.enum';
 })
 export class NewsHttpInterceptor {
 
-    constructor(
-        private readonly translate: TranslateService,
-        private readonly snackbarService: SnackbarMessageService,
-        private readonly httpObservationService: HttpObservationService
-    ) {
-        //
-    }
+    private readonly translate = inject(TranslateService);
+    private readonly snackbarService = inject(SnackbarMessageService);
+    private readonly httpObservationService = inject(HttpObservationService);
 
     async handleNewsResponse(httpBody: HttpResponse<any>) {
         if(httpBody.url?.includes(`${AdminRoute.NEWS}/${NewsRoute.FINDONEWGP}`)) {

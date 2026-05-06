@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { inject, Injectable } from "@angular/core";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
 import { HttpResponse } from "@angular/common/http";
 import { AdminRoute } from "../../api/routes/admin.route.enum";
@@ -9,11 +10,9 @@ import { AuthRoute } from "../../api/routes/auth.route.enum";
 })
 export class AuthHttpInterceptor {
 
-    private delay: any;
+    private readonly httpObservation = inject(HttpObservationService);
 
-    constructor(private readonly httpObservation: HttpObservationService) {
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     async handleAuthResponse(httpBody: HttpResponse<any>) {
         await this.delay(500);

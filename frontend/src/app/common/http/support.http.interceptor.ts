@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TranslateService } from "@ngx-translate/core";
 import { StaticTranslateService } from "../../shared/services/static-translation.service";
 import { SnackbarMessageService } from "../../shared/services/snackbar.service";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { HttpResponse } from "@angular/common/http";
 import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
 import { SnackbarInput } from "../../shared/enums/snackbar-input.enum";
@@ -12,14 +13,10 @@ import { SnackbarInput } from "../../shared/enums/snackbar-input.enum";
 })
 export class SupportHttpInterceptor {
 
-    constructor(
-        private readonly translate: TranslateService,
-        private readonly staticTranslate: StaticTranslateService,
-        private readonly snackbarService: SnackbarMessageService,
-        private readonly httpObservationService: HttpObservationService
-    ) {
-        //
-    }
+    private readonly translate = inject(TranslateService);
+    private readonly staticTranslate = inject(StaticTranslateService);
+    private readonly snackbarService = inject(SnackbarMessageService);
+    private readonly httpObservationService = inject(HttpObservationService);
 
     async handleSupportResponse(httpBody: HttpResponse<any>) {
         if(httpBody.url?.includes(`/feedback-rating/name`)) {
