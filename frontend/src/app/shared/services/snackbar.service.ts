@@ -1,22 +1,20 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { SnackbarMessage, SnackbarParameter } from "../interfaces/snackbar.interface";
 import { SnackbarOption } from "../enums/snackbar-option.enum";
 import { Subject } from "rxjs";
 import { StaticTranslateService } from "./static-translation.service";
 import { SnackbarInput } from "../enums/snackbar-input.enum";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
 })
 export class SnackbarMessageService {
 
-    snackbarCollection: SnackbarMessage[];
-    subject: Subject<boolean>;
+    private readonly staticTranslate = inject(StaticTranslateService);
 
-    constructor(private readonly staticTranslate: StaticTranslateService) {
-        this.snackbarCollection = [];
-        this.subject = new Subject<boolean>();
-    }
+    snackbarCollection: SnackbarMessage[] = [];
+    subject = new Subject<boolean>();
 
     onNotify() {
         this.subject.next(true);
@@ -47,9 +45,9 @@ export class SnackbarMessageService {
         }
     }
 
-    notifyOnInterceptorError(response: any, lang: string, message: string, closeMode: boolean, closeTime?: number) {        
+    notifyOnInterceptorError(response: unknown, lang: string, message: string, closeMode: boolean, closeTime?: number) {        
         const path = 'validation.backend';
-        const error = response.error.headers.error;
+        const error = (response as HttpErrorResponse).error.headers.error;
         const params: SnackbarParameter = {
             val: null,
             len: null,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { inject, Injectable, PLATFORM_ID } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { isPlatformBrowser } from "@angular/common";
@@ -7,16 +8,10 @@ import { isPlatformBrowser } from "@angular/common";
 })
 export class EncryptionService {
 
-    private publicKey: string;
-    private ivPosition: number;
-    private passPhrase: string;
+    private publicKey = environment.PUBLIC_KEY.trim();
+    private ivPosition = Number(environment.IV_POSITION);
+    private passPhrase = environment.AES_PASSPHRASE.trim();
     private platformId = inject(PLATFORM_ID);
-
-    constructor() {
-        this.publicKey = environment.PUBLIC_KEY;
-        this.ivPosition = environment.IV_POSITION;
-        this.passPhrase = environment.AES_PASSPHRASE;
-    }
 
     // RSA
     async encryptRSA(data: string): Promise<string> {
@@ -59,6 +54,7 @@ export class EncryptionService {
     private arrayBufferToBase64(buffer: ArrayBuffer): string {
         let binary = "";
         const bytes = new Uint8Array(buffer);
+        // eslint-disable-next-line @typescript-eslint/prefer-for-of
         for (let i = 0; i < bytes.length; i++) {
             binary += String.fromCharCode(bytes[i]);
         }

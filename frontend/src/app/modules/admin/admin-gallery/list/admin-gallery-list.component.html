@@ -13,6 +13,7 @@
 					[optionsTranslateRoot]="'shared.enum.art-genre.'"
 					[formControl]="searchForm.get('genre') | controlCast"
 					[hasAutoFocus]="true"
+					[fieldName]="'modules.admin-gallery.details.genre' | translate"
 					[attr.disabled]="!isLoadingResponse"
 					(byChange)="onGenreChange($event)"
 				></artdv-selectinput>

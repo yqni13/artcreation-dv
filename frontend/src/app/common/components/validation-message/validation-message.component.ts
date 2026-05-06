@@ -1,7 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, input } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { VarDirective } from "../../directives/ng-var.directive";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
     selector: 'artdv-validation',
@@ -10,15 +10,10 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
         VarDirective
     ],
     templateUrl: './validation-message.component.html',
-    styleUrl: './validation-message.component.scss',
+    styleUrl: './validation-message.component.scss'
 })
 export class ValidationMessageComponent {
 
-    @Input() ngControl: FormControl;
-    @Input() fieldName: string;
-
-    constructor(private translate: TranslateService) { 
-        this.ngControl = new FormControl();
-        this.fieldName = '';
-    }
+    readonly ngControl = input(new FormControl());
+    readonly fieldName = input('');
 }

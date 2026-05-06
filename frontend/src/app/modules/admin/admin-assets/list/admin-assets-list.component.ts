@@ -1,11 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { AdminListImportsModule } from "../../../../common/helper/admin-list.imports.helper";
 import { AbstractAdminListComponent } from "../../../../common/components/abstracts/admin-list.abstract.component";
-import { Router } from "@angular/router";
-import { FormBuilder, FormControl } from "@angular/forms";
-import { AuthService } from "../../../../shared/services/auth.service";
-import { DataShareService } from "../../../../shared/services/data-share.service";
-import { HttpObservationService } from "../../../../shared/services/http-observation.service";
+import { FormControl } from "@angular/forms";
 import { filter, tap } from "rxjs";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
@@ -22,26 +18,15 @@ import { AssetsAPIService } from "../../../../api/services/assets.api.service";
     styleUrl: '../../admin.component.scss'
 })
 export class AdminAssetsListComponent extends AbstractAdminListComponent implements OnInit {
-    
-    protected assetsList: AssetsItem[];
-    protected modifiedList: AssetsItem[];
-    protected AssetsCategoryEnum: any;
-    
-    constructor(
-        router: Router,
-        fb: FormBuilder,
-        auth: AuthService,
-        dataSharing: DataShareService,
-        httpObservation: HttpObservationService,
-        private readonly assetsApi: AssetsAPIService
-    ) {
-        super(router, fb, auth, dataSharing, httpObservation);
-        this.assetsList = [];
-        this.modifiedList = [];
-        this.AssetsCategoryEnum = {
-            ...AssetsCategory,
-            ALL: 'all'
-        };
+
+    private readonly assetsApi = inject(AssetsAPIService);
+
+    protected assetsList: AssetsItem[] = [];
+    protected modifiedList: AssetsItem[] = [];
+    protected AssetsCategoryEnum = { ...AssetsCategory, ALL: 'all' };
+
+    constructor() {
+        super();
     }
 
     ngOnInit() {
@@ -74,7 +59,7 @@ export class AdminAssetsListComponent extends AbstractAdminListComponent impleme
         })
     }
 
-    onCategoryChange(event: any) {
+    onCategoryChange(event: Event) {
         const searchText = this.searchForm.get('searchText')?.value;
         if(searchText !== '') {
             this.filterListBySearchText(searchText);
@@ -82,13 +67,13 @@ export class AdminAssetsListComponent extends AbstractAdminListComponent impleme
             this.modifiedList = this.assetsList;
         }
 
-        const category = event.target?.value ?? 'all';
+        const category = (event.target as HTMLInputElement)?.value ?? 'all';
         if(category !== this.AssetsCategoryEnum.ALL) {
             this.modifiedList = this.modifiedList.filter(data => data.category === category);
         }
     }
 
-    onSearchSubmit(initial: boolean = false) {
+    onSearchSubmit(initial = false) {
         const searchText = this.searchForm.get('searchText')?.value ?? '';
         if(searchText === '') {
             if(initial) {

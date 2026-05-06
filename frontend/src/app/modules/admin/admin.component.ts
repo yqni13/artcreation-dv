@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { AuthService } from "../../shared/services/auth.service";
-import { Router, RouterModule } from "@angular/router";
+import { RouterModule } from "@angular/router";
 import { SnackbarMessageService } from "../../shared/services/snackbar.service";
 import { StaticTranslateService } from "../../shared/services/static-translation.service";
 import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
@@ -22,32 +22,20 @@ import { Subscription, tap } from "rxjs";
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-    protected authorGalleryImg: string;
-    protected authorNewsImg: string;
-    protected authorAssetsImg: string;
+    private readonly auth = inject(AuthService);
+    private readonly translate = inject(TranslateService);
+    private readonly snackbar = inject(SnackbarMessageService);
+    private readonly themeObserve = inject(ThemeObservationService);
+    private readonly staticTranslate = inject(StaticTranslateService);
+
+    protected authorGalleryImg = 'https://pixabay.com/de/users/stocksnap-894430/';
+    protected authorNewsImg = 'https://pixabay.com/de/photos/news-tageszeitung-presse-1172463/';
+    protected authorAssetsImg = 'https://pixabay.com/de/users/tianya1223-4833799/';
     protected ThemeOptionEnum = ThemeOption;
-    protected currentTheme: ThemeOption;
-    protected editLabel: string;
+    protected currentTheme: ThemeOption = ThemeOption.darkMode;
+    protected editLabel = 'edit: ';
 
-    private subscriptionThemeObservation$: Subscription;
-
-    constructor(
-        private readonly router: Router,
-        private readonly auth: AuthService,
-        private readonly translate: TranslateService,
-        private readonly snackbar: SnackbarMessageService,
-        private readonly themeObserve: ThemeObservationService,
-        private readonly staticTranslate: StaticTranslateService
-    ) {
-        this.authorGalleryImg = 'https://pixabay.com/de/users/stocksnap-894430/';
-        this.authorNewsImg = 'https://pixabay.com/de/photos/news-tageszeitung-presse-1172463/';
-        this.authorAssetsImg = 'https://pixabay.com/de/users/tianya1223-4833799/';
-        this.currentTheme = ThemeOption.darkMode;
-        this.editLabel = 'edit: ';
-
-        this.subscriptionThemeObservation$ = new Subscription();
-        // Images are preloaded via ImgPreloadGuard (admin.routes.ts).
-    }
+    private subscriptionThemeObservation$ = new Subscription();
 
     ngOnInit() {
         this.subscriptionThemeObservation$ = this.themeObserve.themeOption$.pipe(

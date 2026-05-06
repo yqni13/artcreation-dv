@@ -1,4 +1,5 @@
-import { Component, HostListener, OnDestroy, OnInit } from "@angular/core";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
 import { DataShareService } from "../../../shared/services/data-share.service";
 import { CommonModule } from "@angular/common";
@@ -36,75 +37,37 @@ import { ImgFrameComponent } from "../../../common/components/img-frame/img-fram
         TranslateModule,
     ],
     templateUrl: './gallery-details.component.html',
-    styleUrl: './gallery-details.component.scss'
+    styleUrl: './gallery-details.component.scss',
+    host: {
+        '(document:keydown)': 'closeOnEscape($event)'
+    }
 })
 export class GalleryDetailsComponent implements OnInit, OnDestroy {
 
-    @HostListener('window:keydown', ['$event'])
-    closeOnEscape(event: KeyboardEvent) {
-        if(event.key === 'Escape' && !this.isFullscale) {
-            this.navigateToGallery();
-        }
-    }
+    private readonly router = inject(Router);
+    private readonly auth = inject(AuthService);
+    private readonly galleryApi = inject(GalleryAPIService);
+    private readonly dataShareService = inject(DataShareService);
+    private readonly httpObservation = inject(HttpObservationService);
 
     protected artGenre = ArtGenre;
     protected artMedium = ArtMedium;
     protected artTechnique = ArtTechnique;
     protected saleStatus = SaleStatus;
 
-    protected artwork: GalleryItem;
-    protected artworkList: GalleryItem[];
-    protected authorLink: string;
+    protected artwork: GalleryItem = this.initArtwork();
+    protected artworkList: GalleryItem[] = [];
+    protected authorLink = 'https://pixabay.com/de/users/stocksnap-894430/';
     protected subject = SubjectOptions;
-    protected galleryGenre: string;
-    protected isFullscale: boolean;
-    protected isLoadingResponse: boolean;
-    protected storageDomain: string;
+    protected galleryGenre = 'gallery';
+    protected isFullscale = false;
+    protected isLoadingResponse = false;
+    protected storageDomain = environment.STORAGE_URL.trim();
 
-    private currentNavigation: any;
-    private subscriptionHttpObservationError$: Subscription;
-    private subscriptionHttpObservationFindAll$: Subscription;
-    private delay: any;
-
-    constructor(
-        private readonly router: Router,
-        private readonly auth: AuthService,
-        private readonly galleryApi: GalleryAPIService,
-        private readonly dataShareService: DataShareService,
-        private readonly httpObservation: HttpObservationService,
-    ) {
-        this.artwork = {
-            gallery_id: '',
-            reference_nr: '',
-            image_path: '',
-            thumbnail_path: '',
-            title: '',
-            sale_status: '',
-            price: undefined,
-            dimensions: '',
-            art_genre: ArtGenre.NATURE,
-            art_medium: ArtMedium.OTHER,
-            art_technique: ArtTechnique.OTHER,
-            art_frame_model: ArtFrame.DEFAULT,
-            art_frame_color: '#ffffff',
-            publication_year: new Date().getFullYear(),
-            created_on: '',
-            last_modified: ''
-        }
-        this.artworkList = [];
-        this.authorLink = 'https://pixabay.com/de/users/stocksnap-894430/';
-        this.galleryGenre = 'gallery';
-        this.isFullscale = false;
-        this.isLoadingResponse = false;
-        this.storageDomain = environment.STORAGE_URL;
-
-        // to get routing state, result only returns in constructor
-        this.currentNavigation = this.router.currentNavigation()?.extras.state as {activeGenre: string, artwork: GalleryItem};
-        
-        this.subscriptionHttpObservationFindAll$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    private subscriptionHttpObservationError$ = new Subscription();
+    private subscriptionHttpObservationFindAll$ = new Subscription();
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+    private currentNavigation = this.router.currentNavigation()?.extras.state as any;
 
     ngOnInit() {
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.galleryFindAllStatus$.pipe(
@@ -138,7 +101,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
                     ? this.artworkList.find(entry => entry.reference_nr === (this.router.url.substring(this.router.url.length - 6, this.router.url.length)))
                     : this.artworkList.find(entry => entry.reference_nr === this.currentNavigation.refNr);
                 this.artwork = filteredArtwork ?? this.artwork;
-                this.galleryGenre = this.currentNavigation.genre ?? 'all';
+                this.galleryGenre = this.currentNavigation?.genre ?? 'all';
             });
         } else if(this.currentNavigation !== undefined && this.currentNavigation !== null) {
             this.galleryGenre = this.currentNavigation.activeGenre;
@@ -146,7 +109,13 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
             this.artworkList = this.currentNavigation.artworkList;
         }
     }
-    
+
+    closeOnEscape(event: KeyboardEvent) {
+        if(event.key === 'Escape' && !this.isFullscale) {
+            this.navigateToGallery();
+        }
+    }
+
     navigateFullscale(flag: boolean) {
         this.isFullscale = flag;
     }
@@ -161,8 +130,29 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
             'subject': subject,
             'requestPrice': this.artwork?.price !== null ? `EUR ${this.artwork?.price}` : null
         };
-        
+
         this.dataShareService.setSharedData(data);
+    }
+
+    private initArtwork(): GalleryItem {
+        return {
+            gallery_id: '',
+            reference_nr: '',
+            image_path: '',
+            thumbnail_path: '',
+            title: '',
+            sale_status: '',
+            price: undefined,
+            dimensions: '',
+            art_genre: ArtGenre.NATURE,
+            art_medium: ArtMedium.OTHER,
+            art_technique: ArtTechnique.OTHER,
+            art_frame_model: ArtFrame.DEFAULT,
+            art_frame_color: '#ffffff',
+            publication_year: new Date().getFullYear(),
+            created_on: '',
+            last_modified: ''
+        };
     }
 
     ngOnDestroy() {

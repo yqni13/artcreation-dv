@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { ContactFormItem } from "../../shared/interfaces/ContactMailItems";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { HttpClient, HttpResponse } from "@angular/common/http";
@@ -7,36 +7,27 @@ import { EncryptionService } from "../../shared/services/encryption.service";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 
-
 @Injectable({
     providedIn: 'root',
 })
 export class MailAPIService {
 
-    private mailData: ContactFormItem;
-    private mailParams: any;
-    private url: string;
+    private readonly http = inject(HttpClient);
+    private readonly crypto = inject(EncryptionService);
 
-    constructor(
-        private readonly http: HttpClient,
-        private readonly crypto: EncryptionService
-    ) {
-        this.mailData = {
-            subject: '',
-            referenceNr: '',
-            to: '',
-            honorifics: '',
-            title: '',
-            firstName: '',
-            lastName: '',
-            price: '',
-            body: ''
-        }
-        // TODO(yqni13): clean input before use
-
-        // this.url = '/api/v1/mailing/send';
-        this.url = environment.API_BASE_URL + '/api/v1/mailing/send';
-    }
+    private url = `${environment.API_BASE_URL.trim()}/api/v1/mailing/send`;
+    private mailParams: Record<string, unknown> = {};
+    private mailData: ContactFormItem = {
+        subject: '',
+        referenceNr: '',
+        to: '',
+        honorifics: '',
+        title: '',
+        firstName: '',
+        lastName: '',
+        price: '',
+        body: ''
+    };
 
     async setMailData(data: any) {
         this.mailData = {

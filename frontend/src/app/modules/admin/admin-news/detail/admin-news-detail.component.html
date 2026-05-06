@@ -25,21 +25,21 @@
 				@if ((mode === CRUDModeEnum.CREATE && hasSourceOption && newsForm.get('source')?.value === SourceOptionEnum.NEW) || (mode === CRUDModeEnum.UPDATE && (newsForm.get('imagePath')?.value !== null || newsForm.get('source')?.value === SourceOptionEnum.NEW))) {
 					<div class="artdv-admin-specific-detail-form artdv-form-image-upload">
 						<artdv-imgupload
-						[existingImgPath]="pathFromExistingImg"
-						[isSubmitTriggered]="onSubmitTrigger"
-						[adminTarget]="AdminTargetEnum.NEWS"
-						[attr.tabindex]="0"
-						(byChange)="readFileUpload($event)"
-						(byRemove)="readRemovalInfo($event)"
+							[existingImgPath]="pathFromExistingImg"
+							[emptyOnSubmit]="triggerOnSubmit()"
+							[adminTarget]="AdminTargetEnum.NEWS"
+							[attr.tabindex]="0"
+							(byChange)="readFileUpload($event)"
+							(byRemove)="readRemovalInfo($event)"
 						></artdv-imgupload>
 					</div>
 				}
 				@if ((mode === CRUDModeEnum.CREATE && hasSourceOption && newsForm.get('source')?.value === SourceOptionEnum.EXIST) || (mode === CRUDModeEnum.UPDATE && (newsForm.get('gallery_id')?.value !== null || newsForm.get('source')?.value === SourceOptionEnum.EXIST))) {
 					<div class="artdv-admin-specific-detail-form artdv-form-image-select">
 						<artdv-select-galleryitem
-						[isSubmitTriggered]="onSubmitTrigger"
-						[showInUpdateMode]="pathFromExistingImg"
-						(byChange)="onGalleryItemSelect($event)"
+							[emptyOnSubmit]="triggerOnSubmit()"
+							[existingImgPath]="pathFromExistingImg"
+							(byChange)="onGalleryItemSelect($event)"
 						></artdv-select-galleryitem>
 					</div>
 				}

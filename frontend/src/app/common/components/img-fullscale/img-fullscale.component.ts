@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from "@angular/core";
+import { Component, computed, inject, input, OnInit, output, signal } from "@angular/core";
 import { ImgPreloadService } from "../../../shared/services/img-preload.service";
 import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 
@@ -8,57 +8,48 @@ import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
         CacheCheckPipe
     ],
     template: `
-        @if (isActive && isPreloaded) {
+        @if (active() && isPreloaded) {
             <div
                 class="artdv-imgfullscale-wrapper"
                 [attr.aria-disabled]="true"
                 (click)="closeFullscale(false)"
                 (keydown.enter)="closeFullscale(false)"
             >
-                <img src="{{imgPath | cacheCheck: lastModifiedParam ?? ''}}" alt="404-picture-not-found">
+                <img src="{{imgPath() | cacheCheck: lastModifiedParam() ?? ''}}" alt="404-picture-not-found">
             </div>
         }
     `,
     styleUrl: "./img-fullscale.component.scss",
-    providers: [CacheCheckPipe]
+    providers: [CacheCheckPipe],
+    host: {
+        '(document:keydown.escape)': 'closeFullscale(false)'
+    }
 })
 export class ImgFullscaleComponent implements OnInit {
-    @HostListener('window:keydown', ['$event'])
-    closeOnEscape(event: KeyboardEvent) {
-        if(event.key === 'Escape') {
-            this.closeFullscale(false);
-        }
-    }
 
-    @Input() imgPath: string;
-    @Input() isActive: boolean;
-    @Input() lastModifiedParam: string | null;
+    private readonly imgPreload = inject(ImgPreloadService);
+    private readonly cacheCheckPipe = inject(CacheCheckPipe);
 
-    @Output() fullscaleChanged = new EventEmitter<boolean>();
+    readonly imgPath = input.required<string>();
+    readonly lastModifiedParam = input<string | null>();
+    readonly isActive = input(false);
+    protected readonly active = computed(() => this.isActive() || this.isActiveOverwrite());
 
-    protected isPreloaded: boolean;
+    readonly fullscaleChanged = output<boolean>();
 
-    constructor(
-        private readonly imgPreload: ImgPreloadService,
-        private readonly cacheCheckPipe: CacheCheckPipe
-    ) {
-        this.imgPath = '';
-        this.isActive = false;
-        this.lastModifiedParam = '';
-
-        this.isPreloaded = false;
-    }
+    protected isPreloaded = false;
+    private readonly isActiveOverwrite = signal(false);
 
     ngOnInit() {
         this.imgPreload.preloadMultiple([
-            `${this.cacheCheckPipe.transform(this.imgPath, this.lastModifiedParam ?? '')}`
+            `${this.cacheCheckPipe.transform(this.imgPath(), this.lastModifiedParam() ?? '')}`
         ]).finally(() => {
             this.isPreloaded = true;
         })
     }
 
     closeFullscale(flag: boolean) {
-        this.isActive = flag;
+        this.isActiveOverwrite.set(flag);
         this.fullscaleChanged.emit(flag);
     }
 }

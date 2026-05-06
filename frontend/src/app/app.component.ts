@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, Renderer2, DOCUMENT } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, inject } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './common/components/navigation/navigation.component';
 import { FooterComponent } from './common/components/footer/footer.component';
@@ -22,44 +22,34 @@ import { NavigationService } from './shared/services/navigation.service';
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
+
+	private readonly router = inject(Router);
+	private readonly elRef = inject(ElementRef);
+	private readonly renderer2 = inject(Renderer2);
+	private readonly authService = inject(AuthService);
+	private readonly navigate = inject(NavigationService);
+	protected readonly snackbarService = inject(SnackbarMessageService);
 
 	protected title = 'artcreation-dv';
-	protected scrollbarActive: boolean;
-	protected isNavigating: boolean;
+	protected scrollbarActive = false;
+	protected isNavigating = false;
 
-	private scrollbarRoutes: string[];
+	private scrollbarRoutes: string[] = ['/imprint', '/privacy'];
 	private listenerDefault!: () => void;
 	private scrollAnchor!: HTMLElement;
 
-	constructor(
-		protected snackbarService: SnackbarMessageService,
-		private readonly router: Router,
-		private readonly elRef: ElementRef,
-		private readonly renderer2: Renderer2,
-		private readonly authService: AuthService,
-		private readonly navigate: NavigationService,
-		@Inject(DOCUMENT) private readonly document: Document,
-	) {
-		this.scrollbarActive = false;
-		this.scrollbarRoutes = [
-		'/imprint',
-		'/privacy'
-		];
-		this.isNavigating = false;
-
-		this.router.events.subscribe(e => {
-		if(e instanceof NavigationStart) {
-			this.isNavigating = true;
-			this.navigateToTop();
-			this.scrollbarActive = this.scrollbarRoutes.includes(e.url);
-		} else if(e instanceof NavigationEnd || e instanceof NavigationCancel || e instanceof NavigationError) {
-			this.isNavigating = false;
-		}
-		})
-	}
-
 	ngOnInit() {
+		this.router.events.subscribe(e => {
+			if(e instanceof NavigationStart) {
+				this.isNavigating = true;
+				this.navigateToTop();
+				this.scrollbarActive = this.scrollbarRoutes.includes(e.url);
+			} else if(e instanceof NavigationEnd || e instanceof NavigationCancel || e instanceof NavigationError) {
+				this.isNavigating = false;
+			}
+		})
+
 		this.scrollAnchor = this.elRef.nativeElement.querySelector(".artdv-scroll-anchor");
 		this.authService.restoreExpirationTimer();
 	}
@@ -67,13 +57,13 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
 	ngAfterViewInit() {
 		// disable right click event to prevent image copying
 		// to disable right click for single element, use viewchild and this."viewchildname".nativeElement instead document
-		this.listenerDefault = this.renderer2.listen(this.document, "contextmenu", function(e) {
+		this.listenerDefault = this.renderer2.listen(document, "contextmenu", function(e) {
 		e.preventDefault();
 		});
 	}
 
 	navigateToTop() {
-		this.navigate.scrollToTop(this.scrollAnchor, this.document);
+		this.navigate.scrollToTop(this.scrollAnchor, document);
 	}
 
 	ngOnDestroy() {

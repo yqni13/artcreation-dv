@@ -1,13 +1,8 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { AfterViewInit, Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { NewsItemWGP } from "../../../../api/interfaces/news-response.interface";
 import { AbstractAdminDetailComponent } from "../../../../common/components/abstracts/admin-detail.abstract.component";
-import { Router } from "@angular/router";
-import { AuthService } from "../../../../shared/services/auth.service";
-import { DateTimeService } from "../../../../shared/services/datetime.service";
-import { NavigationService } from "../../../../shared/services/navigation.service";
-import { DataShareService } from "../../../../shared/services/data-share.service";
-import { HttpObservationService } from "../../../../shared/services/http-observation.service";
 import { NewsAPIService } from "../../../../api/services/news.api.service";
 import { filter, Subscription, tap } from "rxjs";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
@@ -35,37 +30,22 @@ import { CacheCheckPipe } from "../../../../common/pipes/cache-check.pipe";
 })
 export class AdminNewsDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    protected newsForm: FormGroup;
-    protected newsEntry: NewsItemWGP | null;
+    protected readonly newsApi = inject(NewsAPIService);
+
+    protected newsForm: FormGroup = new FormGroup({});
+    protected newsEntry: NewsItemWGP | null = null;
     protected SourceOptionEnum = SourceOption;
     protected AdminTargetEnum = AdminRoute;
     protected CRUDModeEnum = CRUDMode;
-    protected galleryList: GalleryItem[];
-    protected hasSourceOption: boolean;
-    protected titleMaxLength: number;
-    protected contentMaxLength: number;
+    protected galleryList: GalleryItem[] = [];
+    protected hasSourceOption = false;
+    protected titleMaxLength = 75;
+    protected contentMaxLength = 450;
 
-    private subscriptionHttpObservationFindOne$: Subscription;
+    private subscriptionHttpObservationFindOne$ = new Subscription();
 
-    constructor(
-        router: Router,
-        fb: FormBuilder,
-        auth: AuthService,
-        datetime: DateTimeService,
-        navigate: NavigationService,
-        dataSharing: DataShareService,
-        httpObservation: HttpObservationService,
-        protected newsApi: NewsAPIService
-    ) {
-        super(router, fb, auth, datetime, navigate, dataSharing, httpObservation);
-        this.newsForm = new FormGroup({});
-        this.newsEntry = null;
-        this.galleryList = [];
-        this.hasSourceOption = false;
-        this.titleMaxLength = 75;
-        this.contentMaxLength = 450;
-
-        this.subscriptionHttpObservationFindOne$ = new Subscription();
+    constructor() {
+        super();
     }
 
     ngOnInit() {
@@ -205,9 +185,9 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
     override onSubmit() {
         this.newsForm.markAllAsTouched();
         if(this.newsForm.get('source')?.value === SourceOption.EXIST) {
-            this.onSubmitTrigger.next(this.newsForm.get('gallery_id')?.value !== null);
+            this.triggerOnSubmit.set(this.newsForm.get('gallery_id')?.value === null);
         } else {
-            this.onSubmitTrigger.next(this.newsForm.get('imagePath')?.value !== null);
+            this.triggerOnSubmit.set(this.newsForm.get('imagePath')?.value === null);
         }
 
         if(this.newsForm.invalid || 

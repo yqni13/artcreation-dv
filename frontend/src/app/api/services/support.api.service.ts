@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { SupportTicketResponse, SupportFeedbackRequest, SupportTicketRequest, SupportFeedbackResponse, SupportRatingResponse } from "../interfaces/support.interface";
 import { HttpClient, HttpResponse } from "@angular/common/http";
@@ -10,25 +10,18 @@ import { SupportFeedbackData, SupportTicketData } from "../../modules/support/su
 })
 export class SupportAPIService {
 
-    private ticketData: FormData;
-    private feedbackData: SupportFeedbackRequest;
-    private domainPathV1: string;
-    private urlTicket: string;
-    private urlFeedback: string;
-    private urlRating: string;
+    private readonly http = inject(HttpClient);
 
-    constructor(private readonly http: HttpClient) {
-        this.ticketData = new FormData();
-        this.feedbackData = {
-            user_email: '',
-            rating: 5,
-            term_accepted: true
-        };
-        this.domainPathV1 = '/api/v1';
-        this.urlTicket = `${environment.API_SUPPORT_URL}${this.domainPathV1}/tickets/create`;
-        this.urlFeedback = `${environment.API_SUPPORT_URL}${this.domainPathV1}/feedback/create`;
-        this.urlRating = `${environment.API_SUPPORT_URL}${this.domainPathV1}/feedback-rating/name`;
-    }
+    private ticketData = new FormData();
+    private feedbackData: SupportFeedbackRequest = {
+        user_email: '',
+        rating: 5,
+        term_accepted: true
+    };
+    private domainPathV1 = '/api/v1';
+    private urlTicket = `${environment.API_SUPPORT_URL}${this.domainPathV1}/tickets/create`;
+    private urlFeedback = `${environment.API_SUPPORT_URL}${this.domainPathV1}/feedback/create`;
+    private urlRating = `${environment.API_SUPPORT_URL}${this.domainPathV1}/feedback-rating/name`;
 
     setTicketData(data: SupportTicketData) {
         this.ticketData = new FormData(); // Reset to avoid zombie data.

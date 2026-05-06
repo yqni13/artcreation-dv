@@ -13,6 +13,7 @@
 					[optionsTranslateRoot]="'shared.enum.assets-category.'"
 					[formControl]="searchForm.get('category') | controlCast"
 					[hasAutoFocus]="true"
+					[fieldName]="'modules.admin.title.category' | translate"
 					[attr.disabled]="!isLoadingResponse"
 					(byChange)="onCategoryChange($event)"
 				></artdv-selectinput>

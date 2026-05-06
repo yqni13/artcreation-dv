@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from "@angular/core";
+import { Component, inject, input, OnInit } from "@angular/core";
 import { SnackbarMessage } from "../../../shared/interfaces/snackbar.interface";
 import { SnackbarMessageService } from "../../../shared/services/snackbar.service";
 import { CommonModule } from "@angular/common";
@@ -10,37 +10,30 @@ import { SnackbarOption } from "../../../shared/enums/snackbar-option.enum";
         CommonModule
     ],
     templateUrl: './snackbar.component.html',
-    styleUrl: './snackbar.component.scss'
+    styleUrl: './snackbar.component.scss',
+    host: {
+        '(document:keydown)': 'closeOnEscape($event)'
+    }
 })
 export class SnackbarComponent implements OnInit {
 
-    @HostListener('window:keydown', ['$event'])
-    closeOnEscape(event: KeyboardEvent) {        
-        if(event.key === 'Escape' && this.isActive) {
-            this.close();
-        }
-    }
+    private snackbarService = inject(SnackbarMessageService);
 
-    @Input() snackbarMsg: SnackbarMessage;
+    readonly snackbarMsg = input.required<SnackbarMessage>();
     protected snackbarOptions = SnackbarOption;
-    protected snackbarClass: string;
-    protected snackbarIcon: string;
+    protected snackbarClass = '';
+    protected snackbarIcon = '';
 
-    private isActive: boolean;
+    private isActive = false;
 
-    constructor(private snackbarService: SnackbarMessageService) {
-        this.snackbarMsg = {
-            title: '',
-            text: '',
-            type: SnackbarOption.info,
-        }
-        this.snackbarClass = '';
-        this.snackbarIcon = '';
-        this.isActive = false;
+    ngOnInit() {
+        this.snackbarClass = this.snackbarMsg().type || SnackbarOption.info;
+        this.setSnackbarIcon();
+        this.isActive = true;
     }
 
     setSnackbarIcon() {
-        switch(this.snackbarMsg.type) {
+        switch(this.snackbarMsg().type) {
             case(SnackbarOption.error): {
                 this.snackbarIcon = 'icon-SnackbarError';
                 break;
@@ -59,14 +52,14 @@ export class SnackbarComponent implements OnInit {
         }
     }
 
-    ngOnInit() {
-        this.snackbarClass = this.snackbarMsg.type || SnackbarOption.info;
-        this.setSnackbarIcon();
-        this.isActive = true;
+    closeOnEscape(event: KeyboardEvent) {        
+        if(event.key === 'Escape' && this.isActive) {
+            this.close();
+        }
     }
 
     close() {
-        this.snackbarService.close(this.snackbarMsg);
+        this.snackbarService.close(this.snackbarMsg());
         this.isActive = false;
     }
 }
