@@ -1,15 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
 import { GalleryItem } from "../../../../api/interfaces/gallery-response.interface";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
-import { DataShareService } from "../../../../shared/services/data-share.service";
-import { Router } from "@angular/router";
-import { FormBuilder, FormControl } from "@angular/forms";
+import { FormControl } from "@angular/forms";
 import { ArtGenre } from "../../../../shared/enums/art-genre.enum";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
 import { filter, tap } from "rxjs";
-import { HttpObservationService } from "../../../../shared/services/http-observation.service";
-import { AuthService } from "../../../../shared/services/auth.service";
 import { AdminListImportsModule } from "../../../../common/helper/admin-list.imports.helper";
 import { AbstractAdminListComponent } from "../../../../common/components/abstracts/admin-list.abstract.component";
 
@@ -23,25 +19,14 @@ import { AbstractAdminListComponent } from "../../../../common/components/abstra
 })
 export class AdminGalleryListComponent extends AbstractAdminListComponent implements OnInit {
 
-    protected galleryList: GalleryItem[];
-    protected modifiedList: GalleryItem[];
-    protected GenreOptionEnum: any;
-    
-    constructor(
-        router: Router,
-        fb: FormBuilder,
-        auth: AuthService,
-        dataSharing: DataShareService,
-        httpObservation: HttpObservationService,
-        private readonly galleryApi: GalleryAPIService,
-    ) {
-        super(router, fb, auth, dataSharing, httpObservation);
-        this.galleryList = [];
-        this.modifiedList = [];
-        this.GenreOptionEnum = {
-            ...ArtGenre,
-            ALL: 'all'
-        };
+    private readonly galleryApi = inject(GalleryAPIService);
+
+    protected galleryList: GalleryItem[] = [];
+    protected modifiedList: GalleryItem[] = [];
+    protected GenreOptionEnum = { ...ArtGenre, ALL: 'all' };
+
+    constructor() {
+        super();
     }
 
     ngOnInit() {
@@ -74,21 +59,21 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
         })
     }
 
-    onGenreChange(event: any) {
+    onGenreChange(event: Event) {
         const searchText = this.searchForm.get('searchText')?.value;
         if(searchText !== '') {
             this.filterListBySearchText(searchText);
         } else {
             this.modifiedList = this.galleryList;
         }
-        
-        const genre = event.target?.value ?? 'all';
+
+        const genre = (event.target as HTMLInputElement)?.value ?? 'all';
         if(genre !== this.GenreOptionEnum.ALL) {
             this.modifiedList = this.modifiedList.filter(data => data.art_genre === genre)
         }
     }
 
-    onSearchSubmit(initial: boolean = false) {
+    onSearchSubmit(initial = false) {
         const searchText = this.searchForm.get('searchText')?.value ?? '';
         if(searchText === '') {
             if(initial) {

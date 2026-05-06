@@ -13,6 +13,7 @@
 					[optionsTranslateRoot]="'shared.enum.sorting-option.'"
 					[formControl]="searchForm.get('sorting') | controlCast"
 					[hasAutoFocus]="true"
+					[fieldName]="'modules.admin.news.other.sort' | translate"
 					[attr.disabled]="!isLoadingResponse"
 					(byChange)="onDateTimeChange($event)"
 				></artdv-selectinput>

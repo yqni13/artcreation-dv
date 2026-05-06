@@ -1,15 +1,10 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
 import { AdminDetailImportsModule } from "../../../../common/helper/admin-detail.imports.helper";
 import { SelectInputComponent } from "../../../../common/components/form-components/select-input/select-input.component";
 import { TextInputComponent } from "../../../../common/components/form-components/text-input/text-input.component";
 import { AbstractAdminDetailComponent } from "../../../../common/components/abstracts/admin-detail.abstract.component";
-import { HttpObservationService } from "../../../../shared/services/http-observation.service";
-import { DataShareService } from "../../../../shared/services/data-share.service";
-import { NavigationService } from "../../../../shared/services/navigation.service";
-import { DateTimeService } from "../../../../shared/services/datetime.service";
-import { AuthService } from "../../../../shared/services/auth.service";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
 import { filter, tap } from "rxjs";
 import { AssetsCategory } from "../../../../shared/enums/assets-category.enum";
@@ -35,28 +30,18 @@ import { DateTimePickerPipe } from "../../../../common/pipes/datetime-picker.pip
     ]
 })
 export class AdminAssetsDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit {
-    
-    protected assetsForm: FormGroup;
+
+    protected assetsApi = inject(AssetsAPIService);
+    private readonly dtPicker = inject(DateTimePickerPipe);
+
+    protected assetsForm: FormGroup = new FormGroup({});
     protected AssetsCategoryEnum = AssetsCategory;
     protected AdminTargetEnum = AdminRoute;
-    protected assetsEntry: AssetsItem | null;
-    protected hasCategory: boolean;
+    protected assetsEntry: AssetsItem | null = null;
+    protected hasCategory = false;
     
-    constructor(
-        router: Router,
-        fb: FormBuilder,
-        auth: AuthService,
-        datetime: DateTimeService,
-        navigate: NavigationService,
-        dataSharing: DataShareService,
-        httpObservation: HttpObservationService,
-        protected assetsApi: AssetsAPIService,
-        private readonly dtPicker: DateTimePickerPipe
-    ) {
-        super(router, fb, auth, datetime, navigate, dataSharing, httpObservation);
-        this.assetsForm = new FormGroup({});
-        this.assetsEntry = null;
-        this.hasCategory = false;
+    constructor() {
+        super();
     }
 
     ngOnInit() {

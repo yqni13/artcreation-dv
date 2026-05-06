@@ -23,7 +23,7 @@
 					<div class="artdv-admin-specific-detail-form artdv-form-image">
 						<artdv-imgupload
 							[existingImgPath]="pathFromExistingImg"
-							[isSubmitTriggered]="onSubmitTrigger"
+							[emptyOnSubmit]="triggerOnSubmit()"
 							[frameModel]="artworkForm.get('artFrameModel')?.value"
 							[frameColor]="artworkForm.get('artFrameColor')?.value"
 							[adminTarget]="AdminTargetEnum.GALLERY"

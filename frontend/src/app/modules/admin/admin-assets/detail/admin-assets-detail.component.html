@@ -23,7 +23,7 @@
 					<div class="artdv-admin-specific-detail-form artdv-form-image">
 						<artdv-imgupload
 							[existingImgPath]="pathFromExistingImg"
-							[isSubmitTriggered]="onSubmitTrigger"
+							[emptyOnSubmit]="triggerOnSubmit()"
 							[adminTarget]="AdminTargetEnum.ASSETS"
 							(byChange)="readFileUpload($event)"
 							(byRemove)="readRemovalInfo($event)"

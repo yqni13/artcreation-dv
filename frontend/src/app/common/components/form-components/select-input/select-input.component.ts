@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, forwardRef, input, output, viewChild } from "@angular/core";
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
 import { AbstractInputComponent } from "../../abstracts/form-input.abstract.component";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
     selector: 'artdv-selectinput',
@@ -26,36 +25,27 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 })
 export class SelectInputComponent extends AbstractInputComponent implements AfterViewInit {
 
-    @ViewChild('isAutoFocus') isAutoFocus!: ElementRef;
+    private readonly isAutoFocus = viewChild<ElementRef>('isAutoFocus');
 
-    @Input() fieldName: string;
-    @Input() formControl: FormControl;
-    @Input() placeholder: string;
-    @Input() ngClass: string;
-    @Input() className: string;
-    @Input() options: any;
-    @Input() optionsTranslateRoot: string;
-    @Input() hasAutoFocus: boolean;
+    readonly fieldName = input.required<string>();
+    readonly formControl = input(new FormControl());
+    readonly placeholder = input.required<string>();
+    readonly ngClass = input<string>('');
+    readonly className = input<string>('');
+    readonly options = input<unknown>({});
+    readonly optionsTranslateRoot = input.required<string>();
+    readonly hasAutoFocus = input(false);
 
-    @Output() byChange: EventEmitter<any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    readonly byChange = output<any>();
 
-    constructor(private translate: TranslateService) {
+    constructor() {
         super();
-
-        this.fieldName = '';
-        this.formControl = new FormControl();
-        this.placeholder = '';
-        this.ngClass = '';
-        this.className = '';
-        this.options = [];
-        this.optionsTranslateRoot = '';
-        this.hasAutoFocus = false;
-        this.byChange = new EventEmitter<any>();
     }
 
     ngAfterViewInit() {
-        if(this.hasAutoFocus) {
-            this.isAutoFocus.nativeElement.focus();
+        if(this.hasAutoFocus()) {
+            this.isAutoFocus()?.nativeElement.focus();
         }
     }
 

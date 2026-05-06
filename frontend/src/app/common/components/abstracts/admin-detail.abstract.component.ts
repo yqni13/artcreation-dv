@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AssetsAPIService } from './../../../api/services/assets.api.service';
-import { AfterViewInit, Component, inject, OnDestroy } from "@angular/core";
-import { filter, Subject, Subscription, tap } from "rxjs";
+import { AfterViewInit, Component, inject, OnDestroy, signal } from "@angular/core";
+import { filter, Subscription, tap } from "rxjs";
 import { CRUDMode } from "../../../shared/enums/crud-mode.enum";
 import { Router } from "@angular/router";
 import { NavigationService } from "../../../shared/services/navigation.service";
@@ -20,50 +21,32 @@ import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
     template: '',
     providers: [CacheCheckPipe]
 })
-export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnDestroy{
+export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnDestroy {
 
-    protected mode: CRUDMode;
+    protected readonly router = inject(Router);
+    protected readonly fb = inject(FormBuilder);
+    protected readonly auth = inject(AuthService);
+    protected readonly datetime = inject(DateTimeService);
+    protected readonly navigate = inject(NavigationService);
+    protected readonly dataSharing = inject(DataShareService);
+    protected readonly httpObservation = inject(HttpObservationService);
+    private readonly cacheCheck = inject(CacheCheckPipe);
+
+    protected mode: CRUDMode = CRUDMode.UPDATE;
     protected ModeOptionEnum = CRUDMode;
     protected AdminRouteEnum = AdminRoute;
-    protected isLoadingResponse: boolean;
-    protected isLoadingInit: boolean;
-    protected lastModifiedDateTime: string;
-    protected pathFromExistingImg: string | null;
-    protected onSubmitTrigger: Subject<boolean>;
+    protected isLoadingResponse = true;
+    protected isLoadingInit = true;
+    protected lastModifiedDateTime = '';
+    protected pathFromExistingImg: string | null = null;
+    protected readonly triggerOnSubmit = signal(false);
 
-    protected subscriptionDataSharing$: Subscription;
-    protected subscriptionHttpObservationCreate$: Subscription;
-    protected subscriptionHttpObservationUpdate$: Subscription;
-    protected subscriptionHttpObservationError$: Subscription;
-    protected entryId: string;
-    protected delay: any;
-
-    private cacheCheck: any;
-
-    constructor(
-        protected router: Router,
-        protected fb: FormBuilder,
-        protected auth: AuthService,
-        protected datetime: DateTimeService,
-        protected navigate: NavigationService,
-        protected dataSharing: DataShareService,
-        protected httpObservation: HttpObservationService
-    ) {
-        this.cacheCheck = inject(CacheCheckPipe);
-        this.mode = CRUDMode.UPDATE;
-        this.isLoadingResponse = true;
-        this.isLoadingInit = true;
-        this.lastModifiedDateTime = '';
-        this.pathFromExistingImg = null;
-        this.onSubmitTrigger = new Subject<boolean>();
-        
-        this.subscriptionDataSharing$ = new Subscription();
-        this.subscriptionHttpObservationCreate$ = new Subscription();
-        this.subscriptionHttpObservationUpdate$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.entryId = '';
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    protected subscriptionDataSharing$ = new Subscription();
+    protected subscriptionHttpObservationCreate$ = new Subscription();
+    protected subscriptionHttpObservationUpdate$ = new Subscription();
+    protected subscriptionHttpObservationError$ = new Subscription();
+    protected entryId = '';
+    protected delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     // ABSTRACTS
     abstract readFileUpload(event: any): void;
@@ -93,7 +76,8 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
 
     onSubmit(formGroup: FormGroup, api: AssetsAPIService | GalleryAPIService | NewsAPIService) {
         formGroup.markAllAsTouched();
-        this.onSubmitTrigger.next(formGroup.get('imageFile')?.value !== null);
+        console.log("onSubmitTriggerSignal: ", formGroup.get('imageFile')?.value);
+        this.triggerOnSubmit.set(formGroup.get('imageFile')?.value === null);
         if(formGroup.invalid) {
             return;
         }

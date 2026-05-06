@@ -1,19 +1,14 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
-import { Router } from "@angular/router";
 import { filter, tap } from "rxjs";
-import { DataShareService } from "../../../../shared/services/data-share.service";
-import { NavigationService } from "../../../../shared/services/navigation.service";
 import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
 import { ArtTechnique } from "../../../../shared/enums/art-technique.enum";
 import { ArtMedium } from "../../../../shared/enums/art-medium.enum";
 import { GalleryItem } from "../../../../api/interfaces/gallery-response.interface";
 import * as EnumValidators from "../../../../common/helper/enum-converter";
 import { ArtGenre } from "../../../../shared/enums/art-genre.enum";
-import { HttpObservationService } from "../../../../shared/services/http-observation.service";
-import { DateTimeService } from "../../../../shared/services/datetime.service";
-import { AuthService } from "../../../../shared/services/auth.service";
 import { AdminRoute } from "../../../../api/routes/admin.route.enum";
 import { StorageRoute } from "../../../../api/routes/storage.route.enum";
 import * as CustomValidator from '../../../../common/helper/custom-validators';
@@ -38,30 +33,20 @@ import { ArtFrame } from "../../../../shared/enums/art-frame.enum";
 })
 export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit {
 
-    protected artworkForm: FormGroup;
+    protected readonly galleryApi = inject(GalleryAPIService);
+
+    protected artworkForm: FormGroup = new FormGroup({});
     protected SaleStatusOptionEnum = SaleStatus;
     protected GenreOptionEnum = ArtGenre;
     protected MediumOptionEnum = ArtMedium;
     protected TechniqueOptionEnum = ArtTechnique;
     protected FrameModelOptionEnum = ArtFrame;
     protected AdminTargetEnum = AdminRoute;
-    protected artworkEntry: GalleryItem | null;
-    protected hasGenre: boolean;
+    protected artworkEntry: GalleryItem | null = null;
+    protected hasGenre = false;
 
-    constructor(
-        router: Router,
-        fb: FormBuilder,
-        auth: AuthService,
-        datetime: DateTimeService,
-        navigate: NavigationService,
-        dataSharing: DataShareService,
-        httpObservation: HttpObservationService,
-        protected galleryApi: GalleryAPIService
-    ) {
-        super(router, fb, auth, datetime, navigate, dataSharing, httpObservation);
-        this.artworkForm = new FormGroup({});
-        this.artworkEntry = null;        
-        this.hasGenre = false;
+    constructor() {
+        super();
     }
 
     ngOnInit() {

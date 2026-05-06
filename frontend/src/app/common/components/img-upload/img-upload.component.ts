@@ -1,8 +1,8 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, signal, ViewChild } from "@angular/core";
-import { ImgUploadData, ImgUploadInformation } from "../../../shared/interfaces/ImgUpload.interface";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, computed, ElementRef, inject, input, OnInit, output, signal, viewChild } from "@angular/core";
+import { ImgUploadData, ImgUploadInformation } from "../../../shared/interfaces/img-upload.interface";
 import { ImgUploadService } from "../../../shared/services/img-upload.service";
 import { TranslateModule } from "@ngx-translate/core";
-import { Subject, Subscription } from "rxjs";
 import { environment } from "../../../../environments/environment";
 import { ArtFrame } from "../../../shared/enums/art-frame.enum";
 import { ImgFrameComponent } from "../img-frame/img-frame.component";
@@ -17,64 +17,38 @@ import { AdminRoute } from "../../../api/routes/admin.route.enum";
     templateUrl: './img-upload.component.html',
     styleUrl: './img-upload.component.scss'
 })
-export class ImgUploadComponent implements OnInit, OnDestroy {
+export class ImgUploadComponent implements OnInit {
 
-    @ViewChild('fileInput') fileInput!: ElementRef;
-    @ViewChild('dropContainer') dropContainer!: any;
-    @ViewChild('artworkImage', {static: false}) artworkImage: ElementRef<HTMLCanvasElement | null>
+    private readonly imgUploadService = inject(ImgUploadService);
 
-    @Input() existingImgPath: string | null;
-    @Input() isSubmitTriggered: Subject<boolean>;
-    @Input() frameModel: ArtFrame;
-    @Input() frameColor: string;
-    @Input() adminTarget: AdminRoute;
+    private readonly fileInput = viewChild<ElementRef>('fileInput');
 
-    protected fileInformation: ImgUploadInformation;
-    protected sizeFactorInMB: number;
-    protected showValidationMessage: boolean;
-    protected storageDomain: string;
+    readonly existingImgPath = input<string | null>(null);
+    readonly frameModel = input<ArtFrame>(ArtFrame.DEFAULT);
+    readonly frameColor = input('#ffffff');
+    readonly adminTarget = input<AdminRoute>(AdminRoute.GALLERY);
+    readonly emptyOnSubmit = input(false);
+    protected readonly isEmptyOnSubmit = computed(() => this.emptyOnSubmit() && !this.fileInformation().hasFile);
+
+    readonly byChange = output<any>();
+    readonly byRemove = output<any>();
+
+    protected sizeFactorInMB = 4;
+    protected showValidationMessage = false;
+    protected storageDomain = environment.STORAGE_URL.trim();
     protected AdminTargetEnum = AdminRoute;
-    
-    private subscriptionSubmitTrigger$: Subscription;
-
-    @Output() byChange: EventEmitter<any>;
-    @Output() byRemove: EventEmitter<any>;
-
-    constructor(
-        private readonly imgUploadService: ImgUploadService,
-    ) {
-        this.artworkImage = {} as ElementRef;
-
-        this.existingImgPath = null;
-        this.isSubmitTriggered = new Subject<boolean>();
-        this.frameModel = ArtFrame.DEFAULT;
-        this.frameColor = '#ffffff';
-        this.adminTarget = AdminRoute.GALLERY;
-
-        this.fileInformation = {
-            hasFile: false,
-            imageSize: signal(0),
-            imageName: signal(''),
-            imagePreview: signal(''),
-            uploadProgress: signal(0),
-            uploadSuccess: false,
-            uploadError: false,
-        };
-        this.sizeFactorInMB = 4;
-        this.showValidationMessage = false;
-        this.storageDomain = environment.STORAGE_URL;
-
-        this.subscriptionSubmitTrigger$ = new Subscription();
-
-        this.byChange = new EventEmitter<any>();
-        this.byRemove = new EventEmitter<any>();
-    }
+    protected readonly fileInformation = signal<ImgUploadInformation>({
+        hasFile: false,
+        imageSize: 0,
+        imageName: '',
+        imagePreview: '',
+        uploadProgress: 0,
+        uploadSuccess: false,
+        uploadError: false,
+    });
 
     ngOnInit() {
         this.imgUploadService.setMaxFileSize(this.sizeFactorInMB);
-        this.subscriptionSubmitTrigger$ = this.isSubmitTriggered.subscribe((isValid: boolean) => {
-            this.showValidationMessage = !isValid;
-        });
     }
 
     onFileDrop(event: DragEvent): void {
@@ -114,45 +88,49 @@ export class ImgUploadComponent implements OnInit, OnDestroy {
         if(file?.files) {
             const reader = new FileReader();
             reader.onload = (event: any) => {
-                this.fileInformation.imagePreview.set(event.target.result as string);
-                this.isSubmitTriggered.next(true);
-                this.fileInformation.hasFile = true;
+                this.fileInformation.update(data => ({
+                    ...data,
+                    imagePreview: (event.target.result as string),
+                    hasFile: true
+                }));
+                this.showValidationMessage = false;
                 this.byChange.emit(file.files);
             };
             reader.readAsDataURL(file.files);
-            this.fileInformation.uploadSuccess = true;
-            this.fileInformation.uploadError = false;
-            this.fileInformation.imageName.set(file.files.name);
+            this.fileInformation.update(data => ({
+                ...data,
+                uploadSuccess: true,
+                uploadError: false,
+                imageName: file.files.name
+            }));
         } else {
-            this.fileInformation.uploadSuccess = false;
-            this.fileInformation.uploadError = true;
-            
+            this.fileInformation.update(data => ({
+                ...data,
+                uploadSuccess: false,
+                uploadError: true,
+            }));
         }
     }
 
     resetFileInput() {
         // Clean file information to enable validation for multiple uses of same image in a row.
-        this.fileInput.nativeElement.value = null;
-        this.fileInput.nativeElement.files = [];
+        this.fileInput()!.nativeElement.value = null;
+        this.fileInput()!.nativeElement.files = [];
     }
 
     removeImage() {
-        this.fileInformation.hasFile = false;
-        this.fileInformation.imageSize.set(0);
-        this.fileInformation.imageName.set('');
-        this.fileInformation.imagePreview.set('');
-        this.fileInformation.uploadProgress.set(0);
-        this.fileInformation.uploadSuccess = false;
-        this.fileInformation.uploadError = false;
+        this.fileInformation.set({
+            hasFile: false,
+            imageSize: 0,
+            imageName: '',
+            imagePreview: '',
+            uploadProgress: 0,
+            uploadSuccess: false,
+            uploadError: false
+        });
         this.showValidationMessage = true;
-        const removeInfo = {
-            existingImgPath: false
-        }
+        const removeInfo = { existingImgPath: false };
         this.byRemove.emit(removeInfo);
         this.resetFileInput();
-    }
-
-    ngOnDestroy() {
-        this.subscriptionSubmitTrigger$.unsubscribe();
     }
 }

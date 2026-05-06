@@ -108,13 +108,15 @@ export class FileUploadService {
         this.selectedFiles.splice(pos, 1);
     }
 
-    resetInput(fileInput: ElementRef): ElementRef {
+    resetInput(fileInput: ElementRef) {
         if(!fileInput?.nativeElement) {
-            return fileInput;
+            return;
         }
+
         fileInput.nativeElement.value = '';
         fileInput.nativeElement.files = new DataTransfer().files;
-        return fileInput;
+        this.selectedFiles = [];
+        this.fileTransfer.next([]);
     }
 
     private notifyInfo(titlePath: string, textPath: string, params: SnackbarParameter) {
