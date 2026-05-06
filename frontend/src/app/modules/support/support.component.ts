@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
-import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, OnDestroy, OnInit, ViewChild, DOCUMENT } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, viewChild, inject, signal } from "@angular/core";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SupportAPIService } from "../../api/services/support.api.service";
@@ -40,64 +41,49 @@ import { NavigationService } from "../../shared/services/navigation.service";
     templateUrl: './support.component.html',
     styleUrl: './support.component.scss'
 })
-export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
-    @ViewChild('fileInput') fileInput!: ElementRef;
-    @ViewChild('sendBtn') sendBtn!: ElementRef;
-    @ViewChild('resetBtn') resetBtn!: ElementRef;
+export class SupportComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    protected supportForm: FormGroup;
-    protected isLoadingResponse: boolean;
+    private readonly fb = inject(FormBuilder);
+    private readonly auth = inject(AuthService);
+    private readonly elRef = inject(ElementRef);
+    private readonly navigate = inject(NavigationService);
+    private readonly translate = inject(TranslateService);
+    private readonly supportApi = inject(SupportAPIService);
+    private readonly snackbar = inject(SnackbarMessageService);
+    private readonly httpObservation = inject(HttpObservationService);
+    readonly fileUpload = inject(FileUploadService);
+
+    private readonly fileInput = viewChild<ElementRef>('fileInput');
+    private readonly sendBtn = viewChild<ElementRef>('sendBtn');
+    private readonly resetBtn = viewChild<ElementRef>('resetBtn');
+
+    // Angular signal does NOT trigger on comparison if primitive values are eqal (new === old).
+    protected readonly resetRatingValue = signal<{value: number}>({value: 5});
+
+    protected supportForm: FormGroup = new FormGroup({});
+    protected isLoadingResponse = false;
     protected ticketOption = SupportOption;
     protected deviceOption = SupportDeviceOption;
-    protected messageLength: number;
-    protected defaultRatingValue: number;
-    protected resetRatingValue: EventEmitter<number>;
-    protected ticketOptionIcons: Record<string, string>;
-    protected ticketOptionStylings: Record<string, Record<string, any>>;
+    protected messageLength = 0;
+    protected defaultRatingValue = 5;
+    protected ticketOptionIcons: Record<string, string> = {
+        [SupportOption.BUG]: 'icon-bug',
+        [SupportOption.FEEDBACK]: 'icon-feedback',
+        [SupportOption.SUPPORT]: 'icon-support'
+    };
+    protected ticketOptionStylings: Record<string, Record<string, string>> = {
+        [SupportOption.BUG]: {'color': 'var(--theme-snackbar-error)'},
+        [SupportOption.FEEDBACK]: {'color': 'var(--theme-snackbar-warning)'},
+        [SupportOption.SUPPORT]: {'color': 'var(--theme-snackbar-info)'},
+    };
 
-    private subscriptionHttpObservationSupport$: Subscription;
-    private subscriptionHttpObservationFeedback$: Subscription;
-    private subscriptionHttpObservationRating$: Subscription;
-    private subscriptionHttpObservationError$: Subscription;
+    private subscriptionHttpObservationSupport$ = new Subscription();
+    private subscriptionHttpObservationFeedback$ = new Subscription();
+    private subscriptionHttpObservationRating$ = new Subscription();
+    private subscriptionHttpObservationError$ = new Subscription();
     private scrollAnchor!: HTMLElement;
-    private window: any;
-    private delay: any;
-
-    constructor(
-        private readonly fb: FormBuilder,
-        private readonly auth: AuthService,
-        private readonly elRef: ElementRef,
-        @Inject(DOCUMENT) private document: Document,
-        private readonly navigate: NavigationService,
-        private readonly translate: TranslateService,
-        private readonly supportApi: SupportAPIService,
-        private readonly snackbar: SnackbarMessageService,
-        private readonly httpObservation: HttpObservationService,
-        public fileUpload: FileUploadService
-    ) {
-        this.supportForm = new FormGroup({});
-        this.isLoadingResponse = false;
-        this.messageLength = 0;
-        this.defaultRatingValue = 5;
-        this.resetRatingValue = new EventEmitter<number>();
-        this.ticketOptionIcons = {
-            [SupportOption.BUG]: 'icon-bug',
-            [SupportOption.FEEDBACK]: 'icon-feedback',
-            [SupportOption.SUPPORT]: 'icon-support'
-        };
-        this.ticketOptionStylings = {
-            [SupportOption.BUG]: {'color': 'var(--theme-snackbar-error)'},
-            [SupportOption.FEEDBACK]: {'color': 'var(--theme-snackbar-warning)'},
-            [SupportOption.SUPPORT]: {'color': 'var(--theme-snackbar-info)'},
-        }
-
-        this.subscriptionHttpObservationSupport$ = new Subscription();
-        this.subscriptionHttpObservationFeedback$ = new Subscription();
-        this.subscriptionHttpObservationRating$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.window = this.document.defaultView;
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    private window = document.defaultView;
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     ngOnInit() {
         this.scrollAnchor = this.elRef.nativeElement.querySelector(".artdv-support");
@@ -135,7 +121,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
                     this.httpObservation.setSupportStatus(false);
                     this.reset();
                 }
-                if(this.sendBtn) {
+                if(this.sendBtn()) {
                     this.setButtonUseStatus(true);
                 }
             })
@@ -150,7 +136,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
                     this.httpObservation.setFeedbackStatus(false);
                     this.reset();
                 }
-                if(this.sendBtn) {
+                if(this.sendBtn()) {
                     this.setButtonUseStatus(true);
                 }
             })
@@ -196,7 +182,7 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         this.isLoadingResponse = true;
         this.supportApi.sendRatingRequest().subscribe((data: HttpResponse<SupportRatingResponse>) => {
             if(data.body && data.body.rating_average) {
-                this.resetRatingValue.emit(data.body.rating_average);
+                this.resetRatingValue.set({value: data.body.rating_average});
                 this.defaultRatingValue = data.body.rating_average;
             }
             this.isLoadingResponse = false;
@@ -219,9 +205,9 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     }
 
     private getPlaceholderByDeviceSuggestion(): string {
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(this.window.navigator.userAgent)) {
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(this.window!.navigator.userAgent)) {
             return this.deviceOption.MOBILE;
-        } else if(/Chrome/i.test(this.window.navigator.userAgent)) {
+        } else if(/Chrome/i.test(this.window!.navigator.userAgent)) {
             return this.deviceOption.COMPUTER;
         } else {
             return this.deviceOption.OTHER;
@@ -239,11 +225,11 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
 
     private setButtonUseStatus(isReady: boolean) {
         if(isReady) {
-            this.sendBtn.nativeElement.classList.remove('artdv-readonly');
-            this.resetBtn.nativeElement.classList.remove('artdv-readonly');
+            this.sendBtn()?.nativeElement.classList.remove('artdv-readonly');
+            this.resetBtn()?.nativeElement.classList.remove('artdv-readonly');
         } else {
-            this.sendBtn.nativeElement.classList.add('artdv-readonly');
-            this.resetBtn.nativeElement.classList.add('artdv-readonly');
+            this.sendBtn()?.nativeElement.classList.add('artdv-readonly');
+            this.resetBtn()?.nativeElement.classList.add('artdv-readonly');
         }
     }
 
@@ -313,9 +299,15 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
         });
     }
 
+    triggerFileInput() {
+        this.fileInput()?.nativeElement.click();
+    }
+
     handleFileReset() {
-        // Needed to continue processing without stuck files interfering.
-        this.fileInput = this.fileUpload.resetInput(this.fileInput);
+        const ref = this.fileInput();
+        if(ref) {
+            this.fileUpload.resetInput(ref);
+        }
     }
 
     private resetValidationsOnOptionChange(option: SupportOption) {
@@ -337,22 +329,23 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy{
     }
 
     private resetRatingAutofill() {
-        this.resetRatingValue.emit(this.defaultRatingValue);
+        this.resetRatingValue.set({value: this.defaultRatingValue});
         this.supportForm.get('rating')?.setValue(this.defaultRatingValue);
     }
 
-    async reset(isManuallyReset: boolean = false) {
+    async reset(isManuallyReset = false) {
+        this.handleFileReset();
         if(isManuallyReset) {
             this.isLoadingResponse = true;
             this.initEdit({ option: this.supportForm.get('option')?.value });
-            this.resetRatingValue.emit(this.defaultRatingValue);
+            this.resetRatingValue.set({value: this.defaultRatingValue});
             this.supportForm.markAsUntouched();
-            this.navigate.scrollToTop(this.scrollAnchor, this.document);
+            this.navigate.scrollToTop(this.scrollAnchor, document);
             await this.delay(750);
             this.isLoadingResponse = false;
         } else {
             this.initEdit();
-            this.resetRatingValue.emit(this.defaultRatingValue);
+            this.resetRatingValue.set({value: this.defaultRatingValue});
             this.supportForm.markAsUntouched();
         }
     }

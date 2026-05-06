@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { Component, effect, EffectCleanupRegisterFn, ElementRef, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Router, RouterModule } from "@angular/router";
 import { ImgPreloadComponent } from "../../common/components/img-preload/img-preload.component";
@@ -25,45 +25,35 @@ import { LocalStorageService } from "../../shared/services/localstorage.service"
     templateUrl: './gallery.component.html',
     styleUrl: './gallery.component.scss'
 })
-export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
+export class GalleryComponent implements OnInit, OnDestroy {
 
-    @ViewChild('gallerySection') gallerySection!: ElementRef;
+    private router = inject(Router);
+    private readonly auth = inject(AuthService);
+    private readonly galleryApi = inject(GalleryAPIService);
+    private readonly httpObservation = inject(HttpObservationService);
+    private readonly localstorageService = inject(LocalStorageService);
 
-    protected galleryList: GalleryItem[];
-    protected modifiedList: GalleryItem[];
-    protected artGenres = ArtGenre;
-    protected activeGenre: string;
-    protected reloadFlag: boolean;
-    protected isLoadingResponse: boolean;
+    private readonly gallerySection = viewChild<ElementRef>('gallerySection');
 
-    private currentNavigation: any;
-    private tokenIdGalleryFilter: string;
-    private subscriptionHttpObservationFindAll$: Subscription;
-    private subscriptionHttpObservationError$: Subscription;
-    private delay: any;
+    protected galleryList: GalleryItem[] = [];
+    protected modifiedList: GalleryItem[] = [];
+    protected ArtGenreEnum = ArtGenre;
+    protected activeGenre = '';
+    protected reloadFlag = true;
+    protected isLoadingResponse = true;
 
-    constructor(
-        private router: Router,
-        private cdRef: ChangeDetectorRef,
-        private readonly auth: AuthService,
-        private readonly galleryApi: GalleryAPIService,
-        private readonly httpObservation: HttpObservationService,
-        private readonly localstorageService: LocalStorageService
-    ) {
-        this.galleryList = [];
-        this.modifiedList = [];
-        this.activeGenre = '';
-        this.reloadFlag = true;
-        this.isLoadingResponse = true;
+    private currentNavigation = this.router.currentNavigation()?.extras.state as any;
+    private tokenIdGalleryFilter = 'local_gallery-filter';
+    private subscriptionHttpObservationFindAll$ = new Subscription();
+    private subscriptionHttpObservationError$ = new Subscription();
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-        this.subscriptionHttpObservationFindAll$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-        this.currentNavigation = this.router.currentNavigation()?.extras.state as any;
-        this.tokenIdGalleryFilter = 'local_gallery-filter';
+    constructor() {
+        effect((onCleanUp) => {
+            this.handleMouseWheelScroll(onCleanUp);
+        })
     }
-    
+
     ngOnInit() {
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.galleryFindAllStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
@@ -98,17 +88,22 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    ngAfterViewInit() {
-        // Disable scrolling via mousewheel-(middle)click to prevent errors on img lazy/pre loads.
-        this.gallerySection.nativeElement.onmousedown = (e: any) => {
+    private handleMouseWheelScroll(onCleanUp: EffectCleanupRegisterFn) {
+        const element = this.gallerySection()?.nativeElement;
+        if(!element) {
+            return;
+        }
+
+        const mouseDownHandler = (e: any) => {
+            // Disable scrolling via mousewheel-(middle)click to prevent errors on img lazy/pre loads.
             if(e && (e.button === 1 || e.button === 4)) {
                 e.preventDefault();
             }
         };
-
-        this.cdRef.detectChanges();
-
-        // TODO(yqni13): scrolling via custom scrollbar inside gallery component does not work on lazy/pre loads
+        element.addEventListener('mousedown', mouseDownHandler);
+        onCleanUp(() => {
+            element.removeEventListener('mousedown', mouseDownHandler);
+        });
     }
 
     initGallery() {

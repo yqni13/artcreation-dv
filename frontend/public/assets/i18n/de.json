@@ -142,7 +142,7 @@
                 "fieldNames": {
                     "email": "E-Mail",
                     "firstName": "Vorname",
-                    "honorifics": "Geschlecht",
+                    "honorifics": "Anrede",
                     "lastName": "Nachname",
                     "message": "Nachricht",
                     "referenceNr": "Referenz-Nummer",

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { CommonModule } from "@angular/common";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
@@ -14,16 +14,9 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 })
 export class AboutComponent {
 
-    protected safeUrl: SafeResourceUrl;
+    private sanitizer = inject(DomSanitizer);
 
-    private ytUrl: string;
-
-    constructor(private sanitizer: DomSanitizer) {
-        // Images are preloaded via ImgPreloadGuard (admin.routes.ts).
-
-        // Youtube embedded via iframe needs structure: '...youtube.com/' + 'embed/' + VIDEO_ID.
-        this.ytUrl = 'https://www.youtube.com/embed/Y0EGDisZ0Ww';
-
-        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.ytUrl);
-    }
+    // Youtube embedded via iframe needs structure: '...youtube.com/' + 'embed/' + VIDEO_ID.
+    private ytUrl = 'https://www.youtube.com/embed/Y0EGDisZ0Ww';
+    protected safeUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.ytUrl);
 }

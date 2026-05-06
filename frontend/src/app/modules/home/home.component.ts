@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { FilterNewsService } from "../../shared/services/filter-news.service";
 import { CarouselComponent } from "../../common/components/carousel/carousel.component";
 import { TranslateModule } from "@ngx-translate/core";
@@ -27,42 +27,27 @@ import { environment } from "../../../environments/environment";
     styleUrl: './home.component.scss',
     providers: [CacheCheckPipe]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
-    protected newsCollection: NewsItemWGP[];
-    protected mediaCollection: AssetsItem[];
-    protected imgPreloadCollection: any;
-    protected isLoadingResponse: boolean;
-    protected isLoadingMediaResponse: boolean;
-    protected authorLink: string;
+    private readonly auth = inject(AuthService);
+    private readonly newsApi = inject(NewsAPIService);
+    private readonly assetsApi = inject(AssetsAPIService);
+    private readonly imgPreload = inject(ImgPreloadService);
+    private readonly cacheCheckPipe = inject(CacheCheckPipe);
+    private readonly filterNewsService = inject(FilterNewsService);
+    private readonly httpObservation = inject(HttpObservationService);
 
-    private subscriptionHttpObservationFindAll$: Subscription;
-    private subscriptionHttpObservationFindAllAssets$: Subscription;
-    private subscriptionHttpObservationError$: Subscription;
-    private delay: any;
-    private storageDomain: string;
+    protected newsCollection: NewsItemWGP[] = [];
+    protected mediaCollection: AssetsItem[] = [];
+    protected isLoadingResponse = true;
+    protected isLoadingMediaResponse = true;
+    protected authorLink = 'https://pixabay.com/de/users/ds_30-1795490/';
 
-    constructor(
-        private readonly auth: AuthService,
-        private readonly newsApi: NewsAPIService,
-        private readonly assetsApi: AssetsAPIService,
-        private readonly imgPreload: ImgPreloadService,
-        private readonly cacheCheckPipe: CacheCheckPipe,
-        private readonly filterNewsService: FilterNewsService,
-        private readonly httpObservation: HttpObservationService,
-    ) {
-        this.newsCollection = [];
-        this.mediaCollection = [];
-        this.isLoadingResponse = true;
-        this.isLoadingMediaResponse = true;
-        this.authorLink = 'https://pixabay.com/de/users/ds_30-1795490/';
-
-        this.subscriptionHttpObservationFindAll$ = new Subscription();
-        this.subscriptionHttpObservationFindAllAssets$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-        this.storageDomain = environment.STORAGE_URL;
-    }
+    private subscriptionHttpObservationFindAll$ = new Subscription();
+    private subscriptionHttpObservationFindAllAssets$ = new Subscription();
+    private subscriptionHttpObservationError$ = new Subscription();
+    private storageDomain = environment.STORAGE_URL.trim();
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     ngOnInit() {
         // Images are preloaded via ImgPreloadGuard (admin.routes.ts).
@@ -91,6 +76,7 @@ export class HomeComponent implements OnInit {
 
         this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
             filter((x) => x),
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             tap(async (response: any) => {
                 if(this.auth.getExceptionList().includes(response.error.headers.error)) {
                     this.httpObservation.setErrorStatus(false);

@@ -12,29 +12,21 @@ import { BaseRoute } from "../../api/routes/base.route.enum";
 })
 export class ImprintComponent implements OnInit {
 
-    protected ownerData: any;
-    protected devData: any;
+    protected ownerData: Record<string, string> = {
+        name: 'Daniela Varga',
+        address: 'Anton-Bruckner-Gasse 11,\n2544 Leobersdorf, Österreich',
+        email: 'artcreation-dv@gmx.at',
+        phone: '+436643445935'
+    };
+    protected devData: Record<string, string | BaseRoute> = {
+        project: 'artcreation-dv',
+        version: 'v2.0.4',
+        github: 'https://github.com/yqni13/artcreation-dv/tree/production',
+        portfolio: 'https://yqni13.com',
+        contact: BaseRoute.SUPPORT
+    };
 
-    private imgPreloadLogin: any;
-
-    constructor() {
-        this. devData = {
-            project: 'artcreation-dv',
-            version: 'v2.0.2',
-            github: 'https://github.com/yqni13/artcreation-dv/tree/production',
-            portfolio: 'https://yqni13.com',
-            contact: BaseRoute.SUPPORT
-        };
-
-        this. ownerData = {
-            name: 'Daniela Varga',
-            address: 'Anton-Bruckner-Gasse 11,\n2544 Leobersdorf, Österreich',
-            email: 'artcreation-dv@gmx.at',
-            phone: '+436643445935'
-        };
-
-        this.imgPreloadLogin = new Image();
-    }
+    private imgPreloadLogin = new Image();
 
     ngOnInit() {
         this.imgPreloadLogin.src = '/assets/admin/login_bg_smaller_01.jpg';
