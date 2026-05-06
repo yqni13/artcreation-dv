@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ArtFrame } from "../../shared/enums/art-frame.enum";
 import { ArtGenre } from "../../shared/enums/art-genre.enum";
 import { ArtMedium } from "../../shared/enums/art-medium.enum";

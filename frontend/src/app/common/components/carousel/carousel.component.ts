@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, Input, TemplateRef } from '@angular/core';
+import { Component, inject, input, TemplateRef } from '@angular/core';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -21,36 +21,24 @@ import { CacheCheckPipe } from '../../pipes/cache-check.pipe';
         TranslateModule
     ],
     templateUrl: './carousel.component.html',
-    styleUrl: './carousel.component.scss'
+    styleUrl: './carousel.component.scss',
+    host: {
+        '(window:keydown)': 'isNavigatingCarousel($event)'
+    }
 })
 export class CarouselComponent {
 
-    @HostListener('window:keydown', ['$event'])
-    isNavigatingCarousel(event: KeyboardEvent) {
-        if(event.key === 'ArrowRight') {
-            this.next();
-        } else if(event.key === 'ArrowLeft') {
-            this.prev();
-        }
-    }
+    private router = inject(Router);
 
-    @Input() entries: NewsItemWGP[];
-    @Input() isLoadingResponse!: boolean;
-    @Input() slideTemplate?: TemplateRef<any>;
+    readonly entries = input<NewsItemWGP[]>([]);
+    readonly isLoadingResponse = input<boolean>();
+    readonly slideTemplate = input<TemplateRef<unknown>>();
 
     protected baseRoute = BaseRoute;
-    protected storageDomain: string;
+    protected storageDomain = environment.STORAGE_URL.trim();
     protected SizeOptionEnum = SizeOption;
 
-    currentIndex: number;
-
-    constructor(
-        private router: Router
-    ) {
-        this.entries = [];
-        this.currentIndex = 0;
-        this.storageDomain = environment.STORAGE_URL;
-    }
+    currentIndex = 0;
 
     navigateToDetails(entry: NewsItemWGP | null) {
         if(entry) {
@@ -68,14 +56,22 @@ export class CarouselComponent {
     }
 
     next() {
-        this.currentIndex = !this.isLoadingResponse
-            ? ((this.currentIndex + 1) % this.entries.length)
+        this.currentIndex = !this.isLoadingResponse()
+            ? ((this.currentIndex + 1) % this.entries().length)
             : this.currentIndex;
     }
 
     prev() {
-        this.currentIndex = !this.isLoadingResponse 
-            ? ((this.currentIndex - 1 + this.entries.length) % this.entries.length)
+        this.currentIndex = !this.isLoadingResponse() 
+            ? ((this.currentIndex - 1 + this.entries().length) % this.entries().length)
             : this.currentIndex;
+    }
+
+    isNavigatingCarousel(event: KeyboardEvent) {
+        if(event.key === 'ArrowRight') {
+            this.next();
+        } else if(event.key === 'ArrowLeft') {
+            this.prev();
+        }
     }
 }

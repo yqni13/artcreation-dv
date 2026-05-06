@@ -2,6 +2,7 @@ import { SupportDeviceOption } from "../../api/enums/device-option.support.enum"
 import { SupportOption } from "../../api/enums/ticket-option.support.enum";
 
 export interface SupportTicketData {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     attachment?: any[],
     userEmail: string,
     option: SupportOption,

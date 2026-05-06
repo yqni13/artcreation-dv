@@ -1,29 +1,30 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Directive, ElementRef, EventEmitter, HostListener, OnInit, Output } from "@angular/core";
+import { Directive, ElementRef, inject, OnInit, output } from "@angular/core";
 
 @Directive({
-    selector: '[artdvGalleryScroll]'
+    selector: '[artdvGalleryScroll]',
+    host: {
+        '(window:load)': 'isLoading()',
+        '(window:wheel)': 'preloadOnScroll()',
+        '(window:scroll)': 'preloadOnScroll()',
+        '(window:touchmove)': 'preloadOnScroll()',
+        '(window:click)': 'isRoutingGenre($event)',
+        '(window:keydown)': 'isScrollingKeyEvent($event)'
+    }
 })
 export class GalleryScrollDirective implements OnInit {
 
-    @Output() preload!: EventEmitter<boolean>;
+    private readonly elRef = inject(ElementRef);
 
-    private bufferY: number;
-    private loaded: boolean;
+    // @Output() preload!: EventEmitter<boolean>;
+    readonly preload = output<boolean>();
 
-    constructor(
-        private elRef: ElementRef,
-    ) {
-        this.preload = new EventEmitter<boolean>(false);
-        this.bufferY = 700;
-        this.loaded = false;
-    }
-    
+    private bufferY = 700;
+    private loaded = false;
+
     ngOnInit() {
         this.isLoading();
     }
-    
-    @HostListener('window:load', [])
+
     isLoading() {
         // using offsetTop because getBoundingClientRect() not working on first rendering
         const offsetTop = this.elRef.nativeElement.offsetTop;
@@ -34,32 +35,14 @@ export class GalleryScrollDirective implements OnInit {
         }
     }
 
-    @HostListener('window:wheel', [])
-    isScrollingMouseWheel() {
-        this.preloadOnScroll();
-    }
-
-    // not working for custom scrollbar
-    @HostListener('window:scroll', [])
-    isScrollingScrollbar() {
-        this.preloadOnScroll();
-    }
-
-    @HostListener('window:keydown', ['$event'])
     isScrollingKeyEvent(event: KeyboardEvent) {
         if(event.key === 'PageUp' || event.key === 'PageDown' || event.key === 'Tab') {
             this.preloadOnScroll();
         }
     }
 
-    @HostListener('window:touchmove', [])
-    isScrollingTouchMove() {
-        this.preloadOnScroll();
-    }
-
-    @HostListener('window:click', ['$event'])
-    isRoutingGenre($event: any) {
-        if($event.target.className === 'artdv-gallery-nav-type' && !this.loaded) {
+    isRoutingGenre(event: MouseEvent) {
+        if((event.target as HTMLElement).className === 'artdv-gallery-nav-type' && !this.loaded) {
             this.preloadOnScroll();
         }
     }

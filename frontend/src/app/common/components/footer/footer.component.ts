@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, HostListener, Inject, OnInit, DOCUMENT } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
 import { Route, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -16,52 +16,35 @@ import { LanguageOption } from "../../../shared/enums/language-option.enum";
         TranslateModule
     ],
     templateUrl: './footer.component.html',
-    styleUrl: './footer.component.scss'
+    styleUrl: './footer.component.scss',
+    host: {
+        '(window:click)': 'clickOutside($event)'
+    }
 })
 export class FooterComponent implements OnInit {
 
-    @HostListener('window:click', ['$event'])
-    clickOutside($event: any) {
-        if(!$event.target.className.includes('artdv-language-element')) {
-            this.showLanguageList = false;
-        }
-    }
+    private translate = inject(TranslateService);
+    private navigation = inject(NavigationService);
+    private snackbarService = inject(SnackbarMessageService);
 
     protected language = LanguageOption;
-    protected selectedLanguage: LanguageOption;
-    protected showLanguageList: boolean;
-    protected infoRoutes: Route[];
-    protected connectRoutes: Route[];
-    protected socialmediaURL: any;
-    protected creatorURL: string;
-    protected yearStamp: string;
+    protected selectedLanguage: LanguageOption = this.checkLanguageData();
+    protected showLanguageList = false;
+    protected infoRoutes: Route[] = [];
+    protected connectRoutes: Route[] = [];
+    protected creatorURL = 'https://yqni13.com';
+    protected yearStamp = new Date().getFullYear().toString();
+    protected socialmediaURL: Record<string, string> = {
+        instagram: 'https://instagram.com/vargarella_',
+        facebook: 'https://www.facebook.com/profile.php?id=61564886574397',
+        publicartists: 'https://publicartists.online/artists/artcreation/',
+        winstage: 'https://winstage.at/kunstler/daniela-varga/'
+    };
 
-    private isLocalStorageAvailable: any;
-
-    constructor(
-        private snackbarService: SnackbarMessageService,
-        @Inject(DOCUMENT) private document: Document,
-        private navigation: NavigationService,
-        private translate: TranslateService
-    ) {
-        this.isLocalStorageAvailable = typeof localStorage !== 'undefined';
-        this.selectedLanguage = this.checkLanguageData();
-        this.setLanguageData(this.selectedLanguage);
-
-        this.showLanguageList = false;
-        this.infoRoutes = [];
-        this.connectRoutes = [];
-        this.socialmediaURL = {
-            instagram: 'https://instagram.com/vargarella_',
-            facebook: 'https://www.facebook.com/profile.php?id=61564886574397',
-            publicartists: 'https://publicartists.online/artists/artcreation/',
-            winstage: 'https://winstage.at/kunstler/daniela-varga/'
-        }
-        this.creatorURL = 'https://yqni13.com';
-        this.yearStamp = new Date().getFullYear().toString();
-    }
+    private isLocalStorageAvailable = typeof localStorage !== 'undefined';
 
     ngOnInit() {
+        this.setLanguageData(this.selectedLanguage);
         this.connectRoutes = this.getConnectRoutes();
         this.infoRoutes = this.getInfoRoutes();
     }
@@ -109,12 +92,12 @@ export class FooterComponent implements OnInit {
                 localStorage.setItem("artdv-language", language);
                 this.switchLanguage(language);
                 // change lang in index.html to prevent unwanted google translation
-                this.document.querySelector('html')?.setAttribute('lang', language);
+                document.querySelector('html')?.setAttribute('lang', language);
                 return;
             }
         }
         
-        this.document.querySelector('html')?.setAttribute('lang', 'de');
+        document.querySelector('html')?.setAttribute('lang', 'de');
         this.switchLanguage(LanguageOption.de);
     }
 
@@ -126,5 +109,11 @@ export class FooterComponent implements OnInit {
 
     protected openLanguageList() {
         this.showLanguageList = true;
+    }
+
+    clickOutside(event: any) {
+        if(!event.target.className.includes('artdv-language-element')) {
+            this.showLanguageList = false;
+        }
     }
 }

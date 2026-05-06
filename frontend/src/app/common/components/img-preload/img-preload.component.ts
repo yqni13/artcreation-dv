@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, inject, input } from "@angular/core";
 import { GalleryScrollDirective } from "../../directives/ng-scroll.directive";
 import { Router } from "@angular/router";
 import { GalleryItem } from "../../../api/interfaces/gallery-response.interface";
@@ -14,17 +14,17 @@ import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
     template: `
         <div
             class="artdv-gallery-cards-wrapper"
-            id="artdv-loading-wrapper-{{entry.reference_nr}}"
+            id="artdv-loading-wrapper-{{entry().reference_nr}}"
             artdvGalleryScroll
             (preload)="setLoaded($event)"
         >
             @if (loaded) {
                 <img
                     class="artdv-img-preview"
-                    src="{{(storageDomain + '/' + entry.thumbnail_path) | cacheCheck: entry.last_modified}}"
+                    src="{{(storageDomain + '/' + entry().thumbnail_path) | cacheCheck: entry().last_modified}}"
                     alt="404-picture-not-found"
-                    (click)="navigateToDetails(entry.reference_nr)"
-                    (keydown.enter)="navigateToDetails(entry.reference_nr)"
+                    (click)="navigateToDetails(entry().reference_nr)"
+                    (keydown.enter)="navigateToDetails(entry().reference_nr)"
                     [attr.aria-disabled]="true"
                 >
             }
@@ -37,19 +37,14 @@ import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 })
 export class ImgPreloadComponent {
 
-    @Input() entry!: GalleryItem;
-    @Input() activeGenre!: string;
-    @Input() artworkList!: GalleryItem[];
+    private readonly router = inject(Router);
 
-    protected loaded: boolean;
-    protected storageDomain: string;
+    readonly entry = input.required<GalleryItem>();
+    readonly activeGenre = input.required<string>();
+    readonly artworkList = input.required<GalleryItem[]>();
 
-    constructor(
-        private readonly router: Router
-    ) {
-        this.loaded = false;
-        this.storageDomain = environment.STORAGE_URL;
-    }
+    protected loaded = false;
+    protected storageDomain = environment.STORAGE_URL.trim();
 
     setLoaded(flag: boolean) {
         this.loaded = flag;
@@ -57,9 +52,9 @@ export class ImgPreloadComponent {
 
     navigateToDetails(refNr: string) {
         const stateData = {
-            activeGenre: this.activeGenre,
-            artwork: this.entry,
-            artworkList: this.artworkList
+            activeGenre: this.activeGenre(),
+            artwork: this.entry(),
+            artworkList: this.artworkList()
         }
         this.router.navigate(['gallery/detail', refNr], { state: stateData });
     }

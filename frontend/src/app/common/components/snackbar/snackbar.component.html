@@ -1,17 +1,17 @@
 <div id="artdv-snackbar-container-wrapper">
 	<div class="artdv-snackbar-container" [ngClass]="'snackbar-' + snackbarClass">
-		<div class="artdv-snackbar-content" [ngClass]="!!snackbarMsg.text ? 'artdv-multiline' : 'artdv-singleline'">
+		<div class="artdv-snackbar-content" [ngClass]="!!snackbarMsg().text ? 'artdv-multiline' : 'artdv-singleline'">
 			<div class="artdv-snackbar-title">
 				<div><i class="{{snackbarIcon}}"></i></div>
-				<h4>{{snackbarMsg.title}}</h4>
+				<h4>{{snackbarMsg().title}}</h4>
 			</div>
-			@if (!!snackbarMsg.text) {
+			@if (!!snackbarMsg().text) {
 				<div class="artdv-snackbar-text">
-					{{snackbarMsg.text}}
+					{{snackbarMsg().text}}
 				</div>
 			}
 		</div>
-		@if (!snackbarMsg.autoClose) {
+		@if (!snackbarMsg().autoClose) {
 			<div class="artdv-snackbar-btn">
 				<i
 					class="icon-CloseX"

@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from "@angular/core";
+import { Component, effect, ElementRef, input,OnChanges, output, signal, SimpleChanges, viewChild } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
-import { Observable } from "rxjs";
 
 @Component({
     selector: 'artdv-starrating',
@@ -12,62 +12,56 @@ import { Observable } from "rxjs";
     templateUrl: './star-rating.component.html',
     styleUrl: './star-rating.component.scss'
 })
-export class StarRatingComponent implements OnInit, OnChanges {
+export class StarRatingComponent implements OnChanges {
 
-    @ViewChild('star1Ref') star1Ref!: ElementRef;
-    @ViewChild('star2Ref') star2Ref!: ElementRef;
-    @ViewChild('star3Ref') star3Ref!: ElementRef;
-    @ViewChild('star4Ref') star4Ref!: ElementRef;
-    @ViewChild('star5Ref') star5Ref!: ElementRef;
+    private readonly star1Ref = viewChild.required<ElementRef>('star1Ref');
+    private readonly star2Ref = viewChild.required<ElementRef>('star2Ref');
+    private readonly star3Ref = viewChild.required<ElementRef>('star3Ref');
+    private readonly star4Ref = viewChild.required<ElementRef>('star4Ref');
+    private readonly star5Ref = viewChild.required<ElementRef>('star5Ref');
 
-    @Input() startValue: number;
-    @Input() resetValue: Observable<number>;
-    @Output() byChange: EventEmitter<any>;
+    readonly startValue = input(0);
+    readonly resetValue = input<{value: number}>({value: 5});
+    readonly byChange = output<any>();
 
-    protected hasNewRating: boolean;
-    protected rawRating: number;
+    protected hasNewRating = false;
+    protected rawRating = Number(this.startValue);
+    protected readonly startValueSignal = signal(Number(this.startValue()))
 
     constructor() {
-        this.startValue = 0;
-        this.resetValue = new Observable();
-        this.byChange = new EventEmitter<any>();
-        
-        this.hasNewRating = false;
-        this.rawRating = this.startValue;
-    }
-
-    ngOnInit() {
-        this.resetValue.subscribe(change => {
-            this.rawRating = change;
-            change = this.convertFloat2Int(change);
-            switch(change) {
-                case(1): {
-                    this.star1Ref.nativeElement.checked = true;
-                    break;
-                }
-                case(2): {
-                    this.star2Ref.nativeElement.checked = true;
-                    break;
-                }
-                case(3): {
-                    this.star3Ref.nativeElement.checked = true;
-                    break;
-                }
-                case(4): {
-                    this.star4Ref.nativeElement.checked = true;
-                    break;
-                }
-                case(5):
-                default:
-                    this.star5Ref.nativeElement.checked = true;
-            }
-        })
+        effect(() => { this.handleValueReset(); });
     }
 
     ngOnChanges(changes: SimpleChanges) {
         if(changes['startValue']) {
-            this.startValue = this.convertFloat2Int(changes['startValue']['currentValue']);
+            this.startValueSignal.set(this.convertFloat2Int(changes['startValue']['currentValue']));
             this.rawRating = changes['startValue']['currentValue'];
+        }
+    }
+
+    private handleValueReset() {
+        const value = this.resetValue();
+        this.rawRating = value['value'];
+        switch(this.convertFloat2Int(value['value'])) {
+            case(1): {
+                this.star1Ref().nativeElement.checked = true;
+                break;
+            }
+            case(2): {
+                this.star2Ref().nativeElement.checked = true;
+                break;
+            }
+            case(3): {
+                this.star3Ref().nativeElement.checked = true;
+                break;
+            }
+            case(4): {
+                this.star4Ref().nativeElement.checked = true;
+                break;
+            }
+            case(5):
+            default:
+                this.star5Ref().nativeElement.checked = true;
         }
     }
 
@@ -78,7 +72,7 @@ export class StarRatingComponent implements OnInit, OnChanges {
     onChange(event: Event) {
         const input = event.currentTarget as HTMLInputElement;
         this.byChange.emit(input.value);
-        this.rawRating = +input.value;
+        this.rawRating = Number(input.value);
         this.hasNewRating = true;
     }
 }
