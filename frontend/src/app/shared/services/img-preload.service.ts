@@ -5,10 +5,6 @@ import { Injectable } from "@angular/core";
 })
 export class ImgPreloadService {
 
-    constructor() {
-        //
-    }
-
     private preload(url: string): Promise<void> {
         return new Promise((resolve, reject) => {
             const img = new Image();

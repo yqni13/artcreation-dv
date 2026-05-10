@@ -1,11 +1,10 @@
 <div class="artdv-imgupload">
-	@if (!fileInformation.hasFile && !existingImgPath) {
+	@if (!fileInformation().hasFile && !existingImgPath()) {
 		<div class="artdv-imgupload-upload-wrapper">
 			<label
 				for="artdv-imgupload-fileInput"
 				(drop)="onFileDrop($event)"
 				(dragover)="onDragOver($event)"
-				#dropContainer
 			>
 			<span id="artdv-upload-btn-desc-main">upload image</span>
 			<span id="artdv-upload-btn-desc-sub">drop/click here</span>
@@ -21,25 +20,25 @@
 			</label>
 		</div>
 	}
-	@if (showValidationMessage) {
+	@if (showValidationMessage || isEmptyOnSubmit()) {
 		<span id="artdv-upload-valid-msg">
 			{{'validation.frontend.img-upload.required' | translate}}
 		</span>
 	}
-	@if (fileInformation.hasFile || existingImgPath) {
+	@if (fileInformation().hasFile || existingImgPath()) {
 		<div class="artdv-imgupload-preview-wrapper">
 			<div class="artdv-imgupload-preview-container">
-				@if (adminTarget === AdminTargetEnum.GALLERY) {
-					<artdv-imgframe [model]="frameModel" [color]="frameColor">
+				@if (adminTarget() === AdminTargetEnum.GALLERY) {
+					<artdv-imgframe [model]="frameModel()" [color]="frameColor()">
 						<img
-							src="{{existingImgPath ? (storageDomain + '/' + existingImgPath) : fileInformation.imagePreview()}}"
+							src="{{existingImgPath() ? (storageDomain + '/' + existingImgPath()) : fileInformation().imagePreview}}"
 							alt="404 not found"
 						>
 					</artdv-imgframe>
 				}
-				@if (adminTarget !== AdminTargetEnum.GALLERY) {
+				@if (adminTarget() !== AdminTargetEnum.GALLERY) {
 					<img
-						src="{{existingImgPath ? (storageDomain + '/' + existingImgPath) : fileInformation.imagePreview()}}"
+						src="{{existingImgPath() ? (storageDomain + '/' + existingImgPath()) : fileInformation().imagePreview}}"
 						alt="404 not found"
 					>
 				}
@@ -51,7 +50,6 @@
 				>
 					<i class="icon-CloseX"></i>
 				</div>
-				<canvas #artworkImage></canvas>
 			</div>
 		</div>
 	}

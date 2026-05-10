@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpClient, HttpResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { NewsRoute } from "../routes/news.route.enum";
 import {
@@ -16,35 +17,21 @@ import { NewsCreateRequest, NewsUpdateRequest } from "../interfaces/news-request
 })
 export class NewsAPIService {
 
-    private idParam: string;
-    private formDataCreate: FormData;
-    private formDataUpdate: FormData;
+    private readonly http = inject(HttpClient);
 
-    private domainPathV1: string;
-    private urlGetOneWithGalleryPaths: string;
-    private urlGetAllWithGalleryPaths: string;
-    private urlCreate: string;
-    private urlUpdate: string;
-    private urlDelete: string;
+    private idParam = '';
+    private formDataCreate = new FormData();
+    private formDataUpdate = new FormData();
 
-    private urlGetOne: string;
-    private urlGetAll: string;
+    private domainPathV1 = '/api/v1/news';
+    private urlGetOneWithGalleryPaths = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDONEWGP}`;
+    private urlGetAllWithGalleryPaths = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDALLWGP}`;
+    private urlCreate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.CREATE}`;
+    private urlUpdate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.UPDATE}`;
+    private urlDelete = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.DELETE}`;
 
-    constructor(private readonly http: HttpClient) {
-        this.idParam = '';
-        this.formDataCreate = new FormData();
-        this.formDataUpdate = new FormData();
-
-        this.domainPathV1 = '/api/v1/news';
-        this.urlGetOneWithGalleryPaths = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDONEWGP}`;
-        this.urlGetAllWithGalleryPaths = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDALLWGP}`;
-        this.urlCreate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.CREATE}`;
-        this.urlUpdate = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.UPDATE}`;
-        this.urlDelete = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.DELETE}`;
-        
-        this.urlGetOne = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDONE_Deprecated}`;
-        this.urlGetAll = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDALL_Deprecated}`;
-    }
+    private urlGetOne = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDONE_Deprecated}`;
+    private urlGetAll = `${environment.API_BASE_URL}${this.domainPathV1}/${NewsRoute.FINDALL_Deprecated}`;
 
     setIdParam(id: string) {
         this.idParam = id;

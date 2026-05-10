@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SupportDeviceOption } from "../enums/device-option.support.enum";
 import { SupportOption } from "../enums/ticket-option.support.enum";
 

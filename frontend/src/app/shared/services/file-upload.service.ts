@@ -1,4 +1,4 @@
-import { ElementRef, Injectable } from "@angular/core";
+import { ElementRef, inject, Injectable } from "@angular/core";
 import { SnackbarMessageService } from "./snackbar.service";
 import { FileUploadValidations } from "../interfaces/file-upload.interface";
 import { SnackbarInput } from "../enums/snackbar-input.enum";
@@ -13,39 +13,34 @@ import { Subject } from "rxjs";
 })
 export class FileUploadService {
 
-    private maxSizeEachInBytes: number;
-    private maxNumber: number;
-    private allowedTypes: string[];
-    private allowedTypesIndicators: string[];
-    private fileTransfer = new Subject<any>();
+    private readonly translate = inject(TranslateService);
+    private readonly snackbar = inject(SnackbarMessageService);
+    private readonly staticTranslate = inject(StaticTranslateService);
 
-    protected selectedFiles: File[];
+    private maxSizeEachInBytes = 0;
+    private maxNumber = 0;
+    private allowedTypes: string[] = [];
+    private allowedTypesIndicators: string[] = [];
+    private fileTransfer = new Subject<unknown>();
+
+    protected selectedFiles: File[] = [];
     fileTransfer$ = this.fileTransfer.asObservable();
 
-    constructor(
-        private readonly translate: TranslateService,
-        private readonly snackbar: SnackbarMessageService,
-        private readonly staticTranslate: StaticTranslateService,
-    ) {
-        this.selectedFiles = [];
+    selectFiles(event: Event) {
+        const input = (event.target as HTMLInputElement).files;
+        if(!input) {
+            return;
+        }
 
-        this.maxSizeEachInBytes = 0;
-        this.maxNumber = 0;
-        this.allowedTypes = [];
-        this.allowedTypesIndicators = [];
-    }
-
-    selectFiles(event: any) {
-        let newFiles: File[] = Array.from(event.target.files);
-
+        let newFiles: File[] = Array.from(input);
         newFiles = this.validateMaxNumberOfFiles(newFiles);
         newFiles = this.validateAllowedFileTypes(newFiles);
         newFiles = this.validateMaxSizeOfEachFile(newFiles);
-
         this.selectedFiles = [
             ...this.selectedFiles,
             ...newFiles
         ];
+
         this.fileTransfer.next(this.selectedFiles);
     }
 
@@ -81,7 +76,7 @@ export class FileUploadService {
             this.notifyInfo(
                 'validation.frontend.file-upload.title.max-size-each',
                 'validation.frontend.file-upload.text.max-size-each',
-                {val: `${this.maxSizeEachInBytes / 1024 / 1024}MB`, len: null, min: null, max: null}
+                {val: `${this.maxSizeEachInBytes / 1024 / 1024}`, len: null, min: null, max: null}
             );
         }
         return checkedFiles;
@@ -96,7 +91,7 @@ export class FileUploadService {
         })
         if(checkedFiles.length !== uncheckedFiles.length) {
             // Modify allowedTypes-string to show ".pdf" instead "application/pdf" for easier readability.
-            let notificationVal: string = `${this.allowedTypes}`;
+            let notificationVal = `${this.allowedTypes}`;
             this.allowedTypesIndicators.forEach((indicator: string) => {
                 notificationVal = notificationVal.replaceAll(indicator, " .");
             })
@@ -113,13 +108,15 @@ export class FileUploadService {
         this.selectedFiles.splice(pos, 1);
     }
 
-    resetInput(fileInput: ElementRef): ElementRef {
+    resetInput(fileInput: ElementRef) {
         if(!fileInput?.nativeElement) {
-            return fileInput;
+            return;
         }
+
         fileInput.nativeElement.value = '';
         fileInput.nativeElement.files = new DataTransfer().files;
-        return fileInput;
+        this.selectedFiles = [];
+        this.fileTransfer.next([]);
     }
 
     private notifyInfo(titlePath: string, textPath: string, params: SnackbarParameter) {

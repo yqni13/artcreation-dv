@@ -14,7 +14,7 @@
 				>{{'modules.gallery.overview' | translate}}</a>
 			</div>
 			<div class="artdv-gallery-nav-row">
-				@for (genre of artGenres | keyvalue; track genre) {
+				@for (genre of ArtGenreEnum | keyvalue; track $index) {
 					<a
 						class="artdv-gallery-nav-type"
 						[attr.aria-disabled]="true"
@@ -29,7 +29,7 @@
 	@if (!isLoadingResponse) {
 		<div class="artdv-gallery-content">
 			@if (activeGenre !== '') {
-				@for (artwork of modifiedList; track artwork) {
+				@for (artwork of modifiedList; track $index) {
 					<div class="artdv-gallery-cards">
 						@if (reloadFlag) {
 							<artdv-imgpreload

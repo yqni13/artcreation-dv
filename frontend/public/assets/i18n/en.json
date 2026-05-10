@@ -97,7 +97,8 @@
                 }
             },
             "info": {
-                "last-update": "last update:"
+                "last-update": "last update:",
+                "searchtext": "Search"
             },
             "news": {
                 "details": {
@@ -142,7 +143,7 @@
                 "fieldNames": {
                     "email": "Email",
                     "firstName": "First name",
-                    "honorifics": "Gender",
+                    "honorifics": "Title",
                     "lastName": "Last name",
                     "message": "Message",
                     "referenceNr": "Reference number",

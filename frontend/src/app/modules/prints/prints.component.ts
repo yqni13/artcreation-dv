@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 import * as content from "../../../../public/assets/i18n/en.json";
@@ -16,27 +16,19 @@ import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img
         TranslateModule
     ],
     templateUrl: './prints.component.html',
-    styleUrl: './prints.component.scss',
+    styleUrl: './prints.component.scss'
 })
 export class PrintsComponent implements OnInit, OnDestroy {
 
-    protected paperPrintsListLength: number;
-    protected baseRoute = BaseRoute;
-    protected isFullscale: boolean;
-    protected blockPriceInfo: any;
-    protected activeFullscaleImg: string;
+    private readonly themeObserve = inject(ThemeObservationService);
 
-    private subscriptionThemeObservation$: Subscription;
+    protected paperPrintsListLength = Object.keys(content['modules']['prints']['paper']['list']).length;
+    protected readonly BaseRouteEnum = BaseRoute;
+    protected isFullscale = false;
+    protected blockPriceInfo: {img: string} = {img: ''};
+    protected activeFullscaleImg = '';
 
-    constructor(
-        private readonly themeObserve: ThemeObservationService
-    ) {
-        this.paperPrintsListLength = Object.keys(content['modules']['prints']['paper']['list']).length;
-        this.isFullscale = false;
-        this.activeFullscaleImg = '';
-
-        this.subscriptionThemeObservation$ = new Subscription();
-    }
+    private subscriptionThemeObservation$ = new Subscription();
 
     ngOnInit() {
         this.subscriptionThemeObservation$ = this.themeObserve.themeOption$.pipe(

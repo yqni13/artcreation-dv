@@ -1,4 +1,4 @@
-import { Component, Inject, DOCUMENT } from "@angular/core";
+import { Component } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import * as content from "../../../../public/assets/i18n/privacy-en.json";
 
@@ -12,13 +12,7 @@ import * as content from "../../../../public/assets/i18n/privacy-en.json";
 })
 export class PrivacyComponent {
 
-    protected privacyData: string[];
-
-    constructor(
-        @Inject(DOCUMENT) private document: Document
-    ) {
-        this.privacyData = this.configContentLoop();
-    }
+    protected privacyData: string[] = this.configContentLoop();
 
     private configContentLoop() {
         const usedNumberOfElements = Object.keys(content['privacy-content']['headers']);
@@ -26,7 +20,6 @@ export class PrivacyComponent {
     }
 
     navigateToHeader(id: string) {
-        this.document.getElementById(id)?.scrollIntoView({behavior: 'smooth', block: 'start'});
+        document.getElementById(id)?.scrollIntoView({behavior: 'smooth', block: 'start'});
     }
-
 }

@@ -1,5 +1,5 @@
 # yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
-### $\textsf{\color{brown}{v2.0.2}}$
+### $\textsf{\color{brown}{v2.0.4}}$
 
 <br><br>
 
@@ -68,7 +68,7 @@ $ node server.js
 
 | Feature | Description |
 |---------|-------------|
-| 🪁 Angular | Angular v19 standalone with routing + nested routes on id |
+| 🪁 Angular | Angular v21 with nested routing |
 | 📂 Cloud file handling | Upload/delete via Cloudflare R2 (S3-compatible) - supporting images up to 4MB |
 | 🖼️ Preload | Customized image/video preload on page loading + viewport/scroll |
 | ⌨ Input | Customized form components (text/textarea/select) |
@@ -136,7 +136,7 @@ Figure 4 shows an example error message indicating that the email could not be s
 
 ### $\textsf{\color{teal}Customized lazy loading / preload}$
 
-Instead of Angular’s built-in `@defer` blocks, this application uses a custom lazy loading strategy via `HostListeners`.
+Instead of Angular’s built-in `@defer` blocks, this application uses a custom lazy loading strategy via `host` properties.
 
 When opening the Gallery component, all images currently within the viewport are rendered immediately. Additionally, a buffer of images just below the viewport is preloaded to ensure a smooth scrolling experience. As the user scrolls, more images are continuously preloaded.
 <br><br>
@@ -304,10 +304,10 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v2.0.0\ =>\ {\textbf{\color{brown}v2.0.2}]}}$ app
+$\textsf{[v2.0.2\ =>\ {\textbf{\color{brown}v2.0.4}]}}$ app
 - $\textsf{\color{orange}Patch:}$ Updated:
-  + dependencies to solve vulnerabilities (frontend + backend)
-  + nodemailer settings due to config errors of updated api version
+  + frontend on eslint rules & guidelines
+  + small refactoring and fixes
 
 <br>
 

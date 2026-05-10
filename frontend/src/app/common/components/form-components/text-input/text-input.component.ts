@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output, ViewChild } from "@angular/core";
-import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
+import { AfterViewInit, Component, computed, ElementRef, forwardRef, input, signal, viewChild } from "@angular/core";
+import { NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
 import { AbstractInputComponent } from "../../abstracts/form-input.abstract.component";
-import { Subscription } from "rxjs";
 import { TextCaseOption } from "../../../../shared/enums/text-case.enum";
 
 @Component({
@@ -24,52 +22,26 @@ import { TextCaseOption } from "../../../../shared/enums/text-case.enum";
         }
     ]
 })
-export class TextInputComponent extends AbstractInputComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TextInputComponent extends AbstractInputComponent implements AfterViewInit {
 
-    @ViewChild('isAutoFocus') isAutoFocus!: ElementRef;
+    private readonly isAutoFocus = viewChild<ElementRef>('isAutoFocus');
 
-    @Input() fieldName: string;
-    @Input() formControl: FormControl;
-    @Input() readonly: boolean;
-    @Input() placeholder: string;
-    @Input() inputType: string;
-    @Input() className: string;
-    @Input() ngClass: string;
-    @Input() showPassword: boolean;
-    @Input() hasAutoFocus: boolean;
-    @Input() forceTextCase: TextCaseOption;
-
-    @Output() byChange: EventEmitter<any>;
+    readonly readonly = input(false);
+    readonly hasAutoFocus = input(false);
+    readonly forceTextCase = input<TextCaseOption>(TextCaseOption.NEUTRAL);
+    readonly inputType = input('');
+    readonly inputTypeComputed = computed(() => this.showPassword() ? 'text' : 'password');
 
     protected textCaseOption = TextCaseOption;
-    private subscription$: Subscription;
+    protected readonly showPassword = signal(false);
 
     constructor() {
         super();
-
-        this.fieldName = '';
-        this.formControl = new FormControl();
-        this.readonly = false;
-        this.placeholder = '';
-        this.inputType = '';
-        this.className = '';
-        this.ngClass = '';
-        this.showPassword = false;
-        this.hasAutoFocus = false;
-        this.forceTextCase = TextCaseOption.NEUTRAL;
-        this.byChange = new EventEmitter<any>();
-        this.subscription$ = new Subscription();
-    }
-    
-    ngOnInit() {
-        this.subscription$ = this.formControl.valueChanges.subscribe(change => {
-            this.byChange.emit(change);
-        })
     }
 
     ngAfterViewInit() {
-        if(this.hasAutoFocus) {
-            this.isAutoFocus.nativeElement.focus();
+        if(this.hasAutoFocus()) {
+            this.isAutoFocus()?.nativeElement.focus();
         }
     }
 
@@ -77,7 +49,7 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
         const input = event.target as HTMLInputElement;
         if (!input) return;
     
-        switch (this.forceTextCase) {
+        switch (this.forceTextCase()) {
             case this.textCaseOption.FORCEUP:
                 input.value = input.value.toUpperCase();
                 break;
@@ -92,15 +64,6 @@ export class TextInputComponent extends AbstractInputComponent implements OnInit
     }
 
     setPasswordVisibility(visible: boolean) {
-        this.showPassword = visible
-        if(visible) {
-            this.inputType = 'text';
-        } else {
-            this.inputType = 'password';
-        }
-    }
-
-    ngOnDestroy() {
-        this.subscription$.unsubscribe();
+        this.showPassword.set(visible);
     }
 }
