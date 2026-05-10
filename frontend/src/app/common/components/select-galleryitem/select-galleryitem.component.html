@@ -1,5 +1,5 @@
 <div class="artdv-selectgalleryitem" [ngClass]="showGalleryList ? 'artdv-selectgalleryitem-fullsize' : ''">
-	@if (!showGalleryList && !hasSelectedItem && !showInUpdateMode) {
+	@if (!showGalleryList && !hasSelectedItem() && !showInUpdateMode()) {
 		<a
 			class="artdv-selectgalleryitem-preselect"
 			(click)="openGalleryList()"
@@ -9,7 +9,7 @@
 			{{'common.component.select-galleryitem.select' | translate}}
 		</a>
 	}
-	@if (showValidationMessage) {
+	@if (showValidationMessage || isEmptyOnSubmit()) {
 		<span id="artdv-select-valid-msg">
 			{{'validation.frontend.img-upload.required' | translate}}
 		</span>
@@ -39,11 +39,11 @@
 			</div>
 		</div>
 	}
-	@if (showInUpdateMode || (!showGalleryList && hasSelectedItem)) {
+	@if (showInUpdateMode() || (!showGalleryList && hasSelectedItem())) {
 		<div class="artdv-selectgalleryitem-preview">
 			<div class="artdv-selectgalleryitem-preview-container">
 				<img
-					src="{{storageDomain + '/' + (!showInUpdateMode ? selectedArtwork?.thumbnail_path : showInUpdateMode)}}"
+					src="{{storageDomain + '/' + (!showInUpdateMode() ? selectedArtwork?.thumbnail_path : showInUpdateMode())}}"
 					alt="{{selectedArtwork?.reference_nr}}"
 				>
 				<div

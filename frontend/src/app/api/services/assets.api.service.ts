@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpClient, HttpResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { AdminRoute } from "../routes/admin.route.enum";
 import { AssetsRoute } from "../routes/assets.route.enum";
@@ -12,29 +13,18 @@ import { AssetsCreateUpdateResponse, AssetsDeleteResponse, AssetsItemResponse, A
 })
 export class AssetsAPIService {
 
-    private idParam: string;
-    private formDataCreate: FormData;
-    private formDataUpdate: FormData;
+    private readonly http = inject(HttpClient);
 
-    private domainPathV1: string;
-    private urlGetOne: string;
-    private urlGetAll: string;
-    private urlCreate: string;
-    private urlUpdate: string;
-    private urlDelete: string;
+    private idParam = '';
+    private formDataCreate = new FormData();
+    private formDataUpdate = new FormData();
 
-    constructor(private readonly http: HttpClient) {
-        this.idParam = '';
-        this.formDataCreate = new FormData();
-        this.formDataUpdate = new FormData();
-
-        this.domainPathV1 = '/api/v1'
-        this.urlGetOne = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.FINDONE}`;
-        this.urlGetAll = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.FINDALL}`;
-        this.urlCreate = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.CREATE}`;
-        this.urlUpdate = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.UPDATE}`;
-        this.urlDelete = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.DELETE}`;
-    }
+    private domainPathV1 = '/api/v1';
+    private urlGetOne = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.FINDONE}`;
+    private urlGetAll = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.FINDALL}`;
+    private urlCreate = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.CREATE}`;
+    private urlUpdate = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.UPDATE}`;
+    private urlDelete = `${environment.API_BASE_URL}${this.domainPathV1}${AdminRoute.ASSETS}${AssetsRoute.DELETE}`;
 
     setIdParam(id: string) {
         this.idParam = id;

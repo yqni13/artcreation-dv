@@ -4,17 +4,17 @@
 
 <div class="artdv-imgframe">
 	<!-- ArtFrame DEFAULT -->
-	@if (model === ArtFrameEnum.DEFAULT) {
-		<div class="artdv-img-frame-model-default" [ngStyle]="{'border-color': color}">
+	@if (model() === ArtFrameEnum.DEFAULT) {
+		<div class="artdv-img-frame-model-default" [ngStyle]="{'border-color': color()}">
 			<ng-container *ngTemplateOutlet="content"></ng-container>
 		</div>
 	}
 
 	<!-- ArtFrame CLASSIC -->
-	@if (model === ArtFrameEnum.CLASSIC) {
+	@if (model() === ArtFrameEnum.CLASSIC) {
 		<div class="artdv-img-frame-model-classic-outer">
 			<div class="main">
-				<div class="inner" [ngStyle]="{'border-color': color}">
+				<div class="inner" [ngStyle]="{'border-color': color()}">
 					<ng-container *ngTemplateOutlet="content"></ng-container>
 				</div>
 			</div>
@@ -22,14 +22,14 @@
 	}
 
 	<!-- ArtFrame MODERN -->
-	@if (model === ArtFrameEnum.MODERN) {
+	@if (model() === ArtFrameEnum.MODERN) {
 		<div class="artdv-img-frame-model-modern" [ngStyle]="artFramePhotoBorderStyles">
 			<ng-container *ngTemplateOutlet="content"></ng-container>
 		</div>
 	}
 
 	<!-- ArtFrame PHOTO -->
-	@if (model === ArtFrameEnum.PHOTO) {
+	@if (model() === ArtFrameEnum.PHOTO) {
 		<div class="artdv-img-frame-model-photo" [ngStyle]="artFramePhotoBorderStyles">
 			<ng-container *ngTemplateOutlet="content"></ng-container>
 		</div>

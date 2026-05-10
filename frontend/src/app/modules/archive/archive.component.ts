@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { DateFormatPipe } from "../../common/pipes/date-format.pipe";
 import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img-fullscale.component";
 import { TranslateModule } from "@ngx-translate/core";
@@ -30,47 +30,22 @@ import { ArtGenre } from "../../shared/enums/art-genre.enum";
 })
 export class ArchiveComponent implements OnInit, OnDestroy {
 
-    protected newsCollection: NewsItemWGP[]
-    protected isFullscale: boolean;
-    protected currentPath?: string;
-    protected isLoadingResponse: boolean;
-    protected storageDomain: string;
-    protected activeEntry: NewsItemWGP;
+    private readonly auth = inject(AuthService);
+    private readonly newsApi = inject(NewsAPIService);
+    private readonly imgPreload = inject(ImgPreloadService);
+    private readonly cacheCheckPipe = inject(CacheCheckPipe);
+    private readonly httpObservation = inject(HttpObservationService);
 
-    private subscriptionHttpObservationFindAll$: Subscription;
-    private subscriptionHttpObservationError$: Subscription;
-    private delay: any;
+    protected newsCollection: NewsItemWGP[] = [];
+    protected isFullscale = false;
+    protected currentPath? = '';
+    protected isLoadingResponse = false;
+    protected storageDomain = environment.STORAGE_URL.trim();
+    protected activeEntry: NewsItemWGP = this.initActiveEntry();
 
-    constructor(
-        private readonly auth: AuthService,
-        private readonly newsApi: NewsAPIService,
-        private readonly imgPreload: ImgPreloadService,
-        private readonly cacheCheckPipe: CacheCheckPipe,
-        private readonly httpObservation: HttpObservationService
-    ) {
-        this.newsCollection = [];
-        this.isFullscale = false;
-        this.currentPath = '';
-        this.isLoadingResponse = false;
-        this.storageDomain = environment.STORAGE_URL;
-        this.activeEntry = {
-            news_id: '',
-            gallery: '',
-            title: '',
-            content: '',
-            edited: true,
-            created_on: '',
-            last_modified: '',
-            image_path_gallery: '',
-            thumbnail_path_gallery: '',
-            reference_nr_gallery: '',
-            art_genre_gallery: ArtGenre.ABSTRACT
-        }
-
-        this.subscriptionHttpObservationFindAll$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    private subscriptionHttpObservationFindAll$ = new Subscription();
+    private subscriptionHttpObservationError$ = new Subscription();
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     ngOnInit() {
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.newsFindAllWithGalleryPathsStatus$.pipe(
@@ -85,6 +60,7 @@ export class ArchiveComponent implements OnInit, OnDestroy {
 
         this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
             filter((x) => x),
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             tap(async (response: any) => {
                 if(this.auth.getExceptionList().includes(response.error.headers.error)) {
                     await this.delay(500); // delay after snackbar displays
@@ -97,13 +73,27 @@ export class ArchiveComponent implements OnInit, OnDestroy {
         this.loadNewsList();
     }
 
+    private initActiveEntry(): NewsItemWGP {
+        return {
+            news_id: '',
+            gallery: '',
+            title: '',
+            content: '',
+            edited: true,
+            created_on: '',
+            last_modified: '',
+            image_path_gallery: '',
+            thumbnail_path_gallery: '',
+            reference_nr_gallery: '',
+            art_genre_gallery: ArtGenre.ABSTRACT
+        };
+    }
+
     navigateFullscale(flag: boolean, entry?: NewsItemWGP) {
         this.isFullscale = flag;
         if(entry) {
             this.activeEntry = entry;
             this.currentPath = entry?.gallery !== null ? entry?.image_path_gallery : entry?.image_path;
-        } else {
-            this.currentPath = this.currentPath;
         }
     }
 

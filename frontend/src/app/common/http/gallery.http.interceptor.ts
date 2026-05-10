@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AdminRoute } from '../../api/routes/admin.route.enum';
 import { HttpResponse } from "@angular/common/http";
 import { SnackbarMessageService } from "../../shared/services/snackbar.service";
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { GalleryRoute } from "../../api/routes/gallery.route.enum";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
@@ -11,13 +12,9 @@ import { HttpObservationService } from "../../shared/services/http-observation.s
 })
 export class GalleryHttpInterceptor {
 
-    constructor(
-        private readonly translate: TranslateService,
-        private readonly snackbarService: SnackbarMessageService,
-        private readonly httpObservationService: HttpObservationService
-    ) {
-        //
-    }
+    private readonly translate = inject(TranslateService);
+    private readonly snackbarService = inject(SnackbarMessageService);
+    private readonly httpObservationService = inject(HttpObservationService);
 
     async handleGalleryResponse(httpBody: HttpResponse<any>) {
         if(httpBody.url?.includes(`${AdminRoute.GALLERY}${GalleryRoute.FINDALL}`)) {

@@ -1,19 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component } from "@angular/core";
-import { ControlValueAccessor } from "@angular/forms";
+import { Component, input, OnDestroy, OnInit, output } from "@angular/core";
+import { ControlValueAccessor, FormControl } from "@angular/forms";
+import { Subscription } from "rxjs";
 
 @Component({
     template: ''
 })
-export class AbstractInputComponent implements ControlValueAccessor {
+export class AbstractInputComponent implements ControlValueAccessor, OnInit, OnDestroy {
 
     private onChange!: (value: unknown) => void;
     private onTouch!: (value: unknown) => void;
 
-    input!: unknown;
+    readonly fieldName = input.required<string>();
+    readonly formControl = input.required<FormControl>();
+    readonly placeholder = input.required<string>();
+    readonly ngClass = input('');
+    readonly className = input('');
 
-    constructor() {
-        //
+    readonly byChange = output<unknown>();
+
+    input!: unknown;
+    private subscription$ = new Subscription();
+
+    ngOnInit() {
+        this.subscription$ = this.formControl().valueChanges.subscribe(change => {
+            this.byChange.emit(change);
+        })
     }
 
     writeValue(input: unknown) {
@@ -24,5 +36,9 @@ export class AbstractInputComponent implements ControlValueAccessor {
     }
     registerOnTouched(fn: any) {
         this.onTouch = fn;
+    }
+
+    ngOnDestroy() {
+        this.subscription$.unsubscribe();
     }
 }

@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild, DOCUMENT } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit,inject, viewChild } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
-import { NavigationEnd, Route, Router, RouterModule } from "@angular/router";
+import { NavigationEnd, Route, Router, RouterEvent, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { ThemeOption } from "../../../shared/enums/theme-option.enum";
 import _ from 'underscore';
@@ -22,58 +21,52 @@ import { ThemeHandlerService } from "../../../shared/services/theme-handler.serv
 })
 export class NavigationComponent implements OnInit, AfterViewInit {
 
-    @ViewChild("themeModeIcon") themeModeIcon!: ElementRef;
-    
-    protected routes: Route[];
-    protected selectedTheme: ThemeOption;
-    protected isMobileMode: boolean;
+    private readonly router = inject(Router);
+    private readonly auth = inject(AuthService);
+    private readonly navigation = inject(NavigationService);
+    private readonly themeHandler = inject(ThemeHandlerService);
 
-    private maxMobileWidth: number;
-    private window: any;
+    private readonly themeModeIcon = viewChild<ElementRef>('themeModeIcon');
 
-    constructor (
-        private readonly router: Router,
-        private readonly auth: AuthService,
-        @Inject(DOCUMENT) private document: Document,
-        private readonly navigation: NavigationService,
-        private readonly themeHandler: ThemeHandlerService
-    ) {
-        this.selectedTheme = this.themeHandler.checkThemeSettings();
+    protected routes: Route[] = [];
+    protected selectedTheme: ThemeOption = this.themeHandler.checkThemeSettings();;
+    protected isMobileMode = false;
+
+    private maxMobileWidth = 1024;
+    private window = document.defaultView;;
+
+    constructor () {
         this.themeHandler.setThemeSettings(this.selectedTheme);
-
-        this.window = this.document.defaultView;
-        this.maxMobileWidth = 1024;
-        this.routes = [];
-        this.isMobileMode = false;
-
         this.router.events
         .pipe(filter(evt => evt instanceof NavigationEnd))
-        .subscribe((event: any) => {
+        .subscribe((event: RouterEvent) => {
             this.navigation.setPreviousUrl(this.navigation.getCurrentUrl());
             this.navigation.setCurrentUrl(event.url);
             this.redirectNotAuthRoute(event.url);
-        })
+        });
     }
 
     ngOnInit() {
         this.routes = this.getRoutes();
 
-        if(this.window.screen !== undefined) {
+        if(this.window?.screen !== undefined) {
             this.setNavWidthDynamically(this.window.screen.width);
-            this.setNavWidthDynamically(this.document.body.clientWidth);        
+            this.setNavWidthDynamically(document.body.clientWidth);        
         }
 
         // adapt to device screen resolution
         const screenWidthRequestSlowedDown = _.debounce( () => {
-            this.setNavWidthDynamically(this.window.screen.width);
+            if(this.window) {
+                this.setNavWidthDynamically(this.window?.screen.width);
+            }
         }, 250)
-        this.window.addEventListener("resize", screenWidthRequestSlowedDown, false);
+        this.window?.addEventListener("resize", screenWidthRequestSlowedDown, false);
 
         // adapt to zoom level
         const clientWidthRequestSlowedDown = _.debounce( () => {
-            this.setNavWidthDynamically(this.document.body.clientWidth);
+            this.setNavWidthDynamically(document.body.clientWidth);
         }, 250)
-        this.window.addEventListener("resize", clientWidthRequestSlowedDown, false);
+        this.window?.addEventListener("resize", clientWidthRequestSlowedDown, false);
     }
     
     ngAfterViewInit() {
@@ -89,10 +82,10 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     private setNavWidthDynamically(width: number): void {
         // sets data attribute for body and in media.scss style settings are applied
         if(width > this.maxMobileWidth) {
-            this.document.body.setAttribute("data-nav", 'desktopMode');
+            document.body.setAttribute("data-nav", 'desktopMode');
             this.isMobileMode = false;
         } else {
-            this.document.body.setAttribute("data-nav", 'mobileMode');
+            document.body.setAttribute("data-nav", 'mobileMode');
             this.isMobileMode = true;
         }
     }
@@ -103,8 +96,8 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
     private applyThemeClass() {
         if(this.themeModeIcon) {
-            this.themeModeIcon.nativeElement.classList.remove(ThemeOption.darkMode, ThemeOption.lightMode);
-            this.themeModeIcon.nativeElement.classList.add(this.selectedTheme);
+            this.themeModeIcon()?.nativeElement.classList.remove(ThemeOption.darkMode, ThemeOption.lightMode);
+            this.themeModeIcon()?.nativeElement.classList.add(this.selectedTheme);
         }
     }
 

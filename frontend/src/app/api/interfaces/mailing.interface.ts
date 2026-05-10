@@ -1,4 +1,4 @@
-export interface ContactFormItem {
+export interface ContactMailForm {
     subject: string,
     referenceNr?: string,
     to: string,
@@ -8,4 +8,4 @@ export interface ContactFormItem {
     lastName: string,
     price: string,
     body: string
-} 
+}
