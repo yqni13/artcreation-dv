@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
 import { Component, effect, ElementRef, input,OnChanges, output, signal, SimpleChanges, viewChild } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
@@ -22,7 +21,7 @@ export class StarRatingComponent implements OnChanges {
 
     readonly startValue = input(0);
     readonly resetValue = input<{value: number}>({value: 5});
-    readonly byChange = output<any>();
+    readonly byChange = output<unknown>();
 
     protected hasNewRating = false;
     protected rawRating = Number(this.startValue);

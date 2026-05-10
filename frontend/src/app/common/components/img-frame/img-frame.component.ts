@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, input } from "@angular/core";
 import { ArtFrame } from "../../../shared/enums/art-frame.enum";
 
 @Component({
@@ -12,15 +12,10 @@ import { ArtFrame } from "../../../shared/enums/art-frame.enum";
 })
 export class ImgFrameComponent {
 
-    @Input() model: ArtFrame;
-    @Input() color: string;
+    readonly model = input<ArtFrame>(ArtFrame.DEFAULT);
+    readonly color = input('#ffffff');
 
-    protected ArtFrameEnum = ArtFrame;
-
-    constructor() {
-        this.model = ArtFrame.DEFAULT;
-        this.color = '#ffffff';
-    }
+    protected readonly ArtFrameEnum = ArtFrame;
 
     private mapLightenHex2Rgb(hex: string, ratio: number): string {
         const num = parseInt(hex.replace('#', ''), 16);
@@ -36,10 +31,10 @@ export class ImgFrameComponent {
      */
     get artFramePhotoBorderStyles() {
         return {
-            'border-top-color': this.mapLightenHex2Rgb(this.color, 0.2),
-            'border-right-color': this.mapLightenHex2Rgb(this.color, 0),
-            'border-bottom-color': this.mapLightenHex2Rgb(this.color, 0.2),
-            'border-left-color': this.mapLightenHex2Rgb(this.color, 0),
+            'border-top-color': this.mapLightenHex2Rgb(this.color(), 0.2),
+            'border-right-color': this.mapLightenHex2Rgb(this.color(), 0),
+            'border-bottom-color': this.mapLightenHex2Rgb(this.color(), 0.2),
+            'border-left-color': this.mapLightenHex2Rgb(this.color(), 0),
         };
     }
 }

@@ -31,7 +31,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     protected authorGalleryImg = 'https://pixabay.com/de/users/stocksnap-894430/';
     protected authorNewsImg = 'https://pixabay.com/de/photos/news-tageszeitung-presse-1172463/';
     protected authorAssetsImg = 'https://pixabay.com/de/users/tianya1223-4833799/';
-    protected ThemeOptionEnum = ThemeOption;
+    protected readonly ThemeOptionEnum = ThemeOption;
     protected currentTheme: ThemeOption = ThemeOption.darkMode;
     protected editLabel = 'edit: ';
 

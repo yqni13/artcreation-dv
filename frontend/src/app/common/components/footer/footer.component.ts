@@ -27,7 +27,7 @@ export class FooterComponent implements OnInit {
     private navigation = inject(NavigationService);
     private snackbarService = inject(SnackbarMessageService);
 
-    protected language = LanguageOption;
+    protected readonly LanguageOptionEnum = LanguageOption;
     protected selectedLanguage: LanguageOption = this.checkLanguageData();
     protected showLanguageList = false;
     protected infoRoutes: Route[] = [];
@@ -91,7 +91,7 @@ export class FooterComponent implements OnInit {
             if(language) {
                 localStorage.setItem("artdv-language", language);
                 this.switchLanguage(language);
-                // change lang in index.html to prevent unwanted google translation
+                // Change lang in index.html to prevent unwanted google translation.
                 document.querySelector('html')?.setAttribute('lang', language);
                 return;
             }

@@ -36,7 +36,7 @@ export class ImgUploadComponent implements OnInit {
     protected sizeFactorInMB = 4;
     protected showValidationMessage = false;
     protected storageDomain = environment.STORAGE_URL.trim();
-    protected AdminTargetEnum = AdminRoute;
+    protected readonly AdminTargetEnum = AdminRoute;
     protected readonly fileInformation = signal<ImgUploadInformation>({
         hasFile: false,
         imageSize: 0,

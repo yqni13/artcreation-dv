@@ -55,10 +55,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	ngAfterViewInit() {
-		// disable right click event to prevent image copying
-		// to disable right click for single element, use viewchild and this."viewchildname".nativeElement instead document
+		// Disable right click event to prevent image copying.
+		// To disable right click for single element, use viewchild this."viewchildname".nativeElement instead document.
 		this.listenerDefault = this.renderer2.listen(document, "contextmenu", function(e) {
-		e.preventDefault();
+			e.preventDefault();
 		});
 	}
 

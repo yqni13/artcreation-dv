@@ -50,10 +50,7 @@ export class GalleryDetailsComponent implements OnInit, OnDestroy {
     private readonly dataShareService = inject(DataShareService);
     private readonly httpObservation = inject(HttpObservationService);
 
-    protected artGenre = ArtGenre;
-    protected artMedium = ArtMedium;
-    protected artTechnique = ArtTechnique;
-    protected saleStatus = SaleStatus;
+    protected readonly SaleStatusEnum = SaleStatus;
 
     protected artwork: GalleryItem = this.initArtwork();
     protected artworkList: GalleryItem[] = [];

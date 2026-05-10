@@ -23,7 +23,7 @@ export class AdminAssetsListComponent extends AbstractAdminListComponent impleme
 
     protected assetsList: AssetsItem[] = [];
     protected modifiedList: AssetsItem[] = [];
-    protected AssetsCategoryEnum = { ...AssetsCategory, ALL: 'all' };
+    protected readonly AssetsCategoryEnum = { ...AssetsCategory, ALL: 'all' };
 
     constructor() {
         super();
@@ -59,7 +59,7 @@ export class AdminAssetsListComponent extends AbstractAdminListComponent impleme
         })
     }
 
-    onCategoryChange(event: Event) {
+    onCategoryChange(event: unknown) {
         const searchText = this.searchForm.get('searchText')?.value;
         if(searchText !== '') {
             this.filterListBySearchText(searchText);
@@ -67,7 +67,7 @@ export class AdminAssetsListComponent extends AbstractAdminListComponent impleme
             this.modifiedList = this.assetsList;
         }
 
-        const category = (event.target as HTMLInputElement)?.value ?? 'all';
+        const category = ((event as Event).target as HTMLInputElement)?.value ?? 'all';
         if(category !== this.AssetsCategoryEnum.ALL) {
             this.modifiedList = this.modifiedList.filter(data => data.category === category);
         }

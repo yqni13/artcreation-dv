@@ -8,10 +8,11 @@ import { isPlatformBrowser } from "@angular/common";
 })
 export class EncryptionService {
 
+    private readonly platformId = inject(PLATFORM_ID);
+
     private publicKey = environment.PUBLIC_KEY.trim();
     private ivPosition = Number(environment.IV_POSITION);
     private passPhrase = environment.AES_PASSPHRASE.trim();
-    private platformId = inject(PLATFORM_ID);
 
     // RSA
     async encryptRSA(data: string): Promise<string> {

@@ -31,10 +31,10 @@ export abstract class AbstractAdminListComponent implements AfterViewInit, OnDes
     protected hasSearchText = false;
     protected isLoadingResponse = false;
     protected storageDomain = environment.STORAGE_URL.trim();
-    protected AdminRouteEnum = AdminRoute;
-    protected AssetsRouteEnum = AssetsRoute;
-    protected GalleryRouteEnum = GalleryRoute;
-    protected NewsRouteEnum = NewsRoute;
+    protected readonly AdminRouteEnum = AdminRoute;
+    protected readonly AssetsRouteEnum = AssetsRoute;
+    protected readonly GalleryRouteEnum = GalleryRoute;
+    protected readonly NewsRouteEnum = NewsRoute;
 
     protected subscriptionHttpObservationFindAll$ = new Subscription();
     private subscriptionHttpObservationError$ = new Subscription();
@@ -62,7 +62,7 @@ export abstract class AbstractAdminListComponent implements AfterViewInit, OnDes
         ).subscribe();
     }
 
-    onSearchTextChange(event: string) {
+    onSearchTextChange(event: unknown) {
         this.hasSearchText = event !== '' ? true : false;
         this.onSearchSubmit(false);
     }

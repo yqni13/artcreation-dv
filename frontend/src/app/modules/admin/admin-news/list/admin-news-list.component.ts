@@ -25,7 +25,7 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
 
     protected newsList: NewsItemWGP[] = [];
     protected modifiedList: NewsItemWGP[] = [];
-    protected SortingOptionEnum = SortingOption;
+    protected readonly SortingOptionEnum = SortingOption;
 
     constructor() {
         super();
@@ -61,7 +61,8 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         })
     }
 
-    onDateTimeChange(event: Event) {
+    onDateTimeChange(event: unknown) {
+        const sorting = event as SortingOption;
         const searchText = this.searchForm.get('searchText')?.value;
         if(searchText !== '') {
             this.filterListBySearchText(searchText);
@@ -69,8 +70,6 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
             this.modifiedList = this.newsList;
         }
 
-        const element = event.target as HTMLInputElement;
-        const sorting = (element?.value as SortingOption) ?? SortingOption.DESC;
         this.modifiedList = this.newsFilter.filterByKeyValue(sorting, this.modifiedList);
     }
 
@@ -78,7 +77,7 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         const searchText = this.searchForm.get('searchText')?.value ?? '';
         if(searchText === '') {
             if(initial) {
-                // need db call only at initialization
+                // Need db call only at initialization.
                 this.isLoadingResponse = true;
                 this.newsApi.sendGetAllWithGalleryPathsRequest().subscribe(data => {
                     this.newsList = data.body?.body.data ?? [];

@@ -27,7 +27,7 @@ import { LocalStorageService } from "../../shared/services/localstorage.service"
 })
 export class GalleryComponent implements OnInit, OnDestroy {
 
-    private router = inject(Router);
+    private readonly router = inject(Router);
     private readonly auth = inject(AuthService);
     private readonly galleryApi = inject(GalleryAPIService);
     private readonly httpObservation = inject(HttpObservationService);
@@ -37,7 +37,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
 
     protected galleryList: GalleryItem[] = [];
     protected modifiedList: GalleryItem[] = [];
-    protected ArtGenreEnum = ArtGenre;
+    protected readonly ArtGenreEnum = ArtGenre;
     protected activeGenre = '';
     protected reloadFlag = true;
     protected isLoadingResponse = true;
@@ -51,7 +51,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
     constructor() {
         effect((onCleanUp) => {
             this.handleMouseWheelScroll(onCleanUp);
-        })
+        });
     }
 
     ngOnInit() {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { FilterNewsService } from "../../shared/services/filter-news.service";
 import { CarouselComponent } from "../../common/components/carousel/carousel.component";
@@ -76,7 +77,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         this.subscriptionHttpObservationError$ = this.httpObservation.errorStatus$.pipe(
             filter((x) => x),
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             tap(async (response: any) => {
                 if(this.auth.getExceptionList().includes(response.error.headers.error)) {
                     this.httpObservation.setErrorStatus(false);

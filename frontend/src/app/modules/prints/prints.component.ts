@@ -23,7 +23,7 @@ export class PrintsComponent implements OnInit, OnDestroy {
     private readonly themeObserve = inject(ThemeObservationService);
 
     protected paperPrintsListLength = Object.keys(content['modules']['prints']['paper']['list']).length;
-    protected baseRoute = BaseRoute;
+    protected readonly BaseRouteEnum = BaseRoute;
     protected isFullscale = false;
     protected blockPriceInfo: {img: string} = {img: ''};
     protected activeFullscaleImg = '';

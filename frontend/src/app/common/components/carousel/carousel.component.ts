@@ -30,13 +30,13 @@ export class CarouselComponent {
 
     private router = inject(Router);
 
-    readonly entries = input<NewsItemWGP[]>([]);
+    readonly entries = input.required<NewsItemWGP[]>();
     readonly isLoadingResponse = input<boolean>();
     readonly slideTemplate = input<TemplateRef<unknown>>();
 
     protected baseRoute = BaseRoute;
     protected storageDomain = environment.STORAGE_URL.trim();
-    protected SizeOptionEnum = SizeOption;
+    protected readonly SizeOptionEnum = SizeOption;
 
     currentIndex = 0;
 

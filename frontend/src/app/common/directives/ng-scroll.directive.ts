@@ -15,7 +15,6 @@ export class GalleryScrollDirective implements OnInit {
 
     private readonly elRef = inject(ElementRef);
 
-    // @Output() preload!: EventEmitter<boolean>;
     readonly preload = output<boolean>();
 
     private bufferY = 700;
@@ -26,7 +25,7 @@ export class GalleryScrollDirective implements OnInit {
     }
 
     isLoading() {
-        // using offsetTop because getBoundingClientRect() not working on first rendering
+        // Using offsetTop because getBoundingClientRect() not working on first rendering.
         const offsetTop = this.elRef.nativeElement.offsetTop;
         const clientHeight = this.elRef.nativeElement.ownerDocument.scrollingElement.clientHeight;
         if(!this.loaded && offsetTop <= (clientHeight + this.bufferY)) {

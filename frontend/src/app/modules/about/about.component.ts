@@ -14,9 +14,9 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 })
 export class AboutComponent {
 
-    private sanitizer = inject(DomSanitizer);
+    private readonly sanitizer = inject(DomSanitizer);
 
     // Youtube embedded via iframe needs structure: '...youtube.com/' + 'embed/' + VIDEO_ID.
-    private ytUrl = 'https://www.youtube.com/embed/Y0EGDisZ0Ww';
-    protected safeUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.ytUrl);
+    private readonly ytUrl = 'https://www.youtube.com/embed/Y0EGDisZ0Ww';
+    protected readonly safeUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.ytUrl);
 }

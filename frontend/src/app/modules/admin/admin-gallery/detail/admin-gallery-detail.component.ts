@@ -36,12 +36,12 @@ export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent im
     protected readonly galleryApi = inject(GalleryAPIService);
 
     protected artworkForm: FormGroup = new FormGroup({});
-    protected SaleStatusOptionEnum = SaleStatus;
-    protected GenreOptionEnum = ArtGenre;
-    protected MediumOptionEnum = ArtMedium;
-    protected TechniqueOptionEnum = ArtTechnique;
-    protected FrameModelOptionEnum = ArtFrame;
-    protected AdminTargetEnum = AdminRoute;
+    protected readonly SaleStatusOptionEnum = SaleStatus;
+    protected readonly GenreOptionEnum = ArtGenre;
+    protected readonly MediumOptionEnum = ArtMedium;
+    protected readonly TechniqueOptionEnum = ArtTechnique;
+    protected readonly FrameModelOptionEnum = ArtFrame;
+    protected readonly AdminTargetEnum = AdminRoute;
     protected artworkEntry: GalleryItem | null = null;
     protected hasGenre = false;
 

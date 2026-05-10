@@ -23,7 +23,7 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
 
     protected galleryList: GalleryItem[] = [];
     protected modifiedList: GalleryItem[] = [];
-    protected GenreOptionEnum = { ...ArtGenre, ALL: 'all' };
+    protected readonly GenreOptionEnum = { ...ArtGenre, ALL: 'all' };
 
     constructor() {
         super();
@@ -59,7 +59,7 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
         })
     }
 
-    onGenreChange(event: Event) {
+    onGenreChange(event: unknown) {
         const searchText = this.searchForm.get('searchText')?.value;
         if(searchText !== '') {
             this.filterListBySearchText(searchText);
@@ -67,7 +67,7 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
             this.modifiedList = this.galleryList;
         }
 
-        const genre = (event.target as HTMLInputElement)?.value ?? 'all';
+        const genre = ((event as Event).target as HTMLInputElement)?.value ?? 'all';
         if(genre !== this.GenreOptionEnum.ALL) {
             this.modifiedList = this.modifiedList.filter(data => data.art_genre === genre)
         }
@@ -77,7 +77,7 @@ export class AdminGalleryListComponent extends AbstractAdminListComponent implem
         const searchText = this.searchForm.get('searchText')?.value ?? '';
         if(searchText === '') {
             if(initial) {
-                // need db call only at initialization
+                // Need db call only at initialization.
                 this.isLoadingResponse = true;
                 this.galleryApi.sendGetAllRequest().subscribe(data => {
                     this.galleryList = data.body?.body.data ?? [];

@@ -59,12 +59,12 @@
 								<span class="artdv-language-option-select artdv-language-element">
 									{{'common.footer.content.language' | translate}}
 								</span>
-								@for (option of language | keyvalue; track option) {
+								@for (option of LanguageOptionEnum | keyvalue; track option) {
 									<span
 										class="artdv-language-options"
 										[attr.aria-disabled]="true"
-										(click)="setLanguageData(language[option.value])"
-										(keydown.enter)="setLanguageData(language[option.value])"
+										(click)="setLanguageData(option.value)"
+										(keydown.enter)="setLanguageData(option.value)"
 									>{{'shared.enum.language.' + option.key | translate}}</span>
 								}
 							</div>

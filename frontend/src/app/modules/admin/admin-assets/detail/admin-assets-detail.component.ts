@@ -35,8 +35,8 @@ export class AdminAssetsDetailComponent extends AbstractAdminDetailComponent imp
     private readonly dtPicker = inject(DateTimePickerPipe);
 
     protected assetsForm: FormGroup = new FormGroup({});
-    protected AssetsCategoryEnum = AssetsCategory;
-    protected AdminTargetEnum = AdminRoute;
+    protected readonly AssetsCategoryEnum = AssetsCategory;
+    protected readonly AdminTargetEnum = AdminRoute;
     protected assetsEntry: AssetsItem | null = null;
     protected hasCategory = false;
     

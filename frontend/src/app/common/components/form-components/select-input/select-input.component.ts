@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, forwardRef, input, output, viewChild } from "@angular/core";
-import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
+import { AfterViewInit, Component, ElementRef, forwardRef, input, viewChild } from "@angular/core";
+import { NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
 import { AbstractInputComponent } from "../../abstracts/form-input.abstract.component";
@@ -27,17 +27,9 @@ export class SelectInputComponent extends AbstractInputComponent implements Afte
 
     private readonly isAutoFocus = viewChild<ElementRef>('isAutoFocus');
 
-    readonly fieldName = input.required<string>();
-    readonly formControl = input(new FormControl());
-    readonly placeholder = input.required<string>();
-    readonly ngClass = input<string>('');
-    readonly className = input<string>('');
     readonly options = input<unknown>({});
     readonly optionsTranslateRoot = input.required<string>();
     readonly hasAutoFocus = input(false);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    readonly byChange = output<any>();
 
     constructor() {
         super();

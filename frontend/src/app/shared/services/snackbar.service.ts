@@ -55,7 +55,7 @@ export class SnackbarMessageService {
             max: null
         };
     
-        // check for parameter, assign values and adapt validation message
+        // Check for parameter, assign values and adapt validation message.
         if(message.includes('!')) {
             const substring = message.substring(message.indexOf('!'), message.length);
             message = message.replace(substring, '');
@@ -77,7 +77,7 @@ export class SnackbarMessageService {
             params.val = substring.replace('#', '');
         }
     
-        // display backend validation in UI
+        // Display backend validation in UI.
         this.notify({
             title: lang === 'en'
                 ? this.staticTranslate.getValidationEN(`${path}.header.${error}`, SnackbarInput.TITLE)

@@ -28,6 +28,7 @@
 						[placeholder]="'modules.admin.news.placeholder.search' | translate"
 						[ngStyle]="{'width': '100%'}"
 						[inputType]="'text'"
+						[fieldName]="'modules.admin.info.searchtext' | translate"
 						[formControl]="searchForm.get('searchText') | controlCast"
 						(byChange)="onSearchTextChange($event)"
 						#keywordInputField

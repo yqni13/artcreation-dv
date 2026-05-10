@@ -20,7 +20,6 @@ export class SnackbarComponent implements OnInit {
     private snackbarService = inject(SnackbarMessageService);
 
     readonly snackbarMsg = input.required<SnackbarMessage>();
-    protected snackbarOptions = SnackbarOption;
     protected snackbarClass = '';
     protected snackbarIcon = '';
 

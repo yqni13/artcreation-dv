@@ -45,7 +45,7 @@ export class ImgFullscaleComponent implements OnInit {
             `${this.cacheCheckPipe.transform(this.imgPath(), this.lastModifiedParam() ?? '')}`
         ]).finally(() => {
             this.isPreloaded = true;
-        })
+        });
     }
 
     closeFullscale(flag: boolean) {

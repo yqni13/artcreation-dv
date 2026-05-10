@@ -19,10 +19,10 @@ import { CacheCheckPipe } from "../../../../common/pipes/cache-check.pipe";
 @Component({
     selector: 'app-admin-news-detail',
     imports: [
+        ...AdminDetailImportsModule,
         SelectGalleryItemComponent,
         SelectInputComponent,
-        TextareaInputComponent,
-    ...AdminDetailImportsModule
+        TextareaInputComponent
     ],
     templateUrl: './admin-news-detail.component.html',
     styleUrl: '../../admin.component.scss',
@@ -34,9 +34,9 @@ export class AdminNewsDetailComponent extends AbstractAdminDetailComponent imple
 
     protected newsForm: FormGroup = new FormGroup({});
     protected newsEntry: NewsItemWGP | null = null;
-    protected SourceOptionEnum = SourceOption;
-    protected AdminTargetEnum = AdminRoute;
-    protected CRUDModeEnum = CRUDMode;
+    protected readonly SourceOptionEnum = SourceOption;
+    protected readonly AdminTargetEnum = AdminRoute;
+    protected readonly CRUDModeEnum = CRUDMode;
     protected galleryList: GalleryItem[] = [];
     protected hasSourceOption = false;
     protected titleMaxLength = 75;

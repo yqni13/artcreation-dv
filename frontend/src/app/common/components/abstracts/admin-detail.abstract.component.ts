@@ -33,8 +33,8 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
     private readonly cacheCheck = inject(CacheCheckPipe);
 
     protected mode: CRUDMode = CRUDMode.UPDATE;
-    protected ModeOptionEnum = CRUDMode;
-    protected AdminRouteEnum = AdminRoute;
+    protected readonly ModeOptionEnum = CRUDMode;
+    protected readonly AdminRouteEnum = AdminRoute;
     protected isLoadingResponse = true;
     protected isLoadingInit = true;
     protected lastModifiedDateTime = '';
@@ -76,7 +76,6 @@ export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnD
 
     onSubmit(formGroup: FormGroup, api: AssetsAPIService | GalleryAPIService | NewsAPIService) {
         formGroup.markAllAsTouched();
-        console.log("onSubmitTriggerSignal: ", formGroup.get('imageFile')?.value);
         this.triggerOnSubmit.set(formGroup.get('imageFile')?.value === null);
         if(formGroup.invalid) {
             return;

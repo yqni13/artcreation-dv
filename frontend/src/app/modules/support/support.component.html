@@ -31,7 +31,7 @@
 					<artdv-selectinput
 						[formControl]="supportForm.get('option') | controlCast"
 						[placeholder]="'modules.support.form.placeholders.option' | translate"
-						[options]="ticketOption"
+						[options]="TicketOptionEnum"
 						[optionsTranslateRoot]="'shared.enum.ticket-option.'"
 						[fieldName]="'modules.support.form.fieldNames.option' | translate"
 						(byChange)="updateFormOnOptionChange($event)"
@@ -39,7 +39,7 @@
 				</div>
 				@if (opt !== '') {
 					<!-- FEEDBACK -->
-					@if (opt === ticketOption.FEEDBACK) {
+					@if (opt === TicketOptionEnum.FEEDBACK) {
 						<div class="artdv-support-form-wrapper-starrating">
 							<artdv-starrating
 								[startValue]="defaultRatingValue"
@@ -49,7 +49,7 @@
 						</div>
 					}
 					<!-- TITLE -->
-					@if (opt !== ticketOption.FEEDBACK) {
+					@if (opt !== TicketOptionEnum.FEEDBACK) {
 						<div class="artdv-support-form-wrapper-mid">
 							<span>{{('modules.support.form.fieldNames.title' | translate) + ':*'}}</span>
 							<artdv-textinput
@@ -71,20 +71,20 @@
 						></artdv-textinput>
 					</div>
 					<!-- DEVICE -->
-					@if (opt !== ticketOption.FEEDBACK) {
+					@if (opt !== TicketOptionEnum.FEEDBACK) {
 						<div class="artdv-support-form-wrapper-mid">
 							<span>{{('modules.support.form.fieldNames.device' | translate) + ':'}}</span>
 							<artdv-selectinput
 								[formControl]="supportForm.get('device') | controlCast"
 								[placeholder]="'modules.support.form.placeholders.device' | translate"
-								[options]="deviceOption"
+								[options]="DeviceOptionEnum"
 								[optionsTranslateRoot]="'shared.enum.device-option.'"
 								[fieldName]="'modules.support.form.fieldNames.device' | translate"
 							></artdv-selectinput>
 						</div>
 					}
 					<!-- OS -->
-					@if (opt !== ticketOption.FEEDBACK) {
+					@if (opt !== TicketOptionEnum.FEEDBACK) {
 						<div class="artdv-support-form-wrapper-mid">
 							<span>{{('modules.support.form.fieldNames.os' | translate) + ':'}}</span>
 							<artdv-textinput
@@ -96,7 +96,7 @@
 						</div>
 					}
 					<!-- BROWSER -->
-					@if (opt !== ticketOption.FEEDBACK) {
+					@if (opt !== TicketOptionEnum.FEEDBACK) {
 						<div class="artdv-support-form-wrapper-mid">
 							<span>{{('modules.support.form.fieldNames.browser' | translate) + ':'}}</span>
 							<artdv-textinput
@@ -110,7 +110,7 @@
 					<!-- MESSAGE -->
 					<div class="artdv-support-form-wrapper-big">
 						<span>
-							{{('modules.support.form.fieldNames.message' | translate) + ':' + (opt !== ticketOption.FEEDBACK ? '*' : '')}}
+							{{('modules.support.form.fieldNames.message' | translate) + ':' + (opt !== TicketOptionEnum.FEEDBACK ? '*' : '')}}
 						</span>
 						<artdv-textareainput
 							[ngStyle]="{'width': '100%'}"
@@ -127,7 +127,7 @@
 						}
 					</div>
 					<!-- TERM (FEEDBACK)-->
-					@if (opt === ticketOption.FEEDBACK) {
+					@if (opt === TicketOptionEnum.FEEDBACK) {
 						<div
 							class="artdv-support-form-wrapper-mid"
 							id="artdv-support-checkbox"
@@ -165,7 +165,7 @@
 
 			<!-- ATTACHMENT PANEL -->
 			<ng-container *artdvVar="supportForm.get('attachment')?.value as attachment">
-				@if (opt !== ticketOption.FEEDBACK && attachment && attachment?.length > 0) {
+				@if (opt !== TicketOptionEnum.FEEDBACK && attachment && attachment?.length > 0) {
 					<div id="artdv-support-attachment-list" class="outer-border">
 						<div class="inner-border">
 							@for (file of attachment; track file; let i = $index) {
@@ -181,7 +181,7 @@
 			<!-- BUTTON PANEL -->
 			@if (opt !== '') {
 				<div class="artdv-support-button-wrapper">
-					@if (opt !== ticketOption.FEEDBACK) {
+					@if (opt !== TicketOptionEnum.FEEDBACK) {
 						<a
 							[attr.tabindex]="0"
 							class="artdv-button-submit"

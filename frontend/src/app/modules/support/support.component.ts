@@ -62,8 +62,8 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy {
 
     protected supportForm: FormGroup = new FormGroup({});
     protected isLoadingResponse = false;
-    protected ticketOption = SupportOption;
-    protected deviceOption = SupportDeviceOption;
+    protected readonly TicketOptionEnum = SupportOption;
+    protected readonly DeviceOptionEnum = SupportDeviceOption;
     protected messageLength = 0;
     protected defaultRatingValue = 5;
     protected ticketOptionIcons: Record<string, string> = {
@@ -189,12 +189,12 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    async updateFormOnOptionChange(option: Event) {
-        const element = option.currentTarget as HTMLInputElement;
+    async updateFormOnOptionChange(option: unknown) {
+        const element = (option as Event).currentTarget as HTMLInputElement;
         this.reset();
         this.supportForm.get('option')?.setValue(element.value as SupportOption);
         this.resetValidationsOnOptionChange(element.value as SupportOption);
-        if(element.value === this.ticketOption.FEEDBACK) {
+        if(element.value === SupportOption.FEEDBACK) {
             this.messageLength = 1000;
             this.resetRatingAutofill();
             await this.initRating();
@@ -206,16 +206,16 @@ export class SupportComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private getPlaceholderByDeviceSuggestion(): string {
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(this.window!.navigator.userAgent)) {
-            return this.deviceOption.MOBILE;
+            return SupportDeviceOption.MOBILE;
         } else if(/Chrome/i.test(this.window!.navigator.userAgent)) {
-            return this.deviceOption.COMPUTER;
+            return SupportDeviceOption.COMPUTER;
         } else {
-            return this.deviceOption.OTHER;
+            return SupportDeviceOption.OTHER;
         }
     }
 
-    getRatingInput(input: HTMLInputElement) {
-        this.supportForm.get('rating')?.setValue(+input);
+    getRatingInput(input: unknown) {
+        this.supportForm.get('rating')?.setValue(Number(input));
     }
 
     getFeedbackTerm(event: Event) {

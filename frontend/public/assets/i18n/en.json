@@ -97,7 +97,8 @@
                 }
             },
             "info": {
-                "last-update": "last update:"
+                "last-update": "last update:",
+                "searchtext": "Search"
             },
             "news": {
                 "details": {
