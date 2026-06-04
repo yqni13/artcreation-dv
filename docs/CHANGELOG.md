@@ -1,8 +1,15 @@
 ## 📜 $\textsf{\color{salmon}{List\ of\ updates}}$
 
+### $\textsf{\color{skyblue}2026/06/04}$
+
+$\textsf{[v2.0.4\ =>\ {\textbf{\color{brown}v2.0.5}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated dependencies on frontend/backend.
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/05/06}$
 
-$\textsf{[v2.0.2\ =>\ {\textbf{\color{brown}v2.0.4}]}}$ app
+$\textsf{[v2.0.2\ =>\ v2.0.4]}$ app
 - $\textsf{\color{orange}Patch:}$ Updated:
   + frontend on eslint rules & guidelines
   + small refactoring and fixes
