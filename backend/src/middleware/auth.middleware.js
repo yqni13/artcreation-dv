@@ -6,13 +6,12 @@ const {
 const Secrets = require('../utils/secrets.utils');
 const logger = require('../logger/config.logger').getLogger();
 
-
 const auth = (isMetaAuth = false) => {
     return async function (req, res, next) {
         try {
             if(isMetaAuth) {
-                const key = req.headers('Artdv-Meta-Key');
-                if(Secrets.MODE === 'production' && (key || key !== Secrets.META_API_KEY)) {
+                const key = req.header('Artdv-Meta-Key');
+                if(Secrets.MODE.trim() === 'production' && (!key || key.trim() !== Secrets.META_API_KEY.trim())) {
                     throw new InvalidCredentialsException('backend-invalid-authkey');
                 }
             } else {
@@ -22,11 +21,11 @@ const auth = (isMetaAuth = false) => {
                     throw new TokenMissingException();
                 }
     
-                const privateKey = Secrets.PRIVATE_KEY;
+                const privateKey = Secrets.PRIVATE_KEY.trim();
                 const token = authHeader.replace(bearer, '');
                 const decode = jwt.verify(token, privateKey);
     
-                if(decode.id !== Secrets.ADMIN_ID) {
+                if(decode.id !== Secrets.ADMIN_ID.trim()) {
                     throw new InvalidCredentialsException('auth-invalid-id');
                 }
             }

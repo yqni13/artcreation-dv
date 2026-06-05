@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, input } from "@angular/core";
 import { environment } from "../../../../environments/environment";
 import { CommonModule } from "@angular/common";
 import { AssetsItem } from "../../../api/interfaces/assets.response.interface";
@@ -20,32 +20,26 @@ import { LoadingAnimationComponent } from "../animation/loading/loading-animatio
 })
 export class CarouselMediaComponent {
 
-    @Input() entries: AssetsItem[];
-    @Input() isLoadingResponse!: boolean;
+    readonly entries = input<AssetsItem[]>([]);
+    readonly isLoadingResponse = input<boolean>();
 
-    protected index: number;
-    protected storageDomain: string;
-    protected SizeOptionEnum = SizeOption;
-
-    constructor() {
-        this.entries = [];
-        this.index = 0;
-        this.storageDomain = environment.STORAGE_URL;
-    }
+    protected index = 0;
+    protected storageDomain = environment.STORAGE_URL.trim();
+    protected readonly SizeOptionEnum = SizeOption;
 
     getTransform() {
         return `translateX(${-this.index * 100}%)`;
     }
 
     next() {
-        this.index = !this.isLoadingResponse
-            ? ((this.index + 1) % this.entries.length)
+        this.index = !this.isLoadingResponse()
+            ? ((this.index + 1) % this.entries().length)
             : this.index;
     }
 
     prev() {
-        this.index = !this.isLoadingResponse 
-            ? ((this.index - 1 + this.entries.length) % this.entries.length)
+        this.index = !this.isLoadingResponse() 
+            ? ((this.index - 1 + this.entries().length) % this.entries().length)
             : this.index;
     }
 }

@@ -47,9 +47,9 @@
 			</div>
 			<div class="artdv-gallerydetails-value">
 				<span
-					[ngClass]="artwork.sale_status === saleStatus.UNAVAILABLE || artwork.sale_status === saleStatus.SOLD
+					[ngClass]="artwork.sale_status === SaleStatusEnum.UNAVAILABLE || artwork.sale_status === SaleStatusEnum.SOLD
 						? 'artdv-status-off artdv-artwork-unavailable' 
-						: artwork.sale_status === saleStatus.RESERVED
+						: artwork.sale_status === SaleStatusEnum.RESERVED
 							? 'artdv-status-off artdv-artwork-reserved'
 							: 'artdv-artwork-available'"
 				>
@@ -59,7 +59,7 @@
 		</div>
 
 		<!-- PRICE -->
-		@if (artwork.sale_status === saleStatus.AVAILABLE) {
+		@if (artwork.sale_status === SaleStatusEnum.AVAILABLE) {
 			<div class="artdv-gallerydetails-property" id="card-price">
 				<div class="artdv-gallerydetails-key">
 					<label for="card-price">{{'modules.gallery.details.header.price' | translate}}:</label>

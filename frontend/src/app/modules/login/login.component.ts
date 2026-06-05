@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
-import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { TextInputComponent } from "../../common/components/form-components/text-input/text-input.component";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
@@ -21,43 +22,27 @@ import { HttpObservationService } from "../../shared/services/http-observation.s
         TranslateModule
     ],
     templateUrl: './login.component.html',
-    styleUrl: './login.component.scss'
+    styleUrl: './login.component.scss',
+    host: {
+        '(document:keydown.enter)': 'onLogin()'
+    }
 })
 export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    @HostListener('window:keydown', ['$event'])
-    loginOnEnter(event: KeyboardEvent) {
-        if(event.key === 'Enter') {
-            this.onLogin();
-        }
-    }
+    private readonly router = inject(Router);
+    private readonly fb = inject(FormBuilder);
+    private readonly auth = inject(AuthService);
+    private readonly httpObservation = inject(HttpObservationService);
 
-    @ViewChild('loginButton') loginButton!: ElementRef;
+    private readonly loginButton = viewChild.required<ElementRef>('loginButton');
 
-    protected loginForm: FormGroup;
-    protected isLoadingResponse: boolean;
-    protected authorLink: string;
+    protected loginForm: FormGroup = new FormGroup({});
+    protected isLoadingResponse = false;
+    protected authorLink = 'https://pixabay.com/de/users/tama66-1032521/';
 
-    private subscriptionHttpObservationLogin$: Subscription;
-    private subscriptionHttpObservationError$: Subscription;
-    private delay: any;
-
-    constructor(
-        private readonly router: Router,
-        private readonly fb: FormBuilder,
-        private readonly auth: AuthService,
-        private readonly httpObservation: HttpObservationService
-    ) {
-        this.loginForm = new FormGroup({});
-        this.isLoadingResponse = false;
-        this.authorLink = 'https://pixabay.com/de/users/tama66-1032521/';
-
-        this.subscriptionHttpObservationLogin$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-        // Images are preloaded via ImgPreloadGuard (admin.routes.ts).
-    }
+    private subscriptionHttpObservationLogin$ = new Subscription();
+    private subscriptionHttpObservationError$ = new Subscription();
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     ngOnInit() {
         this.auth.preConnect().subscribe();
@@ -125,9 +110,9 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     private setButtonStatus(isEnabled: boolean) {
         if(this.loginButton) {
             if(isEnabled) {
-                this.loginButton.nativeElement.classList.remove('artdv-readonly');
+                this.loginButton().nativeElement.classList.remove('artdv-readonly');
             } else {
-                this.loginButton.nativeElement.classList.add('artdv-readonly');
+                this.loginButton().nativeElement.classList.add('artdv-readonly');
             }
         }
     }

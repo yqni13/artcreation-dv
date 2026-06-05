@@ -135,6 +135,12 @@
             "other": {
                 "auto-logout": "Sie wurden automatisch abgemeldet, da Ihre Sitzung aus Sicherheitsgründen zeitlich begrenzt ist."
             },
+            "submit": {
+                "invalid": {
+                    "title": "Ungültige Daten",
+                    "text": "Überprüfen Sie Ihre Angaben erneut."
+                }
+            },
             "support": {
                 "text": "Ihre Anfrage wurde erfolgreich an uns weitergeleitet und als neues Ticket erstellt. Ihre Daten werden schnellstmöglich verarbeitet und bei Notwendigkeit via Email Rücksprache gehalten.",
                 "title": "Ticket erstellt!"

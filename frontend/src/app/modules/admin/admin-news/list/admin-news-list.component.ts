@@ -1,12 +1,8 @@
 import { CRUDMode } from './../../../../shared/enums/crud-mode.enum';
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { FormBuilder, FormControl } from "@angular/forms";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import { filter, tap } from "rxjs";
 import { NewsItemWGP } from "../../../../api/interfaces/news-response.interface";
-import { HttpObservationService } from "../../../../shared/services/http-observation.service";
-import { Router } from "@angular/router";
-import { AuthService } from "../../../../shared/services/auth.service";
-import { DataShareService } from "../../../../shared/services/data-share.service";
 import { NewsAPIService } from "../../../../api/services/news.api.service";
 import { SortingOption } from '../../../../shared/enums/sorting-option.enum';
 import { AbstractAdminListComponent } from '../../../../common/components/abstracts/admin-list.abstract.component';
@@ -24,22 +20,15 @@ import { FilterNewsService } from '../../../../shared/services/filter-news.servi
 })
 export class AdminNewsListComponent extends AbstractAdminListComponent implements OnInit, OnDestroy {
 
-    protected newsList: NewsItemWGP[];
-    protected modifiedList: NewsItemWGP[];
-    protected SortingOptionEnum = SortingOption;
+    private readonly newsApi = inject(NewsAPIService);
+    private readonly newsFilter = inject(FilterNewsService);
 
-    constructor(
-        router: Router,
-        fb: FormBuilder,
-        auth: AuthService,
-        dataSharing: DataShareService,
-        httpObservation: HttpObservationService,
-        private readonly newsApi: NewsAPIService,
-        private readonly newsFilter: FilterNewsService
-    ) {
-        super(router, fb, auth, dataSharing, httpObservation);
-        this.newsList = [];
-        this.modifiedList = [];
+    protected newsList: NewsItemWGP[] = [];
+    protected modifiedList: NewsItemWGP[] = [];
+    protected readonly SortingOptionEnum = SortingOption;
+
+    constructor() {
+        super();
     }
 
     ngOnInit() {
@@ -72,7 +61,8 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
         })
     }
 
-    onDateTimeChange(event: any) {
+    onDateTimeChange(event: unknown) {
+        const sorting = event as SortingOption;
         const searchText = this.searchForm.get('searchText')?.value;
         if(searchText !== '') {
             this.filterListBySearchText(searchText);
@@ -80,15 +70,14 @@ export class AdminNewsListComponent extends AbstractAdminListComponent implement
             this.modifiedList = this.newsList;
         }
 
-        const sorting = event.target?.value ?? SortingOption.DESC;
         this.modifiedList = this.newsFilter.filterByKeyValue(sorting, this.modifiedList);
     }
 
-    onSearchSubmit(initial: boolean = false) {
+    onSearchSubmit(initial = false) {
         const searchText = this.searchForm.get('searchText')?.value ?? '';
         if(searchText === '') {
             if(initial) {
-                // need db call only at initialization
+                // Need db call only at initialization.
                 this.isLoadingResponse = true;
                 this.newsApi.sendGetAllWithGalleryPathsRequest().subscribe(data => {
                     this.newsList = data.body?.body.data ?? [];

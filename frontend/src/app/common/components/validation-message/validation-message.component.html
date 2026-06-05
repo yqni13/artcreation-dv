@@ -1,9 +1,9 @@
-<ng-container *artdvVar="ngControl as control">
+<ng-container *artdvVar="ngControl() as control">
 	@if (control.invalid && (control.dirty || control.touched)) {
 		<div class="artdv-validation-errors">
 			@if (control.hasError('required')) {
 				<div>
-					{{ 'validation.frontend.form.required' | translate: {fieldName: fieldName} }}
+					{{ 'validation.frontend.form.required' | translate: {fieldName: fieldName()} }}
 				</div>
 			}
 			@if (control.hasError('maxlength')) {
@@ -13,7 +13,7 @@
 			}
 			@if (control.hasError('email')) {
 				<div>
-					{{ 'validation.frontend.form.email-invalid' | translate: {fieldName: fieldName} }}
+					{{ 'validation.frontend.form.email-invalid' | translate: {fieldName: fieldName()} }}
 				</div>
 			}
 			@if (control.hasError('invalidRefNr')) {

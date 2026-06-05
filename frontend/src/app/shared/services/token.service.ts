@@ -7,12 +7,9 @@ import { isPlatformBrowser } from "@angular/common";
 })
 export class TokenService {
 
-    private identifier: string;
     private readonly platformId = inject(PLATFORM_ID);
 
-    constructor() {
-        this.identifier = 'artcreation-dv_';
-    }
+    private identifier = 'artcreation-dv_';
 
     setToken(key: TokenOption, token: string) {
         if(this.checkSessionStorage()) {

@@ -2,12 +2,12 @@
 	<div class="artdv-carouselmedia-images">
 		<div class="artdv-carouselmedia-images-wrapper">
 			<span>
-				{{(entries[index].location ? entries[index].location + ', ' : '') + (entries[index].datetime | dateFormat: 'dd.mm.yyyy')}}
+				{{(entries()[index].location ? entries()[index].location + ', ' : '') + (entries()[index].datetime | dateFormat: 'dd.mm.yyyy')}}
 			</span>
 		</div>
-		<img src="{{storageDomain + '/' + entries[index].image_path | cacheCheck: entries[index].last_modified}}" alt="404-picture-not-found">
+		<img src="{{storageDomain + '/' + entries()[index].image_path | cacheCheck: entries()[index].last_modified}}" alt="404-picture-not-found">
 	</div>
-	@if (entries.length > 0) {
+	@if (entries().length > 0) {
 		<div class="artdv-carouselmedia-navigation">
 			@if (index > 0) {
 				<i
@@ -17,7 +17,7 @@
 					(keydown.enter)="prev()"
 				></i>
 			}
-			@if (index < entries.length-1) {
+			@if (index < entries().length-1) {
 				<i
 					class="icon-ArrowTriangularHollow arrow-right"
 					[attr.tabindex]="0"
@@ -29,6 +29,6 @@
 	}
 	<artdv-loading-animation
 		[sizeMode]="SizeOptionEnum.COMP"
-		[ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"
+		[ngClass]="isLoadingResponse() ? 'artdv-visible' : 'artdv-hidden'"
 	></artdv-loading-animation>
 </div>

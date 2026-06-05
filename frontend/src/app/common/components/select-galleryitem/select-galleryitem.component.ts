@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
-import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from "@angular/core";
+import { Component, computed, inject, input, OnDestroy, OnInit, output, signal } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { GalleryItem } from "../../../api/interfaces/gallery-response.interface";
-import { filter, Subject, Subscription, tap } from "rxjs";
+import { filter, Subscription, tap } from "rxjs";
 import { GalleryAPIService } from "../../../api/services/gallery.api.service";
 import { HttpObservationService } from "../../../shared/services/http-observation.service";
 import { AuthService } from "../../../shared/services/auth.service";
@@ -17,63 +18,38 @@ import { LoadingAnimationComponent } from "../animation/loading/loading-animatio
         TranslateModule
     ],
     templateUrl: './select-galleryitem.component.html',
-    styleUrl: './select-galleryitem.component.scss'
+    styleUrl: './select-galleryitem.component.scss',
+    host: {
+        '(window:keydown)': 'closeOnEscape($event)'
+    }
 })
 export class SelectGalleryItemComponent implements OnInit, OnDestroy {
 
-    @HostListener('window:keydown', ['$event'])
-    closeOnEscape(event: KeyboardEvent) {
-        if(event.key === 'Escape' && this.showGalleryList) {
-            this.closeGalleryList();
-        }
-    }
+    private readonly auth = inject(AuthService);
+    private readonly galleryApi = inject(GalleryAPIService);
+    private readonly httpObservation = inject(HttpObservationService);
 
-    @Input() isSubmitTriggered: Subject<boolean>;
-    @Input() showInUpdateMode: string | null;
+    readonly emptyOnSubmit = input(false);
+    protected isEmptyOnSubmit = computed(() => this.emptyOnSubmit() && !this.hasSelectedItem());
+    readonly existingImgPath = input<string | null>(null);
+    protected readonly showInUpdateMode = computed(() => this.existingImgPath() && !this.hasRemovedExistingImg());
 
-    @Output() byChange: EventEmitter<any>;
+    readonly byChange = output<string | null>();
 
-    protected galleryList: GalleryItem[] | null;
-    protected selectedArtwork: GalleryItem | null;
-    protected hasSelectedItem: boolean;
-    protected showGalleryList: boolean;
-    protected isLoadingResponse: boolean;
-    protected storageDomain: string;
-    protected showValidationMessage: boolean;
+    protected galleryList: GalleryItem[] | null = null;
+    protected selectedArtwork: GalleryItem | null = null;
+    protected hasSelectedItem = signal(false);
+    protected hasRemovedExistingImg = signal(false);
+    protected showGalleryList = false;
+    protected isLoadingResponse = false;
+    protected storageDomain = environment.STORAGE_URL.trim();
+    protected showValidationMessage = false;
 
-    private subscriptionSubmitTrigger$: Subscription;
-    private subscriptionHttpObservationFindAll$: Subscription;
-    private subscriptionHttpObservationError$: Subscription;
-    private delay: any;
-
-    constructor(
-        private readonly auth: AuthService,
-        private readonly galleryApi: GalleryAPIService,
-        private readonly httpObservation: HttpObservationService
-    ) {
-        this.isSubmitTriggered = new Subject<boolean>();
-        this.showInUpdateMode = null;
-        this.byChange = new EventEmitter<string>();
-
-        this.galleryList = null;
-        this.selectedArtwork = null;
-        this.hasSelectedItem = false;
-        this.showGalleryList = false;
-        this.isLoadingResponse = false;
-        this.storageDomain = environment.STORAGE_URL;
-        this.showValidationMessage = false;
-
-        this.subscriptionSubmitTrigger$ = new Subscription();
-        this.subscriptionHttpObservationFindAll$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    private subscriptionHttpObservationFindAll$ = new Subscription();
+    private subscriptionHttpObservationError$ = new Subscription();
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));;
 
     ngOnInit() {
-        this.subscriptionSubmitTrigger$ = this.isSubmitTriggered.subscribe((isValid: boolean) => {
-            this.showValidationMessage = !isValid;
-        })
-
         this.subscriptionHttpObservationFindAll$ = this.httpObservation.galleryFindAllStatus$.pipe(
             filter((x) => x !== null && x !== undefined),
             tap((isStatus200: boolean) => {
@@ -112,28 +88,34 @@ export class SelectGalleryItemComponent implements OnInit, OnDestroy {
     closeGalleryList() {
         this.showGalleryList = false;
         this.isLoadingResponse = false;
-        this.hasSelectedItem = false;
+        this.hasSelectedItem.set(false);
+        this.showValidationMessage = true;
         this.selectedArtwork = null;
     }
 
     selectArtwork(id: string) {
         this.selectedArtwork = this.galleryList?.find(data => data.gallery_id === id) ?? null;
         this.byChange.emit(id);
-        this.isSubmitTriggered.next(true);
-        this.hasSelectedItem = true;
+        this.hasSelectedItem.set(true);
+        this.showValidationMessage = false;
         this.showGalleryList = false;
     }
 
     removeImage() {
         this.selectedArtwork = null;
         this.byChange.emit(null);
-        this.hasSelectedItem = false;
-        this.showValidationMessage = false;
-        this.showInUpdateMode = null;
+        this.hasSelectedItem.set(false);
+        this.showValidationMessage = true;
+        this.hasRemovedExistingImg.set(true);
+    }
+
+    closeOnEscape(event: KeyboardEvent) {
+        if(event.key === 'Escape' && this.showGalleryList) {
+            this.closeGalleryList();
+        }
     }
 
     ngOnDestroy() {
-        this.subscriptionSubmitTrigger$.unsubscribe();
         this.subscriptionHttpObservationFindAll$.unsubscribe();
         this.subscriptionHttpObservationError$.unsubscribe();
     }

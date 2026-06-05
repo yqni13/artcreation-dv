@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Route, Router } from "@angular/router";
 
 @Injectable({
@@ -7,13 +6,10 @@ import { Route, Router } from "@angular/router";
 })
 export class NavigationService {
 
-    private currentUrl: string;
-    private previousUrl: string;
+    private readonly router = inject(Router);
 
-    constructor (private router: Router) {
-        this.currentUrl = '';
-        this.previousUrl = '';
-    }
+    private currentUrl = '';
+    private previousUrl = '';
 
     setCurrentUrl(url: string) {
         if(url.length < 1) {
@@ -43,20 +39,20 @@ export class NavigationService {
 
     getNavigationRoutes(): Route[] {
         return this.router.config
-            .flatMap((route: any) => [route, ...(route.children || [])])
-            .filter((route: any) => route.data?.["showInNavbar"]);
+            .flatMap((route: Route) => [route, ...(route.children || [])])
+            .filter((route: Route) => route.data?.["showInNavbar"]);
     }
 
     getFooterConnectRoutes(): Route[] {
         return this.router.config
-            .flatMap((route: any) => [route, ...(route.children || [])])
-            .filter((route: any) => route.data?.["showInFooterConnect"]);
+            .flatMap((route: Route) => [route, ...(route.children || [])])
+            .filter((route: Route) => route.data?.["showInFooterConnect"]);
     }
 
     getFooterInfoRoutes(): Route[] {
         return this.router.config
-            .flatMap((route: any) => [route, ...(route.children || [])])
-            .filter((route: any) => route.data?.["showInFooterInfo"]);
+            .flatMap((route: Route) => [route, ...(route.children || [])])
+            .filter((route: Route) => route.data?.["showInFooterInfo"]);
     }
 
     scrollToTop(scrollAnchor: HTMLElement, document: Document) {

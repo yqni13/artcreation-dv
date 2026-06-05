@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailAPIService } from "../../api/services/mail.api.service";
-import { Router, RouterModule } from "@angular/router";
+import { RouterModule } from "@angular/router";
 import { DataShareService } from "../../shared/services/data-share.service";
 import { filter, Subscription, tap } from "rxjs";
 import { TextInputComponent } from "../../common/components/form-components/text-input/text-input.component";
@@ -12,7 +12,7 @@ import { CastAbstractToFormControlPipe } from "../../common/pipes/cast-abstractt
 import { SelectInputComponent } from "../../common/components/form-components/select-input/select-input.component";
 import { TextareaInputComponent } from "../../common/components/form-components/textarea-input/textarea-input.component";
 import  * as CustomValidators  from "../../common/helper/custom-validators";
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { NavigationService } from "../../shared/services/navigation.service";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
 import { FloatPrecisionPipe } from "../../common/pipes/float-precision.pipe";
@@ -21,6 +21,10 @@ import { AuthService } from "../../shared/services/auth.service";
 import { GalleryAPIService } from "../../api/services/gallery.api.service";
 import { GalleryItem } from "../../api/interfaces/gallery-response.interface";
 import { TextCaseOption } from '../../shared/enums/text-case.enum';
+import { SnackbarMessageService } from "../../shared/services/snackbar.service";
+import { SnackbarOption } from "../../shared/enums/snackbar-option.enum";
+import { StaticTranslateService } from "../../shared/services/static-translation.service";
+import { SnackbarInput } from "../../shared/enums/snackbar-input.enum";
 
 @Component({
     selector: 'app-contact',
@@ -42,50 +46,36 @@ import { TextCaseOption } from '../../shared/enums/text-case.enum';
 })
 export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    @ViewChild('submitButton') submitButton!: ElementRef;
+    private readonly fb = inject(FormBuilder);
+    private readonly auth = inject(AuthService);
+    private readonly mailService = inject(MailAPIService);
+    private readonly navigate = inject(NavigationService);
+    private readonly translate = inject(TranslateService);
+    private readonly galleryApi = inject(GalleryAPIService);
+    private readonly snackbar = inject(SnackbarMessageService);
+    private readonly dataShareService = inject(DataShareService);
+    private readonly httpObservation = inject(HttpObservationService);
+    private readonly staticTranslate = inject(StaticTranslateService);
 
-    protected contactForm: FormGroup;
-    protected hasSelectedParameters: boolean; 
-    protected hasPriceValue: boolean;
-    protected hasReferenceFromParams: boolean;
-    protected isLoadingResponse: boolean;
-    protected readonly: boolean;
-    protected artworkPrice: number | null;
-    protected selectedParams: Record<string, string>;
+    private readonly submitButton = viewChild<ElementRef>('submitButton');
+
+    protected contactForm: FormGroup = new FormGroup({});
+    protected hasSelectedParameters = false; 
+    protected hasPriceValue = false;
+    protected hasReferenceFromParams = false;
+    protected isLoadingResponse = false;
+    protected readonly = true;
+    protected artworkPrice: number | null = null;
+    protected selectedParams: Record<string, string> = {};
     protected selectedArtworkByRefNr: any;
     protected subjectOptions = SubjectOptions;
     protected textCaseOption = TextCaseOption;
-    protected messageMaxLength: number;
+    protected messageMaxLength = 1000;
 
-    private subscriptionDataShare$: Subscription;
-    private subscriptionHttpObservationMailSend$: Subscription;
-    private subscriptionHttpObservationError$: Subscription;
-    private delay: any;
-
-    constructor(
-        private readonly httpObservation: HttpObservationService,
-        private readonly dataShareService: DataShareService,
-        private readonly galleryApi: GalleryAPIService,
-        private readonly navigate: NavigationService,
-        private readonly mailService: MailAPIService,
-        private readonly auth: AuthService,
-        private readonly fb: FormBuilder,
-        private readonly router: Router
-    ) {
-        this.contactForm = new FormGroup({});
-        this.hasSelectedParameters = false;
-        this.hasPriceValue = false;
-        this.hasReferenceFromParams = false;
-        this.isLoadingResponse = false;
-        this.readonly = true;
-        this.artworkPrice = null;
-        this.selectedParams = {};
-        this.messageMaxLength = 1000;
-        this.subscriptionDataShare$ = new Subscription(); 
-        this.subscriptionHttpObservationMailSend$ = new Subscription();
-        this.subscriptionHttpObservationError$ = new Subscription();
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    private subscriptionDataShare$ = new Subscription();
+    private subscriptionHttpObservationMailSend$ = new Subscription();
+    private subscriptionHttpObservationError$ = new Subscription();
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     ngOnInit() {
         this.subscriptionDataShare$ = this.dataShareService.sharedData$.pipe(
@@ -230,6 +220,20 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         this.contactForm.markAllAsTouched();
 
         if(this.contactForm.invalid) {
+            const lang = this.translate.currentLang;
+            const basePath = 'validation.frontend.submit.invalid';
+            this.contactForm.markAllAsTouched();
+            this.snackbar.notify({
+                title: lang === 'en'
+                    ? this.staticTranslate.getValidationEN(`${basePath}.title`, SnackbarInput.TITLE)
+                    : this.staticTranslate.getValidationDE(`${basePath}.title`, SnackbarInput.TITLE),
+                text: lang === 'en'
+                    ? this.staticTranslate.getValidationEN(`${basePath}.text`, SnackbarInput.TEXT)
+                    : this.staticTranslate.getValidationDE(`${basePath}.text`, SnackbarInput.TEXT),
+                type: SnackbarOption.warning,
+                autoClose: true,
+                displayTime: 3000
+            });
             return;
         }
 
@@ -241,9 +245,9 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
     setButtonUsage(enabled: boolean) {
         if(enabled) {
-            this.submitButton.nativeElement.classList.remove('artdv-readonly');
+            this.submitButton()?.nativeElement.classList.remove('artdv-readonly');
         } else {
-            this.submitButton.nativeElement.classList.add('artdv-readonly');
+            this.submitButton()?.nativeElement.classList.add('artdv-readonly');
         }
     }
 

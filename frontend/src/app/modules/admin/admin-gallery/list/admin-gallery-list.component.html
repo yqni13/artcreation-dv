@@ -13,6 +13,7 @@
 					[optionsTranslateRoot]="'shared.enum.art-genre.'"
 					[formControl]="searchForm.get('genre') | controlCast"
 					[hasAutoFocus]="true"
+					[fieldName]="'modules.admin-gallery.details.genre' | translate"
 					[attr.disabled]="!isLoadingResponse"
 					(byChange)="onGenreChange($event)"
 				></artdv-selectinput>
@@ -25,6 +26,7 @@
 						[placeholder]="'modules.admin.gallery.placeholder-search' | translate"
 						[ngStyle]="{'width': '100%'}"
 						[inputType]="'text'"
+						[fieldName]="'modules.admin.info.searchtext' | translate"
 						[formControl]="searchForm.get('searchText') | controlCast"
 						(byChange)="onSearchTextChange($event)"
 						#keywordInputField
