@@ -1,5 +1,5 @@
 # yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
-### $\textsf{\color{brown}{v2.0.4}}$
+### $\textsf{\color{brown}{v2.0.5}}$
 
 <br><br>
 
@@ -304,10 +304,8 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v2.0.2\ =>\ {\textbf{\color{brown}v2.0.4}]}}$ app
-- $\textsf{\color{orange}Patch:}$ Updated:
-  + frontend on eslint rules & guidelines
-  + small refactoring and fixes
+$\textsf{[v2.0.4\ =>\ {\textbf{\color{brown}v2.0.5}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated dependencies on frontend/backend.
 
 <br>
 
