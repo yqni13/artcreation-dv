@@ -1,5 +1,5 @@
 # yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
-### $\textsf{\color{brown}{v2.0.5}}$
+### $\textsf{\color{brown}{v2.0.6}}$
 
 <br><br>
 
@@ -304,8 +304,8 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v2.0.4\ =>\ {\textbf{\color{brown}v2.0.5}]}}$ app
-- $\textsf{\color{orange}Patch:}$ Updated dependencies on frontend/backend.
+$\textsf{[v2.0.5\ =>\ {\textbf{\color{brown}v2.0.6}]}}$ app
+- $\textsf{\color{teal}Addition:}$ Added script call to track meta data (visitor counter).
 
 <br>
 
