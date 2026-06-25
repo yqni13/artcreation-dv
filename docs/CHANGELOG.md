@@ -1,8 +1,15 @@
 ## 📜 $\textsf{\color{salmon}{List\ of\ updates}}$
 
+### $\textsf{\color{skyblue}2026/06/24}$
+
+$\textsf{[v2.0.5\ =>\ {\textbf{\color{brown}v2.0.6}]}}$ app
+- $\textsf{\color{teal}Addition:}$ Added script call to track meta data (visitor counter).
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/06/04}$
 
-$\textsf{[v2.0.4\ =>\ {\textbf{\color{brown}v2.0.5}]}}$ app
+$\textsf{[v2.0.4\ =>\ v2.0.5]}$ app
 - $\textsf{\color{orange}Patch:}$ Updated dependencies on frontend/backend.
 
 <br>
