@@ -1,8 +1,15 @@
 ## 📜 $\textsf{\color{salmon}{List\ of\ updates}}$
 
+### $\textsf{\color{skyblue}2026/06/26}$
+
+$\textsf{[v2.0.6\ =>\ {\textbf{\color{brown}v2.0.7}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated interface declarations (wrongful usage "export" + "declare").
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/06/24}$
 
-$\textsf{[v2.0.5\ =>\ {\textbf{\color{brown}v2.0.6}]}}$ app
+$\textsf{[v2.0.5\ =>\ v2.0.6]}$ app
 - $\textsf{\color{teal}Addition:}$ Added script call to track meta data (visitor counter).
 
 <br>

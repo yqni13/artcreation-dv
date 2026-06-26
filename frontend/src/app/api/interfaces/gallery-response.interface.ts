@@ -3,7 +3,7 @@ import { ArtGenre } from "../../shared/enums/art-genre.enum"
 import { ArtMedium } from "../../shared/enums/art-medium.enum"
 import { ArtTechnique } from "../../shared/enums/art-technique.enum"
 
-export declare interface GalleryItem {
+export interface GalleryItem {
     gallery_id: string,
     reference_nr: string,
     image_path: string,
@@ -22,7 +22,7 @@ export declare interface GalleryItem {
     last_modified: string
 }
 
-export declare interface GalleryListResponse {
+export interface GalleryListResponse {
     body: {
         db_operation: string,
         number_of_entries: number,
@@ -30,27 +30,27 @@ export declare interface GalleryListResponse {
     }
 }
 
-export declare interface GalleryItemResponse {
+export interface GalleryItemResponse {
     body: {
         data: GalleryItem
     }
 }
 
-export declare interface GalleryCreateUpdateResponse {
+export interface GalleryCreateUpdateResponse {
     body: {
         db_operation: string,
         id: string
     }
 }
 
-export declare interface GalleryDeleteResponse {
+export interface GalleryDeleteResponse {
     body: {
         db_operation: string,
         deleted: boolean
     }
 }
 
-export declare interface GalleryRefNrPreviewResponse {
+export interface GalleryRefNrPreviewResponse {
     body: {
         referenceNr: string
     }

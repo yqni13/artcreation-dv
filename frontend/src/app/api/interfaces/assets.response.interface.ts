@@ -1,6 +1,6 @@
 import { AssetsCategory } from "../../shared/enums/assets-category.enum"
 
-export declare interface AssetsItem {
+export interface AssetsItem {
     assets_id: string,
     category: AssetsCategory,
     image_path: string,
@@ -11,7 +11,7 @@ export declare interface AssetsItem {
     created_on: string
 }
 
-export declare interface AssetsListResponse {
+export interface AssetsListResponse {
     body: {
         db_operation: string,
         number_of_entries: number,
@@ -19,20 +19,20 @@ export declare interface AssetsListResponse {
     }
 }
 
-export declare interface AssetsItemResponse {
+export interface AssetsItemResponse {
     body: {
         data: AssetsItem
     }
 }
 
-export declare interface AssetsCreateUpdateResponse {
+export interface AssetsCreateUpdateResponse {
     body: {
         db_operation: string,
         id: string
     }
 }
 
-export declare interface AssetsDeleteResponse {
+export interface AssetsDeleteResponse {
     body: {
         db_operation: string,
         deleted: boolean
