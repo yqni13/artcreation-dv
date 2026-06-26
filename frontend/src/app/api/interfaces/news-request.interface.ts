@@ -1,4 +1,4 @@
-export declare interface NewsCreateRequest {
+export interface NewsCreateRequest {
     galleryId?: string,
     imagePath?: string,
     thumbnailPath?: string,
@@ -6,7 +6,7 @@ export declare interface NewsCreateRequest {
     content: string
 }
 
-export declare interface NewsUpdateRequest {
+export interface NewsUpdateRequest {
     id: string,
     galleryId?: string,
     imagePath?: string,

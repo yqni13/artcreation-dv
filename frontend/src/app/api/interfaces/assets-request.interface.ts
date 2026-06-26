@@ -1,6 +1,6 @@
 import { AssetsCategory } from "../../shared/enums/assets-category.enum";
 
-export declare interface AssetsCreateRequest {
+export interface AssetsCreateRequest {
     category: AssetsCategory,
     imagePath: string,
     thumbnailPath: string,
@@ -8,7 +8,7 @@ export declare interface AssetsCreateRequest {
     datetime: string,
 }
 
-export declare interface AssetsUpdateRequest {
+export interface AssetsUpdateRequest {
     id: string,
     category: AssetsCategory,
     imagePath: string,
