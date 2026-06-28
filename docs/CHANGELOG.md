@@ -1,8 +1,15 @@
 ## 📜 $\textsf{\color{salmon}{List\ of\ updates}}$
 
+### $\textsf{\color{skyblue}2026/06/28}$
+
+$\textsf{[v2.0.7\ =>\ {\textbf{\color{brown}v2.0.8}]}}$ app
+- $\textsf{\color{red}Bugfix:}$ Counting visitors by 3rd party service works now as expected. [Before: Account had problems and needed to be deleted and newly established => change of script ID.]
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/06/26}$
 
-$\textsf{[v2.0.6\ =>\ {\textbf{\color{brown}v2.0.7}]}}$ app
+$\textsf{[v2.0.6\ =>\ v2.0.7]}$ app
 - $\textsf{\color{orange}Patch:}$ Updated interface declarations (wrongful usage "export" + "declare").
 
 <br>
