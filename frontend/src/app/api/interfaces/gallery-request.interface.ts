@@ -4,7 +4,7 @@ import { ArtMedium } from "../../shared/enums/art-medium.enum"
 import { ArtTechnique } from "../../shared/enums/art-technique.enum"
 import { SaleStatus } from "../../shared/enums/sale-status.enum"
 
-export declare interface GalleryCreateRequest {
+export interface GalleryCreateRequest {
     imagePath: string,
     thumbnailPath: string,
     title?: string,
@@ -19,7 +19,7 @@ export declare interface GalleryCreateRequest {
     publication: number
 }
 
-export declare interface GalleryUpdateRequest {
+export interface GalleryUpdateRequest {
     id: string,
     referenceNr: string,
     imagePath: string,

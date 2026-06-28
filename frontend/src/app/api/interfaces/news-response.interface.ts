@@ -1,6 +1,6 @@
 import { ArtGenre } from "../../shared/enums/art-genre.enum"
 
-export declare interface NewsItem {
+export interface NewsItem {
     news_id: string,
     gallery?: string,
     image_path?: string,
@@ -15,7 +15,7 @@ export declare interface NewsItem {
 /**
  * @description Full name: NewsItemWithGalleryPaths.
  */
-export declare interface NewsItemWGP {
+export interface NewsItemWGP {
     news_id: string,
     gallery?: string,
     image_path?: string,
@@ -31,13 +31,13 @@ export declare interface NewsItemWGP {
     art_genre_gallery?: ArtGenre
 }
 
-export declare interface NewsItemResponse {
+export interface NewsItemResponse {
     body: {
         data: NewsItem | NewsItemWGP
     }
 }
 
-export declare interface NewsListResponse {
+export interface NewsListResponse {
     body: {
         db_operation: string,
         number_of_entries: number,
@@ -45,14 +45,14 @@ export declare interface NewsListResponse {
     }
 }
 
-export declare interface NewsCreateUpdateResponse {
+export interface NewsCreateUpdateResponse {
     body: {
         db_operation: string,
         id: string
     }
 }
 
-export declare interface NewsDeleteResponse {
+export interface NewsDeleteResponse {
     body: {
         db_operation: string,
         deleted: boolean

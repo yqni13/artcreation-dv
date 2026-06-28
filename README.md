@@ -1,5 +1,5 @@
 # yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
-### $\textsf{\color{brown}{v2.0.6}}$
+### $\textsf{\color{brown}{v2.0.8}}$
 
 <br><br>
 
@@ -304,8 +304,8 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v2.0.5\ =>\ {\textbf{\color{brown}v2.0.6}]}}$ app
-- $\textsf{\color{teal}Addition:}$ Added script call to track meta data (visitor counter).
+$\textsf{[v2.0.7\ =>\ {\textbf{\color{brown}v2.0.8}]}}$ app
+- $\textsf{\color{red}Bugfix:}$ Counting visitors by 3rd party service works now as expected. [Before: Account had problems and needed to be deleted and newly established => change of script ID.]
 
 <br>
 

@@ -20,7 +20,7 @@ export class ImprintComponent implements OnInit {
     };
     protected devData: Record<string, string | BaseRoute> = {
         project: 'artcreation-dv',
-        version: 'v2.0.6',
+        version: 'v2.0.8',
         github: 'https://github.com/yqni13/artcreation-dv/tree/production',
         portfolio: 'https://yqni13.com',
         contact: BaseRoute.SUPPORT
