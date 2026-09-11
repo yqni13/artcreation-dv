@@ -1,5 +1,5 @@
 # yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
-### $\textsf{\color{brown}{v2.0.8}}$
+### $\textsf{\color{brown}{v2.0.9}}$
 
 <br><br>
 
@@ -304,8 +304,10 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v2.0.7\ =>\ {\textbf{\color{brown}v2.0.8}]}}$ app
-- $\textsf{\color{red}Bugfix:}$ Counting visitors by 3rd party service works now as expected. [Before: Account had problems and needed to be deleted and newly established => change of script ID.]
+$\textsf{[v2.0.8\ =>\ {\textbf{\color{brown}v2.0.9}]}}$ app
+$\textsf{[v1.4.1\ =>\ {\textbf{\color{brown}v1.5.0}]}}$ database
+- $\textsf{\color{orange}Patch:}$ Updated artwork medium data set.
+- $\textsf{\color{orange}Patch:}$ Updated migration files from ES6 to CommonJS structure.
 
 <br>
 
