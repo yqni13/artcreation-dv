@@ -353,7 +353,8 @@
             "art-medium": {
                 "CANVAS": "Leinwand",
                 "OTHER": "Sonstiges",
-                "WOOD": "Holz"
+                "WOOD": "Holz",
+                "PRINT": "Leinwanddruck vom Original"
             },
             "art-technique": {
                 "ACRYLIC": "Acryl",

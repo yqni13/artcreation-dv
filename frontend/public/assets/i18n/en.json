@@ -353,7 +353,8 @@
             "art-medium": {
                 "CANVAS": "Canvas",
                 "OTHER": "Other",
-                "WOOD": "Wood"
+                "WOOD": "Wood",
+                "PRINT": "Canvas print from original"
             },
             "art-technique": {
                 "ACRYLIC": "Acrylic",
