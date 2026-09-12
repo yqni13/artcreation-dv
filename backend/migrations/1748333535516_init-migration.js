@@ -4,11 +4,9 @@
 const shorthands = undefined;
 
 /**
- * @param pgm {import('node-pg-migrate').MigrationBuilder}
- * @param run {() => void | undefined}
- * @returns {Promise<void> | void}
+ * @param {import('node-pg-migrate').MigrationBuilder} pgm
  */
-export const up = (pgm) => {
+async function up(pgm) {
     pgm.createTable('gallery', {
         gallery_id: {
             type: 'uuid',
@@ -112,11 +110,9 @@ export const up = (pgm) => {
 }
 
 /**
- * @param pgm {import('node-pg-migrate').MigrationBuilder}
- * @param run {() => void | undefined}
- * @returns {Promise<void> | void}
+ * @param {import('node-pg-migrate').MigrationBuilder} pgm
  */
-export const down = (pgm) => {
+async function down(pgm) {
     pgm.dropTable('news', {
         ifExists: true,
         cascade: true
@@ -125,3 +121,5 @@ export const down = (pgm) => {
         ifExists: true
     });
 }
+
+module.exports = { shorthands, up, down };
