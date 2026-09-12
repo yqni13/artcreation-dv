@@ -1,14 +1,12 @@
 /**
  * @type {import('node-pg-migrate').ColumnDefinitions | undefined}
  */
-export const shorthands = undefined;
+const shorthands = undefined;
 
 /**
- * @param pgm {import('node-pg-migrate').MigrationBuilder}
- * @param run {() => void | undefined}
- * @returns {Promise<void> | void}
+ * @param {import('node-pg-migrate').MigrationBuilder} pgm
  */
-export const up = (pgm) => {
+async function up(pgm) {
     pgm.createTable('assets', {
         assets_id: {
             type: 'uuid',
@@ -42,16 +40,16 @@ export const up = (pgm) => {
             type: 'timestamp',
             notNull: true
         }
-    })
-};
+    });
+}
 
 /**
- * @param pgm {import('node-pg-migrate').MigrationBuilder}
- * @param run {() => void | undefined}
- * @returns {Promise<void> | void}
+ * @param {import('node-pg-migrate').MigrationBuilder} pgm
  */
-export const down = (pgm) => {
+async function down(pgm) {
     pgm.dropTable('assets', {
         ifExists: true
     });
-};
+}
+
+module.exports = { shorthands, up, down };
