@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Inject, Injectable, DOCUMENT } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { ThemeOption } from "../enums/theme-option.enum";
 import { ThemeObservationService } from "./theme-observation.service";
 
@@ -8,18 +7,11 @@ import { ThemeObservationService } from "./theme-observation.service";
 })
 export class ThemeHandlerService {
 
-    private isLocalStorageAvailable: any;
-    private identifier: string;
-    private themeAttribute: string;
+    private readonly themeObserve = inject(ThemeObservationService);
 
-    constructor(
-        @Inject(DOCUMENT) private document: Document,
-        private readonly themeObserve: ThemeObservationService
-    ) {
-        this.isLocalStorageAvailable = typeof localStorage !== 'undefined';
-        this.identifier = 'artcreation-dv.at-theme';
-        this.themeAttribute = 'data-theme';
-    }
+    private isLocalStorageAvailable = typeof localStorage !== 'undefined';
+    private identifier = 'artcreation-dv.at-theme';
+    private themeAttribute = 'data-theme';
 
     checkThemeSettings(): ThemeOption {
         if(this.isLocalStorageAvailable) {
@@ -38,14 +30,14 @@ export class ThemeHandlerService {
         if(this.isLocalStorageAvailable) {
             if(theme) {
                 localStorage.setItem(this.identifier, theme);
-                this.document.body.setAttribute(this.themeAttribute, theme);
+                document.body.setAttribute(this.themeAttribute, theme);
                 this.themeObserve.setThemeOption(theme);
                 return;
             }
         }
         
         this.themeObserve.setThemeOption(ThemeOption.darkMode);
-        this.document.body.setAttribute(this.themeAttribute, 'darkMode');
+        document.body.setAttribute(this.themeAttribute, 'darkMode');
     }
 
     switchTheme(theme: ThemeOption): ThemeOption {

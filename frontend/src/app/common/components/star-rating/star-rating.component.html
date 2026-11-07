@@ -14,7 +14,7 @@
             id="star1"
             [value]="1"
             type="radio"
-            [checked]="startValue === 1"
+            [checked]="startValueSignal() === 1"
             (change)="onChange($event)"
             #star1Ref
         >
@@ -30,7 +30,7 @@
             id="star2"
             [value]="2"
             type="radio"
-            [checked]="startValue === 2"
+            [checked]="startValueSignal() === 2"
             (change)="onChange($event)"
             #star2Ref
         >
@@ -46,7 +46,7 @@
             id="star3"
             [value]="3"
             type="radio"
-            [checked]="startValue === 3"
+            [checked]="startValueSignal() === 3"
             (change)="onChange($event)"
             #star3Ref
         >
@@ -62,7 +62,7 @@
             id="star4"
             [value]="4"
             type="radio"
-            [checked]="startValue === 4"
+            [checked]="startValueSignal() === 4"
             (change)="onChange($event)"
             #star4Ref
         >
@@ -78,7 +78,7 @@
             id="star5"
             [value]="5"
             type="radio"
-            [checked]="startValue === 5"
+            [checked]="startValueSignal() === 5"
             (change)="onChange($event)"
             #star5Ref
         >

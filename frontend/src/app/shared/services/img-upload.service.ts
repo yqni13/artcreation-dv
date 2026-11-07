@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { SnackbarMessageService } from "./snackbar.service";
 import { SnackbarParameter } from "../interfaces/snackbar.interface";
 import { TranslateService } from "@ngx-translate/core";
@@ -11,17 +11,12 @@ import { SnackbarInput } from "../enums/snackbar-input.enum";
 })
 export class ImgUploadService {
 
-    private sizeFactorInMB: number;
-    private maxFileSize: number;
+    private readonly translate = inject(TranslateService);
+    private readonly snackbar = inject(SnackbarMessageService);
+    private readonly staticTranslate = inject(StaticTranslateService);
 
-    constructor(
-        private readonly translate: TranslateService,
-        private readonly snackbar: SnackbarMessageService,
-        private readonly staticTranslate: StaticTranslateService,
-    ) {
-        this.sizeFactorInMB = 4; // default max size vercel
-        this.maxFileSize = 1024 * 1024 * this.sizeFactorInMB;
-    }
+    private sizeFactorInMB = 4;
+    private maxFileSize = 1024 * 1024 * this.sizeFactorInMB;
 
     setMaxFileSize(limit: number) {
         this.sizeFactorInMB = limit;

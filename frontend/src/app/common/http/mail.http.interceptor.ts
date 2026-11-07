@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { inject, Injectable } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { StaticTranslateService } from "../../shared/services/static-translation.service";
 import { SnackbarMessageService } from "../../shared/services/snackbar.service";
@@ -14,16 +15,12 @@ import { SnackbarInput } from "../../shared/enums/snackbar-input.enum";
 })
 export class MailHttpInterceptor {
 
-    private delay: any;
+    private readonly translate = inject(TranslateService);
+    private readonly staticTranslate = inject(StaticTranslateService);
+    private readonly snackbarService = inject(SnackbarMessageService);
+    private readonly httpObservationService = inject(HttpObservationService);
 
-    constructor(
-        private readonly translate: TranslateService,
-        private readonly staticTranslate: StaticTranslateService,
-        private readonly snackbarService: SnackbarMessageService,
-        private readonly httpObservationService: HttpObservationService
-    ) {
-        this.delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    private delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     async handleMailResponse(httpBody: HttpResponse<any>) {
         await this.delay(1000);

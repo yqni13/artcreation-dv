@@ -97,7 +97,8 @@
                 }
             },
             "info": {
-                "last-update": "last update:"
+                "last-update": "last update:",
+                "searchtext": "Search"
             },
             "news": {
                 "details": {
@@ -142,7 +143,7 @@
                 "fieldNames": {
                     "email": "Email",
                     "firstName": "First name",
-                    "honorifics": "Gender",
+                    "honorifics": "Title",
                     "lastName": "Last name",
                     "message": "Message",
                     "referenceNr": "Reference number",
@@ -352,7 +353,8 @@
             "art-medium": {
                 "CANVAS": "Canvas",
                 "OTHER": "Other",
-                "WOOD": "Wood"
+                "WOOD": "Wood",
+                "PRINT": "Canvas print from original"
             },
             "art-technique": {
                 "ACRYLIC": "Acrylic",

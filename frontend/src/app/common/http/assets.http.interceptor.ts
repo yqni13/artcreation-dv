@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { inject, Injectable } from "@angular/core";
 import { HttpObservationService } from "../../shared/services/http-observation.service";
 import { HttpResponse } from "@angular/common/http";
 import { AdminRoute } from "../../api/routes/admin.route.enum";
@@ -11,13 +12,9 @@ import { SnackbarMessageService } from "../../shared/services/snackbar.service";
 })
 export class AssetsHttpInterceptor {
 
-    constructor(
-        private readonly translate: TranslateService,
-        private readonly snackbarService: SnackbarMessageService,
-        private readonly httpObservationService: HttpObservationService
-    ) {
-        //
-    }
+    private readonly translate = inject(TranslateService);
+    private readonly snackbarService = inject(SnackbarMessageService);
+    private readonly httpObservationService = inject(HttpObservationService);
 
     async handleAssetsResponse(httpBody: HttpResponse<any>) {
         if(httpBody.url?.includes(`${AdminRoute.ASSETS}${AssetsRoute.FINDALL}`)) {

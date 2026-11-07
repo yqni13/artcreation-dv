@@ -14,16 +14,16 @@
         </h3>
         <div class="artdv-imprint-content-p">
             <a class="artdv-hidden-anchor" href="/login">
-                {{ownerData.name}}
+                {{ownerData['name']}}
             </a>
             <span>
-                {{ownerData.address}}
+                {{ownerData['address']}}
             </span>
             <span>
-                <a class="artdv-anchor" href="tel:{{ownerData.phone}}">{{ownerData.phone}}</a>
+                <a class="artdv-anchor" href="tel:{{ownerData['phone']}}">{{ownerData['phone']}}</a>
             </span>
             <span>
-                <a class="artdv-anchor" href="mailto:{{ownerData.email}}">{{ownerData.email}}</a>
+                <a class="artdv-anchor" href="mailto:{{ownerData['email']}}">{{ownerData['email']}}</a>
             </span>
         </div>
 
@@ -32,19 +32,19 @@
         </h3>
         <div class="artdv-imprint-content-p">
             <span>
-                {{('imprint-content.content.data-open-source.project' | translate) + devData.project}}
+                {{('imprint-content.content.data-open-source.project' | translate) + devData['project']}}
             </span>
             <span>
-                {{devData.version}}
+                {{devData['version']}}
             </span>
             <span>
-                <a class="artdv-anchor" href="{{devData.contact}}">SUPPORT HUB</a>
+                <a class="artdv-anchor" href="{{devData['contact']}}">SUPPORT HUB</a>
             </span>
             <div id="artdv-imprint-dev-icon-wrapper">
-                <a href="{{devData.github}}" target="_blank">
+                <a href="{{devData['github']}}" target="_blank">
                     <i class="icon-GitHub"></i>
                 </a>
-                <a href="{{devData.portfolio}}" target="_blank">
+                <a href="{{devData['portfolio']}}" target="_blank">
                     <img src="/assets/logo_ico/yqni13-small.png" alt="404-not-found">
                 </a>
             </div>

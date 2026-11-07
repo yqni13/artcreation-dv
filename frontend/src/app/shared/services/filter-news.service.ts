@@ -7,10 +7,6 @@ import { SortingOption } from '../enums/sorting-option.enum';
 })
 export class FilterNewsService {
 
-    constructor() {
-        //
-    }   
-
     filterByKeyValue(filterKey: SortingOption | null, source: NewsItem[] | NewsItemWGP[]): NewsItem[] | NewsItemWGP[] {
         filterKey = filterKey === null ? SortingOption.DESC : filterKey;
         source = source.sort(

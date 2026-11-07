@@ -1,5 +1,5 @@
-import { Component, forwardRef, Input } from "@angular/core";
-import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
+import { Component, forwardRef, input } from "@angular/core";
+import { NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
 import { AbstractInputComponent } from "../../abstracts/form-input.abstract.component";
@@ -23,23 +23,10 @@ import { AbstractInputComponent } from "../../abstracts/form-input.abstract.comp
 })
 export class TextareaInputComponent extends AbstractInputComponent {
 
-    @Input() fieldName: string;
-    @Input() formControl: FormControl;
-    @Input() placeholder: string;
-    @Input() ngClass: string;
-    @Input() className: string;
-    @Input() rows: number;
-    @Input() maxLength: number;
+    readonly rows = input.required<number>();
+    readonly maxLength = input(0);
 
     constructor() {
         super();
-
-        this.fieldName = '';
-        this.formControl = new FormControl();
-        this.placeholder = '';
-        this.ngClass = '';
-        this.className = '';
-        this.rows = 0;
-        this.maxLength = 0;
     }
 }

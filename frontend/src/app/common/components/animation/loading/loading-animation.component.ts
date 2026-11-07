@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, input } from "@angular/core";
 import { SizeOption } from "../../../../shared/enums/size-option.enum";
 
 @Component({
@@ -10,7 +10,7 @@ import { SizeOption } from "../../../../shared/enums/size-option.enum";
     template: `
     <div
         class="artdv-loading-animation"
-        [ngClass]="sizeMode === SizeOptionEnum.GLOBAL 
+        [ngClass]="sizeMode() === SizeOptionEnum.GLOBAL 
             ? 'artdv-loading-animation-global'
             : 'artdv-loading-animation-component'"
     >
@@ -28,11 +28,7 @@ import { SizeOption } from "../../../../shared/enums/size-option.enum";
 })
 export class LoadingAnimationComponent {
 
-    @Input() sizeMode?: SizeOption;
+    readonly sizeMode = input<SizeOption>(SizeOption.GLOBAL);
 
-    protected SizeOptionEnum = SizeOption;
-
-    constructor() {
-        this.sizeMode = SizeOption.GLOBAL;
-    }
+    protected readonly SizeOptionEnum = SizeOption;
 }

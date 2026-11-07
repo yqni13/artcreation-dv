@@ -135,6 +135,12 @@
             "other": {
                 "auto-logout": "You have been automatically logged out because your session is limited in time for safety reasons."
             },
+            "submit": {
+                "invalid": {
+                    "title": "invalid input",
+                    "text": "Please check for missing or invalid fields before submitting."
+                }
+            },
             "support": {
                 "text": "Your request has been successfully forwarded to us and created as a new ticket. Your data will be processed as quickly as possible and, if necessary, we will contact you via email.",
                 "title": "Ticket created!"

@@ -1,8 +1,54 @@
 ## 📜 $\textsf{\color{salmon}{List\ of\ updates}}$
 
+### $\textsf{\color{skyblue}2026/09/11}$
+
+$\textsf{[v2.0.8\ =>\ {\textbf{\color{brown}v2.0.9}]}}$ app<br>
+$\textsf{[v1.4.1\ =>\ {\textbf{\color{brown}v1.5.0}]}}$ database
+- $\textsf{\color{orange}Patch:}$ Updated artwork medium data set.
+- $\textsf{\color{orange}Patch:}$ Updated migration files from ES6 to CommonJS structure.
+
+<br>
+
+### $\textsf{\color{skyblue}2026/06/28}$
+
+$\textsf{[v2.0.7\ =>\ v2.0.8]}$ app
+- $\textsf{\color{red}Bugfix:}$ Counting visitors by 3rd party service works now as expected. [Before: Account had problems and needed to be deleted and newly established => change of script ID.]
+
+<br>
+
+### $\textsf{\color{skyblue}2026/06/26}$
+
+$\textsf{[v2.0.6\ =>\ v2.0.7]}$ app
+- $\textsf{\color{orange}Patch:}$ Updated interface declarations (wrongful usage "export" + "declare").
+
+<br>
+
+### $\textsf{\color{skyblue}2026/06/24}$
+
+$\textsf{[v2.0.5\ =>\ v2.0.6]}$ app
+- $\textsf{\color{teal}Addition:}$ Added script call to track meta data (visitor counter).
+
+<br>
+
+### $\textsf{\color{skyblue}2026/06/04}$
+
+$\textsf{[v2.0.4\ =>\ v2.0.5]}$ app
+- $\textsf{\color{orange}Patch:}$ Updated dependencies on frontend/backend.
+
+<br>
+
+### $\textsf{\color{skyblue}2026/05/06}$
+
+$\textsf{[v2.0.2\ =>\ v2.0.4]}$ app
+- $\textsf{\color{orange}Patch:}$ Updated:
+  + frontend on eslint rules & guidelines
+  + small refactoring and fixes
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/05/02}$
 
-$\textsf{[v2.0.0\ =>\ {\textbf{\color{brown}v2.0.2}]}}$ app
+$\textsf{[v2.0.0\ =>\ v2.0.2]}$ app
 - $\textsf{\color{orange}Patch:}$ Updated:
   + dependencies to solve vulnerabilities (frontend + backend)
   + nodemailer settings due to config errors of updated api version
@@ -115,7 +161,7 @@ $\textsf{[v1.3.0\ =>\ v1.3.1]}$ app
 ### $\textsf{\color{skyblue}2026/01/28}$
 
 $\textsf{[v1.2.13\ =>\ v1.3.0]}$ app<br>
-$\textsf{[v1.4.0\ =>\ {\textbf{\color{brown}v1.4.1}]}}$ database
+$\textsf{[v1.4.0\ =>\ v1.4.1]}$ database
 - $\textsf{\color{teal}Addition:}$ Added new feature:
   + artworks are displayed in gallery (detail view) with different frames
   + frames can be selected by admin from list of different models

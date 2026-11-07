@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpClient, HttpResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { AuthResponse } from "../../api/interfaces/auth.interface";
@@ -20,30 +21,19 @@ import { default as validationJson } from "../../../../public/assets/i18n/valida
 })
 export class AuthService {
 
-    private urlPreConnect: string;
-    private urlLoginAPI: string;
-    private preConnection: boolean;
-    private credentials: any;
-    private logoutTimer: ReturnType<typeof setTimeout> | null;
+    private readonly router = inject(Router);
+    private readonly http = inject(HttpClient);
+    private readonly token = inject(TokenService);
+    private readonly encrypt = inject(EncryptionService);
+    private readonly translate = inject(TranslateService);
+    private readonly snackbar = inject(SnackbarMessageService);
+    private readonly staticTranslate = inject(StaticTranslateService);
 
-    constructor(
-        private readonly router: Router,
-        private readonly http: HttpClient,
-        private readonly token: TokenService,
-        private readonly encrypt: EncryptionService,
-        private readonly translate: TranslateService,
-        private readonly snackbar: SnackbarMessageService,
-        private readonly staticTranslate: StaticTranslateService
-    ) {
-        this.urlPreConnect = environment.API_BASE_URL + '/api/v1/auth/pre-connect';
-        this.urlLoginAPI = environment.API_BASE_URL + '/api/v1/auth/login';
-        this.preConnection = false;
-        this.credentials = {
-            user: '',
-            pass: ''
-        };
-        this.logoutTimer = null;
-    }
+    private urlPreConnect = environment.API_BASE_URL + '/api/v1/auth/pre-connect';
+    private urlLoginAPI = environment.API_BASE_URL + '/api/v1/auth/login';
+    private preConnection = false;
+    private credentials: Record<string, string> = { user: '', pass: ''};
+    private logoutTimer: ReturnType<typeof setTimeout> | null = null;
 
     getExceptionList(): string[] {
         return Object.keys(validationJson.validation.backend.header);
@@ -78,7 +68,7 @@ export class AuthService {
         )
     }
 
-    logout(nav2Login: boolean = true) {
+    logout(nav2Login = true) {
         this.token.removeToken(TokenOption.TOKEN);
         this.token.removeToken(TokenOption.EXPIRATION);
 

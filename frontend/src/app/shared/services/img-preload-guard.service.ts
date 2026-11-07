@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { inject, Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivate, UrlTree } from "@angular/router";
 import { ImgPreloadService } from "./img-preload.service";
 import { catchError, from, map, Observable, of } from "rxjs";
 
@@ -8,13 +8,9 @@ import { catchError, from, map, Observable, of } from "rxjs";
 })
 export class ImgPreloadGuard implements CanActivate {
 
-    constructor(
-        private readonly imgPreload: ImgPreloadService,
-    ) {
-        //
-    }
+    private readonly imgPreload = inject(ImgPreloadService);
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
+    canActivate(route: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
         const images: string[] = route.data['preloadImages'] ?? [];
         if(images.length === 0) {
             return of(true);

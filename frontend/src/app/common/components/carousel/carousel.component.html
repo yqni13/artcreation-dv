@@ -1,9 +1,9 @@
 <article class="artdv-carousel-wrapper">
 	<div class="artdv-carousel-slides" [style.transform]="getTransform()">
-		@for (entry of entries; track entry) {
+		@for (entry of entries(); track $index) {
 			<div class="artdv-carousel-slide">
-				@if (slideTemplate) {
-					<ng-container *ngTemplateOutlet="slideTemplate; context: { $implicit: entry }"></ng-container>
+				@if (slideTemplate()) {
+					<ng-container *ngTemplateOutlet="slideTemplate(); context: { $implicit: entry }"></ng-container>
 				} @else {
 					<div class="artdv-carousel-default-wrapper">
 						<div class="artdv-carousel-default-img">
@@ -31,7 +31,7 @@
 			</div>
 		}
 	</div>
-	@if (entries.length > 0) {
+	@if (entries().length > 0) {
 		<div class="artdv-carousel-arrows">
 			<i
 				[attr.tabindex]="0"
@@ -49,6 +49,6 @@
 	}
 	<artdv-loading-animation
 		[sizeMode]="SizeOptionEnum.COMP"
-		[ngClass]="isLoadingResponse ? 'artdv-visible' : 'artdv-hidden'"
+		[ngClass]="isLoadingResponse() ? 'artdv-visible' : 'artdv-hidden'"
 	></artdv-loading-animation>
 </article>

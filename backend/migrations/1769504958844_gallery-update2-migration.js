@@ -1,14 +1,12 @@
 /**
  * @type {import('node-pg-migrate').ColumnDefinitions | undefined}
  */
-export const shorthands = undefined;
+const shorthands = undefined;
 
 /**
- * @param pgm {import('node-pg-migrate').MigrationBuilder}
- * @param run {() => void | undefined}
- * @returns {Promise<void> | void}
+ * @param {import('node-pg-migrate').MigrationBuilder} pgm
  */
-export const up = (pgm) => {
+async function up(pgm) {
     pgm.addColumn('gallery', {
         art_frame_model: {
             type: 'varchar(30)',
@@ -21,14 +19,14 @@ export const up = (pgm) => {
             default: '#ffffff'
         }
     });
-};
+}
 
 /**
- * @param pgm {import('node-pg-migrate').MigrationBuilder}
- * @param run {() => void | undefined}
- * @returns {Promise<void> | void}
+ * @param {import('node-pg-migrate').MigrationBuilder} pgm
  */
-export const down = (pgm) => {
+async function down(pgm) {
     pgm.dropColumn('gallery', 'art_frame_model');
     pgm.dropColumn('gallery', 'art_frame_color');
-};
+}
+
+module.exports = { shorthands, up, down };

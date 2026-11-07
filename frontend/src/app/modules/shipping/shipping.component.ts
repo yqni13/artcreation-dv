@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { ThemeObservationService } from "../../shared/services/theme-observation.service";
 import { Subscription, tap } from "rxjs";
@@ -14,49 +14,27 @@ import { ThemeOption } from "../../shared/enums/theme-option.enum";
 })
 export class ShippingComponent implements OnInit, OnDestroy {
 
-    protected selectedBg: string;
-    protected theme = ThemeOption;
-    protected blockProcess: any;
-    protected blockShipment: any;
-    protected blockDelay: any;
-    protected blockRefund: any;
-    protected blockLost: any;
-    protected blockPackaging: any;
+    private readonly themeObserve = inject(ThemeObservationService);
 
-    private subscriptionThemeObservation$: Subscription;
+    protected selectedBg = '';
+    protected blockProcess: Record<string, string> = {
+        img1: '',
+        img2: '',
+        img3: ''
+    };
+    protected blockShipment: {img: string} = {img: ''};
+    protected blockDelay: {img: string} = {img: ''};
+    protected blockRefund: Record<string, string> = {img1: '', img2: ''};
+    protected blockLost: {img: string} = {img: ''};
+    protected blockPackaging: Record<string, string> = {
+        img1: '',
+        img2: '',
+        link1: 'https://www.gerstaecker.at/',
+        link2: 'https://www.amazon.de/',
+        link3: 'https://www.boesner.at/'
+    };
 
-    constructor(
-        private readonly themeObserve: ThemeObservationService
-    ) {
-        this.selectedBg = '';
-        this.blockProcess = {
-            img1: '',
-            img2: '',
-            img3: ''
-        };
-        this.blockShipment = {
-            img: ''
-        }
-        this.blockDelay = {
-            img: ''
-        }
-        this.blockRefund = {
-            img1: '',
-            img2: ''
-        }
-        this.blockLost = {
-            img: ''
-        }
-        this.blockPackaging = {
-            img1: '',
-            img2: '',
-            link1: 'https://www.gerstaecker.at/',
-            link2: 'https://www.amazon.de/',
-            link3: 'https://www.boesner.at/'
-        }
-
-        this.subscriptionThemeObservation$ = new Subscription();
-    }
+    private subscriptionThemeObservation$ = new Subscription();
 
     ngOnInit() {
         this.subscriptionThemeObservation$ = this.themeObserve.themeOption$.pipe(
@@ -82,8 +60,8 @@ export class ShippingComponent implements OnInit, OnDestroy {
                         this.blockLost = {
                             img: '/assets/shipping/block5_lightmode.svg'
                         }
-                        this.blockPackaging.img1 = '/assets/shipping/block6_01_lightmode.svg';
-                        this.blockPackaging.img2 = '/assets/shipping/block6_02_lightmode.svg';
+                        this.blockPackaging['img1'] = '/assets/shipping/block6_01_lightmode.svg';
+                        this.blockPackaging['img2'] = '/assets/shipping/block6_02_lightmode.svg';
                         break;
                     }
                     case(ThemeOption.darkMode):
@@ -107,8 +85,8 @@ export class ShippingComponent implements OnInit, OnDestroy {
                         this.blockLost = {
                             img: '/assets/shipping/block5_darkmode.svg'
                         }
-                        this.blockPackaging.img1 = '/assets/shipping/block6_01_darkmode.svg';
-                        this.blockPackaging.img2 = '/assets/shipping/block6_02_darkmode.svg';
+                        this.blockPackaging['img1'] = '/assets/shipping/block6_01_darkmode.svg';
+                        this.blockPackaging['img2'] = '/assets/shipping/block6_02_darkmode.svg';
                     }
                 }
             })
