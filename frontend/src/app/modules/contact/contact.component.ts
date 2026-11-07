@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
-import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, viewChild, ChangeDetectionStrategy } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SubjectOptions } from "../../shared/enums/contact-subject.enum";
 import { MailAPIService } from "../../api/services/mail.api.service";
@@ -42,6 +42,7 @@ import { SnackbarInput } from "../../shared/enums/snackbar-input.enum";
     ],
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [FloatPrecisionPipe]
 })
 export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {

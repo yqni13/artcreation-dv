@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { NewsItemWGP } from "../../../../api/interfaces/news-response.interface";
 import { AbstractAdminDetailComponent } from "../../../../common/components/abstracts/admin-detail.abstract.component";
@@ -26,6 +26,7 @@ import { CacheCheckPipe } from "../../../../common/pipes/cache-check.pipe";
     ],
     templateUrl: './admin-news-detail.component.html',
     styleUrl: '../../admin.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [CacheCheckPipe]
 })
 export class AdminNewsDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit, OnDestroy {

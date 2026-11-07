@@ -17,7 +17,7 @@
 							<span
 								[attr.aria-disabled]="true"
 								routerLink="{{ route.path }}"
-							>{{ 'common.footer.content.' + route.data?.['title'] | translate}}</span>
+							>{{ 'common.footer.content.' + (route.data?.['title']) | translate}}</span>
 						</li>
 					}
 					<li>
@@ -80,7 +80,7 @@
 							<span
 								[attr.aria-disabled]="true"
 								routerLink="{{ route.path }}"
-							>{{ 'common.footer.content.' + route.data?.['title'] | translate }}</span>
+							>{{ 'common.footer.content.' + (route.data?.['title']) | translate }}</span>
 						</li>
 					}
 				</ul>

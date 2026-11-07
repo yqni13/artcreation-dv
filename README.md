@@ -1,5 +1,5 @@
 # yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
-### $\textsf{\color{brown}{v2.0.9}}$
+### $\textsf{\color{brown}{v3.0.0}}$
 
 <br><br>
 
@@ -33,7 +33,8 @@ For testing purposes, one instance runs on env:stag, while the live version runs
 
 ### $\textsf{\color{teal}Prerequisites}$
 
-- node: v20+
+- Angular v22+
+- node: v24+
 - Cloudstorage (R2 Object Storage)
 - Betterstack Telemetry (logging)
 
@@ -304,10 +305,8 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v2.0.8\ =>\ {\textbf{\color{brown}v2.0.9}]}}$ app
-$\textsf{[v1.4.1\ =>\ {\textbf{\color{brown}v1.5.0}]}}$ database
-- $\textsf{\color{orange}Patch:}$ Updated artwork medium data set.
-- $\textsf{\color{orange}Patch:}$ Updated migration files from ES6 to CommonJS structure.
+$\textsf{[v2.0.9\ =>\ {\textbf{\color{brown}v3.0.0}]}}$ app
+- $\textsf{\color{green}Change:}$ Upgraded Angular framework from v21 to v22.
 
 <br>
 

@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, OnInit, output, signal } from "@angular/core";
+import { Component, computed, inject, input, OnInit, output, signal, ChangeDetectionStrategy } from "@angular/core";
 import { ImgPreloadService } from "../../../shared/services/img-preload.service";
 import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 
@@ -21,6 +21,7 @@ import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
     `,
     styleUrl: "./img-fullscale.component.scss",
     providers: [CacheCheckPipe],
+    changeDetection: ChangeDetectionStrategy.Eager,
     host: {
         '(document:keydown.escape)': 'closeFullscale(false)'
     }

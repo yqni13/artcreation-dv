@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, input, OnDestroy, OnInit, output } from "@angular/core";
+import { Component, input, OnDestroy, OnInit, output, ChangeDetectionStrategy } from "@angular/core";
 import { ControlValueAccessor, FormControl } from "@angular/forms";
 import { Subscription } from "rxjs";
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.Eager,
     template: ''
 })
 export class AbstractInputComponent implements ControlValueAccessor, OnInit, OnDestroy {

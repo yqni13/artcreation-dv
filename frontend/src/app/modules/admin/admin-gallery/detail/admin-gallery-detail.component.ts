@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
+import { AfterViewInit, Component, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
 import { filter, tap } from "rxjs";
@@ -29,6 +29,7 @@ import { ArtFrame } from "../../../../shared/enums/art-frame.enum";
     ],
     templateUrl: './admin-gallery-detail.component.html',
     styleUrl: '../../admin.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [CacheCheckPipe]
 })
 export class AdminGalleryDetailComponent extends AbstractAdminDetailComponent implements OnInit, AfterViewInit {

@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { DateFormatPipe } from "../../common/pipes/date-format.pipe";
 import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img-fullscale.component";
 import { TranslateModule } from "@ngx-translate/core";
@@ -26,6 +26,7 @@ import { ArtGenre } from "../../shared/enums/art-genre.enum";
     ],
     templateUrl: './archive.component.html',
     styleUrl: './archive.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [CacheCheckPipe]
 })
 export class ArchiveComponent implements OnInit, OnDestroy {

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import * as content from "../../../../public/assets/i18n/privacy-en.json";
 
@@ -8,6 +8,7 @@ import * as content from "../../../../public/assets/i18n/privacy-en.json";
         TranslateModule
     ],
     templateUrl: './privacy.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './privacy.component.scss'
 })
 export class PrivacyComponent {
