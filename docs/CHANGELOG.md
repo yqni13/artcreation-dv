@@ -1,8 +1,15 @@
 ## 📜 $\textsf{\color{salmon}{List\ of\ updates}}$
 
+### $\textsf{\color{skyblue}2026/11/07}$
+
+$\textsf{[v2.0.9\ =>\ {\textbf{\color{brown}v3.0.0}]}}$ app
+- $\textsf{\color{green}Change:}$ Upgraded Angular framework from v21 to v22.
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/09/11}$
 
-$\textsf{[v2.0.8\ =>\ {\textbf{\color{brown}v2.0.9}]}}$ app<br>
+$\textsf{[v2.0.8\ =>\ v2.0.9]}$ app<br>
 $\textsf{[v1.4.1\ =>\ {\textbf{\color{brown}v1.5.0}]}}$ database
 - $\textsf{\color{orange}Patch:}$ Updated artwork medium data set.
 - $\textsf{\color{orange}Patch:}$ Updated migration files from ES6 to CommonJS structure.
