@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, ElementRef, forwardRef, input, signal, viewChild } from "@angular/core";
+import { AfterViewInit, Component, computed, ElementRef, forwardRef, input, signal, viewChild, ChangeDetectionStrategy } from "@angular/core";
 import { NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
@@ -14,6 +14,7 @@ import { TextCaseOption } from "../../../../shared/enums/text-case.enum";
     ],
     templateUrl: './text-input.component.html',
     styleUrl: './text-input.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

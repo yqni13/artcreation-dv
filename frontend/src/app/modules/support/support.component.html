@@ -15,7 +15,7 @@
 		<h1>{{'modules.support.title' | translate}}</h1>
 	</header>
 	<div class="artdv-support-content">
-		<ng-container *artdvVar="supportForm.get('option')?.value as opt">
+		<ng-container *artdvVar="(supportForm.get('option')?.value) as opt">
 			@if (opt !== '') {
 				<div class="artdv-support-category">
 					<i
@@ -164,7 +164,7 @@
 			}
 
 			<!-- ATTACHMENT PANEL -->
-			<ng-container *artdvVar="supportForm.get('attachment')?.value as attachment">
+			<ng-container *artdvVar="(supportForm.get('attachment')?.value) as attachment">
 				@if (opt !== TicketOptionEnum.FEEDBACK && attachment && attachment?.length > 0) {
 					<div id="artdv-support-attachment-list" class="outer-border">
 						<div class="inner-border">

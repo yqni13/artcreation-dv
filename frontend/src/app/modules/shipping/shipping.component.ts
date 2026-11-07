@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { ThemeObservationService } from "../../shared/services/theme-observation.service";
 import { Subscription, tap } from "rxjs";
@@ -10,6 +10,7 @@ import { ThemeOption } from "../../shared/enums/theme-option.enum";
         TranslateModule
     ],
     templateUrl: './shipping.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './shipping.component.scss'
 })
 export class ShippingComponent implements OnInit, OnDestroy {

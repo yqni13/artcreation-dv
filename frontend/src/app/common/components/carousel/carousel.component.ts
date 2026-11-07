@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, input, TemplateRef } from '@angular/core';
+import { Component, inject, input, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -22,6 +22,7 @@ import { CacheCheckPipe } from '../../pipes/cache-check.pipe';
     ],
     templateUrl: './carousel.component.html',
     styleUrl: './carousel.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     host: {
         '(window:keydown)': 'isNavigatingCarousel($event)'
     }

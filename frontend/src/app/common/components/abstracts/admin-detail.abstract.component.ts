@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AssetsAPIService } from './../../../api/services/assets.api.service';
-import { AfterViewInit, Component, inject, OnDestroy, signal } from "@angular/core";
+import { AfterViewInit, Component, inject, OnDestroy, signal, ChangeDetectionStrategy } from "@angular/core";
 import { filter, Subscription, tap } from "rxjs";
 import { CRUDMode } from "../../../shared/enums/crud-mode.enum";
 import { Router } from "@angular/router";
@@ -19,6 +19,7 @@ import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
 
 @Component({
     template: '',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [CacheCheckPipe]
 })
 export abstract class AbstractAdminDetailComponent implements AfterViewInit, OnDestroy {

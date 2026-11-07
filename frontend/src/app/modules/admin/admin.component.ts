@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { AuthService } from "../../shared/services/auth.service";
 import { RouterModule } from "@angular/router";
@@ -18,6 +18,7 @@ import { Subscription, tap } from "rxjs";
         TranslateModule
     ],
     templateUrl: './admin.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './admin.component.scss'
 })
 export class AdminComponent implements OnInit, OnDestroy {

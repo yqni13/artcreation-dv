@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, computed, ElementRef, inject, input, OnInit, output, signal, viewChild } from "@angular/core";
+import { Component, computed, ElementRef, inject, input, OnInit, output, signal, viewChild, ChangeDetectionStrategy } from "@angular/core";
 import { ImgUploadData, ImgUploadInformation } from "../../../shared/interfaces/img-upload.interface";
 import { ImgUploadService } from "../../../shared/services/img-upload.service";
 import { TranslateModule } from "@ngx-translate/core";
@@ -15,6 +15,7 @@ import { AdminRoute } from "../../../api/routes/admin.route.enum";
         TranslateModule
     ],
     templateUrl: './img-upload.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './img-upload.component.scss'
 })
 export class ImgUploadComponent implements OnInit {

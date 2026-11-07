@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { BaseRoute } from "../../api/routes/base.route.enum";
 
@@ -8,6 +8,7 @@ import { BaseRoute } from "../../api/routes/base.route.enum";
         TranslateModule
     ],
     templateUrl: './imprint.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './imprint.component.scss',
 })
 export class ImprintComponent implements OnInit {
