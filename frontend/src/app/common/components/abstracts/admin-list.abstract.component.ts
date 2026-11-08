@@ -2,7 +2,7 @@ import { environment } from './../../../../environments/environment';
 import { GalleryRoute } from './../../../api/routes/gallery.route.enum';
 import { BaseRoute } from './../../../api/routes/base.route.enum';
 import { CRUDMode } from './../../../shared/enums/crud-mode.enum';
-import { AfterViewInit, Component, inject, OnDestroy } from "@angular/core";
+import { AfterViewInit, Component, inject, OnDestroy, ChangeDetectionStrategy } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { filter, Subscription, tap } from "rxjs";
 import { HttpObservationService } from '../../../shared/services/http-observation.service';
@@ -15,6 +15,7 @@ import { AssetsRoute } from '../../../api/routes/assets.route.enum';
 
 @Component({
     template: '',
+    changeDetection: ChangeDetectionStrategy.Eager,
     host: {
         '(document:keydown)': 'navigateSearchByKey($event)'
     }

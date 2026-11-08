@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, input } from "@angular/core";
+import { Component, input, ChangeDetectionStrategy } from "@angular/core";
 import { ArtFrame } from "../../../shared/enums/art-frame.enum";
 
 @Component({
@@ -8,6 +8,7 @@ import { ArtFrame } from "../../../shared/enums/art-frame.enum";
         CommonModule
     ],
     templateUrl: './img-frame.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './img-frame.component.scss'
 })
 export class ImgFrameComponent {

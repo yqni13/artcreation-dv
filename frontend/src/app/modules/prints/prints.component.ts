@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 import * as content from "../../../../public/assets/i18n/en.json";
@@ -16,6 +16,7 @@ import { ImgFullscaleComponent } from "../../common/components/img-fullscale/img
         TranslateModule
     ],
     templateUrl: './prints.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './prints.component.scss'
 })
 export class PrintsComponent implements OnInit, OnDestroy {

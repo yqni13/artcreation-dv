@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { AdminListImportsModule } from "../../../../common/helper/admin-list.imports.helper";
 import { AbstractAdminListComponent } from "../../../../common/components/abstracts/admin-list.abstract.component";
 import { FormControl } from "@angular/forms";
@@ -15,6 +15,7 @@ import { AssetsAPIService } from "../../../../api/services/assets.api.service";
         ...AdminListImportsModule
     ],
     templateUrl: './admin-assets-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: '../../admin.component.scss'
 })
 export class AdminAssetsListComponent extends AbstractAdminListComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './common/components/navigation/navigation.component';
 import { FooterComponent } from './common/components/footer/footer.component';
@@ -20,6 +20,7 @@ import { NavigationService } from './shared/services/navigation.service';
 		FooterComponent
 	],
 	templateUrl: './app.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {

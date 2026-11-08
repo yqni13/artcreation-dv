@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, viewChild, inject, signal } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, viewChild, inject, signal, ChangeDetectionStrategy } from "@angular/core";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SupportAPIService } from "../../api/services/support.api.service";
@@ -39,6 +39,7 @@ import { NavigationService } from "../../shared/services/navigation.service";
         LoadingAnimationComponent
     ],
     templateUrl: './support.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './support.component.scss'
 })
 export class SupportComponent implements OnInit, AfterViewInit, OnDestroy {

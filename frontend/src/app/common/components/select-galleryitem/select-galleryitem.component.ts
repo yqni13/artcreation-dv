@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from "@angular/common";
-import { Component, computed, inject, input, OnDestroy, OnInit, output, signal } from "@angular/core";
+import { Component, computed, inject, input, OnDestroy, OnInit, output, signal, ChangeDetectionStrategy } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { GalleryItem } from "../../../api/interfaces/gallery-response.interface";
 import { filter, Subscription, tap } from "rxjs";
@@ -19,6 +19,7 @@ import { LoadingAnimationComponent } from "../animation/loading/loading-animatio
     ],
     templateUrl: './select-galleryitem.component.html',
     styleUrl: './select-galleryitem.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     host: {
         '(window:keydown)': 'closeOnEscape($event)'
     }

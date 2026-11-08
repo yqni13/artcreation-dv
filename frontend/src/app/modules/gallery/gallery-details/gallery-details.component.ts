@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
 import { DataShareService } from "../../../shared/services/data-share.service";
 import { CommonModule } from "@angular/common";
@@ -38,6 +38,7 @@ import { ImgFrameComponent } from "../../../common/components/img-frame/img-fram
     ],
     templateUrl: './gallery-details.component.html',
     styleUrl: './gallery-details.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     host: {
         '(document:keydown)': 'closeOnEscape($event)'
     }

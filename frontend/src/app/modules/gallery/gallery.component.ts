@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, effect, EffectCleanupRegisterFn, ElementRef, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { Component, effect, EffectCleanupRegisterFn, ElementRef, inject, OnDestroy, OnInit, viewChild, ChangeDetectionStrategy } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Router, RouterModule } from "@angular/router";
 import { ImgPreloadComponent } from "../../common/components/img-preload/img-preload.component";
@@ -23,6 +23,7 @@ import { LocalStorageService } from "../../shared/services/localstorage.service"
         TranslateModule
     ],
     templateUrl: './gallery.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './gallery.component.scss'
 })
 export class GalleryComponent implements OnInit, OnDestroy {

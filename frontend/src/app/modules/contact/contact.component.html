@@ -58,7 +58,7 @@
 				<div div class="artdv-form-item artdv-form-multiple">
 
 					<!-- PRICE -->
-					@if (contactForm.get('subject')?.value === subjectOptions.artOrder && contactForm.get('price')?.value !== null && contactForm.get('referenceNr')?.value.length === 6) {
+					@if (contactForm.get('subject')?.value === subjectOptions.artOrder && (contactForm.get('price')?.value ?? null) !== null && contactForm.get('referenceNr')?.value.length === 6) {
 						<artdv-textinput
 							[ngClass]="'artdv-query-value artdv-readonly artdv-form-left-select'"
 							[formControl]="contactForm.get('price') | controlCast"
@@ -72,7 +72,7 @@
 					<!-- EMAIL-->
 					<artdv-textinput
 						[className]="hasPriceValue ? 'artdv-form-right' : ''"
-						[ngStyle]="contactForm.get('price')?.value !== null 
+						[ngStyle]="(contactForm.get('price')?.value ?? null) !== null 
 						&& contactForm.get('price')?.value !== ''
 						&& contactForm.get('referenceNr')?.value.length === 6
 						&& contactForm.get('subject')?.value === subjectOptions.artOrder
