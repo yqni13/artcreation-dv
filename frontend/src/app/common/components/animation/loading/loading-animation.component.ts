@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, input } from "@angular/core";
+import { Component, input, ChangeDetectionStrategy } from "@angular/core";
 import { SizeOption } from "../../../../shared/enums/size-option.enum";
 
 @Component({
@@ -24,6 +24,7 @@ import { SizeOption } from "../../../../shared/enums/size-option.enum";
         </div>
     </div>
     `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './loading-animation.component.scss'
 })
 export class LoadingAnimationComponent {

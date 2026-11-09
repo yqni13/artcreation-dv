@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, OnInit, inject } from "@angular/core";
+import { Component, OnInit, inject, ChangeDetectionStrategy } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
 import { Route, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -17,6 +17,7 @@ import { LanguageOption } from "../../../shared/enums/language-option.enum";
     ],
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     host: {
         '(window:click)': 'clickOutside($event)'
     }

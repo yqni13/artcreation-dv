@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit,inject, viewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit, inject, viewChild, ChangeDetectionStrategy } from "@angular/core";
 import { NavigationService } from "../../../shared/services/navigation.service";
 import { NavigationEnd, Route, Router, RouterEvent, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -17,6 +17,7 @@ import { ThemeHandlerService } from "../../../shared/services/theme-handler.serv
         TranslateModule
     ],
     templateUrl: './navigation.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit, AfterViewInit {

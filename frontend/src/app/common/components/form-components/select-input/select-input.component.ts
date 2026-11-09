@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, forwardRef, input, viewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, forwardRef, input, viewChild, ChangeDetectionStrategy } from "@angular/core";
 import { NG_VALUE_ACCESSOR, ReactiveFormsModule } from "@angular/forms";
 import { ValidationMessageComponent } from "../../validation-message/validation-message.component";
 import { CommonModule } from "@angular/common";
@@ -15,6 +15,7 @@ import { TranslateModule } from "@ngx-translate/core";
     ],
     templateUrl: './select-input.component.html',
     styleUrl: './select-input.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
