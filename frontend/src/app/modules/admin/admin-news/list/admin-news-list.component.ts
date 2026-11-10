@@ -1,5 +1,5 @@
 import { CRUDMode } from './../../../../shared/enums/crud-mode.enum';
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { filter, tap } from "rxjs";
 import { NewsItemWGP } from "../../../../api/interfaces/news-response.interface";
@@ -16,6 +16,7 @@ import { FilterNewsService } from '../../../../shared/services/filter-news.servi
         ...AdminListImportsModule
     ],
     templateUrl: './admin-news-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: '../../admin.component.scss'
 })
 export class AdminNewsListComponent extends AbstractAdminListComponent implements OnInit, OnDestroy {

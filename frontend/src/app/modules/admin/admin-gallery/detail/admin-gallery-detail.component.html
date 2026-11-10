@@ -24,8 +24,8 @@
 						<artdv-imgupload
 							[existingImgPath]="pathFromExistingImg"
 							[emptyOnSubmit]="triggerOnSubmit()"
-							[frameModel]="artworkForm.get('artFrameModel')?.value"
-							[frameColor]="artworkForm.get('artFrameColor')?.value"
+							[frameModel]="(artworkForm.get('artFrameModel')?.value)"
+							[frameColor]="(artworkForm.get('artFrameColor')?.value)"
 							[adminTarget]="AdminTargetEnum.GALLERY"
 							(byChange)="readFileUpload($event)"
 							(byRemove)="readRemovalInfo($event)"
@@ -60,7 +60,7 @@
 							<artdv-textinput
 								class="artdv-admin-specific-detail-text"
 								[inputType]="'text'"
-										[placeholder]="artworkForm.get('price')?.value === null 
+										[placeholder]="(artworkForm.get('price')?.value ?? null) === null 
 											? ('modules.admin.gallery.placeholder-price' | translate) 
 											: ''"
 								[formControl]="artworkForm.get('price') | controlCast"

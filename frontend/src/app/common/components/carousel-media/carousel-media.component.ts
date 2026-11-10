@@ -1,4 +1,4 @@
-import { Component, input } from "@angular/core";
+import { Component, input, ChangeDetectionStrategy } from "@angular/core";
 import { environment } from "../../../../environments/environment";
 import { CommonModule } from "@angular/common";
 import { AssetsItem } from "../../../api/interfaces/assets.response.interface";
@@ -16,6 +16,7 @@ import { LoadingAnimationComponent } from "../animation/loading/loading-animatio
         LoadingAnimationComponent
     ],
     templateUrl: './carousel-media.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './carousel-media.component.scss'
 })
 export class CarouselMediaComponent {

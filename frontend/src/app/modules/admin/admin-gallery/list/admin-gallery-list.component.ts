@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { GalleryAPIService } from "../../../../api/services/gallery.api.service";
 import { GalleryItem } from "../../../../api/interfaces/gallery-response.interface";
 import { CRUDMode } from "../../../../shared/enums/crud-mode.enum";
@@ -15,6 +15,7 @@ import { AbstractAdminListComponent } from "../../../../common/components/abstra
         ...AdminListImportsModule
     ],
     templateUrl: './admin-gallery-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: '../../admin.component.scss'
 })
 export class AdminGalleryListComponent extends AbstractAdminListComponent implements OnInit {

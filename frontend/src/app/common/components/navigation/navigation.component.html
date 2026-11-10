@@ -12,7 +12,7 @@
 			</li>
 		}
 		@for (route of routes; track route) {
-			@if (authRoute(route.data?.['onAuth'])) {
+			@if (authRoute((route.data?.['onAuth']))) {
 				<li>
 					<span
 						class="artdv-nav-routes"
@@ -20,7 +20,7 @@
 						routerLink="{{ route.path }}"
 						routerLinkActive="artdv-active-route"
 					>
-						{{!isMobileMode ? ('common.navigation.' + route.data?.['title'] | translate) : ''}}
+						{{!isMobileMode ? ('common.navigation.' + (route.data?.['title']) | translate) : ''}}
 						@if (isMobileMode) {
 							<i class="{{route.data?.['icon']}}"></i>
 						}

@@ -394,7 +394,7 @@
                 "AVAILABLE": "Available",
                 "RESERVED": "Reserved",
                 "SOLD": "Sold",
-                "UNAVAILABLE": "Unavailable"
+                "UNAVAILABLE": "Not available anymore"
             },
             "sorting-option": {
                 "ASC": "ascending",

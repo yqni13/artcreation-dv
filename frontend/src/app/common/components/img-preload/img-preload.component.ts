@@ -1,4 +1,4 @@
-import { Component, inject, input } from "@angular/core";
+import { Component, inject, input, ChangeDetectionStrategy } from "@angular/core";
 import { GalleryScrollDirective } from "../../directives/ng-scroll.directive";
 import { Router } from "@angular/router";
 import { GalleryItem } from "../../../api/interfaces/gallery-response.interface";
@@ -33,6 +33,7 @@ import { CacheCheckPipe } from "../../pipes/cache-check.pipe";
             }
         </div>
     `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./img-preload.component.scss"
 })
 export class ImgPreloadComponent {

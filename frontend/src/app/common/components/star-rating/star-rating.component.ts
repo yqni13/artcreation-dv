@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, effect, ElementRef, input,OnChanges, output, signal, SimpleChanges, viewChild } from "@angular/core";
+import { Component, effect, ElementRef, input, OnChanges, output, signal, SimpleChanges, viewChild, ChangeDetectionStrategy } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
@@ -9,6 +9,7 @@ import { TranslateModule } from "@ngx-translate/core";
         TranslateModule
     ],
     templateUrl: './star-rating.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './star-rating.component.scss'
 })
 export class StarRatingComponent implements OnChanges {

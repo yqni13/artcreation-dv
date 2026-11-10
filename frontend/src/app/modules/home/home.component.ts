@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { FilterNewsService } from "../../shared/services/filter-news.service";
 import { CarouselComponent } from "../../common/components/carousel/carousel.component";
 import { TranslateModule } from "@ngx-translate/core";
@@ -26,6 +26,7 @@ import { environment } from "../../../environments/environment";
     ],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [CacheCheckPipe]
 })
 export class HomeComponent implements OnInit, OnDestroy {

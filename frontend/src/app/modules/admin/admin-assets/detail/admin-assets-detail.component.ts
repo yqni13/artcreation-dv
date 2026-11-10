@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
+import { AfterViewInit, Component, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { AdminDetailImportsModule } from "../../../../common/helper/admin-detail.imports.helper";
 import { SelectInputComponent } from "../../../../common/components/form-components/select-input/select-input.component";
 import { TextInputComponent } from "../../../../common/components/form-components/text-input/text-input.component";
@@ -24,6 +24,7 @@ import { DateTimePickerPipe } from "../../../../common/pipes/datetime-picker.pip
     ],
     templateUrl: './admin-assets-detail.component.html',
     styleUrl: '../../admin.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [
         CacheCheckPipe,
         DateTimePickerPipe
