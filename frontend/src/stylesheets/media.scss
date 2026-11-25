@@ -187,7 +187,7 @@
         .artdv-archive-entry {
             margin: calc(sass.$comp-padding-small / 2);
             img {
-                max-width: 350px;
+                width: 350px;
                 aspect-ratio: 1 / 1;
             }
             h3 {
@@ -645,7 +645,7 @@
         .artdv-archive-entry {
             margin: calc(sass.$comp-padding-small / 2);
             img {
-                max-width: 300px;
+                width: 300px;
                 aspect-ratio: 1 / 1;
             }
             h3 {
@@ -1101,10 +1101,6 @@
         }
         .artdv-archive-entry {
             margin: calc(sass.$comp-padding-small / 2);
-            img {
-                max-width: 300px;
-                aspect-ratio: 1 / 1;
-            }
         }
     }
 
@@ -1515,8 +1511,7 @@
         .artdv-archive-entry {
             margin: calc(sass.$comp-padding-small / 2) 0;
             img {
-                max-width: 500px;
-                aspect-ratio: 1 / 1;
+                width: 400px;
             }
             h3 {
                 font-size: 20px;

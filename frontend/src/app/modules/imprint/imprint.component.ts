@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import { BaseRoute } from "../../api/routes/base.route.enum";
+import { default as metaData } from "../../../../package.json";
 
 @Component({
     selector: 'app-imprint',
@@ -21,7 +22,7 @@ export class ImprintComponent implements OnInit {
     };
     protected devData: Record<string, string | BaseRoute> = {
         project: 'artcreation-dv',
-        version: 'v3.0.0',
+        version: `v${metaData.version}`,
         github: 'https://github.com/yqni13/artcreation-dv/tree/production',
         portfolio: 'https://yqni13.com',
         contact: BaseRoute.SUPPORT
