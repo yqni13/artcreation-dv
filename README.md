@@ -1,5 +1,5 @@
 # yqni13 | $\texttt{\color{goldenrod}{ARTCREATION-DV}}$
-### $\textsf{\color{brown}{v3.0.0}}$
+### $\textsf{\color{brown}{v3.0.2}}$
 
 <br><br>
 
@@ -305,8 +305,10 @@ $ npm run lint
 
 ### $\textsf{\color{forestgreen}last update:}$
 
-$\textsf{[v2.0.9\ =>\ {\textbf{\color{brown}v3.0.0}]}}$ app
-- $\textsf{\color{green}Change:}$ Upgraded Angular framework from v21 to v22.
+$\textsf{[v3.0.0\ =>\ {\textbf{\color{brown}v3.0.2}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated
+  + dependency vulnerabilities within Angular v22
+  + consistent archive listed elements width
 
 <br>
 
