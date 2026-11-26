@@ -1,8 +1,17 @@
 ## 📜 $\textsf{\color{salmon}{List\ of\ updates}}$
 
+### $\textsf{\color{skyblue}2026/11/25}$
+
+$\textsf{[v3.0.0\ =>\ {\textbf{\color{brown}v3.0.2}]}}$ app
+- $\textsf{\color{orange}Patch:}$ Updated
+  + dependency vulnerabilities within Angular v22
+  + consistent archive listed elements width
+
+<br>
+
 ### $\textsf{\color{skyblue}2026/11/07}$
 
-$\textsf{[v2.0.9\ =>\ {\textbf{\color{brown}v3.0.0}]}}$ app
+$\textsf{[v2.0.9\ =>\ v3.0.0]}$ app
 - $\textsf{\color{green}Change:}$ Upgraded Angular framework from v21 to v22.
 
 <br>
